@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>한빌 서비스 이용 가이드</title>
+  <style>
+    :root {
+      --primary: #1B3F72;
+      --primary-light: #2E5C9E;
+      --accent: #E8F0FB;
+      --orange: #E8722A;
+      --green: #27AE60;
+      --gray-bg: #F5F7FA;
+      --gray-border: #DDE3ED;
+      --text: #1A202C;
+      --text-sub: #4A5568;
+      --white: #FFFFFF;
+      --radius: 12px;
+      --shadow: 0 2px 16px rgba(27,63,114,0.10);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+      background: var(--gray-bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* ── Header ── */
+    header {
+      background: var(--primary);
+      color: var(--white);
+      padding: 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+    }
+    .logo {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+    .logo span { color: #7EB3FF; }
+    .header-badge {
+      background: rgba(255,255,255,0.15);
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      color: var(--white);
+      padding: 36px 20px 40px;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 20px;
+      padding: 5px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+    .hero h1 {
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.35;
+      margin-bottom: 10px;
+    }
+    .hero p {
+      font-size: 13.5px;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.65;
+    }
+    .hero-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 20px;
+      background: var(--white);
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 13px;
+      padding: 10px 22px;
+      border-radius: 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    /* ── Section Nav ── */
+    .tab-nav {
+      display: flex;
+      overflow-x: auto;
+      gap: 8px;
+      padding: 16px 16px 0;
+      scrollbar-width: none;
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-border);
+    }
+    .tab-nav::-webkit-scrollbar { display: none; }
+    .tab-btn {
+      flex-shrink: 0;
+      padding: 8px 16px 10px;
+      border: none;
+      background: none;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-sub);
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      transition: all 0.2s;
+    }
+    .tab-btn.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+    }
+
+    /* ── Main container ── */
+    main { padding: 20px 16px 80px; max-width: 640px; margin: 0 auto; }
+
+    /* ── Section ── */
+    .section { display: none; }
+    .section.active { display: block; }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 4px 0 16px;
+    }
+    .section-title .num {
+      background: var(--primary);
+      color: white;
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 800; flex-shrink: 0;
+    }
+
+    /* ── Service Card ── */
+    .card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px;
+      cursor: pointer;
+      user-select: none;
+      border-bottom: 1px solid transparent;
+      transition: background 0.15s;
+    }
+    .card-header:active { background: var(--accent); }
+    .card-icon {
+      width: 42px; height: 42px;
+      border-radius: 10px;
+      background: var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .card-title-wrap { flex: 1; }
+    .card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .card-sub {
+      font-size: 11.5px;
+      color: var(--text-sub);
+      margin-top: 2px;
+    }
+    .card-arrow {
+      color: var(--text-sub);
+      font-size: 18px;
+      transition: transform 0.25s;
+    }
+    .card.open .card-arrow { transform: rotate(180deg); }
+    .card.open .card-header { border-bottom-color: var(--gray-border); }
+
+    /* ── Card body ── */
+    .card-body {
+      display: none;
+      padding: 16px;
+    }
+    .card.open .card-body { display: block; }
+
+    .info-block {
+      margin-bottom: 14px;
+    }
+    .info-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--primary-light);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+    .path-box {
+      background: var(--accent);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .path-sep { color: #7EB3FF; font-weight: 400; }
+
+    .info-text {
+      font-size: 13px;
+      color: var(--text-sub);
+      line-height: 1.7;
+    }
+    .info-text li {
+      padding-left: 14px;
+      position: relative;
+      margin-bottom: 4px;
+    }
+    .info-text li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--primary-light);
+    }
+
+    /* Process steps */
+    .steps {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+    .step {
+      background: var(--primary);
+      color: white;
+      border-radius: 6px;
+      padding: 5px 10px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .step-arr {
+      color: var(--primary-light);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    /* Warning / note box */
+    .note-box {
+      background: #FFF8F3;
+      border-left: 3px solid var(--orange);
+      border-radius: 0 8px 8px 0;
+      padding: 10px 14px;
+      font-size: 12.5px;
+      color: #7A4A2A;
+      margin-top: 10px;
+      line-height: 1.6;
+    }
+
+    /* CTA button */
+    .cta-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      margin-top: 14px;
+      padding: 13px;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+      transition: background 0.15s;
+    }
+    .cta-btn:active { background: var(--primary-light); }
+
+    /* ── 한빌 이용 안내 카드 ── */
+    .hanbill-card {
+      background: linear-gradient(135deg, var(--accent) 0%, #D6E6FF 100%);
+      border: 1.5px solid var(--primary-light);
+      border-radius: var(--radius);
+      padding: 18px 16px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .hanbill-card .icon { font-size: 24px; flex-shrink: 0; }
+    .hanbill-card .title { font-size: 14px; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
+    .hanbill-card .desc { font-size: 12.5px; color: var(--text-sub); line-height: 1.6; }
+
+    /* ── FAQ section ── */
+    .faq-item {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+    .faq-q {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 16px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .faq-q .q-badge {
+      background: var(--primary);
+      color: white;
+      border-radius: 6px;
+      padding: 1px 8px;
+      font-size: 12px;
+      font-weight: 800;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .faq-a {
+      display: none;
+      padding: 0 16px 16px 16px;
+      font-size: 13px;
+      color: var(--text-sub);
+      line-height: 1.7;
+    }
+    .faq-item.open .faq-a { display: block; }
+
+    /* ── Bottom nav ── */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: var(--white);
+      border-top: 1px solid var(--gray-border);
+      display: flex;
+      z-index: 99;
+    }
+    .bnav-btn {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px 4px 12px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      color: var(--text-sub);
+      font-size: 10px;
+      font-weight: 600;
+      gap: 3px;
+      transition: color 0.15s;
+    }
+    .bnav-btn .ico { font-size: 20px; }
+    .bnav-btn.active { color: var(--primary); }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <div class="header-inner">
+    <div class="logo">한<span>빌</span> 서비스 가이드</div>
+    <div class="header-badge">📱 모바일 최적화</div>
+  </div>
+</header>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-badge">🔔 한전ON 서비스 연계 안내</div>
+  <h1>한빌 앱에서 지원하지 않는<br>서비스 이용 방법</h1>
+  <p>아래 서비스는 한전ON 홈페이지에서<br>직접 신청하실 수 있습니다.</p>
+  <a href="https://online.kepco.co.kr" target="_blank" class="hero-link">
+    🔗 한전ON 바로가기
+  </a>
+</div>
+
+<!-- Tab Nav -->
+<div class="tab-nav" id="tabNav">
+  <button class="tab-btn active" onclick="showSection('s1', this)">민원 신청</button>
+  <button class="tab-btn" onclick="showSection('s2', this)">통합청구</button>
+  <button class="tab-btn" onclick="showSection('s3', this)">납기·검침</button>
+  <button class="tab-btn" onclick="showSection('s4', this)">자동이체</button>
+  <button class="tab-btn" onclick="showSection('s5', this)">한빌 이용</button>
+</div>
+
+<!-- Main -->
+<main>
+
+  <!-- ── 섹션 1: 민원 신청 ── -->
+  <div class="section active" id="s1">
+    <div class="section-title"><span class="num">1</span>민원 신청 서비스</div>
+
+    <!-- 명의 변경 -->
+    <div class="card" id="card1">
+      <div class="card-header" onclick="toggleCard('card1')">
+        <div class="card-icon">🏷️</div>
+        <div class="card-title-wrap">
+          <div class="card-title">명의 변경</div>
+          <div class="card-sub">전기사용계약자 명의 변경</div>
+        </div>
+        <div class="card-arrow">⌄</div>
+      </div>
+      <div class="card-body">
+        <div class="info-block">
+          <div class="info-label">한전ON 경로</div>
+          <div class="path-box">
+            한전ON <span class="path-sep">›</span> 로그인
+            <span class="path-sep">›</span> 민원신청
+            <span class="path-sep">›</span> 명의변경
+          </div>
+        </div>
+        <div class="info-block">
+          <div class="info-label">안내사항</div>
+          <ul class="info-text">
+            <li>계약전력 <strong>5kW 이하</strong> 주거용 고객 : 구비서류 없이 즉시 신청 가능</li>
+            <li>계약전력 <strong>6kW 이상</strong> / 변압기 공동이용 고객 : 담당자 검토 후 적용</li>
+            <li>전기사용 변경 발생 시 <strong>14일 이내</strong> 신청 필수</li>
+          </ul>
+        </div>
+        <div class="info-block">
+          <div class="info-label">처리 프로세스</div>
+          <div class="steps">
+            <span class="step">신청</span>
+            <span class="step-arr">→</span>
+            <span class="step">즉시적용</span>
+          </div>
+          <div class="steps" style="margin-top:6px">
+            <span class="step">신청</span>
+            <span class="step-arr">→</span>
+            <span class="step">담당자 검토</span>
+            <span class="step-arr">→</span>
+            <span class="step">적용</span>
+          </div>
+        </div>
+        <a href="https://online.kepco.co.kr/MIM008D00" target="_blank" class="cta-btn">
+          🔗 한전ON 명의변경 바로가기
+        </a>
+      </div>
+    </div>
+
+    <!-- 이사 정산 -->
+    <div class="card" id="card2">
+      <div class="card-header" onclick="toggleCard('card2')">
+        <div class="card-icon">🏠</div>
+        <div class="card-title-wrap">
+          <div class="card-title">이사 정산</div>
+          <div class="card-sub">주택용 이사요금 정산 및 납부</div>
+        </div>
+        <div class="card-arrow">⌄</div>
+      </div>
+      <div class="card-body">
+        <div class="info-block">
+          <div class="info-label">한전ON 경로</div>
+          <div class="path-box">
+            한전ON <span class="path-sep">›</span> 로그인
+            <span class="path-sep">›</span> 민원신청
+            <span class="path-sep">›</span> 이사정산
+          </div>
+        </div>
+        <div class="info-block">
+          <div class="info-label">안내사항</div>
+          <ul class="info-text">
+            <li>주택용(주거용·심야 포함) 이사요금 정산 및 납부 서비스</li>
+            <li>요금 정산은 계량기 지침을 고객이 직접 입력 (AMI 계량기는 자동 입력)</li>
+          </ul>
+        </div>
+        <div class="note-box">
+          ⚠️ 이사정산 시 <strong>자동이체, 청구서, 복지할인</strong> 등이 자동 해지됩니다.<br>
+          새 주소에서 재신청하시기 바랍니다.
+        </div>
+        <div class="info-block" style="margin-top:14px">
+          <div class="info-label">처리 프로세스</div>
+          <div class="steps">
+            <span class="step">신청</span>
+            <span class="step-arr">→</span>
+            <span class="step">요금계산</span>
+            <span class="step-arr">→</span>
+            <span class="step">요금납부</span>
+          </div>
+        </div>
+        <a href="https://online.kepco.co.kr/MIM024D00" target="_blank" class="cta-btn">
+          🔗 한전ON 이사정산 바로가기
+        </a>
+      </div>
+    </div>
+
+    <!-- 증명서 발급 -->
+    <div class="card" id="card3">
+      <div class="card-header" onclick="toggleCard('card3')">
+        <div class="card-icon">📄</div>
+        <div class="card-title-wrap">
+          <div class="card-title">증명서 발급</div>
+          <div class="card-sub">전기사용계약 관련 증명서</div>
+        </div>
+        <div class="card-arrow">⌄</div>
+      </div>
+      <div class="card-body">
+        <div class="info-block">
+          <div class="info-label">한전ON 경로</div>
+          <div class="path-box">
+            한전ON <span class="path-sep">›</span> 로그인
+            <span class="path-sep">›</span> 민원신청
+            <span class="path-sep">›</span> 증명서발급
+          </div>
+        </div>
+        <div class="info-block">
+          <div class="info-label">발급 가능 증명서</div>
+          <ul class="info-text">
+            <li>전기요금 납부실적 증명서</li>
+            <li>동일번지 계약전력 내역서</li>
+            <li>전기사용신청 접수증명서</li>
+            <li>전기사용변경신청 접수증명서</li>
+          </ul>
+        </div>
+        <div class="info-block">
+          <div class="info-label">처리 프로세스</div>
+          <div class="steps">
+            <span class="step">신청</span>
+            <span class="step-arr">→</span>
+            <span class="step">본인확인</span>
+            <span class="step-arr">→</span>
+            <span class="step">발급</span>
+          </div>
+        </div>
+        <a href="https://online.kepco.co.kr/MGM002D01" target="_blank" class="cta-btn">
+          🔗 한전ON 증명서발급 바로가기
+        </a>
+      </div>
+    </div>
+
+    <!-- 사업자등록 변경 -->
+    <div class="card" id="card4">
+      <div class="card-header" onclick="toggleCard('card4')">
+        <div class="card-icon">🏢</div>
+        <div class="card-title-wrap">
+          <div class="card-title">사업자등록 변경</div>
+          <div class="card-sub">고객 정보 중 사업자등록 변경</div>
+        </div>
+        <div class="card-arrow">⌄</div>
+      </div>
+      <div class="card-body">
+        <div class="info-block">
+          <div class="info-label">한전ON 경로</div>
+          <div class="path-box">
+            한전ON <span class="path-sep">›</span> 로그인
+            <span class="path-sep">›</span> 추천메뉴
+            <span class="path-sep">›</span> 사업자등록 변경
+          </div>
+        </div>
+        <div class="info-block">
+          <div class="info-label">안내사항</div>
+          <ul class="info-text">
+            <li>고객 명의와 사업자등록 명의가 <strong>동일</strong>해야 신청 가능</li>
+          </ul>
+        </div>
+        <div class="info-block">
+          <div class="info-label">처리 프로세스</div>
+          <div class="steps">
+            <span class="step">신청</span>
+            <span class="step-arr">→</span>
+            <span class="step">담당자 검토</span>
+            <span class="step-arr">→</span>
+            <span class="step">접수 완료</span>
+          </div>
+        </div>
+        <a href="https://online.kepco.co.kr/MZM004D01" target="_blank" class="cta-btn">
+          🔗 한전ON 사업자등록변경 바로가기
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 섹션 2: 통합청구 ── -->
+  <div class="section" id="s2">
+    <div class="section-title"><span class="num">2</span>통합청구 서비스</div>
+
+    <!-- 통합청구 계정 신규 생성 -->
+    <div class="card" id="card5">
+      <div class="card-header" onclick="toggleCard('card5')">
+        <div class="card-icon">🗂️</div>
+        <div class="card-title-wrap">
+          <div class="card-title">통합청구 계정 신규 생성</div>
+          <div class="card-sub">다구좌 고객 통합청구 신청</div>
+        </div>
+        <div class="card-arrow">⌄</div>
+      </div>
+      <div class="card-body">
+        <div class="info-block">
+          <div class="info-label">한전ON 경로</div>
+          <div class="path-box">
+            한전ON <span class="path-sep">›</span> 로그인
+            <span class="path-sep">›</span> 추천메뉴
+            <span class="path-sep">›</span> 통합청구 계정 신규 생성
+          </div>
+        </div>
+        <div class="info-block">
+          <div class="info-label">신청 조건 (모두 충족 필요)</div>
+          <ul class="info-text">
+            <li>법인·단체·공공기관으로 전국 <strong>2구좌 이상</strong> 전기사용계약 고객</li>
+            <li>대표고객 및 모든 개별고객 <strong>은행 자동이체</strong> 가입 필수 (신용카드 불가)</li>
+            <li>동일 계좌번호 자동이체 + <strong>동일 인터넷빌링사</strong> 가입 조건</li>
+          </ul>
+        </div>
+        <div class="info-block">
+          <div class="info-label">처리 프로세스</div>
+          <div class="steps">
+            <span class="step">신청</span>
+            <span class="step-arr">→</span>
+            <span class="step">담당자 검토</span>
+            <span class="step-arr">→</span>
+            <span class="step">적용</span>
+          </div>
+        </div>
+        <a href="https://online.kepco.co.kr/MPM003D01" target="_blank" class="cta-btn">
+          🔗 한전ON 통합청구 계정 생성 바로가기
+        </a>
+      </div>
+    </div>
+
+    <!-- 통합청구 고객번호 등록/해지 -->
+    <div class="card" id="card6">
+      <div class="card-header" onclick="toggleCard('card6')">
+        <div class="card-icon">🔄</div>
+        <div class="card-title-wrap">
+          <div class="card-title">통합청구 고객번호 등록/해지</div>
+          <div class="card-sub">기존 통합청구 계정에 고객번호 추가·삭제</div>
+        </div>
+        <div class="card-arrow">⌄</div>
+      </div>
+      <div class="card-body">
+        <div class="info-block">
+          <div class="info-label">한전ON 경로</div>
+          <div class="path-box">
+            한전ON <span class="path-sep">›</span> 로그인
+            <span class="path-sep">›</span> 추천메뉴
+            <span class="path-sep">›</span> 통합청구 고객번호 등록/해지
+          </div>
+        </div>
+        <div class="info-block">
+          <div class="info-label">안내사항</div>
+          <ul class="info-text">
+            <li>기존 통합청구 계정이 <strong>없는 경우</strong> → 먼저 「통합청구 계정 신규 생성」 진행</li>
+            <li>대표 고객번호 조회 후 <strong>행 추가</strong>(등록) / <strong>행 삭제</strong>(해지) 처리</li>
+            <li>최대 7개의 대표고객 선정 가능</li>
+          </ul>
+        </div>
+        <div class="info-block">
+          <div class="info-label">처리 프로세스</div>
+          <div class="steps">
+            <span class="step">신청</span>
+            <span class="step-arr">→</span>
+            <span class="step">담당자 검토</span>
+            <span class="step-arr">→</span>
+            <span class="step">적용</span>
+          </div>
+        </div>
+        <a href="https://online.kepco.co.kr/MPM004D01" target="_blank" class="cta-btn">
+          🔗 한전ON 통합청구 고객번호 등록/해지 바로가기
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 섹션 3: 납기·검침 ── -->
+  <div class="section" id="s3">
+    <div class="section-title"><span class="num">3</span>납기일·검침일 서비스</div>
+
+    <!-- 검침일 변경 -->
+    <div class="card" id="card7">
+      <div class="card-header" onclick="toggleCard('card7')">
+        <div class="card-icon">📅</div>
+        <div class="card-title-wrap">
+          <div class="card-title">검침일 변경</div>
+          <div class="card-sub">전기 검침일 변경 신청</div>
+        </div>
+        <div class="card-arrow">⌄</div>
+      </div>
+      <div class="card-body">
+        <div class="info-block">
+          <div class="info-label">한전ON 경로</div>
+          <div class="path-box">
+            한전ON <span class="path-sep">›</span> 로그인
+            <span class="path-sep">›</span> 추천메뉴
+            <span class="path-sep">›</span> 검침일 변경
+          </div>
+        </div>
+        <div class="info-block">
+          <div class="info-label">안내사항</div>
+          <ul class="info-text">
+            <li>신청인(실사용자)과 전기사용계약자가 <strong>동일</strong>해야 신청 가능</li>
+            <li>검침일 변경 시 <strong>기존 납기일이 변경</strong>될 수 있음</li>
+            <li>변경 후 <strong>1년 이내</strong> 재변경 불가</li>
+          </ul>
+        </div>
+        <div class="note-box">
+          ⚠️ 검침 일정에 따라 희망일 지정이 제한될 수 있습니다.<br>
+          문의: 고객센터 ☎ 123
+        </div>
+        <div class="info-block" style="margin-top:14px">
+          <div class="info-label">처리 프로세스</div>
+          <div class="steps">
+            <span class="step">신청</span>
+            <span class="step-arr">→</span>
+            <span class="step">담당 사업소 연락</span>
+          </div>
+        </div>
+        <a href="https://online.kepco.co.kr/MMM006D01" target="_blank" class="cta-btn">
+          🔗 한전ON 검침일 변경 바로가기
+        </a>
+      </div>
+    </div>
+
+    <!-- 납기일 선택제 신청 -->
+    <div class="card" id="card8">
+      <div class="card-header" onclick="toggleCard('card8')">
+        <div class="card-icon">🗓️</div>
+        <div class="card-title-wrap">
+          <div class="card-title">납기일 선택제 신청</div>
+          <div class="card-sub">원하는 납기일 지정 서비스</div>
+        </div>
+        <div class="card-arrow">⌄</div>
+      </div>
+      <div class="card-body">
+        <div class="info-block">
+          <div class="info-label">한전ON 경로</div>
+          <div class="path-box">
+            한전ON <span class="path-sep">›</span> 로그인
+            <span class="path-sep">›</span> 추천메뉴
+            <span class="path-sep">›</span> 납기일 선택제 신청
+          </div>
+        </div>
+        <div class="info-block">
+          <div class="info-label">신청 조건</div>
+          <ul class="info-text">
+            <li>IT청구(이메일 또는 모바일) + <strong>예금 자동이체</strong> 고객</li>
+            <li>미납 요금이 없는 경우에만 신청 가능</li>
+            <li>선택 가능 납기일: <strong>5일·10일·15일·20일·25일·말일</strong></li>
+          </ul>
+        </div>
+        <div class="note-box">
+          ⚠️ 선택납기일 적용 후 <strong>1년 이내</strong> 변경 불가
+        </div>
+        <div class="info-block" style="margin-top:14px">
+          <div class="info-label">처리 프로세스</div>
+          <div class="steps">
+            <span class="step">신청</span>
+            <span class="step-arr">→</span>
+            <span class="step">담당자 검토</span>
+            <span class="step-arr">→</span>
+            <span class="step">적용</span>
+          </div>
+        </div>
+        <a href="https://online.kepco.co.kr/MZM005D01" target="_blank" class="cta-btn">
+          🔗 한전ON 납기일 선택제 바로가기
+        </a>
+      </div>
+    </div>
+
+    <!-- 소액 상시청구 변경 -->
+    <div class="card" id="card9">
+      <div class="card-header" onclick="toggleCard('card9')">
+        <div class="card-icon">💰</div>
+        <div class="card-title-wrap">
+          <div class="card-title">소액 상시청구 변경</div>
+          <div class="card-sub">매월 청구서 발행 희망 고객</div>
+        </div>
+        <div class="card-arrow">⌄</div>
+      </div>
+      <div class="card-body">
+        <div class="info-block">
+          <div class="info-label">한전ON 경로</div>
+          <div class="path-box">
+            한전ON <span class="path-sep">›</span> 로그인
+            <span class="path-sep">›</span> 추천메뉴
+            <span class="path-sep">›</span> 소액 상시청구 변경
+          </div>
+        </div>
+        <div class="info-block">
+          <div class="info-label">안내사항</div>
+          <ul class="info-text">
+            <li>홀수월 청구요금 <strong>2,000원 미만</strong> 시 짝수월 합산 청구 (기본)</li>
+            <li>매월 청구서가 필요한 경우 <strong>상시청구 변경</strong> 신청</li>
+            <li>계약전력 5kW 이하 농사용: 1,000원 미달 시 합산 적용</li>
+          </ul>
+        </div>
+        <div class="info-block">
+          <div class="info-label">처리 프로세스</div>
+          <div class="steps">
+            <span class="step">신청</span>
+            <span class="step-arr">→</span>
+            <span class="step">즉시 적용</span>
+          </div>
+        </div>
+        <a href="https://online.kepco.co.kr/MZM003D01" target="_blank" class="cta-btn">
+          🔗 한전ON 소액 상시청구 변경 바로가기
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 섹션 4: 자동이체 ── -->
+  <div class="section" id="s4">
+    <div class="section-title"><span class="num">4</span>자동이체 서비스</div>
+
+    <div class="card" id="card10">
+      <div class="card-header" onclick="toggleCard('card10')">
+        <div class="card-icon">🏦</div>
+        <div class="card-title-wrap">
+          <div class="card-title">요금납부 자동이체</div>
+          <div class="card-sub">전기요금 자동이체 신청·변경·해지</div>
+        </div>
+        <div class="card-arrow">⌄</div>
+      </div>
+      <div class="card-body">
+        <div class="info-block">
+          <div class="info-label">이용 방법</div>
+          <div class="path-box" style="margin-bottom:8px">
+            한전ON <span class="path-sep">›</span> 로그인
+            <span class="path-sep">›</span> 자동이체 신청
+          </div>
+          <div class="path-box">
+            또는 <strong>☎ 123</strong> 고객센터 전화 신청
+          </div>
+        </div>
+        <div class="info-block">
+          <div class="info-label">안내사항</div>
+          <ul class="info-text">
+            <li>은행 자동이체(예금) 및 신용카드 자동이체 신청 가능</li>
+            <li>납기일 선택제, 통합청구 등 다른 서비스와 연계 필요</li>
+            <li>이사 시 자동이체 자동 해지 → 새 주소에서 재신청 필요</li>
+          </ul>
+        </div>
+        <div class="info-block">
+          <div class="info-label">처리 프로세스</div>
+          <div class="steps">
+            <span class="step">신청</span>
+            <span class="step-arr">→</span>
+            <span class="step">즉시 또는 익월 적용</span>
+          </div>
+        </div>
+        <a href="https://online.kepco.co.kr" target="_blank" class="cta-btn">
+          🔗 한전ON 자동이체 신청 바로가기
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 섹션 5: 한빌 이용 안내 ── -->
+  <div class="section" id="s5">
+    <div class="section-title"><span class="num">5</span>한빌 서비스 이용 안내</div>
+
+    <div class="hanbill-card">
+      <div class="icon">📱</div>
+      <div>
+        <div class="title">한빌 모바일에서 제공하는 서비스</div>
+        <div class="desc">청구서 등록·조회, 조건별 청구 내역 조회, 서비스 둘러보기, FAQ 등은 한빌 모바일 앱 또는 카카오 비즈니스 채널에서 이용하실 수 있습니다.</div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="section-title" style="margin-top:20px; font-size:15px">자주 묻는 질문</div>
+
+    <div class="faq-item" id="faq1">
+      <div class="faq-q" onclick="toggleFaq('faq1')">
+        <span class="q-badge">Q</span>
+        한전ON에 회원가입이 필요한가요?
+      </div>
+      <div class="faq-a">
+        네, 한전ON 서비스 이용을 위해서는 한전ON(online.kepco.co.kr) 회원가입이 필요합니다. 고객번호와 본인 인증 후 가입하실 수 있습니다.
+      </div>
+    </div>
+
+    <div class="faq-item" id="faq2">
+      <div class="faq-q" onclick="toggleFaq('faq2')">
+        <span class="q-badge">Q</span>
+        한빌과 한전ON은 어떻게 다른가요?
+      </div>
+      <div class="faq-a">
+        한빌은 전기요금 청구서 수신·조회 전문 서비스이며, 한전ON은 한국전력공사의 공식 민원 처리 플랫폼입니다. 명의변경, 이사정산 등 계약 관련 서비스는 한전ON에서만 처리됩니다.
+      </div>
+    </div>
+
+    <div class="faq-item" id="faq3">
+      <div class="faq-q" onclick="toggleFaq('faq3')">
+        <span class="q-badge">Q</span>
+        담당자 검토가 필요한 서비스는 처리 기간이 얼마나 걸리나요?
+      </div>
+      <div class="faq-a">
+        서비스 및 사업소에 따라 다르며, 보통 영업일 기준 3~5일 이내 처리됩니다. 정확한 기간은 담당 사업소로 문의해 주세요. (☎ 한전 고객센터 123)
+      </div>
+    </div>
+
+    <div class="faq-item" id="faq4">
+      <div class="faq-q" onclick="toggleFaq('faq4')">
+        <span class="q-badge">Q</span>
+        한전ON을 모바일에서 이용할 수 있나요?
+      </div>
+      <div class="faq-a">
+        네, 한전ON(online.kepco.co.kr)은 모바일 브라우저에서도 이용 가능합니다. 별도 앱 설치 없이 스마트폰 브라우저에서 접속하시면 됩니다.
+      </div>
+    </div>
+
+    <div style="margin-top:24px; text-align:center;">
+      <a href="tel:123" style="display:inline-flex; align-items:center; gap:8px; background:var(--green); color:white; text-decoration:none; padding:14px 28px; border-radius:12px; font-size:15px; font-weight:700;">
+        ☎ 한전 고객센터 123 전화
+      </a>
+    </div>
+  </div>
+
+</main>
+
+<!-- Bottom Nav -->
+<nav class="bottom-nav">
+  <button class="bnav-btn active" onclick="showSection('s1', this, true)">
+    <span class="ico">📋</span>민원신청
+  </button>
+  <button class="bnav-btn" onclick="showSection('s2', this, true)">
+    <span class="ico">🗂️</span>통합청구
+  </button>
+  <button class="bnav-btn" onclick="showSection('s3', this, true)">
+    <span class="ico">📅</span>납기·검침
+  </button>
+  <button class="bnav-btn" onclick="showSection('s4', this, true)">
+    <span class="ico">🏦</span>자동이체
+  </button>
+  <button class="bnav-btn" onclick="showSection('s5', this, true)">
+    <span class="ico">ℹ️</span>안내·FAQ
+  </button>
+</nav>
+
+<script>
+  const SECTIONS = ['s1','s2','s3','s4','s5'];
+
+  function showSection(id, btn, fromNav) {
+    SECTIONS.forEach(s => {
+      document.getElementById(s)?.classList.remove('active');
+    });
+    document.getElementById(id)?.classList.add('active');
+
+    if (fromNav) {
+      document.querySelectorAll('.bnav-btn').forEach(b => b.classList.remove('active'));
+    } else {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    }
+    if (btn) btn.classList.add('active');
+
+    // Sync both navs
+    const idx = SECTIONS.indexOf(id);
+    if (fromNav) {
+      document.querySelectorAll('.tab-btn')[idx]?.classList.add('active');
+    } else {
+      document.querySelectorAll('.bnav-btn')[idx]?.classList.add('active');
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function toggleCard(id) {
+    document.getElementById(id)?.classList.toggle('open');
+  }
+
+  function toggleFaq(id) {
+    document.getElementById(id)?.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
