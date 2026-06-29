@@ -277,6 +277,7 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
   .bottom-nav{display:flex}
   .topbar{padding:0 14px;height:52px}
   .content{padding:14px 14px 78px}
+  .hb-sheet{padding-bottom:62px}
   .cfab{display:none}
   #bottom-row{grid-template-columns:1fr !important}
   .sg{grid-template-columns:repeat(2,1fr);gap:10px}
@@ -314,7 +315,10 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
   <nav class="sb-nav">
     <div class="ns">분석</div>
     <div class="ni on" onclick="goSec('dashboard',this)"><i class="ti ti-dashboard"></i>현황판</div>
-    <div class="ns">도구</div>
+    <div class="ns">분석 도구</div>
+    <div class="ni" onclick="goSec('stt',this)"><i class="ti ti-microphone-2"></i>AI민원분석</div>
+    <div class="ni" onclick="goSec('predict',this)"><i class="ti ti-crystal-ball"></i>예상 민원</div>
+    <div class="ns">커뮤니케이션</div>
     <div class="ni" onclick="goSec('newsletter',this)"><i class="ti ti-news"></i>뉴스레터<span class="nb">2</span></div>
   </nav>
   <div class="sb-foot">
@@ -331,8 +335,8 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
       <div><div class="pt" id="pt">현황판</div><div class="ps" id="ps">민원 처리 현황 분석</div></div>
     </div>
     <div class="tr">
-      <div class="pred-badge" onclick="openModal()">
-        <span class="pred-pulse"></span><span>예상 민원 알림</span>
+      <div class="pred-badge" id="page-alert-badge" onclick="openPageAlert()">
+        <span class="pred-pulse"></span><span id="page-alert-text">알림</span>
       </div>
       <div class="tclock" id="clock">--:--:--</div>
     </div>
@@ -425,46 +429,6 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
     <div id="cmp-delta" style="display:none"><div id="cmp-delta-grid"></div></div>
     <span id="chart-period-label" style="display:none"></span>
 
-    <!-- ── STT 활용 주요 지표 ── -->
-    <div class="panel" style="margin-bottom:16px">
-      <div class="ph" style="flex-wrap:wrap;gap:8px">
-        <div class="ptt">
-          <i class="ti ti-microphone-2" style="color:#F59E0B"></i>
-          STT 활용 주요 지표
-          <span style="font-size:10px;background:#FEF3C7;color:#92400E;padding:2px 7px;border-radius:8px;font-weight:700;margin-left:4px" id="stt-badge-count">330건 기반</span>
-        </div>
-        <!-- 탭 버튼 -->
-        <div style="display:flex;gap:0;border:1px solid var(--g200);border-radius:7px;overflow:hidden;flex-wrap:wrap">
-          <button class="stt-tab on" data-tab="kw"     onclick="switchSTTTab('kw',this)"     style="padding:5px 13px;font-size:11.5px;font-weight:600;border:none;cursor:pointer;font-family:inherit;background:var(--sky);color:#fff;white-space:nowrap">🔑 인입 키워드</button>
-          <button class="stt-tab"     data-tab="improve" onclick="switchSTTTab('improve',this)" style="padding:5px 13px;font-size:11.5px;font-weight:600;border:none;cursor:pointer;font-family:inherit;background:#fff;color:var(--g500);white-space:nowrap">🔧 기술적 개선 제안</button>
-          <button class="stt-tab"     data-tab="quality" onclick="switchSTTTab('quality',this)" style="padding:5px 13px;font-size:11.5px;font-weight:600;border:none;cursor:pointer;font-family:inherit;background:#fff;color:var(--g500);white-space:nowrap">📊 서비스 질 향상 분석</button>
-          <button class="stt-tab"     data-tab="voc"    onclick="switchSTTTab('voc',this)"    style="padding:5px 13px;font-size:11.5px;font-weight:600;border:none;cursor:pointer;font-family:inherit;background:#fff;color:var(--g500);white-space:nowrap">💬 VOC & 채널 전환</button>
-        </div>
-      </div>
-
-      <!-- Tab 1: 인입 키워드 -->
-      <div id="stt-tab-kw" class="pb">
-        <div id="kw-cloud" style="display:flex;flex-wrap:wrap;gap:6px;align-content:flex-start;min-height:160px;width:100%"></div>
-      </div>
-
-      <!-- Tab 2: 기술적 서비스 개선 제안 -->
-      <div id="stt-tab-improve" class="pb" style="display:none">
-        <div style="font-size:11.5px;color:var(--g500);margin-bottom:10px">STT 330건 실제 통화 패턴 분석 기반 · 우선순위 순</div>
-        <div id="stt-improve-list"></div>
-        <div id="stt-improve-section" style="display:none"></div>
-      </div>
-
-      <!-- Tab 3: 서비스 질 향상 분석 -->
-      <div id="stt-tab-quality" class="pb" style="display:none">
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px" id="stt-quality-grid"></div>
-      </div>
-
-      <!-- Tab 4: VOC 트렌드 & 채널 전환 -->
-      <div id="stt-tab-voc" class="pb" style="display:none" id="stt-voc-body">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px" id="stt-voc-grid"></div>
-      </div>
-    </div>
-
     <!-- AI 분석 리포트 + 만족도 -->
     <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:14px;margin-bottom:16px" id="bottom-row">
       <!-- AI 분석 리포트 -->
@@ -502,6 +466,60 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
 
 
 
+
+
+
+  <!-- ══════════ 예상 민원 ══════════ -->
+  <div class="sec" id="sec-predict">
+    <div style="margin-bottom:14px">
+      <div style="font-size:14px;font-weight:700;color:var(--g800)">예상 민원 & 개선책</div>
+      <div style="font-size:11.5px;color:var(--g400);margin-top:2px">과거 민원 패턴 + 계절성 + 청구 일정 기반 AI 예측</div>
+    </div>
+    <div id="predict-section-list"></div>
+  </div><!-- /sec-predict -->
+
+  <!-- ══════════ AI민원분석 ══════════ -->
+  <div class="sec" id="sec-stt">
+    <!-- ── STT 활용 주요 지표 ── -->
+    <div class="panel" style="margin-bottom:16px">
+      <div class="ph" style="flex-wrap:wrap;gap:8px">
+        <div class="ptt">
+          <i class="ti ti-microphone-2" style="color:#F59E0B"></i>
+          STT 활용 주요 지표
+          <span style="font-size:10px;background:#FEF3C7;color:#92400E;padding:2px 7px;border-radius:8px;font-weight:700;margin-left:4px" id="stt-badge-count">330건 기반</span>
+        </div>
+        <!-- 탭 버튼 -->
+        <div style="display:flex;gap:0;border:1px solid var(--g200);border-radius:7px;overflow:hidden;flex-wrap:wrap">
+          <button class="stt-tab on" data-tab="quality" onclick="switchSTTTab('quality',this)" style="padding:5px 13px;font-size:11.5px;font-weight:600;border:none;cursor:pointer;font-family:inherit;background:var(--sky);color:#fff;white-space:nowrap">📊 서비스 질 향상</button>
+          <button class="stt-tab"     data-tab="kw"     onclick="switchSTTTab('kw',this)"     style="padding:5px 13px;font-size:11.5px;font-weight:600;border:none;cursor:pointer;font-family:inherit;background:#fff;color:var(--g500);white-space:nowrap">🔑 인입 키워드</button>
+          <button class="stt-tab"     data-tab="voc"    onclick="switchSTTTab('voc',this)"    style="padding:5px 13px;font-size:11.5px;font-weight:600;border:none;cursor:pointer;font-family:inherit;background:#fff;color:var(--g500);white-space:nowrap">💬 VOC 분석</button>
+          <button class="stt-tab"     data-tab="improve" onclick="switchSTTTab('improve',this)" style="padding:5px 13px;font-size:11.5px;font-weight:600;border:none;cursor:pointer;font-family:inherit;background:#fff;color:var(--g500);white-space:nowrap">🔧 개선 제안</button>
+        </div>
+      </div>
+
+      <!-- Tab 1: 인입 키워드 -->
+      <div id="stt-tab-kw" class="pb" style="display:none">
+        <div id="kw-cloud" style="display:flex;flex-wrap:wrap;gap:6px;align-content:flex-start;min-height:160px;width:100%"></div>
+      </div>
+
+      <!-- Tab 2: 기술적 서비스 개선 제안 -->
+      <div id="stt-tab-improve" class="pb" style="display:none">
+        <div style="font-size:11.5px;color:var(--g500);margin-bottom:10px">STT 330건 실제 통화 패턴 분석 기반 · 우선순위 순</div>
+        <div id="stt-improve-list"></div>
+        <div id="stt-improve-section" style="display:none"></div>
+      </div>
+
+      <!-- Tab 3: 서비스 질 향상 분석 -->
+      <div id="stt-tab-quality" class="pb" style="display:block">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px" id="stt-quality-grid"></div>
+      </div>
+
+      <!-- Tab 4: VOC 트렌드 & 채널 전환 -->
+      <div id="stt-tab-voc" class="pb" style="display:none" id="stt-voc-body">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px" id="stt-voc-grid"></div>
+      </div>
+    </div>
+  </div><!-- /sec-stt -->
 
   <!-- ══════════ 3. 뉴스레터 ══════════ -->
   <div class="sec" id="sec-newsletter">
@@ -661,6 +679,14 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
       <div class="bn-icon"><i class="ti ti-dashboard"></i></div>
       <span class="bn-label">현황판</span>
     </button>
+    <button class="bn-item" id="bn-stt" onclick="bnGo('stt')" aria-label="AI민원분석">
+      <div class="bn-icon"><i class="ti ti-microphone-2"></i></div>
+      <span class="bn-label">AI민원분석</span>
+    </button>
+    <button class="bn-item" id="bn-predict" onclick="bnGo('predict')" aria-label="예상민원">
+      <div class="bn-icon"><i class="ti ti-crystal-ball"></i></div>
+      <span class="bn-label">예상민원</span>
+    </button>
     <button class="bn-item" id="bn-newsletter" onclick="bnGo('newsletter')" aria-label="뉴스레터">
       <div class="bn-icon"><i class="ti ti-news"></i></div>
       <span class="bn-label">뉴스레터</span>
@@ -773,6 +799,16 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
     <button class="hb-send" onclick="hbSend()"><i class="ti ti-send"></i></button>
   </div>
 </div>
+
+<!-- ── 페이지별 알림 팝업 ── -->
+<div id="page-alert-modal" style="display:none;position:fixed;top:64px;right:16px;z-index:600;width:300px;background:#fff;border-radius:14px;box-shadow:0 8px 32px rgba(0,0,0,.18);overflow:hidden">
+  <div style="background:var(--sky-dark);padding:12px 16px;display:flex;align-items:center;justify-content:space-between">
+    <div style="font-size:13px;font-weight:700;color:#fff;display:flex;align-items:center;gap:6px"><i class="ti ti-bell" style="font-size:15px"></i> <span id="alert-modal-title">알림</span></div>
+    <button onclick="closePageAlert()" style="background:none;border:none;color:rgba(255,255,255,.7);cursor:pointer;font-size:18px"><i class="ti ti-x"></i></button>
+  </div>
+  <div style="padding:14px 16px" id="alert-modal-body"></div>
+</div>
+<div id="page-alert-overlay" onclick="closePageAlert()" style="display:none;position:fixed;inset:0;z-index:599"></div>
 
 <!-- ── 날짜 설정 모달 ── -->
 <div class="modal-bg" id="date-modal">
@@ -1079,6 +1115,7 @@ function getScript(label) {
 
 // ─── PERIOD ───
 let cur = 'week';
+let currentSection = 'dashboard'; // 현재 메뉴 섹션 추적
 let customPeriodLabel = { week: '', month: '' };
 // 현재 선택된 DB 키 (주: '2026-06-15', 월: '2026-05') — 비교 차트에 직접 사용
 let curWeekKey  = '';
@@ -2014,7 +2051,9 @@ function renderRecipients() {
 window.toggleRecipient = function(id) {
   const list = loadRecipients();
   const r = list.find(x => x.id === id);
-  if (r) { r.active = !r.active; saveRecipients(list); renderRecipients(); }
+  if (r) { r.active = !r.active; saveRecipients(list); renderRecipients();
+updatePageAlert('dashboard');
+renderPredictSection(); }
 };
 
 window.editRecipient = function(id) {
@@ -2126,7 +2165,8 @@ window.sendNewsletter = function() {
 // ─── NAV ───
 const SEC_META = {
   dashboard:['현황판','민원 처리 현황 분석'],
-  chatbot:['챗봇 도우미','키워드별 민원 분석 및 응대 스크립트'],
+  stt:['STT 활용 주요 지표','실제 통화 분석 기반 인사이트'],
+  predict:['예상 민원','AI 기반 민원 예측 및 개선책'],
   newsletter:['뉴스레터','한전 청구서사업 경영진 일일 스크랩'],
 };
 window.goSec = function(name, el) {
@@ -2140,6 +2180,9 @@ window.goSec = function(name, el) {
   document.querySelectorAll('.bn-item[id]').forEach(b => b.classList.remove('on'));
   const bn = document.getElementById('bn-' + name);
   if (bn) bn.classList.add('on');
+  if (name === 'predict') renderPredictSection();
+  if (name === 'stt') renderSTTQuality();
+  updatePageAlert(name);
 };
 
 // ─── 날짜 설정 ───
@@ -2355,6 +2398,8 @@ function buildTrend(mode, s, e) {
 // ─── 하단 네비 (모바일) ───
 const BN_SECTIONS = {
   dashboard:  { label:'현황판',   sub:'민원 처리 현황 분석' },
+  stt:        { label:'AI민원분석', sub:'실제 통화 분석 기반 인사이트' },
+  predict:    { label:'예상 민원', sub:'AI 기반 민원 예측 및 개선책' },
   newsletter: { label:'뉴스레터', sub:'한전 청구서사업 경영진 스크랩' },
 };
 window.bnGo = function(name) {
@@ -2372,6 +2417,7 @@ window.bnGo = function(name) {
     document.getElementById('pt').textContent = meta.label;
     document.getElementById('ps').textContent = meta.sub;
   }
+  if (name === 'predict') renderPredictSection();
   // 사이드바 ni 동기화
   document.querySelectorAll('.ni').forEach(n => n.classList.remove('on'));
   const ni = document.querySelector('.ni[onclick*="' + name + '"]');
@@ -2804,7 +2850,7 @@ window.switchSTTTab = function(tab, el) {
   });
 
   // 키워드 탭은 kw-cloud ID를 stt-tab-kw에 연결
-  if (tab === 'kw') renderKeywordCloud();
+  if (tab === 'kw')      renderKeywordCloud();
   if (tab === 'improve') renderSTTImprovements();
   if (tab === 'quality') renderSTTQuality();
   if (tab === 'voc')     renderSTTVOC();
@@ -3084,6 +3130,28 @@ function renderSTTImprovements() {
   sec.style.display = 'block';
 }
 
+
+// ─── 예상민원 섹션 렌더 ───
+function renderPredictSection() {
+  var el = document.getElementById('predict-section-list');
+  if (!el) return;
+  var colors = { 91:'#EF4444', 78:'#F59E0B', 65:'#0EA5E9', 54:'#10B981' };
+  var bgCols = { 91:'#FEE2E2', 78:'#FEF3C7', 65:'#E0F2FE', 54:'#D1FAE5' };
+  el.innerHTML = PREDICTIONS.map(function(p,i) {
+    var col = colors[p.prob] || '#94A3B8';
+    var bg  = bgCols[p.prob]  || '#F1F5F9';
+    return '<div style="background:#fff;border:1px solid var(--g200);border-radius:10px;padding:16px;margin-bottom:12px">'
+      + '<div style="display:flex;align-items:flex-start;gap:12px">'
+      + '<div style="width:44px;height:44px;border-radius:50%;background:' + col + ';color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0">' + p.prob + '%</div>'
+      + '<div style="flex:1">'
+      + '<div style="font-size:14px;font-weight:700;color:var(--g800);margin-bottom:4px">' + p.type + '</div>'
+      + '<div style="font-size:12.5px;color:var(--g600);margin-bottom:8px;line-height:1.6">' + p.desc + '</div>'
+      + '<div style="background:' + bg + ';border-radius:8px;padding:8px 12px;font-size:12px;color:var(--g700)">'
+      + '<span style="font-weight:700;color:' + col + '">💡 개선책:</span> ' + p.tip + '</div></div>'
+      + '</div></div>';
+  }).join('');
+}
+
 // ─── 녹취 현황 패널 ───
 function renderRecBanner() {
   if (typeof REC_DB === 'undefined') return;
@@ -3151,6 +3219,100 @@ function hbLookupPhone(query) {
   return true;
 }
 
+
+// ─── 페이지별 알림 ───
+function getPageAlert(name) {
+  var d   = DATA[cur] || {};
+  var ai  = (typeof ANALYSIS_INDEX !== 'undefined') ? ANALYSIS_INDEX : null;
+  var top = (d.topDetails && d.topDetails[0]) ? d.topDetails[0].label : '청구서 조회 문의';
+  var tot = d.total || 0;
+  var dn  = d.done  || 0;
+  var hj  = (d.hjOps||0) + (d.hjKepco||0);
+  var dr  = tot ? Math.round(dn/tot*100) : 0;
+
+  var alerts = {
+    dashboard: {
+      badge: '현황 요약',
+      title: '이번 기간 현황을 알려드려요',
+      lines: [
+        '📥 총 ' + tot + '건의 민원이 들어왔어요.',
+        '✅ 그중 ' + dn + '건(' + dr + '%)을 상담원이 직접 해결했어요.',
+        '🏢 ' + hj + '건은 운영팀·한전으로 넘겨서 처리했어요.',
+        '1위 민원은 "' + top + '"이에요.'
+      ]
+    },
+    stt: {
+      badge: ai ? 'AI 분석 완료' : 'AI 분석 필요',
+      title: 'AI가 실제 통화를 분석한 결과예요',
+      lines: ai ? [
+        '📞 실제 통화 ' + ai.total + '건을 AI가 분석했어요.',
+        '✅ ' + ai.resolvedRate + '%는 전화 한 번으로 끝났어요.',
+        '😊 고객 ' + ai.sentiment.posRate + '%가 만족하고, ' + ai.sentiment.negRate + '%는 불만이었어요.',
+        '⭐ 상담원의 ' + ai.agentQuality.goodRate + '%가 잘 응대했다고 평가됐어요.',
+        '가장 많은 민원: "' + (ai.topIssues&&ai.topIssues[0]?ai.topIssues[0].issue:'이메일 주소 변경') + '"'
+      ] : [
+        '아직 AI 분석이 실행되지 않았어요.',
+        'CMD에서 analyze_stt.js를 실행하면 분석 결과가 여기 표시돼요.',
+        '현재 STT 변환이 진행 중이에요.'
+      ]
+    },
+    predict: {
+      badge: '주의 필요',
+      title: '앞으로 올 민원을 미리 예측했어요',
+      lines: [
+        'AI가 과거 패턴을 보고 앞으로 올 민원을 예측했어요.',
+        '91% 가능성: 청구서 등록 문의가 급증할 거예요. (납기일 이후)',
+        '78% 가능성: 문자 재발송 요청이 많이 올 거예요.',
+        '미리 안내 문자를 보내면 전화를 많이 줄일 수 있어요!'
+      ]
+    },
+    newsletter: {
+      badge: '발송 준비 완료',
+      title: '뉴스레터 발송 전 확인해 주세요',
+      lines: [
+        '오늘 한전 관련 기사 2건이 준비됐어요.',
+        '발송 버튼을 누르면 담당자 이메일앱이 자동으로 열려요.',
+        '수신자: 담당자, 팀장, 대표 3명이 설정돼 있어요.',
+        '기사 제목을 클릭하면 원문 기사로 바로 이동해요!'
+      ]
+    }
+  };
+  return alerts[name] || alerts.dashboard;
+}
+
+function updatePageAlert(name) {
+  currentSection = name;
+  var a   = getPageAlert(name);
+  var txt = document.getElementById('page-alert-text');
+  if (txt) txt.textContent = a.badge;
+}
+
+window.openPageAlert = function() {
+  var a   = getPageAlert(currentSection);
+  var mod = document.getElementById('page-alert-modal');
+  var ovl = document.getElementById('page-alert-overlay');
+  if (!mod) { openModal(); return; }
+  document.getElementById('alert-modal-title').textContent = a.title;
+  document.getElementById('alert-modal-body').innerHTML = a.lines.map(function(l) {
+    var em = l.slice(0,2);
+    var tx = l.slice(2);
+    var hasEmoji = /[🌀-🿿]/u.test(em);
+    if (!hasEmoji) { em = ''; tx = l; }
+    return '<div style="font-size:12.5px;color:var(--g700);margin-bottom:8px;line-height:1.65;padding:6px 10px;background:var(--g50);border-radius:7px">'
+      + (hasEmoji ? '<span style="margin-right:6px">' + em + '</span>' : '')
+      + '<span>' + tx + '</span></div>';
+  }).join('');
+  mod.style.display = 'block';
+  ovl.style.display = 'block';
+};
+
+window.closePageAlert = function() {
+  var mod = document.getElementById('page-alert-modal');
+  var ovl = document.getElementById('page-alert-overlay');
+  if (mod) mod.style.display = 'none';
+  if (ovl) ovl.style.display = 'none';
+};
+
 // ─── INIT ───
 loadFromDB('both');
 renderAll();
@@ -3158,7 +3320,8 @@ renderSTTBanner();
 renderRecBanner();
 // STT 탭: 초기 키워드 탭 렌더
 renderKeywordCloud();
-renderSTTImprovements(); // improve 탭용 데이터 준비
+renderSTTImprovements();
+renderPredictSection();
 renderNews();
 renderRecipients();
 </script>
