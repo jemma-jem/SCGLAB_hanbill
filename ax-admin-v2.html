@@ -316,7 +316,7 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
     <div class="ns">분석</div>
     <div class="ni on" onclick="goSec('dashboard',this)"><i class="ti ti-dashboard"></i>현황판</div>
     <div class="ns">분석 도구</div>
-    <div class="ni" onclick="goSec('stt',this)"><i class="ti ti-microphone-2"></i>AI민원분석</div>
+    <div class="ni" onclick="goSec('stt',this)"><i class="ti ti-microphone-2"></i>AI 민원분석</div>
     <div class="ni" onclick="goSec('predict',this)"><i class="ti ti-crystal-ball"></i>예상 민원</div>
     <div class="ns">커뮤니케이션</div>
     <div class="ni" onclick="goSec('newsletter',this)"><i class="ti ti-news"></i>뉴스레터<span class="nb">2</span></div>
@@ -478,7 +478,7 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
     <div id="predict-section-list"></div>
   </div><!-- /sec-predict -->
 
-  <!-- ══════════ AI민원분석 ══════════ -->
+  <!-- ══════════ AI 민원분석 ══════════ -->
   <div class="sec" id="sec-stt">
     <!-- ── STT 활용 주요 지표 ── -->
     <div class="panel" style="margin-bottom:16px">
@@ -490,15 +490,15 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
         </div>
         <!-- 탭 버튼 -->
         <div style="display:flex;gap:0;border:1px solid var(--g200);border-radius:7px;overflow:hidden;flex-wrap:wrap">
-          <button class="stt-tab on" data-tab="quality" onclick="switchSTTTab('quality',this)" style="padding:5px 13px;font-size:11.5px;font-weight:600;border:none;cursor:pointer;font-family:inherit;background:var(--sky);color:#fff;white-space:nowrap">📊 서비스 질 향상</button>
-          <button class="stt-tab"     data-tab="kw"     onclick="switchSTTTab('kw',this)"     style="padding:5px 13px;font-size:11.5px;font-weight:600;border:none;cursor:pointer;font-family:inherit;background:#fff;color:var(--g500);white-space:nowrap">🔑 인입 키워드</button>
+          <button class="stt-tab on" data-tab="kw"     onclick="switchSTTTab('kw',this)"     style="padding:5px 13px;font-size:11.5px;font-weight:600;border:none;cursor:pointer;font-family:inherit;background:var(--sky);color:#fff;white-space:nowrap">🔑 인입 키워드</button>
+          <button class="stt-tab"     data-tab="quality" onclick="switchSTTTab('quality',this)" style="padding:5px 13px;font-size:11.5px;font-weight:600;border:none;cursor:pointer;font-family:inherit;background:#fff;color:var(--g500);white-space:nowrap">📊 서비스 질 향상</button>
           <button class="stt-tab"     data-tab="voc"    onclick="switchSTTTab('voc',this)"    style="padding:5px 13px;font-size:11.5px;font-weight:600;border:none;cursor:pointer;font-family:inherit;background:#fff;color:var(--g500);white-space:nowrap">💬 VOC 분석</button>
           <button class="stt-tab"     data-tab="improve" onclick="switchSTTTab('improve',this)" style="padding:5px 13px;font-size:11.5px;font-weight:600;border:none;cursor:pointer;font-family:inherit;background:#fff;color:var(--g500);white-space:nowrap">🔧 개선 제안</button>
         </div>
       </div>
 
       <!-- Tab 1: 인입 키워드 -->
-      <div id="stt-tab-kw" class="pb" style="display:none">
+      <div id="stt-tab-kw" class="pb" style="display:flex;flex-wrap:wrap;gap:6px;align-content:flex-start;min-height:160px;width:100%">
         <div id="kw-cloud" style="display:flex;flex-wrap:wrap;gap:6px;align-content:flex-start;min-height:160px;width:100%"></div>
       </div>
 
@@ -510,7 +510,7 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
       </div>
 
       <!-- Tab 3: 서비스 질 향상 분석 -->
-      <div id="stt-tab-quality" class="pb" style="display:block">
+      <div id="stt-tab-quality" class="pb" style="display:none">
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px" id="stt-quality-grid"></div>
       </div>
 
@@ -679,13 +679,13 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
       <div class="bn-icon"><i class="ti ti-dashboard"></i></div>
       <span class="bn-label">현황판</span>
     </button>
-    <button class="bn-item" id="bn-stt" onclick="bnGo('stt')" aria-label="AI민원분석">
+    <button class="bn-item" id="bn-stt" onclick="bnGo('stt')" aria-label="AI 민원분석">
       <div class="bn-icon"><i class="ti ti-microphone-2"></i></div>
-      <span class="bn-label">AI민원분석</span>
+      <span class="bn-label">AI 민원분석</span>
     </button>
     <button class="bn-item" id="bn-predict" onclick="bnGo('predict')" aria-label="예상민원">
       <div class="bn-icon"><i class="ti ti-crystal-ball"></i></div>
-      <span class="bn-label">예상민원</span>
+      <span class="bn-label">예상 민원</span>
     </button>
     <button class="bn-item" id="bn-newsletter" onclick="bnGo('newsletter')" aria-label="뉴스레터">
       <div class="bn-icon"><i class="ti ti-news"></i></div>
@@ -2181,7 +2181,17 @@ window.goSec = function(name, el) {
   const bn = document.getElementById('bn-' + name);
   if (bn) bn.classList.add('on');
   if (name === 'predict') renderPredictSection();
-  if (name === 'stt') renderSTTQuality();
+  if (name === 'stt') {
+    // 탭 버튼 초기화: kw 활성
+    document.querySelectorAll('.stt-tab').forEach(function(b){ b.classList.remove('on'); b.style.background='#fff'; b.style.color='var(--g500)'; });
+    var kwBtn = document.querySelector('.stt-tab[data-tab="kw"]');
+    if (kwBtn) { kwBtn.classList.add('on'); kwBtn.style.background='var(--sky)'; kwBtn.style.color='#fff'; }
+    // 탭 콘텐츠 초기화: kw만 표시
+    document.querySelectorAll('[id^="stt-tab-"]').forEach(function(t){ t.style.display='none'; });
+    var kwTab = document.getElementById('stt-tab-kw');
+    if (kwTab) kwTab.style.display='flex';
+    renderKeywordCloud();
+  }
   updatePageAlert(name);
 };
 
@@ -2398,7 +2408,7 @@ function buildTrend(mode, s, e) {
 // ─── 하단 네비 (모바일) ───
 const BN_SECTIONS = {
   dashboard:  { label:'현황판',   sub:'민원 처리 현황 분석' },
-  stt:        { label:'AI민원분석', sub:'실제 통화 분석 기반 인사이트' },
+  stt:        { label:'AI 민원분석', sub:'실제 통화 분석 기반 인사이트' },
   predict:    { label:'예상 민원', sub:'AI 기반 민원 예측 및 개선책' },
   newsletter: { label:'뉴스레터', sub:'한전 청구서사업 경영진 스크랩' },
 };
@@ -2920,7 +2930,7 @@ function renderSTTQuality() {
     + '<div style="display:flex;gap:10px;font-size:11px">'
     + '<span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#10B981;margin-right:3px"></span>우수 ' + ai.agentQuality.good + '건</span>'
     + '<span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#94A3B8;margin-right:3px"></span>보통 ' + ai.agentQuality.ok + '건</span>'
-    + '<span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#EF4444;margin-right:3px"></span>개선필요 ' + ai.agentQuality.improve + '건</span></div>'
+    + '<span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#EF4444;margin-right:3px"></span>개선 필요 ' + ai.agentQuality.improve + '건</span></div>'
     + '</div>';
 
   // ── 카드 4: 핵심 이슈 TOP5
