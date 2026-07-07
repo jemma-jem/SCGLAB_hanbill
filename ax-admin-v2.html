@@ -779,17 +779,7 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
           svgEl.appendChild(el);
         });
 
-        // 시도 경계선
-        pr.sidoPaths.forEach(p => {
-          if (!p.d) return;
-          const el = document.createElementNS(NS, 'path');
-          el.setAttribute('d', p.d);
-          el.setAttribute('fill', 'none');
-          el.setAttribute('stroke', '#0EA5E9');
-          el.setAttribute('stroke-width', '1.5');
-          el.setAttribute('pointer-events', 'none');
-          svgEl.appendChild(el);
-        });
+
 
         // 시도명 라벨
         pr.labels.forEach(lb => {
