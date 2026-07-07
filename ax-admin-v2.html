@@ -1066,59 +1066,6 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
     </script>
 
     <!-- ══ 섹션 구분 ══ -->
-<!-- ══ 영업현황 통계 ══ -->
-<div style="margin-bottom:16px">
-  <div style="display:flex;align-items:center;gap:6px;margin-bottom:10px">
-    <i class="ti ti-chart-dots" style="color:#0EA5E9;font-size:15px"></i>
-    <span style="font-size:13px;font-weight:700;color:var(--g800)">시군구별 영업 현황</span>
-    <span style="font-size:11px;color:var(--g400);margin-left:auto">한빌 점유율 기준</span>
-  </div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:12px">
-    <div style="background:linear-gradient(135deg,#0EA5E9,#0284C7);border-radius:12px;padding:14px 16px;color:#fff">
-      <div style="font-size:10px;opacity:.8;margin-bottom:4px;font-weight:600">대표 빌링 건수</div>
-      <div style="font-size:28px;font-weight:900" id="stat-billing-cnt">—</div>
-      <div style="font-size:10px;opacity:.7;margin-top:2px">G열 기준</div>
-    </div>
-    <div style="background:linear-gradient(135deg,#8B5CF6,#7C3AED);border-radius:12px;padding:14px 16px;color:#fff">
-      <div style="font-size:10px;opacity:.8;margin-bottom:4px;font-weight:600">세부 부서 개수</div>
-      <div style="font-size:28px;font-weight:900" id="stat-dept-cnt">—</div>
-      <div style="font-size:10px;opacity:.7;margin-top:2px">시군구 내 부서</div>
-    </div>
-    <div style="background:linear-gradient(135deg,#10B981,#059669);border-radius:12px;padding:14px 16px;color:#fff">
-      <div style="font-size:10px;opacity:.8;margin-bottom:4px;font-weight:600">한빌 점유율</div>
-      <div style="font-size:28px;font-weight:900" id="stat-share-pct">32%</div>
-      <div style="font-size:10px;opacity:.7;margin-top:2px" id="stat-share-label">80 / 250 지자체</div>
-    </div>
-    <div style="background:linear-gradient(135deg,#F59E0B,#D97706);border-radius:12px;padding:14px 16px;color:#fff">
-      <div style="font-size:10px;opacity:.8;margin-bottom:4px;font-weight:600">미개척 지자체</div>
-      <div style="font-size:28px;font-weight:900">170</div>
-      <div style="font-size:10px;opacity:.7;margin-top:2px">영업 가능 잔여</div>
-    </div>
-  </div>
-  <!-- 시군구별 상세 테이블 -->
-  <div style="background:#fff;border:1px solid var(--g200);border-radius:10px;overflow:hidden">
-    <div style="padding:10px 14px;border-bottom:1px solid var(--g100);display:flex;align-items:center;justify-content:space-between">
-      <span style="font-size:12px;font-weight:700;color:var(--g700)">시군구별 상세 현황</span>
-      <span style="font-size:10px;color:var(--g400)">상위 10개 지역</span>
-    </div>
-    <div style="overflow-x:auto">
-      <table style="width:100%;border-collapse:collapse;font-size:11.5px">
-        <thead>
-          <tr style="background:var(--sky-bg)">
-            <th style="padding:8px 12px;text-align:left;font-weight:700;color:var(--g600);white-space:nowrap">지역</th>
-            <th style="padding:8px 12px;text-align:right;font-weight:700;color:var(--g600)">빌링건수</th>
-            <th style="padding:8px 12px;text-align:right;font-weight:700;color:var(--g600)">부서수</th>
-            <th style="padding:8px 12px;text-align:center;font-weight:700;color:var(--g600)">점유율</th>
-            <th style="padding:8px 12px;text-align:center;font-weight:700;color:var(--g600)">상태</th>
-          </tr>
-        </thead>
-        <tbody id="sales-region-tbody">
-          <tr><td colspan="5" style="padding:16px;text-align:center;color:var(--g400);font-size:12px">지도에서 지역을 선택하면 상세 현황이 표시됩니다</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
     <div id="section-complaint-divider" style="display:flex;align-items:center;gap:10px;margin:4px 0 18px">
       <div style="flex:1;height:1px;background:var(--sky-light)"></div>
       <div style="display:flex;align-items:center;gap:6px;padding:5px 14px;background:#F0F9FF;border:1px solid #BAE6FD;border-radius:20px;font-size:11px;font-weight:700;color:#075985;white-space:nowrap">
@@ -1236,18 +1183,9 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
             <div style="font-size:38px;font-weight:700;color:var(--sky-dark)" id="sat-score">76</div>
             <div style="font-size:11px;color:var(--g400);margin-top:1px" id="sat-prev-label">/ 100점</div>
           </div>
-            <div class="sat-bar" id="sat-bar"></div>
-            <div class="sat-legend" id="sat-legend" style="flex-wrap:wrap;gap:6px;margin-top:6px"></div>
-            <div id="sat-note" style="font-size:10.5px;color:var(--g400);margin-top:5px;line-height:1.5"></div>
-          </div>
-          <!-- 만족도 하위 지표 분석 -->
-          <div style="border-top:1px solid var(--g100);padding-top:12px;margin-top:10px">
-            <div style="font-size:11px;font-weight:700;color:var(--g600);margin-bottom:8px;display:flex;align-items:center;gap:4px">
-              <i class="ti ti-chart-radar" style="color:#F59E0B;font-size:12px"></i> 하위 지표 분석
-            </div>
-            <canvas id="sat-radar-chart" height="180"></canvas>
-            <div style="margin-top:8px" id="sat-sub-indicators"></div>
-          </div>
+          <div class="sat-bar" id="sat-bar"></div>
+          <div class="sat-legend" id="sat-legend" style="flex-wrap:wrap;gap:6px;margin-top:6px"></div>
+          <div id="sat-note" style="font-size:10.5px;color:var(--g400);margin-top:5px;line-height:1.5"></div>
           <div style="margin-top:12px;font-size:11.5px;font-weight:700;color:var(--g600);margin-bottom:6px">이슈 모니터링</div>
           <div id="issue-list"></div>
         </div>
@@ -1278,11 +1216,9 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
       <i class="ti ti-calendar-stats" style="color:#8B5CF6;font-size:15px"></i>
       <span style="font-size:12px;font-weight:700;color:var(--g700)">분석 기간</span>
       <div style="display:flex;gap:6px;flex-wrap:wrap;margin-left:4px">
-        <button class="btn bo" id="stt-btn-3m" onclick="setSttPeriod('2026-04-01','2026-06-30')" style="font-size:11px;padding:3px 10px">최근 3개월</button>
         <button class="btn bo" id="stt-btn-apr" onclick="setSttPeriod('2026-04-01','2026-04-30')" style="font-size:11px;padding:3px 10px">4월</button>
-        <button class="btn bo" id="stt-btn-may" onclick="setSttPeriod('2026-05-01','2026-05-31')" style="font-size:11px;padding:3px 10px">5월</button>
-        <button class="btn bo" id="stt-btn-jun" onclick="setSttPeriod('2026-06-01','2026-06-30')" style="font-size:11px;padding:3px 10px">6월</button>
-        <button class="btn bp" id="stt-btn-all" onclick="setSttPeriod('2026-04-01','2026-06-30')" style="font-size:11px;padding:3px 10px">전체</button>
+        <button class="btn bo" id="stt-btn-jun" onclick="setSttPeriod('2026-06-01','2026-06-24')" style="font-size:11px;padding:3px 10px">6월</button>
+        <button class="btn bp" id="stt-btn-all" onclick="setSttPeriod('2026-04-01','2026-06-24')" style="font-size:11px;padding:3px 10px">전체</button>
       </div>
       <div style="display:flex;align-items:center;gap:6px;margin-left:auto;flex-wrap:wrap">
         <input type="date" id="stt-start" value="2026-04-01" style="font-size:12px;border:1px solid var(--g200);border-radius:6px;padding:3px 7px;font-family:inherit">
@@ -1290,41 +1226,9 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
         <input type="date" id="stt-end" value="2026-06-24" style="font-size:12px;border:1px solid var(--g200);border-radius:6px;padding:3px 7px;font-family:inherit">
         <button class="btn bp" onclick="sttApplyCustom()" style="font-size:11px;padding:3px 10px">적용</button>
       </div>
-      <div style="width:100%;font-size:10.5px;color:var(--g400);margin-top:2px" id="stt-period-info">전체 544건 · 2026-04-01 ~ 2026-06-30</div>
+      <div style="width:100%;font-size:10.5px;color:var(--g400);margin-top:2px" id="stt-period-info">전체 544건 · 2026-04-01 ~ 2026-06-24</div>
     </div>
 
-    <!-- ⓪ AI 분석 내역 요약 -->
-    <div class="panel" style="margin-bottom:14px">
-      <div class="ph">
-        <div class="ptt"><i class="ti ti-sparkles" style="color:#8B5CF6"></i> AI 분석 내역 요약
-          <span style="font-size:10px;background:#EDE9FE;color:#5B21B6;padding:2px 7px;border-radius:8px;font-weight:700;margin-left:4px" id="ai-analysis-badge">분석 완료</span>
-        </div>
-      </div>
-      <div class="pb">
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px" id="ai-analysis-cards">
-          <div style="background:#F0F9FF;border:1px solid #BAE6FD;border-radius:10px;padding:12px 14px">
-            <div style="font-size:10px;font-weight:700;color:#0369A1;margin-bottom:4px;display:flex;align-items:center;gap:4px"><i class="ti ti-phone-incoming" style="font-size:12px"></i> 총 분석 건수</div>
-            <div style="font-size:24px;font-weight:900;color:#0284C7" id="ai-total-count">544건</div>
-            <div style="font-size:10px;color:#0369A1;margin-top:3px">2026-04-01 ~ 06-30</div>
-          </div>
-          <div style="background:#F0FDF4;border:1px solid #A7F3D0;border-radius:10px;padding:12px 14px">
-            <div style="font-size:10px;font-weight:700;color:#065F46;margin-bottom:4px;display:flex;align-items:center;gap:4px"><i class="ti ti-circle-check" style="font-size:12px"></i> AI 분석 완료율</div>
-            <div style="font-size:24px;font-weight:900;color:#059669">98.3%</div>
-            <div style="font-size:10px;color:#065F46;margin-top:3px">535건 분석 완료</div>
-          </div>
-          <div style="background:#FFF7ED;border:1px solid #FED7AA;border-radius:10px;padding:12px 14px">
-            <div style="font-size:10px;font-weight:700;color:#92400E;margin-bottom:4px;display:flex;align-items:center;gap:4px"><i class="ti ti-mood-sad" style="font-size:12px"></i> 부정 감성 비율</div>
-            <div style="font-size:24px;font-weight:900;color:#D97706">23.4%</div>
-            <div style="font-size:10px;color:#92400E;margin-top:3px">127건 개선 필요</div>
-          </div>
-          <div style="background:#FDF4FF;border:1px solid #E9D5FF;border-radius:10px;padding:12px 14px">
-            <div style="font-size:10px;font-weight:700;color:#581C87;margin-bottom:4px;display:flex;align-items:center;gap:4px"><i class="ti ti-robot" style="font-size:12px"></i> AI 자동 분류</div>
-            <div style="font-size:24px;font-weight:900;color:#7C3AED">91.2%</div>
-            <div style="font-size:10px;color:#581C87;margin-top:3px">496건 자동 분류</div>
-          </div>
-        </div>
-      </div>
-    </div>
     <!-- ① 서비스 질 향상 -->
     <div class="panel" style="margin-bottom:14px">
       <div class="ph">
@@ -1337,36 +1241,6 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
       </div>
     </div>
 
-
-    <!-- ①-b 민원 해결률 구분 차트 -->
-    <div class="panel" style="margin-bottom:14px">
-      <div class="ph">
-        <div class="ptt"><i class="ti ti-chart-bar" style="color:#0EA5E9"></i> 민원 해결률 분석
-          <span style="font-size:10px;background:#E0F2FE;color:#075985;padding:2px 7px;border-radius:8px;font-weight:700;margin-left:4px">한전이관 vs 자체해결</span>
-        </div>
-      </div>
-      <div class="pb">
-        <div style="display:flex;justify-content:center;gap:20px;margin-bottom:10px;font-size:11px">
-          <span style="display:flex;align-items:center;gap:5px"><span style="width:12px;height:12px;border-radius:3px;background:#0EA5E9;display:inline-block"></span>자체 해결</span>
-          <span style="display:flex;align-items:center;gap:5px"><span style="width:12px;height:12px;border-radius:3px;background:#F59E0B;display:inline-block"></span>한전 이관</span>
-        </div>
-        <div style="position:relative;height:220px">
-          <canvas id="resolution-dual-chart"></canvas>
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px">
-          <div style="background:#E0F2FE;border-radius:8px;padding:10px 12px;text-align:center">
-            <div style="font-size:10px;color:#0369A1;font-weight:700">자체 해결률</div>
-            <div style="font-size:22px;font-weight:900;color:#0284C7">72.4%</div>
-            <div style="font-size:10px;color:#0369A1">393건 / 544건</div>
-          </div>
-          <div style="background:#FEF3C7;border-radius:8px;padding:10px 12px;text-align:center">
-            <div style="font-size:10px;color:#92400E;font-weight:700">한전 이관률</div>
-            <div style="font-size:22px;font-weight:900;color:#D97706">27.6%</div>
-            <div style="font-size:10px;color:#92400E">151건 / 544건</div>
-          </div>
-        </div>
-      </div>
-    </div>
     <!-- ② VOC 분석 -->
     <div class="panel" style="margin-bottom:14px">
       <div class="ph" style="flex-direction:column;align-items:flex-start;gap:4px">
@@ -1382,78 +1256,17 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
     </div>
 
     <!-- ③ AI 예상 민원 (VOC 아래) -->
-        <!-- ④ 개선 제안 및 우수 발화 -->
     <div class="panel" style="margin-bottom:14px">
       <div class="ph">
-        <div class="ptt"><i class="ti ti-tool" style="color:#EF4444"></i> AI 개선 제안</div>
-      </div>
-      <div class="pb">
-        <div id="stt-improve-list"></div>
-        <!-- 상세 개선 제안 스크롤 영역 -->
-        <div id="stt-improve-detail" style="max-height:220px;overflow-y:auto;border:1px solid var(--g100);border-radius:8px;padding:12px;margin-top:10px;background:var(--g50)">
-          <div style="font-size:11px;font-weight:700;color:var(--g600);margin-bottom:8px">📋 개선 제안 상세 내용</div>
-          <div id="stt-improve-section"></div>
-          <div style="font-size:11px;color:var(--g500);line-height:1.8">
-            <p style="margin:0 0 8px;padding:8px 10px;background:#FEF2F2;border-left:3px solid #EF4444;border-radius:4px">
-              <strong>① 이메일 주소 변경 프로세스 간소화</strong><br>현재 1콜로 처리 안 되는 경우가 다수 → 홈페이지 셀프서비스 강화 필요
-            </p>
-            <p style="margin:0 0 8px;padding:8px 10px;background:#FFF7ED;border-left:3px solid #F59E0B;border-radius:4px">
-              <strong>② 청구서 발행일 전 선제 안내</strong><br>매월 25일 전후 납부조회 급증 → 발행 3일 전 문자/앱 푸시 발송 권장
-            </p>
-            <p style="margin:0 0 8px;padding:8px 10px;background:#F0FDF4;border-left:3px solid #10B981;border-radius:4px">
-              <strong>③ 챗봇 시나리오 단순 조회 유형 추가</strong><br>A3(납부조회), B2(청구서 재발송) → 가스앱 챗봇 처리 전환 시 전화 23% 감소 예상
-            </p>
-            <p style="margin:0;padding:8px 10px;background:#EDE9FE;border-left:3px solid #8B5CF6;border-radius:4px">
-              <strong>④ 상담원 응대 품질 교육</strong><br>부정감성 23% 중 절반이 '직접 답변 회피' → 직접 답변 가이드라인 제작 필요
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ④-b 우수 응대 발화 예시 -->
-    <div class="panel" style="margin-bottom:14px">
-      <div class="ph">
-        <div class="ptt"><i class="ti ti-star" style="color:#F59E0B"></i> 우수 응대 발화 예시
-          <span style="font-size:10px;background:#FEF3C7;color:#92400E;padding:2px 7px;border-radius:8px;font-weight:700;margin-left:4px">TOP 응대 사례</span>
+        <div class="ptt"><i class="ti ti-crystal-ball" style="color:#8B5CF6"></i> AI 분석 예상 민원
+          <span style="font-size:10px;background:#EDE9FE;color:#5B21B6;padding:2px 7px;border-radius:8px;font-weight:700;margin-left:4px">AI 예측</span>
         </div>
       </div>
       <div class="pb">
-        <div style="display:flex;flex-direction:column;gap:10px" id="excellent-utterance-list">
-          <div style="background:#FFFBEB;border:1px solid #FDE68A;border-radius:10px;padding:12px 14px">
-            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
-              <span style="background:#F59E0B;color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px">★ 최우수</span>
-              <span style="font-size:11px;color:var(--g500)">납부조회 유형 | 4월</span>
-            </div>
-            <div style="font-size:12px;color:var(--g700);line-height:1.7;background:#fff;border-radius:6px;padding:8px 10px;border-left:3px solid #F59E0B">
-              "고객님, 가장 최근 청구된 2026년 3월분 전기요금은 X원이며, 납부 기한은 3월 25일이었습니다. 현재 납부 완료로 확인됩니다. 추가로 이전 내역이 필요하시면 홈페이지에서도 조회하실 수 있도록 안내 문자를 보내드릴까요?"
-            </div>
-            <div style="font-size:10px;color:#92400E;margin-top:6px">✅ 정확한 수치 제공 + 선제적 대안 제시 → 1콜 해결 우수사례</div>
-          </div>
-          <div style="background:#F0FDF4;border:1px solid #A7F3D0;border-radius:10px;padding:12px 14px">
-            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
-              <span style="background:#10B981;color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px">★ 우수</span>
-              <span style="font-size:11px;color:var(--g500)">이메일 변경 유형 | 5월</span>
-            </div>
-            <div style="font-size:12px;color:var(--g700);line-height:1.7;background:#fff;border-radius:6px;padding:8px 10px;border-left:3px solid #10B981">
-              "이메일 주소 변경은 지금 바로 처리해 드리겠습니다. 변경 후 다음 달 청구서부터 새 이메일로 발송됩니다. 혹시 이번 달 청구서도 새 주소로 재발송이 필요하신가요?"
-            </div>
-            <div style="font-size:10px;color:#065F46;margin-top:6px">✅ 다음 단계 선제 확인 → 재문의 방지</div>
-          </div>
-          <div style="background:#EDE9FE;border:1px solid #DDD6FE;border-radius:10px;padding:12px 14px">
-            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
-              <span style="background:#8B5CF6;color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px">★ 우수</span>
-              <span style="font-size:11px;color:var(--g500)">한전이관 유형 | 6월</span>
-            </div>
-            <div style="font-size:12px;color:var(--g700);line-height:1.7;background:#fff;border-radius:6px;padding:8px 10px;border-left:3px solid #8B5CF6">
-              "해당 문의는 한전 직접 처리 사항으로 저희 쪽에서는 안내만 가능합니다. 한전 고객센터 123번으로 연결 도와드릴까요? 아니면 한전 홈페이지 접속 방법을 문자로 안내해 드릴게요."
-            </div>
-            <div style="font-size:10px;color:#581C87;margin-top:6px">✅ 이관 불가피 상황에서도 대안 2가지 제시 → 고객 만족도 유지</div>
-          </div>
-        </div>
+        <div style="font-size:11.5px;color:var(--g400);margin-bottom:10px">VOC 패턴 + 계절성 + 청구 일정 기반 — 이번 달 인입될 가능성이 높은 민원</div>
+        <div id="predict-section-list-stt"></div>
       </div>
     </div>
-
 
     <!-- ④ 개선 제안 -->
     <div class="panel" style="margin-bottom:14px">
@@ -1969,8 +1782,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
         </div>
       </div>
     </div>
-    </div>
-<!-- /nl-panel-today -->
+    </div><!-- /nl-panel-today -->
 
     <!-- 발송 이력 패널 -->
     <div id="nl-panel-history" style="display:none">
@@ -2100,33 +1912,13 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
   </div>
 
   <!-- Groq 키 설정 패널 -->
-    <!-- API 설정 패널 -->
   <div id="hb-groq-panel" style="display:none;background:#1E2A3A;padding:10px 16px;border-bottom:1px solid rgba(255,255,255,.1)">
-    <!-- 탭 선택 -->
-    <div style="display:flex;gap:0;border:1px solid rgba(255,255,255,.2);border-radius:6px;overflow:hidden;margin-bottom:8px">
-      <button id="api-tab-claude" onclick="switchApiTab('claude')" style="flex:1;padding:5px;font-size:11px;font-weight:700;border:none;cursor:pointer;background:#0EA5E9;color:#fff;font-family:inherit">Claude (추천)</button>
-      <button id="api-tab-groq" onclick="switchApiTab('groq')" style="flex:1;padding:5px;font-size:11px;font-weight:700;border:none;cursor:pointer;background:rgba(255,255,255,.1);color:rgba(255,255,255,.6);font-family:inherit">Groq (무료)</button>
-    </div>
-    <!-- Claude 설정 -->
-    <div id="api-panel-claude">
-      <div style="font-size:11px;color:rgba(255,255,255,.6);margin-bottom:5px">🔑 Claude API 키 (Anthropic)</div>
-      <div style="display:flex;gap:6px">
-        <input id="hb-claude-key-input" type="password" placeholder="sk-ant-xxxxxxxxxxxx"
-          style="flex:1;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:6px;padding:6px 10px;color:#fff;font-size:12px;outline:none"
-          value="">
-        <button onclick="saveClaudeKey()" style="background:#0EA5E9;border:none;border-radius:6px;color:#fff;padding:6px 12px;font-size:12px;cursor:pointer;white-space:nowrap">저장</button>
-      </div>
-      <div style="font-size:10px;color:rgba(255,255,255,.4);margin-top:4px">내부 데이터 + Claude AI 결합 답변 | 키는 브라우저에만 저장</div>
-    </div>
-    <!-- Groq 설정 -->
-    <div id="api-panel-groq" style="display:none">
-      <div style="font-size:11px;color:rgba(255,255,255,.6);margin-bottom:5px">🔑 Groq API 키 (무료: <a href="https://console.groq.com" target="_blank" style="color:#38BDF8">console.groq.com</a>)</div>
-      <div style="display:flex;gap:6px">
-        <input id="hb-groq-key-input" type="password" placeholder="gsk_xxxxxxxxxxxxxxxxxxxx"
-          style="flex:1;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:6px;padding:6px 10px;color:#fff;font-size:12px;outline:none"
-          value="">
-        <button onclick="saveGroqKey()" style="background:#10B981;border:none;border-radius:6px;color:#fff;padding:6px 12px;font-size:12px;cursor:pointer;white-space:nowrap">저장</button>
-      </div>
+    <div style="font-size:11px;color:rgba(255,255,255,.6);margin-bottom:6px">🔑 Groq API 키 (무료: <a href="https://console.groq.com" target="_blank" style="color:#38BDF8">console.groq.com</a>)</div>
+    <div style="display:flex;gap:6px">
+      <input id="hb-groq-key-input" type="password" placeholder="gsk_xxxxxxxxxxxxxxxxxxxx"
+        style="flex:1;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:6px;padding:6px 10px;color:#fff;font-size:12px;outline:none"
+        value="">
+      <button onclick="saveGroqKey()" style="background:#0EA5E9;border:none;border-radius:6px;color:#fff;padding:6px 12px;font-size:12px;cursor:pointer;white-space:nowrap">저장</button>
     </div>
     <div id="hb-groq-status" style="font-size:11px;color:#4ADE80;margin-top:5px;min-height:14px"></div>
   </div>
@@ -6934,343 +6726,6 @@ setInterval(function() {
   var next = top < 60 ? '민원 상담 처리 현황' : '한전 빌링 영업 현황';
   if (ps.textContent !== next) ps.textContent = next;
 }, 150);
-
-// ─── Claude API 연동 ───
-const HB_CLAUDE_KEY = 'hanbil_claude_key';
-
-function switchApiTab(tab) {
-  document.getElementById('api-panel-claude').style.display = tab === 'claude' ? '' : 'none';
-  document.getElementById('api-panel-groq').style.display = tab === 'groq' ? '' : 'none';
-  document.getElementById('api-tab-claude').style.background = tab === 'claude' ? '#0EA5E9' : 'rgba(255,255,255,.1)';
-  document.getElementById('api-tab-claude').style.color = tab === 'claude' ? '#fff' : 'rgba(255,255,255,.6)';
-  document.getElementById('api-tab-groq').style.background = tab === 'groq' ? '#10B981' : 'rgba(255,255,255,.1)';
-  document.getElementById('api-tab-groq').style.color = tab === 'groq' ? '#fff' : 'rgba(255,255,255,.6)';
-}
-
-function saveClaudeKey() {
-  const inp = document.getElementById('hb-claude-key-input');
-  const st = document.getElementById('hb-groq-status');
-  const val = (inp.value || '').trim();
-  if (val.startsWith('sk-ant-')) {
-    localStorage.setItem(HB_CLAUDE_KEY, val);
-    st.textContent = '✅ Claude API 키 저장됨 (claude-sonnet-4-6 사용)';
-    st.style.color = '#4ADE80';
-  } else if (!val) {
-    localStorage.removeItem(HB_CLAUDE_KEY);
-    st.textContent = 'Claude 키가 제거되었습니다.';
-  } else {
-    st.textContent = '❌ 올바른 Claude 키 형식이 아닙니다 (sk-ant- 로 시작해야 함)';
-    st.style.color = '#F87171';
-  }
-}
-
-async function hbClaudeQuery(userText, fallbackFn) {
-  const key = localStorage.getItem(HB_CLAUDE_KEY);
-  if (!key) return false;
-
-  const loadId = 'hb-load-' + Date.now();
-  hbAddMsg('bot', `<span id="${loadId}">🤖 Claude AI 분석 중...</span>`, true);
-
-  const ctx = buildHbContext ? buildHbContext() : '';
-  const systemPrompt = `당신은 "한빌이(영업비서)"입니다. SCG랩(SCGLAB) 영업기획팀의 한전 전자청구 대행 서비스 "한빌" 전담 AI 영업 어시스턴트입니다.
-
-## 회사 컨텍스트
-- 회사: SCG랩(SCGLAB) 영업기획팀
-- 서비스명: 한빌 (한국전력 전기요금 전자청구 대행)
-- 시장: 전국 250개 지자체 대상, 현재 한빌 점유 80개소 (32%)
-- 주요 경쟁사: 누리빌, 한전산업개발
-- 목표: 지자체 영업 확대 + 고객 민원 품질 향상
-
-## CUST_DB 현황 (내부 데이터)
-${ctx}
-
-## 민원 카테고리
-- A1: 이메일 청구서 재발송 | A2: 신규신청 | A3: 납부조회 (최다)
-- B1: 고객정보변경 | B2: 청구서조회 | C1: 회원가입/로그인 | C2: 해지
-- G/J/Y: 운영팀이관 유형 | E/F: 한전이관 유형 | Z1: 기타
-
-## 핵심 인사이트 (실운영 패턴)
-- 납부조회(A3) 매월 25일 전후 급증 → 선제 안내 필요
-- 이메일 변경 1콜 해결 실패 다수 → 셀프서비스 강화 필요
-- 부정감성 23%의 주원인: 직접 답변 회피
-- 가스앱 챗봇 도입 시 단순유형 23% 감소 예상
-
-## 영업 전략 컨텍스트
-- 미개척 지자체: 170개소 (170/250)
-- 영업 우선순위: 시군구 인구 규모 + 현재 경쟁사 점유 여부
-- 제안 포인트: 비용절감, 환경(종이→전자), 주민 편의, 행정 효율
-
-## 답변 원칙
-1. 내부 데이터 수치를 반드시 근거로 사용
-2. 수치는 건수 + 비율 함께 제시
-3. 영업/실무 관점의 권고사항 1~3개 포함
-4. HTML 태그 사용 가능 (bold, 색상)
-5. 한국어 전용
-6. 일반 질문 200자 이내, 브리핑/분석 요청은 상세히`;
-
-  try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': key,
-        'anthropic-version': '2023-06-01',
-        'anthropic-dangerous-direct-browser-access': 'true'
-      },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-6',
-        max_tokens: 1024,
-        system: systemPrompt,
-        messages: [{ role: 'user', content: userText }]
-      })
-    });
-
-    const data = await res.json();
-    const el = document.getElementById(loadId);
-
-    if (!res.ok) {
-      const msg = (data.error && data.error.message) || `HTTP ${res.status}`;
-      if (el) el.parentElement.innerHTML = fallbackFn ? fallbackFn() : `<span style="color:#F87171">오류: ${msg}</span>`;
-      return true;
-    }
-
-    const answer = data.content && data.content[0] && data.content[0].text || '응답 없음';
-    if (el) el.parentElement.innerHTML = answer;
-    return true;
-  } catch(e) {
-    const el = document.getElementById(loadId);
-    if (el) el.parentElement.innerHTML = fallbackFn ? fallbackFn() : '네트워크 오류가 발생했습니다.';
-    return true;
-  }
-}
-
-// ─── 해결률 이중 막대 차트 렌더링 ───
-function renderResolutionDualChart() {
-  const canvas = document.getElementById('resolution-dual-chart');
-  if (!canvas || !window.Chart) return;
-  if (canvas._chartInst) { canvas._chartInst.destroy(); }
-  const ctx = canvas.getContext('2d');
-  canvas._chartInst = new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['4월', '5월', '6월'],
-      datasets: [
-        {
-          label: '자체 해결',
-          data: [128, 145, 120],
-          backgroundColor: '#0EA5E9',
-          borderRadius: 4,
-          barPercentage: 0.6,
-        },
-        {
-          label: '한전 이관',
-          data: [48, 55, 48],
-          backgroundColor: '#F59E0B',
-          borderRadius: 4,
-          barPercentage: 0.6,
-        }
-      ]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: { legend: { display: false } },
-      scales: {
-        x: { grid: { display: false } },
-        y: { beginAtZero: true, ticks: { font: { size: 11 } } }
-      }
-    }
-  });
-}
-
-// ─── AI 처리 현황 게이지 렌더링 ───
-function renderAiProcessGauges() {
-  const container = document.getElementById('ai-process-gauges');
-  if (!container) return;
-  const items = [
-    { label: 'AI 분석 완료율', value: 98.3, color: '#10B981' },
-    { label: '자동 분류 정확도', value: 91.2, color: '#8B5CF6' },
-    { label: '부정 감성 비율', value: 23.4, color: '#EF4444' },
-    { label: '1콜 해결률', value: 72.4, color: '#0EA5E9' },
-  ];
-  container.innerHTML = items.map(it => `
-    <div style="display:flex;align-items:center;gap:8px">
-      <div style="font-size:11px;color:var(--g600);min-width:100px;flex-shrink:0">${it.label}</div>
-      <div style="flex:1;height:8px;background:var(--g100);border-radius:4px;overflow:hidden">
-        <div style="height:100%;width:${it.value}%;background:${it.color};border-radius:4px;transition:width .6s ease"></div>
-      </div>
-      <div style="font-size:11px;font-weight:700;color:${it.color};min-width:38px;text-align:right">${it.value}%</div>
-    </div>
-  `).join('');
-}
-
-// ─── 만족도 하위 지표 레이더 차트 ───
-function renderSatRadarChart() {
-  const canvas = document.getElementById('sat-radar-chart');
-  if (!canvas || !window.Chart) return;
-  if (canvas._chartInst) { canvas._chartInst.destroy(); }
-  const ctx = canvas.getContext('2d');
-  canvas._chartInst = new Chart(ctx, {
-    type: 'radar',
-    data: {
-      labels: ['응대 친절도', '문제 해결력', '처리 속도', '전문 지식', '안내 명확성'],
-      datasets: [{
-        label: '현재',
-        data: [78, 65, 72, 80, 70],
-        borderColor: '#0EA5E9',
-        backgroundColor: 'rgba(14,165,233,.15)',
-        pointBackgroundColor: '#0EA5E9',
-      }, {
-        label: '목표',
-        data: [90, 85, 85, 90, 88],
-        borderColor: '#10B981',
-        backgroundColor: 'rgba(16,185,129,.08)',
-        pointBackgroundColor: '#10B981',
-        borderDash: [4, 4],
-      }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: { legend: { labels: { font: { size: 10 }, boxWidth: 10 } } },
-      scales: { r: { min: 0, max: 100, ticks: { font: { size: 9 }, stepSize: 25 } } }
-    }
-  });
-
-  const subEl = document.getElementById('sat-sub-indicators');
-  if (subEl) {
-    subEl.innerHTML = `
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;font-size:10.5px">
-        <div style="display:flex;justify-content:space-between;padding:4px 6px;background:#FEF2F2;border-radius:4px">
-          <span style="color:#991B1B">문제 해결력 ↓</span><span style="font-weight:700;color:#EF4444">65점</span>
-        </div>
-        <div style="display:flex;justify-content:space-between;padding:4px 6px;background:#FFF7ED;border-radius:4px">
-          <span style="color:#92400E">안내 명확성 ↓</span><span style="font-weight:700;color:#F59E0B">70점</span>
-        </div>
-        <div style="display:flex;justify-content:space-between;padding:4px 6px;background:#F0F9FF;border-radius:4px">
-          <span style="color:#0369A1">처리 속도</span><span style="font-weight:700;color:#0EA5E9">72점</span>
-        </div>
-        <div style="display:flex;justify-content:space-between;padding:4px 6px;background:#F0FDF4;border-radius:4px">
-          <span style="color:#065F46">전문 지식 ↑</span><span style="font-weight:700;color:#10B981">80점</span>
-        </div>
-      </div>
-    `;
-  }
-}
-
-// ─── 뉴스레터 발송 이력 ───
-const NL_HISTORY_KEY = 'hanbil_nl_history';
-
-function getNlHistory() {
-  try { return JSON.parse(localStorage.getItem(NL_HISTORY_KEY) || '[]'); } catch(e) { return []; }
-}
-
-function renderNlHistory() {
-  const tbody = document.getElementById('nl-history-tbody');
-  const history = getNlHistory();
-  const badge = document.getElementById('nl-history-badge');
-  const totalEl = document.getElementById('nl-stat-total');
-  const monthEl = document.getElementById('nl-stat-month');
-  const avgEl = document.getElementById('nl-stat-avg');
-  const totalCount = document.getElementById('nl-history-total-count');
-
-  if (badge) badge.textContent = history.length;
-  if (totalEl) totalEl.textContent = history.length;
-  if (totalCount) totalCount.textContent = `총 ${history.length}건`;
-
-  const thisMonth = new Date().getMonth();
-  const monthCount = history.filter(h => new Date(h.date).getMonth() === thisMonth).length;
-  if (monthEl) monthEl.textContent = monthCount;
-
-  const avgArticles = history.length ? Math.round(history.reduce((s,h) => s + (h.count || 0), 0) / history.length) : 0;
-  if (avgEl) avgEl.textContent = avgArticles;
-
-  if (!tbody) return;
-  if (!history.length) {
-    const dummy = [
-      { date: '2026-07-07 09:30', title: '한전 청구서 사업 7월 1주차', count: 8, recipients: '영업기획팀', status: '발송완료' },
-      { date: '2026-06-30 09:15', title: '한전 청구서 사업 6월 5주차', count: 10, recipients: '영업기획팀', status: '발송완료' },
-      { date: '2026-06-23 09:45', title: '한전 청구서 사업 6월 4주차', count: 7, recipients: '영업기획팀', status: '발송완료' },
-      { date: '2026-06-16 10:00', title: '한전 청구서 사업 6월 3주차', count: 9, recipients: '영업기획팀', status: '발송완료' },
-      { date: '2026-06-09 09:20', title: '한전 청구서 사업 6월 2주차', count: 6, recipients: '영업기획팀', status: '발송완료' },
-    ];
-    tbody.innerHTML = dummy.map(h => `
-      <tr style="border-bottom:1px solid var(--g100)">
-        <td style="padding:9px 12px;color:var(--g600);white-space:nowrap">${h.date}</td>
-        <td style="padding:9px 12px;color:var(--g800)">${h.title}</td>
-        <td style="padding:9px 12px;text-align:center;color:var(--g700)">${h.count}건</td>
-        <td style="padding:9px 12px;text-align:center;color:var(--g500)">${h.recipients}</td>
-        <td style="padding:9px 12px;text-align:center"><span style="background:#F0FDF4;color:#059669;font-size:10px;font-weight:700;padding:2px 8px;border-radius:8px">${h.status}</span></td>
-      </tr>
-    `).join('');
-    if (badge) badge.textContent = dummy.length;
-    if (totalEl) totalEl.textContent = dummy.length;
-    if (monthEl) monthEl.textContent = 2;
-    if (avgEl) avgEl.textContent = 8;
-    if (totalCount) totalCount.textContent = `총 ${dummy.length}건`;
-    return;
-  }
-  tbody.innerHTML = history.map(h => `
-    <tr style="border-bottom:1px solid var(--g100)">
-      <td style="padding:9px 12px;color:var(--g600);white-space:nowrap">${h.date}</td>
-      <td style="padding:9px 12px;color:var(--g800)">${h.title || '뉴스레터'}</td>
-      <td style="padding:9px 12px;text-align:center;color:var(--g700)">${h.count}건</td>
-      <td style="padding:9px 12px;text-align:center;color:var(--g500)">${h.recipients || '—'}</td>
-      <td style="padding:9px 12px;text-align:center"><span style="background:#F0FDF4;color:#059669;font-size:10px;font-weight:700;padding:2px 8px;border-radius:8px">발송완료</span></td>
-    </tr>
-  `).join('');
-}
-
-function switchNlTab(tab) {
-  const today = document.getElementById('nl-panel-today');
-  const history = document.getElementById('nl-panel-history');
-  const tabToday = document.getElementById('nl-tab-today');
-  const tabHist = document.getElementById('nl-tab-history');
-  if (tab === 'today') {
-    if (today) today.style.display = '';
-    if (history) history.style.display = 'none';
-    if (tabToday) { tabToday.style.color='var(--sky)'; tabToday.style.borderBottomColor='var(--sky)'; }
-    if (tabHist) { tabHist.style.color='var(--g400)'; tabHist.style.borderBottomColor='transparent'; }
-  } else {
-    if (today) today.style.display = 'none';
-    if (history) history.style.display = '';
-    if (tabToday) { tabToday.style.color='var(--g400)'; tabToday.style.borderBottomColor='transparent'; }
-    if (tabHist) { tabHist.style.color='var(--sky)'; tabHist.style.borderBottomColor='var(--sky)'; }
-    renderNlHistory();
-  }
-}
-
-// ─── 챗봇 AI 우선순위: Claude > Groq > 폴백 ───
-(function patchHbSend() {
-  const _orig = window.hbSend;
-  window.hbSend = async function() {
-    const claudeKey = localStorage.getItem(HB_CLAUDE_KEY);
-    const inp = document.getElementById('hb-input');
-    const text = (inp && inp.value.trim()) || '';
-    if (!text) return;
-    if (claudeKey) {
-      hbAddMsg('user', text);
-      if (inp) { inp.value = ''; if(typeof hbResize === 'function') hbResize(inp); }
-      await hbClaudeQuery(text, null);
-      return;
-    }
-    if (_orig) _orig();
-  };
-})();
-
-// ─── 초기화 ───
-document.addEventListener('DOMContentLoaded', function() {
-  const savedClaude = localStorage.getItem(HB_CLAUDE_KEY);
-  const claudeInp = document.getElementById('hb-claude-key-input');
-  if (savedClaude && claudeInp) claudeInp.value = savedClaude;
-
-  setTimeout(() => {
-    renderAiProcessGauges();
-    renderSatRadarChart();
-    renderResolutionDualChart();
-  }, 800);
-});
-
 </script>
 </body>
 </html>
