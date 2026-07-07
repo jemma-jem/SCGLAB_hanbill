@@ -260,7 +260,7 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
 }
 .bn-item .ti{font-size:20px;line-height:1}
 .bn-label{font-size:10px;font-weight:600;line-height:1;letter-spacing:-.2px}
-/* 한빌이 특별 색상 */
+/* 영업비서 특별 색상 */
 .bn-item.chatbot-btn{color:var(--sky-dark)}
 .bn-item.chatbot-btn .bn-icon{background:var(--sky-panel);border-radius:14px}
 .bn-chat-dot{
@@ -300,6 +300,16 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
 
 /* 카테고리 카드 — ::before 숨기고 .cat-bar 사용 */
 #cat-card-0::before,#cat-card-1::before,#cat-card-2::before{display:none}
+
+/* ── 지도 + 차트 레이아웃 ── */
+.map-layout{display:flex;flex-direction:column;gap:12px}
+.map-left{position:relative}
+.map-left svg{width:100%;border-radius:10px;background:#F0F9FF;display:block}
+.map-right{width:100%}
+.map-right-inner{display:flex;flex-direction:row;align-items:center;gap:16px}
+.map-pie-title{font-size:11px;font-weight:700;color:var(--g600);margin-bottom:6px;text-align:center}
+.map-pie-wrap{position:relative;width:140px;height:140px;flex-shrink:0}
+.map-stats{font-size:11px;display:flex;flex-direction:column;gap:6px;flex:1}
 </style>
 </head>
 <body>
@@ -315,11 +325,8 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
     <div class="live-chip"><span class="ld"></span>LIVE</div>
   </div>
   <nav class="sb-nav">
-    <div class="ns">분석</div>
-    <div class="ni on" onclick="goSec('dashboard',this)"><i class="ti ti-dashboard"></i>현황판</div>
-    <div class="ns">분석 도구</div>
+    <div class="ni on" onclick="goSec('dashboard',this)"><i class="ti ti-dashboard"></i>데이터 포탈</div>
     <div class="ni" onclick="goSec('stt',this)"><i class="ti ti-microphone-2"></i>AI 민원분석</div>
-    <div class="ns">커뮤니케이션</div>
     <div class="ni" onclick="goSec('newsletter',this)"><i class="ti ti-news"></i>뉴스레터<span class="nb">2</span></div>
   </nav>
   <div class="sb-foot">
@@ -333,7 +340,7 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
   <div class="topbar">
     <div style="display:flex;align-items:center;gap:10px">
       <button class="hamburger" onclick="openSb()" aria-label="메뉴"><i class="ti ti-menu-2"></i></button>
-      <div><div class="pt" id="pt">현황판</div><div class="ps" id="ps">민원 처리 현황 분석</div></div>
+      <div><div class="pt" id="pt">데이터 포탈</div><div class="ps" id="ps">한전 빌링 영업 현황</div></div>
     </div>
     <div class="tr">
       <div class="pred-badge" id="page-alert-badge" onclick="openPageAlert()">
@@ -346,6 +353,568 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
 
   <!-- ══════════ 1. 현황판 ══════════ -->
   <div class="sec on" id="sec-dashboard">
+
+    <!-- ══ 한전 빌링 영업 현황 ══ -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <div class="panel" style="margin-bottom:16px">
+      <div class="ph" style="flex-wrap:wrap;gap:8px">
+        <div class="ptt"><i class="ti ti-map-pin" style="color:#0EA5E9"></i> 한전 빌링 영업 현황 — 전국 시군구</div>
+        <div style="display:flex;align-items:center;gap:8px;margin-left:auto">
+          <span id="map-load-status" style="font-size:11px;color:var(--g400)">지도 로딩 중...</span>
+          <span style="font-size:11px;color:var(--g400)">클릭하여 상세 조회</span>
+        </div>
+      </div>
+      <div class="pb">
+        <!-- 범례 -->
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;font-size:11px;align-items:center">
+          <span style="display:flex;align-items:center;gap:4px;background:#EFF6FF;border:1.5px solid #0EA5E9;border-radius:6px;padding:3px 8px;font-weight:700;color:#0EA5E9">
+            <span style="display:inline-block;width:10px;height:10px;background:#0EA5E9;border-radius:2px"></span>한빌 <span style="font-size:9px;color:#64748B;font-weight:400">(우리회사)</span>
+          </span>
+          <span style="display:flex;align-items:center;gap:4px;background:#FFF7ED;border:1.5px solid #F59E0B;border-radius:6px;padding:3px 8px;font-weight:600;color:#B45309">
+            <span style="display:inline-block;width:10px;height:10px;background:#F59E0B;border-radius:2px"></span>누리빌
+          </span>
+          <span style="display:flex;align-items:center;gap:4px;background:#F0FDF4;border:1.5px solid #10B981;border-radius:6px;padding:3px 8px;font-weight:600;color:#047857">
+            <span style="display:inline-block;width:10px;height:10px;background:#10B981;border-radius:2px"></span>한산
+          </span>
+          <span style="display:flex;align-items:center;gap:4px;color:var(--g400)">
+            <span style="display:inline-block;width:10px;height:10px;background:#E2E8F0;border-radius:2px;border:1px solid #CBD5E1"></span>미선점
+          </span>
+          <span style="margin-left:auto;color:var(--g400)">출처: SGIS 시군구 경계</span>
+        </div>
+
+        <div class="map-layout">
+          <!-- D3 지도 컨테이너 -->
+          <div class="map-left">
+            <svg id="korea-map-d3"></svg>
+
+            <!-- 클릭 팝업 -->
+            <div id="map-popup" style="display:none;position:fixed;background:#1E293B;color:#fff;border-radius:10px;padding:12px 16px;font-size:12px;pointer-events:none;min-width:170px;z-index:999;box-shadow:0 4px 20px rgba(0,0,0,.3)">
+              <div id="map-popup-title" style="font-weight:700;font-size:13px;margin-bottom:8px;line-height:1.4"></div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:4px">
+                <span style="color:#94A3B8">선점 빌링사</span>
+                <span id="map-popup-count" style="font-weight:700;color:#38BDF8"></span>
+              </div>
+              <div style="display:flex;justify-content:space-between">
+                <span style="color:#94A3B8">구분</span>
+                <span id="map-popup-ratio" style="font-weight:700;color:#4ADE80"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 우측: 파이차트 + 요약 -->
+          <div class="map-right">
+            <div class="map-right-inner">
+              <div>
+                <div class="map-pie-title">한전 빌링 실적</div>
+                <div class="map-pie-wrap">
+                  <canvas id="billing-pie" width="140" height="140"></canvas>
+                  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center">
+                    <div style="font-size:20px;font-weight:900;color:#075985" id="billing-pie-pct">—</div>
+                    <div style="font-size:9px;color:var(--g400)">한빌 점유율</div>
+                  </div>
+                </div>
+              </div>
+              <div class="map-stats">
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 10px;background:#F0F9FF;border-radius:7px">
+                  <span style="color:#075985;font-weight:600">한빌 선점</span>
+                  <span id="billing-stat-done" style="font-weight:800;color:#0EA5E9">—</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 10px;background:#FFF8F0;border-radius:7px">
+                  <span style="color:#B45309;font-weight:600">경쟁사 선점</span>
+                  <span id="billing-stat-left" style="font-weight:800;color:#F59E0B">—</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 10px;background:#F8FAFC;border-radius:7px">
+                  <span style="color:var(--g500);font-weight:600">전체 시군구</span>
+                  <span id="billing-stat-total" style="font-weight:800;color:var(--g600)">—</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+    // ── SGIS API → D3 지도 ──
+    (function() {
+      const CONSUMER_KEY    = '590a2718c58d41d9ae3b';
+      const CONSUMER_SECRET = 'ab7fe94f9fb64336abd3';
+      // SGIS API는 통계청(KOSTAT) 시도 코드 사용
+      const SIDO_CODES = ['11','21','22','23','24','25','26','29','31','32','33','34','35','36','37','38','39'];
+
+      // 빌링사 시군구 선점 현황 (adm_cd → 회사명)
+      // ※ 실제 선점 지역 데이터로 업데이트 필요
+      const COMPANY_MAP = {
+        "11|관악구":"한빌",
+        "11|마포구":"한빌",
+        "11|영등포구":"한빌",
+        "11|강서구":"한빌",
+        "11|양천구":"한빌",
+        "11|강남구":"누리빌",
+        "11|광진구":"한빌",
+        "11|구로구":"누리빌",
+        "11|금천구":"누리빌",
+        "11|노원구":"누리빌",
+        "11|도봉구":"누리빌",
+        "11|동대문구":"한빌",
+        "11|동작구":"누리빌",
+        "11|서대문구":"한산",
+        "11|서초구":"누리빌",
+        "11|성동구":"누리빌",
+        "11|성북구":"한산",
+        "11|용산구":"누리빌",
+        "11|종로구":"한산",
+        "11|중구":"한산",
+        "11|강북구":"누리빌",
+        "11|은평구":"한산",
+        "11|중랑구":"누리빌",
+        "11|송파구":"한빌",
+        "11|강동구":"한빌",
+        "31|안양시":"한빌",
+        "31|광주시":"한빌",
+        "31|용인시":"누리빌",
+        "31|파주시":"한빌",
+        "31|남양주시":"한빌",
+        "31|양주시":"한빌",
+        "31|김포시":"누리빌",
+        "31|시흥시":"한빌",
+        "31|고양시":"한빌",
+        "31|연천군":"한빌",
+        "31|의정부시":"한빌",
+        "31|구리시":"누리빌",
+        "31|부천시":"한산",
+        "31|성남시":"누리빌",
+        "31|안산시":"누리빌",
+        "31|광명시":"누리빌",
+        "31|과천시":"누리빌",
+        "31|군포시":"누리빌",
+        "31|의왕시":"누리빌",
+        "31|수원시":"누리빌",
+        "31|화성시":"한빌",
+        "31|오산시":"한빌",
+        "31|평택시":"누리빌",
+        "31|안성시":"누리빌",
+        "31|하남시":"누리빌",
+        "31|여주시":"누리빌",
+        "31|양평군":"누리빌",
+        "31|동두천시":"누리빌",
+        "31|포천시":"누리빌",
+        "31|이천시":"누리빌",
+        "31|가평군":"누리빌",
+        "21|남구":"한빌",
+        "21|연제구":"한빌",
+        "21|사상구":"한빌",
+        "21|북구":"누리빌",
+        "21|기장군":"누리빌",
+        "21|금정구":"누리빌",
+        "21|동구":"누리빌",
+        "21|동래구":"누리빌",
+        "21|진구":"한산",
+        "21|사하구":"누리빌",
+        "21|수영구":"누리빌",
+        "21|영도구":"한산",
+        "21|중구":"누리빌",
+        "21|해운대구":"누리빌",
+        "21|서구":"누리빌",
+        "21|강서구":"누리빌",
+        "23|서구":"누리빌",
+        "23|미추홀구":"한빌",
+        "23|남동구":"한빌",
+        "23|부평구":"한빌",
+        "23|동구":"한빌",
+        "23|중구":"한빌",
+        "23|계양구":"한빌",
+        "23|강화군":"누리빌",
+        "23|옹진군":"누리빌",
+        "23|연수구":"한빌",
+        "22|군위군":"한빌",
+        "22|중구":"누리빌",
+        "22|남구":"누리빌",
+        "22|달서구":"한빌",
+        "22|북구":"누리빌",
+        "22|서구":"누리빌",
+        "22|수성구":"누리빌",
+        "22|동구":"누리빌",
+        "22|달성군":"누리빌",
+        "25|유성구":"한빌",
+        "25|대덕구":"누리빌",
+        "25|동구":"누리빌",
+        "25|서구":"누리빌",
+        "25|중구":"누리빌",
+        "29|세종시":"누리빌",
+        "24|광산구":"누리빌",
+        "24|남구":"누리빌",
+        "24|동구":"누리빌",
+        "24|북구":"누리빌",
+        "24|서구":"누리빌",
+        "26|남구":"누리빌",
+        "26|동구":"누리빌",
+        "26|북구":"누리빌",
+        "26|중구":"누리빌",
+        "26|울주군":"누리빌",
+        "32|춘천시":"누리빌",
+        "32|동해시":"한빌",
+        "32|강릉시":"한빌",
+        "32|평창군":"한빌",
+        "32|정선군":"한산",
+        "32|고성군":"한빌",
+        "32|삼척시":"누리빌",
+        "32|양구군":"누리빌",
+        "32|양양군":"누리빌",
+        "32|영월군":"누리빌",
+        "32|원주시":"누리빌",
+        "32|철원군":"누리빌",
+        "32|홍천군":"한산",
+        "32|화천군":"한산",
+        "32|횡성군":"한산",
+        "32|태백시":"한산",
+        "32|속초시":"한산",
+        "32|인제군":"한빌",
+        "33|음성군":"한빌",
+        "33|영동군":"한빌",
+        "33|충주시":"누리빌",
+        "33|청주시":"누리빌",
+        "33|괴산군":"한산",
+        "33|단양군":"누리빌",
+        "33|옥천군":"누리빌",
+        "33|증평군":"누리빌",
+        "33|제천시":"한빌",
+        "33|보은군":"누리빌",
+        "33|진천군":"한빌",
+        "34|홍성군":"한빌",
+        "34|예산군":"한빌",
+        "34|계룡시":"누리빌",
+        "34|금산군":"한빌",
+        "34|당진시":"누리빌",
+        "34|보령시":"누리빌",
+        "34|부여군":"누리빌",
+        "34|서산시":"누리빌",
+        "34|아산시":"누리빌",
+        "34|천안시":"누리빌",
+        "34|태안군":"누리빌",
+        "34|공주시":"한산",
+        "34|논산시":"누리빌",
+        "34|서천군":"누리빌",
+        "34|청양군":"한산",
+        "35|군산시":"한빌",
+        "35|남원시":"한빌",
+        "35|고창군":"한빌",
+        "35|김제시":"한산",
+        "35|전주시":"누리빌",
+        "35|무주군":"한빌",
+        "35|완주군":"누리빌",
+        "35|익산시":"한산",
+        "35|임실군":"한산",
+        "35|진안군":"누리빌",
+        "35|정읍시":"한산",
+        "35|장수군":"한빌",
+        "35|순창군":"한빌",
+        "35|부안군":"한빌",
+        "36|강진군":"한산",
+        "36|고흥군":"누리빌",
+        "36|해남군":"누리빌",
+        "36|영암군":"한빌",
+        "36|곡성군":"누리빌",
+        "36|광양시":"한빌",
+        "36|구례군":"한빌",
+        "36|나주시":"누리빌",
+        "36|담양군":"누리빌",
+        "36|목포시":"한빌",
+        "36|무안군":"누리빌",
+        "36|보성군":"누리빌",
+        "36|순천시":"누리빌",
+        "36|신안군":"누리빌",
+        "36|여수시":"누리빌",
+        "36|영광군":"누리빌",
+        "36|완도군":"누리빌",
+        "36|장흥군":"한산",
+        "36|진도군":"누리빌",
+        "36|화순군":"한산",
+        "36|함평군":"누리빌",
+        "36|장성군":"누리빌",
+        "37|안동시":"한빌",
+        "37|예천군":"한산",
+        "37|울진군":"한빌",
+        "37|포항시":"한빌",
+        "37|칠곡군":"한빌",
+        "37|경산시":"한산",
+        "37|경주시":"누리빌",
+        "37|고령군":"한빌",
+        "37|구미시":"누리빌",
+        "37|김천시":"한빌",
+        "37|봉화군":"한산",
+        "37|영주시":"한빌",
+        "37|영덕군":"한빌",
+        "37|영천시":"누리빌",
+        "37|울릉군":"누리빌",
+        "37|의성군":"누리빌",
+        "37|청도군":"누리빌",
+        "37|상주시":"한빌",
+        "37|문경시":"한빌",
+        "37|청송군":"한빌",
+        "37|영양군":"한산",
+        "37|성주군":"한빌",
+        "38|거제시":"한빌",
+        "38|창녕군":"한빌",
+        "38|거창군":"한산",
+        "38|남해군":"한빌",
+        "38|산청군":"한빌",
+        "38|창원시":"한빌",
+        "38|김해시":"한산",
+        "38|통영시":"누리빌",
+        "38|하동군":"한산",
+        "38|함안군":"누리빌",
+        "38|밀양시":"누리빌",
+        "38|고성군":"한빌",
+        "38|사천시":"누리빌",
+        "38|함양군":"한산",
+        "38|합천군":"한산",
+        "38|양산시":"누리빌",
+        "38|의령군":"누리빌",
+        "38|진주시":"한빌",
+        "39|제주시":"누리빌",
+        "39|서귀포시":"누리빌"
+      };
+      const COMPANY_COLOR = {
+        '한빌':   '#0EA5E9',  // 파랑 (우리 회사)
+        '누리빌': '#F59E0B',  // 주황
+        '한산':  '#10B981',  // 초록
+      };
+      const COMPANY_HOVER = {
+        '한빌':   '#0284C7',
+        '누리빌': '#D97706',
+        '한산':  '#059669',
+      };
+
+      async function initMap() {
+        const statusEl = document.getElementById('map-load-status');
+        try {
+          // SGIS API 토큰 발급
+          const auth = await fetch(
+            `https://sgisapi.mods.go.kr/OpenAPI3/auth/authentication.json?consumer_key=${CONSUMER_KEY}&consumer_secret=${CONSUMER_SECRET}`
+          ).then(r => r.json());
+          const token = auth.result?.accessToken;
+          if (!token) throw new Error('토큰 발급 실패');
+
+          // 시도 경계 + 시군구 경계 병렬 fetch
+          const allResults = await Promise.all([
+            // 시도 경계 (시도 코드 없이 → 전국 시도 폴리곤)
+            ...SIDO_CODES.map(cd =>
+              fetch(`https://sgisapi.mods.go.kr/OpenAPI3/boundary/hadmarea.geojson?accessToken=${token}&year=2024&adm_cd=${cd}&low_search=0`)
+              .then(r => r.json()).catch(() => ({ features: [] }))
+            ),
+            // 시군구 경계 (각 시도 하위)
+            ...SIDO_CODES.map(cd =>
+              fetch(`https://sgisapi.mods.go.kr/OpenAPI3/boundary/hadmarea.geojson?accessToken=${token}&year=2024&adm_cd=${cd}&low_search=1`)
+              .then(r => r.json()).catch(() => ({ features: [] }))
+            )
+          ]);
+          const sidoFeatures = allResults.slice(0, SIDO_CODES.length).flatMap(j => j.features || []);
+          const sggFeatures  = allResults.slice(SIDO_CODES.length).flatMap(j => j.features || []);
+
+          statusEl.textContent = `시도 ${sidoFeatures.length}개 · 시군구 ${sggFeatures.length}개 로드 완료`;
+          renderMap(sidoFeatures, sggFeatures);
+          renderPie();
+        } catch(e) {
+          statusEl.textContent = '지도 로드 실패: ' + e.message;
+          console.error(e);
+        }
+      }
+
+      function renderMap(sidoFeatures, sggFeatures) {
+        const svgEl = document.getElementById('korea-map-d3');
+        const W = Math.min(svgEl.parentElement.clientWidth || 420, 460);
+        const svg = d3.select(svgEl);
+        const popup = document.getElementById('map-popup');
+
+        const allFeatures = sggFeatures.length ? sggFeatures : sidoFeatures;
+        // KOSTAT 코드: 제주=39, 독도/울릉도 등 외딴 섬은 centroid X>1110000 또는 Y<1700000
+        const isJeju = f => (f.properties.adm_cd || '').startsWith('39');
+
+        // 본토 판단: 첫 좌표 기준으로 outlier 필터
+        const firstCoord = f => {
+          const g = f.geometry;
+          return g.type === 'Polygon' ? g.coordinates[0][0]
+               : g.type === 'MultiPolygon' ? g.coordinates[0][0][0]
+               : [0, 0];
+        };
+        const isMainland = f => {
+          const [x, y] = firstCoord(f);
+          return x > 790000 && x < 1110000 && y > 1700000;
+        };
+
+        const mainland = allFeatures.filter(f => !isJeju(f) && isMainland(f));
+        const jejuList = allFeatures.filter(isJeju);
+        const allDraw  = allFeatures; // 그리기엔 전부 포함
+
+        // ── 본토 projection: 본토 feature로만 fitExtent (섬 outlier 제외) ──
+        const mainlandGeo = { type:'FeatureCollection', features: mainland };
+        const H_main = Math.round(W * 1.1);
+        const H_total = H_main + Math.round(W * 0.14) + 8;
+
+        svgEl.setAttribute('viewBox', `0 0 ${W} ${H_total}`);
+        svgEl.setAttribute('height', H_total);
+
+        const projMain = d3.geoIdentity().reflectY(true)
+          .fitExtent([[4, 4], [W - 4, H_main - 4]], mainlandGeo);
+        const pathMain = d3.geoPath().projection(projMain);
+
+        // ── 제주 projection: 좌하단 인셋 ──
+        const jejuGeo = { type:'FeatureCollection', features: jejuList };
+        const jejuW = Math.round(W * 0.32), jejuH = Math.round(W * 0.12);
+        const jejuOX = 4, jejuOY = H_main + 6;
+        const projJeju = d3.geoIdentity().reflectY(true)
+          .fitExtent([[jejuOX, jejuOY], [jejuOX + jejuW, jejuOY + jejuH]], jejuGeo);
+        const pathJeju = d3.geoPath().projection(projJeju);
+
+        function getCompany(d) {
+          var p = d.properties;
+          var sidoCd = (p.adm_cd||'').slice(0,2);
+          // adm_nm: "서울특별시 종로구" → "종로구"
+          var sggNm = (p.adm_nm||'').split(' ').pop();
+          return COMPANY_MAP[sidoCd+'|'+sggNm] || null;
+        }
+        function fillColor(d)  { return COMPANY_COLOR[getCompany(d)] || '#E2E8F0'; }
+        function hoverColor(d) { return COMPANY_HOVER[getCompany(d)] || '#CBD5E1'; }
+
+        function bindEvents(sel, pathFn) {
+          sel.attr('d', pathFn)
+            .attr('fill', fillColor)
+            .attr('stroke', '#fff').attr('stroke-width', 0.7)
+            .style('cursor','pointer')
+            .on('mouseover', function(e,d){ d3.select(this).attr('fill', hoverColor(d)); })
+            .on('mouseout',  function(e,d){ d3.select(this).attr('fill', fillColor(d)); })
+            .on('click', function(event,d){
+              const p = d.properties;
+              const co = getCompany(d);
+              document.getElementById('map-popup-title').textContent = p.adm_nm;
+              document.getElementById('map-popup-count').textContent = co || '미선점';
+              document.getElementById('map-popup-ratio').textContent =
+                co === '한빌' ? '🏢 우리회사' : co ? '경쟁사' : '—';
+              // 팝업 헤더 색상
+              document.getElementById('map-popup-count').style.color =
+                co ? (COMPANY_COLOR[co] || '#38BDF8') : '#94A3B8';
+              popup.style.display = 'block';
+              popup.style.left = (event.clientX + 14)+'px';
+              popup.style.top  = (event.clientY - 44)+'px';
+              event.stopPropagation();
+            });
+        }
+
+        // 본토 시군구 (전체 allFeatures에서 제주 제외해서 그리기)
+        const mainDraw = allDraw.filter(f => !isJeju(f));
+        bindEvents(svg.selectAll('.sgg-main').data(mainDraw).join('path').attr('class','sgg-main'), pathMain);
+
+        // 시도 경계선 (본토)
+        if (sidoFeatures.length) {
+          svg.selectAll('.sido-border').data(sidoFeatures.filter(f=>!isJeju(f)))
+            .join('path').attr('class','sido-border')
+            .attr('d', pathMain).attr('fill','none')
+            .attr('stroke','#0EA5E9').attr('stroke-width', 1.5)
+            .attr('pointer-events','none');
+        }
+
+        // 제주 인셋
+        if (jejuList.length) {
+          svg.append('rect')
+            .attr('x', jejuOX-1).attr('y', jejuOY-1)
+            .attr('width', jejuW+2).attr('height', jejuH+2)
+            .attr('rx',4).attr('fill','#F0F9FF')
+            .attr('stroke','#BAE6FD').attr('stroke-width',1);
+          bindEvents(svg.selectAll('.sgg-jeju').data(jejuList).join('path').attr('class','sgg-jeju'), pathJeju);
+          svg.append('text')
+            .attr('x', jejuOX+4).attr('y', jejuOY+jejuH-4)
+            .attr('font-size',9).attr('fill','#075985').attr('font-weight','700')
+            .attr('pointer-events','none').text('제주');
+        }
+
+        // 시도명 라벨 (본토) — KOSTAT 코드 기준
+        const sidoLabels = {
+          '11':'서울','21':'부산','22':'대구','23':'인천','24':'광주',
+          '25':'대전','26':'울산','29':'세종','31':'경기','32':'강원',
+          '33':'충북','34':'충남','35':'전북','36':'전남','37':'경북','38':'경남'
+        };
+        const labelMap = {};
+        mainDraw.forEach(f => {
+          const sido = (f.properties.adm_cd||'').slice(0,2);
+          const b = pathMain.bounds(f);
+          const area = (b[1][0]-b[0][0])*(b[1][1]-b[0][1]);
+          if (!labelMap[sido] || area > labelMap[sido].area) {
+            const [cx,cy] = pathMain.centroid(f);
+            if (!isNaN(cx)&&!isNaN(cy)) labelMap[sido] = {cx,cy,area};
+          }
+        });
+        Object.entries(labelMap).forEach(([cd,v]) => {
+          const label = sidoLabels[cd]; if (!label) return;
+          svg.append('text').attr('x',v.cx).attr('y',v.cy+4)
+            .attr('text-anchor','middle').attr('font-size', cd==='41'?10:8)
+            .attr('fill','#075985').attr('font-weight','700')
+            .attr('pointer-events','none')
+            .attr('paint-order','stroke').attr('stroke','rgba(255,255,255,.85)').attr('stroke-width',3)
+            .text(label);
+        });
+
+        document.addEventListener('click', ()=>{ popup.style.display='none'; });
+      }
+
+      function renderPie() {
+        const counts = { 한빌:0, '누리빌':0, '한산':0 };
+        Object.values(COMPANY_MAP).forEach(co => { if (counts[co] !== undefined) counts[co]++; });
+        const total = Object.keys(COMPANY_MAP).length; // 229 시군구
+        const kib = counts['한빌'];
+        const pct = total > 0 ? Math.round(kib / total * 100) : 0;
+
+        document.getElementById('billing-pie-pct').textContent   = pct + '%';
+        document.getElementById('billing-stat-done').textContent  = kib + '개소';
+        document.getElementById('billing-stat-left').textContent  = (counts['누리빌'] + counts['한산']) + '개소';
+        document.getElementById('billing-stat-total').textContent = total + '개';
+
+        const canvas = document.getElementById('billing-pie');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        const cx = 70, cy = 70, r = 58, iR = 38;
+
+        // 도넛 배경
+        ctx.beginPath(); ctx.arc(cx,cy,r,0,Math.PI*2); ctx.fillStyle='#E2E8F0'; ctx.fill();
+
+        // 3개 회사 색상으로 분할
+        const slices = [
+          { co:'한빌',   color:'#0EA5E9', n: counts['한빌']   },
+          { co:'누리빌', color:'#F59E0B', n: counts['누리빌'] },
+          { co:'한산',  color:'#10B981', n: counts['한산']  },
+        ];
+        let startAng = -Math.PI / 2;
+        slices.forEach(s => {
+          if (!s.n || !total) return;
+          const ang = (s.n / total) * Math.PI * 2;
+          ctx.beginPath(); ctx.moveTo(cx,cy);
+          ctx.arc(cx,cy,r,startAng,startAng+ang);
+          ctx.closePath(); ctx.fillStyle=s.color; ctx.fill();
+          startAng += ang;
+        });
+
+        // 내부 원 (도넛)
+        ctx.beginPath(); ctx.arc(cx,cy,iR,0,Math.PI*2); ctx.fillStyle='#fff'; ctx.fill();
+      }
+
+      // D3 로드 후 실행
+      if (typeof d3 !== 'undefined') {
+        initMap();
+      } else {
+        document.querySelector('script[src*="d3"]').addEventListener('load', initMap);
+      }
+    })();
+    </script>
+
+    <!-- ══ 섹션 구분 ══ -->
+    <div id="section-complaint-divider" style="display:flex;align-items:center;gap:10px;margin:4px 0 18px">
+      <div style="flex:1;height:1px;background:var(--sky-light)"></div>
+      <div style="display:flex;align-items:center;gap:6px;padding:5px 14px;background:#F0F9FF;border:1px solid #BAE6FD;border-radius:20px;font-size:11px;font-weight:700;color:#075985;white-space:nowrap">
+        <i class="ti ti-headset" style="font-size:13px;color:#0EA5E9"></i>
+        민원 상담 처리 현황
+      </div>
+      <div style="flex:1;height:1px;background:var(--sky-light)"></div>
+    </div>
 
     <!-- 기간 탭 -->
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px">
@@ -509,15 +1078,6 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
     </div>
 
     <!-- ② 인입 키워드 -->
-    <div class="panel" style="margin-bottom:14px">
-      <div class="ph">
-        <div class="ptt"><i class="ti ti-key" style="color:#F59E0B"></i> 인입 키워드</div>
-      </div>
-      <div class="pb" style="display:flex;flex-wrap:wrap;gap:6px;align-content:flex-start;min-height:120px;width:100%">
-        <div id="kw-cloud" style="display:flex;flex-wrap:wrap;gap:6px;align-content:flex-start;min-height:120px;width:100%"></div>
-      </div>
-    </div>
-
     <!-- ③ VOC 분석 -->
     <div class="panel" style="margin-bottom:14px">
       <div class="ph">
@@ -536,6 +1096,16 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
       <div class="pb">
         <div id="stt-improve-list"></div>
         <div id="stt-improve-section" style="display:none"></div>
+      </div>
+    </div>
+
+    <!-- ⑤ 인입 키워드 (하단) -->
+    <div class="panel" style="margin-bottom:14px">
+      <div class="ph">
+        <div class="ptt"><i class="ti ti-key" style="color:#F59E0B"></i> 인입 키워드</div>
+      </div>
+      <div class="pb" style="display:flex;flex-wrap:wrap;gap:6px;align-content:flex-start;min-height:120px;width:100%">
+        <div id="kw-cloud" style="display:flex;flex-wrap:wrap;gap:6px;align-content:flex-start;min-height:120px;width:100%"></div>
       </div>
     </div>
 
@@ -1057,9 +1627,9 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
 <!-- ── 모바일 하단 앱 네비게이션 ── -->
 <nav class="bottom-nav" id="bottom-nav" aria-label="하단 메뉴">
   <div class="bn-items">
-    <button class="bn-item on" id="bn-dashboard" onclick="bnGo('dashboard')" aria-label="현황판">
+    <button class="bn-item on" id="bn-dashboard" onclick="bnGo('dashboard')" aria-label="데이터 포탈">
       <div class="bn-icon"><i class="ti ti-dashboard"></i></div>
-      <span class="bn-label">현황판</span>
+      <span class="bn-label">데이터 포탈</span>
     </button>
     <button class="bn-item" id="bn-stt" onclick="bnGo('stt')" aria-label="AI 민원분석">
       <div class="bn-icon"><i class="ti ti-microphone-2"></i></div>
@@ -1069,10 +1639,10 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
       <div class="bn-icon"><i class="ti ti-news"></i></div>
       <span class="bn-label">뉴스레터</span>
     </button>
-    <button class="bn-item chatbot-btn" id="bn-chatbot" onclick="toggleCbot()" aria-label="한빌이">
+    <button class="bn-item chatbot-btn" id="bn-chatbot" onclick="toggleCbot()" aria-label="영업비서">
       <span class="bn-chat-dot"></span>
       <div class="bn-icon"><i class="ti ti-message-chatbot"></i></div>
-      <span class="bn-label">한빌이</span>
+      <span class="bn-label">영업비서</span>
     </button>
   </div>
 </nav>
@@ -1083,7 +1653,7 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
   <span class="cfab-badge">STT</span>
 </button>
 
-<!-- ── 한빌이 챗봇 바텀시트 ── -->
+<!-- ── 영업비서 챗봇 바텀시트 ── -->
 <style>
 .hb-sheet{position:fixed;bottom:0;right:0;z-index:401;width:380px;max-width:100vw;
   background:#fff;border-radius:16px 16px 0 0;box-shadow:0 -6px 32px rgba(0,0,0,.18);
@@ -1151,7 +1721,7 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
     <div style="display:flex;align-items:center;gap:10px">
       <div class="hb-avatar">🤖</div>
       <div>
-        <div class="hb-name">한빌이</div>
+        <div class="hb-name">영업비서</div>
         <div class="hb-status"><span style="width:6px;height:6px;border-radius:50%;background:#4ADE80;display:inline-block"></span>민원 상담 도우미</div>
       </div>
     </div>
@@ -2395,7 +2965,7 @@ window.copyScript = function(text) {
   });
 };
 
-// 한빌이 복사 슬롯 — onclick 속성에 직접 문자열 넣지 않기 위해 전역 보관
+// 영업비서 복사 슬롯 — onclick 속성에 직접 문자열 넣지 않기 위해 전역 보관
 let _hbCopyText = '';
 window.hbCopyScript = function() {
   if (!_hbCopyText) return;
@@ -3152,7 +3722,7 @@ window.copyNewsletterHtml = function() {
 
 // ─── NAV ───
 const SEC_META = {
-  dashboard:['현황판','민원 처리 현황 분석'],
+  dashboard:['데이터 포탈','한전 빌링 영업 현황'],
   stt:['STT 활용 주요 지표','실제 통화 분석 기반 인사이트'],
   predict:['예상 민원','AI 기반 민원 예측 및 개선책'],
   newsletter:['뉴스레터','한전 청구서사업 경영진 일일 스크랩'],
@@ -3163,7 +3733,12 @@ window.goSec = function(name, el) {
   document.getElementById('sec-' + name).classList.add('on');
   el.classList.add('on');
   document.getElementById('pt').textContent = SEC_META[name][0];
-  document.getElementById('ps').textContent = SEC_META[name][1];
+  if (name === 'dashboard') {
+    window.scrollTo(0, 0);
+    document.getElementById('ps').textContent = '한전 빌링 영업 현황';
+  } else {
+    document.getElementById('ps').textContent = SEC_META[name][1];
+  }
   // 하단 네비 동기화
   document.querySelectorAll('.bn-item[id]').forEach(b => b.classList.remove('on'));
   const bn = document.getElementById('bn-' + name);
@@ -3395,7 +3970,7 @@ function buildTrend(mode, s, e) {
 
 // ─── 하단 네비 (모바일) ───
 const BN_SECTIONS = {
-  dashboard:  { label:'현황판',   sub:'민원 처리 현황 분석' },
+  dashboard:  { label:'데이터 포탈',   sub:'한전 빌링 영업 현황' },
   stt:        { label:'AI 민원분석', sub:'실제 통화 분석 기반 인사이트' },
   predict:    { label:'예상 민원', sub:'AI 기반 민원 예측 및 개선책' },
   newsletter: { label:'뉴스레터', sub:'한전 청구서사업 경영진 스크랩' },
@@ -3413,7 +3988,12 @@ window.bnGo = function(name) {
   const meta = BN_SECTIONS[name];
   if (meta) {
     document.getElementById('pt').textContent = meta.label;
-    document.getElementById('ps').textContent = meta.sub;
+    if (name === 'dashboard') {
+      window.scrollTo(0, 0);
+      document.getElementById('ps').textContent = '한전 빌링 영업 현황';
+    } else {
+      document.getElementById('ps').textContent = meta.sub;
+    }
   }
   if (name === 'predict') renderPredictSection();
   // 사이드바 ni 동기화
@@ -3435,7 +4015,7 @@ window.closeSb = function() {
 };
 
 // ════════════════════════════════════════════
-//  한빌이 챗봇
+//  영업비서 챗봇
 // ════════════════════════════════════════════
 
 // ── 고객 이력 DB (STT 전사 + 샘플) ──
@@ -3515,14 +4095,14 @@ window.openCbot = function() {
   document.getElementById('cbot-sheet').classList.add('open');
   if (!hbInited) { hbInit(); hbInited = true; }
   setTimeout(()=>document.getElementById('hb-msgs').scrollTop=9999,100);
-  // 하단 네비 한빌이 버튼 활성 표시
+  // 하단 네비 영업비서 버튼 활성 표시
   const btn = document.getElementById('bn-chatbot');
   if (btn) btn.classList.add('on');
 };
 window.closeCbot = function() {
   document.getElementById('cbot-overlay').classList.remove('open');
   document.getElementById('cbot-sheet').classList.remove('open');
-  // 하단 네비 한빌이 버튼 비활성
+  // 하단 네비 영업비서 버튼 비활성
   const btn = document.getElementById('bn-chatbot');
   if (btn) btn.classList.remove('on');
 };
@@ -3551,7 +4131,7 @@ window.toggleCbot = function() {
 // ── 초기화 ──
 function hbInit() {
   hbAddMsg('bot',
-    '안녕하세요! 저는 <strong>한빌이</strong>입니다 😊<br><br>' +
+    '안녕하세요! 저는 <strong>영업비서</strong>입니다 😊<br><br>' +
     '아래 내용을 물어보시면 바로 안내해 드릴게요:<br><br>' +
     '<span style="background:var(--sky-panel);color:var(--sky-dark);padding:3px 8px;border-radius:6px;font-size:12px;font-weight:700">📋 응대 스크립트</span> 아래 민원 키워드를 클릭하거나, "청구서 조회 스크립트" 처럼 입력해 주세요.<br><br>' +
     '<span style="background:#D1FAE5;color:#065F46;padding:3px 8px;border-radius:6px;font-size:12px;font-weight:700">📊 민원 데이터</span> "이번 주 민원 몇 건?", "6월 상위 카테고리", "어제 인입 현황", "예상 민원"<br><br>' +
@@ -4609,7 +5189,7 @@ async function hbGroqQuery(userText, fallbackFn) {
   hbAddMsg('bot', `<span id="${loadId}">🤔 분석 중...</span>`, true);
 
   const ctx = buildHbContext();
-  const systemPrompt = `당신은 "한빌이"입니다. SCG랩 영업기획팀의 전기요금 청구 대행 서비스(한빌) 전담 AI 분석 어시스턴트입니다.
+  const systemPrompt = `당신은 "영업비서"입니다. SCG랩 영업기획팀의 전기요금 청구 대행 서비스(한빌) 전담 AI 분석 어시스턴트입니다.
 
 ## 회사 및 서비스 컨텍스트
 - 회사: SCG랩(SCGLAB) 영업기획팀
@@ -5353,7 +5933,7 @@ function hbAnswer(text) {
   }
 
   hbTyping(()=>hbAddMsg('bot',
-    `<strong>한빌이</strong>가 도와드릴 수 있는 내용이에요 😊<br><br>` +
+    `<strong>영업비서</strong>가 도와드릴 수 있는 내용이에요 😊<br><br>` +
     `<span style="background:#EDE9FE;color:#5B21B6;padding:2px 8px;border-radius:6px;font-size:11.5px;font-weight:700">🔮 주간 브리핑</span> "이번 주 예상 민원", "이번 주 대처법", "안내하면 좋을 민원"<br><br>` +
     `<span style="background:var(--sky-panel);color:var(--sky-dark);padding:2px 8px;border-radius:6px;font-size:11.5px;font-weight:700">📋 스크립트</span> 청구서 조회, 이메일 변경, 고객정보 변경…<br><br>` +
     `<span style="background:#D1FAE5;color:#065F46;padding:2px 8px;border-radius:6px;font-size:11.5px;font-weight:700">📊 데이터 질의</span> "이번 주 민원 몇 건?", "6월 상위 카테고리", "어떤 요일에 많아?"<br><br>` +
@@ -5773,7 +6353,7 @@ function renderRecBanner() {
     }).join('');
 }
 
-// ─── 한빌이 전화번호 조회 (REC_DB) ───
+// ─── 영업비서 전화번호 조회 (REC_DB) ───
 function hbLookupPhone(query) {
   if (typeof REC_DB === 'undefined') return false;
   var q = query.replace(/[^0-9]/g, '');
@@ -5916,6 +6496,20 @@ renderPredictSection();
 renderNews();
 renderRecipients();
 updateNlHistoryBadge();
+
+
+</script>
+<script>
+setInterval(function() {
+  var sec = document.getElementById('sec-dashboard');
+  if (!sec || !sec.classList.contains('on')) return;
+  var divider = document.getElementById('section-complaint-divider');
+  var ps = document.getElementById('ps');
+  if (!divider || !ps) return;
+  var top = divider.getBoundingClientRect().top;
+  var next = top < 60 ? '민원 상담 처리 현황' : '한전 빌링 영업 현황';
+  if (ps.textContent !== next) ps.textContent = next;
+}, 150);
 </script>
 </body>
 </html>
