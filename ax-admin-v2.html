@@ -422,13 +422,16 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
 #map-popup .mp-row{display:flex;justify-content:space-between;gap:14px;margin-top:7px}
 #map-popup .mp-label{color:#94A3B8}
 #map-popup .mp-val{font-weight:700}
-#map-popup-cta{display:none;width:100%;margin-top:14px;padding:10px 12px;border:none;
-  border-radius:9px;background:linear-gradient(90deg,#0EA5E9,#0284C7);color:#fff;
-  font-size:12.5px;font-weight:800;cursor:pointer;align-items:center;justify-content:center;
-  gap:6px;box-shadow:0 3px 10px rgba(14,165,233,.4)}
+.map-cta{display:none;width:100%;margin-top:14px;padding:12px 12px;border:none;
+  border-radius:9px;color:#fff;min-height:44px;
+  font-size:13px;font-weight:800;cursor:pointer;align-items:center;justify-content:center;
+  gap:6px;box-shadow:0 3px 10px rgba(0,0,0,.2);font-family:inherit}
+.map-cta.show{display:flex}
+#map-popup-cta{background:linear-gradient(90deg,#0EA5E9,#0284C7);box-shadow:0 3px 10px rgba(14,165,233,.4)}
 #map-popup-cta:hover{background:linear-gradient(90deg,#0284C7,#075985)}
-#map-popup-cta.show{display:flex}
-@media(max-width:768px){ #map-popup-cta{margin-top:18px;padding:14px;font-size:15px} }
+#map-popup-cta-keep{background:linear-gradient(90deg,#10B981,#059669);box-shadow:0 3px 10px rgba(16,185,129,.4)}
+#map-popup-cta-keep:hover{background:linear-gradient(90deg,#059669,#047857)}
+@media(max-width:768px){ .map-cta{margin-top:18px;padding:16px;font-size:15px;min-height:52px} }
 /* ── 모바일: 바텀시트로 전환 ── */
 @media(max-width:768px){
   #map-popup{
@@ -551,9 +554,13 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
                 <span class="mp-label">선점 비율</span>
                 <span id="map-popup-ratio" class="mp-val" style="color:#4ADE80"></span>
               </div>
-              <!-- 미선정 지역 전용: 영업 진입 제안 -->
-              <button id="map-popup-cta" onclick="proposeSales(event)">
-                <i class="ti ti-target-arrow" style="font-size:14px"></i> 영업 진입 제안
+              <!-- 한빌 선점 지역: 영업 유지 전략 -->
+              <button id="map-popup-cta-keep" class="map-cta" onclick="mapStrategy('유지', event)">
+                <i class="ti ti-shield-check" style="font-size:15px"></i> 영업 유지 전략
+              </button>
+              <!-- 타사·미선정 지역: 영업 진입 제안 -->
+              <button id="map-popup-cta" class="map-cta" onclick="mapStrategy('진입', event)">
+                <i class="ti ti-target-arrow" style="font-size:15px"></i> 영업 진입 제안
               </button>
             </div>
           </div>
@@ -818,11 +825,22 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
             document.getElementById('map-popup-total').textContent = coTotal+'개소';
             document.getElementById('map-popup-ratio').textContent = co ? coPct+'%' : '—';
             document.getElementById('map-popup-count').style.color = co ? (COMPANY_COLOR[co]||'#38BDF8') : '#94A3B8';
-            // 미선정 지역: 영업 진입 제안 버튼 노출 + 지역명 저장
-            window._mapSelectedRegion = p.adm_nm;
+            // 선택 지역 데이터 저장 (전략 제안용)
+            window._mapSel = {
+              region: p.adm_nm,
+              co: co,                       // 빌링사 (null=미선점)
+              qty: co ? coQty : 0,          // 선점 개소
+              billing: billingCnt || 0,     // 빌링 건수
+              ratio: co ? coPct : 0
+            };
+            window._mapSelectedRegion = p.adm_nm;  // 하위 호환
             window._mapSelectedCo = co;
-            const cta = document.getElementById('map-popup-cta');
-            if (cta) cta.classList.toggle('show', !co);
+            // 조건부 버튼: 한빌 → 유지 전략 / 그 외·미선점 → 진입 제안
+            const ctaKeep  = document.getElementById('map-popup-cta-keep');
+            const ctaEnter = document.getElementById('map-popup-cta');
+            const isHanvil = (co === '한빌');
+            if (ctaKeep)  ctaKeep.classList.toggle('show', isHanvil);
+            if (ctaEnter) ctaEnter.classList.toggle('show', !isHanvil);
             openMapPopup(event);
             event.stopPropagation();
           });
@@ -906,24 +924,21 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
         if (!window.matchMedia('(max-width:768px)').matches) window.closeMapPopup();
       });
 
-      // 미선정 지역 → 영업 진입 제안: 영업비서 챗봇으로 타겟팅 전략 질의 시작
-      window.proposeSales = function(event) {
+      // 지도 클릭 → 영업 전략 제안 (유지/진입) → 영업비서 챗봇에 Claude 전략 초안 스트리밍
+      window.mapStrategy = function(type, event) {
         if (event) event.stopPropagation();
-        const region = window._mapSelectedRegion || '해당 지역';
+        const sel = window._mapSel || { region: window._mapSelectedRegion || '해당 지역', co: window._mapSelectedCo, qty: 0, billing: 0, ratio: 0 };
         window.closeMapPopup();
-        const q = region + ' 지역은 아직 한빌이 선점하지 못한 미선정 지역입니다. 이 지역 영업 진입을 위한 타겟팅 전략과 접근 방안을 제안해줘.';
-        // 영업비서 챗봇 열고 질문 자동 전송
+        // 챗봇 열기
         if (typeof window.openCbot === 'function') window.openCbot();
         setTimeout(function() {
-          const inp = document.getElementById('hb-input');
-          if (inp && typeof window.hbSend === 'function') {
-            inp.value = q;
-            window.hbSend();
-          } else {
-            alert('[영업 진입 제안]\n' + region + ' — 미선정 지역\n영업비서에서 타겟팅 전략을 확인하세요.');
+          if (typeof window.runMapStrategy === 'function') {
+            window.runMapStrategy(type, sel);
           }
         }, 450);
       };
+      // 하위 호환 (기존 proposeSales 호출부 대비)
+      window.proposeSales = function(event) { window.mapStrategy('진입', event); };
 
       // --- 아래는 renderMap의 나머지 (삭제될 코드 — 빈 함수로 대체) ---
 
@@ -1968,14 +1983,24 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
 
   <!-- Groq 키 설정 패널 -->
   <div id="hb-groq-panel" style="display:none;background:#1E2A3A;padding:10px 16px;border-bottom:1px solid rgba(255,255,255,.1)">
-    <div style="font-size:11px;color:rgba(255,255,255,.6);margin-bottom:6px">🔑 Groq API 키 (무료: <a href="https://console.groq.com" target="_blank" style="color:#38BDF8">console.groq.com</a>)</div>
+    <!-- Claude (Anthropic) 키 — 영업 전략 제안 엔진 -->
+    <div style="font-size:11px;color:rgba(255,255,255,.7);margin-bottom:6px;font-weight:700">🤖 Claude API 키 <span style="color:rgba(255,255,255,.4);font-weight:400">(영업 전략 제안 · <a href="https://console.anthropic.com" target="_blank" style="color:#C4B5FD">console.anthropic.com</a>)</span></div>
+    <div style="display:flex;gap:6px">
+      <input id="hb-claude-key-input" type="password" placeholder="sk-ant-xxxxxxxxxxxx"
+        style="flex:1;background:rgba(255,255,255,.1);border:1px solid rgba(139,92,246,.4);border-radius:6px;padding:6px 10px;color:#fff;font-size:12px;outline:none"
+        value="">
+      <button onclick="saveClaudeKey()" style="background:#8B5CF6;border:none;border-radius:6px;color:#fff;padding:6px 12px;font-size:12px;cursor:pointer;white-space:nowrap">저장</button>
+    </div>
+    <div style="height:1px;background:rgba(255,255,255,.1);margin:10px 0"></div>
+    <!-- Groq 키 — 일반 질의 폴백 -->
+    <div style="font-size:11px;color:rgba(255,255,255,.6);margin-bottom:6px">🔑 Groq API 키 <span style="color:rgba(255,255,255,.4)">(무료 폴백 · <a href="https://console.groq.com" target="_blank" style="color:#38BDF8">console.groq.com</a>)</span></div>
     <div style="display:flex;gap:6px">
       <input id="hb-groq-key-input" type="password" placeholder="gsk_xxxxxxxxxxxxxxxxxxxx"
         style="flex:1;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:6px;padding:6px 10px;color:#fff;font-size:12px;outline:none"
         value="">
       <button onclick="saveGroqKey()" style="background:#0EA5E9;border:none;border-radius:6px;color:#fff;padding:6px 12px;font-size:12px;cursor:pointer;white-space:nowrap">저장</button>
     </div>
-    <div id="hb-groq-status" style="font-size:11px;color:#4ADE80;margin-top:5px;min-height:14px"></div>
+    <div id="hb-groq-status" style="font-size:11px;color:#4ADE80;margin-top:8px;min-height:14px"></div>
   </div>
 
   <!-- 빠른 키워드 -->
@@ -5011,7 +5036,10 @@ window.toggleGroqPanel = function() {
     const inp = document.getElementById('hb-groq-key-input');
     if (inp) inp.value = saved;
     const st = document.getElementById('hb-groq-status');
-    if (st) st.textContent = saved ? '✅ API 키가 저장되어 있습니다.' : '';
+    const claudeSaved = localStorage.getItem('hanbil_claude_key') || '';
+    const cInp = document.getElementById('hb-claude-key-input');
+    if (cInp) cInp.value = claudeSaved;
+    if (st) st.textContent = claudeSaved ? '✅ Claude 키 저장됨 (영업 전략 제안 활성)' : (saved ? '✅ Groq 키 저장됨.' : '');
   }
 };
 window.saveGroqKey = function() {
@@ -5021,11 +5049,166 @@ window.saveGroqKey = function() {
   const val = inp.value.trim();
   if (val) {
     localStorage.setItem(HB_GROQ_KEY, val);
-    if (st) st.textContent = '✅ 저장됨 — 이제 자유로운 질문에 AI가 응답합니다.';
+    if (st) st.textContent = '✅ Groq 키 저장됨.';
   } else {
     localStorage.removeItem(HB_GROQ_KEY);
-    if (st) st.textContent = '🗑 키가 삭제되었습니다.';
+    if (st) st.textContent = '🗑 Groq 키가 삭제되었습니다.';
   }
+};
+
+// ── Claude(Anthropic) API 키 관리 ──
+const HB_CLAUDE_KEY = 'hanbil_claude_key';
+window.saveClaudeKey = function() {
+  const inp = document.getElementById('hb-claude-key-input');
+  const st  = document.getElementById('hb-groq-status');
+  if (!inp) return;
+  const val = inp.value.trim();
+  if (!val) {
+    localStorage.removeItem(HB_CLAUDE_KEY);
+    if (st) { st.textContent = '🗑 Claude 키가 삭제되었습니다.'; st.style.color = '#FCA5A5'; }
+  } else if (val.startsWith('sk-ant-')) {
+    localStorage.setItem(HB_CLAUDE_KEY, val);
+    if (st) { st.textContent = '✅ Claude 키 저장됨 — 지도 영업 전략 제안이 활성화되었습니다.'; st.style.color = '#4ADE80'; }
+  } else {
+    if (st) { st.textContent = '❌ 형식 오류 (sk-ant- 로 시작해야 합니다)'; st.style.color = '#FCA5A5'; }
+  }
+};
+
+// ── Claude 스트리밍 질의: 답변을 채팅 버블에 실시간 출력 ──
+async function hbClaudeStream(systemPrompt, userText) {
+  const key = localStorage.getItem(HB_CLAUDE_KEY);
+  if (!key) return false;
+  const loadId = 'hb-cs-' + Date.now();
+  hbAddMsg('bot', '<span id="' + loadId + '">✍️ 전략 초안 작성 중...</span>', true);
+  const bubbleSpan = document.getElementById(loadId);
+  const bubble = bubbleSpan ? bubbleSpan.parentElement : null;
+  const msgs = document.getElementById('hb-msgs');
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': key,
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-direct-browser-access': 'true'
+      },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-6',
+        max_tokens: 1024,
+        stream: true,
+        system: systemPrompt,
+        messages: [{ role: 'user', content: userText }]
+      })
+    });
+    if (!res.ok) {
+      const errText = await res.text().catch(() => '');
+      if (bubble) bubble.innerHTML = '<span style="color:#EF4444">Claude 오류: HTTP ' + res.status + '</span><br><span style="font-size:11px;color:#94A3B8">' + errText.slice(0,120) + '</span>';
+      return true;
+    }
+    const reader = res.body.getReader();
+    const decoder = new TextDecoder();
+    let acc = '', buf = '';
+    if (bubble) bubble.innerHTML = '';
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buf += decoder.decode(value, { stream: true });
+      const lines = buf.split('\n');
+      buf = lines.pop();
+      for (const line of lines) {
+        const t = line.trim();
+        if (!t.startsWith('data:')) continue;
+        const payload = t.slice(5).trim();
+        if (payload === '[DONE]') continue;
+        try {
+          const ev = JSON.parse(payload);
+          if (ev.type === 'content_block_delta' && ev.delta && ev.delta.text) {
+            acc += ev.delta.text;
+            if (bubble) {
+              bubble.innerHTML = acc.replace(/\n/g,'<br>').replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
+              if (msgs) msgs.scrollTop = msgs.scrollHeight;
+            }
+          }
+        } catch(e) { /* 부분 JSON 무시 */ }
+      }
+    }
+    if (bubble && !acc) bubble.innerHTML = '<span style="color:#94A3B8">응답이 비어 있습니다.</span>';
+    return true;
+  } catch(e) {
+    if (bubble) bubble.innerHTML = '<span style="color:#EF4444">네트워크 오류: ' + (e.message||e) + '</span>';
+    return true;
+  }
+}
+
+// ── 지도 영업 전략 실행: Claude 우선, 없으면 Groq, 둘 다 없으면 안내 ──
+window.runMapStrategy = async function(type, sel) {
+  const region  = sel.region || '해당 지역';
+  const co      = sel.co || '미선점';
+  const qty     = sel.qty || 0;
+  const billing = sel.billing || 0;
+  const stratType = (type === '유지') ? '유지' : '진입';
+
+  // 사용자 메시지(요청 카드) 표시
+  const badge = stratType === '유지'
+    ? '<span style="background:#10B981;color:#fff;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:700">🛡 영업 유지</span>'
+    : '<span style="background:#0EA5E9;color:#fff;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:700">🎯 영업 진입</span>';
+  hbAddMsg('user',
+    badge + ' <strong>' + region + '</strong><br>' +
+    '<span style="font-size:11.5px">현재 빌링사: ' + co + ' · 빌링 ' + billing.toLocaleString() + '건 · 선점 ' + qty + '개소</span>', true);
+
+  // 전송 데이터 (요구사항 명세)
+  const payload = {
+    지역명: region,
+    현재빌링사: co,
+    선점개소: qty + '개',
+    빌링건수: billing.toLocaleString() + '건',
+    전략유형: stratType
+  };
+
+  const ctx = (typeof buildHbContext === 'function') ? buildHbContext() : '';
+  const stratDesc = stratType === '유지'
+    ? '이미 한빌이 선점한 지역으로, 경쟁사 이탈 방어와 계약 유지·확대 전략'
+    : '타사가 선점했거나 미선점 지역으로, 신규 진입과 경쟁사 대체 전략';
+
+  const systemPrompt =
+'너는 SCG랩 영업기획팀의 "영업비서(한빌이)"야. 한국전력 전기요금 전자청구 대행 서비스 "한빌"의 영업 전략을 짜는 전문가야.\n\n' +
+'현재 [' + region + '] 지역에 대해 [' + stratType + '] 전략이 필요해. (' + stratDesc + ')\n\n' +
+'## 대상 지역 데이터\n' +
+'- 지역명: ' + region + '\n' +
+'- 현재 빌링사: ' + co + '\n' +
+'- 빌링 건수(G열): ' + billing.toLocaleString() + '건\n' +
+'- 선점 개소: ' + qty + '개\n' +
+'- 경쟁사: 누리빌, 한전산업개발\n\n' +
+'## 내부 CUST_DB / 대시보드 컨텍스트\n' + ctx + '\n\n' +
+'## 지시\n' +
+'해당 지역의 데이터를 바탕으로 구체적인 행동 지침(Action Plan)을 반드시 3단계로 제안해줘.\n' +
+'각 단계는 **[1단계] 제목** 형식으로 굵게 시작하고, 실행 주체·방법·기대효과를 1~2문장으로 제시해.\n' +
+'수치 근거를 활용하고, 한국어로 답변하며, 마지막에 한 줄 핵심 요약을 덧붙여줘.';
+
+  const userText = '아래 지역에 대한 ' + stratType + ' 전략 초안을 만들어줘:\n' + JSON.stringify(payload, null, 2);
+
+  // 1순위: Claude 스트리밍
+  const claudeKey = localStorage.getItem(HB_CLAUDE_KEY);
+  if (claudeKey) {
+    await hbClaudeStream(systemPrompt, userText);
+    return;
+  }
+  // 2순위: Groq 폴백
+  const groqKey = localStorage.getItem(HB_GROQ_KEY);
+  if (groqKey && typeof hbGroqQuery === 'function') {
+    const groqPrompt = systemPrompt + '\n\n[요청]\n' + userText;
+    hbGroqQuery(groqPrompt);
+    return;
+  }
+  // 3순위: 키 없음 안내
+  hbTyping(function() {
+    hbAddMsg('bot',
+      '🔑 <strong>' + region + ' ' + stratType + ' 전략</strong>을 AI로 생성하려면 API 키가 필요합니다.<br><br>' +
+      '헤더 <i class="ti ti-settings"></i> 버튼 → <strong>Claude API 키</strong>를 입력하면<br>' +
+      '이 지역 데이터(빌링 ' + billing.toLocaleString() + '건 · 선점 ' + qty + '개소)를 바탕으로<br>' +
+      '3단계 액션플랜을 실시간으로 작성해 드립니다.<br><br>' +
+      '<span style="font-size:11px;color:#94A3B8">키 발급: console.anthropic.com</span>', true);
+  }, 500);
 };
 
 // ── 구글 시트 데이터 fetch & DB 업데이트 ──────────────────────────────────
