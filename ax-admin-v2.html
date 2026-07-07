@@ -377,6 +377,51 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
   .map-pie-wrap{width:170px;height:170px}
   .map-pie-wrap>canvas{width:170px!important;height:170px!important}
 }
+/* ── 지도 하단 3단 도넛 행 ── */
+.donut-row{display:flex;flex-direction:column;gap:14px;margin-top:16px}
+.donut-card{background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:16px 14px;
+  display:flex;flex-direction:column;align-items:center;text-align:center}
+.donut-card-title{font-size:12.5px;font-weight:800;color:var(--g700);margin-bottom:12px;
+  display:flex;align-items:center;gap:6px;justify-content:center;flex-wrap:wrap}
+.donut-card-title span{font-size:10px;font-weight:700;color:#075985;background:#E0F2FE;
+  padding:2px 7px;border-radius:8px}
+.donut-legend{margin-top:12px;width:100%;display:flex;flex-direction:column;gap:5px}
+.donut-legend .lg{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--g600)}
+.donut-legend .lg .sw{width:10px;height:10px;border-radius:2px;flex-shrink:0}
+.donut-legend .lg .nm{flex:1;text-align:left}
+.donut-legend .lg .vl{font-weight:700}
+@media(min-width:760px){
+  .donut-row{flex-direction:row;align-items:stretch}
+  .donut-card{flex:1;min-width:0}
+}
+/* ── 지도 클릭 팝업 (데스크톱 말풍선) ── */
+#map-popup-overlay{display:none;position:fixed;inset:0;background:rgba(15,23,42,.4);z-index:998}
+#map-popup{display:none;position:fixed;background:#1E293B;color:#fff;border-radius:12px;
+  padding:14px 16px;font-size:12px;min-width:190px;max-width:280px;z-index:999;
+  box-shadow:0 8px 28px rgba(0,0,0,.35);max-height:70vh;overflow-y:auto}
+#map-popup-handle{display:none}
+#map-popup-title{font-weight:800;font-size:14px;line-height:1.4;color:#fff}
+#map-popup-close{background:none;border:none;color:#94A3B8;font-size:15px;cursor:pointer;
+  line-height:1;padding:2px 4px;flex-shrink:0}
+#map-popup-close:hover{color:#fff}
+#map-popup .mp-row{display:flex;justify-content:space-between;gap:14px;margin-top:7px}
+#map-popup .mp-label{color:#94A3B8}
+#map-popup .mp-val{font-weight:700}
+/* ── 모바일: 바텀시트로 전환 ── */
+@media(max-width:768px){
+  #map-popup{
+    top:auto!important;left:0!important;right:0!important;bottom:0!important;
+    min-width:0;max-width:none;width:100%;
+    border-radius:18px 18px 0 0;padding:8px 20px 24px;font-size:14px;
+    transform:translateY(100%);transition:transform .28s cubic-bezier(.32,.72,0,1);
+    max-height:60vh}
+  #map-popup.open{transform:translateY(0)}
+  #map-popup-handle{display:block;width:40px;height:4px;border-radius:2px;
+    background:#475569;margin:4px auto 12px}
+  #map-popup-title{font-size:16px}
+  #map-popup-close{font-size:18px;padding:4px 8px}
+  #map-popup .mp-row{margin-top:11px;font-size:14px}
+}
 </style>
 </head>
 <body>
@@ -454,188 +499,106 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
           <div class="map-left">
             <svg id="korea-map-d3"></svg>
 
-            <!-- 클릭 팝업 -->
-            <div id="map-popup" style="display:none;position:fixed;background:#1E293B;color:#fff;border-radius:10px;padding:12px 16px;font-size:12px;pointer-events:none;min-width:170px;z-index:999;box-shadow:0 4px 20px rgba(0,0,0,.3)">
-              <div id="map-popup-title" style="font-weight:700;font-size:13px;margin-bottom:8px;line-height:1.4"></div>
-              <div style="display:flex;justify-content:space-between;margin-bottom:4px">
-                <span style="color:#94A3B8">빌링사</span>
-                <span id="map-popup-count" style="font-weight:700;color:#38BDF8"></span>
+            <!-- 클릭 팝업 (데스크톱: 말풍선 / 모바일: 바텀시트) -->
+            <div id="map-popup-overlay" onclick="closeMapPopup()"></div>
+            <div id="map-popup">
+              <div id="map-popup-handle"></div>
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">
+                <div id="map-popup-title"></div>
+                <button id="map-popup-close" onclick="closeMapPopup()" aria-label="닫기">✕</button>
               </div>
-              <div style="display:flex;justify-content:space-between;margin-bottom:4px">
-                <span style="color:#94A3B8">건수</span>
-                <span id="map-popup-qty" style="font-weight:700;color:#94A3B8"></span>
+              <div class="mp-row">
+                <span class="mp-label">빌링사</span>
+                <span id="map-popup-count" class="mp-val" style="color:#38BDF8"></span>
               </div>
-              <div style="display:flex;justify-content:space-between">
-                <span style="color:#94A3B8">비율</span>
-                <span id="map-popup-ratio" style="font-weight:700;color:#4ADE80"></span>
+              <div class="mp-row">
+                <span class="mp-label">선점 개소 수</span>
+                <span id="map-popup-qty" class="mp-val" style="color:#fff"></span>
+              </div>
+              <div class="mp-row">
+                <span class="mp-label">총 빌링 대상</span>
+                <span id="map-popup-total" class="mp-val" style="color:#CBD5E1"></span>
+              </div>
+              <div class="mp-row">
+                <span class="mp-label">선점 비율</span>
+                <span id="map-popup-ratio" class="mp-val" style="color:#4ADE80"></span>
               </div>
             </div>
           </div>
 
-          <!-- 우측: 파이차트 + 요약 -->
-          <div class="map-right">
-            <div class="map-right-inner">
-              <div>
-                <div class="map-pie-title">시군구 선점 현황</div>
-                <div class="map-pie-wrap" style="cursor:pointer" title="클릭하면 빌링사별 비율을 확인할 수 있습니다">
-                  <canvas id="billing-pie" width="140" height="140"></canvas>
-                  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none">
-                    <div style="font-size:20px;font-weight:900;color:#075985" id="billing-pie-pct">—</div>
-                    <div style="font-size:9px;color:var(--g400)" id="billing-pie-label">한빌 점유율</div>
-                  </div>
-                </div>
-                <!-- 파이 클릭 시 빌링사 상세 -->
-                <div id="pie-tooltip" style="display:none;margin-top:8px;background:#1E293B;color:#fff;border-radius:8px;padding:8px 12px;font-size:11px;text-align:left;min-width:120px">
-                  <div id="pie-tooltip-name" style="font-weight:700;color:#38BDF8;margin-bottom:4px"></div>
-                  <div style="display:flex;justify-content:space-between;gap:12px">
-                    <span style="color:#94A3B8">시군구 수</span><span id="pie-tooltip-cnt" style="font-weight:700"></span>
-                  </div>
-                  <div style="display:flex;justify-content:space-between;gap:12px">
-                    <span style="color:#94A3B8">점유율</span><span id="pie-tooltip-pct" style="font-weight:700;color:#4ADE80"></span>
-                  </div>
-                </div>
-                <!-- 범례 -->
-                <div style="margin-top:8px;display:flex;flex-direction:column;gap:3px">
-                  <div style="display:flex;align-items:center;gap:5px;font-size:10px;color:var(--g600)"><span style="width:10px;height:10px;background:#0EA5E9;border-radius:2px;flex-shrink:0"></span>한빌 <span id="pie-leg-hanvil" style="margin-left:auto;font-weight:700;color:#0EA5E9"></span></div>
-                  <div style="display:flex;align-items:center;gap:5px;font-size:10px;color:var(--g600)"><span style="width:10px;height:10px;background:#F59E0B;border-radius:2px;flex-shrink:0"></span>누리빌 <span id="pie-leg-nuri" style="margin-left:auto;font-weight:700;color:#F59E0B"></span></div>
-                  <div style="display:flex;align-items:center;gap:5px;font-size:10px;color:var(--g600)"><span style="width:10px;height:10px;background:#10B981;border-radius:2px;flex-shrink:0"></span>한전산업개발 <span id="pie-leg-hansan" style="margin-left:auto;font-weight:700;color:#10B981"></span></div>
-                </div>
+        </div><!-- /map-layout : 지도 전체폭 -->
+
+        <!-- ══ 지도 하단 3단 도넛 ══ -->
+        <div class="donut-row">
+
+          <!-- [1] 시군구 선점 현황 (지도 데이터 연동) -->
+          <div class="donut-card">
+            <div class="donut-card-title">시군구 선점 현황 <span>지도 연동</span></div>
+            <div class="map-pie-wrap" style="cursor:pointer;width:150px;height:150px" title="클릭하면 빌링사별 비율을 확인할 수 있습니다">
+              <canvas id="billing-pie" width="150" height="150"></canvas>
+              <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none">
+                <div style="font-size:22px;font-weight:900;color:#075985" id="billing-pie-pct">—</div>
+                <div style="font-size:9px;color:var(--g400)" id="billing-pie-label">한빌 점유율</div>
               </div>
-              <div class="map-stats">
-                <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 10px;background:#F0F9FF;border-radius:7px">
-                  <span style="color:#075985;font-weight:600">한빌 선점</span>
-                  <span id="billing-stat-done" style="font-weight:800;color:#0EA5E9">—</span>
-                </div>
-                <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 10px;background:#FFF8F0;border-radius:7px">
-                  <span style="color:#B45309;font-weight:600">경쟁사 선점</span>
-                  <span id="billing-stat-left" style="font-weight:800;color:#F59E0B">—</span>
-                </div>
-                <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 10px;background:#F8FAFC;border-radius:7px">
-                  <span style="color:var(--g500);font-weight:600">전체 시군구</span>
-                  <span id="billing-stat-total" style="font-weight:800;color:var(--g600)">—</span>
-                </div>
+            </div>
+            <!-- 파이 클릭 시 빌링사 상세 -->
+            <div id="pie-tooltip" style="display:none;margin-top:8px;background:#1E293B;color:#fff;border-radius:8px;padding:8px 12px;font-size:11px;text-align:left;min-width:140px">
+              <div id="pie-tooltip-name" style="font-weight:700;color:#38BDF8;margin-bottom:4px"></div>
+              <div style="display:flex;justify-content:space-between;gap:12px">
+                <span style="color:#94A3B8">시군구 수</span><span id="pie-tooltip-cnt" style="font-weight:700"></span>
               </div>
+              <div style="display:flex;justify-content:space-between;gap:12px">
+                <span style="color:#94A3B8">점유율</span><span id="pie-tooltip-pct" style="font-weight:700;color:#4ADE80"></span>
+              </div>
+            </div>
+            <div class="donut-legend">
+              <div class="lg"><span class="sw" style="background:#0EA5E9"></span><span class="nm">한빌</span><span class="vl" id="pie-leg-hanvil" style="color:#0EA5E9"></span></div>
+              <div class="lg"><span class="sw" style="background:#F59E0B"></span><span class="nm">누리빌</span><span class="vl" id="pie-leg-nuri" style="color:#F59E0B"></span></div>
+              <div class="lg"><span class="sw" style="background:#10B981"></span><span class="nm">한전산업개발</span><span class="vl" id="pie-leg-hansan" style="color:#10B981"></span></div>
+            </div>
+            <div class="donut-legend" style="margin-top:10px;gap:6px">
+              <div class="lg" style="justify-content:space-between;padding:6px 10px;background:#F0F9FF;border-radius:7px"><span style="color:#075985;font-weight:600">한빌 선점</span><span id="billing-stat-done" style="font-weight:800;color:#0EA5E9">—</span></div>
+              <div class="lg" style="justify-content:space-between;padding:6px 10px;background:#FFF8F0;border-radius:7px"><span style="color:#B45309;font-weight:600">경쟁사 선점</span><span id="billing-stat-left" style="font-weight:800;color:#F59E0B">—</span></div>
+              <div class="lg" style="justify-content:space-between;padding:6px 10px;background:#F8FAFC;border-radius:7px"><span style="color:var(--g500);font-weight:600">전체 시군구</span><span id="billing-stat-total" style="font-weight:800;color:var(--g600)">—</span></div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- ── 한전 빌링 시장 점유율 (M/S) ── -->
-    <div class="panel" style="margin-top:14px">
-      <div class="ph">
-        <div class="ptt"><i class="ti ti-chart-pie-2" style="color:#0EA5E9"></i> 한전 전자청구 빌링 시장 점유율 (M/S)
-          <span style="font-size:10px;background:#E0F2FE;color:#075985;padding:2px 7px;border-radius:8px;font-weight:700;margin-left:4px">전체 1,012만 고객</span>
-        </div>
-      </div>
-      <div class="pb">
-        <!-- 시각적 바 차트 -->
-        <div style="margin-bottom:16px">
-          <div style="font-size:11px;color:var(--g500);margin-bottom:8px">전체 규모 기준 시장 점유율</div>
-          <div style="display:flex;flex-direction:column;gap:8px">
-            <div>
-              <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px">
-                <span style="font-weight:700;color:#0EA5E9">한빌 <span style="font-size:10px;color:var(--g500)">(SCG랩)</span></span>
-                <span style="font-weight:800;color:#0EA5E9">16.4% · 166만 고객</span>
-              </div>
-              <div style="background:#E2E8F0;border-radius:4px;height:14px;overflow:hidden">
-                <div style="width:16.4%;height:100%;background:linear-gradient(90deg,#0EA5E9,#0284C7);border-radius:4px;position:relative">
-                  <span style="position:absolute;right:4px;top:50%;transform:translateY(-50%);font-size:9px;color:#fff;font-weight:700;white-space:nowrap">16.4%</span>
-                </div>
+          <!-- [2] 전체 시장 규모 기준 점유율 -->
+          <div class="donut-card">
+            <div class="donut-card-title">전체 시장 규모 점유율 <span>1,012만 고객</span></div>
+            <div class="map-pie-wrap" style="width:150px;height:150px">
+              <canvas id="market-donut" width="150" height="150"></canvas>
+              <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none">
+                <div style="font-size:22px;font-weight:900;color:#075985">16.4%</div>
+                <div style="font-size:9px;color:var(--g400)">한빌 점유율</div>
               </div>
             </div>
-            <div>
-              <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px">
-                <span style="font-weight:600;color:#F59E0B">누리빌</span>
-                <span style="font-weight:700;color:#F59E0B">23.0% · 233만 고객</span>
-              </div>
-              <div style="background:#E2E8F0;border-radius:4px;height:14px;overflow:hidden">
-                <div style="width:23%;height:100%;background:linear-gradient(90deg,#F59E0B,#D97706);border-radius:4px">
-                </div>
-              </div>
-            </div>
-            <div>
-              <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px">
-                <span style="font-weight:600;color:#10B981">한전산업개발</span>
-                <span style="font-weight:700;color:#10B981">11.6% · 117만 고객</span>
-              </div>
-              <div style="background:#E2E8F0;border-radius:4px;height:14px;overflow:hidden">
-                <div style="width:11.6%;height:100%;background:linear-gradient(90deg,#10B981,#059669);border-radius:4px">
-                </div>
-              </div>
-            </div>
-            <div>
-              <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px">
-                <span style="font-weight:600;color:#94A3B8">한전ON <span style="font-size:10px;color:var(--g400)">(자사앱)</span></span>
-                <span style="font-weight:700;color:#94A3B8">49.0% · 496만 고객</span>
-              </div>
-              <div style="background:#E2E8F0;border-radius:4px;height:14px;overflow:hidden">
-                <div style="width:49%;height:100%;background:linear-gradient(90deg,#94A3B8,#64748B);border-radius:4px">
-                </div>
-              </div>
+            <div class="donut-legend">
+              <div class="lg"><span class="sw" style="background:#0EA5E9"></span><span class="nm">한빌</span><span class="vl" style="color:#0EA5E9">16.4% · 166만</span></div>
+              <div class="lg"><span class="sw" style="background:#F59E0B"></span><span class="nm">누리빌</span><span class="vl" style="color:#F59E0B">23.0% · 233만</span></div>
+              <div class="lg"><span class="sw" style="background:#10B981"></span><span class="nm">한전산업개발</span><span class="vl" style="color:#10B981">11.6% · 117만</span></div>
+              <div class="lg"><span class="sw" style="background:#94A3B8"></span><span class="nm">한전ON <span style="color:var(--g400)">(자사앱)</span></span><span class="vl" style="color:#64748B">49.0% · 496만</span></div>
             </div>
           </div>
-        </div>
 
-        <!-- 구분별 상세 표 -->
-        <div style="font-size:11px;color:var(--g500);margin-bottom:6px">고객 유형별 세부 현황 <span style="color:var(--g400)">(단위: 고객 수)</span></div>
-        <div style="overflow-x:auto">
-          <table style="width:100%;border-collapse:collapse;font-size:11px;min-width:420px">
-            <thead>
-              <tr style="background:#F8FAFC;border-bottom:2px solid var(--g200)">
-                <th style="padding:7px 10px;text-align:left;color:var(--g600);font-weight:700">구분</th>
-                <th style="padding:7px 8px;text-align:right;color:#0EA5E9;font-weight:700">한빌</th>
-                <th style="padding:7px 8px;text-align:right;color:#F59E0B;font-weight:700">누리빌</th>
-                <th style="padding:7px 8px;text-align:right;color:#10B981;font-weight:700">한전산업개발</th>
-                <th style="padding:7px 8px;text-align:right;color:#94A3B8;font-weight:700">한전ON</th>
-                <th style="padding:7px 8px;text-align:right;color:var(--g700);font-weight:700">전체</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr style="border-bottom:1px solid var(--g100)">
-                <td style="padding:7px 10px;color:var(--g700);font-weight:600">지자체</td>
-                <td style="padding:7px 8px;text-align:right;color:#0EA5E9;font-weight:700">744,960</td>
-                <td style="padding:7px 8px;text-align:right;color:#F59E0B">1,068,628</td>
-                <td style="padding:7px 8px;text-align:right;color:#10B981">340,382</td>
-                <td style="padding:7px 8px;text-align:right;color:#94A3B8">—</td>
-                <td style="padding:7px 8px;text-align:right;color:var(--g600)">2,153,970</td>
-              </tr>
-              <tr style="border-bottom:1px solid var(--g100)">
-                <td style="padding:7px 10px;color:var(--g700);font-weight:600">통신/기관</td>
-                <td style="padding:7px 8px;text-align:right;color:#0EA5E9;font-weight:700">147,765</td>
-                <td style="padding:7px 8px;text-align:right;color:#F59E0B">336,708</td>
-                <td style="padding:7px 8px;text-align:right;color:#10B981">45,859</td>
-                <td style="padding:7px 8px;text-align:right;color:#94A3B8">—</td>
-                <td style="padding:7px 8px;text-align:right;color:var(--g600)">530,332</td>
-              </tr>
-              <tr style="border-bottom:1px solid var(--g100)">
-                <td style="padding:7px 10px;color:var(--g700);font-weight:600">개인</td>
-                <td style="padding:7px 8px;text-align:right;color:#0EA5E9;font-weight:700">770,618</td>
-                <td style="padding:7px 8px;text-align:right;color:#F59E0B">922,264</td>
-                <td style="padding:7px 8px;text-align:right;color:#10B981">787,044</td>
-                <td style="padding:7px 8px;text-align:right;color:#94A3B8">4,957,000</td>
-                <td style="padding:7px 8px;text-align:right;color:var(--g600)">7,436,926</td>
-              </tr>
-              <tr style="background:#F8FAFC;font-weight:700;border-top:2px solid var(--g200)">
-                <td style="padding:8px 10px;color:var(--g800)">총계</td>
-                <td style="padding:8px 8px;text-align:right;color:#0EA5E9">1,663,343</td>
-                <td style="padding:8px 8px;text-align:right;color:#F59E0B">2,327,600</td>
-                <td style="padding:8px 8px;text-align:right;color:#10B981">1,173,285</td>
-                <td style="padding:8px 8px;text-align:right;color:#94A3B8">4,957,000</td>
-                <td style="padding:8px 8px;text-align:right;color:var(--g700)">10,121,228</td>
-              </tr>
-              <tr style="background:#EFF6FF">
-                <td style="padding:8px 10px;color:var(--g700);font-weight:700">M/S</td>
-                <td style="padding:8px 8px;text-align:right;color:#0EA5E9;font-weight:800;font-size:12px">16.4%</td>
-                <td style="padding:8px 8px;text-align:right;color:#F59E0B;font-weight:700">23.0%</td>
-                <td style="padding:8px 8px;text-align:right;color:#10B981;font-weight:700">11.6%</td>
-                <td style="padding:8px 8px;text-align:right;color:#94A3B8;font-weight:700">49.0%</td>
-                <td style="padding:8px 8px;text-align:right;color:var(--g600);font-weight:700">100%</td>
-              </tr>
-            </tbody>
-          </table>
+          <!-- [3] 고객 유형별 세부 현황 (한빌) -->
+          <div class="donut-card">
+            <div class="donut-card-title">한빌 고객 유형 구성 <span>166만 고객</span></div>
+            <div class="map-pie-wrap" style="width:150px;height:150px">
+              <canvas id="custtype-donut" width="150" height="150"></canvas>
+              <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none">
+                <div style="font-size:16px;font-weight:900;color:#075985">166만</div>
+                <div style="font-size:9px;color:var(--g400)">한빌 총 고객</div>
+              </div>
+            </div>
+            <div class="donut-legend">
+              <div class="lg"><span class="sw" style="background:#0EA5E9"></span><span class="nm">지자체</span><span class="vl" style="color:#0EA5E9">44.8% · 74.5만</span></div>
+              <div class="lg"><span class="sw" style="background:#38BDF8"></span><span class="nm">통신·기관</span><span class="vl" style="color:#0284C7">8.9% · 14.8만</span></div>
+              <div class="lg"><span class="sw" style="background:#7DD3FC"></span><span class="nm">개인</span><span class="vl" style="color:#0369A1">46.3% · 77.1만</span></div>
+            </div>
+          </div>
+
         </div>
-        <div style="font-size:10px;color:var(--g400);margin-top:6px">※ 한전ON은 한전 자사 서비스로 시장구분이 다름. 3사 빌링 대행사 기준 한빌 M/S = 33.3%</div>
       </div>
     </div>
 
@@ -769,11 +732,10 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
             document.getElementById('map-popup-title').textContent = p.adm_nm;
             document.getElementById('map-popup-count').textContent = co || '미선점';
             document.getElementById('map-popup-qty').textContent   = co ? coQty+'개소' : '—';
+            document.getElementById('map-popup-total').textContent = coTotal+'개소';
             document.getElementById('map-popup-ratio').textContent = co ? coPct+'%' : '—';
             document.getElementById('map-popup-count').style.color = co ? (COMPANY_COLOR[co]||'#38BDF8') : '#94A3B8';
-            popup.style.display = 'block';
-            popup.style.left = (event.clientX + 14)+'px';
-            popup.style.top  = (event.clientY - 44)+'px';
+            openMapPopup(event);
             event.stopPropagation();
           });
           svgEl.appendChild(el);
@@ -805,9 +767,56 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
         jt.textContent = '제주';
         svgEl.appendChild(jt);
 
-        document.addEventListener('click', () => { popup.style.display = 'none'; });
         statusEl.textContent = `시군구 ${pr.sggPaths.length}개 로드 완료`;
       }
+
+      // 팝업 열기: 모바일=바텀시트, 데스크톱=가장자리 보정 말풍선
+      window.openMapPopup = function(event) {
+        const popup = document.getElementById('map-popup');
+        const overlay = document.getElementById('map-popup-overlay');
+        const isMobile = window.matchMedia('(max-width:768px)').matches;
+        popup.style.display = 'block';
+        if (isMobile) {
+          // 바텀시트: 위치 고정, 슬라이드 업 (reflow로 트랜지션 트리거)
+          overlay.style.display = 'block';
+          popup.style.left = ''; popup.style.top = '';
+          popup.classList.remove('open');
+          void popup.offsetHeight; // 강제 reflow
+          popup.classList.add('open');
+        } else {
+          overlay.style.display = 'none';
+          popup.classList.remove('open');
+          // 일단 배치 후 실제 크기로 가장자리 보정
+          popup.style.left = '-9999px';
+          popup.style.top = '0px';
+          const pw = popup.offsetWidth, ph = popup.offsetHeight;
+          const pad = 12;
+          let x = (event.clientX || 0) + 14;
+          let y = (event.clientY || 0) - 44;
+          if (x + pw + pad > window.innerWidth)  x = event.clientX - pw - 14;
+          if (x < pad) x = pad;
+          if (y + ph + pad > window.innerHeight) y = window.innerHeight - ph - pad;
+          if (y < pad) y = pad;
+          popup.style.left = x + 'px';
+          popup.style.top  = y + 'px';
+        }
+      };
+      window.closeMapPopup = function() {
+        const popup = document.getElementById('map-popup');
+        const overlay = document.getElementById('map-popup-overlay');
+        popup.classList.remove('open');
+        overlay.style.display = 'none';
+        // 모바일 슬라이드 다운 애니메이션 후 숨김
+        if (window.matchMedia('(max-width:768px)').matches) {
+          setTimeout(() => { popup.style.display = 'none'; }, 280);
+        } else {
+          popup.style.display = 'none';
+        }
+      };
+      // 데스크톱: 지도 밖 클릭 시 닫기 (팝업/경로 자체 클릭은 stopPropagation)
+      document.addEventListener('click', function() {
+        if (!window.matchMedia('(max-width:768px)').matches) window.closeMapPopup();
+      });
 
       // --- 아래는 renderMap의 나머지 (삭제될 코드 — 빈 함수로 대체) ---
 
@@ -953,9 +962,54 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
         });
       }
 
+      // ── 범용 도넛 차트 (시장규모 / 고객유형) ──
+      function drawDonut(canvasId, slices) {
+        const canvas = document.getElementById(canvasId);
+        if (!canvas) return;
+        const wrap = canvas.parentElement;
+        const sz = Math.min(wrap.clientWidth || 150, 170);
+        canvas.width = sz; canvas.height = sz;
+        canvas.style.width = sz+'px'; canvas.style.height = sz+'px';
+        const ctx = canvas.getContext('2d');
+        const cx = sz/2, cy = sz/2, r = sz*0.44, iR = sz*0.28;
+        const total = slices.reduce((s,x)=>s+x.n,0) || 1;
+        ctx.clearRect(0,0,sz,sz);
+        let a0 = -Math.PI/2;
+        slices.forEach(s => {
+          if (!s.n) return;
+          const a1 = a0 + (s.n/total)*Math.PI*2;
+          ctx.beginPath(); ctx.moveTo(cx,cy);
+          ctx.arc(cx,cy,r,a0,a1); ctx.closePath();
+          ctx.fillStyle = s.color; ctx.fill();
+          a0 = a1;
+        });
+        ctx.beginPath(); ctx.arc(cx,cy,iR,0,Math.PI*2);
+        ctx.fillStyle='#fff'; ctx.fill();
+      }
+      function renderMarketDonut() {
+        drawDonut('market-donut', [
+          { color:'#0EA5E9', n:1663343 },  // 한빌
+          { color:'#F59E0B', n:2327600 },  // 누리빌
+          { color:'#10B981', n:1173285 },  // 한전산업개발
+          { color:'#94A3B8', n:4957000 },  // 한전ON
+        ]);
+      }
+      function renderCustTypeDonut() {
+        drawDonut('custtype-donut', [
+          { color:'#0EA5E9', n:744960 },  // 지자체
+          { color:'#38BDF8', n:147765 },  // 통신·기관
+          { color:'#7DD3FC', n:770618 },  // 개인
+        ]);
+      }
+
       // 즉시 실행: pre-rendered 경로로 지도 표시
       renderMapFromPrerender();
       renderPie();
+      renderMarketDonut();
+      renderCustTypeDonut();
+      window.addEventListener('resize', function() {
+        renderMarketDonut(); renderCustTypeDonut();
+      });
     })();
     </script>
 
@@ -1249,7 +1303,7 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
       
       
       <!-- 기사 목록 (정적 HTML + renderNews()로 업데이트 가능) -->
-      <!-- 자동 업데이트: 2026-07-02T07:56 -->
+      <!-- 자동 업데이트: 2026-07-07T07:56 -->
       <div id="news-list">
         <!-- 메일 미리보기 -->
         <div style="border:1px solid #E2E8F0;border-radius:12px;overflow:hidden;margin-bottom:16px">
@@ -1263,14 +1317,14 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
             <table style="width:100%;font-size:12px;border-collapse:collapse">
               <tr><td style="color:#94A3B8;width:40px;padding:3px 0">발신</td><td style="color:#334155;padding:3px 0">jem@scglab.com (담당자)</td></tr>
               <tr><td style="color:#94A3B8;padding:3px 0">제목</td>
-                <td style="color:#1E293B;font-weight:700;padding:3px 0" id="news-subject">[한빌] 한전 청구서사업 뉴스 스크랩 (2026년 7월 2일)</td></tr>
+                <td style="color:#1E293B;font-weight:700;padding:3px 0" id="news-subject">[한빌] 한전 청구서사업 뉴스 스크랩 (2026년 7월 7일)</td></tr>
             </table>
           </div>
           <!-- 본문 -->
           <div style="background:#fff;padding:20px 22px">
             <p style="font-size:13px;color:#475569;margin:0 0 14px;line-height:1.7">
               안녕하세요, SCG랩 영업기획팀입니다.<br>
-              2026년 7월 2일 한전 청구서·빌링·전자청구서·에너지정책 관련 동향 중 실무에 영향을 줄 주요 기사 <strong id="news-count-text">10건</strong>을 선별하였습니다.
+              2026년 7월 7일 한전 청구서·빌링·전자청구서·에너지정책 관련 동향 중 실무에 영향을 줄 주요 기사 <strong id="news-count-text">10건</strong>을 선별하였습니다.
             </p>
             
             <!-- 오늘의 브리핑 -->
@@ -1287,11 +1341,11 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
             <hr style="border:none;border-top:1px solid #E2E8F0;margin-bottom:16px">
             
           <!-- 기사 1 -->
-          <div class="news-article-card" data-no="1" data-title="환경공단, 전기차 충전시설 보조사업에 디지털화폐 도입" data-content="환경공단, 전기차 충전시설 보조사업에 디지털화폐 도입 예정임 디지털화폐 도입으로 보조금 관리체계의 디지털 전환에 나선다" data-url="https://www.electimes.com/news/articleView.html?idxno=369877" data-source="전기신문" data-date="2026-07-02" data-line1="환경공단, 전기차 충전시설 보조사업에 디지털화폐 도입 예정임" data-line2="디지털화폐 도입으로 보조금 관리체계의 디지털 전환에 나선다" style="margin-bottom:20px">
+          <div class="news-article-card" data-no="1" data-title="환경공단, 전기차 충전시설 보조사업에 디지털화폐 도입" data-content="환경공단, 전기차 충전시설 보조사업에 디지털화폐 도입 예정임 디지털화폐 도입으로 보조금 관리체계의 디지털 전환에 나선다" data-url="https://www.electimes.com/news/articleView.html?idxno=369877" data-source="전기신문" data-date="2026-07-07" data-line1="환경공단, 전기차 충전시설 보조사업에 디지털화폐 도입 예정임" data-line2="디지털화폐 도입으로 보조금 관리체계의 디지털 전환에 나선다" style="margin-bottom:20px">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;gap:8px;flex-wrap:wrap">
               <div style="display:flex;align-items:center;gap:8px">
                 <span style="background:#075985;color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px">기사 1</span>
-                <span style="font-size:11px;color:#94A3B8">전기신문 · 2026-07-02</span>
+                <span style="font-size:11px;color:#94A3B8">전기신문 · 2026-07-07</span>
               </div>
               <label style="display:flex;align-items:center;gap:5px;cursor:pointer;font-size:11.5px;color:var(--sky-dark);font-weight:600;user-select:none">
                 <input type="checkbox" class="news-check" data-no="1" checked
@@ -1322,11 +1376,11 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
           </div>
             <hr style="border:none;border-top:1px dashed #E2E8F0;margin-top:18px;margin-bottom:18px">
           <!-- 기사 2 -->
-          <div class="news-article-card" data-no="2" data-title="기후부, V2G 보급 전략 윤곽…보상은 &#39;현금&#39; 대신 &#39;무료 충전&#39;" data-content="전기차 배터리를 활용한 V2G 상용화 전략의 밑그림을 공개함 보상은 &#39;현금&#39; 대신 &#39;무료 충전&#39;으로 전환할 예정임" data-url="https://www.electimes.com/news/articleView.html?idxno=369764" data-source="전기신문" data-date="2026-07-02" data-line1="전기차 배터리를 활용한 V2G 상용화 전략의 밑그림을 공개함" data-line2="보상은 '현금' 대신 '무료 충전'으로 전환할 예정임" style="margin-bottom:20px">
+          <div class="news-article-card" data-no="2" data-title="기후부, V2G 보급 전략 윤곽…보상은 &#39;현금&#39; 대신 &#39;무료 충전&#39;" data-content="전기차 배터리를 활용한 V2G 상용화 전략의 밑그림을 공개함 보상은 &#39;현금&#39; 대신 &#39;무료 충전&#39;으로 전환할 예정임" data-url="https://www.electimes.com/news/articleView.html?idxno=369764" data-source="전기신문" data-date="2026-07-07" data-line1="전기차 배터리를 활용한 V2G 상용화 전략의 밑그림을 공개함" data-line2="보상은 '현금' 대신 '무료 충전'으로 전환할 예정임" style="margin-bottom:20px">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;gap:8px;flex-wrap:wrap">
               <div style="display:flex;align-items:center;gap:8px">
                 <span style="background:#075985;color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px">기사 2</span>
-                <span style="font-size:11px;color:#94A3B8">전기신문 · 2026-07-02</span>
+                <span style="font-size:11px;color:#94A3B8">전기신문 · 2026-07-07</span>
               </div>
               <label style="display:flex;align-items:center;gap:5px;cursor:pointer;font-size:11.5px;color:var(--sky-dark);font-weight:600;user-select:none">
                 <input type="checkbox" class="news-check" data-no="2" checked
@@ -1357,11 +1411,11 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
           </div>
             <hr style="border:none;border-top:1px dashed #E2E8F0;margin-top:18px;margin-bottom:18px">
           <!-- 기사 3 -->
-          <div class="news-article-card" data-no="3" data-title="미래 전력계통 운영방안 논의" data-content="재생에너지 확대와 전력수요 증가로 전력시장 환경이 변화함 안정적인 전력공급과 효율적인 전력운영을 위한 논의를 진행함" data-url="https://www.electimes.com/news/articleView.html?idxno=369845" data-source="전기신문" data-date="2026-07-02" data-line1="재생에너지 확대와 전력수요 증가로 전력시장 환경이 변화함" data-line2="안정적인 전력공급과 효율적인 전력운영을 위한 논의를 진행함" style="margin-bottom:20px">
+          <div class="news-article-card" data-no="3" data-title="미래 전력계통 운영방안 논의" data-content="재생에너지 확대와 전력수요 증가로 전력시장 환경이 변화함 안정적인 전력공급과 효율적인 전력운영을 위한 논의를 진행함" data-url="https://www.electimes.com/news/articleView.html?idxno=369845" data-source="전기신문" data-date="2026-07-07" data-line1="재생에너지 확대와 전력수요 증가로 전력시장 환경이 변화함" data-line2="안정적인 전력공급과 효율적인 전력운영을 위한 논의를 진행함" style="margin-bottom:20px">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;gap:8px;flex-wrap:wrap">
               <div style="display:flex;align-items:center;gap:8px">
                 <span style="background:#075985;color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px">기사 3</span>
-                <span style="font-size:11px;color:#94A3B8">전기신문 · 2026-07-02</span>
+                <span style="font-size:11px;color:#94A3B8">전기신문 · 2026-07-07</span>
               </div>
               <label style="display:flex;align-items:center;gap:5px;cursor:pointer;font-size:11.5px;color:var(--sky-dark);font-weight:600;user-select:none">
                 <input type="checkbox" class="news-check" data-no="3" checked
@@ -1532,11 +1586,11 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
           </div>
             <hr style="border:none;border-top:1px dashed #E2E8F0;margin-top:18px;margin-bottom:18px">
           <!-- 기사 8 -->
-          <div class="news-article-card" data-no="8" data-title="서라벌도시가스, ‘지역 상생 ESG 경영’ 앞장" data-content="서라벌도시가스, &#39;지역 상생 ESG 경영&#39; 앞장함 지역 사회와 함께하는 ESG 경영을 강화할 예정임" data-url="https://www.gasnews.com/news/articleView.html?idxno=125824" data-source="가스신문" data-date="2026-07-02" data-line1="서라벌도시가스, '지역 상생 ESG 경영' 앞장함" data-line2="지역 사회와 함께하는 ESG 경영을 강화할 예정임" style="margin-bottom:20px">
+          <div class="news-article-card" data-no="8" data-title="서라벌도시가스, ‘지역 상생 ESG 경영’ 앞장" data-content="서라벌도시가스, &#39;지역 상생 ESG 경영&#39; 앞장함 지역 사회와 함께하는 ESG 경영을 강화할 예정임" data-url="https://www.gasnews.com/news/articleView.html?idxno=125824" data-source="가스신문" data-date="2026-07-07" data-line1="서라벌도시가스, '지역 상생 ESG 경영' 앞장함" data-line2="지역 사회와 함께하는 ESG 경영을 강화할 예정임" style="margin-bottom:20px">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;gap:8px;flex-wrap:wrap">
               <div style="display:flex;align-items:center;gap:8px">
                 <span style="background:#075985;color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px">기사 8</span>
-                <span style="font-size:11px;color:#94A3B8">가스신문 · 2026-07-02</span>
+                <span style="font-size:11px;color:#94A3B8">가스신문 · 2026-07-07</span>
               </div>
               <label style="display:flex;align-items:center;gap:5px;cursor:pointer;font-size:11.5px;color:var(--sky-dark);font-weight:600;user-select:none">
                 <input type="checkbox" class="news-check" data-no="8" checked
@@ -1567,11 +1621,11 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
           </div>
             <hr style="border:none;border-top:1px dashed #E2E8F0;margin-top:18px;margin-bottom:18px">
           <!-- 기사 9 -->
-          <div class="news-article-card" data-no="9" data-title="미래기준연구소, 수소배관망 AI 안전관리 구축 나선다" data-content="미래기준연구소, 수소배관망 AI 안전관리 구축함 AI 안전관리 기술을 적용하여 안전한 수소배관망 운영을 확보할 예정임" data-url="https://www.gasnews.com/news/articleView.html?idxno=125832" data-source="가스신문" data-date="2026-07-02" data-line1="미래기준연구소, 수소배관망 AI 안전관리 구축함" data-line2="AI 안전관리 기술을 적용하여 안전한 수소배관망 운영을 확보할 예정임" style="margin-bottom:20px">
+          <div class="news-article-card" data-no="9" data-title="미래기준연구소, 수소배관망 AI 안전관리 구축 나선다" data-content="미래기준연구소, 수소배관망 AI 안전관리 구축함 AI 안전관리 기술을 적용하여 안전한 수소배관망 운영을 확보할 예정임" data-url="https://www.gasnews.com/news/articleView.html?idxno=125832" data-source="가스신문" data-date="2026-07-07" data-line1="미래기준연구소, 수소배관망 AI 안전관리 구축함" data-line2="AI 안전관리 기술을 적용하여 안전한 수소배관망 운영을 확보할 예정임" style="margin-bottom:20px">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;gap:8px;flex-wrap:wrap">
               <div style="display:flex;align-items:center;gap:8px">
                 <span style="background:#075985;color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px">기사 9</span>
-                <span style="font-size:11px;color:#94A3B8">가스신문 · 2026-07-02</span>
+                <span style="font-size:11px;color:#94A3B8">가스신문 · 2026-07-07</span>
               </div>
               <label style="display:flex;align-items:center;gap:5px;cursor:pointer;font-size:11.5px;color:var(--sky-dark);font-weight:600;user-select:none">
                 <input type="checkbox" class="news-check" data-no="9" checked
@@ -1602,11 +1656,11 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
           </div>
             <hr style="border:none;border-top:1px dashed #E2E8F0;margin-top:18px;margin-bottom:18px">
           <!-- 기사 10 -->
-          <div class="news-article-card" data-no="10" data-title="한국에너지공단, 노사 공동으로 ’신(新) 안전보건경영방침‘ 선포" data-content="한국에너지공단, 노사 공동으로 &#39;신(新) 안전보건경영방침&#39; 선포함 신(新) 안전보건경영방침을 통해 안전한 운영을 확보할 예정임" data-url="https://www.gasnews.com/news/articleView.html?idxno=125823" data-source="가스신문" data-date="2026-07-02" data-line1="한국에너지공단, 노사 공동으로 '신(新) 안전보건경영방침' 선포함" data-line2="신(新) 안전보건경영방침을 통해 안전한 운영을 확보할 예정임">
+          <div class="news-article-card" data-no="10" data-title="한국에너지공단, 노사 공동으로 ’신(新) 안전보건경영방침‘ 선포" data-content="한국에너지공단, 노사 공동으로 &#39;신(新) 안전보건경영방침&#39; 선포함 신(新) 안전보건경영방침을 통해 안전한 운영을 확보할 예정임" data-url="https://www.gasnews.com/news/articleView.html?idxno=125823" data-source="가스신문" data-date="2026-07-07" data-line1="한국에너지공단, 노사 공동으로 '신(新) 안전보건경영방침' 선포함" data-line2="신(新) 안전보건경영방침을 통해 안전한 운영을 확보할 예정임">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;gap:8px;flex-wrap:wrap">
               <div style="display:flex;align-items:center;gap:8px">
                 <span style="background:#075985;color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px">기사 10</span>
-                <span style="font-size:11px;color:#94A3B8">가스신문 · 2026-07-02</span>
+                <span style="font-size:11px;color:#94A3B8">가스신문 · 2026-07-07</span>
               </div>
               <label style="display:flex;align-items:center;gap:5px;cursor:pointer;font-size:11.5px;color:var(--sky-dark);font-weight:600;user-select:none">
                 <input type="checkbox" class="news-check" data-no="10" checked
@@ -3061,94 +3115,94 @@ window.hbCopyScript = function() {
 // 검증일: 2026-06-25 / WebFetch로 URL 접속·제목·내용 확인 완료
 const NEWS_DATA = [
   {
-    no: 1, date: '2026-07-02', source: '전기신문',
-    title: '환경공단, 전기차 충전시설 보조사업에 디지털화폐 도입',
+    no: 1, date: '2026-07-07', source: '전기신문',
+    title: '한전, 전기요금 청구서 우편발송 \'경쟁입찰 전환\' 본격화',
     lines: [
-      '환경공단, 전기차 충전시설 보조사업에 디지털화폐 도입 예정임',
-      '디지털화폐 도입으로 보조금 관리체계의 디지털 전환에 나선다',
+      '한전이 전기요금 청구서 우편발송을 자회사 중심에서 중소기업 경쟁입찰 방식으로 전환 추진함',
+      '설명회를 열고 중소기업과의 상생을 지속 확대하겠다고 밝힘 (빌링 대행 시장 영향 주목)',
     ],
-    url: 'https://www.electimes.com/news/articleView.html?idxno=369877'
+    url: 'https://www.electimes.com/news/articleView.html?idxno=367258'
   },
   {
-    no: 2, date: '2026-07-02', source: '전기신문',
-    title: '기후부, V2G 보급 전략 윤곽…보상은 \'현금\' 대신 \'무료 충전\'',
+    no: 2, date: '2026-07-07', source: '전기신문',
+    title: '한전, 전자청구서 이용 고객 1500만 호 돌파',
     lines: [
-      '전기차 배터리를 활용한 V2G 상용화 전략의 밑그림을 공개함',
-      '보상은 \'현금\' 대신 \'무료 충전\'으로 전환할 예정임',
+      '한전 전기요금 전자청구서 이용 고객이 1500만 호를 넘어 전체 고객의 60% 이상 차지함',
+      '종이청구서를 전자청구서로 전환·유지하는 고객에게 포인트 인센티브 제공 예정임',
     ],
-    url: 'https://www.electimes.com/news/articleView.html?idxno=369764'
+    url: 'https://www.electimes.com/news/articleView.html?idxno=363407'
   },
   {
-    no: 3, date: '2026-07-02', source: '전기신문',
-    title: '미래 전력계통 운영방안 논의',
+    no: 3, date: '2026-07-07', source: '전기신문',
+    title: '한전, 에너지캐시백 확대…1% 절감해도 최대 120원/kWh 지급',
     lines: [
-      '재생에너지 확대와 전력수요 증가로 전력시장 환경이 변화함',
-      '안정적인 전력공급과 효율적인 전력운영을 위한 논의를 진행함',
+      '주택용 에너지캐시백 절감 기준을 3%에서 1% 이상으로 완화하고 지급단가를 최대 120원/kWh로 인상함',
+      '여름철 저녁시간대 최대 500원/kWh 추가 캐시백 등도 시범 운영함 (7월 본격 시행)',
     ],
-    url: 'https://www.electimes.com/news/articleView.html?idxno=369845'
+    url: 'https://www.electimes.com/news/articleView.html?idxno=369659'
   },
   {
-    no: 4, date: '2026-07-02', source: '가스신문',
-    title: '7월 국내 LPG가격 50원/kg 인상',
+    no: 4, date: '2026-07-07', source: '전기신문',
+    title: '한전, AI 활용해 여름철 전기요금 급증 미리 알려준다',
     lines: [
-      '7월 국내 LPG가격 50원/kg 인상함',
-      'LPG가격 인상으로 가스사에 대한 고객들의 관심이 높아질 예정임',
+      '한전이 AI로 여름철 전기요금 급증을 사전 예측·안내하는 서비스를 도입함',
+      '고객이 요금 부담을 미리 대비할 수 있도록 지원함',
     ],
-    url: 'https://www.gasnews.com/news/articleView.html?idxno=125785'
+    url: 'https://www.electimes.com/news/articleView.html?idxno=368863'
   },
   {
-    no: 5, date: '2026-07-02', source: '가스신문',
-    title: 'SK가스, 울산GPS 지분 49% 매각···1조2,242억원 확보',
+    no: 5, date: '2026-07-07', source: '전기신문',
+    title: '흩어진 39종 에너지 서비스 \'한 곳으로\'…한전 \'슬기로운 전기생활\' 플랫폼 오픈',
     lines: [
-      'SK가스, 울산GPS 지분 49% 매각함',
-      '매각금액 1조2,242억원으로 가스사에 대한 투자 기회가 열릴 예정임',
+      '한전이 흩어져 있던 39종 에너지 서비스를 통합한 \'슬기로운 전기생활\' 플랫폼을 오픈함',
+      '고객이 한 곳에서 다양한 전기 서비스를 이용할 수 있게 됨',
     ],
-    url: 'https://www.gasnews.com/news/articleView.html?idxno=125810'
+    url: 'https://www.electimes.com/news/articleView.html?idxno=366146'
   },
   {
-    no: 6, date: '2026-07-02', source: '가스신문',
-    title: '쉘, 2050년 글로벌 LNG 수요 연간 약 7억 톤 전망',
+    no: 6, date: '2026-07-07', source: '전기신문',
+    title: '연료비 상승 흐름 지속…한전 수익성 부담 확대 전망',
     lines: [
-      '2050년 글로벌 LNG 수요 연간 약 7억 톤 전망함',
-      'LNG 수요 증가로 가스사에 대한 고객들의 관심이 높아질 예정임',
+      '연료비 상승 흐름이 지속되며 한전의 수익성 부담이 확대될 것으로 전망됨',
+      '향후 전기요금 인상 압박 요인으로 작용할 수 있음',
     ],
-    url: 'https://www.gasnews.com/news/articleView.html?idxno=125809'
+    url: 'https://www.electimes.com/news/articleView.html?idxno=367497'
   },
   {
-    no: 7, date: '2026-07-02', source: '가스신문',
-    title: '한국에너지재단, 제7대 이태동 신임 이사장 취임',
+    no: 7, date: '2026-07-07', source: '전기신문',
+    title: '한전, 2026년 에너지 고속도로·AI 대전환·차세대 전력망 \'전면 가속\' 원년',
     lines: [
-      '한국에너지재단, 제7대 이사장 이태동 취임함',
-      '재단의 운영과 전략을 새롭게 이끌어 나갈 예정임',
+      '한전이 2026년을 에너지 고속도로·AI 대전환·차세대 전력망 전면 가속의 원년으로 선언함',
+      '국가 에너지 시스템의 근본적 전환에 속도를 냄',
     ],
-    url: 'https://www.gasnews.com/news/articleView.html?idxno=125806'
+    url: 'https://www.electimes.com/news/articleView.html?idxno=364724'
   },
   {
-    no: 8, date: '2026-07-02', source: '가스신문',
-    title: '서라벌도시가스, ‘지역 상생 ESG 경영’ 앞장',
+    no: 8, date: '2026-07-07', source: '가스신문',
+    title: '도시가스 파격 지원책 \'LPG와 충돌\'···불공정 정책 비판',
     lines: [
-      '서라벌도시가스, \'지역 상생 ESG 경영\' 앞장함',
-      '지역 사회와 함께하는 ESG 경영을 강화할 예정임',
+      '정부가 도시가스 미공급지역 공급배관 건설비의 70%를 보조하는 확대 정책을 추진함',
+      'LPG업계와 충돌하며 불공정 정책이라는 비판이 제기됨',
     ],
-    url: 'https://www.gasnews.com/news/articleView.html?idxno=125824'
+    url: 'https://www.gasnews.com/news/articleView.html?idxno=123182'
   },
   {
-    no: 9, date: '2026-07-02', source: '가스신문',
-    title: '미래기준연구소, 수소배관망 AI 안전관리 구축 나선다',
+    no: 9, date: '2026-07-07', source: '가스신문',
+    title: '정부, 도시가스용 LNG만 할당관세 차별적용',
     lines: [
-      '미래기준연구소, 수소배관망 AI 안전관리 구축함',
-      'AI 안전관리 기술을 적용하여 안전한 수소배관망 운영을 확보할 예정임',
+      '정부가 도시가스용 LNG에만 할당관세를 차별 적용함',
+      '도시가스 업계에서 형평성 논란이 이어짐',
     ],
-    url: 'https://www.gasnews.com/news/articleView.html?idxno=125832'
+    url: 'https://www.gasnews.com/news/articleView.html?idxno=120569'
   },
   {
-    no: 10, date: '2026-07-02', source: '가스신문',
-    title: '한국에너지공단, 노사 공동으로 ’신(新) 안전보건경영방침‘ 선포',
+    no: 10, date: '2026-07-07', source: '가스신문',
+    title: '가스공사, \'2026년 LNG생산기지 종합개선 워크숍\' 개최',
     lines: [
-      '한국에너지공단, 노사 공동으로 \'신(新) 안전보건경영방침\' 선포함',
-      '신(新) 안전보건경영방침을 통해 안전한 운영을 확보할 예정임',
+      '한국가스공사가 2026년 LNG생산기지 종합개선 워크숍을 개최함',
+      '생산기지 안전과 운영 효율 개선 방안을 논의함',
     ],
-    url: 'https://www.gasnews.com/news/articleView.html?idxno=125823'
+    url: 'https://www.gasnews.com/news/articleView.html?idxno=124870'
   }
 ];
 
