@@ -476,6 +476,16 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
 @media(max-width:420px){
   .stt-summary-grid{grid-template-columns:1fr}
 }
+
+/* ── 뉴스레터 카테고리 필터 탭 ── */
+.nl-cat-btn{padding:6px 13px;border-radius:20px;border:1px solid var(--g200);background:#fff;color:var(--g600);font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:5px;min-height:36px;transition:all .15s}
+.nl-cat-btn:hover{border-color:var(--sky-light);background:var(--sky-bg)}
+.nl-cat-btn.on{background:var(--sky);color:#fff;border-color:var(--sky)}
+.nl-cat-cnt{font-size:10px;background:rgba(0,0,0,.08);padding:1px 6px;border-radius:8px;font-weight:700}
+.nl-cat-btn.on .nl-cat-cnt{background:rgba(255,255,255,.25)}
+@media(max-width:480px){.nl-cat-btn{font-size:11px;padding:6px 10px}}
+
+@keyframes spin{to{transform:rotate(360deg)}}
 </style>
 </head>
 <body>
@@ -1480,7 +1490,10 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap;gap:8px">
       <div>
         <div style="font-size:14px;font-weight:700;color:var(--g800)">한전 청구서사업 일일 뉴스 스크랩</div>
-        <div style="font-size:11.5px;color:var(--g400);margin-top:2px">경영진 보고용 · 당일 주요 기사 10건 · 원하는 기사 선택 후 발송</div>
+        <div style="font-size:11.5px;color:var(--g400);margin-top:2px">
+          경영진 보고용 · <span id="nl-header-date" style="color:var(--sky-dark);font-weight:700">—</span> 기준 최신 기사 · 원하는 기사 선택 후 발송
+          <span id="nl-live-badge" style="display:none;margin-left:6px;font-size:10px;background:#DCFCE7;color:#166534;padding:1px 7px;border-radius:8px;font-weight:700"><i class="ti ti-broadcast" style="font-size:10px"></i> 실시간</span>
+        </div>
       </div>
       <div style="display:flex;gap:8px;flex-wrap:wrap">
         <button class="btn bo" onclick="refreshNews()"><i class="ti ti-refresh"></i> 새로고침</button>
@@ -1504,6 +1517,18 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
 
     <!-- 오늘 기사 패널 -->
     <div id="nl-panel-today">
+      <!-- 카테고리 필터 탭 -->
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px" id="nl-cat-tabs">
+        <button class="nl-cat-btn on" data-cat="all" onclick="filterNewsByCategory('all')">
+          <i class="ti ti-list" style="font-size:12px"></i> 전체 <span class="nl-cat-cnt" data-cat="all">0</span>
+        </button>
+        <button class="nl-cat-btn" data-cat="energy" onclick="filterNewsByCategory('energy')">
+          <i class="ti ti-bolt" style="font-size:12px"></i> 에너지 관련 사업 <span class="nl-cat-cnt" data-cat="energy">0</span>
+        </button>
+        <button class="nl-cat-btn" data-cat="local" onclick="filterNewsByCategory('local')">
+          <i class="ti ti-building-community" style="font-size:12px"></i> 지자체 뉴스 <span class="nl-cat-cnt" data-cat="local">0</span>
+        </button>
+      </div>
       <!-- 검색바 -->
       <div style="position:relative;margin-bottom:14px">
         <i class="ti ti-search" style="position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--g400);font-size:14px;pointer-events:none"></i>
@@ -3459,6 +3484,9 @@ function renderNews() {
     + String(now.getMonth() + 1).padStart(2, '0') + '-'
     + String(now.getDate()).padStart(2, '0');
   var today = now.toLocaleDateString('ko-KR', {year:'numeric', month:'long', day:'numeric'});
+  // 헤더 날짜 자동 최신화 (항상 시스템 당일 날짜)
+  var _hdrDate = document.getElementById('nl-header-date');
+  if (_hdrDate) _hdrDate.textContent = today;
 
   // 오늘 날짜 기사 우선, 없으면 가장 최근 날짜 기사 표시
   var allNews = NEWS_DATA || [];
@@ -3533,6 +3561,7 @@ function renderNews() {
       + ' data-url="' + n.url + '"'
       + ' data-source="' + n.source + '"'
       + ' data-date="' + n.date + '"'
+      + ' data-category="' + (n.category || categorizeNews(n.title, safeContent)) + '"'
       + ' data-line1="' + safeLine1 + '"'
       + ' data-line2="' + safeLine2 + '">';
     // 헤더 행: 기사번호 + 출처 + 체크박스
@@ -3571,6 +3600,8 @@ function renderNews() {
   html += '</div>'; // end 래퍼
 
   el.innerHTML = html;
+  if (typeof updateNewsCatCounts === 'function') updateNewsCatCounts();
+  if (typeof applyNewsFilters === 'function') applyNewsFilters();
 }
 
 // ─── 수신자 관리 ───
@@ -3784,33 +3815,174 @@ window.filterNewsHistory = function(q) { renderNewsHistory(q); };
 // ─── 뉴스 렌더 ───
 window.refreshNews = function() {
   const el = document.getElementById('news-list');
-  el.style.opacity = '.4';
-  setTimeout(() => { el.style.opacity = '1'; }, 600);
+  if (el) el.innerHTML = '<div style="text-align:center;padding:40px;color:var(--g400)"><i class="ti ti-loader-2" style="font-size:24px;animation:spin 1s linear infinite"></i><div style="margin-top:8px;font-size:12px">최신 기사를 불러오는 중...</div></div>';
+  if (typeof loadLiveNews === 'function') loadLiveNews(); else renderNews();
 };
 
 // ─── 뉴스 검색 필터 ───
+// ─── 뉴스 통합 필터 (검색어 + 카테고리 동시 적용, 새로고침 없이 즉시 반응) ───
+var _newsKeyword = '';
+var _newsCategory = 'all';
+
 window.filterNews = function(q) {
-  const cards = document.querySelectorAll('.news-article-card');
-  const kw = q.trim().toLowerCase();
-  let visible = 0;
-  cards.forEach(card => {
-    const title   = (card.dataset.title   || '').toLowerCase();
-    const content = (card.dataset.content || '').toLowerCase();
-    const match   = !kw || title.includes(kw) || content.includes(kw);
+  _newsKeyword = (q || '').trim().toLowerCase();
+  applyNewsFilters();
+};
+
+// 카테고리 탭 클릭 → 즉시 필터
+window.filterNewsByCategory = function(cat) {
+  _newsCategory = cat || 'all';
+  // 탭 활성 스타일
+  document.querySelectorAll('.nl-cat-btn').forEach(function(b){
+    b.classList.toggle('on', b.getAttribute('data-cat') === _newsCategory);
+  });
+  applyNewsFilters();
+};
+
+// 검색어 + 카테고리 교집합으로 카드 표시/숨김
+function applyNewsFilters() {
+  var cards = document.querySelectorAll('.news-article-card');
+  var visible = 0;
+  cards.forEach(function(card) {
+    var title   = (card.dataset.title   || '').toLowerCase();
+    var content = (card.dataset.content || '').toLowerCase();
+    var cat     = card.dataset.category || 'etc';
+    var kwMatch  = !_newsKeyword || title.includes(_newsKeyword) || content.includes(_newsKeyword);
+    var catMatch = _newsCategory === 'all' || cat === _newsCategory;
+    var match = kwMatch && catMatch;
     card.style.display = match ? '' : 'none';
-    // 구분선도 숨김
-    const prev = card.previousElementSibling;
+    var prev = card.previousElementSibling;
     if (prev && prev.tagName === 'HR') prev.style.display = match ? '' : 'none';
     if (match) visible++;
   });
-  // 검색 결과 카운트
-  const countEl = document.getElementById('news-search-count');
+  var countEl = document.getElementById('news-search-count');
   if (countEl) {
-    if (kw) { countEl.textContent = `${visible}건 검색됨`; countEl.style.display = ''; }
-    else     { countEl.style.display = 'none'; }
+    if (_newsKeyword || _newsCategory !== 'all') {
+      countEl.textContent = visible + '건 표시'; countEl.style.display = '';
+    } else { countEl.style.display = 'none'; }
   }
   updateNewsBadge();
-};
+}
+
+// ─── 카테고리 자동 분류 (제목·본문 키워드 기반) ───
+// energy = 에너지 관련 사업 / local = 지자체 뉴스 / etc = 기타
+function categorizeNews(title, content) {
+  var t = ((title || '') + ' ' + (content || '')).toLowerCase();
+  // 지자체 키워드 우선 (시·군·구, 지방자치, 조례 등)
+  var localKw = ['지자체','지방자치','시청','군청','구청','도청','시의회','조례','주민','행정','읍면동',
+                 '시장','군수','구청장','도지사','지방정부','관공서','민원'];
+  var energyKw = ['전기','전력','한전','에너지','청구서','빌링','요금','전자청구','태양광','재생에너지',
+                  'kwh','발전','전력망','에너지캐시백','스마트미터','ami','탄소','전기요금'];
+  for (var i=0;i<localKw.length;i++){ if (t.indexOf(localKw[i].toLowerCase())>=0) return 'local'; }
+  for (var j=0;j<energyKw.length;j++){ if (t.indexOf(energyKw[j].toLowerCase())>=0) return 'energy'; }
+  return 'etc';
+}
+
+// ─── 카테고리별 기사 수 카운트 → 탭 뱃지 갱신 ───
+function updateNewsCatCounts() {
+  var cards = document.querySelectorAll('.news-article-card');
+  var counts = { all:0, energy:0, local:0 };
+  cards.forEach(function(c){
+    counts.all++;
+    var cat = c.dataset.category;
+    if (cat === 'energy') counts.energy++;
+    else if (cat === 'local') counts.local++;
+  });
+  document.querySelectorAll('.nl-cat-cnt').forEach(function(el){
+    var cat = el.getAttribute('data-cat');
+    if (counts[cat] !== undefined) el.textContent = counts[cat];
+  });
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   실시간 뉴스 연동 (loadLiveNews)
+   ────────────────────────────────────────────────────────────────────
+   페이지 로딩 시 '당일/전일' 전기·에너지 관련 기사를 실시간으로 가져옵니다.
+   기사 구조: { title, link, pubDate, category }
+
+   ⚠️ CORS(교차 출처) 이슈 안내 ─────────────────────────────────────
+   브라우저에서 외부 뉴스 사이트(구글 뉴스 RSS, 네이버 API 등)를 직접
+   fetch하면 CORS 정책으로 차단됩니다. 아래 3가지 우회 방법이 있습니다.
+
+   [방법 1] 공개 CORS 프록시 (테스트/데모용, 아래 기본 적용)
+     - 예: https://api.allorigins.win/raw?url=<인코딩된 RSS URL>
+     - 장점: 별도 서버 불필요  단점: 안정성·속도·보안 보장 안 됨(운영 부적합)
+
+   [방법 2] 서버 프록시 직접 구축 (운영 권장) ★
+     - Node/Express 예시:
+         const Parser = require('rss-parser');
+         app.get('/api/news', async (req,res) => {
+           const feed = await new Parser().parseURL(
+             'https://news.google.com/rss/search?q=전기요금+OR+한전+에너지&hl=ko&gl=KR&ceid=KR:ko');
+           res.json(feed.items.map(it => ({
+             title: it.title, link: it.link,
+             pubDate: it.pubDate, category: categorize(it.title)
+           })));
+         });
+     - 프런트에서는 same-origin '/api/news'만 호출 → CORS 없음
+
+   [방법 3] 스크래핑 후 정적 JSON 배포 (현재 대시보드 방식)
+     - 서버 크론(cron)이 매일 뉴스를 스크래핑 → news.json 생성
+     - 예: node raw_data/auto_news.js  →  raw_data/news.json
+     - 대시보드는 fetch('raw_data/news.json')로 로드 (same-origin, CORS 없음)
+     - 가장 안정적. 외부 API 장애·차단에도 대시보드 정상 동작
+   ════════════════════════════════════════════════════════════════════ */
+async function loadLiveNews() {
+  // 구글 뉴스 RSS (전기요금·한전·에너지 키워드, 한국어)
+  var RSS_URL = 'https://news.google.com/rss/search?q=' +
+    encodeURIComponent('전기요금 OR 한전 OR 전력 OR 에너지 청구서') +
+    '&hl=ko&gl=KR&ceid=KR:ko';
+  // [방법 1] 공개 CORS 프록시 경유 (데모). 운영 시 [방법 2/3]으로 교체 권장.
+  var PROXY = 'https://api.allorigins.win/raw?url=';
+  var todayISO = (function(){ var d=new Date();
+    return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); })();
+
+  try {
+    var res = await fetch(PROXY + encodeURIComponent(RSS_URL), { cache:'no-store' });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    var xmlText = await res.text();
+    var xml = new DOMParser().parseFromString(xmlText, 'application/xml');
+    var items = Array.prototype.slice.call(xml.querySelectorAll('item')).slice(0, 12);
+    if (!items.length) throw new Error('no items');
+
+    var live = items.map(function(it, i) {
+      var title = (it.querySelector('title') || {}).textContent || '';
+      var link  = (it.querySelector('link')  || {}).textContent || '';
+      var pub   = (it.querySelector('pubDate')|| {}).textContent || '';
+      var srcEl = it.querySelector('source');
+      var source = srcEl ? srcEl.textContent : '구글뉴스';
+      var desc  = (it.querySelector('description') || {}).textContent || '';
+      desc = desc.replace(/<[^>]+>/g, '').slice(0, 120);
+      var d = pub ? new Date(pub) : new Date();
+      var dISO = d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+      // NEWS_DATA 호환 구조 + 요구된 {title, link, pubDate, category}
+      return {
+        no: i+1, date: dISO, source: source,
+        title: title.replace(/ - .*$/, ''),   // 구글뉴스 제목 끝 '- 언론사' 제거
+        lines: [ desc || title, '' ],
+        url: link, link: link, pubDate: pub,
+        category: categorizeNews(title, desc)
+      };
+    });
+    // 최신순 정렬, 당일 우선
+    live.sort(function(a,b){ return b.date.localeCompare(a.date); });
+    window.NEWS_LIVE = live;
+    // 전역 NEWS_DATA 교체 후 렌더 (동적 렌더링)
+    try { NEWS_DATA.length = 0; Array.prototype.push.apply(NEWS_DATA, live); } catch(e) { window.NEWS_DATA = live; }
+    var badge = document.getElementById('nl-live-badge');
+    if (badge) badge.style.display = '';
+    renderNews();
+    console.log('[뉴스] 실시간 ' + live.length + '건 로드 완료 (' + todayISO + ')');
+  } catch (err) {
+    // 실패 시 기존 정적 데이터로 폴백 (CORS·네트워크·프록시 장애 대비)
+    console.warn('[뉴스] 실시간 로드 실패 → 정적 데이터 사용:', err.message);
+    var badge2 = document.getElementById('nl-live-badge');
+    if (badge2) badge2.style.display = 'none';
+    renderNews();
+  }
+}
+
+
 
 // ─── 체크박스 변경 시 배지 업데이트 ───
 function updateNewsBadge() {
@@ -4116,7 +4288,7 @@ window.goSec = function(name, el) {
   const bn = document.getElementById('bn-' + name);
   if (bn) bn.classList.add('on');
   if (name === 'predict') renderPredictSection();
-  if (name === 'newsletter') renderNews();
+  if (name === 'newsletter') { renderNews(); if (typeof loadLiveNews==='function') loadLiveNews(); }
   if (name === 'stt') {
     setTimeout(function() {
       renderPredictSection();
@@ -7252,7 +7424,7 @@ renderKeywordCloud();
 // STT 전체 기간으로 초기화
 applySTTFilter('2026-04-01','2026-06-30');
 renderPredictSection();
-renderNews();
+try { renderNews(); } catch(e){ console.warn('renderNews init:', e.message); }
 renderRecipients();
 updateNlHistoryBadge();
 // STT 분석 패널(질향상·VOC·개선제안)은 로드 완료 후 재렌더 (init 타이밍 안전장치)
@@ -7282,6 +7454,20 @@ setInterval(function() {
   var next = top < 60 ? '민원 상담 처리 현황' : '한전 빌링 영업 현황';
   if (ps.textContent !== next) ps.textContent = next;
 }, 150);
+</script>
+<script>
+// ═══ 뉴스 독립 초기화 (다른 init 스크립트 오류와 무관하게 항상 실행) ═══
+(function initNews(){
+  function go(){
+    try { if (typeof renderNews === 'function') renderNews(); } catch(e){ console.warn('renderNews:', e.message); }
+    if (typeof loadLiveNews === 'function') loadLiveNews();  // 실시간 로드 (실패 시 정적 폴백)
+  }
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    setTimeout(go, 0);
+  } else {
+    window.addEventListener('DOMContentLoaded', go);
+  }
+})();
 </script>
 </body>
 </html>
