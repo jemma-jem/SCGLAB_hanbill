@@ -407,6 +407,13 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
 #map-popup .mp-row{display:flex;justify-content:space-between;gap:14px;margin-top:7px}
 #map-popup .mp-label{color:#94A3B8}
 #map-popup .mp-val{font-weight:700}
+#map-popup-cta{display:none;width:100%;margin-top:14px;padding:10px 12px;border:none;
+  border-radius:9px;background:linear-gradient(90deg,#0EA5E9,#0284C7);color:#fff;
+  font-size:12.5px;font-weight:800;cursor:pointer;align-items:center;justify-content:center;
+  gap:6px;box-shadow:0 3px 10px rgba(14,165,233,.4)}
+#map-popup-cta:hover{background:linear-gradient(90deg,#0284C7,#075985)}
+#map-popup-cta.show{display:flex}
+@media(max-width:768px){ #map-popup-cta{margin-top:18px;padding:14px;font-size:15px} }
 /* ── 모바일: 바텀시트로 전환 ── */
 @media(max-width:768px){
   #map-popup{
@@ -523,6 +530,10 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
                 <span class="mp-label">선점 비율</span>
                 <span id="map-popup-ratio" class="mp-val" style="color:#4ADE80"></span>
               </div>
+              <!-- 미선정 지역 전용: 영업 진입 제안 -->
+              <button id="map-popup-cta" onclick="proposeSales(event)">
+                <i class="ti ti-target-arrow" style="font-size:14px"></i> 영업 진입 제안
+              </button>
             </div>
           </div>
 
@@ -735,6 +746,11 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
             document.getElementById('map-popup-total').textContent = coTotal+'개소';
             document.getElementById('map-popup-ratio').textContent = co ? coPct+'%' : '—';
             document.getElementById('map-popup-count').style.color = co ? (COMPANY_COLOR[co]||'#38BDF8') : '#94A3B8';
+            // 미선정 지역: 영업 진입 제안 버튼 노출 + 지역명 저장
+            window._mapSelectedRegion = p.adm_nm;
+            window._mapSelectedCo = co;
+            const cta = document.getElementById('map-popup-cta');
+            if (cta) cta.classList.toggle('show', !co);
             openMapPopup(event);
             event.stopPropagation();
           });
@@ -817,6 +833,25 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
       document.addEventListener('click', function() {
         if (!window.matchMedia('(max-width:768px)').matches) window.closeMapPopup();
       });
+
+      // 미선정 지역 → 영업 진입 제안: 영업비서 챗봇으로 타겟팅 전략 질의 시작
+      window.proposeSales = function(event) {
+        if (event) event.stopPropagation();
+        const region = window._mapSelectedRegion || '해당 지역';
+        window.closeMapPopup();
+        const q = region + ' 지역은 아직 한빌이 선점하지 못한 미선정 지역입니다. 이 지역 영업 진입을 위한 타겟팅 전략과 접근 방안을 제안해줘.';
+        // 영업비서 챗봇 열고 질문 자동 전송
+        if (typeof window.openCbot === 'function') window.openCbot();
+        setTimeout(function() {
+          const inp = document.getElementById('hb-input');
+          if (inp && typeof window.hbSend === 'function') {
+            inp.value = q;
+            window.hbSend();
+          } else {
+            alert('[영업 진입 제안]\n' + region + ' — 미선정 지역\n영업비서에서 타겟팅 전략을 확인하세요.');
+          }
+        }, 450);
+      };
 
       // --- 아래는 renderMap의 나머지 (삭제될 코드 — 빈 함수로 대체) ---
 
