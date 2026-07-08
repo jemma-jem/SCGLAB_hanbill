@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>한빌 AX 통합 포탈</title>
+<link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" rel="stylesheet">
+<style>
+  :root{--sky:#0EA5E9;--sky-dark:#075985;--sky-bg:#F0F9FF;--g100:#F1F5F9;--g200:#E2E8F0;--g400:#94A3B8;--g600:#475569;--g800:#1E293B}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard','Segoe UI',system-ui,sans-serif;background:linear-gradient(160deg,#F0F9FF,#E0F2FE);color:var(--g800);min-height:100vh;padding:32px 20px}
+  .wrap{max-width:1000px;margin:0 auto}
+  .head{text-align:center;margin-bottom:8px}
+  .head .logo{display:inline-flex;align-items:center;gap:10px;font-size:26px;font-weight:900;color:var(--sky-dark)}
+  .head .logo i{font-size:30px;color:var(--sky)}
+  .sub{text-align:center;color:var(--g600);font-size:14px;margin-bottom:6px}
+  .date{text-align:center;color:var(--g400);font-size:12px;margin-bottom:32px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+  .card{background:#fff;border:1px solid var(--g200);border-radius:16px;padding:24px;text-decoration:none;color:inherit;transition:all .18s;display:flex;flex-direction:column;gap:10px;box-shadow:0 2px 10px rgba(2,132,199,.05)}
+  .card:hover{transform:translateY(-4px);box-shadow:0 10px 28px rgba(2,132,199,.16);border-color:var(--sky)}
+  .card .ic{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;color:#fff}
+  .card h3{font-size:17px;font-weight:800}
+  .card p{font-size:12.5px;color:var(--g600);line-height:1.6}
+  .card .tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:auto;padding-top:8px}
+  .tag{font-size:10px;font-weight:700;background:var(--sky-bg);color:var(--sky-dark);padding:3px 8px;border-radius:8px}
+  .go{font-size:12px;font-weight:700;color:var(--sky);display:flex;align-items:center;gap:4px;margin-top:4px}
+  .foot{text-align:center;margin-top:36px;color:var(--g400);font-size:11px;line-height:1.8}
+  .foot a{color:var(--sky);text-decoration:none}
+  @media(max-width:480px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="head">
+    <div class="logo"><i class="ti ti-bolt"></i> 한빌 AX 통합 포탈</div>
+  </div>
+  <div class="sub">SCG랩 영업기획팀 · 한전 전기요금 전자청구 대행 서비스 대시보드</div>
+  <div class="date" id="today">—</div>
+
+  <div class="grid">
+    <a class="card" href="modules/sales/index.html">
+      <div class="ic" style="background:linear-gradient(135deg,#0EA5E9,#0284C7)"><i class="ti ti-map-2"></i></div>
+      <h3>영업지원</h3>
+      <p>전국 지자체 지도 기반 빌링 영업 현황·점유율·미개척 지역 전략 제안</p>
+      <div class="tags"><span class="tag">지도</span><span class="tag">빌링</span><span class="tag">점유율</span></div>
+      <div class="go">모듈 열기 <i class="ti ti-arrow-right"></i></div>
+    </a>
+
+    <a class="card" href="modules/complaint/index.html">
+      <div class="ic" style="background:linear-gradient(135deg,#8B5CF6,#7C3AED)"><i class="ti ti-microphone-2"></i></div>
+      <h3>민원분석</h3>
+      <p>STT·VOC AI 분석, 해결률 세분화, 개선 제안·우수 발화, 예상 민원</p>
+      <div class="tags"><span class="tag">STT</span><span class="tag">VOC</span><span class="tag">해결률</span></div>
+      <div class="go">모듈 열기 <i class="ti ti-arrow-right"></i></div>
+    </a>
+
+    <a class="card" href="modules/newsletter/index.html">
+      <div class="ic" style="background:linear-gradient(135deg,#10B981,#059669)"><i class="ti ti-news"></i></div>
+      <h3>뉴스레터</h3>
+      <p>실시간 뉴스 수집·카테고리 필터·경영진 보고 발송·지식베이스 누적</p>
+      <div class="tags"><span class="tag">실시간</span><span class="tag">발송</span><span class="tag">아카이브</span></div>
+      <div class="go">모듈 열기 <i class="ti ti-arrow-right"></i></div>
+    </a>
+
+    <a class="card" href="modules/assistant/index.html">
+      <div class="ic" style="background:linear-gradient(135deg,#F59E0B,#D97706)"><i class="ti ti-message-chatbot"></i></div>
+      <h3>영업비서</h3>
+      <p>내부 CUST_DB + Claude AI 결합, 영업 특화 묻고 답하기·전략 초안</p>
+      <div class="tags"><span class="tag">Claude</span><span class="tag">CUST_DB</span><span class="tag">Q&amp;A</span></div>
+      <div class="go">모듈 열기 <i class="ti ti-arrow-right"></i></div>
+    </a>
+  </div>
+
+  <div class="foot">
+    통합 대시보드(전체 기능): <a href="ax-admin-v2.html">ax-admin-v2.html</a><br>
+    원천 데이터: Google Drive · AX 폴더 &nbsp;|&nbsp; 각 모듈 목적은 폴더 내 README.md 참고
+  </div>
+</div>
+<script>
+  document.getElementById('today').textContent =
+    new Date().toLocaleDateString('ko-KR',{year:'numeric',month:'long',day:'numeric',weekday:'long'}) + ' 기준';
+</script>
+</body>
+</html>
