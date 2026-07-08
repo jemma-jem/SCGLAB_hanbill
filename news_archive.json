@@ -1,62 +1,447 @@
 {
-  "updated_at": "2026-07-08T21:19:59.483Z",
-  "source": "seed (검증된 큐레이션 · 이후 Google News RSS 자동 누적)",
+  "updated_at": "2026-07-08T21:28:37.303Z",
+  "source": "Google News RSS",
   "query": "전기요금 OR 한전 OR 전자청구서 OR 에너지바우처 OR 에너지정책 OR 도시가스 when:3d",
-  "count": 5,
+  "count": 40,
   "articles": [
     {
-      "title": "한전, 전기요금 과다 발생 알림 'AI 안심 알리미' 확대",
-      "url": "https://imnews.imbc.com/news/2026/econo/article/6832769_36932.html",
-      "date": "2026-06-25",
-      "source": "MBC",
+      "title": "에너지바우처 신청으로 더운 여름을 시원하게",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9kZkN4dGxfeE1ZZ1cxNlJXVl9kYlZ3QmZ3a253TTBRbHJDdU04VXFHdzFWQzdUY05IdWVOWVlvVktqRXg2WUFNNi1JX21tZEpuNElHRVJreExJenJNd1dJT0lKMkJqb1Nu?oc=5",
+      "date": "2026-07-08",
+      "source": "대한민국 정책브리핑",
       "category": "energy",
       "summary": [
-        "AI·빅데이터로 전기요금 과다 발생을 사전 감지해 알려주는 'AI 안심 알리미' 서비스를 확대함",
-        "7월 예측 사용량 450kWh 이상, 8월 300kWh 이상 주택용 고객까지 확대돼 약 1100만 가구가 대상 (청구 문의 사전 대응에 활용)"
+        "한빌 전기요금 전자청구·빌링 사업과 연관된 동향",
+        "출처: 대한민국 정책브리핑 · 발행 2026-07-08 · 원문 링크에서 전문 확인"
       ]
     },
     {
-      "title": "한전, 전기요금 청구서 '디지털 전환'…전자청구서 이용 1500만 가구 돌파",
-      "url": "https://www.polinews.co.kr/news/articleView.html?idxno=717789",
-      "date": "2026-06-24",
-      "source": "폴리뉴스",
+      "title": "서울도시가스, ‘국가고객만족도’ 도시가스 부문 ‘최고’",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE53MWZsckdiaTBFRGpjb0xXdXRvczNOVGZKd0F0RmRXQUVMMFo4WlllUi03bER0Tm5JNjcxUU9RXy1yU0xPOU5yRncycTdzZS0zV2FhdDZqYUZKcW9WbTFCTG1weVJ6TWw1cDBr0gFrQVVfeXFMTncxZmxyR2JpMEVEamNvTFd1dG9zM05UZkp3QXRGZFdBRUwwWjhaWWVSLTdsRHRObkk2NzFRT1FfLXJTTE85TnJGdzJxN3NlLTNXYWF0NmphRkpxb1ZtMUJMbXB5UnpNbDVwMGs?oc=5",
+      "date": "2026-07-08",
+      "source": "이투뉴스",
       "category": "energy",
       "summary": [
-        "한전 전기요금 전자청구서 이용 가구가 1500만을 넘어서며 디지털 전환이 가속됨",
-        "종이청구서를 전자청구서로 전환해 비용 절감과 탄소중립을 동시에 추진 (빌링 대행 시장 직접 연관)"
+        "에너지·정책 일반 동향(참고)",
+        "출처: 이투뉴스 · 발행 2026-07-08 · 원문 링크에서 전문 확인"
       ]
     },
     {
-      "title": "2026 에너지바우처 신청 시작…대상·금액·사용기간 총정리",
-      "url": "https://www.tossbank.com/articles/2026-energy-voucher",
-      "date": "2026-06-22",
-      "source": "토스뱅크",
-      "category": "local",
-      "summary": [
-        "2026 에너지바우처 신청이 시작돼 읍면동 행정복지센터·복지로에서 접수함",
-        "1인 세대 약 29만원~4인 이상 약 70만원 지원, 하절기 전기요금 자동 차감 방식 적용"
-      ]
-    },
-    {
-      "title": "2026 에너지바우처, 하절기 전기요금 자동 차감…계절 사용상한 폐지",
-      "url": "https://www.christiandaily.co.kr/amp/news/159858",
-      "date": "2026-05-13",
-      "source": "기독일보",
-      "category": "local",
-      "summary": [
-        "7월 1일부터 하절기 에너지바우처가 전기요금에서 자동 차감되는 방식으로 지원됨",
-        "계절별 사용상한이 폐지돼 연간 바우처를 원하는 시기에 자유롭게 사용 가능"
-      ]
-    },
-    {
-      "title": "산업용 전기요금 49년 만의 개편…업종별 영향 시뮬레이션 공개",
-      "url": "https://enersentry.com/%EC%82%B0%EC%97%85%EC%9A%A9-%EC%A0%84%EA%B8%B0%EC%9A%94%EA%B8%88-%EA%B0%9C%ED%8E%B8/",
-      "date": "2026-04-05",
-      "source": "에너센트",
+      "title": "[함안 산란계 농가 가보니] 계란값 올라도… 사료값·전기요금·인건비에 깊어지는 시름",
+      "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTFB0d3JIMkJrQXUwckZzblJjUVBScDhkZ2lQUnNtMTNfQkNrNXdaXzVGOHpzZERNZENZVldseFh3aWtac2V3NUE?oc=5",
+      "date": "2026-07-08",
+      "source": "v.daum.net",
       "category": "energy",
       "summary": [
-        "산업용 전기요금 체계가 49년 만에 개편되며 업종별 부담 변화가 예상됨",
-        "요금제 개편에 따라 고객 청구 안내·문의 대응 준비가 필요함"
+        "한빌 전기요금 전자청구·빌링 사업과 연관된 동향",
+        "출처: v.daum.net · 발행 2026-07-08 · 원문 링크에서 전문 확인"
+      ]
+    },
+    {
+      "title": "서울도시가스, 국가고객만족도(NCSI) 도시가스 부문 1위",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9FamUxVmNVcnBPZENEMDZxbml4MW9VTEhXOXlVdVQyNkRWTjc0c1c5OHZaRGVaT3BqVFpHSFYxVUJnM0x5ZU9wWVI0NG1wOUhEYWYtMTN5a3RPYTJuVmlUNENMc2hBb0NuQmdqMVVYMnZRQQ?oc=5",
+      "date": "2026-07-08",
+      "source": "에너지데일리",
+      "category": "energy",
+      "summary": [
+        "에너지·정책 일반 동향(참고)",
+        "출처: 에너지데일리 · 발행 2026-07-08 · 원문 링크에서 전문 확인"
+      ]
+    },
+    {
+      "title": "가스앱, 회원 400만 명 돌파… 도시가스 디지털 서비스 혁신 본격화",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1ZNDk4eDdGOExDS2QxNUZSekJLd1NmcHVoWGRUMUMyS01lRnl2Vlo4YV9ZYWpHMlMtckV4TnAxVmR6YmViMVNWZGM1V0RESUJhLUx5RkNzWUl2VklVcmxwV1RvSGI1VnVWUjZBdEF30gFuQVVfeXFMTVk0OTh4N0Y4TENLZDE1RlJ6Qkt3U2ZwdWhYZFQxQzJLTWVGeXZWWjhhX1lhakcyUy1yRXhOcDFWZHpiZWIxU1ZkYzVXRERJQmEtTHlGQ3NZSXZWSVVybHBXVG9IYjVWdVZSNkF0QXc?oc=5",
+      "date": "2026-07-08",
+      "source": "가스신문",
+      "category": "energy",
+      "summary": [
+        "에너지·정책 일반 동향(참고)",
+        "출처: 가스신문 · 발행 2026-07-08 · 원문 링크에서 전문 확인"
+      ]
+    },
+    {
+      "title": "영주시 에너지바우처 신청 시작…최대 70만원 냉난방비 지원",
+      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5VMGhmSWVQLUdsRkNIV29KdjBjQVVCMU5uajdCaGNEVkV5NDQwOEJlWmlIdGxuRXpIdjdhLWNPN05MTVhubHFoc1BHXzlwN2JveGVhYXZPZTY2RHctVEczb2h3RnFCanBvUmxDLTJESQ?oc=5",
+      "date": "2026-07-08",
+      "source": "경북일보",
+      "category": "energy",
+      "summary": [
+        "한빌 전기요금 전자청구·빌링 사업과 연관된 동향",
+        "출처: 경북일보 · 발행 2026-07-08 · 원문 링크에서 전문 확인"
+      ]
+    },
+    {
+      "title": "한전에 '3대메가 전력망TF'…\"호남으로 추가신규 송전선 불필요\"",
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE56a1NVcU1yZzNqQUhnZzFIX3h6Z25ZcUsySk9kYVEybEUxN1ZwTGpjS3Y2OWt2NWN5RGtuLTJSWnJHa2R4LTdiR1NZNDNqb3FhR2g2eGtCN2VlMmfSAWBBVV95cUxOQUtyUXRXWjFtekFjTG03aGp5YVlOV2dkNGE4VF92cGFvVkt1cFNDRVd4N0d5bXNSUUc0LXJWUS1feE8tZTN4cWxnOUl4MTh3UWlUWDhQYjhWdHhzVlQ4RjY?oc=5",
+      "date": "2026-07-08",
+      "source": "연합뉴스",
+      "category": "energy",
+      "summary": [
+        "에너지·정책 일반 동향(참고)",
+        "출처: 연합뉴스 · 발행 2026-07-08 · 원문 링크에서 전문 확인"
+      ]
+    },
+    {
+      "title": "[에너지소식] 한전, 메가프로젝트 전력공급 TF 구성…한난, AI 시니어 마스터 사업 추진",
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE0wR0xfUjg4QmxUV1RmTGI1X1lfN1lfajg0MFNjdTFPUUJkZGlFaXdHYTNUcG5tX1dMZE1DOUY5SVd1X2xmXzlaTndXenhSSTJZLWd2aG9nbWxwM3M?oc=5",
+      "date": "2026-07-08",
+      "source": "에너지경제신문",
+      "category": "energy",
+      "summary": [
+        "에너지·정책 일반 동향(참고)",
+        "출처: 에너지경제신문 · 발행 2026-07-08 · 원문 링크에서 전문 확인"
+      ]
+    },
+    {
+      "title": "한전KDN, ‘2026년 감사인·준감사인 역량 강화 워크숍’ 개최",
+      "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE1hdm5KYlFpNVpaTDhPbmtQZzdRNlJGMjhTbXNyWnk3aFJWTUIzTDhZUzd0X3pOYVhXUGlpcjhGdFJvSE9HeldrUw?oc=5",
+      "date": "2026-07-08",
+      "source": "브레이크뉴스",
+      "category": "energy",
+      "summary": [
+        "에너지·정책 일반 동향(참고)",
+        "출처: 브레이크뉴스 · 발행 2026-07-08 · 원문 링크에서 전문 확인"
+      ]
+    },
+    {
+      "title": "한전, 포브스 순위 3년 만에 428계단 수직 상승",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE14RVZIWUg0Yi1Ed0VacWZGenpJaHAyM29FeUFwMTFMSnExN1IwdGM5SS1OandxeUhaaS1Ld3p2eDRBS19lZ2ozU0JBV2RwMXpxcVNsczNJeHQybl9SSkpHb0hYb2Y?oc=5",
+      "date": "2026-07-08",
+      "source": "일렉트릭파워",
+      "category": "energy",
+      "summary": [
+        "에너지·정책 일반 동향(참고)",
+        "출처: 일렉트릭파워 · 발행 2026-07-08 · 원문 링크에서 전문 확인"
+      ]
+    },
+    {
+      "title": "‘한전기술지주’ 내달 공식 출범…공공기술 사업화 속도",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9peHhHb25oLXJTZ3B3dk5FY2NrVWl5YTZSZVpnWDNBelc1dWJpbTBFdFRQbkJHb2Z4VlJvWFdWeldma0dmLXdadFNFb2M5V0o0TTYzaVVfTnB1b2s5SWJCZ2FOdGFEZHVVeldLMzFfRU_SAXBBVV95cUxPaXh4R29uaC1yU2dwd3ZORWNja1VpeWE2UmVaZ1gzQXpXNXViaW0wRXRUUG5CR29meFZSb1hXVnpXZmtHZi13WnRTRW9jOVdKNE02M2lVX05wdW9rOUliQmdhTnRhRGR1VXpXSzMxX0VP?oc=5",
+      "date": "2026-07-08",
+      "source": "전기신문",
+      "category": "energy",
+      "summary": [
+        "에너지·정책 일반 동향(참고)",
+        "출처: 전기신문 · 발행 2026-07-08 · 원문 링크에서 전문 확인"
+      ]
+    },
+    {
+      "title": "서울도시가스, 디지털 서비스 혁신으로 고객만족도 1위",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE54YUlQTTBNZzgzTTV2SjdBaGRsYjhsNUk2c1BXR1BPbDJLLUx2T2FtQ0NzTlFScmJiendPTDVabzlXUWQ0UkZiTDlwMV9iYTBLWkkwaXhrS1NKeHdlTjhCQjVhU2tMc3FqclhWTTdVc2rSAXBBVV95cUxOeGFJUE0wTWc4M001dko3QWhkbGI4bDVJNnNQV0dQT2wySy1Mdk9hbUNDc05RUnJiYnp3T0w1Wm85V1FkNFJGYkw5cDFfYmEwS1pJMGl4a0tTSnh3ZU44QkI1YVNrTHNxanJYVk03VXNq?oc=5",
+      "date": "2026-07-08",
+      "source": "에너지플랫폼뉴스",
+      "category": "energy",
+      "summary": [
+        "에너지·정책 일반 동향(참고)",
+        "출처: 에너지플랫폼뉴스 · 발행 2026-07-08 · 원문 링크에서 전문 확인"
+      ]
+    },
+    {
+      "title": "한전엠씨에스(주) 금산지점 직원 일동, 금산읍에 성금 20만 원 기탁",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE8taWhlcTk4ckhUVUtSemVRZndEN0tRc0pYdDdhdUNBT3I3NE1GcERpWUJ2QVdVTzMyVWljQnNXQjhQV3F1QkZPRVIxUGdfejMwVUVGcXNkcFFPR04xSlZfZGl0Rkl1QnNqUXFlUUln?oc=5",
+      "date": "2026-07-08",
+      "source": "금산중앙신문방송",
+      "category": "energy",
+      "summary": [
+        "에너지·정책 일반 동향(참고)",
+        "출처: 금산중앙신문방송 · 발행 2026-07-08 · 원문 링크에서 전문 확인"
+      ]
+    },
+    {
+      "title": "400만 고객 확보한 ‘가스앱’…도시가스 산업 ‘디지털 전환’ 본격화",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFAtM1RHbDJTTjVWaUczcDFoLWFYdHBULTlwVzdoRHUyemtBYWNSSS1BNGE4THJrZWNRQkxpMEd4QXpXUXY1cnMtODRWUTRmVUxiWEVQTHdQZFU3Z2dtOU1BLUtQV09Ock1icTA4MEFqakJUUQ?oc=5",
+      "date": "2026-07-08",
+      "source": "에너지신문",
+      "category": "energy",
+      "summary": [
+        "에너지·정책 일반 동향(참고)",
+        "출처: 에너지신문 · 발행 2026-07-08 · 원문 링크에서 전문 확인"
+      ]
+    },
+    {
+      "title": "가스앱, 회원 400만명 돌파… 도시가스 디지털 전환 플랫폼 도약",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE81YWxLdGJhSUN4alNUdkFKeDJ5VWhFVXZRbUNCYW0zNUtkR2x5ZXdvS2h5V29kNUlOMWcyRXplNU0wYlVSV3JyT1U2dzc0WWVEUVQ1T01KTC1CU0ZnMEtwUGtRMzhLUi1XZTlzSm5OcGdBUQ?oc=5",
+      "date": "2026-07-08",
+      "source": "에너지데일리",
+      "category": "energy",
+      "summary": [
+        "에너지·정책 일반 동향(참고)",
+        "출처: 에너지데일리 · 발행 2026-07-08 · 원문 링크에서 전문 확인"
+      ]
+    },
+    {
+      "title": "[인터뷰] ‘도시가스·LPG’ 시공전문업체 신보령(주) 이양수 본부장 “안전은 서류 아닌 현장에서 완성되죠”",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBNay1KcDZRdGExa0JXOGUtQkFlcEppOTF5czNvYmllMS1iX3J2NmZFRHE2ZW9Sa2czYllzWTFidnE2RFk3VmZsQWFWM0RJTkJMR0g3VjE4c1BTREMzZjk5cHYxa1Z3X2ZkMm9RVVBR?oc=5",
+      "date": "2026-07-08",
+      "source": "가스신문",
+      "category": "energy",
+      "summary": [
+        "에너지·정책 일반 동향(참고)",
+        "출처: 가스신문 · 발행 2026-07-08 · 원문 링크에서 전문 확인"
+      ]
+    },
+    {
+      "title": "경동도시가스, 안전 업무 ‘외주화’ 추진에 울산 시민단체 반발",
+      "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTFBDTTV4Slo0N2wwVnhKTVgxZEtIM3IyRFRHbHhBbi0xY1I4cm1IenIxQzQ2REl6Q3FKV2VGeEJUMHBoTGswOFE?oc=5",
+      "date": "2026-07-08",
+      "source": "v.daum.net",
+      "category": "energy",
+      "summary": [
+        "에너지·정책 일반 동향(참고)",
+        "출처: v.daum.net · 발행 2026-07-08 · 원문 링크에서 전문 확인"
+      ]
+    },
+    {
+      "title": "한전KDN, 선제적 위험요소 예방 및 자율 감사역량 강화 추진",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFAzUnJVQm9jaU5NamxNLW1BaFNCdEVEWFJKNk9NaXlnYlJiZWxQVEdXcVN4TEk4b3dNNzJOc2dBRDVmQktzSVE2R1J1WmVvdldIWWdRR3JIdlV0QkZ4UVJiekJqWllwNUQ5TTIwVFVCQnp5QQ?oc=5",
+      "date": "2026-07-08",
+      "source": "에너지데일리",
+      "category": "energy",
+      "summary": [
+        "에너지·정책 일반 동향(참고)",
+        "출처: 에너지데일리 · 발행 2026-07-08 · 원문 링크에서 전문 확인"
+      ]
+    },
+    {
+      "title": "“中 종속 벗어나자”… 한전, 국내 인버터 연합에 투자키로 - 조선비즈",
+      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNTWFTVFVySEY1NU1rcUpwN0lsVGU3ZWRleVkwNVRkTG4zZTE2b0paZFFURXVBN2VGbDFBaHVZcllOMEdraE9hZVlCaC00NXVWbndNa3NCTFNRQ3NOaDZsQW5DTndoa0NxMW1xa2xCWkZJVkV3TTFuSFlDenpHZG1ZNmt1ZUzSAZgBQVVfeXFMTmQwT3BMLWIwV3BOZmpOdUU2UzBqRE1XazFBRWdEZ0FnMVZwa0Y2cEwycVJlcGlRSTB4RjFrY081UkVUb2huWkFhZTFmdlo0cXR1YU9MVWkzQjRFQVZJVFdkcnB6VXhieUhrbjF0RUVreXgwc1JjYzc5dks2Y1NuOHRNa3JWM2t3ZXdSRkxnMnpXcUFybE5fYno?oc=5",
+      "date": "2026-07-08",
+      "source": "Chosunbiz",
+      "category": "energy",
+      "summary": [
+        "에너지·정책 일반 동향(참고)",
+        "출처: Chosunbiz · 발행 2026-07-08 · 원문 링크에서 전문 확인"
+      ]
+    },
+    {
+      "title": "한전, 15개 지역본부와 전력수급 비상훈련…ESS 활용 수요관리 점검",
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFB6Ukc2VHZMM0xFM09qTV8yVGM2ZVVnNVVFZ1F1bnh1YVc2ZkJ2YkNocmIydTZjNmtqMWFYczltb3hrTW9OdGFmWW14T2c3LW1Ib3VHTURQcWs0a0hzUWNqWk9TU09CQQ?oc=5",
+      "date": "2026-07-08",
+      "source": "인사이트N파워",
+      "category": "energy",
+      "summary": [
+        "에너지·정책 일반 동향(참고)",
+        "출처: 인사이트N파워 · 발행 2026-07-08 · 원문 링크에서 전문 확인"
+      ]
+    },
+    {
+      "title": "서울행정법원 “기후부, '사장 재추천 공문' 효력정지”…한전KPS 인선 새 국면",
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5sajF5UER5bTNqcE5IdkxvTW40VE5USDF5Ri1mR1kzVkthTGJVZTAxcXJBS3l5NFB4X25fa3hvX1pFcTlaRnFocm5qWE5PdXB5cU9TNGo4UXN0M2NMSWxyZDdzWTdtZw?oc=5",
+      "date": "2026-07-08",
+      "source": "인사이트N파워",
+      "category": "energy",
+      "summary": [
+        "에너지·정책 일반 동향(참고)",
+        "출처: 인사이트N파워 · 발행 2026-07-08 · 원문 링크에서 전문 확인"
+      ]
+    },
+    {
+      "title": "속도 내는 한전, ‘3대 메가 전력망TF’ 가동…“호남-타지역 송전선 신설 불필요”",
+      "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE1BaU15d0ZVYlpURDVuLVdDSWVTWDBqenZYdFBTMjFLRFJkODlGcmRyWHQ3RFJUZUxtS2J2bVNYeHNNRmF5eGNtMFdaUFVfdw?oc=5",
+      "date": "2026-07-08",
+      "source": "디지털타임스",
+      "category": "energy",
+      "summary": [
+        "에너지·정책 일반 동향(참고)",
+        "출처: 디지털타임스 · 발행 2026-07-08 · 원문 링크에서 전문 확인"
+      ]
+    },
+    {
+      "title": "한전KDN \"안전이 곧 상생\"… 협력사와 손잡고 산재 제로(0) 현장 만든다",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE81WTl1YVNlejBSdnRTVGtXeHp0N0hhSHJZUHV3cXpNdTl4S1ZBQzJUVzBBVkRQaFR5Smp1a3Raa0dNa2NRckNteTJ3RWRrMVZGOHhpcUVibnNGU2tqeDdCZ2M1VkU?oc=5",
+      "date": "2026-07-08",
+      "source": "에너지안전신문",
+      "category": "energy",
+      "summary": [
+        "에너지·정책 일반 동향(참고)",
+        "출처: 에너지안전신문 · 발행 2026-07-08 · 원문 링크에서 전문 확인"
+      ]
+    },
+    {
+      "title": "속도 내는 한전, ‘3대 메가 전력망TF’ 가동…“호남-타지역 송전선 신설 불필요”",
+      "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE5Yb21CZzFsaTBhMWRpWVRZbmdsa21KWUxyTUd3U3V5OC1yTVpZcXcwbVhWa09pSEJQSHRlLUhzeURmNEdVT25fYzhjaw?oc=5",
+      "date": "2026-07-08",
+      "source": "v.daum.net",
+      "category": "energy",
+      "summary": [
+        "에너지·정책 일반 동향(참고)",
+        "출처: v.daum.net · 발행 2026-07-08 · 원문 링크에서 전문 확인"
+      ]
+    },
+    {
+      "title": "적자 털어낸 한전, 포브스 글로벌 순위도 'V자 반등'",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1YMWV2TUVyZU1WU1ppRmFXTmJhc0RWaXpXNmc4Z3pWejAwSk40QjZ6RmpIdjdvc0RHbkR2Z0xmd18yUzN1UDNYSk5sNnRyUVdQM2ZlbkVPZXc2VnQtcHRmbW1ubzd0VnREbWdPOFR4LUI3dw?oc=5",
+      "date": "2026-07-08",
+      "source": "에너지신문",
+      "category": "energy",
+      "summary": [
+        "에너지·정책 일반 동향(참고)",
+        "출처: 에너지신문 · 발행 2026-07-08 · 원문 링크에서 전문 확인"
+      ]
+    },
+    {
+      "title": "영주시, 에너지바우처 사업 본격 시행",
+      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE11QUZNV2tZZ1E2aXpMQ2ZBS2RaX2JFQnlsRHA5Zmg2U000QlhRbTJuWmJ1R2dGd0VHa0E0SkZKTWU3dFI1ZjJreEpmTUg0c0N2SDM5V3F1VGs?oc=5",
+      "date": "2026-07-08",
+      "source": "경북신문",
+      "category": "energy",
+      "summary": [
+        "한빌 전기요금 전자청구·빌링 사업과 연관된 동향",
+        "출처: 경북신문 · 발행 2026-07-08 · 원문 링크에서 전문 확인"
+      ]
+    },
+    {
+      "title": "울산 시민단체 “경동도시가스 안전 업무 외주화 중단하라”",
+      "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE84T1JwRXpuUGRNQld2ZnNUbGthb2RncVJtNDF5MW9wMEswU2tTOVNOLTJ2QjRYYXVoZlVubkswRzg3ajlaRHc?oc=5",
+      "date": "2026-07-08",
+      "source": "v.daum.net",
+      "category": "energy",
+      "summary": [
+        "에너지·정책 일반 동향(참고)",
+        "출처: v.daum.net · 발행 2026-07-08 · 원문 링크에서 전문 확인"
+      ]
+    },
+    {
+      "title": "울산 노동·시민사회 \"경동도시가스 안전업무 외주화 중단해야\"",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE51MEJBMXFhdkdFc1hMZzJERzg1WWtOa2xUMm13Y2tvZXRkbXNBajdHNndXc3I0dlhtSWpmb0lNeGQtSVFhTDU0b3BBdVBGc2ZCMGhRczhEZHc3MEk3ZGdJRlY4WjV6dlNO?oc=5",
+      "date": "2026-07-08",
+      "source": "한국NGO신문",
+      "category": "energy",
+      "summary": [
+        "에너지·정책 일반 동향(참고)",
+        "출처: 한국NGO신문 · 발행 2026-07-08 · 원문 링크에서 전문 확인"
+      ]
+    },
+    {
+      "title": "울산 시민단체 “경동도시가스 안전 업무 외주화 중단하라”",
+      "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTFAyekNrdTRRQ2xTeFp1aDVpUmlTSWZkbmNISm40NHJvandmb2FBdG45Z3JQalBOOHBSNy0yT3RjQXhlRldrX0JRakQ5WQ?oc=5",
+      "date": "2026-07-08",
+      "source": "v.daum.net",
+      "category": "energy",
+      "summary": [
+        "에너지·정책 일반 동향(참고)",
+        "출처: v.daum.net · 발행 2026-07-08 · 원문 링크에서 전문 확인"
+      ]
+    },
+    {
+      "title": "한전KDN, 협력사와 함께 상생 경영 의지 다졌다",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE5CM2dDc2dPek9KQ2JzOXRHbmxBNGJzajlCTUVOcy1Cd01FNFc5SVBIR2hlRC1SWlU0dktUNGh0MUw0cjhUSFRBUWZFSjlNNWU0T3NFeHl6Q3hlTTctWjZ2R2RCQ2lNVHloV2xHWmdERFBQZw?oc=5",
+      "date": "2026-07-08",
+      "source": "에너지데일리",
+      "category": "energy",
+      "summary": [
+        "에너지·정책 일반 동향(참고)",
+        "출처: 에너지데일리 · 발행 2026-07-08 · 원문 링크에서 전문 확인"
+      ]
+    },
+    {
+      "title": "한전, 기업 규제 발굴해 ‘정부 건의’…에너지 규제개선 자문위 추진",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9RVEl5ZktXRm5yM3BNRzhtVkpYQmJxQnVkODg2My0wVWptZHJaZDBKdWdkbGRncnNEU0JNeWluWWlFS0FqSUljc2RRM0hEQ0dYUld3empveFhtQmlNUDg3WjBnUVpXakNCT1RGa1ZR?oc=5",
+      "date": "2026-07-08",
+      "source": "아시아투데이",
+      "category": "energy",
+      "summary": [
+        "에너지·정책 일반 동향(참고)",
+        "출처: 아시아투데이 · 발행 2026-07-08 · 원문 링크에서 전문 확인"
+      ]
+    },
+    {
+      "title": "울산 노동사회단체 \"도시가스 안전업무 외주화 반대\"",
+      "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTFBrbGtuYkd0d1pKa3hFM1FRaUtmRzlKQzRiT0lCRXNDbHZocjJheUd2RXJjTVV4ZGk4bjdKcGxLYTJibC1oRGswMlY1cw?oc=5",
+      "date": "2026-07-08",
+      "source": "v.daum.net",
+      "category": "energy",
+      "summary": [
+        "에너지·정책 일반 동향(참고)",
+        "출처: v.daum.net · 발행 2026-07-08 · 원문 링크에서 전문 확인"
+      ]
+    },
+    {
+      "title": "정부·한전 \"3대 메가프로젝트 위해 전력망 적기건설 추진\"",
+      "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQT2FVbVRMbVRSb1lWY19Rcl9iUmxlem1yRXB1RWRLMUhoYWYtYmRWSlZtbjV6eVdNMk9MUGRxTFhxMjhIQ3IxYW5rX2VXN2pDQ2hCNHVnN0FXWGZaSW5ya093UlVTRWdGSXJFVzRwR2tFQS0yVFlQZ1ZPVTNXSmxSSWN5Yk1fLUFIelE4?oc=5",
+      "date": "2026-07-08",
+      "source": "국제신문",
+      "category": "energy",
+      "summary": [
+        "에너지·정책 일반 동향(참고)",
+        "출처: 국제신문 · 발행 2026-07-08 · 원문 링크에서 전문 확인"
+      ]
+    },
+    {
+      "title": "한전에 ‘3대 메가 전력망TF’…“2030년까지 조기 전력 공급”",
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE94ejR5RjljWkMzV1M0aGRWWVdzTXJqX25sakZZQkZxZGxqSGQ5ZTRKYlRjakFtaU9fdldEVlpOVDVCWHJGbTV2dEwzZ3VNeGxyTDhzX2tjX1J2RTQ?oc=5",
+      "date": "2026-07-08",
+      "source": "KBS 뉴스",
+      "category": "energy",
+      "summary": [
+        "에너지·정책 일반 동향(참고)",
+        "출처: KBS 뉴스 · 발행 2026-07-08 · 원문 링크에서 전문 확인"
+      ]
+    },
+    {
+      "title": "한전KDN, 지방 사업소 '감사 공백' 메운다",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFB1TDVMeDAzVE40Z1pXR0xQYTNyT0dRTDNaZnhsT21wdUlJMWJJOFFuN2g0eWRWVThDUHJhN1pfSWZ5QllFYVpEWE9NY2JIU1ItdmxQYmh0MkZiVkMxZTh0ZElqdWJ2TW12S1k0ME1ldUM?oc=5",
+      "date": "2026-07-08",
+      "source": "에너지코리아뉴스",
+      "category": "energy",
+      "summary": [
+        "에너지·정책 일반 동향(참고)",
+        "출처: 에너지코리아뉴스 · 발행 2026-07-08 · 원문 링크에서 전문 확인"
+      ]
+    },
+    {
+      "title": "한전에 '3대메가 전력망TF'…\"호남으로 추가신규 송전선 불필요\"",
+      "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE81QU9xTnhQRjNYMFo1Y0hxaEctMHlyNXB1STUxWDUweG9oblg1bFhQZjZOTlRfU0Zpc3h0Wll2ektYcmE2VkE?oc=5",
+      "date": "2026-07-08",
+      "source": "v.daum.net",
+      "category": "energy",
+      "summary": [
+        "에너지·정책 일반 동향(참고)",
+        "출처: v.daum.net · 발행 2026-07-08 · 원문 링크에서 전문 확인"
+      ]
+    },
+    {
+      "title": "호남권 신규 반도체 산단 2030년까지 조기 전력 공급 추진",
+      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE83bHdEa1Y2Y1dZZ1VzRVAxNEd4RWxoY0dXbktGaWtySmtJN0xjd2Q5X3podC1KQnZmc01OaDdsbHhDNzRKNE1IUHgwVEpaV1k3Z0lGclRmZGxycjZQcUE?oc=5",
+      "date": "2026-07-08",
+      "source": "한국방송뉴스",
+      "category": "energy",
+      "summary": [
+        "에너지·정책 일반 동향(참고)",
+        "출처: 한국방송뉴스 · 발행 2026-07-08 · 원문 링크에서 전문 확인"
+      ]
+    },
+    {
+      "title": "한전KDN, 협력사 안전관리체계 구축 지원한다",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBDcDZiZUwtT3B6Ni1DcHZIZ1JSZ284X1JNak5FamtuVFhPTWhFUnpJblRwNkw2ZTNybFdFX1lKWHN2NHVQaVpFeWxsdUluUVpxVXNpVmx6TkJqbFFDd0NQVEJvQkdvMFF5MmlkOVo4Rzk?oc=5",
+      "date": "2026-07-08",
+      "source": "에너지코리아뉴스",
+      "category": "energy",
+      "summary": [
+        "에너지·정책 일반 동향(참고)",
+        "출처: 에너지코리아뉴스 · 발행 2026-07-08 · 원문 링크에서 전문 확인"
+      ]
+    },
+    {
+      "title": "함께일하는재단-한전, '사회연대경제조직 성장지원 사업' 공모",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5NemhMUEFxOFNlbWhfaFhkNE5ZU0dSb2J5NHpuaEZVbUNYSThGeEVndlc5OEJZVmY0bURUTEpZV1FhRHF0UzZhWUExZlNrb1lPazI2YUprYzU0dFIyQXAwc043bVg?oc=5",
+      "date": "2026-07-08",
+      "source": "서울경제TV",
+      "category": "energy",
+      "summary": [
+        "에너지·정책 일반 동향(참고)",
+        "출처: 서울경제TV · 발행 2026-07-08 · 원문 링크에서 전문 확인"
+      ]
+    },
+    {
+      "title": "한전 자회사 섬 근무자들, 해양환경 지킴이로 나선다",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1FMzlPb0t1WU56aHExay00VlhXN2FkdG5fQzNaX09GOGlRZDFZQ1RDZkpvamN0eE9FTEIxZkR2N2d6eEZtOC1TczlWZVBDeVpDdVhGeXJQNmtpSkI3eVJxSdIBYEFVX3lxTE1FMzlPb0t1WU56aHExay00VlhXN2FkdG5fQzNaX09GOGlRZDFZQ1RDZkpvamN0eE9FTEIxZkR2N2d6eEZtOC1TczlWZVBDeVpDdVhGeXJQNmtpSkI3eVJxSQ?oc=5",
+      "date": "2026-07-08",
+      "source": "연합뉴스",
+      "category": "energy",
+      "summary": [
+        "에너지·정책 일반 동향(참고)",
+        "출처: 연합뉴스 · 발행 2026-07-08 · 원문 링크에서 전문 확인"
       ]
     }
   ]
