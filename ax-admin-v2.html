@@ -7031,11 +7031,10 @@ function renderAiSummaryCards(filtered, s, e){
   // 자동분류율 (STT_INDEX 기반 추정)
   var autoRate = total>0 ? Math.min(99, Math.round((ai&&ai.total?ai.total:total)/total*100)) : 0;
 
-  // 순서: ①총 분석 건수 ②긍정 감정 ③개선 필요 응대(3번째로 이동) ④주요 키워드 ⑤AI 자동 분류율  (해결 난이도 삭제)
+  // 순서: ①총 분석 건수 ②긍정 감정 ③주요 키워드 ④AI 자동 분류율  (개선 필요 응대·해결 난이도 삭제)
   var cards=[
     {bg:'#F0F9FF',bc:'#BAE6FD',tc:'#0369A1',vc:'#0284C7',ic:'ti-phone-incoming',lbl:'총 분석 건수',val:total.toLocaleString()+'건',sub:s.slice(5)+' ~ '+e.slice(5)},
     {bg:'#F0FDF4',bc:'#A7F3D0',tc:'#065F46',vc:'#059669',ic:'ti-mood-smile',lbl:'긍정 감정 지수',val:posRate+'%',sub:'부정 '+negRate+'%'},
-    {bg:'#FEF2F2',bc:'#FECACA',tc:'#991B1B',vc:'#DC2626',ic:'ti-alert-circle',lbl:'개선 필요 응대',val:(ai&&ai.agentQuality?ai.agentQuality.improveRate:0)+'%',sub:'우수 '+(ai&&ai.agentQuality?ai.agentQuality.goodRate:0)+'%'},
     {bg:'#FDF4FF',bc:'#E9D5FF',tc:'#581C87',vc:'#7C3AED',ic:'ti-hash',lbl:'주요 키워드',val:topKw,sub:'최다 유형 '+topCat,small:true},
     {bg:'#EFF6FF',bc:'#BFDBFE',tc:'#1E40AF',vc:'#2563EB',ic:'ti-robot',lbl:'AI 자동 분류율',val:autoRate+'%',sub:'실통화 '+(ai&&ai.total?ai.total:total)+'건 분석'},
   ];
