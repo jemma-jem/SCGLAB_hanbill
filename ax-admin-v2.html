@@ -1423,7 +1423,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap;gap:8px">
       <div>
         <div style="font-size:14px;font-weight:700;color:var(--g800)">한전 청구서사업 일일 뉴스 스크랩</div>
-        <div style="font-size:11.5px;color:var(--g400);margin-top:2px">경영진 보고용 · 전일·당일 주요 기사 · 원하는 기사 선택 후 발송</div>
+        <div style="font-size:11.5px;color:var(--g400);margin-top:2px">경영진 보고용 · 최근 주요 기사(원문 발행일 최신순) · 원하는 기사 선택 후 발송</div>
       </div>
       <div style="display:flex;gap:8px;flex-wrap:wrap">
         <button class="btn bo" onclick="refreshNews()"><i class="ti ti-refresh"></i> 새로고침</button>
@@ -1437,7 +1437,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
     <div style="display:flex;gap:0;border-bottom:2px solid var(--g100);margin-bottom:14px;flex-wrap:wrap">
       <button id="nl-tab-today" onclick="switchNlTab('today')"
         style="padding:7px 18px;font-size:13px;font-weight:700;color:var(--sky);border:none;background:none;cursor:pointer;border-bottom:2px solid var(--sky);margin-bottom:-2px;font-family:inherit">
-        <i class="ti ti-news"></i> 오늘 기사
+        <i class="ti ti-news"></i> 최근 기사
       </button>
       <button id="nl-tab-archive" onclick="switchNlTab('archive')"
         style="padding:7px 18px;font-size:13px;font-weight:600;color:var(--g400);border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;font-family:inherit">
@@ -1518,7 +1518,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
           <div style="background:#fff;padding:20px 22px">
             <p style="font-size:13px;color:#475569;margin:0 0 14px;line-height:1.7">
               안녕하세요, SCG랩 영업기획팀입니다.<br>
-              2026년 7월 7일 한전 청구서·빌링·전자청구서·에너지정책 관련 동향 중 실무에 영향을 줄 주요 기사 <strong id="news-count-text">10건</strong>을 선별하였습니다.
+              한전 청구서·빌링·전자청구서·에너지정책 관련 실무 영향 <strong>최근 주요 기사</strong> <strong id="news-count-text">기사</strong>입니다. <span style="color:#94A3B8">(원문 발행일 최신순)</span>
             </p>
             <hr style="border:none;border-top:1px solid #E2E8F0;margin-bottom:16px">
             
@@ -3478,22 +3478,13 @@ window.hbCopyScript = function() {
   });
 };
 
-// ─── 뉴스 (검증된 실제 기사) ───
-// 검증일: 2026-07-08 / 웹 검색으로 제목·출처·내용 재확인 완료
-// 전일(2026-07-07)·당일(2026-07-08) 실기사 취합 — 웹 검색 기반 갱신
+// ─── 뉴스 폴백 데이터 (검증된 실제 기사) ───
+// ▶ 평상시엔 news_archive.json(라이브 RSS 수집분)이 우선 노출되고, 로드 실패 시 이 목록으로 폴백.
+// ▶ date = 원문 실제 발행일(웹 검색 검증). 화면은 '최근 주요 기사'로 발행일 최신순 노출.
+// ▶ 자동 갱신: .github/workflows/news-collect.yml(매일) → news_collector.js → news_archive.json 커밋.
 const NEWS_DATA = [
-  // ── 당일 (2026-07-08) ──
   {
-    no: 1, date: '2026-07-08', source: '일렉트릭파워', category: 'energy',
-    title: '한전, 전기요금 전자청구서 신청 이벤트…탄소중립 실천하고 선물도 증정',
-    lines: [
-      '7월 1일~9월 30일 전자청구서(이메일·모바일) 신규 신청 고객 대상 이벤트를 시행함',
-      '추첨을 통해 420명에게 로봇청소기·스마트워치·국민관광상품권 등 경품을 제공함',
-    ],
-    url: 'https://www.epj.co.kr/news/articleView.html?idxno=34614'
-  },
-  {
-    no: 2, date: '2026-07-08', source: '폴리뉴스', category: 'energy',
+    no: 1, date: '2026-06-24', source: '폴리뉴스', category: 'energy',
     title: "한전, 전기요금 청구서 '디지털 전환'…전자청구서 이용 1500만 가구 돌파",
     lines: [
       '한전 전기요금 전자청구서 이용 가구가 1500만을 넘어서며 디지털 전환이 가속됨',
@@ -3502,7 +3493,7 @@ const NEWS_DATA = [
     url: 'https://www.polinews.co.kr/news/articleView.html?idxno=717789'
   },
   {
-    no: 3, date: '2026-07-08', source: '에너센트', category: 'energy',
+    no: 2, date: '2026-04-05', source: '에너센트', category: 'energy',
     title: '산업용 전기요금 49년 만의 개편…업종별 영향 시뮬레이션 공개',
     lines: [
       '산업용 전기요금 체계가 49년 만에 개편되며 업종별 부담 변화가 예상됨',
@@ -3511,7 +3502,7 @@ const NEWS_DATA = [
     url: 'https://enersentry.com/%EC%82%B0%EC%97%85%EC%9A%A9-%EC%A0%84%EA%B8%B0%EC%9A%94%EA%B8%88-%EA%B0%9C%ED%8E%B8/'
   },
   {
-    no: 4, date: '2026-07-08', source: '토스뱅크', category: 'local',
+    no: 3, date: '2026-06-22', source: '토스뱅크', category: 'local',
     title: '2026 에너지바우처 신청 시작…대상·금액·사용기간 총정리',
     lines: [
       '2026 에너지바우처 신청이 시작돼 읍면동 행정복지센터·복지로에서 접수함',
@@ -3520,7 +3511,7 @@ const NEWS_DATA = [
     url: 'https://www.tossbank.com/articles/2026-energy-voucher'
   },
   {
-    no: 5, date: '2026-07-08', source: 'MBC', category: 'energy',
+    no: 4, date: '2026-06-25', source: 'MBC', category: 'energy',
     title: "한전, 전기요금 과다 발생 알림 'AI 안심 알리미' 확대",
     lines: [
       'AI·빅데이터로 전기요금 과다 발생을 사전 감지해 알려주는 \'AI 안심 알리미\' 서비스를 확대함',
@@ -3528,27 +3519,8 @@ const NEWS_DATA = [
     ],
     url: 'https://imnews.imbc.com/news/2026/econo/article/6832769_36932.html'
   },
-  // ── 전일 (2026-07-07) ──
   {
-    no: 6, date: '2026-07-07', source: '팍스경제TV', category: 'energy',
-    title: "한국전력, 종이 없는 '전자 청구서' 이용 확대 나서",
-    lines: [
-      '한전이 종이청구서를 대체하는 전자청구서 이용 확대에 본격 나섬',
-      '고지·수납 프로세스의 디지털화로 청구 대행 시장에도 영향이 전망됨',
-    ],
-    url: 'https://www.paxetv.com/news/articleView.html?idxno=232763'
-  },
-  {
-    no: 7, date: '2026-07-07', source: '그린포스트코리아', category: 'energy',
-    title: '한전, 모바일 기반 전자청구서 확대…자원 절감과 고객 혜택 동시에',
-    lines: [
-      '모바일 전자청구서 확대로 종이 자원 절감 효과가 기대됨',
-      '전자청구 전환 고객에게 다양한 혜택을 제공할 예정임',
-    ],
-    url: 'https://www.greenpostkorea.co.kr/news/articleView.html?idxno=301693'
-  },
-  {
-    no: 8, date: '2026-07-07', source: '기독일보', category: 'local',
+    no: 5, date: '2026-05-13', source: '기독일보', category: 'local',
     title: '2026 에너지바우처, 하절기 전기요금 자동 차감…계절 사용상한 폐지',
     lines: [
       '7월 1일부터 하절기 에너지바우처가 전기요금에서 자동 차감되는 방식으로 지원됨',
@@ -3621,17 +3593,8 @@ function renderNews() {
   // 실시간 연동 결과가 있으면 우선 사용, 없으면 검증된 기본 데이터(NEWS_DATA) 폴백
   var live = (window.LIVE_ARTICLES && window.LIVE_ARTICLES.length) ? window.LIVE_ARTICLES : null;
   var allNews = live || NEWS_DATA || [];
-  // ▶ 메인 뉴스레터: '당일 혹은 전일' 기사만 자동 필터링해 노출
-  var todayNews = allNews.filter(function(n) { return n.date === todayISO || n.date === yestISO; });
-  if (!todayNews.length && allNews.length) {
-    // 당일/전일 기사가 없으면 가장 최근 2개 날짜를 대체 노출
-    var _dates = allNews.map(function(n){ return n.date; })
-      .filter(function(v,i,a){ return a.indexOf(v) === i; })
-      .sort(function(a,b){ return b.localeCompare(a); }).slice(0, 2);
-    todayNews = allNews.filter(function(n){ return _dates.indexOf(n.date) >= 0; });
-  }
-  // 최신 날짜가 위로 오도록 정렬
-  todayNews = todayNews.slice().sort(function(a,b){ return b.date.localeCompare(a.date); });
+  // ▶ 메인 뉴스레터: 원문 실제 발행일 기준 최신순 정렬 (가짜 '당일' 필터 제거 — 발행일 정확 표기)
+  var todayNews = allNews.slice().sort(function(a,b){ return b.date.localeCompare(a.date); });
 
   if (!todayNews.length) {
     el.innerHTML = '<div style="text-align:center;padding:40px 20px;color:var(--g400)">'
@@ -3666,7 +3629,7 @@ function renderNews() {
   // 본문 영역 (오늘의 뉴스 브리핑 박스 제거됨)
   html += '<div style="background:#fff;padding:20px 22px">';
   html += '<p style="font-size:13px;color:#475569;margin:0 0 14px;line-height:1.7">안녕하세요, SCG랩 영업기획팀입니다.<br>';
-  html += today + ' 한전 청구서·빌링·전자청구서·에너지정책 관련 동향 중 실무에 영향을 줄 주요 기사 <strong id="news-count-text">' + todayNews.length + '건</strong>을 선별하였습니다.</p>';
+  html += '한전 청구서·빌링·전자청구서·에너지정책 관련 실무 영향 <strong>최근 주요 기사</strong> <strong id="news-count-text">' + todayNews.length + '건</strong>입니다. <span style="color:#94A3B8">(원문 발행일 최신순 · ' + today + ' 스크랩)</span></p>';
   html += '<hr style="border:none;border-top:1px solid #E2E8F0;margin-bottom:16px">';
 
   for (var i = 0; i < todayNews.length; i++) {
@@ -3691,7 +3654,7 @@ function renderNews() {
     // 헤더 행: 기사번호 + 출처 + 체크박스
     html += '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;gap:8px;flex-wrap:wrap">';
     html += '<div style="display:flex;align-items:center;gap:8px">';
-    html += '<span style="background:#075985;color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px">기사 ' + n.no + '</span>';
+    html += '<span style="background:#075985;color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px">기사 ' + (i + 1) + '</span>';
     html += '<span style="font-size:11px;color:#94A3B8">' + n.source + ' · ' + n.date + '</span>';
     html += '</div>';
     html += '<label style="display:flex;align-items:center;gap:5px;cursor:pointer;font-size:11.5px;color:var(--sky-dark);font-weight:600;user-select:none">';

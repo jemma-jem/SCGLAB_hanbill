@@ -1,0 +1,63 @@
+{
+  "updated_at": "2026-07-08T21:19:59.483Z",
+  "source": "seed (검증된 큐레이션 · 이후 Google News RSS 자동 누적)",
+  "query": "전기요금 OR 한전 OR 전자청구서 OR 에너지바우처 OR 에너지정책 OR 도시가스 when:3d",
+  "count": 5,
+  "articles": [
+    {
+      "title": "한전, 전기요금 과다 발생 알림 'AI 안심 알리미' 확대",
+      "url": "https://imnews.imbc.com/news/2026/econo/article/6832769_36932.html",
+      "date": "2026-06-25",
+      "source": "MBC",
+      "category": "energy",
+      "summary": [
+        "AI·빅데이터로 전기요금 과다 발생을 사전 감지해 알려주는 'AI 안심 알리미' 서비스를 확대함",
+        "7월 예측 사용량 450kWh 이상, 8월 300kWh 이상 주택용 고객까지 확대돼 약 1100만 가구가 대상 (청구 문의 사전 대응에 활용)"
+      ]
+    },
+    {
+      "title": "한전, 전기요금 청구서 '디지털 전환'…전자청구서 이용 1500만 가구 돌파",
+      "url": "https://www.polinews.co.kr/news/articleView.html?idxno=717789",
+      "date": "2026-06-24",
+      "source": "폴리뉴스",
+      "category": "energy",
+      "summary": [
+        "한전 전기요금 전자청구서 이용 가구가 1500만을 넘어서며 디지털 전환이 가속됨",
+        "종이청구서를 전자청구서로 전환해 비용 절감과 탄소중립을 동시에 추진 (빌링 대행 시장 직접 연관)"
+      ]
+    },
+    {
+      "title": "2026 에너지바우처 신청 시작…대상·금액·사용기간 총정리",
+      "url": "https://www.tossbank.com/articles/2026-energy-voucher",
+      "date": "2026-06-22",
+      "source": "토스뱅크",
+      "category": "local",
+      "summary": [
+        "2026 에너지바우처 신청이 시작돼 읍면동 행정복지센터·복지로에서 접수함",
+        "1인 세대 약 29만원~4인 이상 약 70만원 지원, 하절기 전기요금 자동 차감 방식 적용"
+      ]
+    },
+    {
+      "title": "2026 에너지바우처, 하절기 전기요금 자동 차감…계절 사용상한 폐지",
+      "url": "https://www.christiandaily.co.kr/amp/news/159858",
+      "date": "2026-05-13",
+      "source": "기독일보",
+      "category": "local",
+      "summary": [
+        "7월 1일부터 하절기 에너지바우처가 전기요금에서 자동 차감되는 방식으로 지원됨",
+        "계절별 사용상한이 폐지돼 연간 바우처를 원하는 시기에 자유롭게 사용 가능"
+      ]
+    },
+    {
+      "title": "산업용 전기요금 49년 만의 개편…업종별 영향 시뮬레이션 공개",
+      "url": "https://enersentry.com/%EC%82%B0%EC%97%85%EC%9A%A9-%EC%A0%84%EA%B8%B0%EC%9A%94%EA%B8%88-%EA%B0%9C%ED%8E%B8/",
+      "date": "2026-04-05",
+      "source": "에너센트",
+      "category": "energy",
+      "summary": [
+        "산업용 전기요금 체계가 49년 만에 개편되며 업종별 부담 변화가 예상됨",
+        "요금제 개편에 따라 고객 청구 안내·문의 대응 준비가 필요함"
+      ]
+    }
+  ]
+}
