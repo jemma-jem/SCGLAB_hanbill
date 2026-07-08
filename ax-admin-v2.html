@@ -3479,7 +3479,7 @@ window.hbCopyScript = function() {
 };
 
 // ─── 뉴스 (검증된 실제 기사) ───
-// 검증일: 2026-06-25 / WebFetch로 URL 접속·제목·내용 확인 완료
+// 검증일: 2026-07-08 / 웹 검색으로 제목·출처·내용 재확인 완료
 // 전일(2026-07-07)·당일(2026-07-08) 실기사 취합 — 웹 검색 기반 갱신
 const NEWS_DATA = [
   // ── 당일 (2026-07-08) ──
@@ -3519,9 +3519,18 @@ const NEWS_DATA = [
     ],
     url: 'https://www.tossbank.com/articles/2026-energy-voucher'
   },
+  {
+    no: 5, date: '2026-07-08', source: 'MBC', category: 'energy',
+    title: "한전, 전기요금 과다 발생 알림 'AI 안심 알리미' 확대",
+    lines: [
+      'AI·빅데이터로 전기요금 과다 발생을 사전 감지해 알려주는 \'AI 안심 알리미\' 서비스를 확대함',
+      '7월 예측 사용량 450kWh 이상, 8월 300kWh 이상 주택용 고객까지 확대돼 약 1100만 가구가 대상 (청구 문의 사전 대응에 활용)',
+    ],
+    url: 'https://imnews.imbc.com/news/2026/econo/article/6832769_36932.html'
+  },
   // ── 전일 (2026-07-07) ──
   {
-    no: 5, date: '2026-07-07', source: '팍스경제TV', category: 'energy',
+    no: 6, date: '2026-07-07', source: '팍스경제TV', category: 'energy',
     title: "한국전력, 종이 없는 '전자 청구서' 이용 확대 나서",
     lines: [
       '한전이 종이청구서를 대체하는 전자청구서 이용 확대에 본격 나섬',
@@ -3530,7 +3539,7 @@ const NEWS_DATA = [
     url: 'https://www.paxetv.com/news/articleView.html?idxno=232763'
   },
   {
-    no: 6, date: '2026-07-07', source: '그린포스트코리아', category: 'energy',
+    no: 7, date: '2026-07-07', source: '그린포스트코리아', category: 'energy',
     title: '한전, 모바일 기반 전자청구서 확대…자원 절감과 고객 혜택 동시에',
     lines: [
       '모바일 전자청구서 확대로 종이 자원 절감 효과가 기대됨',
@@ -3539,7 +3548,7 @@ const NEWS_DATA = [
     url: 'https://www.greenpostkorea.co.kr/news/articleView.html?idxno=301693'
   },
   {
-    no: 7, date: '2026-07-07', source: '기독일보', category: 'local',
+    no: 8, date: '2026-07-07', source: '기독일보', category: 'local',
     title: '2026 에너지바우처, 하절기 전기요금 자동 차감…계절 사용상한 폐지',
     lines: [
       '7월 1일부터 하절기 에너지바우처가 전기요금에서 자동 차감되는 방식으로 지원됨',
@@ -5648,7 +5657,7 @@ async function hbClaudeStream(systemPrompt, userText) {
       },
       body: JSON.stringify({
         model: 'claude-sonnet-4-6',
-        max_tokens: 1024,
+        max_tokens: 2048,
         stream: true,
         system: systemPrompt,
         messages: [{ role: 'user', content: userText }]
@@ -6219,7 +6228,7 @@ async function hbGroqQuery(userText, fallbackFn) {
 3. 분석 후 반드시 실무 권고사항을 1~3개 제시한다
 4. 답변은 HTML 태그 사용 가능 (bold, 색상 강조 활용)
 5. 한국어로만 답변한다
-6. 300자 이내로 간결하게, 단 브리핑 요청 시 상세하게
+6. 답변은 분석 결론까지 빠짐없이 완결한다 — 문장이 중간에 끊기지 않도록 끝맺는다. 단순 조회성 질문은 400자 내외로 간결히, 분석·원인·예측·브리핑·전략 요청은 필요한 만큼 상세히 작성하되 마지막 권고·요약까지 반드시 포함한다
 
 ## 질문 유형별 답변 형식
 - 현황 질문 → 수치 요약 + 상위 카테고리 + 전주 대비 변화
@@ -6253,7 +6262,7 @@ ${ctx}`;
           { role: 'system', content: systemPrompt },
           { role: 'user', content: userText }
         ],
-        max_tokens: 800,
+        max_tokens: 2048,
         temperature: 0.5,
       })
     });
@@ -6505,7 +6514,7 @@ function hbAnswer(text) {
         const clientGroqPrompt = `SCG랩 한빌 서비스 거래처 "${kw}" 민원 분석.
 총 ${hits.length}건. 주요 유형: ${catSummary}. 최근 상담 샘플: ${recentTexts}.
 
-다음 형식으로 답변하세요(한국어, 200자 이내):
+다음 형식으로 각 항목을 1~2문장씩 빠짐없이 완결하여 답변하세요(한국어, 문장이 중간에 끊기지 않도록 끝맺기):
 📌 현황 진단 (이 거래처의 민원 패턴 특징)
 🔍 원인 추정 (반복되는 이유)
 💡 관계 관리 제안 (담당자가 취할 수 있는 선제 조치 2가지)`;
@@ -6544,7 +6553,7 @@ function hbAnswer(text) {
     const clientGroqPrompt2 = `SCG랩 한빌 서비스 거래처 "${kw}" 민원 분석.
 총 ${matched.length}건. 주요 유형: ${catSummary2}. 최근 상담 샘플: ${recentTexts2}.
 
-다음 형식으로 답변하세요(한국어, 200자 이내):
+다음 형식으로 각 항목을 1~2문장씩 빠짐없이 완결하여 답변하세요(한국어, 문장이 중간에 끊기지 않도록 끝맺기):
 📌 현황 진단 (이 거래처의 민원 패턴 특징)
 🔍 원인 추정 (반복되는 이유)
 💡 관계 관리 제안 (담당자가 취할 수 있는 선제 조치 2가지)`;
