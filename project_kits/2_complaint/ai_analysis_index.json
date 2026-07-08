@@ -1,0 +1,156 @@
+{
+ "generatedAt": "2026-07-08T05:52",
+ "total": 707,
+ "resolvedRate": 71,
+ "unresolvedRate": 29,
+ "resolved": 503,
+ "unresolved": 204,
+ "sentiment": {
+  "pos": 446,
+  "neu": 125,
+  "neg": 136,
+  "posRate": 63,
+  "negRate": 19
+ },
+ "agentQuality": {
+  "good": 489,
+  "ok": 40,
+  "improve": 178,
+  "goodRate": 69,
+  "improveRate": 25
+ },
+ "topCats": [
+  {
+   "code": "A3",
+   "cnt": 227,
+   "resolved": 158,
+   "unresolved": 69,
+   "issues": []
+  },
+  {
+   "code": "Z1",
+   "cnt": 72,
+   "resolved": 38,
+   "unresolved": 34,
+   "issues": []
+  },
+  {
+   "code": "B1",
+   "cnt": 58,
+   "resolved": 42,
+   "unresolved": 16,
+   "issues": []
+  },
+  {
+   "code": "A1",
+   "cnt": 45,
+   "resolved": 36,
+   "unresolved": 9,
+   "issues": []
+  },
+  {
+   "code": "C1",
+   "cnt": 45,
+   "resolved": 41,
+   "unresolved": 4,
+   "issues": []
+  },
+  {
+   "code": "B2",
+   "cnt": 40,
+   "resolved": 36,
+   "unresolved": 4,
+   "issues": []
+  },
+  {
+   "code": "C2",
+   "cnt": 40,
+   "resolved": 24,
+   "unresolved": 16,
+   "issues": []
+  },
+  {
+   "code": "A2",
+   "cnt": 38,
+   "resolved": 31,
+   "unresolved": 7,
+   "issues": []
+  }
+ ],
+ "topIssues": [
+  {
+   "issue": "이메일 주소 변경",
+   "cnt": 33
+  },
+  {
+   "issue": "이메일 못 받음",
+   "cnt": 12
+  },
+  {
+   "issue": "청구서 조회",
+   "cnt": 8
+  },
+  {
+   "issue": "이메일 청구서 못 받음",
+   "cnt": 7
+  },
+  {
+   "issue": "청구서 조회 방법",
+   "cnt": 5
+  },
+  {
+   "issue": "청구서 조회 안됨",
+   "cnt": 5
+  },
+  {
+   "issue": "청구서 해지",
+   "cnt": 5
+  },
+  {
+   "issue": "이메일 고지서 재발송",
+   "cnt": 5
+  }
+ ],
+ "improvements": [
+  "고객의 질문에 직접 답변하거나, 더 자세한 정보를 제공",
+  "상담원이 고객의 질문에 대해 더 명확한 답변을 제공하고, 청구서 조회 시스템의 사용 방법을 더 잘 설명할 수 있어야 함",
+  "빌코리아와 한국 인터넷 빌링의 차이를 명확히 설명하고, 변경 절차를 자세히 안내할 필요가 있음",
+  "보다상세한 정보를 제공하고, 고객의 문제를 직접 해결하는 방법을 제안",
+  "고객의 질문에 대한 명확한 답변 제공 필요",
+  "상담원이 고객의 문제를 더 명확하게 파악하고, 해결책을 제시할 수 있도록 개선 필요"
+ ],
+ "bestPhrases": [
+  {
+   "phrase": "그러면 처리해 하자, 하셨습니다.",
+   "cat": "청구서등록",
+   "sentiment": "만족"
+  },
+  {
+   "phrase": "그럼 이메일 좀 한번 불러봐주실 때 J O N G J O N G 또 한 번 더 J O N G J O N G 숫자 281 281 네 골뱅이 코리아.kr이요",
+   "cat": "청구서조회문의",
+   "sentiment": "만족"
+  },
+  {
+   "phrase": "변경하실 메인 주소 말씀해주세요",
+   "cat": "이메일변경",
+   "sentiment": "만족"
+  },
+  {
+   "phrase": "여기는 그러면 청구서를 모아주기만 하시는 거지 청구서 상의 고객명이나 이런 게 바뀌거나 그런 건 아닌 거죠?",
+   "cat": "청구서조회문의",
+   "sentiment": "만족"
+  },
+  {
+   "phrase": "네 맞습니다. 한전으로 전화 주셔야 돼요.",
+   "cat": "고객정보변경",
+   "sentiment": "만족"
+  }
+ ],
+ "negIssues": [
+  "이사 후 청구서 금액 문의",
+  "종이 청구서와 인터넷 빌링 청구서의 중복",
+  "이메일 청구서 못 받음",
+  "문자 청구서 수신 안 됨",
+  "청구사 메일 못 받음"
+ ]
+}
