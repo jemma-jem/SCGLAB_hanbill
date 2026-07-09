@@ -3775,6 +3775,13 @@ function renderNews() {
   html += '한전 청구서·빌링·전자청구서·에너지정책 관련 실무 영향 <strong>최근 주요 기사</strong> <strong id="news-count-text">' + todayNews.length + '건</strong>입니다. <span style="color:#94A3B8">(원문 발행일 최신순 · ' + today + ' 스크랩)</span></p>';
   html += '<hr style="border:none;border-top:1px solid #E2E8F0;margin-bottom:16px">';
 
+  // ── 전체 선택/해제 컨트롤 + 선택 건수 배지 ──
+  html += '<div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;padding:9px 13px;background:#F0F9FF;border:1px solid #BAE6FD;border-radius:9px">';
+  html += '<label style="display:flex;align-items:center;gap:7px;cursor:pointer;font-size:12.5px;font-weight:700;color:#075985;user-select:none">';
+  html += '<input type="checkbox" id="news-check-all" onclick="toggleAllNews(this)" style="width:16px;height:16px;accent-color:var(--sky);cursor:pointer"> 전체 선택</label>';
+  html += '<span id="news-selected-badge" style="margin-left:auto;font-size:11px;background:#E0F2FE;color:#075985;padding:2px 9px;border-radius:10px;font-weight:700">0건 선택됨</span>';
+  html += '</div>';
+
   for (var i = 0; i < todayNews.length; i++) {
     var n = todayNews[i];
     var safeTitle = (n.title||'').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
@@ -3959,11 +3966,11 @@ window.switchNlTab = function(tab) {
 
 // ─── 지난 기사(아카이브) 렌더 + 날짜 필터 ───
 function renderNewsArchive(from, to) {
+  var src = (typeof ARCHIVE_NEWS !== 'undefined' && Array.isArray(ARCHIVE_NEWS)) ? ARCHIVE_NEWS : [];
+  var badge = document.getElementById('nl-archive-badge');
+  if (badge) badge.textContent = src.length;        // 목록 요소 유무와 무관하게 배지는 항상 갱신
   var el = document.getElementById('nl-archive-list');
   if (!el) return;
-  var src = (typeof ARCHIVE_NEWS !== 'undefined') ? ARCHIVE_NEWS : [];
-  var badge = document.getElementById('nl-archive-badge');
-  if (badge) badge.textContent = src.length;
   // 날짜 필터링 (from/to 지정 시 해당 구간만)
   var list = src.slice()
     .filter(function(a){ return (!from || a.date >= from) && (!to || a.date <= to); })
@@ -4036,10 +4043,18 @@ function updateNlHistoryBadge() {
   const badge = document.getElementById('nl-history-badge');
   if (badge) badge.textContent = total || 0;      // 예외 처리: 기본값 0
 }
+// ▶ '지난 기사' 탭 배지: 목록 렌더(renderNewsArchive) 여부와 무관하게 실제 건수를 즉시 반영
+//   (탭을 클릭하지 않아도 페이지 로드 직후 상단 라벨에 반영되도록 독립 초기화)
+function updateNlArchiveBadge() {
+  var badge = document.getElementById('nl-archive-badge');
+  if (!badge) return;
+  var n = (typeof ARCHIVE_NEWS !== 'undefined' && Array.isArray(ARCHIVE_NEWS)) ? ARCHIVE_NEWS.length : 0;
+  badge.textContent = n || 0;                       // 예외 처리: 데이터 없으면 0
+}
 // ▶ 어느 페이지/새로고침에서든 초기 로드 시점에 카운트 자동 복원 (init 블록과 독립적으로 보장)
 if (typeof window !== 'undefined') {
-  window.addEventListener('DOMContentLoaded', function(){ try { updateNlHistoryBadge(); } catch(e){} });
-  window.addEventListener('load',            function(){ try { updateNlHistoryBadge(); } catch(e){} });
+  window.addEventListener('DOMContentLoaded', function(){ try { updateNlHistoryBadge(); updateNlArchiveBadge(); } catch(e){} });
+  window.addEventListener('load',            function(){ try { updateNlHistoryBadge(); updateNlArchiveBadge(); } catch(e){} });
 }
 
 // ─── 이력 렌더링 ───
@@ -4387,7 +4402,14 @@ window.filterNewsCategory = function (cat, btn) {
   applyNewsFilters();
 };
 
-// ─── 체크박스 변경 시 배지 업데이트 ───
+// ─── 전체 선택/해제 ───
+window.toggleAllNews = function(cb) {
+  var checked = !!(cb && cb.checked);
+  document.querySelectorAll('.news-check').forEach(function(b){ b.checked = checked; });
+  if (typeof updateNewsBadge === 'function') updateNewsBadge();
+};
+
+// ─── 체크박스 변경 시 배지 업데이트 + 전체 선택 상태 동기화 ───
 function updateNewsBadge() {
   const all     = document.querySelectorAll('.news-check');
   const checked = document.querySelectorAll('.news-check:checked');
@@ -4395,6 +4417,13 @@ function updateNewsBadge() {
   const countTxt= document.getElementById('news-count-text');
   if (badge)    badge.textContent   = `${checked.length}건 선택됨`;
   if (countTxt) countTxt.textContent = `${checked.length}건`;
+  // 전체 선택 체크박스 상태 동기화 (전체/일부/없음)
+  const master = document.getElementById('news-check-all');
+  if (master) {
+    if (all.length && checked.length === all.length) { master.checked = true;  master.indeterminate = false; }
+    else if (checked.length === 0)                   { master.checked = false; master.indeterminate = false; }
+    else                                             { master.checked = false; master.indeterminate = true;  }
+  }
 }
 document.addEventListener('change', e => {
   if (e.target.classList.contains('news-check')) updateNewsBadge();
