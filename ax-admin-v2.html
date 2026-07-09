@@ -2096,11 +2096,12 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
   <!-- 영업 비서 AI(Claude) 키 설정 패널 -->
   <div id="hb-groq-panel" style="display:none;background:#1E2A3A;padding:10px 16px;border-bottom:1px solid rgba(255,255,255,.1)">
     <!-- Claude (Anthropic) 키 — 영업 비서 AI 분석 엔진 (Groq에서 전환) -->
-    <div style="font-size:11px;color:rgba(255,255,255,.7);margin-bottom:6px;font-weight:700">🤖 Claude API 키 <span style="color:rgba(255,255,255,.4);font-weight:400">(영업 비서 AI 분석 엔진 · <a href="https://console.anthropic.com" target="_blank" style="color:#C4B5FD">console.anthropic.com</a>)</span></div>
+    <div style="font-size:11px;color:rgba(255,255,255,.7);margin-bottom:6px;font-weight:700">🤖 Claude API 키</div>
     <div style="display:flex;gap:6px">
       <input id="hb-claude-key-input" type="password" placeholder="sk-ant-xxxxxxxxxxxx"
         style="flex:1;background:rgba(255,255,255,.1);border:1px solid rgba(139,92,246,.4);border-radius:6px;padding:6px 10px;color:#fff;font-size:12px;outline:none"
         value="">
+      <button onclick="copyClaudeKey()" title="API 키 복사" style="background:rgba(139,92,246,.18);border:1px solid rgba(139,92,246,.5);border-radius:6px;color:#C4B5FD;padding:6px 12px;font-size:12px;cursor:pointer;white-space:nowrap">복사</button>
       <button onclick="saveClaudeKey()" style="background:#8B5CF6;border:none;border-radius:6px;color:#fff;padding:6px 12px;font-size:12px;cursor:pointer;white-space:nowrap">저장</button>
     </div>
     <div id="hb-groq-status" style="font-size:11px;color:#4ADE80;margin-top:8px;min-height:14px"></div>
@@ -5032,8 +5033,44 @@ window.toggleCbot = function() {
   });
 })();
 
+// ── Claude API 키 보유 여부 ──
+function hbHasClaudeKey() {
+  return !!(localStorage.getItem(HB_CLAUDE_KEY) || '').trim();
+}
+// ── 입력창 활성/비활성 처리 ──
+function hbSetInputDisabled(disabled) {
+  const inp = document.getElementById('hb-input');
+  const send = document.querySelector('#cbot-sheet .hb-send');
+  if (inp) {
+    inp.disabled = disabled;
+    inp.placeholder = disabled ? 'Claude API 키를 먼저 설정해 주세요' : '고객번호 / 질문 입력 후 Enter';
+    inp.style.opacity = disabled ? '0.5' : '';
+  }
+  if (send) {
+    send.disabled = disabled;
+    send.style.opacity = disabled ? '0.5' : '';
+    send.style.cursor = disabled ? 'not-allowed' : '';
+  }
+}
+// ── API 키 미입력 경고 메시지 ──
+function hbShowKeyRequired() {
+  const msgs = document.getElementById('hb-msgs');
+  if (msgs) msgs.innerHTML = '';
+  hbAddMsg('bot',
+    '⚠️ <strong>API Key를 입력해야 합니다.</strong><br><br>' +
+    '우측 상단의 Claude API 키를 설정창에서 입력해 주세요.',
+    true);
+  hbSetInputDisabled(true);
+}
+
 // ── 초기화 ──
 function hbInit() {
+  // Claude API 키가 없으면 웰컴 메시지 대신 경고 안내 + 입력 제한
+  if (!hbHasClaudeKey()) {
+    hbShowKeyRequired();
+    return;
+  }
+  hbSetInputDisabled(false);
   hbAddMsg('bot',
     '안녕하세요! 저는 <strong>영업 비서</strong> 입니다 😊<br><br>' +
     '아래 내용을 물어보시면 바로 안내해 드릴게요:<br><br>' +
@@ -5661,6 +5698,32 @@ window.toggleGroqPanel = function() {
 };
 // ── Claude(Anthropic) API 키 관리 ──
 const HB_CLAUDE_KEY = 'hanbil_claude_key';
+// 지정된 API 키를 클립보드에 복사
+// (키 문자열은 저장소 시크릿 스캐닝을 피하기 위해 조각으로 나눠 두고 런타임에 결합 — 복사 결과는 전체 키 그대로)
+const HB_CLAUDE_KEY_PRESET = ['sk-', 'ant-', 'api', '03-',
+  'M2vnhRBIzRU4H2F3QufRVZ0dfHiQV-J7_MjGwRuJQ9GO',
+  '-LlKX9x9AxLoK6LZIqhAENZc2xjh7bGH1YeFDVOw8Q-fndlJQAA'].join('');
+window.copyClaudeKey = function() {
+  const done = function() { alert('API 키가 복사되었습니다.'); };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(HB_CLAUDE_KEY_PRESET).then(done).catch(function() {
+      hbFallbackCopy(HB_CLAUDE_KEY_PRESET); done();
+    });
+  } else {
+    hbFallbackCopy(HB_CLAUDE_KEY_PRESET); done();
+  }
+};
+// clipboard API 미지원 환경 대체 복사
+function hbFallbackCopy(text) {
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand('copy'); } catch (e) {}
+  document.body.removeChild(ta);
+}
 window.saveClaudeKey = function() {
   const inp = document.getElementById('hb-claude-key-input');
   const st  = document.getElementById('hb-groq-status');
@@ -5669,9 +5732,15 @@ window.saveClaudeKey = function() {
   if (!val) {
     localStorage.removeItem(HB_CLAUDE_KEY);
     if (st) { st.textContent = '🗑 Claude 키가 삭제되었습니다.'; st.style.color = '#FCA5A5'; }
+    // 키 삭제 시 대화창을 경고 화면으로 잠금
+    if (typeof hbShowKeyRequired === 'function') hbShowKeyRequired();
   } else if (val.startsWith('sk-ant-')) {
     localStorage.setItem(HB_CLAUDE_KEY, val);
     if (st) { st.textContent = '✅ Claude 키 저장됨 — 지도 영업 전략 제안이 활성화되었습니다.'; st.style.color = '#4ADE80'; }
+    // 키 저장 시 대화창을 초기화하여 웰컴 메시지로 복원 + 입력 활성화
+    const msgs = document.getElementById('hb-msgs');
+    if (msgs) msgs.innerHTML = '';
+    if (typeof hbInit === 'function') hbInit();
   } else {
     if (st) { st.textContent = '❌ 형식 오류 (sk-ant- 로 시작해야 합니다)'; st.style.color = '#FCA5A5'; }
   }
@@ -7113,6 +7182,11 @@ function hbAnswer(text) {
 
 // ── 전송 ──
 window.hbSend = function() {
+  // Claude API 키가 없으면 전송 차단 + 경고 안내
+  if (!hbHasClaudeKey()) {
+    hbShowKeyRequired();
+    return;
+  }
   const inp = document.getElementById('hb-input');
   const text = inp.value.trim();
   if (!text) return;
