@@ -2520,20 +2520,24 @@ function hbCompletionRate(d) {
   return { num: num, total: total, pct: total ? Math.round(num / total * 100) : 0 };
 }
 
+// 유한한 숫자만 통과, 아니면 기본값 (NaN/undefined/null 방어)
+function _sn(v, def) { v = Number(v); return isFinite(v) ? v : def; }
+
 function computeSatisfaction(d) {
   const ai = (typeof ANALYSIS_INDEX !== 'undefined') ? ANALYSIS_INDEX : null;
   const cr = hbCompletionRate(d);          // 완결률 단일 소스
   const doneCnt  = (d && d.done)  || 0;
   const opsCnt   = (d && d.hjOps) || 0;
   const totalCnt = cr.total;
-  const speedScore    = cr.pct;            // 완결률 = 처리 속도 지표
-  const accuracyScore = ai ? ai.resolvedRate : speedScore;
-  const repeatScore   = ai ? Math.max(0, 100 - ai.unresolvedRate) : 70;
+  const speedScore    = _sn(cr.pct, 0);    // 완결률 = 처리 속도 지표
+  const accuracyScore = ai ? _sn(ai.resolvedRate, speedScore) : speedScore;
+  const repeatScore   = ai ? Math.max(0, 100 - _sn(ai.unresolvedRate, 30)) : 70;
   // ── 당사 강점 지표 추가 반영 (컨설팅 재설계) ──
-  const qualityScore = (ai && ai.agentQuality) ? ai.agentQuality.goodRate : 80;  // 우수 응대 비율(강점)
-  const posScore     = (ai && ai.sentiment)    ? ai.sentiment.posRate     : 75;  // 긍정 감정(강점)
+  const qualityScore = (ai && ai.agentQuality) ? _sn(ai.agentQuality.goodRate, 80) : 80;  // 우수 응대 비율(강점)
+  const posScore     = (ai && ai.sentiment)    ? _sn(ai.sentiment.posRate, 75)     : 75;  // 긍정 감정(강점)
   // 강점 부각 가중 합성: 처리 속도(0.25)·반복민원 관리(0.25)·응대 정확도(0.20)·상담 품질(0.15)·긍정 감정(0.15)
   let sat = Math.round(speedScore*0.25 + accuracyScore*0.20 + repeatScore*0.25 + qualityScore*0.15 + posScore*0.15);
+  if (!isFinite(sat)) sat = 0;             // 최종 NaN 방어
   // 강점 기준선(baseline): 핵심 SLA(완결률 ≥ 80 · 해결률 ≥ 70) 충족 시 90점 하한 보정
   if (speedScore >= 80 && accuracyScore >= 70) sat = Math.max(sat, 90);
   sat = Math.min(99, Math.max(0, sat));
@@ -3219,12 +3223,21 @@ function renderReport(report) {
 
 // ─── 만족도 ───
 function renderSat(score, chg, breakdown, issues) {
+  score = _sn(score, 0);                                   // NaN 방어
+  const chgStr = (chg === undefined || chg === null || chg === '') ? '+0' : String(chg);
+  const chgNum = _sn(parseInt(chgStr, 10), 0);
   document.getElementById('sat-score').textContent = score;
   const prevEl = document.getElementById('sat-prev-label');
-  if (prevEl) prevEl.textContent = `/ 100점 (전${cur==='week'?'주':'월'} ${score-parseInt(chg)}점 ${chg})`;
+  if (prevEl) prevEl.textContent = `/ 100점 (전${cur==='week'?'주':'월'} ${score - chgNum}점 ${chgStr})`;
 
   // 실제 3개 지표(완결률/정확도/반복민원 위험)의 가중 기여분을 그대로 막대 길이로 표시
-  const b = breakdown || { speedScore:score, accuracyScore:score, repeatScore:50 };
+  const _bd = breakdown || {};
+  const b = {
+    speedScore:    _sn(_bd.speedScore, score),
+    accuracyScore: _sn(_bd.accuracyScore, score),
+    repeatScore:   _sn(_bd.repeatScore, 50),
+    doneCnt: _bd.doneCnt || 0, opsCnt: _bd.opsCnt || 0, totalCnt: _bd.totalCnt || 0
+  };
   const segs = [
     { pct: b.speedScore    * 0.4, color:'#0EA5E9' },
     { pct: b.accuracyScore * 0.4, color:'#10B981' },
