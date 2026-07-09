@@ -838,6 +838,10 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
           el.setAttribute('stroke', '#fff');
           el.setAttribute('stroke-width', '0.7');
           el.style.cursor = 'pointer';
+          // 네이티브 SVG 툴팁(<title>) — 커스텀 툴팁이 막혀도 브라우저 기본 툴팁으로 항상 표시
+          const _titleEl = document.createElementNS(NS, 'title');
+          _titleEl.textContent = p.adm_nm;
+          el.appendChild(_titleEl);
           el.addEventListener('mouseover', (e) => {
             el.setAttribute('fill', hover);
             _mapTip.textContent = p.adm_nm;      // 시군구 전체 이름
