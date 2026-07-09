@@ -5836,7 +5836,7 @@ async function hbClaudeStream(systemPrompt, userText) {
       },
       body: JSON.stringify({
         model: 'claude-sonnet-4-6',
-        max_tokens: 2048,
+        max_tokens: 700,          // 요약형 전략 출력 — 과도한 길이 방지
         stream: true,
         system: systemPrompt,
         messages: [{ role: 'user', content: userText }]
@@ -5923,10 +5923,11 @@ window.runMapStrategy = async function(type, sel) {
 '- 선점 개소: ' + qty + '개\n' +
 '- 경쟁사: 누리빌, 한전산업개발\n\n' +
 '## 내부 CUST_DB / 대시보드 컨텍스트\n' + ctx + '\n\n' +
-'## 지시\n' +
-'해당 지역의 데이터를 바탕으로 구체적인 행동 지침(Action Plan)을 반드시 3단계로 제안해줘.\n' +
-'각 단계는 **[1단계] 제목** 형식으로 굵게 시작하고, 실행 주체·방법·기대효과를 1~2문장으로 제시해.\n' +
-'수치 근거를 활용하고, 한국어로 답변하며, 마지막에 한 줄 핵심 요약을 덧붙여줘.';
+'## 지시 (반드시 간결하게 — 화면 팝업용 요약)\n' +
+'해당 지역 데이터를 바탕으로 핵심 액션플랜을 3단계로 제안해줘.\n' +
+'각 단계는 **[1단계] 짧은 제목** 형식으로 굵게 시작하고, 실행 내용은 딱 한 문장(45자 이내)으로만 써.\n' +
+'배경 설명·수식어·중복 표현은 모두 빼고 실행 핵심만. 근거 수치는 필요할 때 짧게 괄호로만.\n' +
+'한국어로 답하고, 전체 답변은 공백 포함 250자 이내로 요약해. 마지막 줄에 **핵심:** 한 줄(30자 이내)을 덧붙여줘.';
 
   const userText = '아래 지역에 대한 ' + stratType + ' 전략 초안을 만들어줘:\n' + JSON.stringify(payload, null, 2);
 
