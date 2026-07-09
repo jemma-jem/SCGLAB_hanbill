@@ -3205,9 +3205,42 @@ function renderTypeChart(topDetails) {
 }
 
 // 이전 기간 topDetails — curWeekKey / curMonthKey 직접 사용
+// YYYY-MM-DD 문자열을 days만큼 이동
+function _shiftYmd(ymd, days) {
+  var t = new Date(ymd + 'T00:00:00');
+  if (isNaN(t.getTime())) return ymd;
+  t.setDate(t.getDate() + days);
+  return t.getFullYear() + '-' + String(t.getMonth()+1).padStart(2,'0') + '-' + String(t.getDate()).padStart(2,'0');
+}
+// [s,e] 범위에 겹치는 DB.weeks 엔트리 값 배열 (일자/주간 키 혼재에도 안전)
+function _dbEntriesInRange(s, e) {
+  if (typeof DB === 'undefined' || !DB.weeks) return [];
+  return Object.keys(DB.weeks)
+    .filter(function(wk){ var v = DB.weeks[wk]; return v && wk <= e && ((v.e || wk) >= s); })
+    .map(function(wk){ return DB.weeks[wk]; });
+}
+// 엔트리 배열의 td를 코드별 합산 (내림차순)
+function _aggTd(entries) {
+  var map = {};
+  entries.forEach(function(v){ (v.td || []).forEach(function(t){
+    if (!map[t.code]) map[t.code] = { code:t.code, label:t.label, cnt:0 };
+    map[t.code].cnt += (t.cnt || 0);
+  }); });
+  return Object.values(map).sort(function(a,b){ return b.cnt - a.cnt; });
+}
+
 function getPrevTopDetails() {
   if (typeof DB === 'undefined') return [];
   if (cur === 'week') {
+    // ▶ '전주 대비': 현재 활성 기간을 그대로 7일 앞으로 이동한 '한 주 전' 범위를 집계
+    //   (DB.weeks에 일자 키·주간 키가 섞여 있어 인접 키(weeks[idx-1])는 '전날'이 될 수 있으므로 날짜 범위로 계산)
+    var r = window._activeRange;
+    if (r && r.s && r.e) {
+      var ps = _shiftYmd(r.s, -7), pe = _shiftYmd(r.e, -7);
+      var td = _aggTd(_dbEntriesInRange(ps, pe));
+      if (td.length) return td;
+    }
+    // 폴백: 기존 인접 키 방식
     const weeks = Object.keys(DB.weeks).sort();
     const key = curWeekKey || weeks[weeks.length - 1];
     const idx = weeks.indexOf(key);
@@ -4704,13 +4737,14 @@ const SEC_META = {
   newsletter:['뉴스레터','한전 청구서사업 경영진 일일 스크랩'],
 };
 window.goSec = function(name, el) {
+  // 탭 전환 시 항상 페이지 최상단으로 (이전 탭 스크롤 위치 잔존 방지)
+  window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
   document.querySelectorAll('.sec').forEach(s => s.classList.remove('on'));
   document.querySelectorAll('.ni').forEach(n => n.classList.remove('on'));
   document.getElementById('sec-' + name).classList.add('on');
   el.classList.add('on');
   document.getElementById('pt').textContent = SEC_META[name][0];
   if (name === 'dashboard') {
-    window.scrollTo(0, 0);
     document.getElementById('ps').textContent = '한전 빌링 영업 현황';
     if (typeof renderDashboardSummary === 'function') renderDashboardSummary();
   } else {
@@ -4952,7 +4986,11 @@ window.applyDateRange = function() {
         entries.forEach(v => (v.kw||[]).forEach(k => { kwMap[k.word] = (kwMap[k.word]||0) + k.cnt; }));
         const keywords = Object.entries(kwMap).sort((a,b)=>b[1]-a[1]).slice(0,12).map(([word,cnt])=>({word,cnt}));
         var _satW = computeSatisfaction(d);   // 리포트와 동일 d로 만족도 동기 재계산 (완결률 일치)
+        // '전주 대비' 총건수: 현재 범위를 7일 앞으로 이동한 한 주 전 범위를 집계
+        var _prevAgg = (typeof aggregateFromDB === 'function')
+          ? aggregateFromDB(_dbEntriesInRange(_shiftYmd(s,-7), _shiftYmd(e,-7))) : null;
         DATA.week = { ...DATA.week, ...d, periodLabel:lbl, topDetails, keywords,
+          prevTotal: (_prevAgg && _prevAgg.total) ? _prevAgg.total : 0,
           report: makeReport(d, lbl, topDetails),
           sat: _satW.sat, satBreakdown: _satW, issues: buildIssueList(d, null),
           weekTrend: buildTrend('week', s, e) };
@@ -5059,6 +5097,8 @@ const BN_SECTIONS = {
   newsletter: { label:'뉴스레터', sub:'한전 청구서사업 경영진 스크랩' },
 };
 window.bnGo = function(name) {
+  // 탭 전환 시 항상 페이지 최상단으로 (이전 탭 스크롤 위치 잔존 방지)
+  window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
   // 섹션 전환
   document.querySelectorAll('.sec').forEach(s => s.classList.remove('on'));
   const target = document.getElementById('sec-' + name);
@@ -5072,7 +5112,6 @@ window.bnGo = function(name) {
   if (meta) {
     document.getElementById('pt').textContent = meta.label;
     if (name === 'dashboard') {
-      window.scrollTo(0, 0);
       document.getElementById('ps').textContent = '한전 빌링 영업 현황';
     } else {
       document.getElementById('ps').textContent = meta.sub;
@@ -5083,8 +5122,6 @@ window.bnGo = function(name) {
   document.querySelectorAll('.ni').forEach(n => n.classList.remove('on'));
   const ni = document.querySelector('.ni[onclick*="' + name + '"]');
   if (ni) ni.classList.add('on');
-  // 현재 페이지 상단으로
-  window.scrollTo({ top: 0, behavior: 'smooth' });
 };
 
 // ─── 모바일 사이드바 ───
@@ -5944,7 +5981,7 @@ async function hbClaudeStream(systemPrompt, userText) {
       },
       body: JSON.stringify({
         model: 'claude-sonnet-4-6',
-        max_tokens: 700,          // 요약형 전략 출력 — 과도한 길이 방지
+        max_tokens: 3000,         // 상세 3단계 전략(제안서 수준) 출력 — 잘림 방지용 충분한 헤드룸
         stream: true,
         system: systemPrompt,
         messages: [{ role: 'user', content: userText }]
@@ -6031,11 +6068,19 @@ window.runMapStrategy = async function(type, sel) {
 '- 선점 개소: ' + qty + '개\n' +
 '- 경쟁사: 누리빌, 한전산업개발\n\n' +
 '## 내부 CUST_DB / 대시보드 컨텍스트\n' + ctx + '\n\n' +
-'## 지시 (반드시 간결하게 — 화면 팝업용 요약)\n' +
-'해당 지역 데이터를 바탕으로 핵심 액션플랜을 3단계로 제안해줘.\n' +
-'각 단계는 **[1단계] 짧은 제목** 형식으로 굵게 시작하고, 실행 내용은 딱 한 문장(45자 이내)으로만 써.\n' +
-'배경 설명·수식어·중복 표현은 모두 빼고 실행 핵심만. 근거 수치는 필요할 때 짧게 괄호로만.\n' +
-'한국어로 답하고, 전체 답변은 공백 포함 250자 이내로 요약해. 마지막 줄에 **핵심:** 한 줄(30자 이내)을 덧붙여줘.';
+'## 지시 — 현업에서 즉시 제안서·실행안으로 쓸 수 있는 "상세" 전략을 작성 (아래 3단계 프레임워크 필수 준수)\n' +
+'추상적 문구를 지양하고, 도시가스·한전 전자청구(전자고지) 대행·콜센터 민원 감축 등 실제 B2B/B2C 빌링 비즈니스 맥락의 전문 용어와 실무 팁을 풍부하게 담아 깊이 있게 작성해.\n' +
+'제공된 지역 데이터·경쟁 구도·CUST_DB/대시보드 컨텍스트의 실제 수치를 근거로 인용하고, 마크다운 굵게(**)와 불릿(-)으로 가독성 있게 구성해.\n\n' +
+'반드시 아래 3개 섹션을 이 순서·제목으로 작성:\n\n' +
+'**[1. 현황 및 문제점 분석]**\n' +
+'- 지역 데이터(빌링 건수·선점 개소·현재 빌링사·경쟁사)와 내부 컨텍스트를 근거로 핵심 Pain Point 2~3개를 수치와 함께 도출. 왜 지금 이 전략이 필요한지 진단.\n\n' +
+'**[2. 구체적 맞춤 제안]**\n' +
+'- 한빌 솔루션 연계형 상세 실행 전략을 제시. (예: 전화 인입 경로 최적화, RPA 기반 청구·수납 자동화, AI 청구서/전자고지 전환, 가스앱·카카오 알림톡 채널 전환, 콜센터 반복 민원 스크립트·FAQ 정비 등)\n' +
+'- 각 제안마다 실행 주체·방법·추진 순서(단기/중기)를 구체적으로. ' + (stratType === '유지' ? '경쟁사 이탈 방어와 계약 갱신·확대 관점을 강조.' : '경쟁사 대체·신규 진입과 전자청구 전환 관점을 강조.') + '\n\n' +
+'**[3. 기대 지표 및 맺음말]**\n' +
+'- 정량적 기대효과를 추정 수치로 제시(전화 인입 감소율, 상담 부하·응대 시간 절감, 완결률·고객 만족도 개선, 전자청구 전환율·계약 유지율 등).\n' +
+'- 담당자를 설득하는 실무적 클로징 멘트로 마무리.\n\n' +
+'한국어로 작성하고, 충분히 상세하되 화면 출력이 중간에 잘리지 않도록 공백 포함 약 900~1200자(최대 1300자) 범위에서 완결된 문장으로 마무리해.';
 
   const userText = '아래 지역에 대한 ' + stratType + ' 전략 초안을 만들어줘:\n' + JSON.stringify(payload, null, 2);
 
@@ -7557,6 +7602,9 @@ window.hbSend = function() {
   const text = inp.value.trim();
   if (!text) return;
   inp.value = ''; inp.style.height='';
+  // 클로드 키가 설정된 상태에서 검색(전송) 시 키 설정 창 자동 닫기
+  var _gp = document.getElementById('hb-groq-panel');
+  if (_gp && _gp.style.display !== 'none') _gp.style.display = 'none';
   hbAddMsg('user', text);
 
   // 고객번호 / ID / 이메일 형태 → 고객 이력 조회 + 녹취 이력 조회
@@ -8343,6 +8391,10 @@ window.closePageAlert = function() {
 };
 
 // ─── INIT ───
+// 첫 진입/새로고침 시 항상 페이지 최상단부터 (브라우저 스크롤 복원 방지)
+try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch(e) {}
+window.scrollTo(0, 0);
+window.addEventListener('load', function(){ window.scrollTo(0, 0); });
 loadFromDB('both');
 renderAll();
 // 첫 진입 기본 기간을 '지난주'(동적)로 확정 적용 — loadFromDB의 최신주 덮어쓰기보다 뒤에 실행되어야 함
@@ -8368,11 +8420,18 @@ if (typeof archiveNewsToKB === 'function') {
 if (typeof updatePageAlert === 'function') updatePageAlert('dashboard');
 // STT 분석 패널(질향상·VOC·개선제안)은 로드 완료 후 재렌더 (init 타이밍 안전장치)
 function _renderSTTPanels() {
+  var r = window._activeRange || {s:'2026-04-01',e:'2026-06-30'};
+  // 현재 활성 기간(첫 진입 시 전주)으로 STT_RAW를 재필터링 + 인덱스 재계산 후 패널을 정확한 데이터로 갱신
+  // (applySTTFilter가 질향상·VOC·개선제안·AI요약·해결률·우수응대·데이터갭을 모두 렌더)
+  if (typeof applySTTFilter === 'function' && r && r.s && r.e) {
+    applySTTFilter(r.s, r.e);
+    return;
+  }
+  // 폴백 (applySTTFilter 미정의 시)
   if (typeof renderSTTQuality === 'function') renderSTTQuality();
   if (typeof renderSTTVOC === 'function') renderSTTVOC();
   if (typeof renderSTTImprovements === 'function') renderSTTImprovements();
   var f = window._sttFiltered || (typeof STT_RAW!=='undefined'?STT_RAW:[]);
-  var r = window._activeRange || {s:'2026-04-01',e:'2026-06-30'};
   if (typeof renderAiSummaryCards === 'function') renderAiSummaryCards(f,r.s,r.e);
   if (typeof renderResolutionDual === 'function') renderResolutionDual(f,r.s,r.e);
   if (typeof renderBestPhrases === 'function') renderBestPhrases();
