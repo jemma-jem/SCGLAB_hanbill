@@ -6070,6 +6070,20 @@ const DETAIL_TYPE_TO_CODE = (function(){
 function _detailToCode(detail){
   return DETAIL_TYPE_TO_CODE[(detail||'').replace(/\s+/g,'')] || '';
 }
+// 코드 → 상세유형 라벨 (L열에 라벨이 없을 때 폴백)
+const _CODE_TO_LABEL = (function(){
+  var m = {};
+  [['A1','청구서 등록'],['A2','청구서 해지'],['A3','청구서 조회 문의'],['A4','청구납부정보 변경'],
+   ['B1','고객정보 변경'],['B2','이메일 변경'],['B3','전화번호 변경'],['B4','휴대폰번호 변경'],
+   ['C1','이메일 재발송'],['C2','이메일 못받음'],['C3','이메일 우선 발송'],
+   ['D1','문자 재발송'],['D2','문자 못받음'],['D3','문자청구서 재발송'],
+   ['E1','납부내역 조회'],['F1','자동이체 변경'],['F2','비자동이체 문자 문의'],
+   ['G1','홈페이지문의'],['J1','가스앱 문의 및 처리'],
+   ['Y1','데이터 생성·변경'],['Y2','한전2차인증관련문의'],['Y3','종료빌링사 당사 이전 문의'],
+   ['Z0','전화수신'],['Z1','기타']].forEach(function(p){ m[p[0]] = p[1]; });
+  return m;
+})();
+function _codeToLabel(code){ return _CODE_TO_LABEL[code] || ''; }
 // G열 유형(첫 알파벳) → 처리방법 그룹 (종결 데이터 판단)
 function _procGroupByType(rawType){
   var m = String(rawType||'').toUpperCase().match(/[A-Z]/);
@@ -6099,22 +6113,29 @@ function _ingestComplaintRows(rows, cutoff){
   var byDate = {};   // date → {t,done,ops,kepco,v[10],tdMap}
   (rows || []).forEach(function(row){
     if (!row) return;
-    var typeRaw= row[6]  || '';     // G = 유형 (처리방법 판단)
-    var detail = row[7]  || '';     // H = 상세유형 (카테고리 판단)
-    var dateRaw= row[8]  || '';     // I = 상담일자
-    var code = _detailToCode(detail);
-    if (!code) return;                               // 매핑표에 없는 상세유형만 제외 (전화수신 Z0는 총 인입에 포함)
+    var typeRaw = row[6]  || '';    // G = 유형 (처리방법 판단)
+    var hVal    = (row[7] || '').trim();   // H = 상세유형/코드 (데이터행은 코드 'A1')
+    var dateRaw = row[8]  || '';    // I = 상담일자
+    var catFull = row[11] || '';    // L = '코드_라벨' (예: 'A1_청구서 등록')
+    // 카테고리 코드: 데이터행 H는 이미 코드(A1) → 우선 사용, 아니면 L에서 추출, 그래도 없으면 상세유형 텍스트 매핑
+    var code = '';
+    if (/^[A-Z]\d/.test(hVal)) code = hVal;
+    else { var lc = (catFull.split('_')[0] || '').trim(); if (/^[A-Z]\d/.test(lc)) code = lc; }
+    if (!code) code = _detailToCode(hVal);
+    if (!/^[A-Z]\d/.test(code)) return;              // 유효 코드 아님(설정/헤더행) 제외
     var d = _parseConsultDate(dateRaw);
-    if (!d) return;                                  // 날짜 파싱 실패 제외
+    if (!d) return;                                  // 날짜 파싱 실패 제외(설정행 자동 배제)
     if (cutoff && d <= cutoff) return;               // 시드 이후 최신분만
     var grp = _procGroupByType(typeRaw);             // 처리방법은 G열 유형으로 판단
+    // 라벨: 표준 코드→라벨 우선(L열은 행별로 불일치 가능) → L 파싱 → 코드
+    var label = _codeToLabel(code) || (catFull.split('_')[1] || '').trim() || code;
     sttRecords.push({ d: d, c: code, s: 1, r: (grp === 'done' ? 1 : 0), a: 1 });
     if (!byDate[d]) byDate[d] = { t:0, done:0, ops:0, kepco:0, v:[0,0,0,0,0,0,0,0,0,0], tdMap:{} };
     var b = byDate[d];
     b.t++;
     if (grp === 'done') b.done++; else if (grp === 'ops') b.ops++; else if (grp === 'kepco') b.kepco++;
     b.v[_catIdxByCode(code)]++;
-    if (!b.tdMap[code]) b.tdMap[code] = { code: code, label: (detail || code).trim(), cnt: 0 };
+    if (!b.tdMap[code]) b.tdMap[code] = { code: code, label: label, cnt: 0 };
     b.tdMap[code].cnt++;
   });
   // byDate → DB.weeks 일자별 엔트리
