@@ -4737,13 +4737,14 @@ const SEC_META = {
   newsletter:['뉴스레터','한전 청구서사업 경영진 일일 스크랩'],
 };
 window.goSec = function(name, el) {
+  // 탭 전환 시 항상 페이지 최상단으로 (이전 탭 스크롤 위치 잔존 방지)
+  window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
   document.querySelectorAll('.sec').forEach(s => s.classList.remove('on'));
   document.querySelectorAll('.ni').forEach(n => n.classList.remove('on'));
   document.getElementById('sec-' + name).classList.add('on');
   el.classList.add('on');
   document.getElementById('pt').textContent = SEC_META[name][0];
   if (name === 'dashboard') {
-    window.scrollTo(0, 0);
     document.getElementById('ps').textContent = '한전 빌링 영업 현황';
     if (typeof renderDashboardSummary === 'function') renderDashboardSummary();
   } else {
@@ -5096,6 +5097,8 @@ const BN_SECTIONS = {
   newsletter: { label:'뉴스레터', sub:'한전 청구서사업 경영진 스크랩' },
 };
 window.bnGo = function(name) {
+  // 탭 전환 시 항상 페이지 최상단으로 (이전 탭 스크롤 위치 잔존 방지)
+  window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
   // 섹션 전환
   document.querySelectorAll('.sec').forEach(s => s.classList.remove('on'));
   const target = document.getElementById('sec-' + name);
@@ -5109,7 +5112,6 @@ window.bnGo = function(name) {
   if (meta) {
     document.getElementById('pt').textContent = meta.label;
     if (name === 'dashboard') {
-      window.scrollTo(0, 0);
       document.getElementById('ps').textContent = '한전 빌링 영업 현황';
     } else {
       document.getElementById('ps').textContent = meta.sub;
@@ -5120,8 +5122,6 @@ window.bnGo = function(name) {
   document.querySelectorAll('.ni').forEach(n => n.classList.remove('on'));
   const ni = document.querySelector('.ni[onclick*="' + name + '"]');
   if (ni) ni.classList.add('on');
-  // 현재 페이지 상단으로
-  window.scrollTo({ top: 0, behavior: 'smooth' });
 };
 
 // ─── 모바일 사이드바 ───
@@ -8391,6 +8391,10 @@ window.closePageAlert = function() {
 };
 
 // ─── INIT ───
+// 첫 진입/새로고침 시 항상 페이지 최상단부터 (브라우저 스크롤 복원 방지)
+try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch(e) {}
+window.scrollTo(0, 0);
+window.addEventListener('load', function(){ window.scrollTo(0, 0); });
 loadFromDB('both');
 renderAll();
 // 첫 진입 기본 기간을 '지난주'(동적)로 확정 적용 — loadFromDB의 최신주 덮어쓰기보다 뒤에 실행되어야 함
