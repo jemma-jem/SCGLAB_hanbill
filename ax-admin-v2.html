@@ -3914,6 +3914,7 @@ window.resetArchiveFilter = function(){
 
 // ─── 뉴스 이력 저장소 (localStorage) ───
 const NL_HISTORY_KEY = 'hanbil_news_history';
+const NL_HISTORY_COUNT_KEY = 'hanbil_news_history_count'; // 전역 공유 카운트(누적 발송 기사 수)
 const NL_HISTORY_MONTHS = 3; // 보관 기간
 
 function loadNewsHistory() {
@@ -3933,13 +3934,26 @@ function saveNewsHistory(articles) {
   // 최신순 정렬
   hist.sort((a, b) => b.sentDate.localeCompare(a.sentDate));
   localStorage.setItem(NL_HISTORY_KEY, JSON.stringify(hist));
+  // 전역 공유 카운트도 명시적으로 저장(setItem) → 어느 페이지에서든 동일 값 참조
+  const total = hist.reduce((s, h) => s + ((h.articles && h.articles.length) || 0), 0);
+  try { localStorage.setItem(NL_HISTORY_COUNT_KEY, String(total)); } catch(e) {}
   updateNlHistoryBadge();
 }
+// localStorage에서 발송이력 카운트를 읽어 뱃지에 바인딩 (값 없으면 0 폴백)
 function updateNlHistoryBadge() {
   const hist = loadNewsHistory();
-  const total = hist.reduce((s, h) => s + h.articles.length, 0);
+  let total = hist.reduce((s, h) => s + ((h.articles && h.articles.length) || 0), 0);
+  if (!total) {                                   // 이력 배열이 비어도 저장된 카운트가 있으면 사용
+    const saved = parseInt(localStorage.getItem(NL_HISTORY_COUNT_KEY) || '0', 10);
+    if (!isNaN(saved)) total = saved;
+  }
   const badge = document.getElementById('nl-history-badge');
-  if (badge) badge.textContent = total;
+  if (badge) badge.textContent = total || 0;      // 예외 처리: 기본값 0
+}
+// ▶ 어느 페이지/새로고침에서든 초기 로드 시점에 카운트 자동 복원 (init 블록과 독립적으로 보장)
+if (typeof window !== 'undefined') {
+  window.addEventListener('DOMContentLoaded', function(){ try { updateNlHistoryBadge(); } catch(e){} });
+  window.addEventListener('load',            function(){ try { updateNlHistoryBadge(); } catch(e){} });
 }
 
 // ─── 이력 렌더링 ───
