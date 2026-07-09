@@ -361,7 +361,11 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
   #dash-summary-grid{grid-template-columns:1fr !important}
   .tclock{display:none}
   .pred-badge span:last-child{display:none}
-  .pred-badge::after{content:'알림'}
+  .pred-badge::after{content:attr(data-alert-label)}   /* 모바일 칩: 활성 탭 이름 동적 표시 */
+  /* 알림 패널: 모바일에서 화면 밖으로 밀리거나 깨지지 않도록 */
+  #page-alert-modal{width:auto;max-width:calc(100vw - 24px);left:12px;right:12px}
+  #alert-modal-title{white-space:normal;word-break:keep-all;line-height:1.35}
+  #alert-modal-body{word-break:break-word;overflow-wrap:anywhere}
   .t5-bar-wrap{width:60px}
   .tbl th:nth-child(2),.tbl td:nth-child(2){display:none}
 }
@@ -1557,7 +1561,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
                 <span style="font-size:11px;color:#94A3B8">전기신문 · 2026-07-07</span>
               </div>
               <label style="display:flex;align-items:center;gap:5px;cursor:pointer;font-size:11.5px;color:var(--sky-dark);font-weight:600;user-select:none">
-                <input type="checkbox" class="news-check" data-no="1" checked
+                <input type="checkbox" class="news-check" data-no="1"
                   style="width:15px;height:15px;accent-color:var(--sky);cursor:pointer">
                 발송에 포함
               </label>
@@ -1592,7 +1596,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
                 <span style="font-size:11px;color:#94A3B8">전기신문 · 2026-07-07</span>
               </div>
               <label style="display:flex;align-items:center;gap:5px;cursor:pointer;font-size:11.5px;color:var(--sky-dark);font-weight:600;user-select:none">
-                <input type="checkbox" class="news-check" data-no="2" checked
+                <input type="checkbox" class="news-check" data-no="2"
                   style="width:15px;height:15px;accent-color:var(--sky);cursor:pointer">
                 발송에 포함
               </label>
@@ -1627,7 +1631,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
                 <span style="font-size:11px;color:#94A3B8">전기신문 · 2026-07-07</span>
               </div>
               <label style="display:flex;align-items:center;gap:5px;cursor:pointer;font-size:11.5px;color:var(--sky-dark);font-weight:600;user-select:none">
-                <input type="checkbox" class="news-check" data-no="3" checked
+                <input type="checkbox" class="news-check" data-no="3"
                   style="width:15px;height:15px;accent-color:var(--sky);cursor:pointer">
                 발송에 포함
               </label>
@@ -1662,7 +1666,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
                 <span style="font-size:11px;color:#94A3B8">가스신문 · 2026-07-01</span>
               </div>
               <label style="display:flex;align-items:center;gap:5px;cursor:pointer;font-size:11.5px;color:var(--sky-dark);font-weight:600;user-select:none">
-                <input type="checkbox" class="news-check" data-no="4" checked
+                <input type="checkbox" class="news-check" data-no="4"
                   style="width:15px;height:15px;accent-color:var(--sky);cursor:pointer">
                 발송에 포함
               </label>
@@ -1697,7 +1701,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
                 <span style="font-size:11px;color:#94A3B8">가스신문 · 2026-07-01</span>
               </div>
               <label style="display:flex;align-items:center;gap:5px;cursor:pointer;font-size:11.5px;color:var(--sky-dark);font-weight:600;user-select:none">
-                <input type="checkbox" class="news-check" data-no="5" checked
+                <input type="checkbox" class="news-check" data-no="5"
                   style="width:15px;height:15px;accent-color:var(--sky);cursor:pointer">
                 발송에 포함
               </label>
@@ -1732,7 +1736,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
                 <span style="font-size:11px;color:#94A3B8">가스신문 · 2026-07-01</span>
               </div>
               <label style="display:flex;align-items:center;gap:5px;cursor:pointer;font-size:11.5px;color:var(--sky-dark);font-weight:600;user-select:none">
-                <input type="checkbox" class="news-check" data-no="6" checked
+                <input type="checkbox" class="news-check" data-no="6"
                   style="width:15px;height:15px;accent-color:var(--sky);cursor:pointer">
                 발송에 포함
               </label>
@@ -1767,7 +1771,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
                 <span style="font-size:11px;color:#94A3B8">가스신문 · 2026-07-01</span>
               </div>
               <label style="display:flex;align-items:center;gap:5px;cursor:pointer;font-size:11.5px;color:var(--sky-dark);font-weight:600;user-select:none">
-                <input type="checkbox" class="news-check" data-no="7" checked
+                <input type="checkbox" class="news-check" data-no="7"
                   style="width:15px;height:15px;accent-color:var(--sky);cursor:pointer">
                 발송에 포함
               </label>
@@ -1802,7 +1806,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
                 <span style="font-size:11px;color:#94A3B8">가스신문 · 2026-07-07</span>
               </div>
               <label style="display:flex;align-items:center;gap:5px;cursor:pointer;font-size:11.5px;color:var(--sky-dark);font-weight:600;user-select:none">
-                <input type="checkbox" class="news-check" data-no="8" checked
+                <input type="checkbox" class="news-check" data-no="8"
                   style="width:15px;height:15px;accent-color:var(--sky);cursor:pointer">
                 발송에 포함
               </label>
@@ -1837,7 +1841,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
                 <span style="font-size:11px;color:#94A3B8">가스신문 · 2026-07-07</span>
               </div>
               <label style="display:flex;align-items:center;gap:5px;cursor:pointer;font-size:11.5px;color:var(--sky-dark);font-weight:600;user-select:none">
-                <input type="checkbox" class="news-check" data-no="9" checked
+                <input type="checkbox" class="news-check" data-no="9"
                   style="width:15px;height:15px;accent-color:var(--sky);cursor:pointer">
                 발송에 포함
               </label>
@@ -1872,7 +1876,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
                 <span style="font-size:11px;color:#94A3B8">가스신문 · 2026-07-07</span>
               </div>
               <label style="display:flex;align-items:center;gap:5px;cursor:pointer;font-size:11.5px;color:var(--sky-dark);font-weight:600;user-select:none">
-                <input type="checkbox" class="news-check" data-no="10" checked
+                <input type="checkbox" class="news-check" data-no="10"
                   style="width:15px;height:15px;accent-color:var(--sky);cursor:pointer">
                 발송에 포함
               </label>
@@ -2505,13 +2509,24 @@ let curMonthKey = '';
 //   (통화 자체는 이미 응대 완료된 건임) — 만족도 점수에는 반영하지 않음.
 // - "이관" 중 한전이관만 진짜 외부 이관이고, 운영팀이관은 우리 회사 내부(운영팀)에서 처리한 것이므로
 //   내부완결률 = (상담원 처리완료 + 운영팀이관) / 전체 로 계산. (현황판 상단 3개 카드 자체는 그대로 유지)
+// ── 완결률(처리 완료율) 단일 집계 함수 ──────────────────────────────────
+//   ▶ 리포트·종합예측 만족도·알림 패널이 '모두 이 함수 하나'를 참조해 값 불일치를 제거.
+//   ▶ 분자 = 상담원 처리완료(done) + 빌링/운영팀 이관 등 기타 마감(hjOps, hjEtc 등 관련 코드 일체)
+//     분모 = 전체 인입(total).  (한전이관 hjKepco는 외부(KEPCO) 이관이라 완결에서 제외)
+function hbCompletionRate(d) {
+  d = d || {};
+  var num   = (d.done || 0) + (d.hjOps || 0) + (d.hjEtc || 0);
+  var total = d.total || 0;
+  return { num: num, total: total, pct: total ? Math.round(num / total * 100) : 0 };
+}
+
 function computeSatisfaction(d) {
   const ai = (typeof ANALYSIS_INDEX !== 'undefined') ? ANALYSIS_INDEX : null;
+  const cr = hbCompletionRate(d);          // 완결률 단일 소스
   const doneCnt  = (d && d.done)  || 0;
   const opsCnt   = (d && d.hjOps) || 0;
-  const totalCnt = (d && d.total) || 0;
-  const internalDone  = doneCnt + opsCnt;
-  const speedScore    = totalCnt ? Math.round(internalDone / totalCnt * 100) : 0;
+  const totalCnt = cr.total;
+  const speedScore    = cr.pct;            // 완결률 = 처리 속도 지표
   const accuracyScore = ai ? ai.resolvedRate : speedScore;
   const repeatScore   = ai ? Math.max(0, 100 - ai.unresolvedRate) : 70;
   // ── 당사 강점 지표 추가 반영 (컨설팅 재설계) ──
@@ -2545,8 +2560,8 @@ function buildIssueList(d, prevVals) {
     issues.push({ dot:'#F59E0B', txt: `실제 통화 분석 1위 이슈: "${ai.topIssues[0].issue}" (${ai.topIssues[0].cnt}건)` });
   }
 
-  // 3. 내부완결률(처리완료+운영팀이관, 한전이관 제외) / 해결률 현황
-  const doneRate = d.total ? Math.round(((d.done || 0) + (d.hjOps || 0)) / d.total * 100) : 0;
+  // 3. 완결률(단일 집계 함수) / 해결률 현황
+  const doneRate = hbCompletionRate(d).pct;
   issues.push({ dot:'#10B981', txt: ai
     ? `완결률 ${doneRate}% · 실제 통화 해결률 ${ai.resolvedRate}%`
     : `완결률 ${doneRate}%` });
@@ -3700,7 +3715,7 @@ function renderNews() {
     html += '<span style="font-size:11px;color:#94A3B8">' + n.source + ' · ' + n.date + '</span>';
     html += '</div>';
     html += '<label style="display:flex;align-items:center;gap:5px;cursor:pointer;font-size:11.5px;color:var(--sky-dark);font-weight:600;user-select:none">';
-    html += '<input type="checkbox" class="news-check" data-no="' + n.no + '" checked'
+    html += '<input type="checkbox" class="news-check" data-no="' + n.no + '"'   // 기본 체크 해제
       + ' style="width:15px;height:15px;accent-color:var(--sky);cursor:pointer"> 발송에 포함</label>';
     html += '</div>';
     // 제목
@@ -4026,7 +4041,12 @@ function categorizeNews(item) {
   const text = ((item.title || '') + ' ' + (item.source || '') + ' '
     + ((item.lines && item.lines.join(' ')) || item.desc || '')).toLowerCase();
   const localKw = ['지자체','지방자치','지방정부','지방의회','시청','도청','군청','구청',
-    '광역시','특별시','특별자치','시·군','시군구','조례','도지사','시장','군수','읍면동','행정복지'];
+    '광역시','특별시','특별자치','시·군','시군구','조례','도지사','시장','군수','읍면동','행정복지',
+    // ── 지자체 뉴스 확장 키워드 (요청 반영) ──
+    '가로등','보안등','구좌분리','전수조사','시설물관리','도로조명','도로과','전수표찰',
+    '에너지 마일리지','포인트','에너지 절감 정책','탄소중립','탄소절감활동','마일리지',
+    '건물에너지관리솔루션','종이고지서','우리집 에너지 컨설팅','탄소중립포인트',
+    '빗물받이 관리 솔루션','수목관리솔루션','전자문서중계사업자','모바일 고지서'];
   for (let i = 0; i < localKw.length; i++) {
     if (text.indexOf(localKw[i].toLowerCase()) >= 0) return 'local';
   }
@@ -4054,7 +4074,7 @@ function parseNewsRss(xmlText) {
 
 // { title, link, pubDate, category } → renderNews()가 쓰는 카드 포맷으로 정규화
 function normalizeLiveNews(raw) {
-  return raw.slice(0, 15).map(function (a, i) {
+  return raw.slice(0, 20).map(function (a, i) {   // 뉴스 스크랩 최대 20건
     const d = a.pubDate ? new Date(a.pubDate) : new Date();
     const iso = isNaN(d.getTime())
       ? new Date().toISOString().slice(0, 10)
@@ -4693,14 +4713,15 @@ function makeReport(d, lbl, topDetails) {
   const top2Clean = (top2.label||'').replace(/^[A-Z]\d+\s*/,'') || top2.code || '-';
   const top1Rate = top1.cnt ? ((top1.cnt/d.total)*100).toFixed(1) : 0;
   const top2Rate = top2.cnt ? ((top2.cnt/d.total)*100).toFixed(1) : 0;
-  const doneRate = d.done ? ((d.done/d.total)*100).toFixed(1) : 0;
+  const cr = hbCompletionRate(d);                 // 완결률 단일 소스 (만족도 패널과 동일 기준)
+  const doneRate = cr.pct;
   return {
-    summary:`이번 기간 총 <strong>${d.total.toLocaleString()}건</strong>의 민원이 인입됐으며, 유형별로는 <strong>${top1Clean} ${top1.cnt||0}건(${top1Rate}%)</strong>이 1위, <strong>${top2Clean} ${top2.cnt||0}건(${top2Rate}%)</strong>이 2위로 나타났습니다. 상위 2개 유형의 합산 점유율이 <strong>${(+top1Rate + +top2Rate).toFixed(1)}%</strong>에 달해 문의가 특정 유형에 집중되는 경향이 뚜렷합니다. 기간 내 완결률은 <strong>${doneRate}%</strong>(${d.done||0}건)로, 반복 인입 비중이 높은 상위 유형은 홈페이지 안내·챗봇 시나리오 보강과 가스앱·카카오 채널 전환으로 선제 대응하면 전화 인입과 상담 부하를 완화할 수 있을 것으로 분석됩니다.`,
+    summary:`이번 기간 총 <strong>${d.total.toLocaleString()}건</strong>의 민원이 인입됐으며, 유형별로는 <strong>${top1Clean} ${top1.cnt||0}건(${top1Rate}%)</strong>이 1위, <strong>${top2Clean} ${top2.cnt||0}건(${top2Rate}%)</strong>이 2위로 나타났습니다. 상위 2개 유형의 합산 점유율이 <strong>${(+top1Rate + +top2Rate).toFixed(1)}%</strong>에 달해 문의가 특정 유형에 집중되는 경향이 뚜렷합니다. 기간 내 완결률은 <strong>${doneRate}%</strong>(${cr.num}건)로, 반복 인입 비중이 높은 상위 유형은 홈페이지 안내·챗봇 시나리오 보강과 가스앱·카카오 채널 전환으로 선제 대응하면 전화 인입과 상담 부하를 완화할 수 있을 것으로 분석됩니다.`,
     insights:[
       { icon:'📊', label:'총 인입', val:`${d.total.toLocaleString()}건` },
       { icon:'🥇', label:'1위 민원', val:`${top1Clean} ${top1.cnt||0}건` },
       { icon:'🥈', label:'2위 민원', val:`${top2Clean} ${top2.cnt||0}건` },
-      { icon:'✅', label:'완결률', val:`${doneRate}% (${d.done||0}건)` },
+      { icon:'✅', label:'완결률', val:`${doneRate}% (${cr.num}건)` },
     ]
   };
 }
@@ -4744,8 +4765,11 @@ window.applyDateRange = function() {
         const kwMap = {};
         entries.forEach(v => (v.kw||[]).forEach(k => { kwMap[k.word] = (kwMap[k.word]||0) + k.cnt; }));
         const keywords = Object.entries(kwMap).sort((a,b)=>b[1]-a[1]).slice(0,12).map(([word,cnt])=>({word,cnt}));
+        var _satW = computeSatisfaction(d);   // 리포트와 동일 d로 만족도 동기 재계산 (완결률 일치)
         DATA.week = { ...DATA.week, ...d, periodLabel:lbl, topDetails, keywords,
-          report: makeReport(d, lbl, topDetails), weekTrend: buildTrend('week', s, e) };
+          report: makeReport(d, lbl, topDetails),
+          sat: _satW.sat, satBreakdown: _satW, issues: buildIssueList(d, null),
+          weekTrend: buildTrend('week', s, e) };
       }
     }
     renderAll();
@@ -4767,9 +4791,11 @@ window.applyDateRange = function() {
       const mv = DB.months[mk];
       const d = aggregateFromDB([mv]);
       if (d) {
+        var _satM = computeSatisfaction(d);   // 리포트와 동일 d로 만족도 동기 재계산 (완결률 일치)
         DATA.month = { ...DATA.month, ...d, periodLabel:lbl,
           topDetails: mv.td||[], keywords: mv.kw||[],
           report: makeReport(d, lbl, mv.td),
+          sat: _satM.sat, satBreakdown: _satM, issues: buildIssueList(d, null),
           weekTrend: buildTrend('month', `${mk}-01`, `${mk}-${String(lastDay).padStart(2,'0')}`) };
       }
     } else if (!useDB) {
@@ -7795,20 +7821,33 @@ function getPageAlert(name) {
   return alerts[name] || alerts.dashboard;
 }
 
+// 탭별 표시 이름 (모바일 칩 + 패널 타이틀 동적 연동용)
+var PAGE_TAB_NAMES = { dashboard:'데이터포탈', stt:'민원분석', predict:'예상민원', newsletter:'뉴스레터', chatbot:'영업 비서' };
+function pageAlertTitle(name){ return 'AI분석요약 - ' + (PAGE_TAB_NAMES[name] || '요약'); }
+
 function updatePageAlert(name) {
   currentSection = name;
   var a   = getPageAlert(name);
   var txt = document.getElementById('page-alert-text');
   if (txt) txt.textContent = a.badge;
+  // 모바일 칩(::after)에 활성 탭 이름을 노출
+  var badge = document.getElementById('page-alert-badge');
+  if (badge) badge.setAttribute('data-alert-label', PAGE_TAB_NAMES[name] || '요약');
+  // 패널이 열려 있으면 타이틀·내용도 즉시 현재 탭으로 동기화
+  var mod = document.getElementById('page-alert-modal');
+  if (mod && mod.style.display === 'block') renderPageAlertBody(name);
 }
 
-window.openPageAlert = function() {
-  var a   = getPageAlert(currentSection);
-  var mod = document.getElementById('page-alert-modal');
-  var ovl = document.getElementById('page-alert-overlay');
-  if (!mod) { openModal(); return; }
-  document.getElementById('alert-modal-title').textContent = a.title;
-  document.getElementById('alert-modal-body').innerHTML = a.lines.map(function(l) {
+// 알림 패널 타이틀 + 본문을 현재 탭 데이터로 렌더 (타이틀 동적 연동)
+function renderPageAlertBody(name) {
+  var a = getPageAlert(name);
+  var titleEl = document.getElementById('alert-modal-title');
+  if (titleEl) titleEl.textContent = pageAlertTitle(name);
+  var bodyEl = document.getElementById('alert-modal-body');
+  if (!bodyEl) return;
+  bodyEl.innerHTML =
+    '<div style="font-size:11.5px;font-weight:700;color:var(--sky-dark);margin-bottom:8px;line-height:1.5">' + a.title + '</div>'
+    + a.lines.map(function(l) {
     var em = l.slice(0,2);
     var tx = l.slice(2);
     var hasEmoji = /[🌀-🿿]/u.test(em);
@@ -7817,8 +7856,15 @@ window.openPageAlert = function() {
       + (hasEmoji ? '<span style="margin-right:6px">' + em + '</span>' : '')
       + '<span>' + tx + '</span></div>';
   }).join('');
+}
+
+window.openPageAlert = function() {
+  var mod = document.getElementById('page-alert-modal');
+  var ovl = document.getElementById('page-alert-overlay');
+  if (!mod) { if (typeof openModal === 'function') openModal(); return; }
+  renderPageAlertBody(currentSection);   // 현재 활성 탭 기준 타이틀·내용 렌더
   mod.style.display = 'block';
-  ovl.style.display = 'block';
+  if (ovl) ovl.style.display = 'block';
 };
 
 window.closePageAlert = function() {
