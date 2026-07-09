@@ -6042,6 +6042,126 @@ function _mergeWeekDataToDB(weekData) {
   };
 }
 
+// ════════════════════════════════════════════════════════════════════════
+//  상담일자(I열) 기반 원본 레코드 적재 — 전체데이터 미러 시트(gid 1396226074)
+//  · 데이터는 31행부터: G=유형, H=상세유형, I=상담일자, M=상담내용
+//  · 상세유형(H) → 카테고리 코드, 코드 첫 글자 → 처리방법(종결) 분류
+//  · 시드 데이터 이후 최신 상담일자 레코드만 적재(중복/이중집계 방지)
+// ════════════════════════════════════════════════════════════════════════
+// 상세유형 → 카테고리 코드 (공백 제거 후 매칭)
+const DETAIL_TYPE_TO_CODE = (function(){
+  var pairs = [
+    ['청구서 등록','A1'],['청구서 해지','A2'],['청구서 조회 문의','A3'],['청구납부정보 변경','A4'],
+    ['고객정보 변경','B1'],['이메일 변경','B2'],['전화번호 변경','B3'],['휴대폰번호 변경','B4'],
+    ['이메일 재발송','C1'],['이메일 못받음','C2'],['이메일 우선 발송','C3'],
+    ['문자 재발송','D1'],['문자 못받음','D2'],['문자청구서 재발송','D3'],
+    ['납부내역 조회','E1'],
+    ['자동이체 변경','F1'],['비자동이체 문자 문의','F2'],
+    ['홈페이지문의','G1'],['홈페이지 문의','G1'],
+    ['가스앱 문의 및 처리','J1'],['가스앱 문의','J1'],
+    ['데이터 생성·변경','Y1'],['데이터 생성·수정·삭제','Y1'],
+    ['한전2차인증관련문의','Y2'],['종료빌링사 당사 이전 문의','Y3'],
+    ['전화수신','Z0'],['기타','Z1'],
+  ];
+  var m = {};
+  pairs.forEach(function(p){ m[p[0].replace(/\s+/g,'')] = p[1]; });
+  return m;
+})();
+function _detailToCode(detail){
+  return DETAIL_TYPE_TO_CODE[(detail||'').replace(/\s+/g,'')] || '';
+}
+// 카테고리 코드 첫 글자 → 처리방법 그룹
+function _procGroupByCode(code){
+  var l = (code||'').charAt(0).toUpperCase();
+  if ('ABCD'.indexOf(l) >= 0) return 'done';   // 상담원 처리
+  if ('GJY'.indexOf(l)  >= 0) return 'ops';    // 운영팀 이관
+  if ('EF'.indexOf(l)   >= 0) return 'kepco';  // 한전 이관
+  return 'etc';                                 // Z(기타) 등 → 미분류
+}
+// 카테고리 코드 첫 글자 → 10분류 인덱스
+const _CODE_LETTER_IDX = { A:0, B:1, C:2, D:3, E:4, F:5, G:6, J:7, Y:8, Z:9 };
+function _catIdxByCode(code){
+  var i = _CODE_LETTER_IDX[(code||'').charAt(0).toUpperCase()];
+  return (i === undefined) ? 9 : i;
+}
+// '2026/07/08 17:24:21' · '2026-07-08' · '2026.7.8' → 'YYYY-MM-DD'
+function _parseConsultDate(raw){
+  var s = String(raw||'').trim();
+  var m = s.match(/(\d{4})[.\-\/]\s*(\d{1,2})[.\-\/]\s*(\d{1,2})/);
+  if (!m) return '';
+  return m[1] + '-' + String(+m[2]).padStart(2,'0') + '-' + String(+m[3]).padStart(2,'0');
+}
+// 순수 변환: 시트 행 → STT 레코드 + 날짜별 DB 집계 (cutoff 이후 상담일자만)
+function _ingestComplaintRows(rows, cutoff){
+  var sttRecords = [];
+  var byDate = {};   // date → {t,done,ops,kepco,v[10],tdMap}
+  (rows || []).forEach(function(row){
+    if (!row) return;
+    var detail = row[7]  || '';     // H = 상세유형
+    var dateRaw= row[8]  || '';     // I = 상담일자
+    var code = _detailToCode(detail);
+    if (!code || code === 'Z0') return;             // 미매칭·전화수신 제외
+    var d = _parseConsultDate(dateRaw);
+    if (!d) return;                                  // 날짜 파싱 실패 제외
+    if (cutoff && d <= cutoff) return;               // 시드 이후 최신분만
+    var grp = _procGroupByCode(code);
+    sttRecords.push({ d: d, c: code, s: 1, r: (grp === 'done' ? 1 : 0), a: 1 });
+    if (!byDate[d]) byDate[d] = { t:0, done:0, ops:0, kepco:0, v:[0,0,0,0,0,0,0,0,0,0], tdMap:{} };
+    var b = byDate[d];
+    b.t++;
+    if (grp === 'done') b.done++; else if (grp === 'ops') b.ops++; else if (grp === 'kepco') b.kepco++;
+    b.v[_catIdxByCode(code)]++;
+    if (!b.tdMap[code]) b.tdMap[code] = { code: code, label: (detail || code).trim(), cnt: 0 };
+    b.tdMap[code].cnt++;
+  });
+  // byDate → DB.weeks 일자별 엔트리
+  var dbDaily = {};
+  Object.keys(byDate).forEach(function(d){
+    var b = byDate[d];
+    var td = Object.values(b.tdMap).sort(function(a,c){ return c.cnt - a.cnt; });
+    dbDaily[d] = {
+      t: b.t, d: b.done, hj: b.ops + b.kepco, hk: b.kepco, ho: b.ops, w: 0,
+      v: b.v, e: d, td: td.slice(0, 10), kw: [],
+      source: 'gsheet-daily', _weekKey: d, _monthKey: d.slice(0,7),
+    };
+  });
+  return { sttRecords: sttRecords, dbDaily: dbDaily };
+}
+// 시드(내장 STT_RAW/DB.weeks)가 커버하는 마지막 날짜 → 이 이후만 새로 적재
+function _latestSeedDate(){
+  var maxD = '';
+  try {
+    if (typeof STT_RAW !== 'undefined') STT_RAW.forEach(function(r){ if (r.d > maxD) maxD = r.d; });
+    if (typeof DB !== 'undefined' && DB.weeks) Object.keys(DB.weeks).forEach(function(wk){
+      var e = (DB.weeks[wk] && DB.weeks[wk].e) || wk; if (e > maxD) maxD = e;
+    });
+  } catch(_){}
+  return maxD;
+}
+// 시트에서 상담일자 기반 최신 레코드를 받아 STT_RAW/DB 갱신 후 대시보드 재렌더
+async function syncComplaintsByDate(){
+  try {
+    var rows = await _gvizFetchCSV(GSHEET_ALL_GID);
+    var cutoff = _latestSeedDate();
+    var res = _ingestComplaintRows(rows, cutoff);
+    if (!res.sttRecords.length) {
+      console.log('[상담일자 싱크] 신규 상담일자 데이터 없음 (cutoff ' + cutoff + ')');
+      return;
+    }
+    if (typeof STT_RAW !== 'undefined') res.sttRecords.forEach(function(r){ STT_RAW.push(r); });
+    if (typeof DB !== 'undefined' && DB.weeks) {
+      Object.keys(res.dbDaily).forEach(function(d){ DB.weeks[d] = res.dbDaily[d]; });
+    }
+    // 최신 데이터 반영 → '지난주' 기본 기간 재적용 + 요약 갱신
+    if (typeof applyDefaultPeriod === 'function') applyDefaultPeriod();
+    if (typeof renderDashboardSummary === 'function') renderDashboardSummary();
+    var days = Object.keys(res.dbDaily).sort();
+    console.log('[상담일자 싱크] ' + res.sttRecords.length + '건 적재 (' + days[0] + ' ~ ' + days[days.length-1] + ')');
+  } catch (e) {
+    console.warn('[상담일자 싱크] 실패 — 기존 데이터 유지:', e.message);
+  }
+}
+
 async function fetchSheetData() {
   // 캐시 히트 시에도 DB 병합 수행
   try {
@@ -6218,6 +6338,13 @@ async function fetchComplaintTexts(year2d, month) {
     await fetchComplaintTexts();
   } catch(e) {
     console.warn('[한빌 상담내용] fetch 실패:', e.message);
+  }
+
+  // 상담일자(I열) 기반 최신 원본 레코드 적재 → 대시보드/STT를 상담일자 기준으로 갱신
+  try {
+    await syncComplaintsByDate();
+  } catch(e) {
+    console.warn('[상담일자 싱크] fetch 실패:', e.message);
   }
 
   // 비동기 데이터 로드 완료 후 STT 분석 패널 재렌더 (레이스 컨디션 방지)
