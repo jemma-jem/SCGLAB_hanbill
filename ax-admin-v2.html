@@ -603,7 +603,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
               <div class="lg"><span class="sw" style="background:#0EA5E9"></span><span class="nm">한빌</span><span class="vl" style="color:#0EA5E9">16.4% · 166만</span></div>
               <div class="lg"><span class="sw" style="background:#F59E0B"></span><span class="nm">누리빌</span><span class="vl" style="color:#F59E0B">23.0% · 233만</span></div>
               <div class="lg"><span class="sw" style="background:#10B981"></span><span class="nm">한전산업개발</span><span class="vl" style="color:#10B981">11.6% · 117만</span></div>
-              <div class="lg"><span class="sw" style="background:#94A3B8"></span><span class="nm">한전ON <span style="color:var(--g400)">(자사앱)</span></span><span class="vl" style="color:#64748B">49.0% · 496만</span></div>
+              <div class="lg"><span class="sw" style="background:#94A3B8"></span><span class="nm">한전ON</span><span class="vl" style="color:#64748B">49.0% · 496만</span></div>
               <div class="lg" style="border-top:1px solid var(--g200);margin-top:5px;padding-top:7px"><span class="sw" style="background:transparent"></span><span class="nm" style="font-weight:800;color:var(--g700)">합계</span><span class="vl" style="color:var(--g800);font-weight:800">100% · 1,012만</span></div>
             </div>
           </div>
@@ -2002,7 +2002,12 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
 .hb-msgs{flex:1;overflow-y:auto;padding:12px 14px;display:flex;flex-direction:column;gap:10px}
 .hb-msg{display:flex;gap:8px;align-items:flex-end;max-width:88%}
 .hb-msg.user{align-self:flex-end;flex-direction:row-reverse}
-.hb-bubble{padding:9px 13px;border-radius:14px;font-size:12.5px;line-height:1.65;word-break:break-word}
+.hb-bubble{padding:9px 13px;border-radius:14px;font-size:12.5px;line-height:1.65;word-break:break-word;overflow-wrap:anywhere;max-width:100%}
+/* AI 분석 응답: 불릿 압축 표시 — 넘침 방지 */
+.hb-ai-reply{display:flex;flex-direction:column;gap:4px;max-width:100%}
+.hb-ai-reply .hb-bullet{position:relative;padding-left:13px;line-height:1.5;overflow-wrap:anywhere;word-break:break-word}
+.hb-ai-reply .hb-bullet::before{content:'•';position:absolute;left:2px;color:var(--sky);font-weight:700}
+.hb-ai-reply .hb-line{line-height:1.5;overflow-wrap:anywhere;word-break:break-word}
 .hb-msg.bot .hb-bubble{background:var(--sky-bg);color:var(--g800);border-bottom-left-radius:4px}
 .hb-msg.user .hb-bubble{background:var(--sky);color:#fff;border-bottom-right-radius:4px}
 .hb-time{font-size:10px;color:var(--g400);flex-shrink:0}
@@ -2054,24 +2059,15 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
     </div>
   </div>
 
-  <!-- Groq 키 설정 패널 -->
+  <!-- 영업 비서 AI(Claude) 키 설정 패널 -->
   <div id="hb-groq-panel" style="display:none;background:#1E2A3A;padding:10px 16px;border-bottom:1px solid rgba(255,255,255,.1)">
-    <!-- Claude (Anthropic) 키 — 영업 전략 제안 엔진 -->
-    <div style="font-size:11px;color:rgba(255,255,255,.7);margin-bottom:6px;font-weight:700">🤖 Claude API 키 <span style="color:rgba(255,255,255,.4);font-weight:400">(영업 전략 제안 · <a href="https://console.anthropic.com" target="_blank" style="color:#C4B5FD">console.anthropic.com</a>)</span></div>
+    <!-- Claude (Anthropic) 키 — 영업 비서 AI 분석 엔진 (Groq에서 전환) -->
+    <div style="font-size:11px;color:rgba(255,255,255,.7);margin-bottom:6px;font-weight:700">🤖 Claude API 키 <span style="color:rgba(255,255,255,.4);font-weight:400">(영업 비서 AI 분석 엔진 · <a href="https://console.anthropic.com" target="_blank" style="color:#C4B5FD">console.anthropic.com</a>)</span></div>
     <div style="display:flex;gap:6px">
       <input id="hb-claude-key-input" type="password" placeholder="sk-ant-xxxxxxxxxxxx"
         style="flex:1;background:rgba(255,255,255,.1);border:1px solid rgba(139,92,246,.4);border-radius:6px;padding:6px 10px;color:#fff;font-size:12px;outline:none"
         value="">
       <button onclick="saveClaudeKey()" style="background:#8B5CF6;border:none;border-radius:6px;color:#fff;padding:6px 12px;font-size:12px;cursor:pointer;white-space:nowrap">저장</button>
-    </div>
-    <div style="height:1px;background:rgba(255,255,255,.1);margin:10px 0"></div>
-    <!-- Groq 키 — 일반 질의 폴백 -->
-    <div style="font-size:11px;color:rgba(255,255,255,.6);margin-bottom:6px">🔑 Groq API 키 <span style="color:rgba(255,255,255,.4)">(무료 폴백 · <a href="https://console.groq.com" target="_blank" style="color:#38BDF8">console.groq.com</a>)</span></div>
-    <div style="display:flex;gap:6px">
-      <input id="hb-groq-key-input" type="password" placeholder="gsk_xxxxxxxxxxxxxxxxxxxx"
-        style="flex:1;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:6px;padding:6px 10px;color:#fff;font-size:12px;outline:none"
-        value="">
-      <button onclick="saveGroqKey()" style="background:#0EA5E9;border:none;border-radius:6px;color:#fff;padding:6px 12px;font-size:12px;cursor:pointer;white-space:nowrap">저장</button>
     </div>
     <div id="hb-groq-status" style="font-size:11px;color:#4ADE80;margin-top:8px;min-height:14px"></div>
   </div>
@@ -5544,38 +5540,21 @@ function hbWeeklyBrief() {
 }
 
 // ── 일반 Q&A ──
-// ── Groq 설정 UI ──
-const HB_GROQ_KEY = 'hanbil_groq_key';
+// ── 영업 비서 AI(Claude) 키 설정 UI ──
 window.toggleGroqPanel = function() {
   const p = document.getElementById('hb-groq-panel');
   if (!p) return;
   const showing = p.style.display !== 'none';
   p.style.display = showing ? 'none' : 'block';
   if (!showing) {
-    const saved = localStorage.getItem(HB_GROQ_KEY) || '';
-    const inp = document.getElementById('hb-groq-key-input');
-    if (inp) inp.value = saved;
     const st = document.getElementById('hb-groq-status');
-    const claudeSaved = localStorage.getItem('hanbil_claude_key') || '';
+    const claudeSaved = localStorage.getItem(HB_CLAUDE_KEY) || '';
     const cInp = document.getElementById('hb-claude-key-input');
     if (cInp) cInp.value = claudeSaved;
-    if (st) st.textContent = claudeSaved ? '✅ Claude 키 저장됨 (영업 전략 제안 활성)' : (saved ? '✅ Groq 키 저장됨.' : '');
+    if (st) { st.style.color = claudeSaved ? '#4ADE80' : '#94A3B8';
+      st.textContent = claudeSaved ? '✅ Claude 키 저장됨 — 영업 비서 AI 분석 활성' : 'Claude API 키를 입력하면 AI 분석이 활성화됩니다.'; }
   }
 };
-window.saveGroqKey = function() {
-  const inp = document.getElementById('hb-groq-key-input');
-  const st  = document.getElementById('hb-groq-status');
-  if (!inp) return;
-  const val = inp.value.trim();
-  if (val) {
-    localStorage.setItem(HB_GROQ_KEY, val);
-    if (st) st.textContent = '✅ Groq 키 저장됨.';
-  } else {
-    localStorage.removeItem(HB_GROQ_KEY);
-    if (st) st.textContent = '🗑 Groq 키가 삭제되었습니다.';
-  }
-};
-
 // ── Claude(Anthropic) API 키 관리 ──
 const HB_CLAUDE_KEY = 'hanbil_claude_key';
 window.saveClaudeKey = function() {
@@ -5708,20 +5687,13 @@ window.runMapStrategy = async function(type, sel) {
 
   const userText = '아래 지역에 대한 ' + stratType + ' 전략 초안을 만들어줘:\n' + JSON.stringify(payload, null, 2);
 
-  // 1순위: Claude 스트리밍
+  // Claude 스트리밍으로 전략 초안 생성 (Groq 폴백 제거 — Claude 전용)
   const claudeKey = localStorage.getItem(HB_CLAUDE_KEY);
   if (claudeKey) {
     await hbClaudeStream(systemPrompt, userText);
     return;
   }
-  // 2순위: Groq 폴백
-  const groqKey = localStorage.getItem(HB_GROQ_KEY);
-  if (groqKey && typeof hbGroqQuery === 'function') {
-    const groqPrompt = systemPrompt + '\n\n[요청]\n' + userText;
-    hbGroqQuery(groqPrompt);
-    return;
-  }
-  // 3순위: 키 없음 안내
+  // 키 없음 안내
   hbTyping(function() {
     hbAddMsg('bot',
       '🔑 <strong>' + region + ' ' + stratType + ' 전략</strong>을 AI로 생성하려면 API 키가 필요합니다.<br><br>' +
@@ -6141,13 +6113,16 @@ function buildHbContext() {
 }
 
 // ── Groq API 호출 ──
-async function hbGroqQuery(userText, fallbackFn) {
-  const key = localStorage.getItem(HB_GROQ_KEY);
+// ── AI 분석 질의: Claude(Anthropic) /v1/messages 로 처리 (Groq에서 완전 전환) ──
+//   · 사설(Private) 보안 유지 + Rate Limit 안정성 확보 목적으로 Claude API 사용
+//   · 출력은 시스템 프롬프트로 '두괄식 + 불릿 + 압축'을 강제해 UI 스크롤 최소화
+async function hbClaudeQuery(userText, fallbackFn) {
+  const key = localStorage.getItem(HB_CLAUDE_KEY);
   if (!key) {
     hbTyping(() => hbAddMsg('bot',
-      `🔑 <strong>Groq AI 키가 없습니다.</strong><br><br>` +
-      `헤더 ⚙️ 버튼을 눌러 <strong>Groq API 키</strong>를 입력해 주세요.<br>` +
-      `무료 키 발급: <a href="https://console.groq.com" target="_blank" style="color:#0EA5E9">console.groq.com</a>`, true), 600);
+      `🔑 <strong>Claude API 키가 필요합니다.</strong><br><br>` +
+      `헤더 ⚙️ 버튼 → <strong>Claude API 키</strong>(<code>sk-ant-…</code>)를 입력해 주세요.<br>` +
+      `키 발급: <a href="https://console.anthropic.com" target="_blank" style="color:#8B5CF6">console.anthropic.com</a>`, true), 600);
     return;
   }
 
@@ -6179,21 +6154,23 @@ async function hbGroqQuery(userText, fallbackFn) {
 - 오늘 오전 11시에 갱신된 최신 데이터와 뉴스 통계를 우선 분석하여 답변한다.
 - 동일 지표에 과거 수치와 최신 갱신본이 함께 있으면 항상 최신 갱신본을 기준으로 판단한다.
 
-## 답변 원칙
-1. 반드시 실제 데이터 수치를 근거로 답변한다 (추측 금지)
-2. 수치는 건수와 비율을 함께 제시한다 (예: 62건 / 24%)
-3. 분석 후 반드시 실무 권고사항을 1~3개 제시한다
-4. 답변은 HTML 태그 사용 가능 (bold, 색상 강조 활용)
-5. 한국어로만 답변한다
-6. 답변은 분석 결론까지 빠짐없이 완결한다 — 문장이 중간에 끊기지 않도록 끝맺는다. 단순 조회성 질문은 400자 내외로 간결히, 분석·원인·예측·브리핑·전략 요청은 필요한 만큼 상세히 작성하되 마지막 권고·요약까지 반드시 포함한다
+## 출력 형식 (반드시 엄격히 준수)
+- 두괄식: 가장 중요한 결론·조치를 맨 첫 줄에 먼저 제시한다.
+- 서론·인사·배경 설명·중복 표현·미사여구를 완전히 배제한다.
+- 모든 내용은 불릿(각 줄 앞에 "- ")으로만 작성하고, 서술형 문단을 쓰지 않는다.
+- 불릿은 최대 5개, 각 항목은 한 문장(공백 포함 약 60자 이내)으로 압축한다.
+- 수치는 반드시 건수와 비율을 함께 간결히 표기한다 (예: 62건/24%).
+- 전체 답변은 화면 스크롤을 과도하게 유발하지 않도록 공백 포함 300자 내외로 제한한다.
+- 반드시 실제 데이터 수치에 근거하며 추측하지 않는다. 한국어로만 답변한다.
+- 볼드가 필요하면 **텍스트** 형식만 사용한다.
 
-## 질문 유형별 답변 형식
-- 현황 질문 → 수치 요약 + 상위 카테고리 + 전주 대비 변화
-- 원인·이유 질문 → 데이터 근거 + 추정 원인 + 개선 방향
-- 예측 질문 → 확률 순위 + 근거 + 권장 선제 대응
-- 품질 질문 → 해결률·감성·상담품질 수치 + 개선 필요 영역
-- 브리핑 요청 → 현황 요약 + 예상 민원 + 권고사항 통합
-- 뉴스 질문 → 업계 동향 + 우리 서비스 연관성 분석
+## 질문 유형별 핵심(각 1~2불릿으로 압축)
+- 현황: 총건수/상위 카테고리/전주 대비 변화
+- 원인: 데이터 근거 + 추정 원인 + 개선 방향
+- 예측: 확률 순위 + 권장 선제 대응
+- 품질: 해결률·감성 수치 + 개선 영역
+- 브리핑: 현황 + 예상 민원 + 권고 통합
+- 뉴스: 업계 동향 + 우리 서비스 연관성
 
 ## 누적 인사이트 (실운영 중 파악된 주요 패턴)
 - 이메일 주소 변경 민원이 전체에서 가장 많이 반복됨 (14건) → 홈페이지 안내 강화 필요
@@ -6210,37 +6187,56 @@ ${ctx}`;
 
 
   try {
-    const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${key}` },
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': key,
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-direct-browser-access': 'true'
+      },
       body: JSON.stringify({
-        model: 'llama-3.3-70b-versatile',
-        messages: [
-          { role: 'system', content: systemPrompt },
-          { role: 'user', content: userText }
-        ],
-        max_tokens: 2048,
-        temperature: 0.5,
+        model: 'claude-sonnet-4-6',
+        max_tokens: 1024,            // 압축 출력 — 시스템 프롬프트가 300자 내외 불릿을 강제
+        system: systemPrompt,
+        messages: [{ role: 'user', content: userText }]
       })
     });
 
+    // ── 예외 처리 강화: 한도(429/529)·인증(401)·기타 오류를 사용자 친화적으로 안내 ──
     if (!res.ok) {
-      const err = await res.json().catch(() => ({}));
-      const msg = (err.error && err.error.message) || `HTTP ${res.status}`;
+      let msg = 'HTTP ' + res.status;
+      try { const err = await res.json(); msg = (err && err.error && err.error.message) || msg; } catch(e) {}
       const el = document.getElementById(loadId);
-      // rate limit(429) 또는 토큰 한도 초과 → 폴백 사용
-      if ((res.status === 429 || msg.includes('Rate limit') || msg.includes('rate_limit')) && fallbackFn) {
-        if (el) el.parentElement.innerHTML = fallbackFn();
+      const rateLimited = res.status === 429 || res.status === 529 || /rate|overload|limit|quota/i.test(msg);
+      if (rateLimited) {
+        if (fallbackFn) {
+          if (el) el.parentElement.innerHTML = fallbackFn();     // 정적 폴백(비-AI 요약) 있으면 사용
+        } else if (el) {
+          el.parentElement.innerHTML =
+            `⏳ <strong>지금은 요청이 많아 분석이 지연되고 있어요.</strong><br>` +
+            `<span style="font-size:11.5px;color:#94A3B8">Claude API 사용량 한도(rate limit)에 도달했습니다. 잠시 후 다시 시도하시거나, 대시보드 지표를 직접 확인해 주세요.</span>`;
+        }
+      } else if (res.status === 401 || res.status === 403) {
+        if (el) el.parentElement.innerHTML =
+          `🔑 <strong>Claude API 키가 유효하지 않습니다.</strong><br>` +
+          `<span style="font-size:11.5px;color:#94A3B8">⚙️ 설정에서 <code>sk-ant-</code> 키를 다시 확인해 주세요.</span>`;
       } else {
-        if (el) el.parentElement.innerHTML = `❌ Groq 오류: ${msg}`;
+        if (el) el.parentElement.innerHTML =
+          `❌ <strong>분석 중 오류가 발생했어요.</strong><br>` +
+          `<span style="font-size:11.5px;color:#94A3B8">${String(msg).slice(0,140)}</span>`;
       }
       return;
     }
 
     const data = await res.json();
-    const reply = (data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content) || '응답 없음';
+    const raw = (data && data.content && data.content[0] && data.content[0].text) || '';
     const el = document.getElementById(loadId);
-    if (el) el.parentElement.innerHTML = `🤖 <strong>AI 분석</strong><br><br>${reply}`;
+    if (el) {
+      el.parentElement.innerHTML = raw
+        ? `🤖 <strong>AI 분석</strong><br><br><div class="hb-ai-reply">${hbFormatReply(raw)}</div>`
+        : `<span style="color:#94A3B8">응답이 비어 있습니다. 질문을 조금 더 구체적으로 입력해 주세요.</span>`;
+    }
 
     // 채팅창 스크롤
     const msgs = document.getElementById('hb-msgs');
@@ -6248,8 +6244,21 @@ ${ctx}`;
 
   } catch(e) {
     const el = document.getElementById(loadId);
-    if (el) el.parentElement.innerHTML = `❌ 네트워크 오류: ${e.message}`;
+    if (el) el.parentElement.innerHTML =
+      `❌ <strong>네트워크 오류로 분석을 완료하지 못했어요.</strong><br>` +
+      `<span style="font-size:11.5px;color:#94A3B8">잠시 후 다시 시도해 주세요. (${(e && e.message) || e})</span>`;
   }
+}
+
+// ── AI 응답 포맷터: 마크다운(**볼드**, "- " 불릿) → 압축된 HTML 불릿으로 변환 ──
+function hbFormatReply(t) {
+  if (!t) return '';
+  var s = String(t).trim().replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+  var lines = s.split(/\n+/).map(function(l){ return l.trim(); }).filter(Boolean);
+  return lines.map(function(l){
+    if (/^[-•*]\s+/.test(l)) return '<div class="hb-bullet">' + l.replace(/^[-•*]\s+/, '') + '</div>';
+    return '<div class="hb-line">' + l + '</div>';
+  }).join('');
 }
 
 function hbAnswer(text) {
@@ -6368,7 +6377,7 @@ function hbAnswer(text) {
 🔍 원인 추정 (왜 이 패턴이 발생했는지)
 💡 실무 제안 (담당자가 내일 당장 할 수 있는 구체적 조치 2~3가지)`;
 
-    hbGroqQuery(groqPrompt, _staticAnomalyHTML);
+    hbClaudeQuery(groqPrompt, _staticAnomalyHTML);
     return;
   }
 
@@ -6475,7 +6484,7 @@ function hbAnswer(text) {
 📌 현황 진단 (이 거래처의 민원 패턴 특징)
 🔍 원인 추정 (반복되는 이유)
 💡 관계 관리 제안 (담당자가 취할 수 있는 선제 조치 2가지)`;
-        hbGroqQuery(clientGroqPrompt);
+        hbClaudeQuery(clientGroqPrompt);
       }).catch(err => {
         hbAddMsg('bot', `⚠️ 데이터 로드 실패: ${err.message}`, true);
       });
@@ -6514,7 +6523,7 @@ function hbAnswer(text) {
 📌 현황 진단 (이 거래처의 민원 패턴 특징)
 🔍 원인 추정 (반복되는 이유)
 💡 관계 관리 제안 (담당자가 취할 수 있는 선제 조치 2가지)`;
-    setTimeout(() => hbGroqQuery(clientGroqPrompt2), 500);
+    setTimeout(() => hbClaudeQuery(clientGroqPrompt2), 500);
     return;
   }
 
@@ -6612,9 +6621,9 @@ function hbAnswer(text) {
     // ── 제안 모드 ──
     const isSuggest = t.includes('제안')||t.includes('활용')||t.includes('아이디어')||t.includes('영업')||t.includes('사업');
     if (isSuggest) {
-      const groqKey = localStorage.getItem(HB_GROQ_KEY);
-      if (groqKey) return hbGroqQuery(text);
-      // Groq 없으면 패턴 기반 제안
+      const claudeKey = localStorage.getItem(HB_CLAUDE_KEY);
+      if (claudeKey) return hbClaudeQuery(text);
+      // Claude 키 없으면 패턴 기반 제안
       const bizKeywords = {
         'AMI': 'AMI 스마트미터 관련 기사 → 한전 데이터 사업 입찰·파트너십 제안서 소재로 활용',
         '충전': '전기차 충전요금 관련 기사 → 충전 사업자 대상 빌링 대행 서비스 제안 기회',
@@ -6628,15 +6637,15 @@ function hbAnswer(text) {
         .map(([,v])=>`• ${v}`).join('<br>');
       return hbTyping(()=>hbAddMsg('bot',
         `💡 <strong>뉴스 기반 사업 제안</strong><br><br>` +
-        (suggestions || '• 현재 뉴스 데이터에서 직접 연관 제안을 찾기 어렵습니다. Groq AI 키를 등록하면 더 정밀한 제안이 가능합니다.')+
-        `<br><br><span style="font-size:11px;color:var(--g400)">💡 Groq AI 키 등록 시 더 정밀한 제안 가능 — ⚙️ 아이콘에서 설정</span>`,
+        (suggestions || '• 현재 뉴스 데이터에서 직접 연관 제안을 찾기 어렵습니다. Claude API 키를 등록하면 더 정밀한 제안이 가능합니다.')+
+        `<br><br><span style="font-size:11px;color:var(--g400)">💡 Claude API 키 등록 시 더 정밀한 제안 가능 — ⚙️ 아이콘에서 설정</span>`,
         true),800);
     }
 
     // ── 요약 모드 ──
     const isSummary = t.includes('요약')||t.includes('정리')||t.includes('요약해')||t.includes('알려줘');
-    const groqKey = localStorage.getItem(HB_GROQ_KEY);
-    if (isSummary && groqKey) return hbGroqQuery(text);
+    const claudeKey = localStorage.getItem(HB_CLAUDE_KEY);
+    if (isSummary && claudeKey) return hbClaudeQuery(text);
 
     // ── 목록 출력 ──
     const display = sorted.slice(0, 8);
@@ -6897,10 +6906,10 @@ function hbAnswer(text) {
     return hbTyping(()=>hbAddMsg('bot','납부/자동이체 관련 문의는 **E1(납부내역조회)** 또는 **F1(자동이체변경)** 유형으로 분류합니다.\n고객번호 확인 후 처리하세요.'),700);
   }
 
-  // ── Groq AI fallback (키 있으면 AI 응답, 없으면 도움말) ──
-  const groqKey = localStorage.getItem(HB_GROQ_KEY);
-  if (groqKey) {
-    return hbGroqQuery(text);
+  // ── Claude AI (키 있으면 AI 응답, 없으면 도움말) ──
+  const claudeKey = localStorage.getItem(HB_CLAUDE_KEY);
+  if (claudeKey) {
+    return hbClaudeQuery(text);
   }
 
   hbTyping(()=>hbAddMsg('bot',
@@ -6910,7 +6919,7 @@ function hbAnswer(text) {
     `<span style="background:#D1FAE5;color:#065F46;padding:2px 8px;border-radius:6px;font-size:11.5px;font-weight:700">📊 데이터 질의</span> "이번 주 민원 몇 건?", "6월 상위 카테고리", "어떤 요일에 많아?"<br><br>` +
     `<span style="background:#FEF3C7;color:#92400E;padding:2px 8px;border-radius:6px;font-size:11.5px;font-weight:700">🔍 검색·뉴스</span> "한전 최신 뉴스", "○○ 구청 근황"<br><br>` +
     `<span style="background:#F1F5F9;color:var(--g600);padding:2px 8px;border-radius:6px;font-size:11.5px;font-weight:700">👤 고객 조회</span> 고객번호 앞자리 입력 (예: <code>010</code>, <code>183</code>)<br><br>` +
-    `<span style="background:#FEF9C3;color:#854D0E;padding:2px 8px;border-radius:6px;font-size:11.5px;font-weight:700">🤖 AI 자유 질의</span> 헤더 ⚙️에서 Groq API 키 등록 시 복합 질문 가능`,
+    `<span style="background:#FEF9C3;color:#854D0E;padding:2px 8px;border-radius:6px;font-size:11.5px;font-weight:700">🤖 AI 자유 질의</span> 헤더 ⚙️에서 Claude API 키 등록 시 복합 질문 가능`,
     true
   ),700);
 }
