@@ -773,6 +773,11 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
         '한전산업개발':'#059669',
       };
 
+      // 영업 비서(챗봇)에서 지역·시장점유율 조회에 사용하도록 전역 노출
+      window._HB_BILLING_MAP = BILLING_MAP;
+      window._HB_COMPANY_MAP = COMPANY_MAP;
+      window._HB_BILL_TOTAL  = BILL_TOTAL_ALL;
+
       function renderMapFromPrerender() {
         const statusEl = document.getElementById('map-load-status');
         if (typeof MAP_PRERENDER === 'undefined') {
@@ -6302,6 +6307,76 @@ function hbFormatReply(t) {
   }).join('');
 }
 
+// ═══ 영업 비서: 지역·시장점유율 조회 (키 없이도 규칙 기반 답변) ═══
+// 전국 전자청구 빌링 시장점유율 (데이터포탈 도넛 기준)
+const HB_MARKET = {
+  total: 10120000,
+  players: [
+    { name:'한전ON', pct:49.0, cust:4960000 },
+    { name:'누리빌', pct:23.0, cust:2330000 },
+    { name:'한빌',   pct:16.4, cust:1660000 },
+    { name:'한전산업개발', pct:11.6, cust:1170000 },
+  ],
+  hanvilSeg: [
+    { name:'개인',      pct:46.3, cust:771000 },
+    { name:'지자체',    pct:44.8, cust:745000 },
+    { name:'통신·기관', pct:8.9,  cust:148000 },
+  ]
+};
+function hbFmtMan(n){ return (n/10000).toLocaleString(undefined,{maximumFractionDigits:1}) + '만'; }
+
+// 입력 텍스트에서 시군구명 감지 (BILLING_MAP 키의 시군구명과 매칭 · 최장 일치 우선)
+function hbDetectRegion(text){
+  const bm = window._HB_BILLING_MAP; if (!bm) return null;
+  const clean = (text||'').replace(/\s/g,'');
+  let best = null;
+  Object.keys(bm).forEach(function(k){
+    const sgg = k.split('|')[1];
+    if (sgg && clean.indexOf(sgg) >= 0) {
+      if (!best || sgg.length > best.sgg.length) best = { key:k, sgg:sgg };
+    }
+  });
+  return best;
+}
+
+// 특정 지역 빌링/점유 현황 답변 (성공 시 true)
+function hbRegionAnswer(text){
+  const hit = hbDetectRegion(text);
+  if (!hit) return false;
+  const bm = window._HB_BILLING_MAP, cm = window._HB_COMPANY_MAP, tot = window._HB_BILL_TOTAL || 1;
+  const billing = bm[hit.key] || 0;
+  const co = cm[hit.key] || null;
+  const pct = billing / tot * 100;
+  const isHanvil = (co === '한빌');
+  const strat = isHanvil
+    ? '한빌 선점 지역 → <b>유지 전략</b>: 계약 갱신·서비스 만족도 관리로 경쟁사 이탈 방어 권장'
+    : '타사·미개척 지역 → <b>진입 전략</b>: 담당자 접촉 + 전자청구 전환 제안으로 신규 확보 권장';
+  const html =
+    `🗺 <strong>${hit.sgg}</strong> 빌링 현황<br><br>` +
+    `• 현재 빌링사: <b style="color:${isHanvil?'#0EA5E9':'#334155'}">${co || '미개척(선점사 없음)'}</b><br>` +
+    `• 빌링 건수: <b>${billing.toLocaleString()}건</b><br>` +
+    `• 전국 빌링 대비 비중: <b>${pct.toFixed(2)}%</b><br><br>` +
+    `💡 ${strat}`;
+  hbTyping(function(){ hbAddMsg('bot', html, true); }, 400);
+  return true;
+}
+
+// 전국 시장점유율 답변
+function hbMarketAnswer(){
+  const m = HB_MARKET;
+  const rows = m.players.map(function(p){
+    const nm = p.name === '한빌' ? '<b style="color:#0EA5E9">한빌</b>' : p.name;
+    return `• ${nm}: <b>${p.pct}%</b> (${hbFmtMan(p.cust)})`;
+  }).join('<br>');
+  const seg = m.hanvilSeg.map(function(s){ return `• ${s.name}: ${s.pct}% (${hbFmtMan(s.cust)})`; }).join('<br>');
+  const html =
+    `📊 <strong>전국 전자청구 빌링 시장점유율</strong> <span style="color:#94A3B8">(전체 ${hbFmtMan(m.total)} 고객)</span><br><br>` +
+    rows + `<br><br>` +
+    `<span style="color:#0EA5E9;font-weight:700">한빌 고객층 구성</span> (166만)<br>` + seg + `<br><br>` +
+    `💡 한전ON(자사앱) 49%를 제외한 대행 시장에서 누리빌·한전산업개발과 경쟁 중이며, 지자체·개인 채널에서 한빌 점유율 확대 여지가 있습니다.`;
+  hbTyping(function(){ hbAddMsg('bot', html, true); }, 400);
+}
+
 function hbAnswer(text) {
   const t = text.toLowerCase().replace(/\s/g,'');
   const monthM = text.match(/(\d{1,2})월/);
@@ -6945,6 +7020,19 @@ function hbAnswer(text) {
   }
   if (t.includes('납부')||t.includes('자동이체')) {
     return hbTyping(()=>hbAddMsg('bot','납부/자동이체 관련 문의는 **E1(납부내역조회)** 또는 **F1(자동이체변경)** 유형으로 분류합니다.\n고객번호 확인 후 처리하세요.'),700);
+  }
+
+  // ── 시장점유율 질문 (전국 또는 특정 지역) ──
+  if (t.includes('점유율') || t.includes('시장점유') || (t.includes('시장') && (t.includes('점유') || t.includes('비중')))) {
+    if (hbRegionAnswer(text)) return;   // 특정 지역이 포함되면 지역 현황 우선
+    return hbMarketAnswer();            // 아니면 전국 시장점유율
+  }
+
+  // ── 특정 지역(시군구) 빌링·영업전략 질문 ──
+  if (hbDetectRegion(text) &&
+      (t.includes('빌링') || t.includes('선점') || t.includes('영업') || t.includes('전략') ||
+       t.includes('점유') || t.includes('현황') || t.includes('시장') || t.includes('거래처'))) {
+    if (hbRegionAnswer(text)) return;
   }
 
   // ── Claude AI (키 있으면 AI 응답, 없으면 도움말) ──
