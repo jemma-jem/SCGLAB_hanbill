@@ -545,10 +545,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
           <span style="display:flex;align-items:center;gap:4px;background:#F0FDF4;border:1.5px solid #10B981;border-radius:6px;padding:3px 8px;font-weight:600;color:#047857">
             <span style="display:inline-block;width:10px;height:10px;background:#10B981;border-radius:2px"></span>한전산업개발
           </span>
-          <span style="display:flex;align-items:center;gap:4px;color:var(--g400)">
-            <span style="display:inline-block;width:10px;height:10px;background:#E2E8F0;border-radius:2px;border:1px solid #CBD5E1"></span>미선점
-          </span>
-          <span style="margin-left:auto;color:var(--g400)">출처: SGIS 시군구 경계</span>
+          <span style="margin-left:auto;color:var(--g400)">지도 출처: 통계지리정보서비스(SGIS)</span>
         </div>
 
         <div class="map-layout">
@@ -573,7 +570,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
                 <span id="map-popup-billing" class="mp-val" style="color:#4ADE80;font-weight:700"></span>
               </div>
               <div class="mp-row">
-                <span class="mp-label">빌링 선점 비율</span>
+                <span class="mp-label">전국 비중</span>
                 <span id="map-popup-ratio" class="mp-val" style="color:#4ADE80"></span>
               </div>
               <!-- 한빌 선점 지역: 영업 유지 전략 -->
@@ -594,7 +591,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
 
           <!-- [1] 한전 선점 비율 (구 전체 시장 규모 점유율 · 데이터 J14:O14 · 총계 표시) -->
           <div class="donut-card">
-            <div class="donut-card-title">한전 선점 비율 <span>1,012만 고객</span></div>
+            <div class="donut-card-title">전국 시장점유율 <span>1,012만 고객</span></div>
             <div class="map-pie-wrap" style="width:150px;height:150px">
               <canvas id="market-donut" width="150" height="150"></canvas>
               <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none">
@@ -607,13 +604,13 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
               <div class="lg"><span class="sw" style="background:#F59E0B"></span><span class="nm">누리빌</span><span class="vl" style="color:#F59E0B">23.0% · 233만</span></div>
               <div class="lg"><span class="sw" style="background:#10B981"></span><span class="nm">한전산업개발</span><span class="vl" style="color:#10B981">11.6% · 117만</span></div>
               <div class="lg"><span class="sw" style="background:#94A3B8"></span><span class="nm">한전ON <span style="color:var(--g400)">(자사앱)</span></span><span class="vl" style="color:#64748B">49.0% · 496만</span></div>
-              <div class="lg" style="border-top:1px solid var(--g200);margin-top:5px;padding-top:7px"><span class="sw" style="background:transparent"></span><span class="nm" style="font-weight:800;color:var(--g700)">총 합계</span><span class="vl" style="color:var(--g800);font-weight:800">100% · 1,012만</span></div>
+              <div class="lg" style="border-top:1px solid var(--g200);margin-top:5px;padding-top:7px"><span class="sw" style="background:transparent"></span><span class="nm" style="font-weight:800;color:var(--g700)">합계</span><span class="vl" style="color:var(--g800);font-weight:800">100% · 1,012만</span></div>
             </div>
           </div>
 
           <!-- [2] 지자체 선점 비율 (구 시군구 선점 현황 · 데이터 J11:O11 · 비율 옆 빌링사별 개소수 표기) -->
           <div class="donut-card">
-            <div class="donut-card-title">지자체 선점 비율 <span>지도 연동</span></div>
+            <div class="donut-card-title">지자체 시장점유율 <span>지도 연동</span></div>
             <div class="map-pie-wrap" style="width:150px;height:150px">
               <canvas id="billing-pie" width="150" height="150"></canvas>
               <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none">
@@ -625,13 +622,13 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
               <div class="lg"><span class="sw" style="background:#0EA5E9"></span><span class="nm">한빌</span><span class="vl" id="pie-leg-hanvil" style="color:#0EA5E9"></span></div>
               <div class="lg"><span class="sw" style="background:#F59E0B"></span><span class="nm">누리빌</span><span class="vl" id="pie-leg-nuri" style="color:#F59E0B"></span></div>
               <div class="lg"><span class="sw" style="background:#10B981"></span><span class="nm">한전산업개발</span><span class="vl" id="pie-leg-hansan" style="color:#10B981"></span></div>
-              <div class="lg" style="border-top:1px solid var(--g200);margin-top:5px;padding-top:7px"><span class="sw" style="background:transparent"></span><span class="nm" style="font-weight:800;color:var(--g700)">총 합계</span><span class="vl" id="pie-leg-total" style="color:var(--g800);font-weight:800"></span></div>
+              <div class="lg" style="border-top:1px solid var(--g200);margin-top:5px;padding-top:7px"><span class="sw" style="background:transparent"></span><span class="nm" style="font-weight:800;color:var(--g700)">합계</span><span class="vl" id="pie-leg-total" style="color:var(--g800);font-weight:800"></span></div>
             </div>
           </div>
 
           <!-- [3] 한빌 고객 유형 비율 (구 한빌 고객 유형 구성 · 데이터 K11:K14 · 총계 표시) -->
           <div class="donut-card">
-            <div class="donut-card-title">한빌 고객 유형 비율 <span>166만 고객</span></div>
+            <div class="donut-card-title">한빌 고객층 점유율 <span>166만 고객</span></div>
             <div class="map-pie-wrap" style="width:150px;height:150px">
               <canvas id="custtype-donut" width="150" height="150"></canvas>
               <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none">
@@ -643,7 +640,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
               <div class="lg"><span class="sw" style="background:#0EA5E9"></span><span class="nm">지자체</span><span class="vl" style="color:#0EA5E9">44.8% · 74.5만</span></div>
               <div class="lg"><span class="sw" style="background:#38BDF8"></span><span class="nm">통신·기관</span><span class="vl" style="color:#0284C7">8.9% · 14.8만</span></div>
               <div class="lg"><span class="sw" style="background:#7DD3FC"></span><span class="nm">개인</span><span class="vl" style="color:#0369A1">46.3% · 77.1만</span></div>
-              <div class="lg" style="border-top:1px solid var(--g200);margin-top:5px;padding-top:7px"><span class="sw" style="background:transparent"></span><span class="nm" style="font-weight:800;color:var(--g700)">총 합계</span><span class="vl" style="color:var(--g800);font-weight:800">100% · 166.4만</span></div>
+              <div class="lg" style="border-top:1px solid var(--g200);margin-top:5px;padding-top:7px"><span class="sw" style="background:transparent"></span><span class="nm" style="font-weight:800;color:var(--g700)">합계</span><span class="vl" style="color:var(--g800);font-weight:800">100% · 166.4만</span></div>
             </div>
           </div>
 
@@ -831,7 +828,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
             const billingKey = sidoCd2+'|'+sggNm2;
             const billingCnt = BILLING_MAP[billingKey] || null;
             document.getElementById('map-popup-title').textContent = p.adm_nm;
-            document.getElementById('map-popup-count').textContent = co || '미선점';
+            document.getElementById('map-popup-count').textContent = co || '-';
             document.getElementById('map-popup-billing').textContent = billingCnt ? billingCnt.toLocaleString()+'건' : '—';
             // 빌링 선점 비율 = H열(G건수 대비 비율): 이 지역 빌링건수(G) / 전체 빌링건수 합계 × 100
             var _hRatio = (billingCnt && BILL_TOTAL_ALL) ? (billingCnt / BILL_TOTAL_ALL * 100) : 0;
@@ -840,14 +837,14 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
             // 선택 지역 데이터 저장 (전략 제안용)
             window._mapSel = {
               region: p.adm_nm,
-              co: co,                       // 빌링사 (null=미선점)
+              co: co,                       // 빌링사 (null=해당 없음)
               qty: co ? coQty : 0,          // 선점 개소
               billing: billingCnt || 0,     // 빌링 건수
               ratio: co ? coPct : 0
             };
             window._mapSelectedRegion = p.adm_nm;  // 하위 호환
             window._mapSelectedCo = co;
-            // 조건부 버튼: 한빌 → 유지 전략 / 그 외·미선점 → 진입 제안
+            // 조건부 버튼: 한빌 → 유지 전략 / 그 외·미개척 → 진입 제안
             const ctaKeep  = document.getElementById('map-popup-cta-keep');
             const ctaEnter = document.getElementById('map-popup-cta');
             const isHanvil = (co === '한빌');
@@ -1151,7 +1148,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
         <div class="si"><i class="ti ti-circle-check"></i></div>
         <div class="sl">상담원 처리완료</div>
         <div class="sn" id="c-done">—</div>
-        <div class="sd" id="c-done-d">처리율 —%</div>
+        <div class="sd" id="c-done-d">완결률 —%</div>
       </div>
       <div class="sc y">
         <div class="si"><i class="ti ti-building-community"></i></div>
@@ -1317,7 +1314,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
     <div class="panel" style="margin-bottom:14px">
       <div class="ph">
         <div class="ptt"><i class="ti ti-chart-bar" style="color:#0EA5E9"></i> 민원 해결률 세분화
-          <span style="font-size:10px;background:#E0F2FE;color:#075985;padding:2px 7px;border-radius:8px;font-weight:700;margin-left:4px">한전이관 vs 자체해결</span>
+          <span style="font-size:10px;background:#E0F2FE;color:#075985;padding:2px 7px;border-radius:8px;font-weight:700;margin-left:4px">자체해결 vs 한전이관</span>
         </div>
       </div>
       <div class="pb">
@@ -1350,7 +1347,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
         <div class="ptt"><i class="ti ti-messages" style="color:#8B5CF6"></i> VOC 분석 <span style="font-size:10px;background:#EDE9FE;color:#5B21B6;padding:2px 7px;border-radius:8px;font-weight:700;margin-left:4px">고객 실제 발화 기반</span></div>
         <div style="font-size:11.5px;color:var(--g500);line-height:1.6;padding:0 2px">
           실제 통화 STT(음성→텍스트)에서 고객이 자주 한 말을 분석한 결과입니다.<br>
-          <span style="color:var(--sky-dark);font-weight:600">왼쪽</span>: 어떤 민원을 전화 대신 앱·카카오로 처리할 수 있는지 &nbsp;|&nbsp; <span style="color:#F59E0B;font-weight:600">오른쪽</span>: 고객이 실제로 한 말 TOP5와 대응 방법
+          <span style="color:var(--sky-dark);font-weight:600">왼쪽</span>: 채널 전환 가능 민원 분류 &nbsp;|&nbsp; <span style="color:#F59E0B;font-weight:600">오른쪽</span>: VOC 핵심 발화 TOP5 & 대응
         </div>
       </div>
       <div class="pb">
@@ -1366,7 +1363,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
         </div>
       </div>
       <div class="pb">
-        <div style="font-size:11.5px;color:var(--g400);margin-bottom:10px">VOC 패턴 + 계절성 + 청구 일정 기반 — 이번 달 인입될 가능성이 높은 민원</div>
+        <div style="font-size:11.5px;color:var(--g400);margin-bottom:10px">VOC 패턴 + 계절성 + 청구 일정 기반 — 이번 달 인입될 가능성이 높은 민원(예상 확률)</div>
         <div id="predict-section-list-stt"></div>
       </div>
     </div>
@@ -1422,14 +1419,14 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
     <!-- 헤더 -->
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap;gap:8px">
       <div>
-        <div style="font-size:14px;font-weight:700;color:var(--g800)">한전 청구서사업 일일 뉴스 스크랩</div>
+        <div style="font-size:14px;font-weight:700;color:var(--g800)">한전 빌링 사업 일일 뉴스 스크랩</div>
         <div style="font-size:11.5px;color:var(--g400);margin-top:2px">경영진 보고용 · 최근 주요 기사(원문 발행일 최신순) · 원하는 기사 선택 후 발송</div>
       </div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap">
-        <button class="btn bo" onclick="refreshNews()"><i class="ti ti-refresh"></i> 새로고침</button>
-        <button class="btn bp" id="send-btn" onclick="sendNewsletter()"><i class="ti ti-send"></i> 선택 기사 발송</button>
-        <button class="btn bo" id="copy-html-btn" onclick="copyNewsletterHtml()" style="border-color:#0EA5E9;color:#0EA5E9"><i class="ti ti-clipboard-copy"></i> HTML 복사</button>
-        <button class="btn bo" onclick="exportNewsArchive()" style="border-color:#6366F1;color:#6366F1" title="누적된 뉴스를 클로드 프로젝트 Knowledge용 JSON으로 내보냅니다"><i class="ti ti-database-export"></i> 지식베이스 내보내기 <span id="news-kb-count" style="font-size:10px;background:#EEF2FF;color:#4338CA;padding:1px 6px;border-radius:8px;margin-left:2px">KB 0건</span></button>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">
+        <button class="btn bo sm" style="white-space:nowrap" onclick="refreshNews()"><i class="ti ti-refresh"></i> 새로고침</button>
+        <button class="btn bp sm" id="send-btn" style="white-space:nowrap" onclick="sendNewsletter()"><i class="ti ti-send"></i> 선택 기사 발송</button>
+        <button class="btn bo sm" id="copy-html-btn" onclick="copyNewsletterHtml()" style="border-color:#0EA5E9;color:#0EA5E9;white-space:nowrap"><i class="ti ti-clipboard-copy"></i> HTML 복사</button>
+        <button class="btn bo sm" onclick="exportNewsArchive()" style="border-color:#6366F1;color:#6366F1;white-space:nowrap" title="누적된 뉴스를 클로드 프로젝트 Knowledge용 JSON으로 내보냅니다"><i class="ti ti-database-export"></i> 지식베이스 내보내기 <span id="news-kb-count" style="font-size:10px;background:#EEF2FF;color:#4338CA;padding:1px 6px;border-radius:8px;margin-left:2px">KB 0건</span></button>
       </div>
     </div>
 
@@ -1490,7 +1487,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
         <button class="news-cat-btn" data-cat="all" onclick="filterNewsCategory('all',this)"
           style="padding:6px 14px;font-size:12.5px;font-weight:700;border-radius:20px;border:1px solid var(--sky);background:var(--sky);color:#fff;cursor:pointer;font-family:inherit">전체</button>
         <button class="news-cat-btn" data-cat="energy" onclick="filterNewsCategory('energy',this)"
-          style="padding:6px 14px;font-size:12.5px;font-weight:600;border-radius:20px;border:1px solid var(--g200);background:#fff;color:var(--g600);cursor:pointer;font-family:inherit">에너지 관련 사업</button>
+          style="padding:6px 14px;font-size:12.5px;font-weight:600;border-radius:20px;border:1px solid var(--g200);background:#fff;color:var(--g600);cursor:pointer;font-family:inherit">에너지 사업</button>
         <button class="news-cat-btn" data-cat="local" onclick="filterNewsCategory('local',this)"
           style="padding:6px 14px;font-size:12.5px;font-weight:600;border-radius:20px;border:1px solid var(--g200);background:#fff;color:var(--g600);cursor:pointer;font-family:inherit">지자체 뉴스</button>
         <span id="news-live-status" style="margin-left:auto;font-size:11px;color:var(--g400)"></span>
@@ -1965,10 +1962,10 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
       <div class="bn-icon"><i class="ti ti-news"></i></div>
       <span class="bn-label">뉴스레터</span>
     </button>
-    <button class="bn-item chatbot-btn" id="bn-chatbot" onclick="toggleCbot()" aria-label="영업비서">
+    <button class="bn-item chatbot-btn" id="bn-chatbot" onclick="toggleCbot()" aria-label="영업 비서">
       <span class="bn-chat-dot"></span>
       <div class="bn-icon"><i class="ti ti-message-chatbot"></i></div>
-      <span class="bn-label">영업비서</span>
+      <span class="bn-label">영업 비서</span>
     </button>
   </div>
 </nav>
@@ -2047,8 +2044,8 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
     <div style="display:flex;align-items:center;gap:10px">
       <div class="hb-avatar">🤖</div>
       <div>
-        <div class="hb-name">영업비서</div>
-        <div class="hb-status"><span style="width:6px;height:6px;border-radius:50%;background:#4ADE80;display:inline-block"></span>민원 상담 도우미</div>
+        <div class="hb-name">영업 비서</div>
+        <div class="hb-status"><span style="width:6px;height:6px;border-radius:50%;background:#4ADE80;display:inline-block"></span>온라인</div>
       </div>
     </div>
     <div style="display:flex;align-items:center;gap:6px">
@@ -2079,9 +2076,8 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
     <div id="hb-groq-status" style="font-size:11px;color:#4ADE80;margin-top:8px;min-height:14px"></div>
   </div>
 
-  <!-- 빠른 키워드 -->
+  <!-- 추천 질문 버튼 -->
   <div class="hb-quickbar">
-    <div class="hb-qlabel">자주 인입되는 민원</div>
     <div class="hb-chips" id="hb-quick-chips"></div>
   </div>
 
@@ -2229,10 +2225,10 @@ const DATA = {
     },
     top5: WEEK_TOP,
     report:{
-      summary:'이번 주 <strong>A3 청구서 조회 문의 52건(35.4%)</strong>으로 1위, <strong>Y1 데이터 생성·수정·삭제 48건(32.7%)</strong>이 2위입니다.',
+      summary:'이번 주 민원은 총 147건으로 전주 대비 30건(+25.6%) 증가했습니다. 유형별로는 <strong>A3 청구서 조회 문의가 52건(35.4%)</strong>으로 1위, <strong>Y1 데이터 생성·수정·삭제가 48건(32.7%)</strong>으로 2위를 차지해 상위 2개 유형이 전체의 <strong>68.1%</strong>에 집중됐습니다. 청구서 조회·발행일 문의는 매월 25일 청구서 발행 전후로 반복되는 계절성 패턴이 뚜렷하며, 완결률은 64.6%(95건)입니다. 이관 52건 중 47건이 운영팀 내부 처리이고 한전 이관은 5건에 그쳐, 단순 조회성 민원을 가스앱·카카오 채널로 선제 전환하면 전화 인입과 상담 부하를 추가로 줄일 여지가 큽니다.',
       insights:[
         {icon:'📈',label:'전주 대비',val:'▲30건 (+25.6%)'},
-        {icon:'✅',label:'처리완료율',val:'64.6% (95건)'},
+        {icon:'✅',label:'완결률',val:'64.6% (95건)'},
         {icon:'🔀',label:'이관율',val:'35.4% (52건)'},
         {icon:'🏢',label:'운영팀 이관',val:'47건 (한전 5건)'},
       ]
@@ -2254,10 +2250,10 @@ const DATA = {
     },
     top5: MONTH_TOP,
     report:{
-      summary:'6월 누계 <strong>A3 청구서 조회 문의 164건(28.8%)</strong>이 1위이며, <strong>Y1 데이터 생성·수정·삭제 146건(25.7%)</strong>이 2위입니다.',
+      summary:'6월 누계 민원은 총 569건으로, <strong>A3 청구서 조회 문의 164건(28.8%)</strong>이 1위, <strong>Y1 데이터 생성·수정·삭제 146건(25.7%)</strong>이 2위를 기록했습니다. 상위 2개 유형이 전체의 <strong>54.5%</strong>를 차지해 문의가 특정 유형에 쏠려 있으며, 완결률은 62.2%(354건)입니다. 전체 이관 215건 가운데 운영팀 내부 이관이 134건, 한전 이관이 81건으로 내부에서 소화 가능한 데이터 처리성 요청이 상당 부분을 차지합니다. 청구서 조회·이메일 변경 등 반복 인입 유형은 홈페이지 안내 강화와 챗봇 시나리오 반영으로 선제 대응 시 다음 달 인입량을 유의미하게 낮출 수 있을 것으로 분석됩니다.',
       insights:[
         {icon:'📅',label:'전월 대비',val:'▼389건 (집계 중)'},
-        {icon:'✅',label:'처리완료율',val:'62.2% (354건)'},
+        {icon:'✅',label:'완결률',val:'62.2% (354건)'},
         {icon:'🔀',label:'이관율',val:'37.8% (215건)'},
         {icon:'🏢',label:'운영팀 이관',val:'134건 (한전 81건)'},
       ]
@@ -2477,12 +2473,12 @@ let customPeriodLabel = { week: '', month: '' };
 let curWeekKey  = '';
 let curMonthKey = '';
 
-// ─── 만족도 추정: 실제 처리율(속도) + ANALYSIS_INDEX 해결률(정확도) + 대기율 + 미해결률(반복민원) 종합 ───
+// ─── 만족도 추정: 실제 완결률(속도) + ANALYSIS_INDEX 해결률(정확도) + 대기율 + 미해결률(반복민원) 종합 ───
 // 주의:
 // - d.wait(미분류 Z0 등)은 "고객 대기시간"이 아니라 상세유형 코드가 안 붙은 통화 건수일 뿐
 //   (통화 자체는 이미 응대 완료된 건임) — 만족도 점수에는 반영하지 않음.
 // - "이관" 중 한전이관만 진짜 외부 이관이고, 운영팀이관은 우리 회사 내부(운영팀)에서 처리한 것이므로
-//   내부처리율 = (상담원 처리완료 + 운영팀이관) / 전체 로 계산. (현황판 상단 3개 카드 자체는 그대로 유지)
+//   내부완결률 = (상담원 처리완료 + 운영팀이관) / 전체 로 계산. (현황판 상단 3개 카드 자체는 그대로 유지)
 function computeSatisfaction(d) {
   const ai = (typeof ANALYSIS_INDEX !== 'undefined') ? ANALYSIS_INDEX : null;
   const doneCnt  = (d && d.done)  || 0;
@@ -2497,7 +2493,7 @@ function computeSatisfaction(d) {
   const posScore     = (ai && ai.sentiment)    ? ai.sentiment.posRate     : 75;  // 긍정 감정(강점)
   // 강점 부각 가중 합성: 처리 속도(0.25)·반복민원 관리(0.25)·응대 정확도(0.20)·상담 품질(0.15)·긍정 감정(0.15)
   let sat = Math.round(speedScore*0.25 + accuracyScore*0.20 + repeatScore*0.25 + qualityScore*0.15 + posScore*0.15);
-  // 강점 기준선(baseline): 핵심 SLA(처리율 ≥ 80 · 해결률 ≥ 70) 충족 시 90점 하한 보정
+  // 강점 기준선(baseline): 핵심 SLA(완결률 ≥ 80 · 해결률 ≥ 70) 충족 시 90점 하한 보정
   if (speedScore >= 80 && accuracyScore >= 70) sat = Math.max(sat, 90);
   sat = Math.min(99, Math.max(0, sat));
   return { sat, speedScore, accuracyScore, repeatScore, qualityScore, posScore, doneCnt, opsCnt, totalCnt };
@@ -2523,11 +2519,11 @@ function buildIssueList(d, prevVals) {
     issues.push({ dot:'#F59E0B', txt: `실제 통화 분석 1위 이슈: "${ai.topIssues[0].issue}" (${ai.topIssues[0].cnt}건)` });
   }
 
-  // 3. 내부처리율(처리완료+운영팀이관, 한전이관 제외) / 해결률 현황
+  // 3. 내부완결률(처리완료+운영팀이관, 한전이관 제외) / 해결률 현황
   const doneRate = d.total ? Math.round(((d.done || 0) + (d.hjOps || 0)) / d.total * 100) : 0;
   issues.push({ dot:'#10B981', txt: ai
-    ? `처리율 ${doneRate}% · 실제 통화 해결률 ${ai.resolvedRate}%`
-    : `처리율 ${doneRate}%` });
+    ? `완결률 ${doneRate}% · 실제 통화 해결률 ${ai.resolvedRate}%`
+    : `완결률 ${doneRate}%` });
 
   return issues.slice(0, 3);
 }
@@ -2696,7 +2692,7 @@ function renderAll() {
   }
 
   animateNum(document.getElementById('c-done'), done);
-  document.getElementById('c-done-d').textContent = `처리율 ${doneR}%${deltaStr(done, prevDone) ? ' · ' + pLabel + ' 대비' + deltaStr(done, prevDone) : ''}`;
+  document.getElementById('c-done-d').textContent = `완결률 ${doneR}%${deltaStr(done, prevDone) ? ' · ' + pLabel + ' 대비' + deltaStr(done, prevDone) : ''}`;
 
   animateNum(document.getElementById('c-hj-ops'), hjO);
   document.getElementById('c-hj-d').textContent = `이관율 ${opsR}%${deltaStr(hjO, prevOps) ? ' · ' + pLabel + ' 대비' + deltaStr(hjO, prevOps) : ''}`;
@@ -3186,7 +3182,7 @@ function renderSat(score, chg, breakdown, issues) {
   const prevEl = document.getElementById('sat-prev-label');
   if (prevEl) prevEl.textContent = `/ 100점 (전${cur==='week'?'주':'월'} ${score-parseInt(chg)}점 ${chg})`;
 
-  // 실제 3개 지표(처리율/정확도/반복민원 위험)의 가중 기여분을 그대로 막대 길이로 표시
+  // 실제 3개 지표(완결률/정확도/반복민원 위험)의 가중 기여분을 그대로 막대 길이로 표시
   const b = breakdown || { speedScore:score, accuracyScore:score, repeatScore:50 };
   const segs = [
     { pct: b.speedScore    * 0.4, color:'#0EA5E9' },
@@ -3195,12 +3191,12 @@ function renderSat(score, chg, breakdown, issues) {
   ];
   document.getElementById('sat-bar').innerHTML = segs.map(s=>`<div class="sat-seg" style="width:${Math.max(0,s.pct)}%;background:${s.color}"></div>`).join('');
   document.getElementById('sat-legend').innerHTML = `
-    <span><span class="sat-dot" style="background:#0EA5E9"></span>처리율 ${b.speedScore}%</span>
+    <span><span class="sat-dot" style="background:#0EA5E9"></span>완결률 ${b.speedScore}%</span>
     <span><span class="sat-dot" style="background:#10B981"></span>정확도 ${b.accuracyScore}%</span>
-    <span><span class="sat-dot" style="background:#FEE2E2"></span>반복 민원 위험 ${100-b.repeatScore}%</span>`;
+    <span><span class="sat-dot" style="background:#FEE2E2"></span>반복 민원 ${100-b.repeatScore}%</span>`;
   const satNoteEl = document.getElementById('sat-note');
   if (satNoteEl) {
-    satNoteEl.textContent = `※ 처리율 = (상담원 처리완료 ${b.doneCnt||0}건 + 운영팀이관 ${b.opsCnt||0}건) / 전체 ${b.totalCnt||0}건 — 한전이관은 외부 이관이라 제외`;
+    satNoteEl.textContent = `※ 완결률 = (상담원 처리완료 ${b.doneCnt||0}건 + 운영팀이관 ${b.opsCnt||0}건) / 전체 ${b.totalCnt||0}건 — 한전이관은 외부 이관이라 제외`;
   }
 
   const list = (issues && issues.length) ? issues : [{ dot:'#94A3B8', txt:'데이터가 부족해 이슈를 추출하지 못했습니다.' }];
@@ -3677,7 +3673,7 @@ function renderNews() {
     }
     html += '</div>';
     // 원문
-    html += '<div style="margin-top:6px;font-size:11px;color:#94A3B8">원문: <a href="' + n.url + '" target="_blank" rel="noopener" style="color:#0284C7">' + n.url + '</a></div>';
+    // 원문 URL 표시 영역 제거 — 기사 제목 클릭 시 새 창으로 원문 열림(기능 유지)
     html += '</div>'; // end news-article-card
   }
 
@@ -4653,12 +4649,12 @@ function makeReport(d, lbl, topDetails) {
   const top2Rate = top2.cnt ? ((top2.cnt/d.total)*100).toFixed(1) : 0;
   const doneRate = d.done ? ((d.done/d.total)*100).toFixed(1) : 0;
   return {
-    summary:`1위 <strong>${top1Clean} ${top1.cnt||0}건(${top1Rate}%)</strong>, 2위 <strong>${top2Clean} ${top2.cnt||0}건(${top2Rate}%)</strong>이 이번 기간 주요 민원입니다. 상위 2개 합산 점유율 <strong>${(+top1Rate + +top2Rate).toFixed(1)}%</strong>로 집중도가 높습니다.`,
+    summary:`이번 기간 총 <strong>${d.total.toLocaleString()}건</strong>의 민원이 인입됐으며, 유형별로는 <strong>${top1Clean} ${top1.cnt||0}건(${top1Rate}%)</strong>이 1위, <strong>${top2Clean} ${top2.cnt||0}건(${top2Rate}%)</strong>이 2위로 나타났습니다. 상위 2개 유형의 합산 점유율이 <strong>${(+top1Rate + +top2Rate).toFixed(1)}%</strong>에 달해 문의가 특정 유형에 집중되는 경향이 뚜렷합니다. 기간 내 완결률은 <strong>${doneRate}%</strong>(${d.done||0}건)로, 반복 인입 비중이 높은 상위 유형은 홈페이지 안내·챗봇 시나리오 보강과 가스앱·카카오 채널 전환으로 선제 대응하면 전화 인입과 상담 부하를 완화할 수 있을 것으로 분석됩니다.`,
     insights:[
       { icon:'📊', label:'총 인입', val:`${d.total.toLocaleString()}건` },
       { icon:'🥇', label:'1위 민원', val:`${top1Clean} ${top1.cnt||0}건` },
       { icon:'🥈', label:'2위 민원', val:`${top2Clean} ${top2.cnt||0}건` },
-      { icon:'✅', label:'처리완료율', val:`${doneRate}% (${d.done||0}건)` },
+      { icon:'✅', label:'완결률', val:`${doneRate}% (${d.done||0}건)` },
     ]
   };
 }
@@ -4940,12 +4936,9 @@ window.toggleCbot = function() {
 // ── 초기화 ──
 function hbInit() {
   hbAddMsg('bot',
-    '안녕하세요! 저는 <strong>영업비서</strong>입니다 😊<br><br>' +
+    '안녕하세요! 저는 <strong>영업 비서</strong> 입니다 😊<br><br>' +
     '아래 내용을 물어보시면 바로 안내해 드릴게요:<br><br>' +
-    '<span style="background:var(--sky-panel);color:var(--sky-dark);padding:3px 8px;border-radius:6px;font-size:12px;font-weight:700">📋 응대 스크립트</span> 아래 민원 키워드를 클릭하거나, "청구서 조회 스크립트" 처럼 입력해 주세요.<br><br>' +
-    '<span style="background:#D1FAE5;color:#065F46;padding:3px 8px;border-radius:6px;font-size:12px;font-weight:700">📊 민원 데이터</span> "이번 주 민원 몇 건?", "6월 상위 카테고리", "어제 인입 현황", "예상 민원"<br><br>' +
-    '<span style="background:#EDE9FE;color:#5B21B6;padding:3px 8px;border-radius:6px;font-size:12px;font-weight:700">🔍 뉴스·검색</span> "○○구청 근황", "한전 최신 기사" → 뉴스레터 요약 + 구글 검색 연결<br><br>' +
-    '<span style="background:#FEF3C7;color:#92400E;padding:3px 8px;border-radius:6px;font-size:12px;font-weight:700">👤 고객 조회</span> 고객번호 앞자리 입력 <span style="font-size:11px;color:var(--g400)">예) <code>010</code>, <code>183</code>, <code>ma@gmail</code></span>',
+    '한전 빌링 영업 현황, 전국 거래처별 영업전략, 민원 데이터, 뉴스 검색 등 영업 관련 무엇이든 물어보시면 바로 안내해 드릴게요.',
     true);
   hbRenderQuick();
 }
@@ -4956,24 +4949,25 @@ const QUICK_COLORS = [
   {bg:'#EDE9FE',tc:'#5B21B6'},{bg:'#FEF3C7',tc:'#92400E'},
   {bg:'#FCE7F3',tc:'#9D174D'},
 ];
+// 추천 질문 버튼 — 클릭 시 입력창에 채워 넣고 바로 전송
+const HB_QUICK_QUESTIONS = [
+  { txt:'군산시청 최근 민원 알려줘',          bg:'#E0F2FE', tc:'#075985' },
+  { txt:'경기도 남양주시 영업 전략 추천해줘', bg:'#EDE9FE', tc:'#5B21B6' },
+];
+window.hbAskQuick = function(txt) {
+  const inp = document.getElementById('hb-input');
+  if (!inp) return;
+  inp.value = txt;                                   // 입력창에 채워 넣기
+  if (typeof hbResize === 'function') hbResize(inp);
+  if (typeof hbSend === 'function') hbSend();        // 바로 전송
+};
 function hbRenderQuick() {
-  // DB에서 실시간 TOP5 키워드 사용
-  const topD = (DATA[cur]?.topDetails || []).slice(0, 5);
   const container = document.getElementById('hb-quick-chips');
   if (!container) return;
-  const items = topD.length ? topD : [
-    {code:'A3',label:'A3 청구서조회문의'},{code:'Y1',label:'Y1 데이터생성수정'},
-    {code:'B1',label:'B1 고객정보변경'},{code:'A2',label:'A2 청구서해지'},
-    {code:'B2',label:'B2 이메일변경'}
-  ];
-  container.innerHTML = items.map((t, i) => {
-    const c = QUICK_COLORS[i % QUICK_COLORS.length];
-    const clean = (t.label||t.code).replace(/^[A-Z]\d+\s*/,'').substring(0,10);
-    const cnt   = t.cnt ? `(${t.cnt})` : '';
-    return `<button class="hb-chip" style="background:${c.bg};color:${c.tc}"
-      onclick="hbClickKeyword('${t.code}')">
-      ${clean} ${cnt}
-    </button>`;
+  container.innerHTML = HB_QUICK_QUESTIONS.map(function(q) {
+    return '<button class="hb-chip" style="background:' + q.bg + ';color:' + q.tc + '"'
+      + ' onclick="hbAskQuick(this.dataset.q)" data-q="' + q.txt + '">'
+      + q.txt + '</button>';
   }).join('');
 }
 
@@ -5669,7 +5663,7 @@ async function hbClaudeStream(systemPrompt, userText) {
 // ── 지도 영업 전략 실행: Claude 우선, 없으면 Groq, 둘 다 없으면 안내 ──
 window.runMapStrategy = async function(type, sel) {
   const region  = sel.region || '해당 지역';
-  const co      = sel.co || '미선점';
+  const co      = sel.co || '-';
   const qty     = sel.qty || 0;
   const billing = sel.billing || 0;
   const stratType = (type === '유지') ? '유지' : '진입';
@@ -5694,10 +5688,10 @@ window.runMapStrategy = async function(type, sel) {
   const ctx = (typeof buildHbContext === 'function') ? buildHbContext() : '';
   const stratDesc = stratType === '유지'
     ? '이미 한빌이 선점한 지역으로, 경쟁사 이탈 방어와 계약 유지·확대 전략'
-    : '타사가 선점했거나 미선점 지역으로, 신규 진입과 경쟁사 대체 전략';
+    : '타사가 선점했거나 미개척 지역으로, 신규 진입과 경쟁사 대체 전략';
 
   const systemPrompt =
-'너는 SCG랩 영업기획팀의 "영업비서(한빌이)"야. 한국전력 전기요금 전자청구 대행 서비스 "한빌"의 영업 전략을 짜는 전문가야.\n\n' +
+'너는 SCG랩 영업기획팀의 "영업 비서(한빌이)"야. 한국전력 전기요금 전자청구 대행 서비스 "한빌"의 영업 전략을 짜는 전문가야.\n\n' +
 '[최우선 지시] 오늘 오전 11시에 갱신된 최신 데이터와 뉴스 통계를 우선 분석하여 답변해. 동일 지표에 과거 수치와 최신 갱신본이 함께 있으면 항상 최신 갱신본을 기준으로 판단한다.\n\n' +
 '현재 [' + region + '] 지역에 대해 [' + stratType + '] 전략이 필요해. (' + stratDesc + ')\n\n' +
 '## 대상 지역 데이터\n' +
@@ -6162,7 +6156,7 @@ async function hbGroqQuery(userText, fallbackFn) {
   hbAddMsg('bot', `<span id="${loadId}">🤔 분석 중...</span>`, true);
 
   const ctx = buildHbContext();
-  const systemPrompt = `당신은 "영업비서"입니다. SCG랩 영업기획팀의 전기요금 청구 대행 서비스(한빌) 전담 AI 분석 어시스턴트입니다.
+  const systemPrompt = `당신은 "영업 비서"입니다. SCG랩 영업기획팀의 전기요금 청구 대행 서비스(한빌) 전담 AI 분석 어시스턴트입니다.
 
 ## 회사 및 서비스 컨텍스트
 - 회사: SCG랩(SCGLAB) 영업기획팀
@@ -6910,7 +6904,7 @@ function hbAnswer(text) {
   }
 
   hbTyping(()=>hbAddMsg('bot',
-    `<strong>영업비서</strong>가 도와드릴 수 있는 내용이에요 😊<br><br>` +
+    `<strong>영업 비서</strong>가 도와드릴 수 있는 내용이에요 😊<br><br>` +
     `<span style="background:#EDE9FE;color:#5B21B6;padding:2px 8px;border-radius:6px;font-size:11.5px;font-weight:700">🔮 주간 브리핑</span> "이번 주 예상 민원", "이번 주 대처법", "안내하면 좋을 민원"<br><br>` +
     `<span style="background:var(--sky-panel);color:var(--sky-dark);padding:2px 8px;border-radius:6px;font-size:11.5px;font-weight:700">📋 스크립트</span> 청구서 조회, 이메일 변경, 고객정보 변경…<br><br>` +
     `<span style="background:#D1FAE5;color:#065F46;padding:2px 8px;border-radius:6px;font-size:11.5px;font-weight:700">📊 데이터 질의</span> "이번 주 민원 몇 건?", "6월 상위 카테고리", "어떤 요일에 많아?"<br><br>` +
@@ -7288,7 +7282,7 @@ function renderSTTVOC() {
   if (!el) return;
 
   const channelData = [
-    { code:'A3', label:'청구서 조회 문의', cnt:52, channel:'가스앱·FAQ봇', color:'#0EA5E9', icon:'ti-device-mobile', saving:'전화 대비 80% 비용 절감' },
+    { code:'A3', label:'청구서 조회 문의', cnt:52, channel:'가스앱·카카오 채널', color:'#0EA5E9', icon:'ti-device-mobile', saving:'전화 대비 80% 비용 절감' },
     { code:'A1', label:'청구서 등록',      cnt:36, channel:'가스앱 셀프등록', color:'#10B981', icon:'ti-device-mobile', saving:'상담원 개입 불필요' },
     { code:'C1', label:'이메일 재발송',    cnt:16, channel:'카카오 알림톡',  color:'#F59E0B', icon:'ti-brand-kakao', saving:'즉시 자동 처리 가능' },
     { code:'D1', label:'문자 재발송',      cnt:17, channel:'자동 재발송 시스템', color:'#8B5CF6', icon:'ti-message', saving:'시스템 자동화 가능' },
@@ -7297,7 +7291,7 @@ function renderSTTVOC() {
   ];
 
   const vocTrends = [
-    { kw: '"청구서 발행일이 언제에요?"', cnt: 31, type: '단순 안내', deflect: 'FAQ봇 자동 응대' },
+    { kw: '"청구서 발행일이 언제에요?"', cnt: 31, type: '단순 안내', deflect: '카카오 채널 자동 응대' },
     { kw: '"이메일을 못 받았어요"',       cnt: 24, type: '재발송 요청', deflect: '카카오 알림톡 대체' },
     { kw: '"자동이체 변경하고 싶어요"',   cnt: 11, type: '정보 변경', deflect: '앱 셀프서비스 유도' },
     { kw: '"청구서 해지해주세요"',        cnt: 10, type: '서비스 해지', deflect: '상담원 처리 유지' },
@@ -7612,7 +7606,7 @@ function getPageAlert(name) {
       title: '오늘의 영업·민원 현황 요약',
       lines: [
         '💼 [영업] 한빌 선점 ' + (_sDone || '—') + '개소 · 경쟁사 ' + (_sLeft || '—') + '개소 (선점 점유율 ' + _sShare + '%)',
-        '🗺 전체 시장 1,012만 고객 기준, 미선점·경쟁사 지역에 신규 진입 여지가 남아 있어요.',
+        '🗺 전체 시장 1,012만 고객 기준, 경쟁사·미개척 지역에 신규 진입 여지가 남아 있어요.',
         '📥 [민원] 총 ' + tot + '건 접수 · 상담원 직접 해결 ' + dn + '건(' + dr + '%)',
         '🏢 운영팀·한전 이관 ' + hj + '건 · 미해결률 ' + _unres + '% · 부정 감정 ' + _neg + '%',
         '🔎 1위 민원은 "' + top + '"이에요.',
