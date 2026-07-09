@@ -3048,8 +3048,8 @@ function renderKeywordCloud() {
   // 기간을 바꾸면 이 값이 바뀌므로 기간 연동됨
   const periodKw = (DATA[cur] && DATA[cur].keywords) ? DATA[cur].keywords : [];
 
-  // ── 2순위: STT_INDEX 키워드 (보조) ──
-  const sttKw = (typeof STT_INDEX !== 'undefined' && STT_INDEX.topKw) ? STT_INDEX.topKw : [];
+  // ── 2순위: STT_INDEX 키워드 (보조) — STT_INDEX가 null(해당 기간 통화 데이터 없음)일 수 있어 방어 ──
+  const sttKw = (typeof STT_INDEX !== 'undefined' && STT_INDEX && STT_INDEX.topKw) ? STT_INDEX.topKw : [];
 
   // 두 소스 병합 — 기간 키워드 우선, STT로 보강
   const merged = {};
@@ -4848,11 +4848,14 @@ function dmSyncUI() {
 
 window.dmSetWeek = function(offset) {
   const now = new Date();
-  const day = now.getDay() || 7;
+  const day = now.getDay() || 7;                       // 일=0 → 7 (월=1 … 일=7)
   const mon = new Date(now); mon.setDate(now.getDate() - day + 1 + offset*7);
   const sun = new Date(mon); sun.setDate(mon.getDate() + 6);
   document.getElementById('dm-start').value = toInputVal(mon);
   document.getElementById('dm-end').value = toInputVal(sun);
+  dmMode = 'week';
+  // 퀵 버튼(이번 주·지난 주·2주 전·3주 전)은 즉시 조회 후 모달 자동 닫기 (UX 일관성)
+  if (typeof applyDateRange === 'function') applyDateRange();
 };
 
 window.dmSetMonth = function(offset) {
@@ -4860,6 +4863,9 @@ window.dmSetMonth = function(offset) {
   const target = new Date(now.getFullYear(), now.getMonth() + offset, 1);
   document.getElementById('dm-year').value = target.getFullYear();
   document.getElementById('dm-month').value = target.getMonth() + 1;
+  dmMode = 'month';
+  // 퀵 버튼(이번 달·지난 달·2달 전)도 즉시 조회 후 모달 자동 닫기
+  if (typeof applyDateRange === 'function') applyDateRange();
 };
 
 // ─── DB에서 날짜 범위 집계 ───
@@ -5022,8 +5028,8 @@ function buildTrend(mode, s, e) {
 // 초기 날짜 세팅 — 실행 시점 기준 '지난주'(월~일) 동적 계산
 // (실제 적용/렌더는 loadFromDB 이후 applyDefaultPeriod()에서 최종 수행)
 function applyDefaultPeriod() {
-  // DB 로드 완료 시점에 다시 계산 → '지난주' 데이터가 없으면 최신 데이터 구간으로 폴백
-  var r = resolveDefaultRange();
+  // 첫 진입 기본 기간 = 오늘 기준 '전주 월요일 ~ 전주 일요일' (요일: 일=0·월=1 반영)
+  var r = getLastWeekRange();
   window._activeRange = r;
   var sEl=document.getElementById('dm-start'), eEl=document.getElementById('dm-end');
   if(sEl) sEl.value = r.s;
@@ -5037,8 +5043,9 @@ function applyDefaultPeriod() {
   try { if (typeof applyDateRange === 'function') applyDateRange(); } catch(err) { console.warn('초기 기간 적용 실패:', err); }
 }
 (function() {
-  // 첫 페인트 시점 입력값 채우기 (렌더 확정은 applyDefaultPeriod에서)
-  var r = window._activeRange || resolveDefaultRange();
+  // 첫 페인트 시점 입력값 채우기 = 전주 월~일 (렌더 확정은 applyDefaultPeriod에서)
+  var r = getLastWeekRange();
+  window._activeRange = r;
   var sEl=document.getElementById('dm-start'), eEl=document.getElementById('dm-end');
   if(sEl) sEl.value = r.s;
   if(eEl) eEl.value = r.e;
@@ -8016,7 +8023,7 @@ function renderSTTImprovements() {
   });
 
   // 분석3.5: 상담원 응대 품질 (ANALYSIS_INDEX 실제 통화 분석 기반, 항상 1개 포함)
-  if (typeof ANALYSIS_INDEX !== 'undefined' && ANALYSIS_INDEX.agentQuality) {
+  if (typeof ANALYSIS_INDEX !== 'undefined' && ANALYSIS_INDEX && ANALYSIS_INDEX.agentQuality) {
     var aq = ANALYSIS_INDEX.agentQuality;
     var qImprove = (ANALYSIS_INDEX.improvements && ANALYSIS_INDEX.improvements[0]) || '고객 질문에 더 구체적으로 답변하기';
     suggestions.push({
