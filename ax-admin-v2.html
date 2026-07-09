@@ -4974,27 +4974,27 @@ window.applyDateRange = function() {
       // 가장 많이 겹치는 주의 키를 curWeekKey로 저장
       if (matched.length) curWeekKey = matched[matched.length-1].wk;
       const entries = matched.map(({v}) => v).filter(Boolean);
-      const d = aggregateFromDB(entries);
-      if (d) {
-        const tdMap = {};
-        entries.forEach(v => (v.td||[]).forEach(t => {
-          if (!tdMap[t.code]) tdMap[t.code] = { ...t, cnt:0 };
-          tdMap[t.code].cnt += t.cnt;
-        }));
-        const topDetails = Object.values(tdMap).sort((a,b)=>b.cnt-a.cnt).slice(0,10);
-        const kwMap = {};
-        entries.forEach(v => (v.kw||[]).forEach(k => { kwMap[k.word] = (kwMap[k.word]||0) + k.cnt; }));
-        const keywords = Object.entries(kwMap).sort((a,b)=>b[1]-a[1]).slice(0,12).map(([word,cnt])=>({word,cnt}));
-        var _satW = computeSatisfaction(d);   // 리포트와 동일 d로 만족도 동기 재계산 (완결률 일치)
-        // '전주 대비' 총건수: 현재 범위를 7일 앞으로 이동한 한 주 전 범위를 집계
-        var _prevAgg = (typeof aggregateFromDB === 'function')
-          ? aggregateFromDB(_dbEntriesInRange(_shiftYmd(s,-7), _shiftYmd(e,-7))) : null;
-        DATA.week = { ...DATA.week, ...d, periodLabel:lbl, topDetails, keywords,
-          prevTotal: (_prevAgg && _prevAgg.total) ? _prevAgg.total : 0,
-          report: makeReport(d, lbl, topDetails),
-          sat: _satW.sat, satBreakdown: _satW, issues: buildIssueList(d, null),
-          weekTrend: buildTrend('week', s, e) };
-      }
+      // 데이터가 없는 기간이라도 이전 값이 남지 않도록 항상 갱신 (빈 범위는 0으로 표시)
+      const d = aggregateFromDB(entries) || { total:0, done:0, hj:0, hjKepco:0, hjOps:0, wait:0,
+        types:{ labels: CAT_LABELS, vals: CAT_LABELS.map(function(){ return 0; }) }, top5:[] };
+      const tdMap = {};
+      entries.forEach(v => (v.td||[]).forEach(t => {
+        if (!tdMap[t.code]) tdMap[t.code] = { ...t, cnt:0 };
+        tdMap[t.code].cnt += t.cnt;
+      }));
+      const topDetails = Object.values(tdMap).sort((a,b)=>b.cnt-a.cnt).slice(0,10);
+      const kwMap = {};
+      entries.forEach(v => (v.kw||[]).forEach(k => { kwMap[k.word] = (kwMap[k.word]||0) + k.cnt; }));
+      const keywords = Object.entries(kwMap).sort((a,b)=>b[1]-a[1]).slice(0,12).map(([word,cnt])=>({word,cnt}));
+      var _satW = computeSatisfaction(d);   // 리포트와 동일 d로 만족도 동기 재계산 (완결률 일치)
+      // '전주 대비' 총건수: 현재 범위를 7일 앞으로 이동한 한 주 전 범위를 집계
+      var _prevAgg = (typeof aggregateFromDB === 'function')
+        ? aggregateFromDB(_dbEntriesInRange(_shiftYmd(s,-7), _shiftYmd(e,-7))) : null;
+      DATA.week = { ...DATA.week, ...d, periodLabel:lbl, topDetails, keywords,
+        prevTotal: (_prevAgg && _prevAgg.total) ? _prevAgg.total : 0,
+        report: makeReport(d, lbl, topDetails),
+        sat: _satW.sat, satBreakdown: _satW, issues: buildIssueList(d, null),
+        weekTrend: buildTrend('week', s, e) };
     }
     renderAll();
 
@@ -5015,21 +5015,20 @@ window.applyDateRange = function() {
     var _ms = `${mk}-01`, _me = `${mk}-${String(lastDay).padStart(2,'0')}`;
     window._activeRange = { s:_ms, e:_me };
     if (typeof applySTTFilter === 'function') applySTTFilter(_ms, _me);
-    if (useDB && DB.months[mk]) {
-      const mv = DB.months[mk];
-      const d = aggregateFromDB([mv]);
-      if (d) {
-        var _satM = computeSatisfaction(d);   // 리포트와 동일 d로 만족도 동기 재계산 (완결률 일치)
-        DATA.month = { ...DATA.month, ...d, periodLabel:lbl,
-          topDetails: mv.td||[], keywords: mv.kw||[],
-          report: makeReport(d, lbl, mv.td),
-          sat: _satM.sat, satBreakdown: _satM, issues: buildIssueList(d, null),
-          weekTrend: buildTrend('month', `${mk}-01`, `${mk}-${String(lastDay).padStart(2,'0')}`) };
-      }
-    } else if (!useDB) {
-      console.warn('DB 미로드 — dashboard_compact.js 확인 필요');
+    if (useDB) {
+      const mv = DB.months[mk] || null;
+      // 해당 월 데이터가 없어도 이전 값이 남지 않도록 항상 갱신 (빈 월은 0으로 표시)
+      const d = (mv ? aggregateFromDB([mv]) : null) || { total:0, done:0, hj:0, hjKepco:0, hjOps:0, wait:0,
+        types:{ labels: CAT_LABELS, vals: CAT_LABELS.map(function(){ return 0; }) }, top5:[] };
+      var _satM = computeSatisfaction(d);   // 리포트와 동일 d로 만족도 동기 재계산 (완결률 일치)
+      DATA.month = { ...DATA.month, ...d, periodLabel:lbl,
+        topDetails: (mv && mv.td) || [], keywords: (mv && mv.kw) || [],
+        report: makeReport(d, lbl, mv && mv.td),
+        sat: _satM.sat, satBreakdown: _satM, issues: buildIssueList(d, null),
+        weekTrend: buildTrend('month', `${mk}-01`, `${mk}-${String(lastDay).padStart(2,'0')}`) };
+      if (!mv) console.warn('DB에 해당 월 없음:', mk, '/ 사용 가능:', Object.keys(DB.months).sort().slice(-5).join(', '));
     } else {
-      console.warn('DB에 해당 월 없음:', mk, '/ 사용 가능:', Object.keys(DB.months).sort().slice(-5).join(', '));
+      console.warn('DB 미로드 — dashboard_compact.js 확인 필요');
     }
     renderAll();
   }
