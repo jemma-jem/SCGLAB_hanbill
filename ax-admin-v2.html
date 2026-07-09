@@ -806,6 +806,21 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
         rect.setAttribute('pointer-events', 'none');
         svgEl.appendChild(rect);
 
+        // 호버 툴팁 (마우스 오버 시 시군구 이름 표시)
+        let _mapTip = document.getElementById('map-hover-tip');
+        if (!_mapTip) {
+          _mapTip = document.createElement('div');
+          _mapTip.id = 'map-hover-tip';
+          _mapTip.style.cssText = 'position:fixed;z-index:2000;display:none;pointer-events:none;'
+            + 'background:#1E293B;color:#fff;font-size:11px;font-weight:600;padding:3px 8px;'
+            + 'border-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,.25);white-space:nowrap';
+          document.body.appendChild(_mapTip);
+        }
+        const _moveTip = (e) => {
+          _mapTip.style.left = (e.clientX + 12) + 'px';
+          _mapTip.style.top  = (e.clientY + 12) + 'px';
+        };
+
         // 시군구 경로
         pr.sggPaths.forEach(p => {
           if (!p.d) return;
@@ -818,8 +833,14 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
           el.setAttribute('stroke', '#fff');
           el.setAttribute('stroke-width', '0.7');
           el.style.cursor = 'pointer';
-          el.addEventListener('mouseover', () => el.setAttribute('fill', hover));
-          el.addEventListener('mouseout',  () => el.setAttribute('fill', fill));
+          el.addEventListener('mouseover', (e) => {
+            el.setAttribute('fill', hover);
+            _mapTip.textContent = p.adm_nm;      // 시군구 전체 이름
+            _mapTip.style.display = 'block';
+            _moveTip(e);
+          });
+          el.addEventListener('mousemove', _moveTip);
+          el.addEventListener('mouseout',  () => { el.setAttribute('fill', fill); _mapTip.style.display = 'none'; });
           el.addEventListener('click', function(event) {
             const coQty = co ? (coCounts[co]||0) : 0;
             const coPct = co ? Math.round(coQty/coTotal*100) : 0;
@@ -3215,24 +3236,44 @@ function renderSat(score, chg, breakdown, issues) {
 }
 
 // ─── 만족도 저하 원인 분석 (종합예측 만족도 카드 내 텍스트) ───
+//   숫자 없이, 분석 내용을 서술형으로 '강점 / 보완점'으로 나눠 표기
 function renderSatCause(metrics) {
   var el = document.getElementById('sat-cause-text');
   if (!el) return;
-  var worst = metrics.slice().sort(function(a,b){ return a.val - b.val; })[0];  // 최저 지표 = 주요 원인
-  var lines = metrics.map(function(m){
-    var low = m.val < 70;
-    return '<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:4px">'
-      + '<span style="font-size:11.5px;color:var(--g600)"><span style="display:inline-block;width:7px;height:7px;border-radius:2px;background:' + m.color + ';margin-right:6px"></span>' + m.key + '</span>'
-      + '<span style="font-size:12px;font-weight:800;color:' + (low?'#DC2626':m.color) + '">' + m.val + '점' + (low?' ⚠':'') + '</span>'
-      + '</div>';
-  }).join('');
+  // 지표별 서술형 문구 (강점 s / 보완점 w) — 점수는 강·약 분류에만 사용, 화면엔 미표기
+  var DESC = {
+    '응대 정확도': {
+      s: '고객 문의에 정확히 답변하는 응대 정확도가 안정적으로 유지되고 있습니다.',
+      w: '고객 질문에 바로 답하지 않고 돌려 말하는 사례가 있어 응대 정확도 보완이 필요합니다.'
+    },
+    '이관 처리 속도': {
+      s: '민원을 신속히 이관·처리해 고객 대기 시간이 짧게 관리되고 있습니다.',
+      w: '이관 처리가 지연되며 대기 시간이 길어지는 경향이 있어 처리 속도 개선이 필요합니다.'
+    },
+    '상담 친절도': {
+      s: '상담원의 친절한 응대가 고객 만족에 긍정적으로 작용하고 있습니다.',
+      w: '일부 통화에서 친절도가 낮아 부정 감정으로 이어지는 사례가 있어 개선이 필요합니다.'
+    }
+  };
+  var strong = [], weak = [];
+  metrics.forEach(function(m){
+    var d = DESC[m.key] || { s: m.key + '은(는) 양호한 수준을 유지하고 있습니다.', w: m.key + ' 개선이 필요합니다.' };
+    if ((m.val || 0) >= 70) strong.push(d.s); else weak.push(d.w);
+  });
+  function block(title, color, items, empty){
+    var body = items.length
+      ? items.map(function(t){ return '<div style="font-size:11.5px;color:var(--g700);line-height:1.65;margin-bottom:3px">· ' + t + '</div>'; }).join('')
+      : '<div style="font-size:11.5px;color:var(--g400);line-height:1.6">· ' + empty + '</div>';
+    return '<div style="margin-bottom:8px">'
+      + '<div style="font-size:11px;font-weight:800;color:' + color + ';margin-bottom:3px">' + title + '</div>'
+      + body + '</div>';
+  }
   el.innerHTML =
       '<div style="font-size:11.5px;font-weight:700;color:var(--g600);margin-bottom:6px">만족도 저하 원인 분석</div>'
-    + '<div style="background:var(--g50);border:1px solid var(--g100);border-radius:8px;padding:9px 11px">'
-    + lines
-    + '<div style="font-size:11px;color:var(--sky-dark);line-height:1.6;margin-top:6px;padding-top:6px;border-top:1px dashed var(--g200)">'
-    + '가장 낮은 <b>' + worst.key + '(' + worst.val + '점)</b>이(가) 만족도 저하의 주요 원인입니다.'
-    + '</div></div>';
+    + '<div style="background:var(--g50);border:1px solid var(--g100);border-radius:8px;padding:10px 12px">'
+    + block('✅ 강점', '#059669', strong, '현재 두드러진 강점이 확인되지 않았습니다.')
+    + block('⚠ 보완점', '#DC2626', weak, '현재 특이한 보완점이 확인되지 않았습니다.')
+    + '</div>';
 }
 
 // ─── 데이터 포탈 상단 현황 요약 & AI 핵심 액션 아이템 ───
