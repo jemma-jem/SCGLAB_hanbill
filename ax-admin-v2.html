@@ -496,7 +496,7 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
     <div class="live-chip"><span class="ld"></span>LIVE</div>
   </div>
   <nav class="sb-nav">
-    <div class="ni on" onclick="goSec('dashboard',this)"><i class="ti ti-dashboard"></i>데이터 포탈</div>
+    <div class="ni on" onclick="goSec('dashboard',this)"><i class="ti ti-dashboard"></i>데이터 포털</div>
     <div class="ni" onclick="goSec('stt',this)"><i class="ti ti-microphone-2"></i>AI 민원분석</div>
     <div class="ni" onclick="goSec('newsletter',this)"><i class="ti ti-news"></i>뉴스레터<span class="nb">2</span></div>
   </nav>
@@ -511,7 +511,7 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
   <div class="topbar">
     <div style="display:flex;align-items:center;gap:10px">
       <button class="hamburger" onclick="openSb()" aria-label="메뉴"><i class="ti ti-menu-2"></i></button>
-      <div><div class="pt" id="pt">데이터 포탈</div><div class="ps" id="ps">한전 빌링 영업 현황</div></div>
+      <div><div class="pt" id="pt">데이터 포털</div><div class="ps" id="ps">한전 빌링 영업 현황</div></div>
     </div>
     <div class="tr">
       <div class="pred-badge" id="page-alert-badge" onclick="openPageAlert()">
@@ -1984,9 +1984,9 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
 <!-- ── 모바일 하단 앱 네비게이션 ── -->
 <nav class="bottom-nav" id="bottom-nav" aria-label="하단 메뉴">
   <div class="bn-items">
-    <button class="bn-item on" id="bn-dashboard" onclick="bnGo('dashboard')" aria-label="데이터 포탈">
+    <button class="bn-item on" id="bn-dashboard" onclick="bnGo('dashboard')" aria-label="데이터 포털">
       <div class="bn-icon"><i class="ti ti-dashboard"></i></div>
-      <span class="bn-label">데이터 포탈</span>
+      <span class="bn-label">데이터 포털</span>
     </button>
     <button class="bn-item" id="bn-stt" onclick="bnGo('stt')" aria-label="AI 민원분석">
       <div class="bn-icon"><i class="ti ti-microphone-2"></i></div>
@@ -3300,7 +3300,7 @@ function renderSatCause(metrics) {
     + '</div>';
 }
 
-// ─── 데이터 포탈 상단 현황 요약 & AI 핵심 액션 아이템 ───
+// ─── 데이터 포털 상단 현황 요약 & AI 핵심 액션 아이템 ───
 function _txtNum(id){ var el=document.getElementById(id); if(!el) return 0; var m=(el.textContent||'').replace(/[^0-9]/g,''); return m?parseInt(m,10):0; }
 function _dashMetrics(arr){
   return '<div style="display:flex;flex-wrap:wrap;gap:8px">' + arr.map(function(m){
@@ -4569,7 +4569,7 @@ window.copyNewsletterHtml = function() {
 
 // ─── NAV ───
 const SEC_META = {
-  dashboard:['데이터 포탈','한전 빌링 영업 현황'],
+  dashboard:['데이터 포털','한전 빌링 영업 현황'],
   stt:['STT 활용 주요 지표','실제 통화 분석 기반 인사이트'],
   predict:['예상 민원','AI 기반 민원 예측 및 개선책'],
   newsletter:['뉴스레터','한전 청구서사업 경영진 일일 스크랩'],
@@ -4847,7 +4847,7 @@ function buildTrend(mode, s, e) {
 
 // ─── 하단 네비 (모바일) ───
 const BN_SECTIONS = {
-  dashboard:  { label:'데이터 포탈',   sub:'한전 빌링 영업 현황' },
+  dashboard:  { label:'데이터 포털',   sub:'한전 빌링 영업 현황' },
   stt:        { label:'AI 민원분석', sub:'실제 통화 분석 기반 인사이트' },
   predict:    { label:'예상 민원', sub:'AI 기반 민원 예측 및 개선책' },
   newsletter: { label:'뉴스레터', sub:'한전 청구서사업 경영진 스크랩' },
@@ -6339,7 +6339,7 @@ function hbFormatReply(t) {
 }
 
 // ═══ 영업 비서: 지역·시장점유율 조회 (키 없이도 규칙 기반 답변) ═══
-// 전국 전자청구 빌링 시장점유율 (데이터포탈 도넛 기준)
+// 전국 전자청구 빌링 시장점유율 (데이터포털 도넛 기준)
 const HB_MARKET = {
   total: 10120000,
   players: [
@@ -7822,7 +7822,7 @@ function getPageAlert(name) {
 }
 
 // 탭별 표시 이름 (모바일 칩 + 패널 타이틀 동적 연동용)
-var PAGE_TAB_NAMES = { dashboard:'데이터포탈', stt:'민원분석', predict:'예상민원', newsletter:'뉴스레터', chatbot:'영업 비서' };
+var PAGE_TAB_NAMES = { dashboard:'데이터포털', stt:'민원분석', predict:'예상민원', newsletter:'뉴스레터', chatbot:'영업 비서' };
 function pageAlertTitle(name){ return 'AI분석요약 - ' + (PAGE_TAB_NAMES[name] || '요약'); }
 
 function updatePageAlert(name) {
