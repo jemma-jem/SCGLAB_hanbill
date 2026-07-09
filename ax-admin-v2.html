@@ -6070,13 +6070,15 @@ const DETAIL_TYPE_TO_CODE = (function(){
 function _detailToCode(detail){
   return DETAIL_TYPE_TO_CODE[(detail||'').replace(/\s+/g,'')] || '';
 }
-// 카테고리 코드 첫 글자 → 처리방법 그룹
-function _procGroupByCode(code){
-  var l = (code||'').charAt(0).toUpperCase();
+// G열 유형(첫 알파벳) → 처리방법 그룹 (종결 데이터 판단)
+function _procGroupByType(rawType){
+  var m = String(rawType||'').toUpperCase().match(/[A-Z]/);
+  if (!m) return 'etc';
+  var l = m[0];
   if ('ABCD'.indexOf(l) >= 0) return 'done';   // 상담원 처리
   if ('GJY'.indexOf(l)  >= 0) return 'ops';    // 운영팀 이관
   if ('EF'.indexOf(l)   >= 0) return 'kepco';  // 한전 이관
-  return 'etc';                                 // Z(기타) 등 → 미분류
+  return 'etc';                                 // 그 외 → 미분류
 }
 // 카테고리 코드 첫 글자 → 10분류 인덱스
 const _CODE_LETTER_IDX = { A:0, B:1, C:2, D:3, E:4, F:5, G:6, J:7, Y:8, Z:9 };
@@ -6097,14 +6099,15 @@ function _ingestComplaintRows(rows, cutoff){
   var byDate = {};   // date → {t,done,ops,kepco,v[10],tdMap}
   (rows || []).forEach(function(row){
     if (!row) return;
-    var detail = row[7]  || '';     // H = 상세유형
+    var typeRaw= row[6]  || '';     // G = 유형 (처리방법 판단)
+    var detail = row[7]  || '';     // H = 상세유형 (카테고리 판단)
     var dateRaw= row[8]  || '';     // I = 상담일자
     var code = _detailToCode(detail);
     if (!code) return;                               // 매핑표에 없는 상세유형만 제외 (전화수신 Z0는 총 인입에 포함)
     var d = _parseConsultDate(dateRaw);
     if (!d) return;                                  // 날짜 파싱 실패 제외
     if (cutoff && d <= cutoff) return;               // 시드 이후 최신분만
-    var grp = _procGroupByCode(code);
+    var grp = _procGroupByType(typeRaw);             // 처리방법은 G열 유형으로 판단
     sttRecords.push({ d: d, c: code, s: 1, r: (grp === 'done' ? 1 : 0), a: 1 });
     if (!byDate[d]) byDate[d] = { t:0, done:0, ops:0, kepco:0, v:[0,0,0,0,0,0,0,0,0,0], tdMap:{} };
     var b = byDate[d];
