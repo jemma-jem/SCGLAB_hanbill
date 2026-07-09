@@ -3205,9 +3205,42 @@ function renderTypeChart(topDetails) {
 }
 
 // 이전 기간 topDetails — curWeekKey / curMonthKey 직접 사용
+// YYYY-MM-DD 문자열을 days만큼 이동
+function _shiftYmd(ymd, days) {
+  var t = new Date(ymd + 'T00:00:00');
+  if (isNaN(t.getTime())) return ymd;
+  t.setDate(t.getDate() + days);
+  return t.getFullYear() + '-' + String(t.getMonth()+1).padStart(2,'0') + '-' + String(t.getDate()).padStart(2,'0');
+}
+// [s,e] 범위에 겹치는 DB.weeks 엔트리 값 배열 (일자/주간 키 혼재에도 안전)
+function _dbEntriesInRange(s, e) {
+  if (typeof DB === 'undefined' || !DB.weeks) return [];
+  return Object.keys(DB.weeks)
+    .filter(function(wk){ var v = DB.weeks[wk]; return v && wk <= e && ((v.e || wk) >= s); })
+    .map(function(wk){ return DB.weeks[wk]; });
+}
+// 엔트리 배열의 td를 코드별 합산 (내림차순)
+function _aggTd(entries) {
+  var map = {};
+  entries.forEach(function(v){ (v.td || []).forEach(function(t){
+    if (!map[t.code]) map[t.code] = { code:t.code, label:t.label, cnt:0 };
+    map[t.code].cnt += (t.cnt || 0);
+  }); });
+  return Object.values(map).sort(function(a,b){ return b.cnt - a.cnt; });
+}
+
 function getPrevTopDetails() {
   if (typeof DB === 'undefined') return [];
   if (cur === 'week') {
+    // ▶ '전주 대비': 현재 활성 기간을 그대로 7일 앞으로 이동한 '한 주 전' 범위를 집계
+    //   (DB.weeks에 일자 키·주간 키가 섞여 있어 인접 키(weeks[idx-1])는 '전날'이 될 수 있으므로 날짜 범위로 계산)
+    var r = window._activeRange;
+    if (r && r.s && r.e) {
+      var ps = _shiftYmd(r.s, -7), pe = _shiftYmd(r.e, -7);
+      var td = _aggTd(_dbEntriesInRange(ps, pe));
+      if (td.length) return td;
+    }
+    // 폴백: 기존 인접 키 방식
     const weeks = Object.keys(DB.weeks).sort();
     const key = curWeekKey || weeks[weeks.length - 1];
     const idx = weeks.indexOf(key);
@@ -4952,7 +4985,11 @@ window.applyDateRange = function() {
         entries.forEach(v => (v.kw||[]).forEach(k => { kwMap[k.word] = (kwMap[k.word]||0) + k.cnt; }));
         const keywords = Object.entries(kwMap).sort((a,b)=>b[1]-a[1]).slice(0,12).map(([word,cnt])=>({word,cnt}));
         var _satW = computeSatisfaction(d);   // 리포트와 동일 d로 만족도 동기 재계산 (완결률 일치)
+        // '전주 대비' 총건수: 현재 범위를 7일 앞으로 이동한 한 주 전 범위를 집계
+        var _prevAgg = (typeof aggregateFromDB === 'function')
+          ? aggregateFromDB(_dbEntriesInRange(_shiftYmd(s,-7), _shiftYmd(e,-7))) : null;
         DATA.week = { ...DATA.week, ...d, periodLabel:lbl, topDetails, keywords,
+          prevTotal: (_prevAgg && _prevAgg.total) ? _prevAgg.total : 0,
           report: makeReport(d, lbl, topDetails),
           sat: _satW.sat, satBreakdown: _satW, issues: buildIssueList(d, null),
           weekTrend: buildTrend('week', s, e) };
@@ -7557,6 +7594,9 @@ window.hbSend = function() {
   const text = inp.value.trim();
   if (!text) return;
   inp.value = ''; inp.style.height='';
+  // 클로드 키가 설정된 상태에서 검색(전송) 시 키 설정 창 자동 닫기
+  var _gp = document.getElementById('hb-groq-panel');
+  if (_gp && _gp.style.display !== 'none') _gp.style.display = 'none';
   hbAddMsg('user', text);
 
   // 고객번호 / ID / 이메일 형태 → 고객 이력 조회 + 녹취 이력 조회
@@ -8368,11 +8408,18 @@ if (typeof archiveNewsToKB === 'function') {
 if (typeof updatePageAlert === 'function') updatePageAlert('dashboard');
 // STT 분석 패널(질향상·VOC·개선제안)은 로드 완료 후 재렌더 (init 타이밍 안전장치)
 function _renderSTTPanels() {
+  var r = window._activeRange || {s:'2026-04-01',e:'2026-06-30'};
+  // 현재 활성 기간(첫 진입 시 전주)으로 STT_RAW를 재필터링 + 인덱스 재계산 후 패널을 정확한 데이터로 갱신
+  // (applySTTFilter가 질향상·VOC·개선제안·AI요약·해결률·우수응대·데이터갭을 모두 렌더)
+  if (typeof applySTTFilter === 'function' && r && r.s && r.e) {
+    applySTTFilter(r.s, r.e);
+    return;
+  }
+  // 폴백 (applySTTFilter 미정의 시)
   if (typeof renderSTTQuality === 'function') renderSTTQuality();
   if (typeof renderSTTVOC === 'function') renderSTTVOC();
   if (typeof renderSTTImprovements === 'function') renderSTTImprovements();
   var f = window._sttFiltered || (typeof STT_RAW!=='undefined'?STT_RAW:[]);
-  var r = window._activeRange || {s:'2026-04-01',e:'2026-06-30'};
   if (typeof renderAiSummaryCards === 'function') renderAiSummaryCards(f,r.s,r.e);
   if (typeof renderResolutionDual === 'function') renderResolutionDual(f,r.s,r.e);
   if (typeof renderBestPhrases === 'function') renderBestPhrases();
