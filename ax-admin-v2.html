@@ -540,7 +540,7 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
     <div class="ni" onclick="goSec('newsletter',this)"><i class="ti ti-news"></i>뉴스레터<span class="nb">2</span></div>
   </nav>
   <div class="sb-foot">
-    <strong>영업기획팀 관리</strong>
+    <strong>SCGLAB 영업기획팀 관리</strong>
     마지막 업데이트: <span id="last-upd"></span>
   </div>
 </aside>
@@ -1350,20 +1350,18 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
       <i class="ti ti-calendar-stats" style="color:#8B5CF6;font-size:15px"></i>
       <span style="font-size:12px;font-weight:700;color:var(--g700)">분석 기간</span>
       <div style="display:flex;gap:6px;flex-wrap:wrap;margin-left:4px">
-        <button class="btn bp" id="stt-btn-3m" onclick="setSttPeriod('2026-04-01','2026-06-30')" style="font-size:11px;padding:3px 10px">최근 3개월</button>
-        <button class="btn bo" id="stt-btn-6m" onclick="setSttPeriod('2026-01-01','2026-06-30')" style="font-size:11px;padding:3px 10px">최근 6개월</button>
         <button class="btn bo" id="stt-btn-apr" onclick="setSttPeriod('2026-04-01','2026-04-30')" style="font-size:11px;padding:3px 10px">4월</button>
         <button class="btn bo" id="stt-btn-may" onclick="setSttPeriod('2026-05-01','2026-05-31')" style="font-size:11px;padding:3px 10px">5월</button>
-        <button class="btn bo" id="stt-btn-jun" onclick="setSttPeriod('2026-06-01','2026-06-30')" style="font-size:11px;padding:3px 10px">6월</button>
-        <button class="btn bo" id="stt-btn-all" onclick="setSttPeriod('2026-04-01','2026-06-30')" style="font-size:11px;padding:3px 10px">전체</button>
+        <button class="btn bp" id="stt-btn-jun" onclick="setSttPeriod('2026-06-01','2026-06-30')" style="font-size:11px;padding:3px 10px">6월</button>
+        <button class="btn bo" id="stt-btn-all" onclick="sttApplyAll()" style="font-size:11px;padding:3px 10px">전체</button>
       </div>
       <div style="display:flex;align-items:center;gap:6px;margin-left:auto;flex-wrap:wrap">
-        <input type="date" id="stt-start" value="2026-04-01" style="font-size:12px;border:1px solid var(--g200);border-radius:6px;padding:3px 7px;font-family:inherit">
+        <input type="date" id="stt-start" value="2026-06-01" style="font-size:12px;border:1px solid var(--g200);border-radius:6px;padding:3px 7px;font-family:inherit">
         <span style="font-size:11px;color:var(--g400)">~</span>
         <input type="date" id="stt-end" value="2026-06-30" style="font-size:12px;border:1px solid var(--g200);border-radius:6px;padding:3px 7px;font-family:inherit">
         <button class="btn bp" onclick="sttApplyCustom()" style="font-size:11px;padding:3px 10px">적용</button>
       </div>
-      <div style="width:100%;font-size:10.5px;color:var(--g400);margin-top:2px" id="stt-period-info">전체 579건 · 2026-04-01 ~ 2026-06-30</div>
+      <div style="width:100%;font-size:10.5px;color:var(--g400);margin-top:2px" id="stt-period-info">2026-06-01 ~ 2026-06-30</div>
       <!-- 누락 기간 알림 -->
       <div id="stt-missing-notice" style="display:none;width:100%;margin-top:8px;background:#FEF2F2;border:1px solid #FECACA;border-radius:8px;padding:8px 11px;font-size:11px;color:#991B1B;line-height:1.6">
         <i class="ti ti-database-off" style="font-size:12px;vertical-align:-1px;margin-right:4px"></i>
@@ -4699,36 +4697,83 @@ window.goSec = function(name, el) {
     setTimeout(function() {
       renderPredictSection();
       renderKeywordCloud();
-      // 기간 필터 적용 후 렌더 (초기값: 전체 기간)
-      var s = document.getElementById('stt-start').value || '2026-04-01';
-      var e = document.getElementById('stt-end').value   || '2026-06-24';
-      applySTTFilter(s, e);
+      _sttSetupBounds();                       // 날짜 선택 범위를 데이터 존재 구간으로 제한
+      if (!window._sttInited) {
+        window._sttInited = true;
+        setSttPeriod('2026-06-01','2026-06-30'); // 첫 진입: 6월 데이터
+      } else {
+        var s = document.getElementById('stt-start').value || '2026-06-01';
+        var e = document.getElementById('stt-end').value   || '2026-06-30';
+        setSttPeriod(s, e);
+      }
     }, 0);
   }
   updatePageAlert(name);
 };
 
 // ─── STT 기간 필터 UI ───
+// 실제 분석 데이터(STT_RAW)가 존재하는 날짜 범위
+function _sttDataRange() {
+  var min = '', max = '';
+  if (typeof STT_RAW !== 'undefined') STT_RAW.forEach(function(r){
+    if (r && r.d) { if (!min || r.d < min) min = r.d; if (!max || r.d > max) max = r.d; }
+  });
+  return { min: min || '2026-04-01', max: max || '2026-06-30' };
+}
+// 요청 기간을 데이터 존재 범위로 보정 (데이터 밖이면 outside=true)
+function _clampToData(s, e) {
+  var r = _sttDataRange();
+  var outside = (e < r.min) || (s > r.max);
+  var cs = s < r.min ? r.min : (s > r.max ? r.max : s);
+  var ce = e > r.max ? r.max : (e < r.min ? r.min : e);
+  if (cs > ce) { cs = r.min; ce = r.max; }
+  return { s: cs, e: ce, range: r, outside: outside };
+}
+// 날짜 입력창의 선택 가능 범위를 데이터 범위로 제한
+function _sttSetupBounds() {
+  var r = _sttDataRange();
+  ['stt-start','stt-end'].forEach(function(id){
+    var el = document.getElementById(id);
+    if (el) { el.min = r.min; el.max = r.max; }
+  });
+}
+function _sttUpdateInfo(s, e) {
+  var info = document.getElementById('stt-period-info');
+  if (info) {
+    var cnt = (typeof STT_INDEX !== 'undefined' && STT_INDEX) ? STT_INDEX.total : 0;
+    info.textContent = cnt + '건 · ' + s + ' ~ ' + e;
+  }
+}
 function setSttPeriod(s, e) {
+  var c = _clampToData(s, e);         // 데이터 있는 기간만 검색 활성화
+  s = c.s; e = c.e;
   document.getElementById('stt-start').value = s;
   document.getElementById('stt-end').value   = e;
   applySTTFilter(s, e);
-  var info = document.getElementById('stt-period-info');
-  if (info) {
-    var cnt = typeof STT_INDEX !== 'undefined' && STT_INDEX ? STT_INDEX.total : 0;
-    info.textContent = cnt + '건 · ' + s + ' ~ ' + e;
-  }
+  _sttUpdateInfo(s, e);
+}
+function sttApplyAll() {
+  var r = _sttDataRange();
+  setSttPeriod(r.min, r.max);
 }
 function sttApplyCustom() {
   var s = document.getElementById('stt-start').value;
   var e = document.getElementById('stt-end').value;
-  if (!s || !e) return;
-  applySTTFilter(s, e);
-  var info = document.getElementById('stt-period-info');
-  if (info) {
-    var cnt = typeof STT_INDEX !== 'undefined' && STT_INDEX ? STT_INDEX.total : 0;
-    info.textContent = cnt + '건 · ' + s + ' ~ ' + e;
+  if (!s || !e) { alert('시작일과 종료일을 모두 입력해 주세요.'); return; }
+  if (s > e) { alert('종료일이 시작일보다 앞설 수 없습니다.'); return; }
+  var c = _clampToData(s, e);
+  if (c.outside) {
+    alert('해당 기간에는 분석 가능한 데이터가 없습니다.\n분석 가능 기간: ' + c.range.min + ' ~ ' + c.range.max);
+    document.getElementById('stt-start').value = c.range.min;
+    document.getElementById('stt-end').value   = c.range.max;
+    applySTTFilter(c.range.min, c.range.max);
+    _sttUpdateInfo(c.range.min, c.range.max);
+    return;
   }
+  document.getElementById('stt-start').value = c.s;
+  document.getElementById('stt-end').value   = c.e;
+  applySTTFilter(c.s, c.e);
+  _sttUpdateInfo(c.s, c.e);
 }
 
 // ─── 날짜 설정 ───
@@ -6759,6 +6804,11 @@ function hbAnswer(text) {
   const monthM = text.match(/(\d{1,2})월/);
   const moPrefix = monthM ? `2026-${String(monthM[1]).padStart(2,'0')}` : null;
 
+  // ── 아직 학습이 부족한 '열린/전략형' 질문 → 정중히 안내 + 답변 가능한 질문 역제안 (구체 규칙보다 먼저) ──
+  if (hbIsVagueStrategyQ(text)) {
+    return hbSuggestAnswerable();
+  }
+
   // ── 요일 패턴 (반드시 가장 먼저 체크) ──
   if (t.includes('요일')) {
     return hbDowAnalysis(moPrefix);
@@ -7428,6 +7478,36 @@ function hbAnswer(text) {
     `<span style="background:#FEF9C3;color:#854D0E;padding:2px 8px;border-radius:6px;font-size:11.5px;font-weight:700">🤖 AI 자유 질의</span> 헤더 ⚙️에서 Claude API 키 등록 시 복합 질문 가능`,
     true
   ),700);
+}
+
+// ── 아직 학습이 부족한 '열린/전략형' 질문 판별 (구체적 지역·데이터 앵커가 없는 추상 전략 질문) ──
+function hbIsVagueStrategyQ(text) {
+  var t = (text || '').replace(/\s/g, '');
+  if (typeof hbDetectRegion === 'function' && hbDetectRegion(text)) return false; // 지역이 있으면 지역 전략으로 처리
+  var VAGUE = ['영업기회','기회포착','기회를포착','기회발굴','신규기회','시장기회',
+    '트렌드기반','트렌드분석','민원트렌드','인사이트','아이디어','어떻게공략','공략법','공략방법',
+    '접근법','접근방법','방향성','전략을세','전략수립','무엇을해야','뭘해야','뭐부터','어디서부터',
+    '기회를찾','성장전략','신사업','로드맵'];
+  return VAGUE.some(function(k){ return t.indexOf(k) >= 0; });
+}
+// ── 정중히 한계 안내 + 답변 가능한 질문 역제안 (클릭 시 바로 전송) ──
+function hbSuggestAnswerable() {
+  var chip = function(q, bg, tc) {
+    return '<a onclick="hbAskQuick(\'' + q + '\')" style="display:inline-block;background:' + bg + ';color:' + tc +
+      ';padding:5px 11px;border-radius:14px;font-size:12px;font-weight:600;cursor:pointer;margin:3px 4px 3px 0;text-decoration:none">' + q + '</a>';
+  };
+  hbTyping(function(){
+    hbAddMsg('bot',
+      '죄송해요 🙏 아직 학습이 충분하지 않아 <strong>“최근 민원 트렌드 기반 영업 기회 포착”</strong> 같은 열린 질문은 정확히 답변드리기 어려워요.<br><br>' +
+      '대신 아래처럼 <strong>구체적으로</strong> 물어봐 주시면 바로 도와드릴 수 있어요 👇<br><br>' +
+      chip('전국 시장점유율 알려줘', '#D1FAE5', '#065F46') +
+      chip('경기도 남양주시 영업 전략 추천해줘', '#EDE9FE', '#5B21B6') +
+      chip('이번 주 예상 민원 알려줘', '#E0F2FE', '#075985') +
+      chip('6월 상위 민원 카테고리 알려줘', '#FEF3C7', '#92400E') +
+      chip('군산시청 최근 민원 알려줘', '#FCE7F3', '#9D174D'),
+      true
+    );
+  }, 600);
 }
 
 // ── 전송 ──
