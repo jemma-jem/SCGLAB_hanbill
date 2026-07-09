@@ -6100,7 +6100,7 @@ function _ingestComplaintRows(rows, cutoff){
     var detail = row[7]  || '';     // H = 상세유형
     var dateRaw= row[8]  || '';     // I = 상담일자
     var code = _detailToCode(detail);
-    if (!code || code === 'Z0') return;             // 미매칭·전화수신 제외
+    if (!code) return;                               // 매핑표에 없는 상세유형만 제외 (전화수신 Z0는 총 인입에 포함)
     var d = _parseConsultDate(dateRaw);
     if (!d) return;                                  // 날짜 파싱 실패 제외
     if (cutoff && d <= cutoff) return;               // 시드 이후 최신분만
