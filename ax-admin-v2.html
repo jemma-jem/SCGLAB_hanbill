@@ -8298,6 +8298,17 @@ function getPageAlert(name) {
   var ai  = (typeof ANALYSIS_INDEX !== 'undefined') ? ANALYSIS_INDEX : null;
   var top = (d.topDetails && d.topDetails[0]) ? d.topDetails[0].label : '청구서 조회 문의';
   var tot = d.total || 0;
+  // '최근 기사'(최신 발행일)의 실제 기사 수 — 뉴스레터 알림에 동적 반영
+  var newsCnt = (function(){
+    try {
+      var live = (window.LIVE_ARTICLES && window.LIVE_ARTICLES.length) ? window.LIVE_ARTICLES
+        : (typeof NEWS_DATA !== 'undefined' ? NEWS_DATA : []);
+      if (!live || !live.length) return 0;
+      var sorted = live.slice().sort(function(a,b){ return (b.date||'').localeCompare(a.date||''); });
+      var latest = sorted[0].date;
+      return sorted.filter(function(a){ return a.date === latest; }).length;
+    } catch(e){ return 0; }
+  })();
   var dn  = d.done  || 0;
   var hj  = (d.hjOps||0) + (d.hjKepco||0);
   var dr  = tot ? Math.round(dn/tot*100) : 0;
@@ -8351,10 +8362,10 @@ function getPageAlert(name) {
       ]
     },
     newsletter: {
-      badge: '발송 준비 완료',
+      badge: newsCnt > 0 ? '발송 준비 완료' : '수집 대기',
       title: '뉴스레터 발송 전 확인해 주세요',
       lines: [
-        '오늘 한전 관련 기사 2건이 준비됐어요.',
+        '오늘 한전 관련 기사 ' + newsCnt + '건이 준비됐어요.',
         '발송 버튼을 누르면 담당자 이메일앱이 자동으로 열려요.',
         '수신자: 담당자, 팀장, 대표 3명이 설정돼 있어요.',
         '기사 제목을 클릭하면 원문 기사로 바로 이동해요!'
