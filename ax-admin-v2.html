@@ -6319,7 +6319,8 @@ function _latestSeedDate(){
 async function syncComplaintsByDate(){
   try {
     var rows = await _gvizFetchCSV(GSHEET_ALL_GID);
-    var cutoff = _latestSeedDate();
+    // 시드 컷오프: fetchSheetData 병합 이전에 고정해 둔 값 우선 (요약주 병합으로 컷오프가 미래로 밀려 최신 데이터를 건너뛰는 문제 방지)
+    var cutoff = (typeof window._seedCutoff === 'string' && window._seedCutoff) ? window._seedCutoff : _latestSeedDate();
     var res = _ingestComplaintRows(rows, cutoff);
     if (!res.sttRecords.length) {
       console.log('[상담일자 싱크] 신규 상담일자 데이터 없음 (cutoff ' + cutoff + ')');
@@ -6327,13 +6328,20 @@ async function syncComplaintsByDate(){
     }
     if (typeof STT_RAW !== 'undefined') res.sttRecords.forEach(function(r){ STT_RAW.push(r); });
     if (typeof DB !== 'undefined' && DB.weeks) {
+      var days = Object.keys(res.dbDaily).sort();
+      var minD = days[0], maxD = days[days.length-1];
+      // 적재 범위와 겹치는 기존 요약주/시드주 엔트리 제거 → 일자 데이터로 이중집계 방지
+      Object.keys(DB.weeks).forEach(function(wk){
+        var v = DB.weeks[wk]; var end = (v && v.e) || wk;
+        if (wk <= maxD && end >= minD && !res.dbDaily[wk]) delete DB.weeks[wk];
+      });
       Object.keys(res.dbDaily).forEach(function(d){ DB.weeks[d] = res.dbDaily[d]; });
     }
     // 최신 데이터 반영 → '지난주' 기본 기간 재적용 + 요약 갱신
     if (typeof applyDefaultPeriod === 'function') applyDefaultPeriod();
     if (typeof renderDashboardSummary === 'function') renderDashboardSummary();
-    var days = Object.keys(res.dbDaily).sort();
-    console.log('[상담일자 싱크] ' + res.sttRecords.length + '건 적재 (' + days[0] + ' ~ ' + days[days.length-1] + ')');
+    var _days = Object.keys(res.dbDaily).sort();
+    console.log('[상담일자 싱크] ' + res.sttRecords.length + '건 적재 (' + _days[0] + ' ~ ' + _days[_days.length-1] + ', cutoff ' + cutoff + ')');
   } catch (e) {
     console.warn('[상담일자 싱크] 실패 — 기존 데이터 유지:', e.message);
   }
@@ -6500,6 +6508,9 @@ async function fetchComplaintTexts(year2d, month) {
 
 // 페이지 로드 시 자동 fetch (백그라운드)
 (async function initSheetSync() {
+  // 시트 병합(fetchSheetData) 이전에 시드 컷오프를 고정 → 요약주 병합이 컷오프를 미래로 밀어내
+  // 상담일자 싱크가 '지난주' 등 최신 데이터를 건너뛰는 문제 방지
+  try { window._seedCutoff = (typeof _latestSeedDate === 'function') ? _latestSeedDate() : ''; } catch(e) { window._seedCutoff = ''; }
   try {
     const d = await fetchSheetData();
     if (d) {
