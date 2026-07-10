@@ -33,12 +33,14 @@ const JICHE_KW = [
 const BASE_KW = ['전기요금','한전','전자청구서','에너지바우처','에너지정책','도시가스',
   '가로등','보안등','시설물관리','도로조명','탄소중립포인트','에너지 마일리지',
   '종이고지서','모바일 고지서','건물에너지관리솔루션','전자문서중계사업자'];
-const QUERY = BASE_KW.map(function(k){ return '"' + k + '"'; }).join(' OR ') + ' when:3d';
+// 기본 키워드 + 지자체 확장 키워드(JICHE_KW) 전체를 수집 검색어에 포함 (중복 제거)
+const SEARCH_KW = Array.from(new Set(BASE_KW.concat(JICHE_KW)));
+const QUERY = SEARCH_KW.map(function(k){ return '"' + k + '"'; }).join(' OR ') + ' when:3d';
 const RSS_URL = 'https://news.google.com/rss/search?q='
   + encodeURIComponent(QUERY) + '&hl=ko&gl=KR&ceid=KR:ko';
 
 const KEEP_DAYS = 60;   // 이 기간 이내 기사만 보관
-const MAX_ITEMS = 40;   // 최대 보관 건수(발행일 최신순)
+const MAX_ITEMS = 200;  // 최대 보관 건수(발행일 최신순) — 여러 날짜분 누적 유지('지난 기사' 탭 누적용)
 
 // 지자체 키워드 → 'local', 그 외 → 'energy'
 const LOCAL_KW = ['지자체','지방자치','지방정부','지방의회','시청','도청','군청','구청',

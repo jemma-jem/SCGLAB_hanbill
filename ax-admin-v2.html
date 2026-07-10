@@ -3771,6 +3771,12 @@ function renderNews() {
   var allNews = live || NEWS_DATA || [];
   // ▶ 메인 뉴스레터: 원문 실제 발행일 기준 최신순 정렬 (가짜 '당일' 필터 제거 — 발행일 정확 표기)
   var todayNews = allNews.slice().sort(function(a,b){ return b.date.localeCompare(a.date); });
+  // '최근 기사'는 가장 최근 발행일 기준으로만 노출 (지난 날짜분은 '지난 기사' 탭에서 누적 확인)
+  if (todayNews.length) {
+    var _latest = todayNews[0].date;
+    var _recent = todayNews.filter(function(a){ return a.date === _latest; });
+    if (_recent.length) todayNews = _recent;
+  }
 
   if (!todayNews.length) {
     el.innerHTML = '<div style="text-align:center;padding:40px 20px;color:var(--g400)">'
@@ -3999,7 +4005,19 @@ window.switchNlTab = function(tab) {
 
 // ─── 지난 기사(아카이브) 렌더 + 날짜 필터 ───
 function renderNewsArchive(from, to) {
-  var src = (typeof ARCHIVE_NEWS !== 'undefined' && Array.isArray(ARCHIVE_NEWS)) ? ARCHIVE_NEWS : [];
+  // '지난 기사'가 매일 누적되도록: 누적 지식베이스(getNewsKB) + 실시간 로드분(LIVE_ARTICLES) + 내장 ARCHIVE_NEWS 병합
+  // (URL/제목 기준 중복 제거, 발행일 최신순)
+  var merged = {}, src = [];
+  function _add(a) {
+    if (!a || !(a.title || a.url)) return;
+    var key = a.url || (a.title + '|' + (a.date || ''));
+    if (merged[key]) return; merged[key] = 1;
+    src.push({ title:a.title||'', url:a.url||'#', date:a.date||'', source:a.source||'',
+      category:a.category||'energy', lines:(a.lines && a.lines.length ? a.lines : (a.summary||[])) });
+  }
+  try { if (typeof getNewsKB === 'function') getNewsKB().forEach(_add); } catch(e){}
+  if (window.LIVE_ARTICLES && window.LIVE_ARTICLES.length) window.LIVE_ARTICLES.forEach(_add);
+  if (typeof ARCHIVE_NEWS !== 'undefined' && Array.isArray(ARCHIVE_NEWS)) ARCHIVE_NEWS.forEach(_add);
   var badge = document.getElementById('nl-archive-badge');
   if (badge) badge.textContent = src.length;        // 목록 요소 유무와 무관하게 배지는 항상 갱신
   var el = document.getElementById('nl-archive-list');
@@ -4447,9 +4465,8 @@ function updateNewsBadge() {
   const all     = document.querySelectorAll('.news-check');
   const checked = document.querySelectorAll('.news-check:checked');
   const badge   = document.getElementById('news-selected-badge');
-  const countTxt= document.getElementById('news-count-text');
   if (badge)    badge.textContent   = `${checked.length}건 선택됨`;
-  if (countTxt) countTxt.textContent = `${checked.length}건`;
+  // 'news-count-text'(최근 주요 기사 N건)는 총 기사 수이므로 선택 수로 덮어쓰지 않음 (renderNews에서 설정)
   // 전체 선택 체크박스 상태 동기화 (전체/일부/없음)
   const master = document.getElementById('news-check-all');
   if (master) {
@@ -8281,6 +8298,17 @@ function getPageAlert(name) {
   var ai  = (typeof ANALYSIS_INDEX !== 'undefined') ? ANALYSIS_INDEX : null;
   var top = (d.topDetails && d.topDetails[0]) ? d.topDetails[0].label : '청구서 조회 문의';
   var tot = d.total || 0;
+  // '최근 기사'(최신 발행일)의 실제 기사 수 — 뉴스레터 알림에 동적 반영
+  var newsCnt = (function(){
+    try {
+      var live = (window.LIVE_ARTICLES && window.LIVE_ARTICLES.length) ? window.LIVE_ARTICLES
+        : (typeof NEWS_DATA !== 'undefined' ? NEWS_DATA : []);
+      if (!live || !live.length) return 0;
+      var sorted = live.slice().sort(function(a,b){ return (b.date||'').localeCompare(a.date||''); });
+      var latest = sorted[0].date;
+      return sorted.filter(function(a){ return a.date === latest; }).length;
+    } catch(e){ return 0; }
+  })();
   var dn  = d.done  || 0;
   var hj  = (d.hjOps||0) + (d.hjKepco||0);
   var dr  = tot ? Math.round(dn/tot*100) : 0;
@@ -8334,10 +8362,10 @@ function getPageAlert(name) {
       ]
     },
     newsletter: {
-      badge: '발송 준비 완료',
+      badge: newsCnt > 0 ? '발송 준비 완료' : '수집 대기',
       title: '뉴스레터 발송 전 확인해 주세요',
       lines: [
-        '오늘 한전 관련 기사 2건이 준비됐어요.',
+        '오늘 한전 관련 기사 ' + newsCnt + '건이 준비됐어요.',
         '발송 버튼을 누르면 담당자 이메일앱이 자동으로 열려요.',
         '수신자: 담당자, 팀장, 대표 3명이 설정돼 있어요.',
         '기사 제목을 클릭하면 원문 기사로 바로 이동해요!'
