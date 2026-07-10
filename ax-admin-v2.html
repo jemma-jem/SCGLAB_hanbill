@@ -3771,6 +3771,12 @@ function renderNews() {
   var allNews = live || NEWS_DATA || [];
   // ▶ 메인 뉴스레터: 원문 실제 발행일 기준 최신순 정렬 (가짜 '당일' 필터 제거 — 발행일 정확 표기)
   var todayNews = allNews.slice().sort(function(a,b){ return b.date.localeCompare(a.date); });
+  // '최근 기사'는 가장 최근 발행일 기준으로만 노출 (지난 날짜분은 '지난 기사' 탭에서 누적 확인)
+  if (todayNews.length) {
+    var _latest = todayNews[0].date;
+    var _recent = todayNews.filter(function(a){ return a.date === _latest; });
+    if (_recent.length) todayNews = _recent;
+  }
 
   if (!todayNews.length) {
     el.innerHTML = '<div style="text-align:center;padding:40px 20px;color:var(--g400)">'
@@ -3999,7 +4005,19 @@ window.switchNlTab = function(tab) {
 
 // ─── 지난 기사(아카이브) 렌더 + 날짜 필터 ───
 function renderNewsArchive(from, to) {
-  var src = (typeof ARCHIVE_NEWS !== 'undefined' && Array.isArray(ARCHIVE_NEWS)) ? ARCHIVE_NEWS : [];
+  // '지난 기사'가 매일 누적되도록: 누적 지식베이스(getNewsKB) + 실시간 로드분(LIVE_ARTICLES) + 내장 ARCHIVE_NEWS 병합
+  // (URL/제목 기준 중복 제거, 발행일 최신순)
+  var merged = {}, src = [];
+  function _add(a) {
+    if (!a || !(a.title || a.url)) return;
+    var key = a.url || (a.title + '|' + (a.date || ''));
+    if (merged[key]) return; merged[key] = 1;
+    src.push({ title:a.title||'', url:a.url||'#', date:a.date||'', source:a.source||'',
+      category:a.category||'energy', lines:(a.lines && a.lines.length ? a.lines : (a.summary||[])) });
+  }
+  try { if (typeof getNewsKB === 'function') getNewsKB().forEach(_add); } catch(e){}
+  if (window.LIVE_ARTICLES && window.LIVE_ARTICLES.length) window.LIVE_ARTICLES.forEach(_add);
+  if (typeof ARCHIVE_NEWS !== 'undefined' && Array.isArray(ARCHIVE_NEWS)) ARCHIVE_NEWS.forEach(_add);
   var badge = document.getElementById('nl-archive-badge');
   if (badge) badge.textContent = src.length;        // 목록 요소 유무와 무관하게 배지는 항상 갱신
   var el = document.getElementById('nl-archive-list');
@@ -4447,9 +4465,8 @@ function updateNewsBadge() {
   const all     = document.querySelectorAll('.news-check');
   const checked = document.querySelectorAll('.news-check:checked');
   const badge   = document.getElementById('news-selected-badge');
-  const countTxt= document.getElementById('news-count-text');
   if (badge)    badge.textContent   = `${checked.length}건 선택됨`;
-  if (countTxt) countTxt.textContent = `${checked.length}건`;
+  // 'news-count-text'(최근 주요 기사 N건)는 총 기사 수이므로 선택 수로 덮어쓰지 않음 (renderNews에서 설정)
   // 전체 선택 체크박스 상태 동기화 (전체/일부/없음)
   const master = document.getElementById('news-check-all');
   if (master) {

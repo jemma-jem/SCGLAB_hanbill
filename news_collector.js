@@ -38,7 +38,7 @@ const RSS_URL = 'https://news.google.com/rss/search?q='
   + encodeURIComponent(QUERY) + '&hl=ko&gl=KR&ceid=KR:ko';
 
 const KEEP_DAYS = 60;   // 이 기간 이내 기사만 보관
-const MAX_ITEMS = 40;   // 최대 보관 건수(발행일 최신순)
+const MAX_ITEMS = 200;  // 최대 보관 건수(발행일 최신순) — 여러 날짜분 누적 유지('지난 기사' 탭 누적용)
 
 // 지자체 키워드 → 'local', 그 외 → 'energy'
 const LOCAL_KW = ['지자체','지방자치','지방정부','지방의회','시청','도청','군청','구청',
