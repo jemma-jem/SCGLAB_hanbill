@@ -4088,11 +4088,21 @@ function updateNlHistoryBadge() {
 }
 // ▶ '지난 기사' 탭 배지: 목록 렌더(renderNewsArchive) 여부와 무관하게 실제 건수를 즉시 반영
 //   (탭을 클릭하지 않아도 페이지 로드 직후 상단 라벨에 반영되도록 독립 초기화)
+// 지난 기사 실제 건수: renderNewsArchive와 동일한 소스(누적 KB + 실시간 로드분 + 내장 아카이브)를
+// URL/제목 기준 중복 제거해 계산 → 탭 클릭 전/후 배지 숫자가 일치하도록 통일
+function _nlArchiveCount() {
+  var merged = {}, n = 0;
+  function _add(a){ if (!a || !(a.title || a.url)) return;
+    var k = a.url || (a.title + '|' + (a.date || '')); if (merged[k]) return; merged[k] = 1; n++; }
+  try { if (typeof getNewsKB === 'function') getNewsKB().forEach(_add); } catch(e){}
+  if (window.LIVE_ARTICLES && window.LIVE_ARTICLES.length) window.LIVE_ARTICLES.forEach(_add);
+  if (typeof ARCHIVE_NEWS !== 'undefined' && Array.isArray(ARCHIVE_NEWS)) ARCHIVE_NEWS.forEach(_add);
+  return n;
+}
 function updateNlArchiveBadge() {
   var badge = document.getElementById('nl-archive-badge');
   if (!badge) return;
-  var n = (typeof ARCHIVE_NEWS !== 'undefined' && Array.isArray(ARCHIVE_NEWS)) ? ARCHIVE_NEWS.length : 0;
-  badge.textContent = n || 0;                       // 예외 처리: 데이터 없으면 0
+  badge.textContent = _nlArchiveCount();            // 클릭 전에도 실제 누적 건수 반영
 }
 // ▶ 어느 페이지/새로고침에서든 초기 로드 시점에 카운트 자동 복원 (init 블록과 독립적으로 보장)
 if (typeof window !== 'undefined') {
@@ -4291,6 +4301,7 @@ async function fetchLiveNews() {
     renderNews();
     // ▶ 렌더링과 동시에 지식베이스(JSON)로 누적 저장
     var _added = (typeof archiveNewsToKB === 'function') ? archiveNewsToKB(window.LIVE_ARTICLES) : 0;
+    if (typeof updateNlArchiveBadge === 'function') updateNlArchiveBadge();  // 누적분 반영해 '지난 기사' 배지 갱신
     setStatus('· 실시간 연동 완료 (' + window.LIVE_ARTICLES.length + '건 · KB +' + _added + ' · ' + clock() + ')', '#059669');
   } catch (e) {
     // 실패(CORS/네트워크 등) 시 검증된 기본 데이터로 폴백 → 화면은 항상 채워짐
@@ -4300,6 +4311,7 @@ async function fetchLiveNews() {
     if (typeof archiveNewsToKB === 'function') {
       archiveNewsToKB((typeof NEWS_DATA!=='undefined'?NEWS_DATA:[]).concat(typeof ARCHIVE_NEWS!=='undefined'?ARCHIVE_NEWS:[]));
     }
+    if (typeof updateNlArchiveBadge === 'function') updateNlArchiveBadge();  // 폴백 누적분도 배지 반영
     setStatus('· 실시간 연동 실패 → 기본 데이터 표시', '#DC2626');
     console.warn('[뉴스 실시간 연동 실패]', e,
       '\nCORS/프록시 문제일 수 있습니다. 상단 주석의 ②(자체 프록시)·③(서버 스크래핑 JSON) 방식을 권장합니다.');
