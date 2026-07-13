@@ -7,9 +7,12 @@
  *
  * 동작 흐름:
  *   .github/workflows/news-collect.yml (매일 크론)
- *     → node news_collector.js        (RSS 수집 → news_archive.json 갱신·커밋)
+ *     → node news_collector.js        (RSS 수집 → [AI 요약] → news_archive.json 갱신·커밋)
  *     → GitHub Pages 가 news_archive.json 서빙
  *     → ax-admin-v2.html 의 fetchLiveNews() 가 자동 반영 (실패 시 NEWS_DATA 폴백)
+ *
+ * AI 요약(선택): 환경변수 ANTHROPIC_API_KEY 설정 시 신규 기사를 Claude로 2줄 요약.
+ *   미설정이면 자동 스킵(규칙 기반 폴백 요약 유지). 모델은 ANTHROPIC_MODEL 로 변경(기본 claude-opus-4-8).
  *
  * 로컬 실행: `node news_collector.js`  (Node 18+ · 내장 fetch 사용, 외부 의존성 없음)
  */
@@ -19,6 +22,14 @@ const fs = require('fs');
 const path = require('path');
 
 const ARCHIVE_PATH = path.join(__dirname, 'news_archive.json');
+
+// ── AI 요약(선택) ─────────────────────────────────────────────────────
+// GitHub Secret ANTHROPIC_API_KEY 가 설정돼 있으면 신규 기사 제목을 Claude로
+// 2줄 한국어 요약(핵심 + 한빌 사업 시사점)한다. 키가 없으면 자동 스킵(폴백 요약 유지).
+// 한 번 요약한 기사는 ai:true 로 표시해 다음 실행에서 재요약하지 않는다(비용 절감).
+const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY || '';
+const ANTHROPIC_MODEL   = process.env.ANTHROPIC_MODEL   || 'claude-opus-4-8';
+const SUMM_BATCH        = 25;   // API 호출당 요약할 기사 수(출력 토큰 상한 관리)
 
 // 지자체 뉴스 확장 키워드 (요청 반영) — 검색어 확장 + 카테고리 매핑에 공통 사용
 const JICHE_KW = [
@@ -190,6 +201,89 @@ function merge(existing, fresh) {
   return { all, added };
 }
 
+// 기사 배치(제목·출처) → Claude 2줄 요약. 실패 시 예외를 던져 호출부에서 폴백 유지.
+async function claudeSummarizeBatch(items) {
+  const schema = {
+    type: 'object',
+    properties: {
+      summaries: {
+        type: 'array',
+        items: {
+          type: 'object',
+          properties: {
+            i:     { type: 'integer' },
+            line1: { type: 'string' },
+            line2: { type: 'string' }
+          },
+          required: ['i', 'line1', 'line2'],
+          additionalProperties: false
+        }
+      }
+    },
+    required: ['summaries'],
+    additionalProperties: false
+  };
+  const system =
+    '너는 한국전력 전기요금 전자청구 대행 서비스 "한빌"의 영업기획팀 뉴스 큐레이터야. ' +
+    '각 기사 제목을 보고 영업 담당자가 빠르게 파악하도록 한국어 2줄 요약을 만들어. ' +
+    'line1 = 기사 핵심 내용, line2 = 한빌 전자청구·빌링(또는 지자체 사업) 관점의 시사점. ' +
+    '관련성이 낮으면 line2는 에너지·정책 일반 동향으로. 각 줄 15~55자, 명사형 종결(…함/…예정/…전망). ' +
+    '과장·추측 금지, 제목에 없는 사실은 창작하지 마.';
+  const userText = items.map(function (a) {
+    return a.i + '. ' + a.title + ' (출처: ' + a.source + ')';
+  }).join('\n');
+  const res = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+      'x-api-key': ANTHROPIC_API_KEY,
+      'anthropic-version': '2023-06-01'
+    },
+    body: JSON.stringify({
+      model: ANTHROPIC_MODEL,
+      max_tokens: 8000,
+      system: system,
+      output_config: { format: { type: 'json_schema', schema: schema } },
+      messages: [{ role: 'user', content: '아래 기사들을 각각 2줄로 요약해줘.\n\n' + userText }]
+    })
+  });
+  if (!res.ok) throw new Error('Claude HTTP ' + res.status + ' ' + (await res.text()).slice(0, 200));
+  const j = await res.json();
+  const text = (j.content || []).filter(function (b) { return b.type === 'text'; })
+    .map(function (b) { return b.text; }).join('');
+  return (JSON.parse(text).summaries) || [];
+}
+
+// 아직 AI 요약이 없는(ai!=true) 기사만 배치로 요약해 summary 를 교체. 실패는 조용히 폴백.
+async function summarizeNew(all) {
+  if (!ANTHROPIC_API_KEY) { console.log('AI 요약 스킵 — ANTHROPIC_API_KEY 미설정(폴백 요약 유지)'); return 0; }
+  const targets = all.filter(function (a) { return !a.ai; });
+  if (!targets.length) { console.log('AI 요약 대상 없음(모두 요약 완료)'); return 0; }
+  let done = 0;
+  for (let s = 0; s < targets.length; s += SUMM_BATCH) {
+    const batch = targets.slice(s, s + SUMM_BATCH).map(function (a, idx) {
+      return { i: s + idx, title: a.title, source: a.source };
+    });
+    try {
+      const byI = {};
+      (await claudeSummarizeBatch(batch)).forEach(function (x) { byI[x.i] = x; });
+      batch.forEach(function (b) {
+        const x = byI[b.i];
+        const art = targets[b.i];
+        if (x && art && x.line1) {
+          art.summary = x.line2 ? [x.line1, x.line2] : [x.line1];
+          art.ai = true;
+          done++;
+        }
+      });
+    } catch (e) {
+      console.warn('AI 요약 배치 실패(폴백 유지): ' + e.message);
+    }
+  }
+  console.log('AI 요약 완료: ' + done + '/' + targets.length + '건 (' + ANTHROPIC_MODEL + ')');
+  return done;
+}
+
 (async function main() {
   try {
     const xml = await fetchRss();
@@ -197,6 +291,7 @@ function merge(existing, fresh) {
     console.log('RSS 수집: ' + fresh.length + '건');
     const existing = loadArchive();
     const { all, added } = merge(existing, fresh);
+    await summarizeNew(all);   // 신규 기사에 Claude 2줄 요약 채움(키 없으면 스킵)
     const out = {
       updated_at: new Date().toISOString(),
       source: 'Google News RSS',

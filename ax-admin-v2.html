@@ -2387,10 +2387,9 @@ function computePredictions() {
   });
 }
 
-// PREDICTIONS_STATIC: build_predictions.js(Groq LLM)가 생성 → inject_data.js로 주입.
-// 없거나 비어 있으면 클라이언트에서 computePredictions()로 통계 기반 대체.
-const PREDICTIONS_STATIC=[{"prob":93,"color":"#EF4444","type":"납부내역 조회","desc":"납부내역 조회 급증 예상","reason":"최근 100% 성장률을 보이고 있어서","tip":"홈페이지에 납부내역 조회 방법을 간단히 설명"},{"prob":64,"color":"#0EA5E9","type":"고객정보 변경","desc":"고객정보 변경 문의 증가","reason":"이메일 주소 변경 등 관련 이슈가 계속 있어서","tip":"고객센터에 이메일 주소 변경 안내를 눈에 띄게 표시"},{"prob":56,"color":"#0EA5E9","type":"청구서 조회 문의","desc":"청구서 조회 문의 지속","reason":"청구서 조회 방법 등 관련 이슈가 많아서","tip":"청구서 조회 방법을 간단하게 설명하는 자주 묻는 질문을 추가"},{"prob":53,"color":"#10B981","type":"이메일 재발송","desc":"이메일 재발송 문의 감소","reason":"최근 13% 감소율을 보이고 있어서","tip":"이미 개선된 이메일 발송 시스템을 유지"}];
-let PREDICTIONS = (PREDICTIONS_STATIC && PREDICTIONS_STATIC.length) ? PREDICTIONS_STATIC : computePredictions();
+// 예상 민원: 사전 생성(PREDICTIONS_STATIC) 고정값을 제거하고, 매 렌더 시 DB.weeks(실제 상담
+// 주간/일자 통계)에서 computePredictions()로 실시간 계산한다. (시트 싱크로 DB가 갱신되면 자동 반영)
+let PREDICTIONS = computePredictions();
 
 const KEYWORDS = {
   billing:[
@@ -2811,6 +2810,7 @@ function renderAll() {
   renderKeywordCloud();
   renderReport(d.report);
   renderSat(d.sat, d.satChg, d.satBreakdown, d.issues);
+  if (typeof renderPredictSection === 'function') renderPredictSection();  // 예상 민원도 최신 DB로 갱신
 }
 
 // ─── TOP5 차트 ───
@@ -3536,6 +3536,7 @@ async function loadDailyData(){
 
 // ─── 예상 민원 모달 ───
 window.openModal = function() {
+  PREDICTIONS = computePredictions();   // 모달 열 때도 최신 DB.weeks 기준 재계산
   document.getElementById('pred-list').innerHTML = PREDICTIONS.map(p=>`
     <div class="pred-row">
       <div class="pred-rank" style="background:${p.color}">${PREDICTIONS.indexOf(p)+1}</div>
@@ -4247,13 +4248,23 @@ function normalizeLiveNews(raw) {
     const iso = isNaN(d.getTime())
       ? new Date().toISOString().slice(0, 10)
       : d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+    // 요약: news_archive.json의 summary 배열(2줄)을 우선 사용, 없으면 desc에서 '출처:…' 메타 꼬리 제거
+    var sumArr = Array.isArray(a.summary) ? a.summary.slice() : null;
+    var l1, l2;
+    if (sumArr && sumArr.length) {
+      l1 = (sumArr[0] || '').replace(/\s*출처:.*$/, '').trim();
+      l2 = (sumArr[1] || '').replace(/\s*출처:.*$/, '').trim();   // 메타(출처·발행·원문) 줄은 제거
+    } else {
+      l1 = (a.desc || a.title || '').replace(/\s*출처:.*$/, '').trim();
+      l2 = '';
+    }
     const obj = {
       no: i + 1,
       date: iso,
       source: a.source || '구글뉴스',
       title: a.title,
       url: a.link,
-      lines: [ a.desc || a.title, '(' + (a.source || '출처') + ' · ' + iso + ')' ]
+      lines: [ l1 || a.title, l2 ]   // 신문사는 제목 옆에 표기하므로 요약엔 출처 줄 미포함
     };
     obj.category = a.category || categorizeNews(obj);
     return obj;
@@ -4286,6 +4297,7 @@ async function fetchLiveNews() {
           link: a.url || a.link || '',
           pubDate: a.date || a.pubDate || '',
           desc: (a.summary && a.summary.join) ? a.summary.join(' ') : (a.summary_text || a.desc || ''),
+          summary: Array.isArray(a.summary) ? a.summary : null,   // 원본 요약 배열 보존(2줄 분리용)
           source: a.source || '',
           category: a.category || ''
         };
@@ -4524,16 +4536,15 @@ window.sendNewsletter = function() {
     const url    = card.dataset.url    || '';
     articlesHtml += `
       <tr>
-        <td style="padding:16px 0;border-bottom:1px solid #E2E8F0;vertical-align:top">
-          <p style="margin:0 0 4px;font-size:12px;color:#64748B">[기사 ${i+1}] &nbsp;${source} | ${date}</p>
-          <p style="margin:0 0 8px">
+        <td style="padding:14px 0;border-bottom:1px solid #E2E8F0;vertical-align:top">
+          <p style="margin:0 0 5px;line-height:1.5">
             ${url
-              ? `<a href="${url}" style="font-size:15px;font-weight:700;color:#075985;text-decoration:underline">${title}</a>`
+              ? `<a href="${url}" style="font-size:15px;font-weight:700;color:#075985;text-decoration:none">${title}</a>`
               : `<span style="font-size:15px;font-weight:700;color:#075985">${title}</span>`
-            }
+            }<span style="font-size:12px;color:#94A3B8">&nbsp;${source}</span>
           </p>
-          <p style="margin:0;font-size:13px;color:#475569;line-height:1.7">
-            &bull; ${line1}<br>&bull; ${line2}
+          <p style="margin:0;font-size:13px;color:#475569;line-height:1.65">
+            ${line1}${line2 ? `<br>${line2}` : ''}
           </p>
         </td>
       </tr>`;
@@ -4658,17 +4669,15 @@ window.copyNewsletterHtml = function() {
     const url    = card.dataset.url    || '';
     articlesHtml += `
       <tr>
-        <td style="padding:16px 0;border-bottom:1px solid #E2E8F0;vertical-align:top">
-          <p style="margin:0 0 4px;font-size:13px;color:#64748B">[기사 ${i+1}] &nbsp;${source} | ${date}</p>
-          <p style="margin:0 0 8px">
+        <td style="padding:14px 0;border-bottom:1px solid #E2E8F0;vertical-align:top">
+          <p style="margin:0 0 5px;line-height:1.5">
             ${url
-              ? `<a href="${url}" style="font-size:15px;font-weight:700;color:#075985;text-decoration:underline">${title}</a>`
+              ? `<a href="${url}" style="font-size:15px;font-weight:700;color:#075985;text-decoration:none">${title}</a>`
               : `<span style="font-size:15px;font-weight:700;color:#075985">${title}</span>`
-            }
+            }<span style="font-size:12px;color:#94A3B8">&nbsp;${source}</span>
           </p>
-          <p style="margin:0;font-size:13px;color:#475569;line-height:1.7">
-            &bull; ${line1}<br>
-            &bull; ${line2}
+          <p style="margin:0;font-size:13px;color:#475569;line-height:1.65">
+            ${line1}${line2 ? `<br>${line2}` : ''}
           </p>
         </td>
       </tr>`;
@@ -6306,10 +6315,12 @@ function _ingestComplaintRows(rows, cutoff){
   var dbDaily = {};
   Object.keys(byDate).forEach(function(d){
     var b = byDate[d];
-    var td = Object.values(b.tdMap).sort(function(a,c){ return c.cnt - a.cnt; });
+    var td = Object.values(b.tdMap).sort(function(a,c){ return c.cnt - a.cnt; }).slice(0, 10);
     dbDaily[d] = {
       t: b.t, d: b.done, hj: b.ops + b.kepco, hk: b.kepco, ho: b.ops, w: 0,
-      v: b.v, e: d, td: td.slice(0, 10), kw: [],
+      v: b.v, e: d, td: td,
+      // 인입 키워드: 실제 상담 상세유형(라벨) 빈도로 집계 → 키워드 클라우드가 실데이터 반영
+      kw: td.map(function(t){ return { word: t.label, cnt: t.cnt }; }),
       source: 'gsheet-daily', _weekKey: d, _monthKey: d.slice(0,7),
     };
   });
@@ -6399,11 +6410,14 @@ async function fetchSheetData() {
   }
 
   td.sort((a,b) => b.cnt - a.cnt);
+  const tdTop = td.slice(0,8);
 
   const weekData = {
     t: total, d: total - hanjeunIkwan,
     hj: hanjeunIkwan, hk: 0, ho: 0,
-    w: 0, v, e: '', td: td.slice(0,8),
+    w: 0, v, e: '', td: tdTop,
+    // 인입 키워드: 실제 상담 상세유형(라벨) 빈도로 집계
+    kw: tdTop.map(t => ({ word: t.label, cnt: t.cnt })),
     source: 'gsheet', fetchedAt: new Date().toISOString(),
     label: `${2000+year2d}년 ${month}월 ${weekNum}주차`,
     _weekKey: weekKey, _monthKey: monthKey,
@@ -8189,6 +8203,7 @@ function predExample(type) {
 }
 
 function renderPredictSection() {
+  PREDICTIONS = computePredictions();   // 최신 DB.weeks 기준으로 매 렌더 시 실시간 재계산
   var bgByColor = { '#EF4444':'#FEE2E2', '#F59E0B':'#FEF3C7', '#0EA5E9':'#E0F2FE', '#10B981':'#D1FAE5' };
   var html = PREDICTIONS.map(function(p,i) {
     var col = p.color || '#94A3B8';
