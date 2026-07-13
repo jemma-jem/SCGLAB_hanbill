@@ -4248,13 +4248,23 @@ function normalizeLiveNews(raw) {
     const iso = isNaN(d.getTime())
       ? new Date().toISOString().slice(0, 10)
       : d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+    // 요약: news_archive.json의 summary 배열(2줄)을 우선 사용, 없으면 desc에서 '출처:…' 메타 꼬리 제거
+    var sumArr = Array.isArray(a.summary) ? a.summary.slice() : null;
+    var l1, l2;
+    if (sumArr && sumArr.length) {
+      l1 = (sumArr[0] || '').replace(/\s*출처:.*$/, '').trim();
+      l2 = (sumArr[1] || '').replace(/\s*출처:.*$/, '').trim();   // 메타(출처·발행·원문) 줄은 제거
+    } else {
+      l1 = (a.desc || a.title || '').replace(/\s*출처:.*$/, '').trim();
+      l2 = '';
+    }
     const obj = {
       no: i + 1,
       date: iso,
       source: a.source || '구글뉴스',
       title: a.title,
       url: a.link,
-      lines: [ a.desc || a.title, '(' + (a.source || '출처') + ' · ' + iso + ')' ]
+      lines: [ l1 || a.title, l2 ]   // 신문사는 제목 옆에 표기하므로 요약엔 출처 줄 미포함
     };
     obj.category = a.category || categorizeNews(obj);
     return obj;
@@ -4287,6 +4297,7 @@ async function fetchLiveNews() {
           link: a.url || a.link || '',
           pubDate: a.date || a.pubDate || '',
           desc: (a.summary && a.summary.join) ? a.summary.join(' ') : (a.summary_text || a.desc || ''),
+          summary: Array.isArray(a.summary) ? a.summary : null,   // 원본 요약 배열 보존(2줄 분리용)
           source: a.source || '',
           category: a.category || ''
         };
@@ -4525,16 +4536,15 @@ window.sendNewsletter = function() {
     const url    = card.dataset.url    || '';
     articlesHtml += `
       <tr>
-        <td style="padding:16px 0;border-bottom:1px solid #E2E8F0;vertical-align:top">
-          <p style="margin:0 0 4px;font-size:12px;color:#64748B">[기사 ${i+1}] &nbsp;${source} | ${date}</p>
-          <p style="margin:0 0 8px">
+        <td style="padding:14px 0;border-bottom:1px solid #E2E8F0;vertical-align:top">
+          <p style="margin:0 0 5px;line-height:1.5">
             ${url
-              ? `<a href="${url}" style="font-size:15px;font-weight:700;color:#075985;text-decoration:underline">${title}</a>`
+              ? `<a href="${url}" style="font-size:15px;font-weight:700;color:#075985;text-decoration:none">${title}</a>`
               : `<span style="font-size:15px;font-weight:700;color:#075985">${title}</span>`
-            }
+            }<span style="font-size:12px;color:#94A3B8">&nbsp;${source}</span>
           </p>
-          <p style="margin:0;font-size:13px;color:#475569;line-height:1.7">
-            &bull; ${line1}<br>&bull; ${line2}
+          <p style="margin:0;font-size:13px;color:#475569;line-height:1.65">
+            ${line1}${line2 ? `<br>${line2}` : ''}
           </p>
         </td>
       </tr>`;
@@ -4659,17 +4669,15 @@ window.copyNewsletterHtml = function() {
     const url    = card.dataset.url    || '';
     articlesHtml += `
       <tr>
-        <td style="padding:16px 0;border-bottom:1px solid #E2E8F0;vertical-align:top">
-          <p style="margin:0 0 4px;font-size:13px;color:#64748B">[기사 ${i+1}] &nbsp;${source} | ${date}</p>
-          <p style="margin:0 0 8px">
+        <td style="padding:14px 0;border-bottom:1px solid #E2E8F0;vertical-align:top">
+          <p style="margin:0 0 5px;line-height:1.5">
             ${url
-              ? `<a href="${url}" style="font-size:15px;font-weight:700;color:#075985;text-decoration:underline">${title}</a>`
+              ? `<a href="${url}" style="font-size:15px;font-weight:700;color:#075985;text-decoration:none">${title}</a>`
               : `<span style="font-size:15px;font-weight:700;color:#075985">${title}</span>`
-            }
+            }<span style="font-size:12px;color:#94A3B8">&nbsp;${source}</span>
           </p>
-          <p style="margin:0;font-size:13px;color:#475569;line-height:1.7">
-            &bull; ${line1}<br>
-            &bull; ${line2}
+          <p style="margin:0;font-size:13px;color:#475569;line-height:1.65">
+            ${line1}${line2 ? `<br>${line2}` : ''}
           </p>
         </td>
       </tr>`;
