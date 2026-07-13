@@ -1,8 +1,8 @@
 {
-  "updated_at": "2026-07-13T00:44:57.351Z",
+  "updated_at": "2026-07-13T06:01:47.843Z",
   "source": "Google News RSS",
   "query": "\"전기요금\" OR \"한전\" OR \"전자청구서\" OR \"에너지바우처\" OR \"에너지정책\" OR \"도시가스\" OR \"가로등\" OR \"보안등\" OR \"시설물관리\" OR \"도로조명\" OR \"탄소중립포인트\" OR \"에너지 마일리지\" OR \"종이고지서\" OR \"모바일 고지서\" OR \"건물에너지관리솔루션\" OR \"전자문서중계사업자\" OR \"구좌분리\" OR \"도로과\" OR \"전수표찰\" OR \"에너지 절감 정책\" OR \"우리집 에너지 컨설팅\" OR \"빗물받이 관리 솔루션\" OR \"수목관리솔루션\" when:3d || (\"포인트\" OR \"마일리지\" OR \"전수조사\" OR \"탄소중립\" OR \"탄소절감활동\") (\"지자체\" OR \"지방자치\" OR \"지방정부\" OR \"시청\" OR \"도청\" OR \"군청\" OR \"구청\" OR \"한전\" OR \"한국전력\" OR \"전기요금\" OR \"에너지\") when:3d",
-  "count": 61,
+  "count": 91,
   "articles": [
     {
       "title": "한전 서울본부, 장난감 업사이클링 사회공헌활동 시행",
@@ -11,9 +11,10 @@
       "source": "에너지데일리",
       "category": "energy",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 에너지데일리 · 발행 2026-07-13 · 원문 링크에서 전문 확인"
-      ]
+        "한전 서울본부 장난감 업사이클링 사회공헌 시행함",
+        "공기업 ESG 활동 확산, 지역 상생 협력 기회 참고"
+      ],
+      "ai": true
     },
     {
       "title": "“무더위 이겨낼 든든한 선물”… 한전 제주본부, 취약계층에 생필품 꾸러미 전달",
@@ -22,9 +23,10 @@
       "source": "복지타임즈",
       "category": "energy",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 복지타임즈 · 발행 2026-07-13 · 원문 링크에서 전문 확인"
-      ]
+        "한전 제주본부 취약계층 생필품 꾸러미 전달함",
+        "에너지 취약계층 지원, 요금 복지 연계 사업 참고"
+      ],
+      "ai": true
     },
     {
       "title": "나주시-한전, '에너지특별시' 조성 속도 낸다",
@@ -33,9 +35,10 @@
       "source": "뉴시스",
       "category": "local",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 뉴시스 · 발행 2026-07-13 · 원문 링크에서 전문 확인"
-      ]
+        "나주시-한전 '에너지특별시' 조성 속도 냄",
+        "지자체·한전 협력 확대, 지역 청구 사업 기회 전망"
+      ],
+      "ai": true
     },
     {
       "title": "포항과 포스코의 미래가 여기에 달렸다…수소와 청정에너지를 기반한 산업전환",
@@ -44,9 +47,322 @@
       "source": "뉴스1",
       "category": "energy",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 뉴스1 · 발행 2026-07-13 · 원문 링크에서 전문 확인"
-      ]
+        "포항·포스코 수소·청정에너지 기반 산업전환 추진함",
+        "산업 전력수요 변화, 대형 수용가 빌링 동향 주시"
+      ],
+      "ai": true
+    },
+    {
+      "title": "에어컨 있어도 전기요금 걱정...찜통 같은 쪽방촌",
+      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBubmp5by16R0p3Y2dJUVVOek10LVRMT3hEZTQxa0VPNDJwM0MyRkJlQXBpMTBkZ0dWS3ctTmhpbkN4dGEzaTl0YzVvbkNIVVpVZ3g3WTY2NTVWcTBuMHc?oc=5",
+      "date": "2026-07-13",
+      "source": "YTN",
+      "category": "energy",
+      "summary": [
+        "에어컨 있어도 쪽방촌 전기요금 부담 심각함",
+        "취약계층 요금 이슈, 복지 청구·감면 연계 필요"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전·한수원·두산에너빌 '팀코리아' 베트남 닌투언2 원전 수주 '전방위 공세'",
+      "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9RSF9wbEVxY1pWSDVBbEVBLVJVQXNtbW0welhfLTlQRW1pNUFxbFhKYnJFQm92V3JrbG9sM1ZfS1ozaUVQUW1tMXlsU3g3Uk8zajhRZnN0TG5RZUJ1SEphb2VwQQ?oc=5",
+      "date": "2026-07-13",
+      "source": "더구루",
+      "category": "energy",
+      "summary": [
+        "팀코리아 베트남 닌투언2 원전 수주 전방위 공세함",
+        "한전 해외원전 사업, 에너지 정책 일반 동향 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전 서울본부, ‘다시놀자, 장난감 업사이클링 사회공헌활동’ 시행",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBBaXlrWXRZa1pIWEY3M1NjS3cycXBnTUV5TXhqMHNWejdFTnE4WmF3UDBxYlRDVWlPWnNKMGNfcG9OcFpwVWhTNzBjNmlZRXYxR050bVozR3kzRVo0YnEwX0syX20?oc=5",
+      "date": "2026-07-13",
+      "source": "일렉트릭파워",
+      "category": "energy",
+      "summary": [
+        "한전 서울본부 장난감 업사이클링 사회공헌 시행함",
+        "공기업 ESG 활동, 지역 상생 협력 기회 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전기술-한전KPS-한전KDN, ‘AI 청년 서포터즈’ 공동모집",
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9xS19IZEVFdjBvN21jejN0R01lV295MzJQX0piSzlJT3R0dlFJTk5xb1pOZWl2SUZaak1MdTl6X01pcFpYWk9Za3lySjlNcldfVGVLN3V1YnZzRmlyM3otWGFxNl80QQ?oc=5",
+      "date": "2026-07-13",
+      "source": "인사이트N파워",
+      "category": "energy",
+      "summary": [
+        "한전기술·KPS·KDN 'AI 청년 서포터즈' 공동모집함",
+        "한전 그룹사 AI 인재 육성, 디지털 전환 흐름 주목"
+      ],
+      "ai": true
+    },
+    {
+      "title": "경기과기대, 시흥시와 ‘가로등형 전기차 충전기’ 설치… 충전 취약지역 해소 나서",
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5lZGdGdDRkRzNfb0JSODIzbG5VRHVYSk1ranlReVFvOVZHalJ1ZDhSRjFpU0hUOW1rNkswbEdRaUpaMUxRQndQMkVQd3prY0NscEhfNXVYNDU5MWZhS3BnbEc3YjA0dw?oc=5",
+      "date": "2026-07-13",
+      "source": "한국대학신문",
+      "category": "local",
+      "summary": [
+        "경기과기대·시흥시 가로등형 전기차 충전기 설치함",
+        "충전 인프라 확산, 전기차 요금·청구 신사업 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전연료, 노사 공동 ‘상호존중’ 소통 의지 다짐",
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9kOVVPYnNraGhwNWptM1hfOVFTTnB2aFR2Nk95WkxJLXFDNGptWC04c2NsaWFRdnlLdk5TdzdfR1VkOE9maWJ1LUFyeGNueEZ3SGxab24xWVlmV2hVZXlvMU90RXJpUQ?oc=5",
+      "date": "2026-07-13",
+      "source": "인사이트N파워",
+      "category": "energy",
+      "summary": [
+        "한전연료 노사 '상호존중' 소통 의지 다짐함",
+        "공기업 조직문화 이슈, 에너지 일반 동향 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전MCS, 에티오피아 참전용사 후손 ‘강뉴합창단’ 나주 초청공연 개최",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE10R1hKX2F6eXZHV0JLNGlpODJaNGNDZEdkd2RtZ3k5UFI0enozbUpKVDJqcC04a2J0NkNhTzU5QVR4OHRYbVdCN2QwdE8tY0xrTExWcFcyU1FNcjlaMlo4OG1GU3I?oc=5",
+      "date": "2026-07-13",
+      "source": "일렉트릭파워",
+      "category": "energy",
+      "summary": [
+        "한전MCS 에티오피아 강뉴합창단 나주 초청공연 개최함",
+        "검침 자회사 사회공헌, 지역 협력 활동 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "도시가스도 안들어와…`도심 내 오지` 대구 동구 평광지구, 내년부터 바뀐다",
+      "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBGMzhEVnU0RUtwU3VMejhKME1KNWJIbjExcVc5a3NmejhKdkk1Rl82SVk0V3NzMVBmMFhMTldwaWRNQzYzb0gxY01JWDhUc2xBUnNtdTlqSFoxYVA2d1g1U0p3?oc=5",
+      "date": "2026-07-13",
+      "source": "매일신문",
+      "category": "energy",
+      "summary": [
+        "대구 동구 평광지구 도시가스 미공급, 내년 개선 예정",
+        "에너지 인프라 사각지대, 지자체 사업 기회 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전, 재무개선ㆍ기술혁신 성과…포브스 순위 319위 기록",
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9ydXlUeEZpWDJIZFNPaF9HVE1EOFJVdlF1WWQ4ckY2QzZSY3RCaGVocHlHT3FremJrR1o5d2RONUk5Q3NGV09VcDZMUUQ2MEdpQVBhaUp6WGM2WE9rMVFtRDl3dVRvZw?oc=5",
+      "date": "2026-07-13",
+      "source": "인사이트N파워",
+      "category": "energy",
+      "summary": [
+        "한전 재무개선·기술혁신 성과, 포브스 319위 기록함",
+        "한전 경영 정상화 진행, 요금·수익 구조 개선 주시"
+      ],
+      "ai": true
+    },
+    {
+      "title": "경북도, 7월부터 도시가스 평균 4.78% 인상...주택용은 동결",
+      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE9MRE9oVnVqdVRwTWNNZjRJRnJvSEZoQTJ1N25nTThsNmhrTE50RW1MOGp4VElINVZBeTh1N1RxZkJVZXloOWNGUlVfVDNXSzJTM2tzQjczWjl0aUJ4aFlMYy05YTRLcHVycjJGNVhMVENhR3llcmtSRzBZOWU1dw?oc=5",
+      "date": "2026-07-13",
+      "source": "경북문화신문",
+      "category": "energy",
+      "summary": [
+        "경북도 7월부터 도시가스 평균 4.78% 인상, 주택용 동결",
+        "지역 에너지요금 조정, 청구 안내 변동 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전연료, 올 상반기 신입사원 사회공헌 활동 실시",
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE41S0pnbnlWN2RTOWt0d1l2S1d0YTJHalkwVEJLWjNXN1F1R1I2NEhHS2JQckhwejhVaDEtck5UQ3Q1MWUtVkM0YlB1dHlrM21HUHhmODhpNE9zZFc3Z2VmMTVlOENxUQ?oc=5",
+      "date": "2026-07-13",
+      "source": "인사이트N파워",
+      "category": "energy",
+      "summary": [
+        "한전연료 상반기 신입사원 사회공헌 활동 실시함",
+        "공기업 ESG 활동, 에너지 일반 동향 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "경북도, 도시가스 공급비용 7월부터 평균 4.78% 인상…주택용은 동결",
+      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5ZX0xjYmpCNWFwWWJlVFJseVdjbFYxOU5iOHVVd1hObFo5VUtZQnJzYWw3VXdoeE9EOGlZM3B3YVkyellkaWVWUGJZQ0tYbUdtN2NKM29JTEM?oc=5",
+      "date": "2026-07-13",
+      "source": "경북신문",
+      "category": "energy",
+      "summary": [
+        "경북도 도시가스 공급비용 7월 4.78% 인상, 주택용 동결",
+        "지역 요금 조정, 전자청구 안내 변동 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "\"AI 산업 키우려면 전력 대책부터\"…기후·에너지 정책 전환 촉구",
+      "url": "https://news.google.com/rss/articles/CBMijgJBVV95cUxNU2NZbWpCVG0tQWNkem9kZXNIdnQwZGpDcHRRckJLNHhDeGtENmF3Z3pITkpwUkR0dEtwSEtXY3dSZUVWUTVobVR2S0Mxa0pwdUQwQndjTzNjbFRZUUp0N0NKaDZ0bkdFV0piOXlYZ1R0dmttRUk3c0VIbUVFeE1zTDlqTEF0SF9LT2JNZ1A0SmZFQnhvd2NGRC1rZlZOOGVZa2JEaHhUWnd2bThRUkQ2U2hIcENJZGJXMzRlSkQtV2ZBTjJqanVSSUV3S0NRWWt2OFFNYU9hcGZqYlJQaUdCT0IwQlVhdV9ZUXhHOXZaNmN2QVZBWElHeVAtLV9yVzRKaXYzdjhDMzlNZE5LYmfSAZACQVVfeXFMUER4eXZkUk15RFJBaWg0ZTREcFVjdF9QQklvNFc5ek5DTUF2NzBwak1LOW1iSFNxUWpweHF3Q3VUVkg3aVg4YnpBZlk3QWttNHc3X1FnOU9WWHpLcmZjYmRUMG82ajg4SXNUaS1SMTg4dVh1eUdIMFdYbkE5RTFaR25QT0tYb1lROGxzODhZUHE2VFg5Qm9UdzRMNTRMRFQyclNrdmhkSm9DZGlyTHNlbDVVRjVGRVBueW0tdHB2aWZ5WWZfQmlMZ3UwRWx4c3RSQUE1NUpCcjdOSC1rMHZyc3lWVUJFNlRDMmF5eFhaSDJCNG1OdEEzNFZRQndjNDVWaE12c0t2Y05ZaTh4RlBkY1Q?oc=5",
+      "date": "2026-07-13",
+      "source": "데일리안",
+      "category": "energy",
+      "summary": [
+        "AI 산업 위한 전력 대책·에너지 정책 전환 촉구됨",
+        "전력수요 급증 전망, 데이터센터 빌링 수요 주목"
+      ],
+      "ai": true
+    },
+    {
+      "title": "서울에너지드림센터-노원환경재단, 탄소중립 실현 위한 MOU 체결",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5ZS3A0X0RITmZWNjJzVFJVbXZzQnhVVzcxTzlqcHhORUZNcFpMLUdnWGNPUjdDbEZQSnNLdjFYMXcwd3FZRVh1NWJhSzhTOTYtMHFQM29LRHE2TkhiaHJRYm5YUm1mNEpGVWJVYQ?oc=5",
+      "date": "2026-07-13",
+      "source": "기계설비신문",
+      "category": "local",
+      "summary": [
+        "서울에너지드림센터·노원환경재단 탄소중립 MOU 체결함",
+        "지자체 탄소중립 협력, 에너지 정책 동향 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "'호남 반도체' 전력 수급…\"원전vs재생에너지 이분법 넘어 통합 시스템 필요\"",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBQVmFtRzh0Y01SVmJXWWwzYXpLNjJWZ2g3UjRXME5LWDZZakpiLVR4c2x3QTFTQWhLdDRiSWlvRnV1VGQ4VkFiWlZZMFVvZTdZekdpMmNLZDV1Y203R3lzNWdOejlzNVU?oc=5",
+      "date": "2026-07-13",
+      "source": "녹색경제신문",
+      "category": "energy",
+      "summary": [
+        "호남 반도체 전력수급, 통합 에너지 시스템 필요 제기됨",
+        "산업 전력수요 확대, 대형 수용가 빌링 동향 주시"
+      ],
+      "ai": true
+    },
+    {
+      "title": "에너지드림센터, 노원환경재단과 탄소중립 협력",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE0wUi1ReDhwYmx1M3NPVlhKUWEyTnZfcE9yZEdURkQwTVBYS04zLTIxQTZaNEdGb0l0bEdqcTVUSVdwRmxYbnpHNWd3SXEzTVdQTEJBRlhuSlo2SEwwcnd5VjNXVG1DQV9ERUszaHFn?oc=5",
+      "date": "2026-07-13",
+      "source": "투데이에너지",
+      "category": "local",
+      "summary": [
+        "에너지드림센터·노원환경재단 탄소중립 협력함",
+        "지자체 환경 협력, 에너지 정책 일반 동향 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "기계설비협회, 탄소중립·에너지 전환 이끌 미래 인재 키운다",
+      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5VdmZhWUE1QXotaXpnUTRJLUFzdmgyUTRaZ01nNjdpdmhqMFVPMV9tS0dWQzRPT3RMNzVsNEJuQnl6NnZOTEo2OGJVbXM1TmdyeWNEeFR5UnAxajNyaFdfRU9abG1YeUtFaU9Kc1dlV2pXQ3PSAXdBVV95cUxNeFJfVjNBcFY4alF4UngyZkVaaTlaVnNndWtvTjZfWGtFQ2U0V1ZPdHlTcExzS0xlcWUtVkxaYjhyX3JXZDMyMG9MbHdfSDVLM0VFYXhQakREay14Nl9aTE11Zl94cmo2a2lDZE8tQlNUZG8wY0tlMA?oc=5",
+      "date": "2026-07-13",
+      "source": "핀포인트뉴스",
+      "category": "local",
+      "summary": [
+        "기계설비협회 탄소중립·에너지 전환 미래 인재 육성함",
+        "에너지 전환 인력 양성, 산업 일반 동향 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "\"AI 산업, 전력 없인 불가능\"…기후·에너지 정책 전환 촉구",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1ucnZnbXJpd0loaTVKUjdLVTBVQUtTRE1iY0RrRFEzWmtwQ1dCY2NUYkh0Rmo5cmFoUWFzNnBIMGZ6dUFjaUJ2cC1zd0c4VjJzdW5sUmRkRnhXUTMxR25UQjJfZGtsRUlWSnRlcEtxM1Y?oc=5",
+      "date": "2026-07-13",
+      "source": "포인트데일리",
+      "category": "energy",
+      "summary": [
+        "AI 산업 전력 필수, 기후·에너지 정책 전환 촉구됨",
+        "전력수요 증가 전망, 데이터센터 빌링 수요 주목"
+      ],
+      "ai": true
+    },
+    {
+      "title": "포항과 포스코의 미래가 여기에 달렸다…수소와 청정에너지를 기반한 산업전환",
+      "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBHZXhJV0dCYW5xMzhTV1FCOGZ0M2p3SlZNLXNreGk4SWtweEFYQnk1ZGVUNU5NSFYtR2JiRlU5cGtyYTBxSGFNeE5HZ0Vub3JWRk1rU3B3eW9jUVBLSGRv?oc=5",
+      "date": "2026-07-13",
+      "source": "뉴스1",
+      "category": "energy",
+      "summary": [
+        "포항·포스코 수소·청정에너지 기반 산업전환 추진함",
+        "산업 전력수요 변화, 대형 수용가 빌링 동향 주시"
+      ],
+      "ai": true
+    },
+    {
+      "title": "춘천 11개 산단, 에너지 자립형 전환…탄소중립 경쟁력 강화",
+      "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE00V3FFTTdMLWJjMTY5cTlqaFVxcTEtVWFOQzJLd1JILUZhNXdvY3hmbkZOMkpxSzhqazJaVHBRTDVUMUdHUThrS21QYWdfSTJMWko0?oc=5",
+      "date": "2026-07-13",
+      "source": "네이트",
+      "category": "local",
+      "summary": [
+        "춘천 11개 산단 에너지 자립형 전환, 탄소중립 강화함",
+        "산단 에너지 사업, 지자체 협력 기회 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "춘천 산업단지 11곳, 에너지 자립형 산단으로 전환…국비 200억 확보",
+      "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE5MLW9UUHkzYWloeGFzYXFuSWV6ZXpYZUE4UFlHR3hnUEFoZW5YeTlTZlJ6SnNsQVpPOGlSMVRkZDN2UkxKZ0EzN08xSmFsUQ?oc=5",
+      "date": "2026-07-13",
+      "source": "전자신문",
+      "category": "energy",
+      "summary": [
+        "춘천 산단 11곳 에너지 자립형 전환, 국비 200억 확보함",
+        "산단 에너지 전환 확대, 지자체 청구 사업 기회 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "춘천 산단 11곳, 320억 규모 ‘에너지 자립망’ 구축",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9uREhwMlhneEJDNmRtUDIyRXZOd2FoYkpibXd4bFI3REI0S0NETjFrUXZfQmxnTG84VmpKOTM0bzUtdGh2YW5qVGlVT19NZmVWNFNGY21DSV9PaURSdnZUM3NLY3E?oc=5",
+      "date": "2026-07-13",
+      "source": "서울경제TV",
+      "category": "energy",
+      "summary": [
+        "춘천 11개 산단, 320억 규모 에너지 자립망 구축 추진함",
+        "산단 분산전원 확대 시 개별 전력요금 정산·빌링 수요 증가 전망"
+      ],
+      "ai": true
+    },
+    {
+      "title": "산업부 산업단지 에너지 자급자족형 인프라 구축 운영 공모 선정",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1pYm5JWVpWNmtRRTlkNTl3Rkg4UWl1akFMcElTWlVJRVNHRDBoQldUNXBWMGhtVVFidUxxdklreUl6R1Z3OGVCNGtxTzhvYVVNZmduM0I1SUVPY1ZsdWRJNUU5a25EbmxQZUhCaDl3?oc=5",
+      "date": "2026-07-13",
+      "source": "서프라이즈뉴스",
+      "category": "energy",
+      "summary": [
+        "산업부 산단 에너지 자급자족형 인프라 공모 선정 발표함",
+        "자립형 산단 확산에 따른 전력사용 정산 관리 필요성 부각"
+      ],
+      "ai": true
+    },
+    {
+      "title": "춘천 11개 산업단지, 에너지 자립형 산단 전환",
+      "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5nSGpVUFMzeUlTeWxFV1g2QUw5WGY0eUFYOWNFZUdVM3Z3Z2pFakI2OExPQy1TQmpFVlpDYkhMbHBFTU94UWdRVTBHM3Nxa3NVNlI0?oc=5",
+      "date": "2026-07-13",
+      "source": "네이트",
+      "category": "energy",
+      "summary": [
+        "춘천 11개 산단, 에너지 자립형 산단으로 전환 예정",
+        "입주기업 대상 전기요금 청구·정산 대행 잠재 수요 존재"
+      ],
+      "ai": true
+    },
+    {
+      "title": "\"산단이 전기 직접 만든다\"…춘천 11개 산단, 에너지 자급망 구축",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9ZYUx5LWxOTUlDazJtWkEzd056SHNhdzh6Y3E3b2FqZm9OUHFyVTVWQlFpS3ZSV181d1lzRXdLT2sxV0t5WHQzbnUtRmlzQUJCTWstUzNzX0FhM1ZCUTdkVA?oc=5",
+      "date": "2026-07-13",
+      "source": "네이트",
+      "category": "energy",
+      "summary": [
+        "춘천 11개 산단, 전기 직접 생산하는 자급망 구축함",
+        "자가발전·계통 혼합 환경에서 정밀 빌링 관리 중요성 확대"
+      ],
+      "ai": true
+    },
+    {
+      "title": "춘천시, 산업단지 에너지 자립사업 선정…국비 200억 확보",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5NTmFCalZ2WGszUWlHeHZHN2FhSE5oOUZOQldWUFZBbjdmNGYtNW9QeTAzbDNQYzBFX1h6MV9MVTgyTlNKUXZ6ZGxteDkxWGpZVnJrNEdKUlo2MkZjeEFiUFVndUttcG5UT1cyQTlfaWk?oc=5",
+      "date": "2026-07-13",
+      "source": "신아일보",
+      "category": "energy",
+      "summary": [
+        "춘천시 산단 에너지 자립사업 선정, 국비 200억 확보함",
+        "지자체 에너지 사업 연계형 전자청구 협력 기회 모색 가능"
+      ],
+      "ai": true
     },
     {
       "title": "‘광주 반도체 전력공급’…한전, 4년 내 안정적 기반 조성",
@@ -55,9 +371,10 @@
       "source": "v.daum.net",
       "category": "energy",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: v.daum.net · 발행 2026-07-12 · 원문 링크에서 전문 확인"
-      ]
+        "한전, 광주 반도체 전력공급 기반 4년 내 조성 계획함",
+        "대규모 산업 전력수요 증가로 요금 정산 물량 확대 전망"
+      ],
+      "ai": true
     },
     {
       "title": "‘제2의 한전 효과’ 터지나 … 호남 반도체 팹 대학 바꾼다",
@@ -66,9 +383,10 @@
       "source": "v.daum.net",
       "category": "energy",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: v.daum.net · 발행 2026-07-12 · 원문 링크에서 전문 확인"
-      ]
+        "호남 반도체 팹 유치로 '제2 한전효과' 기대 확산함",
+        "산업단지 전력 인프라 확대에 따른 빌링 수요 증가 전망"
+      ],
+      "ai": true
     },
     {
       "title": "[시론] 패권경쟁 속 다급해진 美 에너지정책",
@@ -77,9 +395,10 @@
       "source": "이투데이",
       "category": "energy",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 이투데이 · 발행 2026-07-12 · 원문 링크에서 전문 확인"
-      ]
+        "패권경쟁 속 미국 에너지정책 다급해졌다는 시론 게재함",
+        "글로벌 에너지 정책 변화 등 전반적 정책 동향 참고 필요"
+      ],
+      "ai": true
     },
     {
       "title": "한전-LH, 공공임대주택 난방비 부담 줄인다",
@@ -88,9 +407,10 @@
       "source": "에너지타임즈",
       "category": "energy",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 에너지타임즈 · 발행 2026-07-12 · 원문 링크에서 전문 확인"
-      ]
+        "한전·LH, 공공임대주택 난방비 부담 경감 협력 추진함",
+        "공공주택 대상 요금 관리·전자청구 협력 모델 참고 가능"
+      ],
+      "ai": true
     },
     {
       "title": "'한전, 전력망 갈등 해소 위한 공동 학술대회 개최'",
@@ -99,9 +419,10 @@
       "source": "에너지안전신문",
       "category": "energy",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 에너지안전신문 · 발행 2026-07-12 · 원문 링크에서 전문 확인"
-      ]
+        "한전, 전력망 갈등 해소 위한 공동 학술대회 개최함",
+        "전력망 확충 관련 정책 논의 등 업계 동향 주시 필요"
+      ],
+      "ai": true
     },
     {
       "title": "한전 임실지사·임실농협, 폭염·폭우 대비 전기안전 협력",
@@ -110,9 +431,10 @@
       "source": "전라매일",
       "category": "energy",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 전라매일 · 발행 2026-07-12 · 원문 링크에서 전문 확인"
-      ]
+        "한전 임실지사·임실농협, 폭염·폭우 대비 전기안전 협력함",
+        "지역 기관 연계 협력 사례로 지자체 사업 접점 참고 가능"
+      ],
+      "ai": true
     },
     {
       "title": "한전 충북본부-중부건설본부, 뉴에너지 페어 공동 참여",
@@ -121,9 +443,10 @@
       "source": "v.daum.net",
       "category": "energy",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: v.daum.net · 발행 2026-07-12 · 원문 링크에서 전문 확인"
-      ]
+        "한전 충북본부·중부건설본부, 뉴에너지 페어 공동 참여함",
+        "에너지 신사업 홍보 채널로 업계 네트워킹 동향 참고"
+      ],
+      "ai": true
     },
     {
       "title": "울산시 인수위, 경동도시가스 지분 매각 갈등 해법 모색",
@@ -132,9 +455,10 @@
       "source": "iusm.co.kr",
       "category": "energy",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: iusm.co.kr · 발행 2026-07-12 · 원문 링크에서 전문 확인"
-      ]
+        "울산시 인수위, 경동도시가스 지분 매각 갈등 해법 모색함",
+        "지역 에너지 공급주체 변화 등 지자체 정책 동향 주시 필요"
+      ],
+      "ai": true
     },
     {
       "title": "한전, 폭염·태풍 대비 전력망 비상체제…전국 7,076곳 특별점검",
@@ -143,9 +467,10 @@
       "source": "에너지안전신문",
       "category": "energy",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 에너지안전신문 · 발행 2026-07-12 · 원문 링크에서 전문 확인"
-      ]
+        "한전, 폭염·태풍 대비 전국 7,076곳 특별점검 실시함",
+        "안정적 전력공급 유지 등 전력 인프라 운영 동향 참고"
+      ],
+      "ai": true
     },
     {
       "title": "SK텔링크, 한전 이어 도로공사도 잡았다…저궤도 위성통신 공급",
@@ -154,9 +479,10 @@
       "source": "edaily.co.kr",
       "category": "energy",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: edaily.co.kr · 발행 2026-07-12 · 원문 링크에서 전문 확인"
-      ]
+        "SK텔링크, 한전 이어 도로공사에 저궤도 위성통신 공급함",
+        "공공기관 통신 인프라 확충 등 인프라 시장 동향 참고"
+      ],
+      "ai": true
     },
     {
       "title": "영주국유림관리소·한전 합동 점검… 험준한 봉화 지역 79기 대상 선제적 안전 진단",
@@ -165,9 +491,10 @@
       "source": "대경일보",
       "category": "energy",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 대경일보 · 발행 2026-07-12 · 원문 링크에서 전문 확인"
-      ]
+        "영주국유림관리소·한전, 봉화 79기 선제적 안전진단 실시함",
+        "기관 합동 점검 등 지역 협력 사례로 접점 발굴 참고"
+      ],
+      "ai": true
     },
     {
       "title": "모두가 잠든 밤, 전기는 깨어 있다…한전·한수원이 지키는 ‘보이지 않는 약속’",
@@ -176,9 +503,10 @@
       "source": "에너지안전신문",
       "category": "energy",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 에너지안전신문 · 발행 2026-07-12 · 원문 링크에서 전문 확인"
-      ]
+        "한전·한수원, 야간 전력공급 안정 유지 노력 조명함",
+        "안정적 전력 공급 등 전력 운영 전반 동향 참고 필요"
+      ],
+      "ai": true
     },
     {
       "title": "전기요금 미납 차단 705% 급증…엑셀에너지, 월 6.13달러 인상 추진",
@@ -187,9 +515,10 @@
       "source": "Colorado Times",
       "category": "energy",
       "summary": [
-        "한빌 전기요금 전자청구·빌링 사업과 연관된 동향",
-        "출처: Colorado Times · 발행 2026-07-12 · 원문 링크에서 전문 확인"
-      ]
+        "미 엑셀에너지, 요금 미납 급증 속 월 6.13달러 인상 추진함",
+        "요금 미납·연체 관리가 전자청구 서비스 핵심 가치임을 시사"
+      ],
+      "ai": true
     },
     {
       "title": "‘광주 반도체 전력공급’…한전, 4년 내 안정적 기반 조성",
@@ -198,9 +527,10 @@
       "source": "v.daum.net",
       "category": "energy",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: v.daum.net · 발행 2026-07-12 · 원문 링크에서 전문 확인"
-      ]
+        "한전, 광주 반도체 전력공급 4년 내 안정 기반 조성함",
+        "반도체 산업 전력수요로 요금 정산 물량 확대 전망"
+      ],
+      "ai": true
     },
     {
       "title": "대전 서구, 탄소중립포인트 인센티브 기부금 3,045만 원 기탁 - e-빠른뉴스",
@@ -209,9 +539,10 @@
       "source": "e-빠른뉴스",
       "category": "local",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: e-빠른뉴스 · 발행 2026-07-12 · 원문 링크에서 전문 확인"
-      ]
+        "대전 서구, 탄소중립포인트 인센티브 기부금 3,045만원 기탁함",
+        "지자체 탄소중립·에너지절약 사업 연계 협력 기회 참고"
+      ],
+      "ai": true
     },
     {
       "title": "영주시새마을회, ‘그린시티 영주’조성을 위한 에너지절약 캠페인 전개",
@@ -220,9 +551,10 @@
       "source": "대한투데이",
       "category": "energy",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 대한투데이 · 발행 2026-07-12 · 원문 링크에서 전문 확인"
-      ]
+        "영주시새마을회, 그린시티 위한 에너지절약 캠페인 전개함",
+        "지역 에너지절약 활동 등 지자체 협력 접점 참고 가능"
+      ],
+      "ai": true
     },
     {
       "title": "중부권 탄소중립 거점 도약…수자원공사, 수열에너지로 RE100 생태계 구축",
@@ -231,9 +563,10 @@
       "source": "글로벌이코노믹",
       "category": "local",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 글로벌이코노믹 · 발행 2026-07-12 · 원문 링크에서 전문 확인"
-      ]
+        "수자원공사, 수열에너지로 중부권 RE100 생태계 구축함",
+        "신재생에너지 확산 등 에너지 전환 정책 동향 주시 필요"
+      ],
+      "ai": true
     },
     {
       "title": "\"안정적 전기 공급이 국가 경쟁력… 원전·재생에너지 함께 가야\"",
@@ -242,9 +575,10 @@
       "source": "조선일보",
       "category": "energy",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 조선일보 · 발행 2026-07-12 · 원문 링크에서 전문 확인"
-      ]
+        "안정적 전기공급 위해 원전·재생에너지 병행 필요 주장함",
+        "에너지믹스 등 전력정책 방향성 참고 필요"
+      ],
+      "ai": true
     },
     {
       "title": "서구, 탄소중립포인트 인센티브 기부금 3045만 원 기탁",
@@ -253,9 +587,10 @@
       "source": "코리아플러스",
       "category": "local",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 코리아플러스 · 발행 2026-07-12 · 원문 링크에서 전문 확인"
-      ]
+        "서구, 탄소중립포인트 인센티브 기부금 3,045만원 기탁함",
+        "지자체 탄소중립 사업 확산 등 협력 접점 동향 참고"
+      ],
+      "ai": true
     },
     {
       "title": "세종시청 정문 앞에서 열릴 예정인 해뜨는 집 발달장애인 학대 의혹 사건 관련 기자회견을 상징적으로 표현한 그래픽 이미지. 김예지 국회의원실과 세종장애인차별철폐연대는 철저한 수사와 학대 행위 의심자 송치, 장애인 거주시설 전수조사 등을 촉구하는 기자회견을",
@@ -264,9 +599,10 @@
       "source": "대전인터넷신문",
       "category": "local",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 대전인터넷신문 · 발행 2026-07-12 · 원문 링크에서 전문 확인"
-      ]
+        "세종시청 앞 발달장애인 학대 의혹 규탄 기자회견 예정함",
+        "에너지·빌링과 무관한 사회 이슈로 참고성 낮음"
+      ],
+      "ai": true
     },
     {
       "title": "[포토] 탄소중립과 에너지 정책 세미나, 축사하는 안덕근 장관",
@@ -275,9 +611,10 @@
       "source": "전자신문",
       "category": "local",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 전자신문 · 발행 2026-07-12 · 원문 링크에서 전문 확인"
-      ]
+        "안덕근 장관, 탄소중립·에너지 정책 세미나 축사함",
+        "정부 에너지 정책 방향성 지속 주시 필요함"
+      ],
+      "ai": true
     },
     {
       "title": "중부권 탄소중립 거점 도약…수자원공사, 수열에너지로 RE100 생태계 구축",
@@ -286,9 +623,34 @@
       "source": "MSN",
       "category": "local",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: MSN · 발행 2026-07-12 · 원문 링크에서 전문 확인"
-      ]
+        "수자원공사, 수열에너지로 중부권 RE100 생태계 구축함",
+        "공공기관 청정에너지 전환 확대 동향 전망"
+      ],
+      "ai": true
+    },
+    {
+      "title": "대전 서구, 탄소중립포인트 인센티브 기부금 3,045만 원 기탁",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFB3X2d1UzdiWUV6VUhTMWh6TzNwc01pLWNmeHgzcWVtZ0xjVDRveHFMd0ZWUkdQODdPU3ZEMVRGSUxUNEo0R2kta29XVG5WVXFoTFFCNXFEUkp4Zlk3WVZObGUyZUxnRUNCc2040gFvQVVfeXFMTXpCUjFnQVgwVGo0U2hTYTg3ODhUcnJELWRIbFhTVi1LZ2ZXZWRhVHp4NVBvQndhMnJqWjN5akVKS2tTTnFxN3ZmeENEd05ZV1g3YnpHRnduQ3hQT2FoY0xBbkxtbEFhQnhNVE5oNkVj?oc=5",
+      "date": "2026-07-12",
+      "source": "세종충청뉴스",
+      "category": "local",
+      "summary": [
+        "대전 서구, 탄소중립포인트 인센티브 기부금 3,045만원 기탁함",
+        "지자체 탄소포인트 사업 연계 빌링 협업 기회 검토"
+      ],
+      "ai": true
+    },
+    {
+      "title": "영주시새마을회, ‘그린시티 영주’ 조성을 위한 에너지절약 캠페인 전개",
+      "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1LRC1SdzhJRl9JV0RmWkN2SGJXbUZaSG9nOGJnNTl1TW1tWk5ES3diSU1COTlOWTdSUXpkYVpqUjVkc3hsOWlzaVJiRUd4eHZSMGhZbUtqZGhabWZEN1NQdng2QQ?oc=5",
+      "date": "2026-07-12",
+      "source": "시사뉴스",
+      "category": "energy",
+      "summary": [
+        "영주시새마을회, 그린시티 에너지절약 캠페인 전개함",
+        "지역 에너지절약 캠페인 확산 동향 파악"
+      ],
+      "ai": true
     },
     {
       "title": "[환경부] 탄소중립포인트 2배로 적립해 드려요",
@@ -297,9 +659,10 @@
       "source": "국가기후위기대응위원회",
       "category": "local",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 국가기후위기대응위원회 · 발행 2026-07-11 · 원문 링크에서 전문 확인"
-      ]
+        "환경부, 탄소중립포인트 2배 적립 시행함",
+        "포인트 확대는 전기요금 연계 서비스 접점 확대 기회"
+      ],
+      "ai": true
     },
     {
       "title": "버려지던 지자체 포인트, 활용 범위 대폭 확대",
@@ -308,9 +671,10 @@
       "source": "시정일보",
       "category": "local",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 시정일보 · 발행 2026-07-11 · 원문 링크에서 전문 확인"
-      ]
+        "버려지던 지자체 포인트 활용 범위 대폭 확대함",
+        "포인트 활용 확대로 지자체 청구·정산 연계 수요 전망"
+      ],
+      "ai": true
     },
     {
       "title": "대전 서구, 탄소중립포인트 인센티브 기부금 3,045만 원 기탁 > 뉴스",
@@ -319,9 +683,10 @@
       "source": "더코리아",
       "category": "local",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 더코리아 · 발행 2026-07-11 · 원문 링크에서 전문 확인"
-      ]
+        "대전 서구, 탄소중립포인트 기부금 3,045만원 기탁함",
+        "지자체 탄소포인트 정산 대행 사업 기회 검토"
+      ],
+      "ai": true
     },
     {
       "title": "광명시 기후의병지원센터 소속 기후에너지강사, \"지구숨결 사회적협동조합\" 출범",
@@ -330,9 +695,10 @@
       "source": "광명일보",
       "category": "energy",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 광명일보 · 발행 2026-07-11 · 원문 링크에서 전문 확인"
-      ]
+        "광명시 기후에너지강사, 지구숨결 사회적협동조합 출범함",
+        "시민 주도 기후 조직 확산 동향 참고"
+      ],
+      "ai": true
     },
     {
       "title": "중부발전, 재생에너지 계통포화 해소 나선다…ESS 구축지원 사업 본격 착수",
@@ -341,9 +707,10 @@
       "source": "프라임경제",
       "category": "energy",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 프라임경제 · 발행 2026-07-11 · 원문 링크에서 전문 확인"
-      ]
+        "중부발전, ESS 구축지원으로 재생에너지 계통포화 해소 착수함",
+        "재생에너지 인프라 확대에 따른 정산 복잡화 전망"
+      ],
+      "ai": true
     },
     {
       "title": "중부발전, 재생에너지 계통포화 해소 나선다…ESS 구축지원 사업 본격 착수",
@@ -352,9 +719,10 @@
       "source": "네이트",
       "category": "energy",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 네이트 · 발행 2026-07-11 · 원문 링크에서 전문 확인"
-      ]
+        "중부발전, ESS 구축지원 사업 본격 착수함",
+        "계통포화 해소 사업 확대 동향 주시"
+      ],
+      "ai": true
     },
     {
       "title": "[가스 소식]해양에너지 ‘안전 체계 강화’, 서울도시가스 ‘NCSI 고객만족 1위’",
@@ -363,9 +731,10 @@
       "source": "기후에너지데이터뱅크",
       "category": "energy",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 기후에너지데이터뱅크 · 발행 2026-07-10 · 원문 링크에서 전문 확인"
-      ]
+        "해양에너지 안전 강화·서울도시가스 NCSI 1위 소식",
+        "에너지 고객만족·안전 관리 동향 참고"
+      ],
+      "ai": true
     },
     {
       "title": "한전, 원자재가 폭등에 ‘단가 현실화’ 응답…기자재 업계 숨통 틔웠다",
@@ -374,9 +743,10 @@
       "source": "전기신문",
       "category": "energy",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 전기신문 · 발행 2026-07-10 · 원문 링크에서 전문 확인"
-      ]
+        "한전, 원자재가 폭등에 기자재 단가 현실화 응답함",
+        "한전 조달·비용 정책 변화 예의주시 필요함"
+      ],
+      "ai": true
     },
     {
       "title": "한전, 여름철 전력수급 총력 대응...김동철 사장, 전력망 현장 직접 점검",
@@ -385,9 +755,10 @@
       "source": "산경e뉴스",
       "category": "energy",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 산경e뉴스 · 발행 2026-07-10 · 원문 링크에서 전문 확인"
-      ]
+        "김동철 사장, 여름철 전력수급 위해 전력망 현장 점검함",
+        "한전 하절기 수급 대응 동향 파악 필요함"
+      ],
+      "ai": true
     },
     {
       "title": "경남 산청 단성면·신안면에 도시가스 공급…1431세대",
@@ -396,9 +767,10 @@
       "source": "에너지신문",
       "category": "energy",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 에너지신문 · 발행 2026-07-10 · 원문 링크에서 전문 확인"
-      ]
+        "경남 산청 단성·신안면에 도시가스 1431세대 공급함",
+        "지역 에너지 공급 인프라 확대 동향 참고"
+      ],
+      "ai": true
     },
     {
       "title": "한전 김동철 사장, 전력망 컨트롤타워 현장 점검",
@@ -407,9 +779,10 @@
       "source": "에너지데일리",
       "category": "energy",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 에너지데일리 · 발행 2026-07-10 · 원문 링크에서 전문 확인"
-      ]
+        "김동철 사장, 전력망 컨트롤타워 현장 점검함",
+        "한전 전력망 관리 강화 동향 주시"
+      ],
+      "ai": true
     },
     {
       "title": "[공사 Pick] 한국전력·한전KDN·LH, 전력 안정부터 AI 전환·반도체 국가산단까지",
@@ -418,9 +791,10 @@
       "source": "라이센스뉴스",
       "category": "energy",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 라이센스뉴스 · 발행 2026-07-10 · 원문 링크에서 전문 확인"
-      ]
+        "한전·한전KDN·LH, AI 전환·반도체 국가산단 등 추진함",
+        "한전 계열 디지털 전환 동향 빌링 사업 연계 검토"
+      ],
+      "ai": true
     },
     {
       "title": "한전, 전력망 갈등 해법 모색…공동 학술대회 개최",
@@ -429,9 +803,10 @@
       "source": "뉴시스",
       "category": "energy",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 뉴시스 · 발행 2026-07-10 · 원문 링크에서 전문 확인"
-      ]
+        "한전, 전력망 갈등 해법 위한 공동 학술대회 개최함",
+        "전력망 확충 관련 정책 논의 동향 참고"
+      ],
+      "ai": true
     },
     {
       "title": "한전 임실지사·임실농협, 전기안전 협약…타파인 한줄뉴스",
@@ -440,9 +815,10 @@
       "source": "타파인",
       "category": "energy",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 타파인 · 발행 2026-07-10 · 원문 링크에서 전문 확인"
-      ]
+        "한전 임실지사·임실농협, 전기안전 협약 체결함",
+        "한전 지역 지사 협력 모델 확산 동향 참고"
+      ],
+      "ai": true
     },
     {
       "title": "한전, 여름철 전력수급 비상대응 돌입…전국 전력설비 7076곳 점검",
@@ -451,9 +827,10 @@
       "source": "뉴스핌",
       "category": "energy",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 뉴스핌 · 발행 2026-07-10 · 원문 링크에서 전문 확인"
-      ]
+        "한전, 여름철 전력설비 7076곳 점검 비상대응 돌입함",
+        "하절기 전력수급 대응 강화 동향 주시"
+      ],
+      "ai": true
     },
     {
       "title": "울산시장 인수위, 경동도시가스 지분매각 시민사회 토론회 열어",
@@ -462,9 +839,10 @@
       "source": "연합뉴스",
       "category": "energy",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 연합뉴스 · 발행 2026-07-10 · 원문 링크에서 전문 확인"
-      ]
+        "울산시장 인수위, 경동도시가스 지분매각 토론회 개최함",
+        "에너지 공기업 지배구조 이슈 동향 참고"
+      ],
+      "ai": true
     },
     {
       "title": "“시민 주도 탄소중립 실천 본격화”…광명시 기후에너지강사, ‘지구숨결 사회적협동조합’ 출범",
@@ -473,9 +851,10 @@
       "source": "G밸리타임스",
       "category": "local",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: G밸리타임스 · 발행 2026-07-10 · 원문 링크에서 전문 확인"
-      ]
+        "광명시 기후에너지강사, 지구숨결 사회적협동조합 출범함",
+        "시민 주도 탄소중립 실천 확산 동향 참고"
+      ],
+      "ai": true
     },
     {
       "title": "AI 입히고 에너지 바꾸는 산업단지…‘산단 대전환’ 본격화",
@@ -484,9 +863,10 @@
       "source": "수소신문",
       "category": "energy",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 수소신문 · 발행 2026-07-10 · 원문 링크에서 전문 확인"
-      ]
+        "AI·에너지 결합한 산업단지 대전환 본격화함",
+        "산단 에너지 전환에 따른 청구·정산 수요 전망"
+      ],
+      "ai": true
     },
     {
       "title": "광명 기후에너지강사들 협동조합 설립…학교 37곳 교육 경험 확장",
@@ -495,9 +875,10 @@
       "source": "전자신문",
       "category": "energy",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 전자신문 · 발행 2026-07-10 · 원문 링크에서 전문 확인"
-      ]
+        "광명 기후에너지강사, 협동조합 설립·학교 교육 확장함",
+        "기후에너지 교육 저변 확대 동향 참고"
+      ],
+      "ai": true
     },
     {
       "title": "“폐기물이 청정 에너지로” 전남광주특별시, 여수산단서 125억 규모 탄소중립 시범사업 시동 > 뉴스",
@@ -506,9 +887,10 @@
       "source": "더코리아",
       "category": "local",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 더코리아 · 발행 2026-07-10 · 원문 링크에서 전문 확인"
-      ]
+        "전남광주, 여수산단서 125억 규모 폐기물 탄소중립 시범사업 시동함",
+        "지자체 대규모 탄소중립 사업 발주 동향 주시"
+      ],
+      "ai": true
     },
     {
       "title": "제주 에너지전환, 교실 밖에서 배운다… 청소년 미래인재 육성 '현장형 교육' 확대",
@@ -517,9 +899,10 @@
       "source": "에너지데일리",
       "category": "energy",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 에너지데일리 · 발행 2026-07-10 · 원문 링크에서 전문 확인"
-      ]
+        "제주, 청소년 대상 현장형 에너지전환 교육 확대함",
+        "지역 에너지 교육·인식 확산 동향 참고"
+      ],
+      "ai": true
     },
     {
       "title": "경기환경에너지진흥원, 제21회 대한민국환경대상 탄소중립 부문 대상 수상",
@@ -528,9 +911,10 @@
       "source": "환경미디어",
       "category": "local",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 환경미디어 · 발행 2026-07-10 · 원문 링크에서 전문 확인"
-      ]
+        "경기환경에너지진흥원, 환경대상 탄소중립 부문 대상 수상함",
+        "지자체 산하기관 탄소중립 사업 확대 흐름 주목 필요함"
+      ],
+      "ai": true
     },
     {
       "title": "[에너지이슈] 고립된 전력망을 넘어 세계로…4000만 분산노드와 개마고원을 잇는 ‘슈퍼디지털그리드’ 청사진 나왔다",
@@ -539,9 +923,10 @@
       "source": "산경e뉴스",
       "category": "energy",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 산경e뉴스 · 발행 2026-07-10 · 원문 링크에서 전문 확인"
-      ]
+        "4000만 분산노드 잇는 슈퍼디지털그리드 청사진 발표함",
+        "분산전원·디지털 전력망 확산은 빌링 데이터 수요 증가 전망"
+      ],
+      "ai": true
     },
     {
       "title": "LH·한국지역난방공사, 공공임대 열효율 개선 맞손…에너지 비용 절감 추진",
@@ -550,9 +935,10 @@
       "source": "더트래커",
       "category": "energy",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 더트래커 · 발행 2026-07-10 · 원문 링크에서 전문 확인"
-      ]
+        "LH·한국지역난방공사, 공공임대 열효율 개선 협력함",
+        "공공임대 에너지비용 절감, 청구·요금 관리 수요 연계 가능"
+      ],
+      "ai": true
     },
     {
       "title": "한전-갈등학회, 학술대회 개최…\"AI·탄소중립 발맞춘 전력망 적기 확충 논의\"",
@@ -561,9 +947,10 @@
       "source": "핀포인트뉴스",
       "category": "local",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 핀포인트뉴스 · 발행 2026-07-10 · 원문 링크에서 전문 확인"
-      ]
+        "한전-갈등학회 학술대회서 전력망 적기 확충 논의함",
+        "한전 협력 이슈로 전자청구 대행 파트너십 동향 참고 필요"
+      ],
+      "ai": true
     },
     {
       "title": "여수서 대한민국 기후환경 에너지대전 개최",
@@ -572,9 +959,10 @@
       "source": "광양만신문",
       "category": "energy",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 광양만신문 · 발행 2026-07-10 · 원문 링크에서 전문 확인"
-      ]
+        "여수서 대한민국 기후환경 에너지대전 개최함",
+        "에너지 정책·기술 행사 확대되는 일반 동향 주목함"
+      ],
+      "ai": true
     },
     {
       "title": "[오늘의 건설 브리핑] \"원전 넘어 해상풍력·에너지 효율까지\"···공공기관·건설사, 탄소중립 생태계 선점 경쟁",
@@ -583,9 +971,10 @@
       "source": "스마트비즈",
       "category": "local",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 스마트비즈 · 발행 2026-07-10 · 원문 링크에서 전문 확인"
-      ]
+        "공공기관·건설사, 탄소중립 생태계 선점 경쟁 심화함",
+        "에너지 효율 시장 확대는 관련 서비스 수요 증가 전망"
+      ],
+      "ai": true
     },
     {
       "title": "LH·한국지역난방공사, 공공임대 에너지 혁신 협력",
@@ -594,9 +983,10 @@
       "source": "일요주간",
       "category": "energy",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 일요주간 · 발행 2026-07-10 · 원문 링크에서 전문 확인"
-      ]
+        "LH·한국지역난방공사, 공공임대 에너지 혁신 협력함",
+        "공공임대 에너지 관리 강화로 청구·빌링 연계 기회 존재함"
+      ],
+      "ai": true
     },
     {
       "title": "[인사] 기후에너지환경부",
@@ -605,9 +995,10 @@
       "source": "핀포인트뉴스",
       "category": "energy",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 핀포인트뉴스 · 발행 2026-07-10 · 원문 링크에서 전문 확인"
-      ]
+        "기후에너지환경부 인사 발표함",
+        "신설 부처 인사 동향으로 정책 방향 변화 주시 필요함"
+      ],
+      "ai": true
     },
     {
       "title": "하동근號 한난, 취임 후 첫 경영진 회의… 에너지 대전환 시동",
@@ -616,9 +1007,10 @@
       "source": "비즈트리뷴",
       "category": "energy",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 비즈트리뷴 · 발행 2026-07-10 · 원문 링크에서 전문 확인"
-      ]
+        "하동근 한난 사장, 취임 후 첫 경영진 회의 개최함",
+        "지역난방공사 에너지 대전환 추진, 협력 기회 모니터링함"
+      ],
+      "ai": true
     },
     {
       "title": "‘재생에너지로 年5000t 온실가스 절감’ 롯데칠성, 대전광역시·CNCITY에너지와 ‘맞손’",
@@ -627,9 +1019,10 @@
       "source": "catchnews.kr",
       "category": "local",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: catchnews.kr · 발행 2026-07-10 · 원문 링크에서 전문 확인"
-      ]
+        "롯데칠성, 대전시·CNCITY에너지와 재생에너지 협력함",
+        "기업·지역에너지사 협업 확대는 청구 서비스 수요 연계 가능"
+      ],
+      "ai": true
     },
     {
       "title": "대전 서구, 탄소중립포인트 3,045만원 기탁... 취약계층 돕는 나눔 실천 '이어간다'",
@@ -638,9 +1031,10 @@
       "source": "피디언뉴스",
       "category": "local",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 피디언뉴스 · 발행 2026-07-10 · 원문 링크에서 전문 확인"
-      ]
+        "대전 서구, 탄소중립포인트 3045만원 취약계층 기탁함",
+        "지자체 탄소중립포인트 운영, 요금·인센티브 연계 참고함"
+      ],
+      "ai": true
     },
     {
       "title": "LH, 한국지역난방공사와 공공임대주택 에너지 효율 개선 맞손",
@@ -649,9 +1043,34 @@
       "source": "핀포인트뉴스",
       "category": "energy",
       "summary": [
-        "에너지·정책 일반 동향(참고)",
-        "출처: 핀포인트뉴스 · 발행 2026-07-10 · 원문 링크에서 전문 확인"
-      ]
+        "LH, 한국지역난방공사와 공공임대 에너지 효율 개선함",
+        "공공임대 에너지 사업 확대로 전자청구 도입 여지 존재함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "대전 서구, 탄소중립포인트 인센티브 기부금 3045만 원 기탁",
+      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBwS2pCcDluZnFMYU1tYjZzdHZmb2tUX1hWeEJtcFZFbGFLU0RHX1JRRl9YLXBWSVB6X0swbmlnUF9fQ0lBcVotSmo4WWF5WjV3bnQxRzhzb1pYQzZBM3NtekVNWmNkYkN3a3BSMU9LYU13Z2c?oc=5",
+      "date": "2026-07-10",
+      "source": "충남일보",
+      "category": "local",
+      "summary": [
+        "대전 서구, 탄소중립포인트 인센티브 3045만원 기탁함",
+        "탄소중립포인트 제도 활성화 흐름 지자체 사업 참고함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "LH·한국지역난방공사, 공공임대 에너지 혁신 협력",
+      "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1TSUJ5STMzMkVFd2pROTNDcVRmWTBLbTA2Zy1tNHZuT0k5OGRiQ2ItcTctUjJ0blcwc2M3OGw0d2RRMlNfRE16SnkyazRxU3ZGRjRwQ2RnOEpuRzlINHRPaWRyVEEtdTNsSUVUcmxoYlNER0NSTFE?oc=5",
+      "date": "2026-07-10",
+      "source": "일요주간",
+      "category": "energy",
+      "summary": [
+        "LH·한국지역난방공사, 공공임대 에너지 혁신 협력함",
+        "공공임대 에너지 혁신 사업, 빌링 대행 수요 연계 가능"
+      ],
+      "ai": true
     },
     {
       "title": "에너지바우처 신청으로 더운 여름을 시원하게",
@@ -660,9 +1079,10 @@
       "source": "대한민국 정책브리핑",
       "category": "energy",
       "summary": [
-        "한빌 전기요금 전자청구·빌링 사업과 연관된 동향",
-        "출처: 대한민국 정책브리핑 · 발행 2026-07-08 · 원문 링크에서 전문 확인"
-      ]
+        "에너지바우처 신청으로 여름철 냉방 지원함",
+        "에너지바우처 대상 요금 관리·청구 연계 수요 주목함"
+      ],
+      "ai": true
     },
     {
       "title": "[정책 인사이트] 지역별 전기요금 차등제 10월 실시 앞두고 ‘전력 자급률’ 논란 - 조선비즈",
@@ -671,9 +1091,10 @@
       "source": "Chosunbiz",
       "category": "energy",
       "summary": [
-        "한빌 전기요금 전자청구·빌링 사업과 연관된 동향",
-        "출처: Chosunbiz · 발행 2026-07-06 · 원문 링크에서 전문 확인"
-      ]
+        "지역별 전기요금 차등제 10월 실시, 전력 자급률 논란함",
+        "지역별 차등요금 도입은 청구·빌링 체계 변화 대비 필요"
+      ],
+      "ai": true
     }
   ]
 }
