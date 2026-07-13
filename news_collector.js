@@ -33,18 +33,35 @@ const JICHE_KW = [
 const BASE_KW = ['전기요금','한전','전자청구서','에너지바우처','에너지정책','도시가스',
   '가로등','보안등','시설물관리','도로조명','탄소중립포인트','에너지 마일리지',
   '종이고지서','모바일 고지서','건물에너지관리솔루션','전자문서중계사업자'];
-// 기본 키워드 + 지자체 확장 키워드(JICHE_KW) 전체를 수집 검색어에 포함 (중복 제거)
-const SEARCH_KW = Array.from(new Set(BASE_KW.concat(JICHE_KW)));
+// 기본 키워드 + 지자체 확장 키워드(JICHE_KW) 포함. 단, 검색 노이즈가 매우 큰 초일반 단어
+// (포인트·마일리지·전수조사·탄소중립 등)는 '검색'에서 제외한다(분류(LOCAL_KW)에는 계속 사용).
+const SEARCH_NOISE_KW = ['포인트','마일리지','전수조사','탄소중립','탄소절감활동'];
+const SEARCH_KW = Array.from(new Set(BASE_KW.concat(JICHE_KW)))
+  .filter(function(k){ return SEARCH_NOISE_KW.indexOf(k) < 0; });
 const QUERY = SEARCH_KW.map(function(k){ return '"' + k + '"'; }).join(' OR ') + ' when:3d';
 const RSS_URL = 'https://news.google.com/rss/search?q='
   + encodeURIComponent(QUERY) + '&hl=ko&gl=KR&ceid=KR:ko';
+
+// ── 도메인 관련성 필터: 제목에 아래 핵심어가 하나도 없으면 일반 뉴스로 보고 제외 ──
+// (삼성전자·증시 등 무관 기사 노이즈 차단)
+const CORE_KW = ['한전','한국전력','한전KDN','한전MCS','전기요금','전력요금','전자청구','전자고지',
+  '청구서','빌링','납부','자동이체','도시가스','가스요금','에너지바우처','에너지 바우처','에너지정책','전력수급',
+  '가로등','보안등','구좌분리','시설물관리','도로조명','도로과','전수표찰',
+  '에너지 마일리지','에너지 절감','건물에너지관리','종이고지서','우리집 에너지','탄소중립포인트',
+  '빗물받이','수목관리','전자문서중계','모바일 고지서'];
+function isRelevant(title) {
+  const t = title || '';
+  for (const k of CORE_KW) if (t.indexOf(k) >= 0) return true;
+  return false;
+}
 
 const KEEP_DAYS = 60;   // 이 기간 이내 기사만 보관
 const MAX_ITEMS = 200;  // 최대 보관 건수(발행일 최신순) — 여러 날짜분 누적 유지('지난 기사' 탭 누적용)
 
 // 지자체 키워드 → 'local', 그 외 → 'energy'
+// '시장'(단독)은 '글로벌/주식 시장' 등 오분류를 유발하므로 제외한다.
 const LOCAL_KW = ['지자체','지방자치','지방정부','지방의회','시청','도청','군청','구청',
-  '광역시','특별시','특별자치','시·군','시군구','조례','도지사','시장','군수','읍면동','행정복지']
+  '광역시','특별시','특별자치','시·군','시군구','조례','도지사','군수','읍면동','행정복지']
   .concat(JICHE_KW);
 
 function decode(s) {
@@ -142,6 +159,8 @@ function merge(existing, fresh) {
   const cutoff = new Date(Date.now() - KEEP_DAYS * 86400000).toISOString().slice(0, 10);
   const all = [...map.values()]
     .filter((a) => (a.date || '') >= cutoff)
+    .filter((a) => isRelevant(a.title))                                  // 무관 기사(삼성전자·증시 등) 제외
+    .map((a) => Object.assign({}, a, { category: categorize(a.title) })) // 카테고리 재분류(기존 오분류 교정)
     .sort((a, b) => (b.date || '').localeCompare(a.date || ''))
     .slice(0, MAX_ITEMS);
   return { all, added };
