@@ -29,6 +29,11 @@ jobs:
           node-version: '20'
 
       - name: 뉴스 수집 실행
+        env:
+          # ANTHROPIC_API_KEY 시크릿이 있으면 기사별 2줄 AI 요약 생성(없으면 자동 스킵).
+          # 모델 변경이 필요하면 리포 변수(Variables)에 ANTHROPIC_MODEL 지정(기본 claude-opus-4-8).
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ANTHROPIC_MODEL: ${{ vars.ANTHROPIC_MODEL }}
         run: node news_collector.js
 
       - name: 변경분 커밋 & 푸시
