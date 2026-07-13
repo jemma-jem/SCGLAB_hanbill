@@ -29,26 +29,41 @@ const JICHE_KW = [
 ];
 
 // 수집 대상 검색어 (구글 뉴스). when:Nd = 최근 N일 기사만
-// 기본 키워드 + 지자체 확장 키워드 일부를 OR로 포함해 수집 범위를 넓힘
 const BASE_KW = ['전기요금','한전','전자청구서','에너지바우처','에너지정책','도시가스',
   '가로등','보안등','시설물관리','도로조명','탄소중립포인트','에너지 마일리지',
   '종이고지서','모바일 고지서','건물에너지관리솔루션','전자문서중계사업자'];
-// 기본 키워드 + 지자체 확장 키워드(JICHE_KW) 포함. 단, 검색 노이즈가 매우 큰 초일반 단어
-// (포인트·마일리지·전수조사·탄소중립 등)는 '검색'에서 제외한다(분류(LOCAL_KW)에는 계속 사용).
-const SEARCH_NOISE_KW = ['포인트','마일리지','전수조사','탄소중립','탄소절감활동'];
-const SEARCH_KW = Array.from(new Set(BASE_KW.concat(JICHE_KW)))
-  .filter(function(k){ return SEARCH_NOISE_KW.indexOf(k) < 0; });
-const QUERY = SEARCH_KW.map(function(k){ return '"' + k + '"'; }).join(' OR ') + ' when:3d';
-const RSS_URL = 'https://news.google.com/rss/search?q='
-  + encodeURIComponent(QUERY) + '&hl=ko&gl=KR&ceid=KR:ko';
+
+// 단독으로는 노이즈(삼성전자·증시·카드 등)가 매우 큰 '일반어'. OR 검색에 그대로 넣으면
+// 결과창이 노이즈로 오염되므로, 아래 CONTEXT_KW(맥락어)와 AND로 묶어서만 검색한다.
+const GENERIC_JICHE_KW = ['포인트','마일리지','전수조사','탄소중립','탄소절감활동'];
+// 지자체/한전/에너지 맥락어 — 위 일반어와 함께 등장할 때만 지자체 사업 기사로 인정
+const CONTEXT_KW = ['지자체','지방자치','지방정부','시청','도청','군청','구청',
+  '한전','한국전력','전기요금','에너지'];
+
+// 구체 키워드(단독으로도 안전) = 기본 + 지자체 확장 − 일반어. 그대로 OR 검색.
+const SPECIFIC_KW = Array.from(new Set(BASE_KW.concat(JICHE_KW)))
+  .filter(function(k){ return GENERIC_JICHE_KW.indexOf(k) < 0; });
+
+// 쿼리 1: 구체 키워드 OR 검색
+const QUERY_MAIN = SPECIFIC_KW.map(function(k){ return '"' + k + '"'; }).join(' OR ') + ' when:3d';
+// 쿼리 2: (일반어 OR …) AND (맥락어 OR …) — 노이즈 차단하며 지자체 사업 기사만 능동 수집
+const QUERY_JICHE = '(' + GENERIC_JICHE_KW.map(function(k){ return '"' + k + '"'; }).join(' OR ') + ')'
+  + ' (' + CONTEXT_KW.map(function(k){ return '"' + k + '"'; }).join(' OR ') + ') when:3d';
+const QUERY = QUERY_MAIN + ' || ' + QUERY_JICHE;   // 로그·메타 표기용
+const RSS_URLS = [QUERY_MAIN, QUERY_JICHE].map(function(q){
+  return 'https://news.google.com/rss/search?q=' + encodeURIComponent(q) + '&hl=ko&gl=KR&ceid=KR:ko';
+});
 
 // ── 도메인 관련성 필터: 제목에 아래 핵심어가 하나도 없으면 일반 뉴스로 보고 제외 ──
-// (삼성전자·증시 등 무관 기사 노이즈 차단)
-const CORE_KW = ['한전','한국전력','한전KDN','한전MCS','전기요금','전력요금','전자청구','전자고지',
+// (삼성전자·증시 등 무관 기사 노이즈 차단) — CONTEXT_KW를 포함해 맥락검색으로 들어온
+// 지자체 사업 기사(시청·지자체·에너지 등)가 필터에 걸러지지 않도록 보장
+const CORE_KW = Array.from(new Set([
+  '한전','한국전력','한전KDN','한전MCS','전기요금','전력요금','전자청구','전자고지',
   '청구서','빌링','납부','자동이체','도시가스','가스요금','에너지바우처','에너지 바우처','에너지정책','전력수급',
   '가로등','보안등','구좌분리','시설물관리','도로조명','도로과','전수표찰',
   '에너지 마일리지','에너지 절감','건물에너지관리','종이고지서','우리집 에너지','탄소중립포인트',
-  '빗물받이','수목관리','전자문서중계','모바일 고지서'];
+  '빗물받이','수목관리','전자문서중계','모바일 고지서'
+].concat(CONTEXT_KW)));
 function isRelevant(title) {
   const t = title || '';
   for (const k of CORE_KW) if (t.indexOf(k) >= 0) return true;
@@ -98,11 +113,20 @@ function relevance(title) {
 }
 
 async function fetchRss() {
-  const res = await fetch(RSS_URL, {
-    headers: { 'User-Agent': 'Mozilla/5.0 (compatible; hanbil-news-collector/1.0)' }
-  });
-  if (!res.ok) throw new Error('RSS HTTP ' + res.status);
-  return await res.text();
+  let combined = '';
+  for (const url of RSS_URLS) {                 // 쿼리(구체 OR · 지자체 맥락 AND)별로 순차 수집
+    try {
+      const res = await fetch(url, {
+        headers: { 'User-Agent': 'Mozilla/5.0 (compatible; hanbil-news-collector/1.0)' }
+      });
+      if (!res.ok) { console.warn('RSS HTTP ' + res.status + ' — ' + url); continue; }
+      combined += await res.text();             // parseItems가 <item> 단위로 스캔 → 단순 연결로 충분
+    } catch (e) {
+      console.warn('RSS 수집 실패(계속): ' + e.message);
+    }
+  }
+  if (!combined) throw new Error('RSS 전체 수집 실패');
+  return combined;
 }
 
 // 구글 뉴스 RSS(XML) → 아카이브 레코드 배열
