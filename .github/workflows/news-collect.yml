@@ -1,12 +1,12 @@
 name: 뉴스 자동 수집 (news_archive.json)
 
-# 평일 오전 8시(KST) 구글 뉴스 RSS에서 한전·전기요금·전자청구서 관련 기사를
+# 매일 오전 11시(KST) 구글 뉴스 RSS에서 한전·전기요금·전자청구서 관련 기사를
 # 수집해 news_archive.json 을 갱신·커밋한다. GitHub Pages 가 이 파일을 서빙하면
 # ax-admin-v2.html 의 fetchLiveNews() 가 자동으로 최신 기사를 반영한다.
 
 on:
   schedule:
-    - cron: '0 23 * * 0-4'   # 23:00 UTC(일~목) = 08:00 KST(월~금) — 평일 오전 8시
+    - cron: '0 2 * * *'     # 02:00 UTC = 11:00 KST — 매일 오전 11시
   workflow_dispatch: {}       # 수동 실행(테스트) 허용
 
 permissions:
