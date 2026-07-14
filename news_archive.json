@@ -1,9 +1,261 @@
 {
-  "updated_at": "2026-07-13T23:59:01.836Z",
+  "updated_at": "2026-07-14T04:36:07.018Z",
   "source": "Google News RSS",
   "query": "\"전기요금\" OR \"한전\" OR \"전자청구서\" OR \"에너지바우처\" OR \"에너지정책\" OR \"도시가스\" OR \"가로등\" OR \"보안등\" OR \"시설물관리\" OR \"도로조명\" OR \"탄소중립포인트\" OR \"에너지 마일리지\" OR \"종이고지서\" OR \"모바일 고지서\" OR \"건물에너지관리솔루션\" OR \"전자문서중계사업자\" OR \"구좌분리\" OR \"도로과\" OR \"전수표찰\" OR \"에너지 절감 정책\" OR \"우리집 에너지 컨설팅\" OR \"빗물받이 관리 솔루션\" OR \"수목관리솔루션\" when:3d || (\"포인트\" OR \"마일리지\" OR \"전수조사\" OR \"탄소중립\" OR \"탄소절감활동\") (\"지자체\" OR \"지방자치\" OR \"지방정부\" OR \"시청\" OR \"도청\" OR \"군청\" OR \"구청\" OR \"한전\" OR \"한국전력\" OR \"전기요금\" OR \"에너지\") when:3d",
-  "count": 120,
+  "count": 144,
   "articles": [
+    {
+      "title": "한전KDN, 기간통신사업 면허 취득… 이음5G 기반 에너지·공공 ICT시장 본격 진출",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9FNTNRaTBJRXRnMWg0c3JpM0Q5c0V4NEpCZ1pvdEt3OU1TWkUwVDhrYVdkOEVXbXNMMl9QTVZZWHo4V2JEbzFlMlhzMkVlVEJ5anp1WXNhMFdzWWxacUoxT1dRTGc1UEJyZC1XX2tpdXNzQQ?oc=5",
+      "date": "2026-07-14",
+      "source": "에너지데일리",
+      "category": "energy",
+      "summary": [
+        "한전KDN, 기간통신사업 면허 취득해 이음5G 에너지·공공 ICT시장 진출함",
+        "전력 ICT 기반 확장으로 전자청구 인프라 연계 가능성 주목함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전KDN, 5G 특화망 사업 '청신호'…기간통신사업 면허 취득",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBqZ0RPU0pvbV9FaC1DdXVNbVFqQUlXMTdnektVT1Axaklfa0htUURGakFvdV95b1FJTGQzRGNBT1RxbTh5UTU1bFRDQy1FUGV2UnZRTHRERW0zV0JQbmlxNmVjdlY?oc=5",
+      "date": "2026-07-14",
+      "source": "에너지안전신문",
+      "category": "energy",
+      "summary": [
+        "한전KDN, 기간통신사업 면허 취득해 5G 특화망 사업 청신호 확보함",
+        "공공 통신 기반 강화로 빌링·데이터 서비스 협력 여지 관찰함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "대통령이 던진 '가정용 전기요금 조정'…물가 부담 따져보니",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5qTzFaeUtYVnpZUkVoX2ZuckdtcF9RTHdrQ1pUN3g4UXdwZHc2b1RucVJqNXZETUtaRUJqR0l6dWNCd192STUtT2UzSFR5Tml5NGc4Q2RIYUJhMmU5dmg2UWhQMUxEM3JCekRBeWRRMkM?oc=5",
+      "date": "2026-07-14",
+      "source": "연합인포맥스",
+      "category": "energy",
+      "summary": [
+        "대통령 발언 계기로 가정용 전기요금 조정과 물가 부담 논의 확산함",
+        "요금체계 변동 시 전자청구서 요금표시·안내 대응 필요함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "\"백악관, '전기요금 남부자 보호 서약' 확대 추진\"",
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9kMGFlX3F3NmJHeWRfTHd6d0ZmaFJzR05UZk53NXgxUDJWWU41a0pIWWlpMkMzS2U4SGZJTlhMRm9LenlPR2QwSW1yY1VUS3NHakdEaUpKeExkWWPSAWBBVV95cUxQdjdOT19tX0ppN1BmNVg1Z0FNVGRxRWxydldEY0thRDhsdlNiN0NyMVZxenllMFVzNFZoR3M2RFNwUFRIQ1dyZy1LSy1DMkFaVGMtcjVHSm9KcVRLRGNzckY?oc=5",
+      "date": "2026-07-14",
+      "source": "연합뉴스",
+      "category": "energy",
+      "summary": [
+        "백악관, 전기요금 납부자 보호 서약 확대 추진 중임",
+        "해외 요금 취약층 보호 정책 동향으로 참고함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "‘전기요금 할인’ 에너지기본권 보장",
+      "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE1VeVozVUdXd2lqWV9HZnBhQkdhTmtmU2p0ZHd1R0F1TU5QbksyZ3VhbUJTbkVzX3R4VTBQY1ROeUJQdFllT3A2dE9HYlNxWEdu?oc=5",
+      "date": "2026-07-14",
+      "source": "문화일보",
+      "category": "energy",
+      "summary": [
+        "전기요금 할인 통한 에너지기본권 보장 논의 부각함",
+        "복지할인 대상 관리·청구 반영 업무와 연계 전망함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "李 대통령 \"물가 부담 없다면 가정용 전기요금 조정해야\" By 알파경제 alphabiz",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBGdG5Va0xRY0R6SzZ0T0RWa2xDdExVM0tUal9hSmNZdjZlRU54TkJuQmxFSjZ2ZWo5dnVtdl9vNUpPVGgtaTh5dXpyMUNpOVhocHZKZklzNVJkYXdtTkxhMDNwbGlrOHp6TEpSNmh5M3o?oc=5",
+      "date": "2026-07-14",
+      "source": "Investing.com 한국어",
+      "category": "energy",
+      "summary": [
+        "이 대통령, 물가 부담 없다면 가정용 전기요금 조정 필요 언급함",
+        "요금 개편 논의 본격화 시 전자청구 반영 대비 필요함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "부여군, 탄소중립포인트 인센티브 9500만원 지급…834세대 에너지 절약 실천 보상",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFBvcXA3c1pCNFZDUmJ4MkpWYnhoT1cxd3pocjNlSTh4VXltWVUzcWx3dEVYUk5JSExuaUlvSy0yMG9rcU9FSmp1MTJORDM2RDhDSy1kQmo1NzV6UmtjbFNhOUdVTmVTTTV6TXY4NHdzeGNHUQ?oc=5",
+      "date": "2026-07-14",
+      "source": "프라임경제",
+      "category": "local",
+      "summary": [
+        "부여군, 834세대에 탄소중립포인트 인센티브 9500만원 지급함",
+        "지자체 에너지절약 사업과 청구·검침 데이터 연계 기회임"
+      ],
+      "ai": true
+    },
+    {
+      "title": "전북자치도, 민선9기 실행력 높인다 에너지정책 분과 2차 회의 개최",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1MTFc1Q21fMWQ2Wl9XbGZCZWNjNHNaQWQtSnRNbWZyT2FDWW5pS0JFbThvS2lOZkdyNm5aZVQ4eXNERUVIdUd1cG5lT1pnREVJckRsVG1mUUo2TXVQVHR1X3pEN3ptNERsUlE?oc=5",
+      "date": "2026-07-14",
+      "source": "전북제일신문",
+      "category": "energy",
+      "summary": [
+        "전북자치도, 민선9기 에너지정책 분과 2차 회의 개최함",
+        "지자체 에너지정책 사업 발굴 시 협력 접점 모색함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "산청 단성·신안면 1431가구 도시가스 공급…32.5㎞ 공급배관 구축",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOM05KVkZBejFZR05BUGZfYjBvbnZTYW5pMTg3UXNwZzk5SmhqQWE3UWRWbE5SSUw2TXhRdDBmREdGeXhQZkx0eEdNODAwN29EdzVYQmpEbUxBX0FsMGNUdkhXa3VZcjNpSlpBa3dXTVZ2bEhxcmF3WUktTldkS19iRmJTS1FyMTBhQ1h1Qm5R?oc=5",
+      "date": "2026-07-14",
+      "source": "국제신문",
+      "category": "energy",
+      "summary": [
+        "산청 단성·신안면 1431가구에 도시가스 공급배관 32.5㎞ 구축함",
+        "지역 에너지 인프라 확충 동향으로 참고함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "영종도 정전 피해 2만5천여 세대…한전, 임시 전력 공급 완료",
+      "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5CUUVVYndQS09VdzM3S0paMEFXSWNQb09FNkwxWGZVTFRHbDhIWEhBZ0l4ZF96NU5rTHQ1cHFJN3h5WlVlQ2EzS0tKRDJYcGVWUVFYYVRLRHNuX0gtdnBvb0Fn?oc=5",
+      "date": "2026-07-14",
+      "source": "경기신문",
+      "category": "energy",
+      "summary": [
+        "영종도 정전 2만5천여 세대 피해, 한전 임시 전력공급 완료함",
+        "정전·요금 관련 고객 안내 채널 중요성 부각함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전KDN, 과학기술정보통신부 기간통신사업 면허 취득···공공부문 특화 통신사업 기반 마련",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE0zcUlZYkRFcm9sYlFoTUNuX1lIcUlNbWlZNUZvd1NDYll6cWJKTGJoNzVHNFJGZ3lTNllZRFJNZk1fSnFQX1I4R0x6VGtqUnltZDMwd0Y3VTluYnZwR2NCSGhRY0JHdkhy?oc=5",
+      "date": "2026-07-14",
+      "source": "한국NGO신문",
+      "category": "energy",
+      "summary": [
+        "한전KDN, 기간통신사업 면허 취득해 공공부문 특화 통신사업 기반 마련함",
+        "공공 통신 인프라 확장으로 전자청구 연계 가능성 주목함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "‘30년 전력 ICT’ 한전KDN이 5G 통신망 직접 깐다…에너지 공기업의 이유 있는 변신",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9iTm85ZnVxbnBtZEQ2YVAtdm9sb1hPTUJCUW51amh3dDUwNGNzcnlVU2MyUnphYlhSay1BZUFiSWx6bFcteTlSWHF2U241eVFIQUY4M0VCY3NFTmhBc0xGeWYzYm5oNE9BRHc?oc=5",
+      "date": "2026-07-14",
+      "source": "청년투데이",
+      "category": "energy",
+      "summary": [
+        "한전KDN, 30년 전력 ICT 기반으로 5G 통신망 직접 구축 추진함",
+        "에너지 공기업 통신사업 확장 동향 지속 관찰 필요함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "밤낮 같은 전기요금 고친다는데…정작 계량기가 없다",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5zNFVBOF9qNFlHUG1SdDZ5V3JVMDdFcm1MbWN3bTF6X3I4SnVIRG9zM0laQ2hQWXRWWFRBUXZoRzZPZ3FodHk2WFc3ZTBDd3g3MG1nTWl2TnhYdGR5bl9pUXNpejdJYVFoYkJrVw?oc=5",
+      "date": "2026-07-14",
+      "source": "중소기업신문",
+      "category": "energy",
+      "summary": [
+        "시간대별 전기요금 도입 추진하나 스마트계량기 부족 지적됨",
+        "AMI 보급률이 실시간 청구·요금제 확산 관건임"
+      ],
+      "ai": true
+    },
+    {
+      "title": "LG, TV 무료 채널 5000개 넘었다 “시청시간 45% 급증”",
+      "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE9HR3IyeWpaMzU1MHFrXzVTQ1RsMG0yaGJ0OGVLWjhXWXFTbVRtbFQ3SzdKb1d1NU5LWWlBRWtGUGZGSFpXeExJX3g3NnFHZw?oc=5",
+      "date": "2026-07-14",
+      "source": "전자신문",
+      "category": "local",
+      "summary": [
+        "LG TV 무료 채널 5000개 돌파, 시청시간 45% 급증함",
+        "에너지·빌링과 무관, 미디어 산업 동향임"
+      ],
+      "ai": true
+    },
+    {
+      "title": "강동구, 2026년 에너지바우처 신청 접수",
+      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTFA5eHI5T01wY05MR0hiZVRnNWU0ZWc3dmJlLTdnV0FzV2xkdlk5MUtwSVc5ek81VFI4RlE1OWZNX1d6NEEyR1hyV005eFpQbndGUFNEVjJJaTNXRnBkOWViZzRIeDM4MGt3ekhwVFJtSVp0T0XSAXdBVV95cUxNWU1QRWVnVUdMQ2pwTXhYcEdlRVZOb1Fwd3liSDJVRHBRczVNcG5fejJ6SXUtWk51cTdsWXBvQzJscjJNTDZuM3VUSHhKdE1XQ3l5dGtPcGRqaTJjREx2Wmk1VGlBWjFIZWt0Y095amRRaG5KekxXOA?oc=5",
+      "date": "2026-07-14",
+      "source": "핀포인트뉴스",
+      "category": "energy",
+      "summary": [
+        "강동구, 2026년 에너지바우처 신청 접수 시작함",
+        "에너지복지 대상 관리와 청구 연계 업무 참고함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "서울에너지드림센터·노원환경재단, 탄소중립사회 실현 협약",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1NNk5hQkozNkdyR0tWTmlycjFIU3FJVlQ4Y0FQWVVhaWUzbUhrMlZ1T3dTaURRVXIxRndobXQ0aTJwVVo2bEZZZFJhWHBmcWxIV3Y1WnBjMy1LM1RtLUxrY21EMzRQeHN6OUJN0gFrQVVfeXFMTU02TmFCSjM2R3JHS1ZOaXJyMUhTcUlWVDhjQVBZVWFpZTNtSGsyVnVPd1NpRFFVcjFGd2htdDRpMnBVWjZsRllkUmFYcGZxbEhXdjVacGMzLUszVG0tTGtjbUQzNFB4c3o5Qk0?oc=5",
+      "date": "2026-07-14",
+      "source": "이투뉴스",
+      "category": "local",
+      "summary": [
+        "서울에너지드림센터·노원환경재단, 탄소중립사회 실현 협약 체결함",
+        "지자체 탄소중립 협력사업 접점 모색 참고함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "부여군, 에너지 아낀 834세대 탄소중립 인센티브 지급",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBPdGJBT3haaXFldUV4cHE0MnhKTTlJY01FVnFJVmdNR1AzYjRyQlk4WXMzVVBfd1habVBLcklhdHlTemprMWlydXh5VlFTLU5Jb3VTMU1TOUpOTi1XdVNNdE5aUUg?oc=5",
+      "date": "2026-07-14",
+      "source": "ctnews.kr",
+      "category": "local",
+      "summary": [
+        "부여군, 에너지 절약 834세대에 탄소중립 인센티브 지급함",
+        "에너지절약 보상사업과 검침·청구 데이터 연계 기회임"
+      ],
+      "ai": true
+    },
+    {
+      "title": "남부발전, 부산 신평장림산단 '에너지 자급자족' 사업 수주… 탄소중립 전환 가속",
+      "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOaXl2S3FaN3g4dFZRYUZZWHRIWlZhZzBGUl9HV0tIWGdMcDhweUZVak5hVHZlMkxvVG5OVkpWWmJwRVd3aFdMQ2hXWV81T3lNNGFBVlcwRUdPLUhmNWhDVDRoTzBRLXhWUXF4TnVmLVpHRjB1eFVjQXFBMmRjbnJYOFdqV0pHbmU1N2c?oc=5",
+      "date": "2026-07-14",
+      "source": "글로벌이코노믹",
+      "category": "local",
+      "summary": [
+        "남부발전, 부산 신평장림산단 에너지 자급자족 사업 수주함",
+        "산단 에너지 전환 사업 확대 동향으로 참고함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "부여군, 탄소중립포인트 인센티브 9500만원 지급…834세대 에너지 절약 실천 보상",
+      "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5PczV3QTJ4UXA4Q3ZrWGluWDhlaDBIdzQzLVlNZjdyMW1tSkxKMjlaUHFMakZXSlczX3lGbE1iVTFGbmlaXzlDak1qaTJiLTVMUlhJ?oc=5",
+      "date": "2026-07-14",
+      "source": "네이트",
+      "category": "local",
+      "summary": [
+        "부여군, 탄소중립포인트 인센티브 9500만원 834세대에 지급함",
+        "지자체 에너지절약 사업과 빌링 데이터 연계 가능성 주목함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "부여군, 에너지 아낀 834세대 탄소중립 인센티브 지급",
+      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5WU2VBWlJ2aVVkVUNxbC1aU0xKaEwtV0Nja3JhbDJMYUR2bjg2QzQzcmpRbVhWWTZ6WFR0dTVRdFIyaUJoOUFkZWNMTW5HaFRGUlFzQmtHcmdteGRkX3RnMlBYOTFkekxUZmVzd2RGX3pSc2JV?oc=5",
+      "date": "2026-07-14",
+      "source": "아시아뉴스통신",
+      "category": "local",
+      "summary": [
+        "부여군, 에너지 아낀 834세대에 탄소중립 인센티브 지급함",
+        "에너지절약 보상 사업과 청구 연계 접점 참고함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "부여군, 에너지 절약 실천 834세대에 탄소중립 인센티브 지급",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9DZmlINHBBWTQzMmVNbUQwY1EzaGpUOXVRWVNBU3A0Rm5NVmd0dDF5eXk1Mm9JaHRiOHJXNVdDOVVXcHkwWDJfZmlSazBYX2Y0Ym9kQ250S1ZQbmNTUGFoOC14UXNNU2M3Zl90TDl1VTJ0dw?oc=5",
+      "date": "2026-07-14",
+      "source": "웹이코노미",
+      "category": "local",
+      "summary": [
+        "부여군, 에너지 절약 실천 834세대에 탄소중립 인센티브 지급함",
+        "지자체 에너지 인센티브 사업 확산 동향 참고함"
+      ],
+      "ai": true
+    },
     {
       "title": "한전 서울본부, 장난감 업사이클링 사회공헌활동 시행",
       "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9wNExIZERpSG9NSERzcTkzQmJBd0VWenV4amU5dGQ0YmVQUGlSUTFsVkxRT3V5LUNRcEt2TllJaHFyQkhWdS1NWThWblNHRmJkdGttaEh4VHpoRk5sTWNNU3h0eTJDcEpHeG8ya3NaQ0Ywdw?oc=5",
@@ -689,6 +941,30 @@
       "ai": true
     },
     {
+      "title": "춘천 산단 11곳, 320억 규모 ‘에너지 자립망’ 구축한다",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5Jcm13NnY3Tm45Vk1xMFIyam9Fbjg3Vlc3M2lnZWRXUzFZZ1F0WEg2QVNTTVB1M2lnYlhiV2FSYXlXbjhVY3JTOXlYZUNuSC14dEFSeWhRNVNfeWRaZFU0UGRIUE16N3VfdDdDTTBfQ0zSAXBBVV95cUxOSXJtdzZ2N05uOVZNcTBSMmpvRW44N1ZXNzNpZ2VkV1MxWWdRdFhINkFTU01QdTNpZ2JYYldhUmF5V244VWNyUzl5WGVDbkgteHRBUnloUTVTX3lkWmRVNFBkSFBNejd1X3Q3Q00wX0NM?oc=5",
+      "date": "2026-07-13",
+      "source": "데일리굿뉴스",
+      "category": "energy",
+      "summary": [
+        "춘천 산단 11곳, 320억 규모 에너지 자립망 구축 추진함",
+        "산단 에너지 자립 사업 확대 동향으로 참고함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "춘천 11개 산업단지, 에너지 자립형 산단 전환",
+      "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTFA4RGZuVHNqakxMT282NVlUWmtpUnZvMm56aDFXWS1XVE9NNEpfVUUyWVJxX2ZCckFQT0lJR3U2Rk5RUkhjVkE?oc=5",
+      "date": "2026-07-13",
+      "source": "매일경제",
+      "category": "energy",
+      "summary": [
+        "춘천 11개 산업단지, 에너지 자립형 산단으로 전환 추진함",
+        "산단 분산에너지·빌링 수요 발굴 접점 관찰함"
+      ],
+      "ai": true
+    },
+    {
       "title": "‘광주 반도체 전력공급’…한전, 4년 내 안정적 기반 조성",
       "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE11OHpRUklQQ0I3VDJOS3N3Yy1HQXA3bUtxbDl4LVdrMHFReTZDMlNBejcyZWZqVUd0cm81bVlBRzJoa2gyazJYZU9DLVlsSms?oc=5",
       "date": "2026-07-12",
@@ -1069,6 +1345,18 @@
       "summary": [
         "춘천시, 320억 투입해 에너지 자립·탄소중립 강화 산단 조성함",
         "지자체 탄소중립 사업과 전자청구 대행 연계 협력 여지 있음"
+      ],
+      "ai": true
+    },
+    {
+      "title": "광명시 기후에너지강사, 기후행동 새 전환점 만들어… ‘지구숨결 사회적협동조합’ 출범",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5CVU8wUEpZM0kzR2tqS19JMkoyeFYydHM5NlFsV3Azb1NSQUlCRk9YRGpKelpCSEJxcVlidHlReGR3aTBQY3FCck5KYWUzRlFTQUxZNnlmTE5BN0V2aHZxU0hMazZRRXRLNVBzMtIBbEFVX3lxTE5CVU8wUEpZM0kzR2tqS19JMkoyeFYydHM5NlFsV3Azb1NSQUlCRk9YRGpKelpCSEJxcVlidHlReGR3aTBQY3FCck5KYWUzRlFTQUxZNnlmTE5BN0V2aHZxU0hMazZRRXRLNVBzMg?oc=5",
+      "date": "2026-07-11",
+      "source": "광교신문",
+      "category": "energy",
+      "summary": [
+        "광명시 기후에너지강사, 지구숨결 사회적협동조합 출범함",
+        "지역 기후행동 활성화 동향으로 참고함"
       ],
       "ai": true
     },
