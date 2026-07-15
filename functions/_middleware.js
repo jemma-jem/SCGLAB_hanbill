@@ -22,9 +22,21 @@ const UI_COOKIE = 'hb_user';   // 표시용(비보안) — 포털 헤더에 사�
 // 로그인 없이 누구나 볼 수 있는 공개 경로(화이트리스트).
 // 여기에 넣은 페이지는 세션이 없어도 그대로 서빙된다.
 //   예) 한전ON 가이드는 대외 안내용이라 공개.
+// ※ Cloudflare Pages 는 `/foo.html` 을 확장자 없는 `/foo` 로 리다이렉트(clean URL)하므로
+//    두 형태를 모두 등록한다. 아래 isPublicPath() 가 .html 유무를 자동 보정한다.
 const PUBLIC_PATHS = new Set([
   '/hanjeon-on-guide.html',
+  '/hanjeon-on-guide',
 ]);
+
+// 요청 경로가 공개 대상인지 판정(.html 유무·후행 슬래시 차이를 흡수).
+function isPublicPath(pathname) {
+  let p = (pathname || '').replace(/\/+$/, '') || '/';
+  if (PUBLIC_PATHS.has(p)) return true;
+  if (PUBLIC_PATHS.has(p + '.html')) return true;
+  if (p.endsWith('.html') && PUBLIC_PATHS.has(p.slice(0, -5))) return true;
+  return false;
+}
 
 const enc = new TextEncoder();
 
@@ -126,7 +138,7 @@ export async function onRequest(context) {
   const hours = Number(env.SESSION_HOURS || 12);
 
   // ── 공개 경로: 로그인 없이 그대로 통과 ──
-  if (PUBLIC_PATHS.has(url.pathname)) {
+  if (isPublicPath(url.pathname)) {
     return next();
   }
 
