@@ -560,6 +560,16 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
     // 안전 타임아웃: 데이터 취합이 지연/실패해도 10초 후엔 화면을 연다.
     setTimeout(window.hideHbLoading, 10000);
   })();
+  // 로그인 사용자명 표시(표시용 hb_user 쿠키) — 상단 로그아웃 옆
+  window.addEventListener('DOMContentLoaded', function(){
+    try {
+      var m = (document.cookie || '').match(/(?:^|; )hb_user=([^;]+)/);
+      if (m) {
+        var who = document.getElementById('hb-whoami');
+        if (who) { who.textContent = decodeURIComponent(m[1]) + '님'; who.style.display = 'inline'; }
+      }
+    } catch(e){}
+  });
 </script>
 
 <!-- ── 사이드바 오버레이 (모바일) ── -->
@@ -595,6 +605,13 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
         <span class="pred-pulse"></span><span id="page-alert-text">알림</span>
       </div>
       <div class="tclock" id="clock">--:--:--</div>
+      <span id="hb-whoami" style="display:none;font-size:12px;color:var(--g500,#64748b);font-weight:600;white-space:nowrap"></span>
+      <a href="/logout" id="hb-logout" title="로그아웃"
+         style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;color:#075985;
+                text-decoration:none;background:#e0f2fe;border:1px solid #bae6fd;border-radius:9px;
+                padding:6px 11px;white-space:nowrap">
+        <i class="ti ti-logout"></i><span>로그아웃</span>
+      </a>
     </div>
   </div>
   <div class="content">
