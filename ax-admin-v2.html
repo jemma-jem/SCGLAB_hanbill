@@ -4886,6 +4886,37 @@ function _sttUpdateInfo(s, e) {
     var cnt = (typeof STT_INDEX !== 'undefined' && STT_INDEX) ? STT_INDEX.total : 0;
     info.textContent = cnt + '건 · ' + s + ' ~ ' + e;
   }
+  _sttSyncActiveBtn(s, e);   // 실제 표시 기간에 맞춰 상단 월 버튼 활성색 동기화
+}
+// 해당 연-월(YYYY-MM)의 말일(DD) 반환
+function _lastDayOf(ym) {
+  var p = (ym || '').split('-');
+  if (p.length < 2) return '31';
+  return String(new Date(Number(p[0]), Number(p[1]), 0).getDate()).padStart(2, '0');
+}
+// 현재 적용된 기간(s~e)과 일치하는 상단 버튼만 활성(bp), 나머지는 비활성(bo).
+// - 데이터 전체 범위와 같으면 '전체'
+// - 특정 월 전체(1일~말일)면 그 월 버튼
+// - 그 외(달력으로 지정한 임의 구간)면 어떤 버튼도 활성 안 함(= 직접 지정 상태)
+function _sttSyncActiveBtn(s, e) {
+  var monBtn = { '2026-04': 'stt-btn-apr', '2026-05': 'stt-btn-may', '2026-06': 'stt-btn-jun' };
+  var ids = ['stt-btn-apr', 'stt-btn-may', 'stt-btn-jun', 'stt-btn-all'];
+  var active = null;
+  try {
+    var r = (typeof _sttDataRange === 'function') ? _sttDataRange() : null;
+    if (r && s === r.min && e === r.max) active = 'stt-btn-all';
+  } catch (_) {}
+  if (!active) {
+    var ym = (s || '').slice(0, 7);
+    if (/-01$/.test(s || '') && e === ym + '-' + _lastDayOf(ym) && monBtn[ym]) active = monBtn[ym];
+  }
+  ids.forEach(function (id) {
+    var b = document.getElementById(id);
+    if (!b) return;
+    var on = (id === active);
+    b.classList.toggle('bp', on);
+    b.classList.toggle('bo', !on);
+  });
 }
 function setSttPeriod(s, e) {
   var c = _clampToData(s, e);         // 데이터 있는 기간만 검색 활성화
