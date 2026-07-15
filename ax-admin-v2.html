@@ -524,6 +524,54 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
 </head>
 <body>
 
+<!-- ── 데이터 로딩 오버레이 ── -->
+<style>
+  #hb-loading{position:fixed;inset:0;z-index:99999;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:18px;
+    background:rgba(248,250,252,.96);backdrop-filter:blur(2px);
+    transition:opacity .45s ease,visibility .45s ease;font-family:'Malgun Gothic',Arial,sans-serif}
+  #hb-loading.hb-hide{opacity:0;visibility:hidden;pointer-events:none}
+  #hb-loading .hb-spin{width:52px;height:52px;border-radius:50%;
+    border:5px solid #e0f2fe;border-top-color:#0EA5E9;animation:hbspin .8s linear infinite}
+  @keyframes hbspin{to{transform:rotate(360deg)}}
+  #hb-loading .hb-ttl{font-size:16px;font-weight:800;color:#075985;letter-spacing:.3px}
+  #hb-loading .hb-sub{font-size:12.5px;color:#64748b;margin-top:-8px}
+  #hb-loading .hb-dots::after{content:'';animation:hbdots 1.4s steps(4,end) infinite}
+  @keyframes hbdots{0%{content:''}25%{content:'.'}50%{content:'..'}75%{content:'...'}100%{content:''}}
+  body.hb-locked{overflow:hidden !important}
+</style>
+<div id="hb-loading" role="status" aria-live="polite" aria-label="데이터 로딩 중">
+  <div class="hb-spin"></div>
+  <div class="hb-ttl">데이터를 취합하고 있습니다</div>
+  <div class="hb-sub">잠시만 기다려 주세요 · 로딩중<span class="hb-dots"></span></div>
+</div>
+<script>
+  // 로딩 오버레이 제어: 초기 데이터 취합(initSheetSync) 완료 시 hideHbLoading() 호출.
+  // 안전장치로 최대 표시시간(타임아웃)과 window load 이후 지연 해제도 둔다.
+  (function(){
+    try { document.body.classList.add('hb-locked'); } catch(e){}
+    var hidden = false;
+    window.hideHbLoading = function(){
+      if (hidden) return; hidden = true;
+      var el = document.getElementById('hb-loading');
+      if (el) el.classList.add('hb-hide');
+      try { document.body.classList.remove('hb-locked'); } catch(e){}
+    };
+    // 안전 타임아웃: 데이터 취합이 지연/실패해도 10초 후엔 화면을 연다.
+    setTimeout(window.hideHbLoading, 10000);
+  })();
+  // 로그인 사용자명 표시(표시용 hb_user 쿠키) — 상단 로그아웃 옆
+  window.addEventListener('DOMContentLoaded', function(){
+    try {
+      var m = (document.cookie || '').match(/(?:^|; )hb_user=([^;]+)/);
+      if (m) {
+        var who = document.getElementById('hb-whoami');
+        if (who) { who.textContent = decodeURIComponent(m[1]) + '님'; who.style.display = 'inline'; }
+      }
+    } catch(e){}
+  });
+</script>
+
 <!-- ── 사이드바 오버레이 (모바일) ── -->
 <div class="sb-overlay" id="sb-overlay" onclick="closeSb()"></div>
 
@@ -557,6 +605,13 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
         <span class="pred-pulse"></span><span id="page-alert-text">알림</span>
       </div>
       <div class="tclock" id="clock">--:--:--</div>
+      <span id="hb-whoami" style="display:none;font-size:12px;color:var(--g500,#64748b);font-weight:600;white-space:nowrap"></span>
+      <a href="/logout" id="hb-logout" title="로그아웃"
+         style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;color:#075985;
+                text-decoration:none;background:#e0f2fe;border:1px solid #bae6fd;border-radius:9px;
+                padding:6px 11px;white-space:nowrap">
+        <i class="ti ti-logout"></i><span>로그아웃</span>
+      </a>
     </div>
   </div>
   <div class="content">
@@ -1491,7 +1546,12 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap;gap:8px">
       <div>
         <div style="font-size:14px;font-weight:700;color:var(--g800)">한전 빌링 사업 일일 뉴스 스크랩</div>
-        <div style="font-size:11.5px;color:var(--g400);margin-top:2px">경영진 보고용 · 최근 주요 기사(원문 발행일 최신순) · 원하는 기사 선택 후 발송</div>
+        <div style="font-size:11.5px;color:var(--g400);margin-top:2px;display:flex;align-items:center;gap:7px;flex-wrap:wrap">
+          <span>경영진 보고용 · 최근 주요 기사(원문 발행일 최신순) · 원하는 기사 선택 후 발송</span>
+          <span style="display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;color:#075985;background:#e0f2fe;border:1px solid #bae6fd;padding:2px 9px;border-radius:999px;white-space:nowrap">
+            <i class="ti ti-clock-hour-11"></i> 뉴스 자동 수집 매일 오전 11시
+          </span>
+        </div>
       </div>
       <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">
         <button class="btn bo sm" style="white-space:nowrap" onclick="refreshNews()"><i class="ti ti-refresh"></i> 새로고침</button>
@@ -4826,6 +4886,37 @@ function _sttUpdateInfo(s, e) {
     var cnt = (typeof STT_INDEX !== 'undefined' && STT_INDEX) ? STT_INDEX.total : 0;
     info.textContent = cnt + '건 · ' + s + ' ~ ' + e;
   }
+  _sttSyncActiveBtn(s, e);   // 실제 표시 기간에 맞춰 상단 월 버튼 활성색 동기화
+}
+// 해당 연-월(YYYY-MM)의 말일(DD) 반환
+function _lastDayOf(ym) {
+  var p = (ym || '').split('-');
+  if (p.length < 2) return '31';
+  return String(new Date(Number(p[0]), Number(p[1]), 0).getDate()).padStart(2, '0');
+}
+// 현재 적용된 기간(s~e)과 일치하는 상단 버튼만 활성(bp), 나머지는 비활성(bo).
+// - 데이터 전체 범위와 같으면 '전체'
+// - 특정 월 전체(1일~말일)면 그 월 버튼
+// - 그 외(달력으로 지정한 임의 구간)면 어떤 버튼도 활성 안 함(= 직접 지정 상태)
+function _sttSyncActiveBtn(s, e) {
+  var monBtn = { '2026-04': 'stt-btn-apr', '2026-05': 'stt-btn-may', '2026-06': 'stt-btn-jun' };
+  var ids = ['stt-btn-apr', 'stt-btn-may', 'stt-btn-jun', 'stt-btn-all'];
+  var active = null;
+  try {
+    var r = (typeof _sttDataRange === 'function') ? _sttDataRange() : null;
+    if (r && s === r.min && e === r.max) active = 'stt-btn-all';
+  } catch (_) {}
+  if (!active) {
+    var ym = (s || '').slice(0, 7);
+    if (/-01$/.test(s || '') && e === ym + '-' + _lastDayOf(ym) && monBtn[ym]) active = monBtn[ym];
+  }
+  ids.forEach(function (id) {
+    var b = document.getElementById(id);
+    if (!b) return;
+    var on = (id === active);
+    b.classList.toggle('bp', on);
+    b.classList.toggle('bo', !on);
+  });
 }
 function setSttPeriod(s, e) {
   var c = _clampToData(s, e);         // 데이터 있는 기간만 검색 활성화
@@ -6564,6 +6655,9 @@ async function fetchComplaintTexts(year2d, month) {
   if (typeof renderSTTQuality === 'function') renderSTTQuality();
   if (typeof renderSTTVOC === 'function') renderSTTVOC();
   if (typeof renderSTTImprovements === 'function') renderSTTImprovements();
+
+  // 데이터 취합 완료 → 로딩 오버레이 해제
+  if (typeof window.hideHbLoading === 'function') window.hideHbLoading();
 })();
 
 // ── Groq 컨텍스트 빌드 ──
