@@ -6,8 +6,18 @@ ID/PW 로그인 게이트를 겁니다. 로그인하지 않으면 HTML 자체가
 
 > ⚠️ **GitHub Pages 로 열면 게이트가 동작하지 않습니다.**
 > Pages Functions 는 Cloudflare Pages 에서만 실행됩니다. 실제 차단을 위해서는
-> 반드시 **Cloudflare Pages** 로 서빙하세요(아래 1단계). 민감 데이터가 있으므로
-> 전환 후에는 GitHub Pages 공개를 꺼두는 것을 권장합니다.
+> 반드시 **Cloudflare Pages** 로 서빙하세요(아래 1단계).
+
+### 두 호스팅의 역할 분담 (현재 구성)
+| 호스팅 | 서빙 대상 | 로그인 |
+|---|---|---|
+| **GitHub Pages** (`jemma-jem.github.io/SCGLAB_hanbill/…`) | **한전ON 가이드만** 공개(`hanjeon-on-guide.html`) | 없음(대외 공개) |
+| **Cloudflare Pages** (`scglab-hanbill.pages.dev/…`) | 대시보드 등 **전체** | `_middleware.js` 게이트 |
+
+- GitHub Pages 에는 민감 페이지가 노출되지 않도록 **`_config.yml`(Jekyll `exclude`)** 로
+  `ax-admin-v2.html`·`index.html`·`news_archive.json` 등을 제외합니다 → github.io 에서 **404**.
+- 따라서 **대시보드는 Cloudflare 주소(`scglab-hanbill.pages.dev/ax-admin-v2.html`)로만** 배포·공유하세요.
+- 공개 페이지를 더 추가하려면 `_config.yml` 의 `exclude` 에서 빼면(=공개) 됩니다.
 
 ---
 

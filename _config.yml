@@ -1,0 +1,22 @@
+# ─────────────────────────────────────────────────────────────
+# GitHub Pages(Jekyll) 공개 범위 제한
+# ─────────────────────────────────────────────────────────────
+# GitHub Pages 에는 로그인 게이트가 없다(게이트는 Cloudflare Pages 의
+# functions/_middleware.js 에서만 동작). 따라서 민감한 페이지가 github.io 로
+# 그대로 노출되지 않도록, 공개해도 되는 파일만 남기고 아래 목록은 제외한다.
+#   → 제외된 경로는 github.io 에서 404 가 된다.
+#
+# 공개 유지: hanjeon-on-guide.html (한전ON 가이드 — 대외 안내용)
+# 로그인이 필요한 페이지(대시보드 등)는 Cloudflare Pages 주소로만 배포/공유한다:
+#   https://scglab-hanbill.pages.dev/ax-admin-v2.html
+#
+# ※ 이 설정은 GitHub Pages 에만 적용된다. Cloudflare Pages 는 루트 전체를
+#   서빙하며 _middleware.js 로 로그인 게이트를 건다(이 파일 영향 없음).
+exclude:
+  - ax-admin-v2.html     # 민원·뉴스 대시보드(민감) — Cloudflare 게이트로만 공개
+  - index.html           # 내부 포털 — Cloudflare 게이트로만 공개
+  - news_archive.json    # 뉴스 수집 데이터(대시보드 전용)
+  - news_collector.js    # 수집 스크립트(소스)
+  - functions            # Cloudflare Pages Functions(게이트 코드)
+  - docs                 # 설정 문서
+  - README.md
