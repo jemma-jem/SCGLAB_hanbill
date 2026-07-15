@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCGLAB 한빌 · 영업 AI 포털</title>
+<style>
+  :root{--sky:#0EA5E9;--sky-dark:#075985;--g900:#0f172a;--g600:#475569;--g400:#94a3b8;--line:#e2e8f0}
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100vh;font-family:'Malgun Gothic',system-ui,sans-serif;color:var(--g900);
+    background:linear-gradient(180deg,#f8fafc,#eef2f7)}
+  header{background:var(--sky-dark);color:#fff;padding:16px 22px;display:flex;align-items:center;gap:12px}
+  header .logo{font-weight:800;letter-spacing:.5px}
+  header .sub{font-size:12px;color:#bae6fd}
+  header .spacer{flex:1}
+  header .who{font-size:12px;color:#e0f2fe}
+  header a.logout{color:#fff;font-size:12px;text-decoration:none;border:1px solid rgba(255,255,255,.4);
+    padding:5px 11px;border-radius:8px}
+  header a.logout:hover{background:rgba(255,255,255,.12)}
+  .wrap{max-width:920px;margin:0 auto;padding:34px 20px 60px}
+  h1{font-size:22px;margin:0 0 4px}
+  .lead{color:var(--g600);font-size:13.5px;margin:0 0 26px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+  a.card{display:block;background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;
+    text-decoration:none;color:inherit;transition:transform .12s,box-shadow .12s}
+  a.card:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(2,32,71,.10);border-color:#bae6fd}
+  .card .ico{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;
+    font-size:20px;margin-bottom:12px}
+  .card h3{font-size:15px;margin:0 0 5px}
+  .card p{font-size:12.5px;color:var(--g600);line-height:1.6;margin:0}
+  .card.soon{opacity:.55;pointer-events:none}
+  .badge{display:inline-block;font-size:10px;font-weight:700;color:#92400e;background:#fef3c7;
+    padding:2px 7px;border-radius:8px;margin-left:6px;vertical-align:2px}
+  footer{color:var(--g400);font-size:11px;text-align:center;padding:20px}
+</style>
+</head>
+<body>
+  <header>
+    <div>
+      <div class="logo">SCGLAB · 한빌 영업 AI</div>
+      <div class="sub">영업기획팀 통합 포털</div>
+    </div>
+    <div class="spacer"></div>
+    <span class="who" id="who"></span>
+    <a class="logout" href="/logout">로그아웃</a>
+  </header>
+
+  <div class="wrap">
+    <h1>업무 포털</h1>
+    <p class="lead">아래에서 필요한 화면으로 이동하세요. 모든 페이지는 로그인한 사용자에게만 열립니다.</p>
+
+    <div class="grid">
+      <a class="card" href="/ax-admin-v2.html">
+        <div class="ico" style="background:#e0f2fe;color:#075985">📊</div>
+        <h3>민원·뉴스 대시보드</h3>
+        <p>민원 현황·예상 민원·VOC 분석·인입 키워드, 한전 뉴스레터(AI 요약) 발송까지 한 화면에서.</p>
+      </a>
+
+      <a class="card" href="/hanjeon-on-guide.html">
+        <div class="ico" style="background:#ede9fe;color:#5b21b6">📘</div>
+        <h3>한전ON 가이드</h3>
+        <p>한전ON 관련 안내·참고 자료.</p>
+      </a>
+
+      <span class="card soon">
+        <div class="ico" style="background:#f1f5f9;color:#64748b">➕</div>
+        <h3>신규 페이지<span class="badge">확장 예정</span></h3>
+        <p>새 기능/화면을 추가하면 이 포털에 카드로 연결됩니다.</p>
+      </span>
+    </div>
+  </div>
+
+  <footer>© SCGLAB 영업기획팀 · 내부용 — 외부 유출 금지</footer>
+
+  <script>
+    // 표시용 쿠키(hb_user)에서 로그인 아이디를 읽어 헤더에 노출(비보안 · UI 전용)
+    (function () {
+      var m = (document.cookie || '').match(/(?:^|; )hb_user=([^;]+)/);
+      if (m) {
+        try { document.getElementById('who').textContent = decodeURIComponent(m[1]) + '님'; } catch (e) {}
+      }
+    })();
+  </script>
+</body>
+</html>
