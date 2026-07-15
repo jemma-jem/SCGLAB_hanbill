@@ -524,6 +524,44 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
 </head>
 <body>
 
+<!-- ── 데이터 로딩 오버레이 ── -->
+<style>
+  #hb-loading{position:fixed;inset:0;z-index:99999;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:18px;
+    background:rgba(248,250,252,.96);backdrop-filter:blur(2px);
+    transition:opacity .45s ease,visibility .45s ease;font-family:'Malgun Gothic',Arial,sans-serif}
+  #hb-loading.hb-hide{opacity:0;visibility:hidden;pointer-events:none}
+  #hb-loading .hb-spin{width:52px;height:52px;border-radius:50%;
+    border:5px solid #e0f2fe;border-top-color:#0EA5E9;animation:hbspin .8s linear infinite}
+  @keyframes hbspin{to{transform:rotate(360deg)}}
+  #hb-loading .hb-ttl{font-size:16px;font-weight:800;color:#075985;letter-spacing:.3px}
+  #hb-loading .hb-sub{font-size:12.5px;color:#64748b;margin-top:-8px}
+  #hb-loading .hb-dots::after{content:'';animation:hbdots 1.4s steps(4,end) infinite}
+  @keyframes hbdots{0%{content:''}25%{content:'.'}50%{content:'..'}75%{content:'...'}100%{content:''}}
+  body.hb-locked{overflow:hidden !important}
+</style>
+<div id="hb-loading" role="status" aria-live="polite" aria-label="데이터 로딩 중">
+  <div class="hb-spin"></div>
+  <div class="hb-ttl">데이터를 취합하고 있습니다</div>
+  <div class="hb-sub">잠시만 기다려 주세요 · 로딩중<span class="hb-dots"></span></div>
+</div>
+<script>
+  // 로딩 오버레이 제어: 초기 데이터 취합(initSheetSync) 완료 시 hideHbLoading() 호출.
+  // 안전장치로 최대 표시시간(타임아웃)과 window load 이후 지연 해제도 둔다.
+  (function(){
+    try { document.body.classList.add('hb-locked'); } catch(e){}
+    var hidden = false;
+    window.hideHbLoading = function(){
+      if (hidden) return; hidden = true;
+      var el = document.getElementById('hb-loading');
+      if (el) el.classList.add('hb-hide');
+      try { document.body.classList.remove('hb-locked'); } catch(e){}
+    };
+    // 안전 타임아웃: 데이터 취합이 지연/실패해도 10초 후엔 화면을 연다.
+    setTimeout(window.hideHbLoading, 10000);
+  })();
+</script>
+
 <!-- ── 사이드바 오버레이 (모바일) ── -->
 <div class="sb-overlay" id="sb-overlay" onclick="closeSb()"></div>
 
@@ -6569,6 +6607,9 @@ async function fetchComplaintTexts(year2d, month) {
   if (typeof renderSTTQuality === 'function') renderSTTQuality();
   if (typeof renderSTTVOC === 'function') renderSTTVOC();
   if (typeof renderSTTImprovements === 'function') renderSTTImprovements();
+
+  // 데이터 취합 완료 → 로딩 오버레이 해제
+  if (typeof window.hideHbLoading === 'function') window.hideHbLoading();
 })();
 
 // ── Groq 컨텍스트 빌드 ──
