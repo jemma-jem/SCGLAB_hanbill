@@ -76,6 +76,20 @@ openssl rand -hex 32
 - 새 화면(HTML)을 저장소에 추가하면 **자동으로 같은 게이트로 보호**됩니다.
 - 포털(`index.html`)의 카드 목록에 링크만 추가하면 메뉴에 노출됩니다.
 
+### 로그인 없이 공개할 페이지 지정
+대외 안내용처럼 **누구나 로그인 없이** 볼 페이지는 `functions/_middleware.js` 상단의
+`PUBLIC_PATHS` 목록에 경로를 추가하세요. 여기에 넣은 경로는 세션이 없어도 그대로 서빙됩니다.
+
+```js
+const PUBLIC_PATHS = new Set([
+  '/hanjeon-on-guide.html',   // 한전ON 가이드 — 대외 공개
+  // '/another-public.html',  // 공개할 페이지를 여기에 추가
+]);
+```
+
+- 현재 공개 페이지: **한전ON 가이드**(`/hanjeon-on-guide.html`) — 직접 링크 공유 가능.
+- 목록에서 빼면 다시 로그인 필요 페이지로 돌아갑니다.
+
 ---
 
 ## 5. 참고 / 한계

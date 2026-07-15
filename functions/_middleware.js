@@ -19,6 +19,13 @@
 const COOKIE = 'hb_session';
 const UI_COOKIE = 'hb_user';   // 표시용(비보안) — 포털 헤더에 사용자명 노출용
 
+// 로그인 없이 누구나 볼 수 있는 공개 경로(화이트리스트).
+// 여기에 넣은 페이지는 세션이 없어도 그대로 서빙된다.
+//   예) 한전ON 가이드는 대외 안내용이라 공개.
+const PUBLIC_PATHS = new Set([
+  '/hanjeon-on-guide.html',
+]);
+
 const enc = new TextEncoder();
 
 function b64urlEncode(str) {
@@ -117,6 +124,11 @@ export async function onRequest(context) {
   const url = new URL(request.url);
   const secret = env.SESSION_SECRET || '';
   const hours = Number(env.SESSION_HOURS || 12);
+
+  // ── 공개 경로: 로그인 없이 그대로 통과 ──
+  if (PUBLIC_PATHS.has(url.pathname)) {
+    return next();
+  }
 
   // ── 로그아웃 ──
   if (url.pathname === '/logout') {
