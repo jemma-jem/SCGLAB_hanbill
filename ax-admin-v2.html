@@ -8094,22 +8094,43 @@ function renderSTTVOC() {
   const el = document.getElementById('stt-voc-grid');
   if (!el) return;
 
-  const channelData = [
-    { code:'A3', label:'청구서 조회 문의', cnt:52, channel:'가스앱·카카오 채널', color:'#0EA5E9', icon:'ti-device-mobile', saving:'전화 대비 80% 비용 절감' },
-    { code:'A1', label:'청구서 등록',      cnt:36, channel:'가스앱 셀프등록', color:'#10B981', icon:'ti-device-mobile', saving:'상담원 개입 불필요' },
-    { code:'C1', label:'이메일 재발송',    cnt:16, channel:'카카오 알림톡',  color:'#F59E0B', icon:'ti-brand-kakao', saving:'즉시 자동 처리 가능' },
-    { code:'D1', label:'문자 재발송',      cnt:17, channel:'자동 재발송 시스템', color:'#8B5CF6', icon:'ti-message', saving:'시스템 자동화 가능' },
-    { code:'B1', label:'고객정보 변경',    cnt:24, channel:'전화 필수',      color:'#EF4444', icon:'ti-phone', saving:'본인확인 필수' },
-    { code:'Y1', label:'데이터 생성·수정', cnt:48, channel:'운영팀 전용 처리', color:'#94A3B8', icon:'ti-settings', saving:'전문 인력 필요' },
-  ];
+  // STT_INDEX(실데이터) 없으면 안내만 표시
+  if (typeof STT_INDEX === 'undefined' || !STT_INDEX || !STT_INDEX.total) {
+    el.innerHTML = '<div style="grid-column:1/-1;font-size:12px;color:var(--g400);padding:16px;text-align:center">선택한 기간에 STT 통화 데이터가 없습니다.</div>';
+    return;
+  }
 
-  const vocTrends = [
-    { kw: '"청구서 발행일이 언제에요?"', cnt: 31, type: '단순 안내', deflect: '카카오 채널 자동 응대' },
-    { kw: '"이메일을 못 받았어요"',       cnt: 24, type: '재발송 요청', deflect: '카카오 알림톡 대체' },
-    { kw: '"자동이체 변경하고 싶어요"',   cnt: 11, type: '정보 변경', deflect: '앱 셀프서비스 유도' },
-    { kw: '"청구서 해지해주세요"',        cnt: 10, type: '서비스 해지', deflect: '상담원 처리 유지' },
-    { kw: '"등록이 안 되는데요"',          cnt: 9,  type: '오류 문의', deflect: '챗봇 → 상담원 연결' },
-  ];
+  // ── 채널별 해석 메타(건수는 실데이터, 채널·대응은 사업 해석 매핑) ──
+  const CH_META = {
+    A3: { channel:'가스앱·카카오 채널',   color:'#0EA5E9', icon:'ti-device-mobile', saving:'전화 대비 80% 비용 절감' },
+    A1: { channel:'가스앱 셀프등록',       color:'#10B981', icon:'ti-device-mobile', saving:'상담원 개입 불필요' },
+    C1: { channel:'카카오 알림톡',         color:'#F59E0B', icon:'ti-brand-kakao',   saving:'즉시 자동 처리 가능' },
+    D1: { channel:'자동 재발송 시스템',    color:'#8B5CF6', icon:'ti-message',       saving:'시스템 자동화 가능' },
+    A2: { channel:'상담원 처리 유지',      color:'#EF4444', icon:'ti-phone',         saving:'본인확인 필수' },
+    F1: { channel:'앱 셀프서비스 유도',    color:'#0EA5E9', icon:'ti-device-mobile', saving:'앱 셀프 변경 가능' },
+    B1: { channel:'전화 필수',             color:'#EF4444', icon:'ti-phone',         saving:'본인확인 필수' },
+    Y1: { channel:'운영팀 전용 처리',      color:'#94A3B8', icon:'ti-settings',      saving:'전문 인력 필요' },
+  };
+  const CH_DEFAULT = { channel:'상담 처리', color:'#94A3B8', icon:'ti-headset', saving:'-' };
+  // 카테고리별 실제 STT 건수(STT_INDEX.topCodes) → 상위 6개
+  const channelData = (STT_INDEX.topCodes || []).slice(0, 6).map(function (c) {
+    const meta = CH_META[c.code] || CH_DEFAULT;
+    return { code: c.code, label: c.label || c.code, cnt: c.cnt, channel: meta.channel, color: meta.color, icon: meta.icon, saving: meta.saving };
+  });
+
+  // ── VOC 핵심 발화(감지 키워드 빈도 STT_INDEX.topKw 기반, 상위 5개) ──
+  const KW_VOC = {
+    '청구서':  { kw:'"청구서 조회·발행 문의"',  type:'단순 안내',   deflect:'카카오 채널 자동 응대' },
+    '이메일':  { kw:'"이메일 재발송 요청"',      type:'재발송 요청', deflect:'카카오 알림톡 대체' },
+    '등록':    { kw:'"청구서 등록 문의"',        type:'등록 요청',   deflect:'앱 셀프등록 유도' },
+    '문자':    { kw:'"문자 재발송 요청"',        type:'재발송 요청', deflect:'자동 재발송 시스템' },
+    '해지':    { kw:'"청구서 해지 요청"',        type:'서비스 해지', deflect:'상담원 처리 유지' },
+    '자동이체':{ kw:'"자동이체 변경 요청"',      type:'정보 변경',   deflect:'앱 셀프서비스 유도' },
+  };
+  const vocTrends = (STT_INDEX.topKw || []).slice(0, 5).map(function (k) {
+    const meta = KW_VOC[k.word] || { kw: '"' + k.word + ' 관련 문의"', type: '문의', deflect: '채널 안내' };
+    return { kw: meta.kw, cnt: k.cnt, type: meta.type, deflect: meta.deflect };
+  });
 
   const ch = '<div style="background:#fff;border:1px solid var(--g200);border-radius:10px;padding:14px 16px">'
     + '<div style="font-size:12px;font-weight:700;color:var(--g700);margin-bottom:10px;display:flex;align-items:center;gap:6px">'
