@@ -6,8 +6,18 @@ ID/PW 로그인 게이트를 겁니다. 로그인하지 않으면 HTML 자체가
 
 > ⚠️ **GitHub Pages 로 열면 게이트가 동작하지 않습니다.**
 > Pages Functions 는 Cloudflare Pages 에서만 실행됩니다. 실제 차단을 위해서는
-> 반드시 **Cloudflare Pages** 로 서빙하세요(아래 1단계). 민감 데이터가 있으므로
-> 전환 후에는 GitHub Pages 공개를 꺼두는 것을 권장합니다.
+> 반드시 **Cloudflare Pages** 로 서빙하세요(아래 1단계).
+
+### 두 호스팅의 역할 분담 (현재 구성)
+| 호스팅 | 서빙 대상 | 로그인 |
+|---|---|---|
+| **GitHub Pages** (`jemma-jem.github.io/SCGLAB_hanbill/…`) | **한전ON 가이드만** 공개(`hanjeon-on-guide.html`) | 없음(대외 공개) |
+| **Cloudflare Pages** (`scglab-hanbill.pages.dev/…`) | 대시보드 등 **전체** | `_middleware.js` 게이트 |
+
+- GitHub Pages 에는 민감 페이지가 노출되지 않도록 **`_config.yml`(Jekyll `exclude`)** 로
+  `ax-admin-v2.html`·`index.html`·`news_archive.json` 등을 제외합니다 → github.io 에서 **404**.
+- 따라서 **대시보드는 Cloudflare 주소(`scglab-hanbill.pages.dev/ax-admin-v2.html`)로만** 배포·공유하세요.
+- 공개 페이지를 더 추가하려면 `_config.yml` 의 `exclude` 에서 빼면(=공개) 됩니다.
 
 ---
 
@@ -75,6 +85,20 @@ openssl rand -hex 32
 
 - 새 화면(HTML)을 저장소에 추가하면 **자동으로 같은 게이트로 보호**됩니다.
 - 포털(`index.html`)의 카드 목록에 링크만 추가하면 메뉴에 노출됩니다.
+
+### 로그인 없이 공개할 페이지 지정
+대외 안내용처럼 **누구나 로그인 없이** 볼 페이지는 `functions/_middleware.js` 상단의
+`PUBLIC_PATHS` 목록에 경로를 추가하세요. 여기에 넣은 경로는 세션이 없어도 그대로 서빙됩니다.
+
+```js
+const PUBLIC_PATHS = new Set([
+  '/hanjeon-on-guide.html',   // 한전ON 가이드 — 대외 공개
+  // '/another-public.html',  // 공개할 페이지를 여기에 추가
+]);
+```
+
+- 현재 공개 페이지: **한전ON 가이드**(`/hanjeon-on-guide.html`) — 직접 링크 공유 가능.
+- 목록에서 빼면 다시 로그인 필요 페이지로 돌아갑니다.
 
 ---
 
