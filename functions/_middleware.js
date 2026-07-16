@@ -95,7 +95,7 @@ function loginHTML(error, next) {
     : '';
   return `<!doctype html><html lang="ko"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>로그인 · SCGLAB 한빌</title>
+<title>로그인 · 한빌 세일즈 세이버 (SABER)</title>
 <style>
 :root{--sky:#0EA5E9;--sky-dark:#075985;--bg:#0b1220}
 *{box-sizing:border-box}
@@ -117,7 +117,7 @@ button:hover{background:#0c4a6e}
 .foot{margin-top:16px;font-size:11px;color:#94a3b8;text-align:center;line-height:1.6}
 </style></head><body>
 <form class="card" method="POST" action="/login" autocomplete="off">
-  <div class="brand">SCGLAB · 한빌 영업 AI</div>
+  <div class="brand">한빌 세일즈 세이버 (SABER)</div>
   <h1>로그인</h1>
   <div class="sub">허가된 계정만 접근할 수 있습니다</div>
   ${err}
