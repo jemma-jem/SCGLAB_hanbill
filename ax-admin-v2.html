@@ -3479,7 +3479,7 @@ function renderSat(score, chg, breakdown, issues) {
     renderSatCause([
       { key:'응대 정확도',   val: Math.round(b.accuracyScore || 0), color:'#10B981' },
       { key:'이관 처리 속도', val: Math.round(b.speedScore    || 0), color:'#0EA5E9' },
-      { key:'상담 친절도',   val: Math.round(kindness),             color:'#F59E0B' }
+      { key:'응대 품질',     val: Math.round(kindness),             color:'#F59E0B' }
     ]);
   }
 }
@@ -3499,9 +3499,9 @@ function renderSatCause(metrics) {
       s: '민원을 신속히 이관·처리해 고객 대기 시간이 짧게 관리되고 있습니다.',
       w: '이관 처리가 지연되며 대기 시간이 길어지는 경향이 있어 처리 속도 개선이 필요합니다.'
     },
-    '상담 친절도': {
-      s: '상담원의 친절한 응대가 고객 만족에 긍정적으로 작용하고 있습니다.',
-      w: '일부 통화에서 친절도가 낮아 부정 감정으로 이어지는 사례가 있어 개선이 필요합니다.'
+    '응대 품질': {
+      s: '통화 응대 품질이 전반적으로 안정적으로 유지되고 있습니다.',
+      w: '일부 통화에서 응대 편차가 있어 표준 응대 스크립트·안내 문구 보완이 필요합니다.'
     }
   };
   var strong = [], weak = [];
@@ -8245,8 +8245,12 @@ function renderSTTVOC() {
     Y1: { channel:'운영팀 전용 처리',      color:'#94A3B8', icon:'ti-settings',      saving:'전문 인력 필요' },
   };
   const CH_DEFAULT = { channel:'상담 처리', color:'#94A3B8', icon:'ti-headset', saving:'-' };
-  // 카테고리별 실제 STT 건수(STT_INDEX.topCodes) → 상위 6개
-  const channelData = (STT_INDEX.topCodes || []).slice(0, 6).map(function (c) {
+  // 카테고리별 실제 STT 건수 → 상위 6개
+  // (정적 주입본은 topCodes{code}, 런타임 computeSTTIdx는 topCats{cat} 이므로 둘 다 대응)
+  const _codes = (STT_INDEX.topCodes && STT_INDEX.topCodes.length)
+    ? STT_INDEX.topCodes.map(function (c) { return { code: c.code, label: c.label, cnt: c.cnt }; })
+    : (STT_INDEX.topCats || []).map(function (c) { return { code: c.cat, label: c.label, cnt: c.cnt }; });
+  const channelData = _codes.slice(0, 6).map(function (c) {
     const meta = CH_META[c.code] || CH_DEFAULT;
     return { code: c.code, label: c.label || c.code, cnt: c.cnt, channel: meta.channel, color: meta.color, icon: meta.icon, saving: meta.saving };
   });
