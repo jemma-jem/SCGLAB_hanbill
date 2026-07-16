@@ -924,12 +924,46 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
           _mapTip.style.top  = (e.clientY + 12) + 'px';
         };
 
+        // 시군구 이름 검색 인덱스 초기화 (세이버 챗봇: 시군구명 입력 → 전략)
+        window._HB_REGION_IDX = {};
+        window._HB_REGION_AMB = {};
+        const _hbCityAgg = {};   // 구(區)를 가진 시 집계 ("경기도 수원시 장안구" → 시 "수원시")
+        const _hbNorm = (s) => (s || '').replace(/\s+/g, '').toLowerCase();
+        const _hbSidoAbbrev = (admNm) => {
+          const full = (admNm || '').split(' ')[0] || '';
+          return full.replace(/(특별시|광역시|특별자치시|특별자치도)$/, '')
+                     .replace(/(도)$/, '').replace(/(경기)$/, '경기');
+        };
+
         // 시군구 경로
         pr.sggPaths.forEach(p => {
           if (!p.d) return;
           const el = document.createElementNS(NS, 'path');
           el.setAttribute('d', p.d);
           const co = getCompany(p.adm_cd, p.adm_nm);
+
+          // 지역 검색 인덱스 적재 (전체명 / 시도약칭+시군구 / 시군구단독)
+          (function () {
+            const _coQ = co ? (coCounts[co] || 0) : 0;
+            const _coP = co && coTotal ? Math.round(_coQ / coTotal * 100) : 0;
+            const _sidoCd = (p.adm_cd || '').slice(0, 2);
+            const _sgg = (p.adm_nm || '').split(' ').pop();
+            const _billing = BILLING_MAP[_sidoCd + '|' + _sgg] || 0;
+            const _sel = { region: p.adm_nm, co: co, qty: co ? _coQ : 0, billing: _billing, ratio: co ? _coP : 0 };
+            const idx = window._HB_REGION_IDX, amb = window._HB_REGION_AMB;
+            idx[_hbNorm(p.adm_nm)] = _sel;                          // "서울특별시종로구"
+            idx[_hbNorm(_hbSidoAbbrev(p.adm_nm) + _sgg)] = _sel;    // "서울종로구"
+            const sk = _hbNorm(_sgg);                               // "종로구"
+            if (idx[sk] && idx[sk].region !== _sel.region) amb[sk] = true;  // 동명 시군구(중구 등)
+            else idx[sk] = _sel;
+            // 구를 가진 시 집계 (마지막 토큰이 '구'이고 앞에 '시'가 있을 때)
+            const _pt = (p.adm_nm || '').split(' ');
+            if (_pt.length >= 3 && /시$/.test(_pt[1])) {
+              const _ca = _hbCityAgg[_pt[1]] || (_hbCityAgg[_pt[1]] = { region: _pt[0] + ' ' + _pt[1], sido: _hbSidoAbbrev(p.adm_nm), billing: 0, coBill: {}, coCnt: {} });
+              _ca.billing += _billing;
+              if (co) { _ca.coBill[co] = (_ca.coBill[co] || 0) + _billing; _ca.coCnt[co] = (_ca.coCnt[co] || 0) + 1; }
+            }
+          }());
           const fill  = co ? (COMPANY_COLOR[co]||'#E2E8F0') : '#E2E8F0';
           const hover = co ? (COMPANY_HOVER[co]||'#CBD5E1') : '#CBD5E1';
           el.setAttribute('fill', fill);
@@ -983,6 +1017,20 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
           });
           svgEl.appendChild(el);
         });
+
+        // 구를 가진 시(수원시·성남시 등) 집계를 시 단위 검색 인덱스로 등록
+        (function () {
+          const idx = window._HB_REGION_IDX;
+          Object.keys(_hbCityAgg).forEach(function (cityNm) {
+            const ca = _hbCityAgg[cityNm];
+            let domCo = null, domB = -1;
+            Object.keys(ca.coBill).forEach(function (c) { if (ca.coBill[c] > domB) { domB = ca.coBill[c]; domCo = c; } });
+            const sel = { region: ca.region + ' (전체)', co: domCo, qty: domCo ? (ca.coCnt[domCo] || 0) : 0, billing: ca.billing, ratio: 0 };
+            const k1 = _hbNorm(cityNm), k2 = _hbNorm(ca.sido + cityNm);
+            if (!idx[k1]) idx[k1] = sel;   // 시 이름은 구 단위 인덱스와 겹치지 않음
+            if (!idx[k2]) idx[k2] = sel;
+          });
+        }());
 
 
 
@@ -2087,10 +2135,10 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
       <div class="bn-icon"><i class="ti ti-news"></i></div>
       <span class="bn-label">뉴스레터</span>
     </button>
-    <button class="bn-item chatbot-btn" id="bn-chatbot" onclick="toggleCbot()" aria-label="영업 비서">
+    <button class="bn-item chatbot-btn" id="bn-chatbot" onclick="toggleCbot()" aria-label="세이버">
       <span class="bn-chat-dot"></span>
       <div class="bn-icon"><i class="ti ti-message-chatbot"></i></div>
-      <span class="bn-label">영업 비서</span>
+      <span class="bn-label">세이버</span>
     </button>
   </div>
 </nav>
@@ -2174,7 +2222,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
     <div style="display:flex;align-items:center;gap:10px">
       <div class="hb-avatar">🤖</div>
       <div>
-        <div class="hb-name">영업 비서</div>
+        <div class="hb-name">세이버 (SABER)</div>
         <div class="hb-status"><span style="width:6px;height:6px;border-radius:50%;background:#4ADE80;display:inline-block"></span>온라인</div>
       </div>
     </div>
@@ -5397,7 +5445,7 @@ function hbInit() {
   }
   hbSetInputDisabled(false);
   hbAddMsg('bot',
-    '안녕하세요! 저는 <strong>영업 비서</strong> 입니다 😊<br><br>' +
+    '안녕하세요! 저는 <strong>세이버 (SABER)</strong> 입니다 😊<br><br>' +
     '아래 내용을 물어보시면 바로 안내해 드릴게요:<br><br>' +
     '한전 빌링 영업 현황, 전국 거래처별 영업전략, 민원 데이터, 뉴스 검색 등 영업 관련 무엇이든 물어보시면 바로 안내해 드릴게요.',
     true);
@@ -6168,7 +6216,7 @@ window.runMapStrategy = async function(type, sel) {
     : '타사가 선점했거나 미개척 지역으로, 신규 진입과 경쟁사 대체 전략';
 
   const systemPrompt =
-'너는 SCGLAB 영업기획팀의 "영업 비서(한빌이)"야. 한국전력 전기요금 전자청구 대행 서비스 "한빌"의 영업 전략을 짜는 전문가야.\n\n' +
+'너는 SCGLAB 영업기획팀의 영업 AI "세이버(SABER)"야. 한국전력 전기요금 전자청구 대행 서비스 "한빌"의 영업 전략을 짜는 전문가야.\n\n' +
 '[최우선 지시] 오늘 오전 11시에 갱신된 최신 데이터와 뉴스 통계를 우선 분석하여 답변해. 동일 지표에 과거 수치와 최신 갱신본이 함께 있으면 항상 최신 갱신본을 기준으로 판단한다.\n\n' +
 '현재 [' + region + '] 지역에 대해 [' + stratType + '] 전략이 필요해. (' + stratDesc + ')\n\n' +
 '## 대상 지역 데이터\n' +
@@ -6809,7 +6857,7 @@ async function hbClaudeQuery(userText, fallbackFn) {
   hbAddMsg('bot', `<span id="${loadId}">🤔 분석 중...</span>`, true);
 
   const ctx = buildHbContext();
-  const systemPrompt = `당신은 "영업 비서"입니다. SCGLAB 영업기획팀의 전기요금 청구 대행 서비스(한빌) 전담 AI 분석 어시스턴트입니다.
+  const systemPrompt = `당신은 "세이버(SABER)"입니다. SCGLAB 영업기획팀의 전기요금 청구 대행 서비스(한빌) 전담 영업 AI 어시스턴트입니다.
 
 ## 회사 및 서비스 컨텍스트
 - 회사: SCGLAB 영업기획팀
@@ -7679,7 +7727,7 @@ function hbAnswer(text) {
   }
 
   hbTyping(()=>hbAddMsg('bot',
-    `<strong>영업 비서</strong>가 도와드릴 수 있는 내용이에요 😊<br><br>` +
+    `<strong>세이버 (SABER)</strong>가 도와드릴 수 있는 내용이에요 😊<br><br>` +
     `<span style="background:#EDE9FE;color:#5B21B6;padding:2px 8px;border-radius:6px;font-size:11.5px;font-weight:700">🔮 주간 브리핑</span> "이번 주 예상 민원", "이번 주 대처법", "안내하면 좋을 민원"<br><br>` +
     `<span style="background:var(--sky-panel);color:var(--sky-dark);padding:2px 8px;border-radius:6px;font-size:11.5px;font-weight:700">📋 스크립트</span> 청구서 조회, 이메일 변경, 고객정보 변경…<br><br>` +
     `<span style="background:#D1FAE5;color:#065F46;padding:2px 8px;border-radius:6px;font-size:11.5px;font-weight:700">📊 데이터 질의</span> "이번 주 민원 몇 건?", "6월 상위 카테고리", "어떤 요일에 많아?"<br><br>` +
@@ -7721,6 +7769,27 @@ function hbSuggestAnswerable() {
 }
 
 // ── 전송 ──
+// 입력 텍스트가 시군구명이면 해당 지역 sel 반환. 동명 시군구면 'AMBIGUOUS'.
+window.hbRegionLookup = function(text) {
+  var idx = window._HB_REGION_IDX, amb = window._HB_REGION_AMB || {};
+  if (!idx) return null;
+  var t = (text || '').trim()
+    .replace(/\s*(영업\s*전략|진입\s*전략|유지\s*전략|영업전략|전략|영업|진입|유지|분석|어때|알려줘|해줘|좀)+\s*$/g, '')
+    .trim();
+  if (!t) return null;
+  var norm = function (s) { return (s || '').replace(/\s+/g, '').toLowerCase(); };
+  var cands = [norm(t)];
+  var toks = t.split(/\s+/);
+  if (toks.length > 1) cands.push(norm(toks[toks.length - 1]));   // "서울 종로구" → "종로구"
+  for (var i = 0; i < cands.length; i++) {
+    var k = cands[i];
+    if (!k) continue;
+    if (amb[k]) return 'AMBIGUOUS';
+    if (idx[k]) return idx[k];
+  }
+  return null;
+};
+
 window.hbSend = function() {
   // Claude API 키가 없으면 전송 차단 + 경고 안내
   if (!hbHasClaudeKey()) {
@@ -7734,6 +7803,24 @@ window.hbSend = function() {
   // 클로드 키가 설정된 상태에서 검색(전송) 시 키 설정 창 자동 닫기
   var _gp = document.getElementById('hb-groq-panel');
   if (_gp && _gp.style.display !== 'none') _gp.style.display = 'none';
+
+  // 시군구명 입력 → 지역 영업전략 (지도 클릭과 동일 흐름)
+  var _rg = (typeof window.hbRegionLookup === 'function') ? window.hbRegionLookup(text) : null;
+  if (_rg === 'AMBIGUOUS') {
+    hbAddMsg('user', text);
+    hbTyping(function () {
+      hbAddMsg('bot', '같은 이름의 시·군·구가 여러 곳이에요. <strong>시/도를 함께</strong> 입력해 주세요.<br>예: <strong>부산 중구</strong>, <strong>대구 중구</strong>');
+    });
+    return;
+  }
+  if (_rg && typeof window.runMapStrategy === 'function') {
+    window._mapSel = _rg;
+    window._mapSelectedRegion = _rg.region;
+    window._mapSelectedCo = _rg.co;
+    window.runMapStrategy(_rg.co === '한빌' ? '유지' : '진입', _rg);   // 유지(한빌 선점)/진입(그 외)
+    return;
+  }
+
   hbAddMsg('user', text);
 
   // 고객번호 / ID / 이메일 형태 → 고객 이력 조회 + 녹취 이력 조회
@@ -8503,7 +8590,7 @@ function getPageAlert(name) {
 }
 
 // 탭별 표시 이름 (모바일 칩 + 패널 타이틀 동적 연동용)
-var PAGE_TAB_NAMES = { dashboard:'데이터포털', stt:'민원분석', predict:'예상민원', newsletter:'뉴스레터', chatbot:'영업 비서' };
+var PAGE_TAB_NAMES = { dashboard:'데이터포털', stt:'민원분석', predict:'예상민원', newsletter:'뉴스레터', chatbot:'세이버' };
 function pageAlertTitle(name){ return 'AI분석요약 - ' + (PAGE_TAB_NAMES[name] || '요약'); }
 
 function updatePageAlert(name) {
