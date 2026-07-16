@@ -585,7 +585,7 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
   <nav class="sb-nav">
     <div class="ni on" onclick="goSec('dashboard',this)"><i class="ti ti-dashboard"></i>데이터 포털</div>
     <div class="ni" onclick="goSec('stt',this)"><i class="ti ti-microphone-2"></i>AI 민원분석</div>
-    <div class="ni" onclick="goSec('newsletter',this)"><i class="ti ti-news"></i>뉴스레터<span class="nb">2</span></div>
+    <div class="ni" onclick="goSec('newsletter',this)"><i class="ti ti-news"></i>뉴스레터</div>
   </nav>
   <div class="sb-foot">
     <strong>SCGLAB 영업기획팀 관리</strong>
@@ -6727,6 +6727,12 @@ function buildHbContext() {
   lines.push('  - 복지·대가족·출산 할인, 세금계산서·현금영수증, 단전/복전, 재해 감면');
   lines.push('한빌에서 직접 처리 가능(셀프서비스): 청구서 등록/해지·조회, 미납 조회, 이메일/휴대폰번호 변경, 청구수단(모바일↔이메일) 전환, 청구서 재발송');
   lines.push('→ 따라서 위 "한전 소관" 민원은 한빌이 처리할 수 없으므로, 분석·개선 제안 시 "한전ON 안내·카카오 채널 자동응답으로 디플렉션하여 불필요한 전화 인입을 줄이는" 관점으로 다룰 것. 한빌이 직접 처리한다고 제안하지 말 것.');
+  try {
+    if (typeof _hbRouteCounts === 'function') {
+      const rc = _hbRouteCounts();
+      if (rc.total) lines.push(`[처리주체 분포(실측) — STT ${rc.total}건] 한전 소관 약 ${rc.kepcoPct}%(${rc.한전}건, 디플렉션 대상) · 한빌 셀프 처리 ${rc.한빌}건 · 기타 ${rc.기타}건`);
+    }
+  } catch(e) {}
 
   // 주별
   if (typeof DB !== 'undefined' && DB.weeks) {
@@ -8291,6 +8297,28 @@ function renderSTTVOC() {
   el.innerHTML = ch + voc;
 }
 
+// ─── 처리주체(한전 vs 한빌) 라우팅 — STT 카테고리 코드 기준 ───
+// 한전(KEPCO) 소관: 명의·주소·계약정보·자동이체 등(한빌 직접 처리 불가 → 한전ON/☎123 안내, 디플렉션 대상)
+// 한빌 처리 가능(셀프): 청구서 등록/해지/조회, 이메일·전화·휴대폰 변경, 재발송, 조회 등
+var STT_ROUTE = {
+  F1:'한전', F2:'한전', A4:'한전', B1:'한전', Y2:'한전',
+  A1:'한빌', A2:'한빌', A3:'한빌', B2:'한빌', B3:'한빌', B4:'한빌',
+  C1:'한빌', C2:'한빌', C3:'한빌', D1:'한빌', D2:'한빌', D3:'한빌',
+  E1:'한빌', G1:'한빌', J1:'한빌'
+  // Z1(기타)·Y1(데이터작업)·Y3(빌링사이전) → 기타
+};
+// STT_RAW 전체에서 처리주체 분포 집계(모든 통화 기준 → 재주입 시 자동 갱신)
+function _hbRouteCounts() {
+  var rc = { 한전:0, 한빌:0, 기타:0 };
+  if (typeof STT_RAW !== 'undefined' && STT_RAW) {
+    STT_RAW.forEach(function (r) { rc[STT_ROUTE[r.c] || '기타']++; });
+  }
+  var handled = rc.한전 + rc.한빌;
+  rc.total = handled + rc.기타;
+  rc.kepcoPct = handled ? Math.round(rc.한전 / handled * 100) : 0;  // 한빌·한전 처리대상 중 한전 비중
+  return rc;
+}
+
 // ─── STT 기반 서비스 개선 제안 ───
 function renderSTTImprovements() {
   var sec = document.getElementById('stt-improve-section');
@@ -8315,6 +8343,18 @@ function renderSTTImprovements() {
     Y1:'데이터 생성·수정', Z1:'기타'
   };
   function catLabel(c){ return CAT_LABEL[c] || c; }
+
+  // ⓪ 한전 이관 대상 콜 디플렉션 (STT_RAW 처리주체 분류 실측)
+  var _rc = _hbRouteCounts();
+  if (_rc.한전 > 0) {
+    suggestions.push({
+      priority: '1순위', color: '#EF4444', icon: 'ti-transfer-out',
+      title: '한전 이관 대상 콜, 카카오 자동응답으로 디플렉션',
+      stat: '처리주체 분류상 한전 소관(명의·주소·자동이체 등) ' + _rc.kepcoPct + '% (' + _rc.한전 + '건)',
+      desc: '명의·주소·자동이체 변경 등은 한빌이 직접 처리할 수 없고 한전ON/☎123 안내만 반복됩니다. 카카오 채널 자동응답(한전ON 가이드 링크)으로 선제 안내하면 불필요한 상담원 연결을 줄일 수 있습니다.',
+      effect: '한전 이관 안내 반복 콜 감소, 전화 인입 디플렉션'
+    });
+  }
 
   // ① 최다 접수 민원 이슈 (topIssues)
   if (ai && ai.topIssues && ai.topIssues.length) {
