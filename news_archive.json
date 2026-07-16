@@ -1,9 +1,369 @@
 {
-  "updated_at": "2026-07-15T04:35:50.664Z",
+  "updated_at": "2026-07-16T05:35:43.446Z",
   "source": "Google News RSS",
   "query": "\"전기요금\" OR \"한전\" OR \"전자청구서\" OR \"에너지바우처\" OR \"에너지정책\" OR \"도시가스\" OR \"가로등\" OR \"보안등\" OR \"시설물관리\" OR \"도로조명\" OR \"탄소중립포인트\" OR \"에너지 마일리지\" OR \"종이고지서\" OR \"모바일 고지서\" OR \"건물에너지관리솔루션\" OR \"전자문서중계사업자\" OR \"구좌분리\" OR \"도로과\" OR \"전수표찰\" OR \"에너지 절감 정책\" OR \"우리집 에너지 컨설팅\" OR \"빗물받이 관리 솔루션\" OR \"수목관리솔루션\" when:3d || (\"포인트\" OR \"마일리지\" OR \"전수조사\" OR \"탄소중립\" OR \"탄소절감활동\") (\"지자체\" OR \"지방자치\" OR \"지방정부\" OR \"시청\" OR \"도청\" OR \"군청\" OR \"구청\" OR \"한전\" OR \"한국전력\" OR \"전기요금\" OR \"에너지\") when:3d",
-  "count": 164,
+  "count": 200,
   "articles": [
+    {
+      "title": "한전, 국가 에너지 AI 생태계 견인한다… '에너지 AI 혁신포럼' 출범",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE84azFMTkVraTNhUXpLWE85UmtoQXB0Tm9RSE1wbDZKejZKcnFTdF8tazV3RG90elI4c21SME9Xb2dfbjdfTEo4WWlNb1N2WG9KWFhrdXNSTTJwZ2F4ZENmbDdYZG9MZTN6d3IwUkc5elU3Zw?oc=5",
+      "date": "2026-07-16",
+      "source": "에너지데일리",
+      "category": "energy",
+      "summary": [
+        "한전, '에너지 AI 혁신포럼' 출범해 국가 AI 생태계 견인함",
+        "공공 에너지 데이터·AI 활용 확대는 전자청구 고도화 기회로 전망"
+      ],
+      "ai": true
+    },
+    {
+      "title": "전기요금 내려간다더니 우리 가게는 왜 그대로일까?",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9mZDhQX1VuS0JGTkZnMkgxUFlQYXNEVHM3dVhsaF9QeGVkMGVwN3RrYTRiMmVKVXpEbU5zWDYxSWlNSDdyUS1TMmpSR0oyMEkwVDVnYnVnZGZWYlpxR21zWEw4cHFuYm5Ta2Nr?oc=5",
+      "date": "2026-07-16",
+      "source": "KB Think",
+      "category": "energy",
+      "summary": [
+        "전기요금 인하 발표에도 자영업 체감 요금 그대로라는 지적",
+        "복잡한 요금체계 이해 부담, 청구서 명료화 서비스 수요 시사"
+      ],
+      "ai": true
+    },
+    {
+      "title": "에스씨지랩, 도시가스 이사 예약 서비스 ‘가스고’ 정식 오픈",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBhVFlyc2VCS3dJeE8yZ2pYOU43VVBNcDJpcHd1ajlrRWh4Z0lueHQySjJzLW9iQVEwbEtkV0M5Vl9BQnhRREFaMjZjcWpDY0N6OElnX0psUmlMRkhwdm5rSmh0SkpoOTIyVi1iSWhB0gFwQVVfeXFMTVVUYmxvTkJDX19jeDgzVFVjZ3B0NXhZYkVKUXZhQndmVzZ5X3QtUEZjc1NvZE03OF9CSHBmX21yMERBc29kMmFOdmo2aEFFRDBpdWhwQmRBZDNIb3Y1cHFkRGQydU1SMnNJTXZPT2Q1Ng?oc=5",
+      "date": "2026-07-16",
+      "source": "에너지플랫폼뉴스",
+      "category": "energy",
+      "summary": [
+        "에스씨지랩, 도시가스 이사 예약 서비스 '가스고' 정식 오픈",
+        "공공요금 생활밀착 디지털화 흐름, 전자청구 연계 참고 필요"
+      ],
+      "ai": true
+    },
+    {
+      "title": "\"에너지와 AI의 만남\" 한전, 신뢰 기반 공공 AI 혁신포럼 닻 올렸다",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE83NTlGUWhHelNCTEY3UXJDTE1ucUpENndLVEdHazdlZjBXX2tXb2kzTE01aTM2S1F3b1JWTnkzMS1UdXRTbUx4TnVtVG1GbDRhX19sZ0ppdUxnZkFnQkRHQ213Rkk?oc=5",
+      "date": "2026-07-16",
+      "source": "에너지안전신문",
+      "category": "energy",
+      "summary": [
+        "한전, 신뢰 기반 공공 AI 혁신포럼 공식 출범함",
+        "공공 AI 신뢰성 강조 기조, 빌링 데이터 보안 정책과 연계 전망"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한수원, 서울 관악구에 '안심가로등 플러스' 점등",
+      "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFAzNnBZSjZqRVRFRlhBdEZJZUg3N2E0bzRYY0ZERVpOOFM5SFFUMFMxSW9Pa2RDU3UtSmo2bU1odjJIYy1ySHFNVWd5bnYtbTNZOHBVRk02Nlp6SVg4T3RQZHU3Yw?oc=5",
+      "date": "2026-07-16",
+      "source": "국토일보",
+      "category": "local",
+      "summary": [
+        "한수원, 서울 관악구에 '안심가로등 플러스' 점등함",
+        "에너지 공기업 지자체 안전 인프라 협력 사례로 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한수원, 관악구에 '안심가로등 플러스' 설치…범죄 예방 안전망 구축",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9rQkx0bXY2ODlaM0VpbklOZ21EX0dQZEtFMW1OQVpjRUdzbC0wZFhSbkdjbWltX29KX18yS05LSTJEN0ZMSDdHZGZ5V2s5OFB4VFoyazRvRGozLVVBRUNKNHpkTWxua3p3RjU4?oc=5",
+      "date": "2026-07-16",
+      "source": "BBS불교방송",
+      "category": "local",
+      "summary": [
+        "한수원, 관악구에 '안심가로등 플러스' 설치해 범죄예방 안전망 구축",
+        "공기업-지자체 협력 모델, 지자체 사업 제휴 시사점"
+      ],
+      "ai": true
+    },
+    {
+      "title": "도시가스 건설현장 작업중지권 보장·위험요인 개선 협력",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5oY1FvRlBGeUJQaW9rdGJ2VHduOEFud0dnS09NbldzREx4dmhNckNhLVp4WXRXQ2I4RWppd05WaEhjdU1zcl9vZnRjdU5HeERLXy1WdUNNdzhGZ1hjREJMZjl0SzdWdFlVMTJiZ3pn0gFwQVVfeXFMTndiSzFVSGFNY1dJZklXRFk1M1dVZlN0X0NfbGNXaHBvUDRpM045XzZOblREUy1LLUtiSHcxZUczU3pKVnpaNkNOVlBlLUJjUm9GZkhQZElzMHpkWEh6R3hBeW9NMGVrRVpjQVFYTkpHVQ?oc=5",
+      "date": "2026-07-16",
+      "source": "에너지플랫폼뉴스",
+      "category": "energy",
+      "summary": [
+        "도시가스 건설현장 작업중지권 보장·위험요인 개선 협력 추진",
+        "에너지 현장 안전 강화 정책 동향으로 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전KDN, 일렉스 베트남 2026 참가… 에너지ICT 솔루션으로 동남아 시장 공략",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFBrU0hUcEQ3LUNtSzBxTF9RalFaRlV6RnR6ejltMmtRVzN0cVRKenNQMF9VN2NUSDdoSDZZaVE3eGRfdEJDRFdqTmVBMmFVMXRLRWU1bWh1endqQnFucUVhZWFTSTI0TjNYM1FiSzBaUGFPQQ?oc=5",
+      "date": "2026-07-16",
+      "source": "에너지데일리",
+      "category": "energy",
+      "summary": [
+        "한전KDN, 일렉스 베트남 2026 참가해 동남아 시장 공략",
+        "에너지ICT 솔루션 해외 확장, 빌링 기술 수출 가능성 시사"
+      ],
+      "ai": true
+    },
+    {
+      "title": "베트남 흔든 K-전력망 기술…한전KDN, 동남아 영토 넓힌다",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBfZ0RYaGc3SE96OWlINTJEVU9YLVlhOW5lNHpCcnNPdVBCNTBKM3NNalhPT01ZemVJaXlRMzVELVFGNmVVVlVOaFVwOTBCclhTd05FYlE5TUVoSm9mdVE5SEVzQmU?oc=5",
+      "date": "2026-07-16",
+      "source": "에너지안전신문",
+      "category": "energy",
+      "summary": [
+        "한전KDN, K-전력망 기술로 동남아 영토 확대함",
+        "전력 ICT 해외 진출 가속, 관련 사업 확장 흐름 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한수원, ‘안심가로등 플러스’ 점등… 안전·친환경 모두 잡았다",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE5FeU1iSVEwWWdJSkhDRkxYeG9tdlVpWDRMR2hTZ3RCZnhLdk43cTFYOEpsUEd4YVJKUTB0M25PWEVzektRMUZ0XzBwMzNhUWF0U2lpMFdrU1JIcUMyQTZvS1cxb3h3TDBqQXItcEtidDZLZw?oc=5",
+      "date": "2026-07-16",
+      "source": "에너지데일리",
+      "category": "local",
+      "summary": [
+        "한수원, '안심가로등 플러스' 점등해 안전·친환경 동시 달성",
+        "공기업 친환경 안전 인프라 확대 동향으로 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "[친절한 경제] 전기요금에 시간대별 차등?…현실적 문제는",
+      "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE04Y09HdE5XYkJqNEE2TUlySXN3X1dkb0lJMXZEcFFiekJGRkJCV0lEZ3l1c1h3am55Y1pRTXBscG9qM0puRWhRQWk4ODE5Rzg?oc=5",
+      "date": "2026-07-16",
+      "source": "v.daum.net",
+      "category": "energy",
+      "summary": [
+        "전기요금 시간대별 차등제 도입 시 현실적 문제 지적",
+        "복잡 요금제 확대 시 청구서 이해 지원 서비스 수요 전망"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전KDN, 베트남서 에너지ICT 기술력 공개…동남아 협력 확대",
+      "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBwN1hja0VkWEFsaV9RS01lUHRjTjhoQmFmR0dwSE5TQnJsYlp6MURPWk9oZXA2WXE0ZnZ6OUcyd1VjTFV5YkFJaFBuZG9XcVpTVXRLOHFvN2tCOEtmQWJMNDBMYw?oc=5",
+      "date": "2026-07-16",
+      "source": "국토일보",
+      "category": "energy",
+      "summary": [
+        "한전KDN, 베트남서 에너지ICT 기술력 공개하고 협력 확대",
+        "에너지 ICT 해외 협력 강화 흐름으로 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "방학 끼니 걱정 던다..한전산업개발 당진사업처, 결식아동 도시락 200만원",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5PczV3Y0lOVGtQdWdGQTBQRjRtMUg2RGxaXzFsMjRWUVZpNUtDTHVLbmF3TlZpczRwMHpsdFpZd2NzanZIRU1TLXdNc1YwQlJiU2RtVGlsbU5GaFVSSEdiYktlbnVCclVD?oc=5",
+      "date": "2026-07-16",
+      "source": "당진신문",
+      "category": "energy",
+      "summary": [
+        "한전산업개발 당진사업처, 결식아동 도시락 200만원 지원",
+        "에너지 공기업 지역 사회공헌 활동 동향으로 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "'에너지 AI 혁신포럼' 출범 … 한전, 공공 AI 정책·기술 논의 본격화",
+      "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1QVUZMZ05yLXlqbEdPRWRjYmFGMzJ3Wk1MaTR2Yjk4VGNWalpYNWhPN05hX2hGQl81bl8zWG96R01uOFRFNGlnUkNTeEtZNkdEcks0MEJxellGd2htYVE1RUlMcHg1WThGVFlGYVJCYmlvUWd6T1BESkdFVdIBgAFBVV95cUxPNlg2RUVIM1I3SFU2MGlTV2Rvdi1KQzMwVEF0QmpvdnAxeVZNZjVWYWtOZGs3VzRHVVZZMUJZV0FHN3dDZXZBeDh5X25RbkJRQU96SUJ2d0VlYXNFcWEtUHJEOXgtVWRBTE9FdWtPX2k2NG9hTzBxUE1YZFpBUVVXdg?oc=5",
+      "date": "2026-07-16",
+      "source": "뉴데일리",
+      "category": "energy",
+      "summary": [
+        "'에너지 AI 혁신포럼' 출범, 한전 공공 AI 정책·기술 논의 본격화",
+        "공공 AI 정책 구체화, 전자청구 AI 접목 방향 참고 필요"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전KDN, 인공지능 기반 배전망 ESS 구축사업 참여",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBoRG5FckpTTTdzYlR0SDhPQm5zeUdTZG85RnktNklJblZmOUNXa1JlR1NjYXU3QW5kVVNzU1RNV21Zc3FIZUNjWlJrODF5Y0N2MVhfMEN0dkxsUFRqXzJzOHFDck8wMFM40gFsQVVfeXFMT0duZDJkRkdfaTFBYlZTSXdKcXZPNWhnU2tnZGNGcWpVVGExSDJXY2lkU1RmVXVhLUkzM2lNRkhSeGtuV19YblZkOTN0X1F5cE1hbFhYOGZXUVRoMVVFZDhMa2JUZ18yOWtRLVdT?oc=5",
+      "date": "2026-07-16",
+      "source": "정보통신신문",
+      "category": "energy",
+      "summary": [
+        "한전KDN, AI 기반 배전망 ESS 구축사업 참여함",
+        "AI·에너지 인프라 사업 확대 동향으로 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "빚 갚을 때까지 전기 끊는다?…빅토리아 전기요금 체납 고객 피해 우려",
+      "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNMlhuMkYySzZLbXJZRjU1YWdCR0FaRDh5bVdPQXBnRU4zcWVFbjUyQVNLNjZPM0RNQ2ZSeWlrZC1yWXhpeFhLWDBoSlpJNXlTNXFiQUZIYjRuYWNVMkRoUDh6OHFHZnRMWThHZnRzSVpVcDR3ZUNGT1Jnby1iLW5lbnZRZ2gxSzFBSFow?oc=5",
+      "date": "2026-07-16",
+      "source": "SBS",
+      "category": "energy",
+      "summary": [
+        "호주 빅토리아, 전기요금 체납 고객 단전 피해 우려 제기",
+        "체납·단전 관리 이슈, 요금 청구·안내 체계 중요성 시사"
+      ],
+      "ai": true
+    },
+    {
+      "title": "에스씨지랩, 도시가스 이사 예약 서비스 ‘가스고’ 정식 출시",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBNeC1BeVdzaUNZV0FMREx3c29ILVpEczFMRG84aW5kUXpZZW1yMS10cFZHc21OVldaLWVhV2Y2SGtMNnF0Q0g3RV9PX3hZT0U1T2x5RnJqY09rejgxaWRBbDM4TW1xV09Zb0F3MWlfbUw?oc=5",
+      "date": "2026-07-16",
+      "source": "에너지코리아뉴스",
+      "category": "energy",
+      "summary": [
+        "에스씨지랩, 도시가스 이사 예약 '가스고' 정식 출시",
+        "공공요금 생활 서비스 디지털화 흐름 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "노·정 '직고용' 660명 합의…한전KPS, 인건비 부담 '빨간불'",
+      "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFB3LVpKXzQyRFNoREVtN2M2MEZrNEtZTVhoRVJmbUVFbmg3S0tIZjZ4NVplZUpxaUZqMFUweUxzY3B1blctRVMteVg4bm4tb2s?oc=5",
+      "date": "2026-07-16",
+      "source": "딜사이트",
+      "category": "energy",
+      "summary": [
+        "노·정 직고용 660명 합의로 한전KPS 인건비 부담 우려",
+        "에너지 공기업 인력·비용 구조 변화 동향으로 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "순천시, 탄소중립포인트제 탄소모아 탄탄e 운영",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9OWDBzSGsxNmFYcG9MQlJHZ0ZXanM3bWJfaUFKSmhWRWc2R1pBc18yTEF3c0J1TlRsaG1VdlI5eDlXMDRoUWR1UjBmbENkdFpiNDhybUVZTnRfdTlxWjRWalNMUkRMU2xOdDd3?oc=5",
+      "date": "2026-07-16",
+      "source": "일간투데이",
+      "category": "local",
+      "summary": [
+        "순천시, 탄소중립포인트제 '탄소모아 탄탄e' 운영",
+        "지자체 탄소중립 포인트 사업, 전자청구 연계 제휴 기회 시사"
+      ],
+      "ai": true
+    },
+    {
+      "title": "전기차 플러스DR이 만드는 새로운 '슬기로운 에너지 소비문화' 호응",
+      "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFA2ZHdDNm1ZSkxKM3dPcUNYeFZ1OXRaN29ySVBiaFg2bHhUdGJDNTY2SmdpZG9HWHhSZWhONGZXQWprQlBGeW9ReU8xdFE1Zw?oc=5",
+      "date": "2026-07-16",
+      "source": "전자신문",
+      "category": "energy",
+      "summary": [
+        "전기차 플러스DR로 슬기로운 에너지 소비문화 호응 확산",
+        "수요반응·에너지 절감 서비스 확대 동향으로 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전KDN, 베트남서 VPP·전력망 보안 기술 공개…동남아 공략 확대",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5IWTZ0R2drbFpZa2tqZ093eEdHem9zckJfM2FtRVNscXA1eG9JNjBjd0xJQV9Ya0FXR3E4blQ5S1E2dXc1QTZQMlI1aHBIWE15dkRxRzU1WlRER21BVERKbzBtdlY?oc=5",
+      "date": "2026-07-16",
+      "source": "베타뉴스",
+      "category": "energy",
+      "summary": [
+        "한전KDN, 베트남서 VPP·전력망 보안 기술 공개",
+        "전력 보안·VPP 기술 해외 진출 흐름으로 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "\"AI 도면부터 원전 보안까지\"… 한전KDN, 베트남서 동남아·글로벌 에너지 영토 확장 선언",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE95V2QwQW5kekhZOTF3RjF6TDVlZlVQWUx2V01XczduUFgtZDM3ZDFYOTI3Y1UyTTFONXd2dGROaDNKd2JIRFNwcFNnS0M1b1NFZk9UNjlXdElyb0d5RTNib0lKdHRoa0NYanc?oc=5",
+      "date": "2026-07-16",
+      "source": "청년투데이",
+      "category": "energy",
+      "summary": [
+        "한전KDN, 베트남서 AI 도면·원전 보안 등 에너지 영토 확장 선언",
+        "에너지 ICT 글로벌 확장 동향으로 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한국수력원자력, 관악구에 '안심가로등 플러스' 구축… 스마트 안전 인프라 확대",
+      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5jazVqWkxseENReFNKS0FGUVlkNkVFUUpTTGJPSWFHNjF3YXRVSVZXbnZXbENPckk2bktoQlRObWhZVUhrVmJKNklacGpqOGNncGI1ems0ZVo?oc=5",
+      "date": "2026-07-16",
+      "source": "더트래커",
+      "category": "local",
+      "summary": [
+        "한수원, 관악구에 '안심가로등 플러스' 구축해 스마트 안전 인프라 확대",
+        "공기업-지자체 스마트 인프라 협력 사례로 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한수원, 서울 관악구에 '안심가로등 플러스' 점등",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1XR1FQTm1CY3R5aU44b2Z6WDVFRmVVQWNhZjBORnJjUlRRUVVPYmpqNlI4S3A4SXd1cHRTS0tqREFkR2hvdVpvQkthbkRCejBFbll6YlFrMFRSSFRWLWsxUHFvNnY3TV9WZDVv?oc=5",
+      "date": "2026-07-16",
+      "source": "일간투데이",
+      "category": "local",
+      "summary": [
+        "한수원, 서울 관악구에 '안심가로등 플러스' 점등함",
+        "지자체 안전 인프라 협력 동향으로 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "전북도, 안전한 분산에너지 활성화 협력방안 모색",
+      "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFBXZkRkbG43Nk5IUW9fM2FjWkFzYkxFWnhtdHNTTTZQREg3NVlwNm0tTGVSTmRYRVg0Mk9GYS11clAtVHEzX25ndUhKcnphQQ?oc=5",
+      "date": "2026-07-16",
+      "source": "전자신문",
+      "category": "energy",
+      "summary": [
+        "전북도, 안전한 분산에너지 활성화 협력방안 모색",
+        "분산에너지·지자체 에너지 정책 동향으로 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전KDN, 일렉스 베트남 2026 참가…동남아 시장 공략",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9FWDBLdWFUSUdVdzdUWU95RnhPWEhYRnhmeXhPWnU4R3lFQkE2cDVSNkNoUzNSUzZYU0NzN2pnaldWUm1aY05jQ0lBU3d5VGg3MVhZY0JhQUp0VEk2R2c2LTgxZDR3WXlCYUpj?oc=5",
+      "date": "2026-07-16",
+      "source": "일간투데이",
+      "category": "energy",
+      "summary": [
+        "한전KDN, 일렉스 베트남 2026 참가로 동남아 진출함",
+        "전력 IT 해외수출 확대, 전자청구 솔루션 수출 잠재력 참고함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전, '에너지 AI 혁신포럼' 출범…국가 에너지 AI 생태계 견인",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE50cXpiVE0xbDIxOXZIcXRuc1hYRjk3UTBkeDBxYzhTbktqOVpRYjlGRHQtS3g0cGRzLTJpUHpHdFAwU1o1bmxfRDRIMmIxZ21vSzRoc1owNHJZQ29lT09wYdIBeEFVX3lxTFBUNk1HWjRPSFVqRzhyNVAzUUo2bGF3OHEtY2dHVzh4STkxNXdxSUhyYlZtb1JydkhtRjJDZzc4RDV5TUg0UHpnLXlRYTJlTWhEaFdPOEhpb0pyRGw0eTA0SnFOZ01TQjFaTDVrNmF0THVIRjQwZ1RLRQ?oc=5",
+      "date": "2026-07-16",
+      "source": "뉴시스",
+      "category": "energy",
+      "summary": [
+        "한전, 에너지 AI 혁신포럼 출범해 국가 AI 생태계 견인함",
+        "AI 기반 요금·빌링 자동화 흐름, 한빌 서비스 고도화 시사함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한수원, 관악구에 스마트 안심가로등 설치···야간 안전 인프라 확대",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5BYlZVS2FkeG9yVlZJa0JETy1GeTdaQXEyVk0zRExMMGFkekQtcEFmUmNDc2tISVNMZUxsMV9ZNWpzclhZQW9GOXpRa2F5TDZ6VVJpZWJTdHlTbU94dW4zY1ZzQW1xRTNxQ0U4V0J2WmTSAXRBVV95cUxOcVNYYlFteVYtV1ZEZDFETVZXSVpDbGx3bnJhZ0hVX245bnlfYlR3WTVXdVMxeWNfMHI5QXBlcVVpM0V3Y1N0SXZielBqUzI4TjY5bDJEcFVzT0REc0NpWW0wdHZJbEV6WUo2Sjl5WkZ4aEtNWQ?oc=5",
+      "date": "2026-07-16",
+      "source": "이뉴스투데이",
+      "category": "local",
+      "summary": [
+        "한수원, 관악구에 스마트 안심가로등 설치로 야간 안전 확대함",
+        "공공기관·지자체 인프라 협업 사례, 지자체 사업 접점 참고함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "‘도봉구민’ 에너지 절약 실천으로 상반기 2억8천만 에코마일리지 받아",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9kSVgyQkpUZFpZNWFrN01yVVM1Z1g2LWpLVlRqOGdJN3VMREI5NWp2SW5ETk9NYS0zZkZBNEVEQ3Q4b2N5ckZDQTJXMXdlblJHcHNOSWdNdTV1SFh2cUlDbGVSMkhDY1c4Q0Nv?oc=5",
+      "date": "2026-07-16",
+      "source": "시정일보",
+      "category": "local",
+      "summary": [
+        "도봉구민, 상반기 에너지 절약으로 2억8천만 에코마일리지 수령함",
+        "에코마일리지·전자청구 연계 프로모션 기회 발굴 가능함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "도봉구민, 상반기 에너지 절약으로 2억 8천만 에코마일리지 적립",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE45VEtpN2dSNFZhVTdnRjI2X0NhdW12SndZdWpBbzBDMGhwcVJoWXZvQnN3Z1lrakFONi1MTU5MMm90aVpxUGxFclNOSGtJeURuTFlsWEtzTFVZcDZCZ0w4WVRDRXRTRHVtZTExZjVjdzhfZw?oc=5",
+      "date": "2026-07-16",
+      "source": "웹이코노미",
+      "category": "local",
+      "summary": [
+        "도봉구민, 상반기 절약으로 2억8천만 에코마일리지 적립함",
+        "전자청구 전환 시 마일리지 연계 유인책 활용 검토함"
+      ],
+      "ai": true
+    },
     {
       "title": "한전KDN, 재생에너지 접속 난제 해소… 국가 전력망 안정화 총력",
       "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1UMFg3ZVF1LVQtSHg5d0taT3B1eXRfNXFxM2IxLTZVaGZURXA1RExoa0I4R21vb28zN0JpN0xLT2Z1Z3lFZUw0aC1pTnF1VGcxUmxWUXVGTmRES3dxZ2w3OWR0UkplTVk3YUhXTnRjRUdqZw?oc=5",
@@ -121,6 +481,174 @@
       "summary": [
         "경남 9만 가구 에너지 절약, 소나무 320만 그루 효과 달성함",
         "지자체 에너지 절감 성과는 전자청구 감축 캠페인 제안 근거 활용 가능"
+      ],
+      "ai": true
+    },
+    {
+      "title": "[단독] 中보다 비싼 전기료 피해 한전 떠났는데… 중동 전쟁에 ‘전기 직구’도 독 됐다",
+      "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPOXVLeHJ4b1FMR3FLeFhMZGM1cFIxSEs0MVJHc0pqOHJ5dUhsWDBFT2syWXhIZnpMVGpWSU1tSHF4V2g2NXJmQ3pTYy1PN2lwX3hDTkkzblMxM0ZfYWVMUWtHQ3lNNlhDU2pwTjJPMmF6aVFnRHpBVkxCbnhndGpPLW5JclhRNzhnSS1rNmRSdw?oc=5",
+      "date": "2026-07-15",
+      "source": "조선일보",
+      "category": "energy",
+      "summary": [
+        "한전 이탈 기업, 중동 전쟁으로 전기 직구도 위기 직면함",
+        "전력 조달·요금 불확실성 확대, 요금관리 수요 증가 전망함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "[창간13주년 국회토론회] 에너지 효율 10%만 높여도 반도체 전력공급 부담 확 줄일텐데...\"지속 가능한 에너지 문법 재설계하자\"",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5SX3F5VDY3Mll4VFJNSXVwZVpfMUVrd1MwMU9SUXNpM2ZrYUxvU3VqNXFMazU3cUcwaWdIU05lOWpmdEZKWGdVQmdBelAtMU9zY0ZBcGNxTTF2VXNrRWoyQ0R1OTE4bDQ?oc=5",
+      "date": "2026-07-15",
+      "source": "산경e뉴스",
+      "category": "energy",
+      "summary": [
+        "국회토론회, 에너지 효율 10% 개선으로 반도체 전력부담 완화 제안함",
+        "에너지 효율 정책 강화 흐름, 빌링 데이터 활용 여지 참고함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "목포시탄소중립지원센터, 하절기 에너지 절약 플로깅 캠페인",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE5rU2hZdjVTNEplOUNBQWI3VjExOXVLWTB0OUpDcU53eHVVcER3eDg2ZkMzRjVMUVk5eVFSblZocFQwRjNjc1dyajFzOF95YUpoSWltd0FkZTFuSURjZVZxZ1QxRHBBNXRZSmg5aEN2dU5CZw?oc=5",
+      "date": "2026-07-15",
+      "source": "에너지데일리",
+      "category": "local",
+      "summary": [
+        "목포시탄소중립센터, 하절기 에너지 절약 플로깅 캠페인 진행함",
+        "지자체 탄소중립 캠페인 확산, 지역 협업 채널 발굴 참고함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "AI·에너지·탄소중립을 한 번에, 미래융합 자격과정 열린다",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBEQ3BTXzVESi1acjBDcjJEd0pyM1Y4bW5raXUxbllMSWtUWEIwaEtCM2N1b1N0aG5WN3E0cXV6c0hUQXlSZF9tQmdmTnoteXNqa2plY2t6cVRQX0NQN2FtZ19RSmpLWTg5SWkwcEppOGHSAXBBVV95cUxQRENwU181REotWnIwQ3IyRHdKcjNWOG1ua2l1MW5ZTElrVFhCMGhLQjNjdW9TdGhuVjdxNHF1enNIVEF5UmRfbUJnZk56LXlzamtqZWNrenFUUF9DUDdhbWdfUUpqS1k4OUlpMHBKaThh?oc=5",
+      "date": "2026-07-15",
+      "source": "데일리굿뉴스",
+      "category": "local",
+      "summary": [
+        "AI·에너지·탄소중립 통합 미래융합 자격과정 개설함",
+        "에너지 인력·역량 강화 동향, 신사업 인재풀 참고함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "“탄소중립 선도 에너지 대전환의 섬 구축”",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFB5WTBNWVZVbGtDRHZ4RHEyeDJaSmJ1RXBYTnRfazljQzdtLUNVcEVYa2RmSTg1RkM3X3NQdmUtc3poX1V6S0l3ZmRvS0J1blVlaTdMaEJSUlhaeUgtN3FIaGFMWW5WalU?oc=5",
+      "date": "2026-07-15",
+      "source": "제민일보",
+      "category": "local",
+      "summary": [
+        "제주, 탄소중립 에너지 대전환의 섬 구축 추진함",
+        "지역 맞춤형 에너지 정책 확대, 지자체 사업 기회 참고함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "경남도, 탄소중립포인트 11억7900만원 지급",
+      "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE94VmljZWxhZENud0Fja1NoVlFaY1o5dnk4U3NUYlZSUF9uU28wTzdYbTlxclBYSUNKZ3VuNjlveUVpVzNnLTZQR2Q0SzBfX0FEOHFrSjByR2xNd0l5UTZDQ0tzdU9UaXlrTEhTZGVGNzlDSmJyU1J30gF3QVVfeXFMT3hWaWNlbGFkQ253QWNrU2hWUVpjWjl2eThTc1RiVlJQX25TbzBPN1htOXFyUFhJQ0pndW42OW95RWlXM2ctNlBHZDRLMF9fQUQ4cWtKMHJHbE13SXlRNkNDS3N1T1RpeWtMSFNkZUY3OUNKYnJTUnc?oc=5",
+      "date": "2026-07-15",
+      "source": "스트레이트뉴스",
+      "category": "local",
+      "summary": [
+        "경남도, 탄소중립포인트 11억7900만원 지급함",
+        "포인트 제도와 전자청구 연계 프로모션 기회 검토함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "경남도, 에너지 절약 실천 9만1290가구에 탄소중립포인트 11억7900만원 지급",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBtbEptcGFRbkliR3dnS2ZLeUxDV2Z2YTBBLTRab2kzYXhrdERfMk5ZLVhIRzQ1SlJHNGx2dm45eVBpVXFvYV9ocktZMXk1UUVCb2hDdzhwX0Vtenl5YVZxMjdWRWViVktHN1HSAW5BVV95cUxOMnJqZWg2WVpUUUVSS09DZks4cTU2T1FKNmhzeEtWVnZpMmY5OXQ4ckRTWVJZbVFvTTJ1cFRpbzlrUkRabkhsTThTaWFJNG5QWHhLa0JyNHVfbkZtajhpMjF5cjM4c1BCVlJwM0R4UQ?oc=5",
+      "date": "2026-07-15",
+      "source": "경남탑뉴스",
+      "category": "local",
+      "summary": [
+        "경남도, 절약 실천 9만1290가구에 탄소중립포인트 11억7900만원 지급함",
+        "대규모 참여 가구, 전자청구 전환 타깃 마케팅 참고함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "제주, '탄소중립·에너지 대전환' 선도 기지로…지역 맞춤형 성장엔진 가동",
+      "url": "https://news.google.com/rss/articles/CBMiowJBVV95cUxQT1NBWFFrNFo4ZTBGdll3UFZHbHV5X0gzUEtMeHVyRS11Zm40THppUXA2NXVmUVVJMXhQOUFpNjN0RVE5UDROLWQ2bEQtSXQ1YlBuQzJBRE9iN2tnQzFYcWZIRlR4YzU0ZnRmbmViNWNURWV6bUpoSFN6UWdLMDVuQ3FRN2hFTkZtUUIzZXRGTmN3bE9QRHJmWHhjbnRQMlp1VnB3X0Iyem01Wkh5dnY1LXRSUTB4SUR5OGZVS0pIVy16dHBiVUJzZ2FYVWw5NHpkNURoanFkYldPS1ZUODFGeE00ZTgtMzVxVDR2MGkxRjFQV0tBek1MeTFtOHlXNFVSdkhxNVY3clViMFEyUmlsb2pPQ0lpQVBBc3J0TkVvTzJlSjg?oc=5",
+      "date": "2026-07-15",
+      "source": "데일리안",
+      "category": "local",
+      "summary": [
+        "제주, 탄소중립·에너지 대전환 선도 기지로 성장엔진 가동함",
+        "지역 맞춤 에너지 전환 사업, 지자체 협업 접점 참고함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "靑 \"지방정부 환경미화원 적정임금 전수조사…과소지급 561건 적발\"",
+      "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE9teXo1MEZTRUhuY1RHaklGc1FTVzlWU1ZSWW5rODU5clpzU0xQOF9faE85NXEwanpydG9NaGJaV2xPdWZ6MlE?oc=5",
+      "date": "2026-07-15",
+      "source": "v.daum.net",
+      "category": "local",
+      "summary": [
+        "청와대, 지방정부 환경미화원 적정임금 과소지급 561건 적발함",
+        "에너지·빌링 무관, 공공행정 관리 강화 일반 동향임"
+      ],
+      "ai": true
+    },
+    {
+      "title": "경남도, 에너지절약 9만여 가구 참여... 탄소중립포인트 11억 7,900만 원 지급",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE8temFoRUZGOEZOREUzeFNUdS1kODJxS0ZvVDVZTm1Cd19WTERycHZHS09IdTlfMDhiZmVBeW05UldnWFRKT3JRUmFINUtnM2xuZ0Z3NnQ0Qk5XTjZvcDh0VVJtUTZFWkZKOGppdGJaZmzSAXBBVV95cUxPLXphaEVGRjhGTkRFM3hTVHUtZDgycUtGb1Q1WU5tQndfVkxEcnB2R0tPSHU5XzA4YmZlQXltOVJXZ1hUSk9yUVJhSDVLZzNsbmdGdzZ0NEJOV042b3A4dFVSbVE2RVpGSjhqaXRiWmZs?oc=5",
+      "date": "2026-07-15",
+      "source": "내외뉴스통신",
+      "category": "local",
+      "summary": [
+        "경남도, 절약 참여 9만여 가구에 탄소중립포인트 11억7900만원 지급함",
+        "포인트 참여 가구 대상 전자청구 연계 유인책 검토함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "경남도, 에너지절약 실천 가구에 탄소중립포인트 11억 7,900만 원 지급",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE5TenVnRkJnLXpSQl9iVGJUb0FLUVFrNUk0V3R2b3VKckVScG1oTG1ZSTVCVFlkMTVRMGVwUjVFV0VVdXlPeGtlcldwT1VUdXhpbTNnbWwxWU5lTVdYXzcwcFowdWZaQTZpeW9hNXRaejBPZw?oc=5",
+      "date": "2026-07-15",
+      "source": "웹이코노미",
+      "category": "local",
+      "summary": [
+        "경남도, 에너지 절약 실천 가구에 탄소중립포인트 지급함",
+        "지자체 인센티브 제도와 빌링 서비스 연계 참고함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "경남, 에너지 절감 9만1,290가구에 탄소중립포인트 11억7,900만원 지급",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1rSDZjRURFSjhSd2FGMHU5NVczWnJmOGZLcERrdHRQQ1h2SFotLXdOc3BzT2REbjk2aTZCMXJQVVZrUmlaamF5dlpnX1Y2YTJXaVlMaDhPNGlsZ0hyTVFfelhoamZYQWhXaXpodnl3?oc=5",
+      "date": "2026-07-15",
+      "source": "newfilenews.com",
+      "category": "local",
+      "summary": [
+        "경남, 9만1290가구에 탄소중립포인트 11억7900만원 지급함",
+        "대규모 절약 참여층, 전자청구 확산 타깃 참고함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한국남부발전, 삼척서 에너지 절약 캠페인… 탄소중립 실천 확산",
+      "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5UREg0TzRiS0ZBVGtZeDVUcWxkODc0T1plX3NmT0J2WUhKdC0yTUJXbEowTWNvRF94dExaNVBrajNfc0tiZHVkSGdsemtMWWlUSERhalhMemlORHdJOW1jYlZFRHdnX2hxcTZCSDNZdUluaEk3UzVZ0gF3QVVfeXFMTlRESDRPNGJLRkFUa1l4NVRxbGQ4NzRPWmVfc2ZPQnZZSEp0LTJNQldsSjBNY29EX3h0TFo1UGtqM19zS2JkdWRIZ2x6a0xZaVRIRGFqWEx6aU5Ed0k5bWNiVkVEd2dfaHFxNkJIM1l1SW5oSTdTNVk?oc=5",
+      "date": "2026-07-15",
+      "source": "시사매거진",
+      "category": "local",
+      "summary": [
+        "한국남부발전, 삼척서 에너지 절약 캠페인 전개함",
+        "발전사 대국민 캠페인 확산, 에너지 절약 동향 참고함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "靑 \"지방정부 환경미화원 적정임금 전수조사…과소지급 561건 적발\"",
+      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE41WGlDcGVXMGYwQUNvR1J2bEdFLTI2cXVaa3RQc3VYc1l5SC1xY0xEVE9CVG5JRVJ4VTl2VmxFNnVMdTlRZnAtc0FVc09HbHlfWi1NTFRiNkrSAVNBVV95cUxPN2hXRmUyZXh6VGZybG5CY2VvQjhEcGNEa25sUTlQZmVHR1dMYzEyZUhsVmN6NzZBQ3JudmVWR3pPYmoxZTNveU4tY05udnJ6UkEybw?oc=5",
+      "date": "2026-07-15",
+      "source": "더팩트",
+      "category": "local",
+      "summary": [
+        "청와대, 환경미화원 적정임금 전수조사로 과소지급 561건 적발함",
+        "에너지·빌링 무관, 공공행정 관리 일반 동향임"
       ],
       "ai": true
     },
@@ -457,6 +985,42 @@
       "summary": [
         "7월 14일 베트남 증시, 에너지·은행 급등하며 VN지수 상승함",
         "해외 증시 동향으로 사업 직접 연관성 낮음"
+      ],
+      "ai": true
+    },
+    {
+      "title": "남부발전, 탄소중립 실천 위한 ‘대국민 에너지 절약 거리 캠페인’ 전개",
+      "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE5rZ08xV09pYzBybTBOeDVYNjNUTVczZ0tsN3R6eTNaTFNDN0FQdDZQemVTNUw1TUJ4cnRFWGVsVkNXUnNyTjlWYUgwelY4X2lMamhESEhoLUE5YmtKX2RQWXdCd1NrSjU5d0hBQkJJZGNZVVMwR0lkbA?oc=5",
+      "date": "2026-07-14",
+      "source": "부산일보",
+      "category": "local",
+      "summary": [
+        "남부발전, 탄소중립 위한 대국민 에너지 절약 거리 캠페인 전개함",
+        "발전사 캠페인 활발, 에너지 절약 정책 흐름 참고함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "부여군, 에너지절약 834세대 지원... '탄소중립포인트' 지급",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5ia09fQkp5S0laYlVORFRDNzV1bnl3NmdZblF5Uy16MWpNTjBGeklaZDFyR2hPWlpaa0YwWTBzTmhnUTRmR0ZxR3FseVh1aVJfMkNORV9rcUlyaUtWRE9EeUZabEtnQXVoMXBaS3VNNnnSAXNBVV95cUxPZUdJRVV0ZlktdFR2Qmk5R2hTU0R2ZmZvV2Q1akdBOGRNcVRYT3BTVUlzaVU5VzRmUVhUS25nWlJ2c0VYd043bVllcVBnamxoa3ZEcE9uZXRITGNsc3NWYWJQVjdjOWRUWkhqSENBUmMzdDRv?oc=5",
+      "date": "2026-07-14",
+      "source": "뉴스워커",
+      "category": "local",
+      "summary": [
+        "부여군, 에너지절약 834세대에 탄소중립포인트 지급함",
+        "소규모 지자체 인센티브 사업, 전자청구 협업 기회 참고함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "영종복합문화센터 옥상에 태양광 발전설비 준공…중구, 탄소중립·에너지 자립 박차",
+      "url": "https://news.google.com/rss/articles/CBMiiwVBVV95cUxPdWh2X2NxVTBMcDYtd19sRE1zTmk5RFJ1SVd6eE9lSUhrR3dsRElnSEJwVVltQUJBcHRSR3FCRm8wRGs0VW5EQVFEUlBCRTlxRkZqWDROZm5VV1I0TjRMaWlfSU1Wa0Y4Rk9QbUsyeTMxemdIcVUtQjQ3MDE3blh0bUlPUzNCOXhuX3ZZWm1UX1VFVXN2VE0yM09kYTQ3ekJaczhIUTJZMVJONmRiUlNsS0hoS3RnZ1BlQkw4Rkp1QzFHdmlaaHJTV1BuMTNBSnZORXJKUGFPSzVEcmZ5ZzhyRVhqbURkZFVzMVBUa2NrMnQzN3VLamI1YWdlbk54cEgzZkZxVjBkSWFtbW9iNkNpUUltWktHX0FRUThmU09DZU1KOHVjWHRrR0VZQzlkSzhrRU1La2JQOE5LVUw5YktfSUhGdWc1WUlWSGJRaWtvb2Z5cjE2blg1cy1sdTFsM1ZfRFdWSXJReVB5ZHpreGRTczl6ZjlTQzFOWkZvMFczZDgzVUd3YkpjNDlPNkNiUXFvXzFqQ3NQNmVQQmxUMlY4b2g3VTRqMEptT0JzYW1hX05lcXRuSHV0OGpHQ0hRTU9La0R4TkIzTmFoVFI2ZGJpMzh2bWNvZ2dYVzZNVlhIZmlEcDNlTU55bFBWZFppMXcyWV9UWmYyRHM1SFdzclFPVlY1OVFlSnZ1b2NiZTJyOGpUbnhKQVdFeWl1TDNiZ1hha1N2eHpBbDQ3eHNra2VUb1hDNnVrMDlKcHU1TFBYdzRFNVdCa3h0Rm9UQWxfeEhGWklvV3NBZGhZckVKWU1GWmlrSFB3clMzTVVOQ2pZNEhGUEVXVjFfSHRvaG9sY3hvajZEaEpJQ2VEVTQ?oc=5",
+      "date": "2026-07-14",
+      "source": "MSN",
+      "category": "local",
+      "summary": [
+        "중구, 영종복합문화센터 옥상 태양광 준공으로 에너지 자립 추진함",
+        "지자체 재생에너지 확대, 분산에너지 정책 동향 참고함"
       ],
       "ai": true
     },
@@ -1837,138 +2401,6 @@
       "summary": [
         "여수서 대한민국 기후환경 에너지대전 개최함",
         "에너지 정책·기술 행사 확대되는 일반 동향 주목함"
-      ],
-      "ai": true
-    },
-    {
-      "title": "[오늘의 건설 브리핑] \"원전 넘어 해상풍력·에너지 효율까지\"···공공기관·건설사, 탄소중립 생태계 선점 경쟁",
-      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1IQ2s3MFhwcjc0TUdGWmV1TnVXM2NaZXJadUV2MjB6QUFFNmRjcXV4aEJwbk1NeEdRb0RUZ3pIUkpzS3BIUE9GTF80LWdjX1Y2cEN3RkE2SmtxU1dZQTRnT1F2anNTUWNlQWhyMw?oc=5",
-      "date": "2026-07-10",
-      "source": "스마트비즈",
-      "category": "local",
-      "summary": [
-        "공공기관·건설사, 탄소중립 생태계 선점 경쟁 심화함",
-        "에너지 효율 시장 확대는 관련 서비스 수요 증가 전망"
-      ],
-      "ai": true
-    },
-    {
-      "title": "LH·한국지역난방공사, 공공임대 에너지 혁신 협력",
-      "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE5QdG1vX1h3WnNpdllqaXExbEttNnRuQlBXSzNWOU05QnpudGFzVkdzdGNpMXBUMW04V3J4VGJ3LVpjaGNUWHJQYngxang1b2JJZ2QwN21hWHNVTW4wUTF0R0RTbTQwODlSOWZiTDRwNHEzcmpTZ0o1ZA?oc=5",
-      "date": "2026-07-10",
-      "source": "일요주간",
-      "category": "energy",
-      "summary": [
-        "LH·한국지역난방공사, 공공임대 에너지 혁신 협력함",
-        "공공임대 에너지 관리 강화로 청구·빌링 연계 기회 존재함"
-      ],
-      "ai": true
-    },
-    {
-      "title": "[인사] 기후에너지환경부",
-      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE91ZmFCeW9IMFpWY0dGQUduQThWZTUwRmNQSlRLaGZjS2s3VEpYVHJPS3NZVDNjMy1rdl9tY0hFWU9KMUs2YnBaU01NR2F2dlhZUDVzdnFHMTJVUklDeHFrNmtmdUYxVHg1NHlDQXd6TEFuVU3SAXdBVV95cUxNclF6YXUxUE90Zno3SG1jVXpTNWZNOHJYSG9pT2ZUa0tGV0xHcGx3ZXMya0JiajZab29FR20wcU1UVGQyczJQdFNPcEtXRmxublNQbXpOSzZINXpJUmd4eHdtZ05TNVdpV19FMm1uRVJuTkhZZ25iMA?oc=5",
-      "date": "2026-07-10",
-      "source": "핀포인트뉴스",
-      "category": "energy",
-      "summary": [
-        "기후에너지환경부 인사 발표함",
-        "신설 부처 인사 동향으로 정책 방향 변화 주시 필요함"
-      ],
-      "ai": true
-    },
-    {
-      "title": "하동근號 한난, 취임 후 첫 경영진 회의… 에너지 대전환 시동",
-      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTFB5MlNhRVgwUk5hcFZ2VG81YzZpYlFUVy03S3g2ZXBNbFZjelliaTdHY1RjaGhVOUR5ZEppMFlGeXoxZ0NmSGxZeXJZbTFnQUoxMTQxallCbTN4aE84MWVBbF9XdGZOa3dpR1AxblJuTQ?oc=5",
-      "date": "2026-07-10",
-      "source": "비즈트리뷴",
-      "category": "energy",
-      "summary": [
-        "하동근 한난 사장, 취임 후 첫 경영진 회의 개최함",
-        "지역난방공사 에너지 대전환 추진, 협력 기회 모니터링함"
-      ],
-      "ai": true
-    },
-    {
-      "title": "‘재생에너지로 年5000t 온실가스 절감’ 롯데칠성, 대전광역시·CNCITY에너지와 ‘맞손’",
-      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5mM203YlJzSEZBdkpxMDNGLWpMcngtcWhvZkxnQnBaTVIwV20wMEFGQ1piX2JrRHlpNlMxT1NMcVV6bVA3UnU4Vkw2TndZWjZCMVlnaGlVQ0ZIMFZHV2JaaWhxdm12UHBmU1HSAW5BVV95cUxOWlcwS1ktcEdiZERFS1BUSDdUUTBoZnQ1V0d6emRQVHo2b2d4N0JMU3czTVpacjBDYzZjSzBtd0tjbFpWMXcyY3M4Y2MwS0xEYkw5Z0Z0TUdrOXpveXNiVmlKQWg2NDZDRk1mWEpIdw?oc=5",
-      "date": "2026-07-10",
-      "source": "catchnews.kr",
-      "category": "local",
-      "summary": [
-        "롯데칠성, 대전시·CNCITY에너지와 재생에너지 협력함",
-        "기업·지역에너지사 협업 확대는 청구 서비스 수요 연계 가능"
-      ],
-      "ai": true
-    },
-    {
-      "title": "대전 서구, 탄소중립포인트 3,045만원 기탁... 취약계층 돕는 나눔 실천 '이어간다'",
-      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5ObV9yZzdXRU5La2xKcDdLMk9mdTdRTkZBQjNWSDVRTzhaZUF2dDg5NmRpeHNxbG9vY1FmMVBQOFYzbXZYMFZkcExZamJwZzlRMzJzWFVTTQ?oc=5",
-      "date": "2026-07-10",
-      "source": "피디언뉴스",
-      "category": "local",
-      "summary": [
-        "대전 서구, 탄소중립포인트 3045만원 취약계층 기탁함",
-        "지자체 탄소중립포인트 운영, 요금·인센티브 연계 참고함"
-      ],
-      "ai": true
-    },
-    {
-      "title": "LH, 한국지역난방공사와 공공임대주택 에너지 효율 개선 맞손",
-      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9FUmRYLTR5ckxzZzMwa3ZqOWxWaWJjYVFNZ1MxNVZHMjdKT3pWZ1pMTjdsOWlpUnBrQTU4SlVWVlZ4THBYSEtQekwwMmw2eXlFa3pEOG5iMHlMNnVfdkRKRkxkNVZYQ05xd3ZHUWFxdVJDdWvSAXdBVV95cUxOTjE2MEJJeWtCWWVhRldQdjRtVDZPZjlIV2RXM005akJYZUNPenhQNVdkSTY2U2phbmVlcnBPbXpITWhOQ2JGWTRsVzVkUzMtTi00djFaRDd6cnlQOWJWSVFoc2JxcGNFRnpmajlzYzlpNDNmX2dLVQ?oc=5",
-      "date": "2026-07-10",
-      "source": "핀포인트뉴스",
-      "category": "energy",
-      "summary": [
-        "LH, 한국지역난방공사와 공공임대 에너지 효율 개선함",
-        "공공임대 에너지 사업 확대로 전자청구 도입 여지 존재함"
-      ],
-      "ai": true
-    },
-    {
-      "title": "대전 서구, 탄소중립포인트 인센티브 기부금 3045만 원 기탁",
-      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBwS2pCcDluZnFMYU1tYjZzdHZmb2tUX1hWeEJtcFZFbGFLU0RHX1JRRl9YLXBWSVB6X0swbmlnUF9fQ0lBcVotSmo4WWF5WjV3bnQxRzhzb1pYQzZBM3NtekVNWmNkYkN3a3BSMU9LYU13Z2c?oc=5",
-      "date": "2026-07-10",
-      "source": "충남일보",
-      "category": "local",
-      "summary": [
-        "대전 서구, 탄소중립포인트 인센티브 3045만원 기탁함",
-        "탄소중립포인트 제도 활성화 흐름 지자체 사업 참고함"
-      ],
-      "ai": true
-    },
-    {
-      "title": "LH·한국지역난방공사, 공공임대 에너지 혁신 협력",
-      "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1TSUJ5STMzMkVFd2pROTNDcVRmWTBLbTA2Zy1tNHZuT0k5OGRiQ2ItcTctUjJ0blcwc2M3OGw0d2RRMlNfRE16SnkyazRxU3ZGRjRwQ2RnOEpuRzlINHRPaWRyVEEtdTNsSUVUcmxoYlNER0NSTFE?oc=5",
-      "date": "2026-07-10",
-      "source": "일요주간",
-      "category": "energy",
-      "summary": [
-        "LH·한국지역난방공사, 공공임대 에너지 혁신 협력함",
-        "공공임대 에너지 혁신 사업, 빌링 대행 수요 연계 가능"
-      ],
-      "ai": true
-    },
-    {
-      "title": "에너지바우처 신청으로 더운 여름을 시원하게",
-      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1OakpQa0ZtVkNNVVptMHhZSHBEQ0ZvcEZEZnZILWRvdkxWTnhXWllGTHMwclJlalRfV3lFMHNhNjJFR0dVWDVyZm1JejN3ODE1SWthRDBkbktBOG11VU5KQzNxZTNENDJtS0E?oc=5",
-      "date": "2026-07-08",
-      "source": "대한민국 정책브리핑",
-      "category": "energy",
-      "summary": [
-        "에너지바우처 신청으로 여름철 냉방 지원함",
-        "에너지바우처 대상 요금 관리·청구 연계 수요 주목함"
-      ],
-      "ai": true
-    },
-    {
-      "title": "[정책 인사이트] 지역별 전기요금 차등제 10월 실시 앞두고 ‘전력 자급률’ 논란 - 조선비즈",
-      "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNTF9xLWtDc1poLW8zSDNmYjNxZlZIMktWWGRTbmJzcUZyZWRLRFdnYkIyREItRFpNdzhwTThJUGtDbnlwclJKeXA2ZFllQ05hUnFDZE01QlNQMktOdnlvb1luaEJNY2h4YnBzMTNwLVNMMVhmYjlOVU5obmVMVnUyWmF2SUNwQdIBmgFBVV95cUxNLTRiT2xsMFJSLVhhSldPUHlNVko3aW43dDZqWlg4el9nS0JSNURGUV8wZHZYNldXZXM4SWRGQW5BenRLM2RBV1N3bHZFdnJJd19HWEhpU1AyeGNGcTUtXzRVYzFkbDFybXVuSjkxd3kxeS1GbXZOZllVRnB4LS1OYy1MNFNVeF9uUlFkT05hTTllSUtHMk9VU2Nn?oc=5",
-      "date": "2026-07-06",
-      "source": "Chosunbiz",
-      "category": "energy",
-      "summary": [
-        "지역별 전기요금 차등제 10월 실시, 전력 자급률 논란함",
-        "지역별 차등요금 도입은 청구·빌링 체계 변화 대비 필요"
       ],
       "ai": true
     }
