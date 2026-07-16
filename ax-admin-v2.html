@@ -1597,7 +1597,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
         <div style="font-size:11.5px;color:var(--g400);margin-top:2px;display:flex;align-items:center;gap:7px;flex-wrap:wrap">
           <span>경영진 보고용 · 최근 주요 기사(원문 발행일 최신순) · 원하는 기사 선택 후 발송</span>
           <span style="display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;color:#075985;background:#e0f2fe;border:1px solid #bae6fd;padding:2px 9px;border-radius:999px;white-space:nowrap">
-            <i class="ti ti-clock-hour-11"></i> 뉴스 자동 수집 매일 오전 11시
+            <i class="ti ti-clock-hour-9"></i> 뉴스 자동 수집 매일 오전 9시
           </span>
         </div>
       </div>
@@ -4447,7 +4447,7 @@ async function fetchLiveNews() {
 //   ② [지식베이스 내보내기] 버튼 → news_archive.json 전체 다운로드
 //      → 클로드 프로젝트 Knowledge에 업로드(즉시 학습 활용)
 //   ③ '진짜 파일 끝에 append'가 필요하면 동봉한 news_collector.js(Node)를
-//      오전 11시 스케줄로 실행 → 서버에서 news_archive.json에 직접 누적.
+//      오전 9시 스케줄로 실행 → 서버에서 news_archive.json에 직접 누적.
 // ════════════════════════════════════════════════════════════════════
 const NEWS_KB_KEY = 'hanbil_news_kb';
 
@@ -6217,7 +6217,7 @@ window.runMapStrategy = async function(type, sel) {
 
   const systemPrompt =
 '너는 SCGLAB 영업기획팀의 영업 AI "세이버(SABER)"야. 한국전력 전기요금 전자청구 대행 서비스 "한빌"의 영업 전략을 짜는 전문가야.\n\n' +
-'[최우선 지시] 오늘 오전 11시에 갱신된 최신 데이터와 뉴스 통계를 우선 분석하여 답변해. 동일 지표에 과거 수치와 최신 갱신본이 함께 있으면 항상 최신 갱신본을 기준으로 판단한다.\n\n' +
+'[최우선 지시] 오늘 오전 9시에 갱신된 최신 데이터와 뉴스 통계를 우선 분석하여 답변해. 동일 지표에 과거 수치와 최신 갱신본이 함께 있으면 항상 최신 갱신본을 기준으로 판단한다.\n\n' +
 '현재 [' + region + '] 지역에 대해 [' + stratType + '] 전략이 필요해. (' + stratDesc + ')\n\n' +
 '## 대상 지역 데이터\n' +
 '- 지역명: ' + region + '\n' +
@@ -6719,6 +6719,15 @@ function buildHbContext() {
   lines.push('=== 한빌 민원 대시보드 실시간 데이터 ===');
   lines.push(`기준일: ${todayISO}`);
 
+  // 업무 처리 주체 규칙 (민원 분류·개선 제안·전략 작성 시 반드시 반영)
+  lines.push('\n[업무 처리 주체 규칙 — 한전(KEPCO) vs 한빌]');
+  lines.push('※ 청구서(명세서)상 아래 항목은 한전 소관이라 한빌/가스앱에서 직접 처리 불가 → 한전ON 앱 또는 한전 고객센터(☎123) 안내 대상:');
+  lines.push('  - 명의(계약자) 변경, 주소·계약 변경, 계약종별 변경(주택용↔일반용)');
+  lines.push('  - 자동이체(신청·해지·계좌/카드 변경), 이사정산, 검침일·납기일 변경, 통합청구, 사업자등록 변경');
+  lines.push('  - 복지·대가족·출산 할인, 세금계산서·현금영수증, 단전/복전, 재해 감면');
+  lines.push('한빌에서 직접 처리 가능(셀프서비스): 청구서 등록/해지·조회, 미납 조회, 이메일/휴대폰번호 변경, 청구수단(모바일↔이메일) 전환, 청구서 재발송');
+  lines.push('→ 따라서 위 "한전 소관" 민원은 한빌이 처리할 수 없으므로, 분석·개선 제안 시 "한전ON 안내·카카오 채널 자동응답으로 디플렉션하여 불필요한 전화 인입을 줄이는" 관점으로 다룰 것. 한빌이 직접 처리한다고 제안하지 말 것.');
+
   // 주별
   if (typeof DB !== 'undefined' && DB.weeks) {
     const wks = Object.keys(DB.weeks).sort().slice(-4);
@@ -6905,7 +6914,7 @@ async function hbClaudeQuery(userText, fallbackFn) {
 - Z1: 분류 불가·기타
 
 ## 최우선 지시
-- 오늘 오전 11시에 갱신된 최신 데이터와 뉴스 통계를 우선 분석하여 답변한다.
+- 오늘 오전 9시에 갱신된 최신 데이터와 뉴스 통계를 우선 분석하여 답변한다.
 - 동일 지표에 과거 수치와 최신 갱신본이 함께 있으면 항상 최신 갱신본을 기준으로 판단한다.
 
 ## 출력 형식 (반드시 엄격히 준수)
