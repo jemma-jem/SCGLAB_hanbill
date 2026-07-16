@@ -6835,6 +6835,34 @@ function buildHbContext() {
     }
   } catch(e) {}
 
+  // 전국 빌링 사업현황 (지도 데이터) — 지역 특징·시장 점유
+  try {
+    const CM = window._HB_COMPANY_MAP, BM = window._HB_BILLING_MAP;
+    if (CM && BM) {
+      const cnt = {}, bill = {}; let tot = 0, btot = 0;
+      Object.keys(CM).forEach(k => {
+        const co = CM[k]; if (!co) return;
+        cnt[co] = (cnt[co] || 0) + 1; tot++;
+        const b = BM[k] || 0; bill[co] = (bill[co] || 0) + b; btot += b;
+      });
+      lines.push('\n[전국 빌링 사업현황 — 지도(시군구) 기준]');
+      ['한빌', '누리빌', '한전산업개발'].forEach(co => {
+        const c = cnt[co] || 0, b = bill[co] || 0;
+        lines.push(`- ${co}: 선점 ${c}개 시군구(${tot ? Math.round(c / tot * 100) : 0}%) · 빌링 ${b.toLocaleString()}건(${btot ? Math.round(b / btot * 100) : 0}%)`);
+      });
+      const hanvilTop = Object.keys(CM).filter(k => CM[k] === '한빌')
+        .map(k => ({ k, b: BM[k] || 0 })).sort((a, b) => b.b - a.b).slice(0, 6);
+      if (hanvilTop.length) {
+        lines.push('- 한빌 상위 선점 지역(빌링건수): ' + hanvilTop.map(r => r.k.replace('|', ' ') + ' ' + r.b.toLocaleString() + '건').join(', '));
+      }
+      const compTop = Object.keys(CM).filter(k => CM[k] && CM[k] !== '한빌')
+        .map(k => ({ k, co: CM[k], b: BM[k] || 0 })).sort((a, b) => b.b - a.b).slice(0, 6);
+      if (compTop.length) {
+        lines.push('- 경쟁사 주요 선점 지역(진입 타깃): ' + compTop.map(r => r.k.replace('|', ' ') + '(' + r.co + ') ' + r.b.toLocaleString() + '건').join(', '));
+      }
+    }
+  } catch(e) {}
+
   return lines.join('\n');
 }
 
