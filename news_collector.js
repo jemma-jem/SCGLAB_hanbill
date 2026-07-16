@@ -123,18 +123,34 @@ function relevance(title) {
     : '에너지·정책 일반 동향(참고)';
 }
 
+const _sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+// 구글 뉴스 RSS는 일시적으로 HTTP 503(Service Unavailable) 등을 반환할 때가 있어
+// URL별로 백오프 재시도한다(3s·6s·9s). 한 번의 일시 오류로 전체 수집이 실패하지 않게.
+async function fetchRssOnce(url) {
+  const res = await fetch(url, {
+    headers: { 'User-Agent': 'Mozilla/5.0 (compatible; hanbil-news-collector/1.0)' }
+  });
+  if (!res.ok) throw new Error('HTTP ' + res.status);
+  return await res.text();
+}
+
 async function fetchRss() {
+  const MAX_TRY = 4;
   let combined = '';
   for (const url of RSS_URLS) {                 // 쿼리(구체 OR · 지자체 맥락 AND)별로 순차 수집
-    try {
-      const res = await fetch(url, {
-        headers: { 'User-Agent': 'Mozilla/5.0 (compatible; hanbil-news-collector/1.0)' }
-      });
-      if (!res.ok) { console.warn('RSS HTTP ' + res.status + ' — ' + url); continue; }
-      combined += await res.text();             // parseItems가 <item> 단위로 스캔 → 단순 연결로 충분
-    } catch (e) {
-      console.warn('RSS 수집 실패(계속): ' + e.message);
+    let text = '';
+    for (let attempt = 1; attempt <= MAX_TRY; attempt++) {
+      try {
+        text = await fetchRssOnce(url);         // parseItems가 <item> 단위로 스캔 → 단순 연결로 충분
+        break;
+      } catch (e) {
+        console.warn('RSS 시도 ' + attempt + '/' + MAX_TRY + ' 실패(' + e.message + ') — ' + url.slice(0, 90));
+        if (attempt < MAX_TRY) await _sleep(attempt * 3000);   // 3s → 6s → 9s 백오프
+      }
     }
+    if (text) combined += text;
+    else console.warn('RSS 최종 실패(계속): ' + url.slice(0, 90));
   }
   if (!combined) throw new Error('RSS 전체 수집 실패');
   return combined;
