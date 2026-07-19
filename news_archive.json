@@ -1,9 +1,93 @@
 {
-  "updated_at": "2026-07-18T02:37:42.786Z",
+  "updated_at": "2026-07-19T02:52:05.939Z",
   "source": "Google News RSS",
   "query": "\"전기요금\" OR \"한전\" OR \"전자청구서\" OR \"에너지바우처\" OR \"에너지정책\" OR \"도시가스\" OR \"가로등\" OR \"보안등\" OR \"시설물관리\" OR \"도로조명\" OR \"탄소중립포인트\" OR \"에너지 마일리지\" OR \"종이고지서\" OR \"모바일 고지서\" OR \"건물에너지관리솔루션\" OR \"전자문서중계사업자\" OR \"구좌분리\" OR \"도로과\" OR \"전수표찰\" OR \"에너지 절감 정책\" OR \"우리집 에너지 컨설팅\" OR \"빗물받이 관리 솔루션\" OR \"수목관리솔루션\" when:3d || (\"포인트\" OR \"마일리지\" OR \"전수조사\" OR \"탄소중립\" OR \"탄소절감활동\") (\"지자체\" OR \"지방자치\" OR \"지방정부\" OR \"시청\" OR \"도청\" OR \"군청\" OR \"구청\" OR \"한전\" OR \"한국전력\" OR \"전기요금\" OR \"에너지\") when:3d",
   "count": 200,
   "articles": [
+    {
+      "title": "“전기요금 연 1.2억원 드는 학교, 5000만원 이익” 태양광 발전 초교 가보니",
+      "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTFBONUJ1d3RiRm9JXy10aHByTk8zRk5UbXg1UkFYdXk2US1jUXZrVzFpOTZSSl9nSGVBcVd3dTZBR2NzdmNubGc?oc=5",
+      "date": "2026-07-19",
+      "source": "v.daum.net",
+      "category": "energy",
+      "summary": [
+        "태양광 초등학교, 연 1.2억 전기요금서 5천만원 이익 실현",
+        "학교 자가발전 확산 시 전기요금 청구 구조 변화 전망"
+      ],
+      "ai": true
+    },
+    {
+      "title": "\"전기요금 아끼고 생태교육까지\"…태양광 학교 가보니",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5lRVdfQWNSQ01RdS1OcndpS1hhc0d5YW40UC1iNlE3RnlWWEJ5X19NRi1WOE5jQ09RRUljT1RXeVloVEI2bzFNcldUSFJRUDJWTGVhMVN6cWwtNUljNUljQg?oc=5",
+      "date": "2026-07-19",
+      "source": "뉴시스",
+      "category": "energy",
+      "summary": [
+        "태양광 학교, 전기요금 절감과 생태교육 병행 사례 소개",
+        "교육기관 대상 요금 절감 니즈 확대, 빌링 연계 가능성"
+      ],
+      "ai": true
+    },
+    {
+      "title": "원스톱 모바일 전자고지, 도입 9개월 만에 세입 15억 원 확보",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFB2NlRJRTFpelhqa2lKaEp3dTFOeGVudUc4RTFPZGZQdkZMV0VxLWFWejh1Q1c3NmFoZERFUTRyQ1hqWlROeWNXb2tCc2EwV3lVa1FpVXMxaEh2Y0xlbTNuZjZfVThNU0VseGF6bQ?oc=5",
+      "date": "2026-07-19",
+      "source": "뉴스N제주",
+      "category": "energy",
+      "summary": [
+        "원스톱 모바일 전자고지 9개월만에 세입 15억원 확보",
+        "지자체 전자고지 성과 입증, 한빌 전자청구 사업 확장 기회"
+      ],
+      "ai": true
+    },
+    {
+      "title": "순천시, 탄소중립포인트제 ‘탄소모아 탄탄e’ 시동",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE93V2EtOE5ER1JQRHdVSkYzQjY5OURiMjdUdGVvSl9MZFpybWhNSzFRN01CdEl1eng0MjRWWG13czRla1pFSFFqM2duSDRmOFR2UnV2N2l5VUNDcWFNT1Ytc0V4c3RTa0tkMlYzdC1R?oc=5",
+      "date": "2026-07-19",
+      "source": "전국매일신문",
+      "category": "local",
+      "summary": [
+        "순천시, 탄소중립포인트제 '탄소모아 탄탄e' 시행",
+        "지자체 탄소포인트 사업과 전자청구 연계 협력 여지"
+      ],
+      "ai": true
+    },
+    {
+      "title": "원자력연료 직접 만지고 제조 체험까지…한전원자력연료, 국민 참여형 견학 프로그램 운영",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1iRG1SWWV5VG05VVA1c3NJbm5jM3dhTDRKRlVucDZZd2ZrYVg2M0hwT3k0WlZCa3V2QXlKaXJzZVQ0QTJSRFkyRGtUY2JBbEdsR0Fpby02VTFYbVBzd0xNUw?oc=5",
+      "date": "2026-07-19",
+      "source": "메트로신문",
+      "category": "energy",
+      "summary": [
+        "한전원자력연료, 국민 참여형 제조 체험 견학 프로그램 운영",
+        "한전 그룹사 대국민 소통 강화 동향"
+      ],
+      "ai": true
+    },
+    {
+      "title": "반도체 팹 성패 '열쇠' 켄텍 에너지클러스터, 정부 주도 시급",
+      "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE5tLU5YU1ZMemJ4QnZLVDZDdTRtZkdPdWZkbGdLTDhfU2kzM0RkcFRHeXlKMEpFWWs1WVQxMTNqWXpQY3NYaXV1WkY5Nnk4YTIteEZSejF5MXAtMm9vRnQ2WVhTWXZtRE92cE4tUHpkN1Z5WEN4UGt0ZNIBeEFVX3lxTE5tLU5YU1ZMemJ4QnZLVDZDdTRtZkdPdWZkbGdLTDhfU2kzM0RkcFRHeXlKMEpFWWs1WVQxMTNqWXpQY3NYaXV1WkY5Nnk4YTIteEZSejF5MXAtMm9vRnQ2WVhTWXZtRE92cE4tUHpkN1Z5WEN4UGt0ZA?oc=5",
+      "date": "2026-07-19",
+      "source": "뉴시스",
+      "category": "energy",
+      "summary": [
+        "켄텍 에너지클러스터, 반도체 팹 성패 열쇠로 정부 주도 촉구",
+        "대규모 전력수요 산업단지 확대, 에너지 인프라 정책 주목"
+      ],
+      "ai": true
+    },
+    {
+      "title": "李정부 첫 항만 청사진…친환경에너지·해상풍력 중심으로 재편",
+      "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBoUVRKMXFoakltWnJqMWlmUzAxOW9laTVVUHFRWTBibk53VGQ4bFVkTWIwcTBSUXhvb1JIRTRDOE95NnctVnE2eERqT05MaFo4bUVrdQ?oc=5",
+      "date": "2026-07-19",
+      "source": "이투데이",
+      "category": "energy",
+      "summary": [
+        "이재명 정부 첫 항만 청사진, 친환경·해상풍력 중심 재편",
+        "항만 에너지 전환 등 신정부 에너지 정책 방향 확인"
+      ],
+      "ai": true
+    },
     {
       "title": "영종지역 대규모 정전 닷새 만에 ‘완전 정상화’…한전, 송전선로 복구 완료",
       "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFB1SkpubEJBa2lGeDg5T25LbklvSWRxdWZrNThVX2d6ZlB1OGVvaTNJNFh6VmRReHFPMy1IZ29CTHcxdzJhNmhlVUNQLXdJTVc4czhmQTJDS3VOWnFRZ3pFN2d3ZkZwVTdmVHc?oc=5",
@@ -25,6 +109,54 @@
       "summary": [
         "코로나 팬데믹 이면 다룬 영화 '초한전' 소개",
         "전자청구·에너지 사업 관련성 낮음"
+      ],
+      "ai": true
+    },
+    {
+      "title": "도봉구, 상반기 에코마일리지 2억8천만원 지급…11만 구민 에너지 절약 동참",
+      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9qdlB2T1pkTkNsS2tabVVyOGR2aG9KWV9LY2gxQmFTaERvcm5tSVZEVXVzNnd5YlY5bVB1SlVpWkZOeFNnMDdRbURNem1TWXhfS0d0NVhidkZ6Zw?oc=5",
+      "date": "2026-07-18",
+      "source": "여성종합뉴스",
+      "category": "local",
+      "summary": [
+        "도봉구, 상반기 에코마일리지 2.8억 지급, 11만 구민 참여",
+        "지자체 에너지 절약 인센티브 사업 활발, 청구 연계 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "부산 동래구 사직1동, 어린이 대상 석사마을 Green 미래 에너지 지킴이 교육 실시 > 뉴스",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5QMF8xTURXMUphWGUyd1RSeHhXUnY3SmxHR3B6MXFDc0F2MlBvczhTdlhVNjlHblI1ckNPRkNvN3k0ejhyQlZrSi1aWG1wSlZZbFh3cEEtTlhYVzA4MFBaaUpzaVhnLUFMbHZVaUxyVDE?oc=5",
+      "date": "2026-07-18",
+      "source": "더코리아",
+      "category": "energy",
+      "summary": [
+        "부산 사직1동, 어린이 대상 그린 미래에너지 지킴이 교육",
+        "지역 에너지 인식개선 캠페인 확산 동향"
+      ],
+      "ai": true
+    },
+    {
+      "title": "에너지 안보가 경쟁력…재생 10% '꼴찌' 한국, 'CFE·SMR' 주목",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9EeFNYdFEybGZxVTBwR1VmZV9mcUpGeVN1SXB2NUFLUWJnZDVvQ3FwM05JMGIycnBFUUFwSVhxWm5UMFExOXV5STJYMnlOSGlpNEpGVkVpRWlTQzl6bXNZZ29sNU00dGc?oc=5",
+      "date": "2026-07-18",
+      "source": "자본시장뉴스",
+      "category": "energy",
+      "summary": [
+        "재생에너지 10% 최하위 한국, CFE·SMR 대안 주목",
+        "무탄소전원 확대 논의, 중장기 전력정책 흐름 파악"
+      ],
+      "ai": true
+    },
+    {
+      "title": "에너지 패권, 한국이 잡는다! 세계가 주목할 K-수소 기술의 '대반격' [Science PD Pick] / YTN 사이언스",
+      "url": "https://news.google.com/rss/articles/CBMi9gNBVV95cUxORy1yMFRRTkdya3cyTVhHcWRrbUxweW1HS19GNDdNZW1lTU9uUHBqeEc0UFRnRVpfTFRIcHNFYy1fY1c0ekJYaW1yUmc0R0c2aUV5RzlUWmhfbmI1a1pfR1hFX0hxNS1ndXBqcWt1NVNSbnNORmgxaVJUSEw3RzhSSG9GYVB4SEM1NTNOWHdKNFRpdzd6czJVcElPcXJtNXhWYm5Mc1A3RkIzZUZWSjRFVXN0Tk1OVXRwU0lMUTlQbld0SW0xeVotcnRFUWdURFRVTVdWbDhqVld0UVBkVFpWX3p2MGxIR3FfMGpkdjY3cE0wTlpkQ0lOd2xJaHQ2T2NFQlhYNEVuNktfQ3hTanUwTjBLVzYtLVZlZElDd1c3dkV4cEt4TkhTVzdCRUpRTFdjb3pVdlkwbFFDU2RkOG5yWE40Z2N4Nm4wbHVVUUxNS2Q1MjdZRUNfOEhMaTdsRXRNUnJva09ERWx5bGlkSlZGU3NhZEtQUzNBZDQyU3BVUjNoNnhfRnhvMTEyNTBTTWYtcGpjdTRBSGtsTWh0LVBrWEZlS0VSSHlWQ0FtdkhoS1NvZkJvekl5UWZLYWhwc3pjdGI3WkJ6ak9UajNKWkdXRVdRWWs3NHFxVmV3TFlpaVNLbkFhR2JnaDJ5N1hLamdodTQtNUVR?oc=5",
+      "date": "2026-07-18",
+      "source": "MSN",
+      "category": "energy",
+      "summary": [
+        "K-수소 기술, 에너지 패권 경쟁 속 대반격 조명",
+        "수소 등 미래에너지 기술 개발 동향 주목"
       ],
       "ai": true
     },
@@ -313,6 +445,30 @@
       "summary": [
         "넷플릭스 상반기 시청 970억 시간, 한국 콘텐츠가 견인",
         "전자청구·에너지 사업 관련성 낮음"
+      ],
+      "ai": true
+    },
+    {
+      "title": "삼성, 호남 무탄소 미래에너지 사업에 4조 투자…배경은",
+      "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5GdVcxbHZxUmg0QmZSX3d4V212blYxTU1keU9NLUNSMnE1U1ZQcUlVcjdnSkZvaVd3aGYxWUpYb2J4YmNWeUZSUFVZcGJyMTVnR2tJUmJROE5lLS1KVEFB?oc=5",
+      "date": "2026-07-17",
+      "source": "뉴스1",
+      "category": "energy",
+      "summary": [
+        "삼성, 호남 무탄소 미래에너지 사업에 4조원 투자",
+        "대기업 무탄소 투자 확대, 산업용 전력수요 변화 전망"
+      ],
+      "ai": true
+    },
+    {
+      "title": "서울에너지공사, ESG 가치실현 공로 고용노동부 장관상 수상",
+      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFByUndEdm1uYkxkR1pnbWJrRU1pRlBPNGVQbzVUbkV4ZWZBNEJ4d25FVUVtLUhfaWMzMHdTbGtObTdYUG5GNWJ5ZjFDM25ld1p3RHk5eDRn?oc=5",
+      "date": "2026-07-17",
+      "source": "헤럴드경제",
+      "category": "energy",
+      "summary": [
+        "서울에너지공사, ESG 가치실현 공로로 고용노동부 장관상 수상",
+        "공공 에너지기관 ESG 경영 강화 동향"
       ],
       "ai": true
     },
@@ -1021,6 +1177,18 @@
       "summary": [
         "에너지 효율 고도화와 전력공급체계 재설계로 에너지안보 방안 모색함",
         "전력체계 개편 논의, 요금·청구 제도 변화 주시 필요"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전 서울본부, ‘다시놀자, 장난감 업사이클링 사회공헌활동’시행",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1PWjFVemE5cTFyamVtUHNaNmRWcVdESWd1aFVSR1BfbEIwc0NxbmVLM2FiUlhtWHJGUU11YXhzb2hrT1FLV1hkRjZwUkppcnBvb3FiX1g2SUU3YTFSRUhGNVJHWXAtVWk3T3c?oc=5",
+      "date": "2026-07-16",
+      "source": "한국전력신문",
+      "category": "energy",
+      "summary": [
+        "한전 서울본부, 장난감 업사이클링 사회공헌활동 시행",
+        "한전 지역 ESG·사회공헌 활동 지속 확인"
       ],
       "ai": true
     },
@@ -2233,174 +2401,6 @@
       "summary": [
         "李대통령, 물가부담 없으면 가정용 전기요금 조정 필요 언급함",
         "요금체계 개편 논의 본격화, 전자청구 세부내역 표기 변화 대비 필요"
-      ],
-      "ai": true
-    },
-    {
-      "title": "이 대통령 \"물가부담 없다면 가정용 전기요금 조정해야 할 상황\"",
-      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5vVHNqZDU5T0E4S21hRGh2bGwwNV9jQ1gxV2Nla2h2cURqSkJPcVhUeVhTbXl0NHJZdDJiVFJjLVZxNGtyVmk2MFFKbWZ0RFZYWXB2dmtwQ2daVklTVnc?oc=5",
-      "date": "2026-07-13",
-      "source": "YTN",
-      "category": "energy",
-      "summary": [
-        "이 대통령, 물가부담 없다면 가정용 전기요금 조정 상황 발언함",
-        "요금개편 흐름, 청구 대행 서비스의 요금정보 갱신 대응 전망"
-      ],
-      "ai": true
-    },
-    {
-      "title": "李 “물가 부담 없다면 가정용 전기요금 조정할 상황”",
-      "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTFB0VHdpZWdncUIzUExETjZiYnE1bWFkRFhpQXdxUkJLc0duRk9DOU1kVG4xV1JZSmk2MkZXanM4ZzVuTk9JdXZ5NVAwUHZQblBrS0xKY0Q1NGdFRmp2Zm5NUGJkMlZSb1MyZEQzWTV1QkZHMGQ1ZGlR0gFmQVVfeXFMT1lBclBzeTFSdG5RSXpnaVJURXlZTFRMSlhrUDExazZSTmZ3VWJMTTk4eWxVSkVHOXdUU2M2M3J4aElacHp5d0VIZUZianByTTNvRVE0RkhZWllSU2wzQjNkUjNtXzlR?oc=5",
-      "date": "2026-07-13",
-      "source": "동아일보",
-      "category": "energy",
-      "summary": [
-        "李대통령, 물가 부담 없으면 가정용 전기요금 조정 상황 언급함",
-        "가정용 요금 손질 시 계량·청구 데이터 처리 방식 변화 대비 필요"
-      ],
-      "ai": true
-    },
-    {
-      "title": "대통령 “물가부담 없다면 가정용 전기요금 조정해야”",
-      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE83WGp5T1NlR3BoXzFKUFJveURsdjM2OUloMkpDZ3NuMjFjMjdPNnNvc3U3N3RPRS1nM3g1ellTY3MtUUZ0cjBLbEw1eDM2OFB0YTY3UnVB?oc=5",
-      "date": "2026-07-13",
-      "source": "중앙일보",
-      "category": "energy",
-      "summary": [
-        "대통령, 물가부담 없으면 가정용 전기요금 조정 필요성 강조함",
-        "요금정책 변화가 전자청구 서비스 요금 계산 로직에 영향 전망"
-      ],
-      "ai": true
-    },
-    {
-      "title": "낮엔 싸게, 저녁엔 비싸게…가정용 전기요금 손질 검토 [Pick코노미]",
-      "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFAyU3ZmRjE5UmMyY2V6QnkyRDJkMm9oWVM0NktIOFkzVFNFTUt3eXVHbE5HbUQweTlCa0xQelpfYTNQRDI1OXNVYnN4Tm81X2Y4YlHSAVNBVV95cUxQcEJYMDRXaXhwVzNLQkRiRE9ZTzdHRUU5S0R1bUc2ci1vQXFYWC1uTm5RTGdzOEdwVm9UN291TjNsd0RPcGM1TEludFEwT3Zyc19qNA?oc=5",
-      "date": "2026-07-13",
-      "source": "서울경제",
-      "category": "energy",
-      "summary": [
-        "가정용 전기요금 낮 저가·저녁 고가 시간대별 손질 검토함",
-        "시간대별 요금 도입 시 청구서 상세화, 한빌 빌링 고도화 기회"
-      ],
-      "ai": true
-    },
-    {
-      "title": "이대통령 \"물가·소득 부담 없다면 가정용 전기요금 조정해야\"",
-      "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE16QUhnb3hVU1ZKMWRzd2tYNkpBT0Y0R2ZGT3M2bkNocjI2cWlJVmlBdXlrMEhjQnp0WV9JcFBTQXFlV2o4XzAxQ0VaaVhjRk1hZmZGYg?oc=5",
-      "date": "2026-07-13",
-      "source": "JTBC",
-      "category": "energy",
-      "summary": [
-        "이대통령, 물가·소득 부담 없으면 가정용 전기요금 조정 언급함",
-        "요금개편 논의 확대, 저소득층 구분 청구·바우처 연계 수요 전망"
-      ],
-      "ai": true
-    },
-    {
-      "title": "경북도, 도시가스 공급 비용 평균 4.78% 인상",
-      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9lQnNhVjNNZ1hxNjNMdkVRbmtXM2xEYUVaa0VpbHFha3Z5LUduenEzYU9JQWJlTE9TT3NOSC1HWl9zM0dDMzRsNnZ4b0dDTW9yOFJUMUpCLVh0SkXSAWBBVV95cUxPXzVfOGtvNEctc0haVURGbW1XcmR3SEtwMzBaZnlmM1I2RmdEVmtESy1mQ3pPUmJhZUE2cFA5c3A2YW1UdmsyUHY0MmxVWm11UWN6bjlTZG1FdE9YMWowT0U?oc=5",
-      "date": "2026-07-13",
-      "source": "연합뉴스",
-      "category": "energy",
-      "summary": [
-        "경북도, 도시가스 공급비용 평균 4.78% 인상 결정함",
-        "에너지요금 인상 흐름, 지자체 공공요금 청구 대행 사업 관심 필요"
-      ],
-      "ai": true
-    },
-    {
-      "title": "[창간 13주년 특집] 공기업 한계 깨뜨린 한전의 혁신 드라이브...글로벌 무대서 ‘화려한 부활’",
-      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9yMk9PVXVrU2FBTC1NYmpzVFgxOVNuY3F6RTFrYUVTa0FvQjNTWk04dkNIWVF3ekNnQUFDVks4alNDaDQ5WE9Rb3JadThTUmx5ZWNscjN5Nm8yajduSkF3c295aV9zMm8?oc=5",
-      "date": "2026-07-13",
-      "source": "산경e뉴스",
-      "category": "energy",
-      "summary": [
-        "한전, 공기업 한계 넘어 혁신 추진하며 글로벌 무대서 부활함",
-        "한전 파트너로서 전자청구 대행 서비스 협력 기반 강화 전망"
-      ],
-      "ai": true
-    },
-    {
-      "title": "BNK경남은행, 울산 취약계층에 6천만원 에너지바우처 지원",
-      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE56MFhIUVoyS2RTWi1wTWo4OTZEX2N2bWVNQlJLT3RfaGo1djMxblJpNGJGSGdJMVZoZ1M2bmduZXJSeDVRd1I5VkV6ZGk4UDl2eUNMUEhreUZ3eDkwQ1pJZ9IBYEFVX3lxTE56MFhIUVoyS2RTWi1wTWo4OTZEX2N2bWVNQlJLT3RfaGo1djMxblJpNGJGSGdJMVZoZ1M2bmduZXJSeDVRd1I5VkV6ZGk4UDl2eUNMUEhreUZ3eDkwQ1pJZw?oc=5",
-      "date": "2026-07-13",
-      "source": "연합뉴스",
-      "category": "energy",
-      "summary": [
-        "BNK경남은행, 울산 취약계층에 6천만원 에너지바우처 지원함",
-        "에너지바우처 확대 흐름, 지자체·복지 연계 청구 서비스 수요 전망"
-      ],
-      "ai": true
-    },
-    {
-      "title": "李대통령 \"가정용 전기요금 조정 필요\"…저소득층엔 바우처",
-      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE50cDhOQlpiUEN6Mld1WkVzc1ZiMnJyZnU0ckZGa05UYmE5S0psekVUNEdZOG1XS3lTRGE3ZG9yRTd3dS1rQUc5bHhaV005a1BDWjAyS3lPUGNOR2U5NDZpamViQU45S3NUX3RB?oc=5",
-      "date": "2026-07-13",
-      "source": "일간투데이",
-      "category": "energy",
-      "summary": [
-        "李대통령, 가정용 전기요금 조정 필요·저소득층 바우처 언급함",
-        "요금조정과 바우처 병행 시 취약계층 구분 청구 기능 수요 전망"
-      ],
-      "ai": true
-    },
-    {
-      "title": "에어컨 있어도 전기요금 걱정...찜통더위 쪽방촌",
-      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE45VTZoV0szdUxqeFJ3ZHRPbnJqMVZ1RGRxWEhLMnZNaWxGYmMzeDkyeFV1VXZmRXRwd2NsUFRrSEpJTW9naEkwWVdnbEEwZHRYemdRZGlRS09vMGREUVE?oc=5",
-      "date": "2026-07-13",
-      "source": "YTN",
-      "category": "energy",
-      "summary": [
-        "폭염 속 쪽방촌, 에어컨 있어도 전기요금 걱정으로 사용 못함",
-        "취약계층 요금부담 이슈, 복지 연계 빌링 서비스 필요성 부각"
-      ],
-      "ai": true
-    },
-    {
-      "title": "李대통령 \"가정용 전기요금 조정 필요할 수도…저소득층 바우처 함께 검토\"",
-      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1UX1FXRU9kSFlNVTNhVXBRNUZlTkZjVUM2SncwUnRCZmpsODYxQ0wtN2VDOWxObG93R1VxM0dkTkl4czB4dkRoOTFTbkUxRGUwTVFITGdlMVNINDZZMTRNR0FqNHVpdjRFQUlOenRodHk?oc=5",
-      "date": "2026-07-13",
-      "source": "연합인포맥스",
-      "category": "energy",
-      "summary": [
-        "李대통령, 가정용 전기요금 조정 필요·저소득층 바우처 검토함",
-        "요금개편·바우처 병행 정책, 청구 대행 서비스 연계 대응 전망"
-      ],
-      "ai": true
-    },
-    {
-      "title": "李대통령, 가정용 전기요금 체계 손질 공식화…‘시간대별 요금’ 확대 시사",
-      "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5tb3NIS1hTOThZeEpPUFFzczZaNE9HMERaMi1QWHRrQkhZSG9pQk9EZVp3bl8zd2tkR0ZNSXliV01vVXRYZHJVNlQ1cWpmVFE?oc=5",
-      "date": "2026-07-13",
-      "source": "v.daum.net",
-      "category": "energy",
-      "summary": [
-        "李대통령, 가정용 전기요금 체계 손질 공식화·시간대별 요금 시사함",
-        "시간대별 요금 확대 시 청구서 항목·계산 방식 변화 대비 필요"
-      ],
-      "ai": true
-    },
-    {
-      "title": "李 \"물가 부담 없다면 '가정용 전기요금' 조정해야\"",
-      "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1JOGNraGVZc2ZuWURyaXdTaU9CQzRicC1QZ2tycW1LYkdycHNYSU5zQjhtTExOQzRPZVNLTTFJM3ZYWkZSZkdXOVYyaEFhaDg?oc=5",
-      "date": "2026-07-13",
-      "source": "v.daum.net",
-      "category": "energy",
-      "summary": [
-        "李대통령, 물가 부담 없으면 가정용 전기요금 조정 언급함",
-        "요금정책 변화가 전자청구 요금정보 갱신에 영향 전망"
-      ],
-      "ai": true
-    },
-    {
-      "title": "[아주초대석] 김성환 기후장관 환경·에너지 더는 대립 아냐…전기국가 전환 이끌 것",
-      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBsMnA1WGlHZV9ORDBUZEN6MGF5aEV1enBoeG95cVMwd1laRTlpQkVmdmg0RXVSVVJxa2VmT1dJaWNOSmtkbVZQanJ0MTJFNTV3UlVUSUlLSjPSAVhBVV95cUxQbDJwNVhpR2VfTkQwVGRDejBheWhFdXpwaHhveXFTMHdZWkU5aUJFZnZoNEV1UlVScWtlZk9XSWljTkprZG1WUGpydDEyRTU1d1JVVElJS0oz?oc=5",
-      "date": "2026-07-13",
-      "source": "아주경제",
-      "category": "energy",
-      "summary": [
-        "김성환 기후장관, 환경·에너지 대립 아닌 전기국가 전환 이끌 것 언급함",
-        "전기중심 에너지 전환 정책, 전력 청구·데이터 수요 확대 전망"
       ],
       "ai": true
     }
