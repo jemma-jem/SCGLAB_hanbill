@@ -58,6 +58,9 @@ function computeSTTIdx(records){
     topCats:ai.topCats.slice(0,8).map(function(x){
       return{cat:x.cat,label:(typeof CAT_LABEL!=='undefined'?CAT_LABEL[x.cat]||x.cat:x.cat),cnt:x.cnt};
     }),
+    topCodes:ai.topCats.slice(0,6).map(function(x){
+      return{code:x.cat,label:(typeof CAT_LABEL!=='undefined'?CAT_LABEL[x.cat]||x.cat:x.cat),cnt:x.cnt};
+    }),
     topKw:ai.topCats.slice(0,10).map(function(x){
       return{word:(typeof CAT_LABEL!=='undefined'?CAT_LABEL[x.cat]||x.cat:x.cat),cnt:x.cnt};
     })
