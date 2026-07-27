@@ -384,7 +384,9 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
 
 /* ══════════ 영업 레이더 (지역 영업 알림) ══════════ */
 .ni-badge{margin-left:auto;background:var(--err,#EF4444);color:#fff;font-size:10px;font-weight:800;
-  border-radius:9px;padding:1px 6px;line-height:1.5}
+  width:16px;height:16px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;
+  line-height:1;box-shadow:0 0 0 2px rgba(239,68,68,.25);animation:niNewPulse 1.8s ease-in-out infinite}
+@keyframes niNewPulse{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,.35)}50%{box-shadow:0 0 0 4px rgba(239,68,68,0)}}
 .rd-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:14px}
 .rd-kpi{background:#fff;border:1px solid var(--g200,#E2E8F0);border-radius:12px;padding:12px 14px}
 .rd-kpi .k{font-size:11px;font-weight:700;color:var(--g500,#64748b);display:flex;align-items:center;gap:5px}
@@ -2331,7 +2333,6 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
       <span class="bn-label">뉴스레터</span>
     </button>
     <button class="bn-item chatbot-btn" id="bn-chatbot" onclick="toggleCbot()" aria-label="세이버">
-      <span class="bn-chat-dot"></span>
       <div class="bn-icon"><i class="ti ti-message-chatbot"></i></div>
       <span class="bn-label">세이버</span>
     </button>
@@ -2350,9 +2351,8 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
 </div>
 
 <!-- ── 챗봇 FAB (데스크탑) ── -->
-<button class="cfab" onclick="openCbot()" aria-label="챗봇 도우미 열기">
+<button class="cfab" onclick="openCbot()" aria-label="영업비서 세이버 열기">
   <i class="ti ti-message-chatbot"></i>
-  <span class="cfab-badge">STT</span>
 </button>
 
 <!-- ── 영업비서 챗봇 바텀시트 ── -->
@@ -10539,16 +10539,9 @@ function renderKpis(){
     return '<div class="rd-kpi"><div class="k">' + x.k + '</div><div class="v">' + x.v + '</div><div class="s">' + esc(x.s) + '</div></div>';
   }).join('');
 
-  // 사이드바 뱃지 = 발주 마감 임박(D-3) 지역 수 — '지금 안 하면 놓치는' 것만
-  const badge = document.getElementById('radar-nav-badge');
-  const urgent = rs.filter(function(g){
-    return (g.bidsOpen || []).some(function(b){
-      if (!b.closeDate) return false;
-      const d = Math.ceil((new Date(b.closeDate) - new Date()) / 86400000);
-      return d >= 0 && d <= 3;
-    });
-  }).length;
-  if (badge){ badge.textContent = urgent; badge.style.display = urgent ? 'inline-block' : 'none'; }
+  // 사이드바 NEW 뱃지는 rdCheckNew/rdMarkSeen이 별도로 관리(카운트 표시 안 함).
+  // 레이더를 실제로 열어 데이터를 봤으므로 '본 것'으로 표시 → NEW 해제.
+  if (typeof rdMarkSeen === 'function') rdMarkSeen();
 
   renderBriefing();
 }
@@ -10994,6 +10987,51 @@ window.rdInit   = function(){
   }, 600);
 };
 window.rdReload = function(){ ST.loaded = false; try{ localStorage.removeItem(RD_CACHE_KEY); }catch(e){} load(true); };
+
+// ── NEW(N) 뱃지 — 마지막으로 본 이후 새 내용(발주·인사·뉴스)이 있으면 사이드바에 표시 ──
+//   메뉴를 열지 않아도 페이지 로드 직후 판단 가능하도록, 무거운 시트 대신
+//   가벼운 아카이브 JSON(발주·인사·뉴스)만 확인해 '변화 여부'를 계산한다.
+const RD_SEEN_KEY = 'hanbil_radar_seen_sig';
+async function rdArchiveSig(){
+  const files = ['news_archive.json', 'hr_archive.json', 'g2b_archive.json'];
+  const parts = [];
+  for (let i = 0; i < files.length; i++){
+    try {
+      const r = await fetch(files[i], { cache:'no-cache' });
+      if (!r.ok){ parts.push('x'); continue; }
+      const j = await r.json();
+      const recs = Array.isArray(j) ? j : (j.records || j.articles || []);
+      let maxd = '';
+      recs.forEach(function(a){ const d = (a.date || a.pubDate || ''); if (d > maxd) maxd = d; });
+      parts.push(recs.length + ':' + maxd);   // 건수 + 최신 날짜 → 새 레코드 생기면 변함
+    } catch(e){ parts.push('x'); }
+  }
+  return parts.join('|');
+}
+function rdShowNew(on){
+  const b = document.getElementById('radar-nav-badge');
+  if (!b) return;
+  if (on){ b.textContent = 'N'; b.style.display = 'inline-block'; }
+  else { b.style.display = 'none'; }
+}
+// 페이지 로드 직후: 새 내용 있으면 N 표시 (메뉴 클릭 불필요)
+window.rdCheckNew = async function(){
+  const sig = await rdArchiveSig();
+  window._rdSig = sig;
+  let seen = '';
+  try { seen = localStorage.getItem(RD_SEEN_KEY) || ''; } catch(e){}
+  // 아직 아무것도 못 읽었거나(sig 빈값) 이전과 동일하면 숨김, 그 외(새 내용/첫 방문) N 표시
+  rdShowNew(!!sig && sig !== seen);
+};
+// 레이더를 실제로 열어 데이터를 봤을 때: 현재 상태를 '본 것'으로 저장 → N 해제
+window.rdMarkSeen = async function(){
+  const sig = window._rdSig || (window._rdSig = await rdArchiveSig());
+  try { localStorage.setItem(RD_SEEN_KEY, sig); } catch(e){}
+  rdShowNew(false);
+};
+
+// 페이지 로드 직후(첫 페인트 방해 안 하도록 지연) NEW 여부 체크
+setTimeout(function(){ try { window.rdCheckNew(); } catch(e){} }, 1800);
 
 })();
 </script>
