@@ -2265,7 +2265,8 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
       <button class="rd-chip"    data-f="sol"   onclick="rdFilter('sol',this)">🧰 솔루션 제안</button>
       <button class="rd-chip"    data-f="mail"  onclick="rdFilter('mail',this)">✉ 메일 발송 가능</button>
       <select id="rd-sido" onchange="rdRender()" style="margin-left:auto"><option value="">전체 시·도</option></select>
-      <input type="search" id="rd-q" placeholder="지역·기관·담당자 검색" oninput="rdRender()" style="min-width:160px">
+      <input type="search" id="rd-q" placeholder="지역·기관·담당자 검색" oninput="rdRender()" style="min-width:160px"
+             autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" name="rd-region-search-nofill" aria-autocomplete="none">
       <button class="rd-chip" onclick="rdReload()" title="시트·뉴스 다시 불러오기"><i class="ti ti-refresh"></i></button>
     </div>
 
