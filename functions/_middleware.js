@@ -139,6 +139,14 @@ export async function onRequest(context) {
     return next();
   }
 
+  // ── 루트 진입점 통일: '/'·'/index.html' → '/ax-admin-v2' 로 바로 이동 ──
+  //    포털(index.html)은 한전ON 제거 후 ax-admin-v2 단일 진입점이 되었고,
+  //    로그인 후 항상 대시보드로 도착하도록 루트를 대시보드로 넘긴다.
+  //    (미인증 시: /ax-admin-v2 로 갔다가 아래 인증 로직이 /login?next=/ax-admin-v2 로 유도)
+  if (url.pathname === '/' || url.pathname === '/index.html') {
+    return Response.redirect(url.origin + '/ax-admin-v2', 302);
+  }
+
   // ── 로그아웃 ──
   if (url.pathname === '/logout') {
     const h = new Headers({ Location: '/login' });

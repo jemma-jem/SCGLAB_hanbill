@@ -422,6 +422,34 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
 /* 나라장터 발주 — 파스텔 칩 사이에서 눈에 띄도록 진한 하늘색 솔리드 */
 .rd-al.g2b{background:linear-gradient(90deg,#0EA5E9,#0284C7);color:#fff;font-weight:800;
   box-shadow:0 1px 4px rgba(2,132,199,.35);padding:3px 9px}
+/* ── 오늘의 우선 액션 브리핑 ── */
+#rd-briefing{margin-bottom:14px}
+.rd-brief{background:linear-gradient(180deg,#0F2942,#0B1F33);border-radius:14px;padding:14px 16px;
+  box-shadow:0 4px 18px rgba(8,22,40,.25)}
+.rd-brief-h{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.rd-brief-h .t{font-size:14px;font-weight:800;color:#fff}
+.rd-brief-h .sub{font-size:11px;color:#7DD3FC;font-weight:600}
+.rd-brief-h .cnt{margin-left:auto;font-size:11px;color:#94A3B8}
+.rd-act{display:flex;align-items:center;gap:10px;padding:9px 11px;border-radius:10px;
+  background:rgba(255,255,255,.05);margin-bottom:6px;border:1px solid rgba(255,255,255,.06)}
+.rd-act:last-child{margin-bottom:0}
+.rd-act .rk{flex:0 0 auto;width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.12);
+  color:#CBD5E1;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center}
+.rd-act .ic{flex:0 0 auto;font-size:15px}
+.rd-act .body{flex:1;min-width:0;line-height:1.4}
+.rd-act .rg{font-size:12.5px;font-weight:800;color:#fff}
+.rd-act .rg .co{font-size:10px;font-weight:700;color:#94A3B8;margin-left:5px}
+.rd-act .ac{font-size:11.5px;color:#CBD5E1;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rd-act .go{flex:0 0 auto;border:none;border-radius:8px;padding:7px 12px;font-size:11.5px;font-weight:800;
+  cursor:pointer;font-family:inherit;background:#0EA5E9;color:#fff;white-space:nowrap}
+.rd-act .go:hover{background:#0284C7}
+.rd-act.p-urgent{border-color:rgba(239,68,68,.5);background:rgba(239,68,68,.10)}
+.rd-act.p-urgent .go{background:#EF4444}
+.rd-act.p-urgent .go:hover{background:#DC2626}
+@media(max-width:640px){
+  .rd-act .ac{white-space:normal}
+  .rd-act{align-items:flex-start}
+}
 .rd-news{border-top:1px dashed var(--g200,#E2E8F0);padding-top:8px;display:flex;flex-direction:column;gap:5px}
 .rd-news-t{font-size:10.5px;font-weight:800;color:#0284C7;display:flex;align-items:center;gap:4px}
 .rd-news a{font-size:11.5px;color:var(--g700,#334155);text-decoration:none;line-height:1.45;display:block}
@@ -2255,18 +2283,23 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
 
     <div class="rd-kpis" id="rd-kpis"></div>
 
+    <!-- 오늘의 우선 액션 브리핑 (레이더 데이터 기반 자동 생성) -->
+    <div id="rd-briefing"></div>
+
     <div class="rd-bar">
       <button class="rd-chip on" data-f="all"   onclick="rdFilter('all',this)">전체</button>
       <button class="rd-chip"    data-f="own"   onclick="rdFilter('own',this)">🛡 한빌 선점(현황)</button>
       <button class="rd-chip"    data-f="rival" onclick="rdFilter('rival',this)">🎯 경쟁사·기회</button>
       <button class="rd-chip"    data-f="news"  onclick="rdFilter('news',this)">📰 지역 소식 有</button>
-      <button class="rd-chip"    data-f="risk"  onclick="rdFilter('risk',this)">⚠ 이슈·이탈위험</button>
+      <button class="rd-chip"    data-f="risk"  onclick="rdFilter('risk',this)">⚠ 이슈 점검</button>
       <button class="rd-chip"    data-f="bid"   onclick="rdFilter('bid',this)">🏛 발주 진행중</button>
       <button class="rd-chip"    data-f="sol"   onclick="rdFilter('sol',this)">🧰 솔루션 제안</button>
       <button class="rd-chip"    data-f="mail"  onclick="rdFilter('mail',this)">✉ 메일 발송 가능</button>
       <select id="rd-sido" onchange="rdRender()" style="margin-left:auto"><option value="">전체 시·도</option></select>
-      <input type="search" id="rd-q" placeholder="지역·기관·담당자 검색" oninput="rdRender()" style="min-width:160px"
-             autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" name="rd-region-search-nofill" aria-autocomplete="none">
+      <input type="text" id="rd-q" placeholder="지역·기관·담당자 검색" oninput="rdRender()" style="min-width:160px"
+             autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+             name="rd-region-search-nofill" aria-autocomplete="none"
+             readonly onfocus="this.removeAttribute('readonly')" onmousedown="this.removeAttribute('readonly')">
       <button class="rd-chip" onclick="rdReload()" title="시트·뉴스 다시 불러오기"><i class="ti ti-refresh"></i></button>
     </div>
 
@@ -8997,40 +9030,46 @@ function getPageAlert(name) {
       var hasLv = function(g, lv){ return g.alerts.some(function(a){ return a.lv === lv; }); };
       var own   = rs.filter(function(g){ return g.co === '한빌'; });
       var rival = rs.filter(function(g){ return g.co && g.co !== '한빌'; });
-      // 색상(lv)이 아니라 의미로 분류 — 담당자 발령감지 등 빨간 알림이 이탈위험으로 오집계되지 않게
-      var risk  = rs.filter(function(g){ return (typeof window.rdIsRisk  === 'function') ? window.rdIsRisk(g)  : hasLv(g,'c') || hasLv(g,'w'); });
-      var churn = rs.filter(function(g){ return (typeof window.rdIsChurn === 'function') ? window.rdIsChurn(g) : false; });
+      var risk  = rs.filter(function(g){ return (typeof window.rdIsRisk  === 'function') ? window.rdIsRisk(g)  : hasLv(g,'w'); });
       var news  = rs.filter(function(g){ return g.news.length; });
       var hot   = rival.filter(function(g){
         return g.alerts.some(function(a){ return a.lv === 'o' && /진행 중/.test(a.t); }); });
       var mgr   = rs.filter(function(g){
-        return g.alerts.some(function(a){ return /담당자 변경/.test(a.t); }); });
+        return g.alerts.some(function(a){ return /담당자 변경|인사/.test(a.t); }); });
+      // 발주 마감 임박(D-3) — 지금 안 하면 놓치는 최우선
+      var urgentBid = rs.filter(function(g){
+        return (g.bidsOpen || []).some(function(b){
+          if (!b.closeDate) return false;
+          var d = Math.ceil((new Date(b.closeDate) - new Date()) / 86400000);
+          return d >= 0 && d <= 3;
+        });
+      });
+      var bidOpen = rs.filter(function(g){ return g.bidsOpen && g.bidsOpen.length; });
       var nm    = function(g){ return g.sd + ' ' + g.sgg; };
       var list  = function(arr, n){
         return arr.slice(0, n || 3).map(nm).join(', ') + (arr.length > (n||3) ? ' 외 ' + (arr.length-(n||3)) + '곳' : '');
       };
 
       return {
-        badge: churn.length ? '이탈위험 ' + churn.length + '곳'
-             : (risk.length ? '대응 필요 ' + risk.length + '곳' : 'AI 분석 요약'),
-        title: '지역 영업 알림 요약 (고객관리리스트 × 지역 소식)',
+        badge: urgentBid.length ? '마감임박 ' + urgentBid.length + '곳'
+             : (bidOpen.length ? '발주 ' + bidOpen.length + '곳' : 'AI 분석 요약'),
+        title: '지역 영업 알림 요약 (고객리스트 × 지역소식·나라장터·인사)',
         lines: [
           '📍 관리 지역 ' + rs.length + '곳 · 구좌 ' + (R.recs||[]).length.toLocaleString() + '건을 시·군·구로 묶어 분석했어요.',
-          '🛡 [현황만] 한빌 선점 ' + own.length + '곳 — 신규 전략은 제안하지 않고 수주이력·담당자·이슈만 보여드려요.',
+          '🛡 [현황만] 한빌 선점 ' + own.length + '곳 — 신규 전략 없이 현황만. 단 발주가 뜨면 확장 기회로 안내해요.',
           '🎯 [진입대상] 경쟁사·미개척 ' + rival.length + '곳' +
-            (hot.length ? ' · 이 중 제안·검토가 진행 중인 곳이 ' + hot.length + '곳이에요 (' + list(hot) + ')' : ''),
-          (churn.length
-            ? '🚨 [최우선] 이탈 위험 ' + churn.length + '곳 — ' + list(churn) + '. 영업상태·이력에 이탈/빌링 해지 신호가 있어요.'
-            : '✅ 이탈 위험으로 잡힌 한빌 선점 지역은 없어요.'),
-          '⚠ 이슈 확인 필요 ' + risk.length + '곳 (소액미청구·빌링사 변경·선점 표기 불일치 등)' +
-            (mgr.length ? ' · 담당자 변경 이력 ' + mgr.length + '곳은 재인사가 필요해요.' : ''),
+            (hot.length ? ' · 이 중 제안·검토 진행 중 ' + hot.length + '곳 (' + list(hot) + ')' : ''),
+          (urgentBid.length
+            ? '🏛 [최우선] 발주 마감 임박 ' + urgentBid.length + '곳 — ' + list(urgentBid) + '. 마감 전 오늘 중 접촉하세요.'
+            : (bidOpen.length ? '🏛 나라장터 발주 진행중 ' + bidOpen.length + '곳 — 마감 전 접촉 기회예요.' : '🏛 진행중 발주 없음.')),
+          (mgr.length ? '🆕 담당자 인사발령 감지 ' + mgr.length + '곳 — 신규 담당자 인수인계 안내 대상이에요.' : '🆕 감지된 인사발령 없음.'),
           (news.length
-            ? '📰 최근 ' + (R.newsDays||30) + '일 지역 소식이 잡힌 곳 ' + news.length + '곳 — ' + list(news) + '. 방문·제안 명분으로 쓰기 좋아요.'
-            : '📰 최근 ' + (R.newsDays||30) + '일 내 매칭된 지역 기사는 없어요.'),
+            ? '📰 최근 ' + (R.newsDays||30) + '일 지역 소식 ' + news.length + '곳 — ' + list(news) + '. 방문·제안 명분으로 좋아요.'
+            : '📰 최근 ' + (R.newsDays||30) + '일 내 매칭 기사 없음.'),
           '⚡ [액션] ' +
-            (churn.length ? '이탈 위험 지역부터 담당자 접촉 → ' : '') +
-            (hot.length ? '진행 중인 ' + hot.length + '곳 클로징 → ' : '') +
-            '지역 소식이 있는 곳은 기사 내용을 명분으로 접촉하세요.'
+            (urgentBid.length ? '마감 임박 발주부터 통화 → ' : '') +
+            (mgr.length ? '인사발령 지역 인수인계 → ' : '') +
+            '지역 소식이 있는 곳은 기사를 명분으로 접촉하세요.'
         ]
       };
     })()
@@ -9412,11 +9451,8 @@ function buildAlerts(g){
   const own = g.co === '한빌';
   const text = g.rows.map(function(r){ return r.hist + ' ' + r.issue + ' ' + r.status; }).join(' ');
 
-  // '해지방어'·'해지확인'은 정상 영업활동이라 제외 — 실제 이탈 신호만 위험으로 본다
-  const churn = g.rows.some(function(r){ return /^(이탈|Drop)/i.test(r.status); })
-             || /이탈/.test(text) || /빌링 해지|해지 요청|해지 통보/.test(text);
-  if (own && churn)
-    a.push({ lv:'c', t:'이탈 위험', why:'영업상태·이력에 이탈/빌링 해지 신호' });
+  // ※ 이탈 위험 알림은 제거함 — 시트의 이탈/해지 기록은 과거 이력이라 현재 상태를 정확히
+  //   반영하지 못한다(실시간 이탈 감지는 한전 빌링 연동이 필요). 오탐 방지 위해 노출하지 않는다.
   if (/소액미청구|미청구/.test(text))
     a.push({ lv:'w', t:'소액미청구 이슈', why:'미청구 건 정리 필요' });
   if (/담당자\s*변경|담당 변경|발령|초임/.test(text))
@@ -10419,35 +10455,112 @@ function score(g){
 // ── 렌더 ──────────────────────────────────────────────────────────────
 function coClass(co){ return co === '한빌' ? 'own' : (co === '한전산업개발' ? 'hansan' : 'rival'); }
 
-// 알림을 '의미'로 분류한다 (lv 색상만으로 세면 담당자 발령감지 등 빨간 알림이 이탈위험으로 오집계됨)
-//   · 이탈위험 = 실제 이탈/빌링 해지 신호만
-//   · 이슈     = 방어·정리가 필요한 문제(이탈위험 포함 + 소액미청구·빌링사변경·선점불일치)
-function rdIsChurn(g){ return g.alerts.some(function(a){ return a.t === '이탈 위험'; }); }
-function rdIsRisk(g){ return g.alerts.some(function(a){ return /이탈 위험|소액미청구|빌링사 변경|선점 표기 불일치/.test(a.t); }); }
-window.rdIsChurn = rdIsChurn;
+// 이슈 = 방어·정리가 필요한 문제(소액미청구·빌링사변경·선점불일치).
+//   (이탈위험은 과거 데이터 부정확성 때문에 제거됨)
+function rdIsRisk(g){ return g.alerts.some(function(a){ return /소액미청구|빌링사 변경|선점 표기 불일치/.test(a.t); }); }
 window.rdIsRisk  = rdIsRisk;
+
+// ── 지역별 '지금 할 최우선 액션' 1개 도출 (선제 브리핑용) ──────────────
+//   레이더가 이미 계산한 신호(이탈·발주·인사·낙찰·솔루션)를 우선순위로 묶어
+//   "어디에 무슨 액션"을 한 줄로 만든다. 근거 없는 지역은 null.
+function rdRegionAction(g){
+  // 1. 발주 마감 임박 (D-3 이내) — 가장 시급한 기회
+  const soonD3 = (g.bidsOpen || []).filter(function(b){
+    if (!b.closeDate) return false;
+    const d = Math.ceil((new Date(b.closeDate) - new Date()) / 86400000);
+    return d >= 0 && d <= 3;
+  });
+  if (soonD3.length)
+    return { p:100, urgent:true, cat:'bid', ic:'🏛', act:'발주 마감 임박(' + dday(soonD3[0].closeDate) + ') — 마감 전 담당자 통화 · ' + cut(soonD3[0].title, 22), cta:'메일 초안', fn:'rdMail' };
+  // 2. 우리 담당자/부서 인사발령
+  if ((g.hrMatched && g.hrMatched.length) || (g.hrDeptMatched && g.hrDeptMatched.length))
+    return { p:82, cat:'hr', ic:'🆕', act:'담당자 인사발령 감지 — 신규 담당자에게 인수인계 안내', cta:'메일 초안', fn:'rdMail' };
+  // 3. 수주업체 낙찰 → 업체 연계
+  if (g.wins && g.wins.length)
+    return { p:72, cat:'win', ic:'🤝', act:'수주업체 ' + cut(g.wins[0].winner || '업체', 14) + ' — 시스템 연계 제안', cta:'메일 초안', fn:'rdMail' };
+  // 4. 진행중 발주 (여유)
+  if (g.bidsOpen && g.bidsOpen.length)
+    return { p:62, cat:'bid', ic:'🏛', act:(g.co === '한빌' ? '발주 연계 구좌 확장 — ' : '발주 진행중 — ') + '사업 착수 전 제안 · ' + cut(g.bidsOpen[0].title, 22), cta:'메일 초안', fn:'rdMail' };
+  // 5. 솔루션 매칭 / 지역 소식
+  if (g.sols && g.sols.length)
+    return { p:52, cat:'sol', ic:'🧰', act:g.sols[0].sol.name + ' 제안 — 지역 기사 명분으로 접촉', cta:'메일 초안', fn:'rdMail' };
+  return null;
+}
+
+function renderBriefing(){
+  const el = document.getElementById('rd-briefing');
+  if (!el) return;
+  const items = ST.regions.map(function(g){
+    const a = rdRegionAction(g);
+    return a ? { g:g, a:a, score:a.p + Math.min((score(g)||0)/2000, 1) } : null;
+  }).filter(Boolean).sort(function(x, y){ return y.score - x.score; });
+
+  // 유형별 다양성 — 한 종류(예: 발주 마감)가 브리핑을 독점하지 않게 카테고리별 상한을 둔다.
+  //   그래야 담당자가 발주·인사·낙찰·솔루션을 한눈에 골고루 본다.
+  const CAP = { bid:3, hr:2, win:2, sol:1 };
+  const used = {};
+  const top = [];
+  items.forEach(function(it){
+    if (top.length >= 7) return;
+    const c = it.a.cat;
+    if ((used[c] || 0) >= (CAP[c] || 2)) return;
+    used[c] = (used[c] || 0) + 1;
+    top.push(it);
+  });
+  if (!top.length){ el.innerHTML = ''; return; }
+
+  el.innerHTML =
+    '<div class="rd-brief">' +
+      '<div class="rd-brief-h"><span style="font-size:16px">🎯</span>' +
+        '<span class="t">오늘의 우선 액션</span>' +
+        '<span class="sub">레이더가 뽑은 지금 움직일 곳</span>' +
+        '<span class="cnt">대응 대상 ' + items.length + '곳 중 상위 ' + top.length + '</span></div>' +
+      top.map(function(it, i){
+        const g = it.g, a = it.a;
+        const coTag = g.co ? '<span class="co">' + esc(g.co) + '</span>' : '';
+        return '<div class="rd-act' + (a.urgent ? ' p-urgent' : '') + '">' +
+          '<span class="rk">' + (i+1) + '</span>' +
+          '<span class="ic">' + a.ic + '</span>' +
+          '<span class="body"><span class="rg">' + esc(g.sd + ' ' + g.sgg) + coTag + '</span>' +
+          '<span class="ac">' + esc(a.act) + '</span></span>' +
+          '<button class="go" onclick="' + a.fn + '(\'' + esc(g.key) + '\')">' + esc(a.cta) + ' ›</button>' +
+        '</div>';
+      }).join('') +
+    '</div>';
+}
 
 function renderKpis(){
   const rs = ST.regions;
   const own = rs.filter(function(g){ return g.co === '한빌'; });
   const rival = rs.filter(function(g){ return g.co && g.co !== '한빌'; });
   const risk = rs.filter(rdIsRisk);
-  const churn = rs.filter(rdIsChurn);
   const withNews = rs.filter(function(g){ return g.news.length; });
+  // 발주 진행중(마감 임박 포함) — 지금 움직이면 닿는 기회
+  const bidOpen = rs.filter(function(g){ return g.bidsOpen && g.bidsOpen.length; });
   const kpis = [
     { k:'📍 관리 지역', v:rs.length + '곳', s:'구좌 ' + ST.recs.length.toLocaleString() + '건' },
     { k:'🛡 한빌 선점', v:own.length + '곳', s:'현황만 표시 · 구좌 ' + own.reduce(function(a,g){return a+g.ownN;},0) + '건' },
     { k:'🎯 경쟁사·미개척', v:rival.length + '곳', s:'진입 전략 대상' },
-    { k:'⚠ 이슈·이탈위험', v:risk.length + '곳', s:(churn.length ? '이탈위험 ' + churn.length + '곳 포함 · ' : '') + '우선 대응 필요' },
+    { k:'🏛 발주 진행중', v:bidOpen.length + '곳', s:'마감 전 접촉 기회' },
+    { k:'⚠ 이슈 점검', v:risk.length + '곳', s:'소액미청구·빌링변경 등' },
     { k:'📰 지역 소식', v:withNews.length + '곳', s:'최근 ' + RD_NEWS_DAYS + '일 기사 매칭' },
   ];
   document.getElementById('rd-kpis').innerHTML = kpis.map(function(x){
     return '<div class="rd-kpi"><div class="k">' + x.k + '</div><div class="v">' + x.v + '</div><div class="s">' + esc(x.s) + '</div></div>';
   }).join('');
 
-  // 사이드바 뱃지 = '지금 바로 봐야 할' 이탈위험 지역 수만 (뉴스·일반이슈 합산은 의미 없어 제거)
+  // 사이드바 뱃지 = 발주 마감 임박(D-3) 지역 수 — '지금 안 하면 놓치는' 것만
   const badge = document.getElementById('radar-nav-badge');
-  if (badge){ badge.textContent = churn.length; badge.style.display = churn.length ? 'inline-block' : 'none'; }
+  const urgent = rs.filter(function(g){
+    return (g.bidsOpen || []).some(function(b){
+      if (!b.closeDate) return false;
+      const d = Math.ceil((new Date(b.closeDate) - new Date()) / 86400000);
+      return d >= 0 && d <= 3;
+    });
+  }).length;
+  if (badge){ badge.textContent = urgent; badge.style.display = urgent ? 'inline-block' : 'none'; }
+
+  renderBriefing();
 }
 
 function renderSidoOptions(){
@@ -10881,7 +10994,15 @@ async function load(force){
   }
 }
 
-window.rdInit   = function(){ if (!ST.loaded && !ST.loading) load(false); };
+window.rdInit   = function(){
+  if (!ST.loaded && !ST.loading) load(false);
+  // 검색창: 로드 시점(=브라우저 자동완성이 값을 채우는 순간)엔 readonly로 막고,
+  //   그 창(~600ms)이 지난 뒤 JS로 잠금 해제 + 값 비움 → 자동입력은 차단, 사용은 정상.
+  setTimeout(function(){
+    var q = document.getElementById('rd-q');
+    if (q) { q.value = ''; q.removeAttribute('readonly'); }
+  }, 600);
+};
 window.rdReload = function(){ ST.loaded = false; try{ localStorage.removeItem(RD_CACHE_KEY); }catch(e){} load(true); };
 
 })();
