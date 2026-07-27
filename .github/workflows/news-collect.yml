@@ -34,7 +34,7 @@ jobs:
           # 모델 변경이 필요하면 리포 변수(Variables)에 ANTHROPIC_MODEL 지정(기본 claude-opus-4-8).
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           ANTHROPIC_MODEL: ${{ vars.ANTHROPIC_MODEL }}
-        run: node news_collector.js
+        run: node collectors/news_collector.js
 
       - name: 변경분 커밋 & 푸시
         run: |

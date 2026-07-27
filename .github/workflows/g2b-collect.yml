@@ -1,0 +1,57 @@
+name: 나라장터 발주·낙찰 자동 수집 (g2b_archive.json)
+
+# 매일 오전 9시(KST) 조달청 나라장터 오픈API에서 한빌 사업·자체 솔루션
+# (도로조명·수목·빗물받이·건물에너지·전자고지) 관련 발주공고와 낙찰결과를 수집해
+# g2b_archive.json 을 갱신·커밋한다.
+# ax-admin-v2.html 「영업 레이더」가 이 파일을 읽어 발주 알림·수주업체 연계를 띄운다.
+#
+# 인증키는 저장소 Secret G2B_SERVICE_KEY 로 주입한다(코드에 하드코딩 금지).
+
+on:
+  schedule:
+    - cron: '20 0 * * *'      # 00:20 UTC = 09:20 KST (뉴스·인사 수집 뒤 — 커밋 충돌 회피)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: g2b-collect
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 체크아웃
+        uses: actions/checkout@v4
+
+      - name: Node 설치
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 발주·낙찰 수집 실행
+        env:
+          G2B_SERVICE_KEY: ${{ secrets.G2B_SERVICE_KEY }}
+        run: |
+          if [ -z "$G2B_SERVICE_KEY" ]; then
+            echo "::error::G2B_SERVICE_KEY 시크릿이 없습니다. 저장소 Settings → Secrets → Actions 에 등록하세요."
+            exit 1
+          fi
+          node collectors/g2b_collector.js
+
+      - name: 변경분 커밋 & 푸시
+        run: |
+          if [ -n "$(git status --porcelain g2b_archive.json)" ]; then
+            git config user.name  "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add g2b_archive.json
+            git commit -m "chore(g2b): 나라장터 발주·낙찰 자동 수집 $(TZ='Asia/Seoul' date +%Y-%m-%d)"
+            # 같은 시각대 다른 수집 워크플로가 앞서 있을 수 있음 → rebase 후 푸시
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
+            git push
+            echo "g2b_archive.json 갱신 커밋 완료"
+          else
+            echo "변경 없음 — 커밋 생략"
+          fi

@@ -382,7 +382,107 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
   background:var(--err);border:2px solid #fff;
 }
 
+/* ══════════ 영업 레이더 (지역 영업 알림) ══════════ */
+.ni-badge{margin-left:auto;background:var(--err,#EF4444);color:#fff;font-size:10px;font-weight:800;
+  border-radius:9px;padding:1px 6px;line-height:1.5}
+.rd-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:14px}
+.rd-kpi{background:#fff;border:1px solid var(--g200,#E2E8F0);border-radius:12px;padding:12px 14px}
+.rd-kpi .k{font-size:11px;font-weight:700;color:var(--g500,#64748b);display:flex;align-items:center;gap:5px}
+.rd-kpi .v{font-size:22px;font-weight:800;color:#0F172A;margin-top:4px;line-height:1.1}
+.rd-kpi .s{font-size:11px;color:var(--g400,#94a3b8);margin-top:2px}
+.rd-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:#fff;border:1px solid var(--g200,#E2E8F0);
+  border-radius:12px;padding:10px 12px;margin-bottom:14px}
+.rd-chip{border:1px solid var(--g200,#E2E8F0);background:#fff;color:var(--g600,#475569);border-radius:999px;
+  padding:5px 12px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap}
+.rd-chip.on{background:var(--sky,#0EA5E9);border-color:var(--sky,#0EA5E9);color:#fff}
+.rd-bar input,.rd-bar select{border:1px solid var(--g200,#E2E8F0);border-radius:8px;padding:6px 10px;
+  font-size:12px;font-family:inherit;color:var(--g700,#334155)}
+.rd-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px}
+.rd-card{background:#fff;border:1px solid var(--g200,#E2E8F0);border-radius:14px;padding:14px;
+  display:flex;flex-direction:column;gap:9px;border-left:4px solid var(--g200,#E2E8F0)}
+.rd-card.own{border-left-color:#0EA5E9}
+.rd-card.rival{border-left-color:#F59E0B}
+.rd-card.risk{border-left-color:#EF4444}
+.rd-card-h{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.rd-region{font-size:14.5px;font-weight:800;color:#0F172A;line-height:1.3}
+.rd-sido{font-size:11px;color:var(--g400,#94a3b8);font-weight:600}
+.rd-co{font-size:11px;font-weight:800;border-radius:7px;padding:3px 9px;white-space:nowrap}
+.rd-co.own{background:#E0F2FE;color:#075985}
+.rd-co.rival{background:#FEF3C7;color:#92400E}
+.rd-co.hansan{background:#D1FAE5;color:#065F46}
+.rd-metrics{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:11.5px;color:var(--g600,#475569)}
+.rd-metrics b{color:#0F172A;font-weight:800}
+.rd-alerts{display:flex;flex-wrap:wrap;gap:5px}
+.rd-al{font-size:10.5px;font-weight:700;border-radius:6px;padding:3px 8px;line-height:1.4}
+.rd-al.c{background:#FEE2E2;color:#B91C1C}
+.rd-al.w{background:#FEF3C7;color:#B45309}
+.rd-al.i{background:#E0E7FF;color:#3730A3}
+.rd-al.o{background:#DCFCE7;color:#166534}
+.rd-al.n{background:#F1F5F9;color:#475569}
+/* 나라장터 발주 — 파스텔 칩 사이에서 눈에 띄도록 진한 하늘색 솔리드 */
+.rd-al.g2b{background:linear-gradient(90deg,#0EA5E9,#0284C7);color:#fff;font-weight:800;
+  box-shadow:0 1px 4px rgba(2,132,199,.35);padding:3px 9px}
+.rd-news{border-top:1px dashed var(--g200,#E2E8F0);padding-top:8px;display:flex;flex-direction:column;gap:5px}
+.rd-news-t{font-size:10.5px;font-weight:800;color:#0284C7;display:flex;align-items:center;gap:4px}
+.rd-news a{font-size:11.5px;color:var(--g700,#334155);text-decoration:none;line-height:1.45;display:block}
+.rd-news a:hover{color:#0284C7;text-decoration:underline}
+.rd-news .src{font-size:10px;color:var(--g400,#94a3b8)}
+.rd-acts{display:flex;gap:6px;margin-top:auto;padding-top:4px}
+.rd-btn{flex:1;border:none;border-radius:9px;padding:9px 10px;font-size:12px;font-weight:800;
+  cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:5px}
+.rd-btn.st{background:#E0F2FE;color:#075985}
+.rd-btn.st:hover{background:#BAE6FD}
+.rd-btn.go{background:linear-gradient(90deg,#0EA5E9,#0284C7);color:#fff}
+.rd-btn.go:hover{background:linear-gradient(90deg,#0284C7,#075985)}
+.rd-btn.mail{background:#FEF3C7;color:#92400E;flex:0 0 auto;padding:9px 12px}
+.rd-btn.mail:hover{background:#FDE68A}
+.rd-empty{grid-column:1/-1;text-align:center;color:var(--g400,#94a3b8);font-size:13px;padding:40px 0}
+/* 상세 모달 */
+#rd-modal{display:none;position:fixed;inset:0;z-index:700;background:rgba(15,23,42,.5);
+  align-items:center;justify-content:center;padding:16px}
+#rd-modal.open{display:flex}
+#rd-modal-box{background:#fff;border-radius:16px;max-width:640px;width:100%;max-height:86vh;overflow:auto;
+  box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.rd-mh{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--g200,#E2E8F0);
+  padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.rd-mb{padding:16px 18px;display:flex;flex-direction:column;gap:14px}
+.rd-sec-t{font-size:12px;font-weight:800;color:#075985;display:flex;align-items:center;gap:5px;
+  border-left:3px solid #0EA5E9;padding-left:7px}
+/* 모달 섹션 간격·구역 구분 */
+#rd-modal-body>div{margin-bottom:14px}
+.rd-sec-t{margin-bottom:7px}
+.rd-zone{font-size:10.5px;font-weight:800;letter-spacing:.4px;color:#94a3b8;text-transform:uppercase;
+  margin:2px 0 8px;padding-top:4px;border-top:1px dashed var(--g200,#E2E8F0)}
+/* 요약 stat strip (표 대신) */
+.rd-sum{display:flex;flex-wrap:wrap;gap:9px 18px;background:#F8FAFC;border:1px solid var(--g200,#E2E8F0);
+  border-radius:11px;padding:12px 15px;margin-bottom:14px;font-size:12px;line-height:1.4}
+.rd-sum .k{color:#64748b;font-weight:600;margin-right:5px}
+.rd-sum b{color:#0F172A;font-weight:800}
+/* 참고자료 아코디언(접힘 기본) */
+.rd-acc{border:1px solid var(--g200,#E2E8F0);border-radius:11px;margin-bottom:10px;overflow:hidden}
+.rd-acc>summary{list-style:none;cursor:pointer;padding:11px 14px;font-size:12.5px;font-weight:800;
+  color:#475569;background:#F8FAFC;display:flex;align-items:center;gap:7px}
+.rd-acc>summary::-webkit-details-marker{display:none}
+.rd-acc>summary .cnt{color:#94a3b8;font-weight:600;font-size:11px}
+.rd-acc>summary::after{content:'▾';margin-left:auto;color:#94a3b8;transition:transform .2s}
+.rd-acc[open]>summary::after{transform:rotate(180deg)}
+.rd-acc[open]>summary{border-bottom:1px solid var(--g200,#E2E8F0)}
+.rd-acc-body{padding:13px 14px}
+.rd-acc-body>div{margin-bottom:13px}
+.rd-acc-body>div:last-child{margin-bottom:0}
+.rd-tbl{width:100%;border-collapse:collapse;font-size:11.5px}
+.rd-tbl th,.rd-tbl td{border:1px solid var(--g200,#E2E8F0);padding:6px 8px;text-align:left;vertical-align:top}
+.rd-tbl th{background:#F8FAFC;color:var(--g600,#475569);font-weight:700;white-space:nowrap;width:88px}
+.rd-pre{font-size:11.5px;color:var(--g700,#334155);line-height:1.6;white-space:pre-wrap;
+  background:#F8FAFC;border:1px solid var(--g200,#E2E8F0);border-radius:9px;padding:10px 12px;max-height:220px;overflow:auto}
+.rd-note{font-size:11px;color:var(--g500,#64748b);background:#F0F9FF;border:1px solid #BAE6FD;
+  border-radius:9px;padding:9px 11px;line-height:1.6}
+
 /* ── 모바일 반응형 ── */
+@media(max-width:420px){
+  .bn-icon{padding:4px 9px}
+  .bn-label{font-size:9px;letter-spacing:-.4px}
+}
 @media(max-width:768px){
   :root{--sw:0px}
   .sb{transform:translateX(-240px);width:240px;transition:transform .25s;z-index:200}
@@ -549,19 +649,33 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
   <div class="hb-sub">잠시만 기다려 주세요 · 로딩중<span class="hb-dots"></span></div>
 </div>
 <script>
-  // 로딩 오버레이 제어: 초기 데이터 취합(initSheetSync) 완료 시 hideHbLoading() 호출.
-  // 안전장치로 최대 표시시간(타임아웃)과 window load 이후 지연 해제도 둔다.
+  // 로딩 오버레이 제어
+  // ───────────────────────────────────────────────────────────────────
+  // 화면은 내장 데이터(DB/STT_INDEX/REC_DB…)만으로 이미 완성되므로,
+  // 구글시트 싱크(initSheetSync)를 기다리지 않고 DOM 준비 즉시 화면을 연다.
+  // 시트 최신분은 백그라운드로 들어와 카드만 갱신된다(상단 '동기화 중' 표시).
   (function(){
     try { document.body.classList.add('hb-locked'); } catch(e){}
     var hidden = false;
     window.hideHbLoading = function(){
       if (hidden) return; hidden = true;
       var el = document.getElementById('hb-loading');
-      if (el) el.classList.add('hb-hide');
+      if (el) {
+        el.classList.add('hb-hide');
+        // 페이드(0.45s) 후 DOM에서 완전히 제거 — 백그라운드 탭 등으로 transition이 멈춰도
+        // 오버레이가 화면에 남지 않도록 보장한다.
+        setTimeout(function(){ if (el.parentNode) el.parentNode.removeChild(el); }, 500);
+      }
       try { document.body.classList.remove('hb-locked'); } catch(e){}
     };
-    // 안전 타임아웃: 데이터 취합이 지연/실패해도 10초 후엔 화면을 연다.
-    setTimeout(window.hideHbLoading, 10000);
+    // DOM 파싱이 끝나면(=첫 화면 렌더 가능) 바로 해제. rAF 2프레임 뒤 → 깜빡임 방지.
+    function release(){
+      requestAnimationFrame(function(){ requestAnimationFrame(window.hideHbLoading); });
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', release);
+    else release();
+    // 안전 타임아웃(예외 상황 대비)
+    setTimeout(window.hideHbLoading, 4000);
   })();
   // 로그인 사용자명 표시(표시용 hb_user 쿠키) — 상단 로그아웃 옆
   window.addEventListener('DOMContentLoaded', function(){
@@ -587,6 +701,7 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
   </div>
   <nav class="sb-nav">
     <div class="ni on" onclick="goSec('dashboard',this)"><i class="ti ti-dashboard"></i>데이터 포털</div>
+    <div class="ni" onclick="goSec('radar',this)"><i class="ti ti-radar-2"></i>영업 레이더<span class="ni-badge" id="radar-nav-badge" style="display:none"></span></div>
     <div class="ni" onclick="goSec('stt',this)"><i class="ti ti-microphone-2"></i>AI 민원분석</div>
     <div class="ni" onclick="goSec('newsletter',this)"><i class="ti ti-news"></i>뉴스레터</div>
   </nav>
@@ -607,6 +722,8 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
       <div class="pred-badge" id="page-alert-badge" onclick="openPageAlert()">
         <span class="pred-pulse"></span><span id="page-alert-text">알림</span>
       </div>
+      <!-- 백그라운드 시트 동기화 상태 (로딩 오버레이를 대체 — 화면을 막지 않음) -->
+      <span id="hb-sync-chip" style="font-size:11px;font-weight:700;color:#0284C7;white-space:nowrap"></span>
       <div class="tclock" id="clock">--:--:--</div>
       <span id="hb-whoami" style="display:none;font-size:12px;color:var(--g500,#64748b);font-weight:600;white-space:nowrap"></span>
       <a href="/logout" id="hb-logout" title="로그아웃"
@@ -674,9 +791,9 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
                 <span class="mp-label">전국 비중</span>
                 <span id="map-popup-ratio" class="mp-val" style="color:#4ADE80"></span>
               </div>
-              <!-- 한빌 선점 지역: 영업 유지 전략 -->
+              <!-- 한빌 선점 지역: 전략 제안 없이 현황만 표시 -->
               <button id="map-popup-cta-keep" class="map-cta" onclick="mapStrategy('유지', event)">
-                <i class="ti ti-shield-check" style="font-size:15px"></i> 영업 유지 전략
+                <i class="ti ti-shield-check" style="font-size:15px"></i> 선점 현황 보기
               </button>
               <!-- 타사·미선정 지역: 영업 진입 제안 -->
               <button id="map-popup-cta" class="map-cta" onclick="mapStrategy('진입', event)">
@@ -2120,6 +2237,43 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
 
   </div><!-- /sec-newsletter -->
 
+  <!-- ══════════ 4. 영업 레이더 (고객관리리스트 × 지역 소식) ══════════ -->
+  <div class="sec" id="sec-radar">
+
+    <div class="rd-note" style="margin-bottom:14px">
+      <strong>영업 레이더</strong>는 <strong>고객관리리스트(경쟁사 v2.0)</strong>에 4가지 외부 데이터를 시·군·구로 결합해
+      <strong>대응이 필요한 지역</strong>을 우선순위로 띄웁니다.<br>
+      <span style="display:inline-block;margin:6px 0 2px">
+        📰 <strong>지역 소식</strong>(신문·소식지) ·
+        🏛 <strong>나라장터 발주·낙찰</strong> ·
+        🆕 <strong>담당자 인사발령</strong>(시정일보) ·
+        🧰 <strong>자체 솔루션</strong>(도로조명·수목·빗물받이) 매칭</span><br>
+      · <strong>한빌 선점 지역</strong> — 신규 전략 제안 없이 <strong>현황</strong>만 표시. 단, <strong>발주가 뜨면 구좌 확장 기회</strong>로 안내합니다.<br>
+      · <strong>경쟁사·미개척 지역</strong> — 발주·인사·이력을 근거로 <strong>선제 제안 메일 초안</strong>과 영업비서 <strong>진입 전략</strong>을 만들 수 있습니다.
+      <span id="rd-status" style="display:block;margin-top:6px;font-weight:700;color:#0284C7"></span>
+    </div>
+
+    <div class="rd-kpis" id="rd-kpis"></div>
+
+    <div class="rd-bar">
+      <button class="rd-chip on" data-f="all"   onclick="rdFilter('all',this)">전체</button>
+      <button class="rd-chip"    data-f="own"   onclick="rdFilter('own',this)">🛡 한빌 선점(현황)</button>
+      <button class="rd-chip"    data-f="rival" onclick="rdFilter('rival',this)">🎯 경쟁사·기회</button>
+      <button class="rd-chip"    data-f="news"  onclick="rdFilter('news',this)">📰 지역 소식 有</button>
+      <button class="rd-chip"    data-f="risk"  onclick="rdFilter('risk',this)">⚠ 이슈·이탈위험</button>
+      <button class="rd-chip"    data-f="bid"   onclick="rdFilter('bid',this)">🏛 발주 진행중</button>
+      <button class="rd-chip"    data-f="sol"   onclick="rdFilter('sol',this)">🧰 솔루션 제안</button>
+      <button class="rd-chip"    data-f="mail"  onclick="rdFilter('mail',this)">✉ 메일 발송 가능</button>
+      <select id="rd-sido" onchange="rdRender()" style="margin-left:auto"><option value="">전체 시·도</option></select>
+      <input type="search" id="rd-q" placeholder="지역·기관·담당자 검색" oninput="rdRender()" style="min-width:160px">
+      <button class="rd-chip" onclick="rdReload()" title="시트·뉴스 다시 불러오기"><i class="ti ti-refresh"></i></button>
+    </div>
+
+    <div class="rd-grid" id="rd-grid">
+      <div class="rd-empty">데이터를 불러오는 중입니다…</div>
+    </div>
+  </div><!-- /sec-radar -->
+
   </div><!-- /content -->
 </main>
 
@@ -2129,6 +2283,10 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
     <button class="bn-item on" id="bn-dashboard" onclick="bnGo('dashboard')" aria-label="데이터 포털">
       <div class="bn-icon"><i class="ti ti-dashboard"></i></div>
       <span class="bn-label">데이터 포털</span>
+    </button>
+    <button class="bn-item" id="bn-radar" onclick="bnGo('radar')" aria-label="영업 레이더">
+      <div class="bn-icon"><i class="ti ti-radar-2"></i></div>
+      <span class="bn-label">영업레이더</span>
     </button>
     <button class="bn-item" id="bn-stt" onclick="bnGo('stt')" aria-label="AI 민원분석">
       <div class="bn-icon"><i class="ti ti-microphone-2"></i></div>
@@ -2145,6 +2303,17 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
     </button>
   </div>
 </nav>
+
+<!-- ── 영업 레이더 상세 모달 ── -->
+<div id="rd-modal" onclick="if(event.target===this)rdCloseDetail()">
+  <div id="rd-modal-box">
+    <div class="rd-mh">
+      <div id="rd-modal-title" style="font-size:15px;font-weight:800;color:#0F172A"></div>
+      <button onclick="rdCloseDetail()" style="border:none;background:none;cursor:pointer;font-size:20px;color:#94A3B8;line-height:1" aria-label="닫기">&times;</button>
+    </div>
+    <div class="rd-mb" id="rd-modal-body"></div>
+  </div>
+</div>
 
 <!-- ── 챗봇 FAB (데스크탑) ── -->
 <button class="cfab" onclick="openCbot()" aria-label="챗봇 도우미 열기">
@@ -4866,6 +5035,7 @@ const SEC_META = {
   stt:['STT 활용 주요 지표','실제 통화 분석 기반 인사이트'],
   predict:['예상 민원','AI 기반 민원 예측 및 개선책'],
   newsletter:['뉴스레터','한전 청구서사업 경영진 일일 스크랩'],
+  radar:['영업 레이더','고객리스트 × 지역소식·나라장터·인사발령 결합 영업 알림'],
 };
 window.goSec = function(name, el) {
   // 탭 전환 시 항상 페이지 최상단으로 (이전 탭 스크롤 위치 잔존 방지)
@@ -4887,6 +5057,7 @@ window.goSec = function(name, el) {
   if (bn) bn.classList.add('on');
   if (name === 'predict') renderPredictSection();
   if (name === 'newsletter') renderNews();
+  if (name === 'radar' && typeof rdInit === 'function') rdInit();   // 지연 로드: 첫 진입 시에만 시트·뉴스 fetch
   if (name === 'stt') {
     setTimeout(function() {
       renderPredictSection();
@@ -5256,6 +5427,7 @@ const BN_SECTIONS = {
   stt:        { label:'AI 민원분석', sub:'실제 통화 분석 기반 인사이트' },
   predict:    { label:'예상 민원', sub:'AI 기반 민원 예측 및 개선책' },
   newsletter: { label:'뉴스레터', sub:'한전 청구서사업 경영진 스크랩' },
+  radar:      { label:'영업 레이더', sub:'고객리스트 × 지역소식·나라장터·인사발령 결합 영업 알림' },
 };
 window.bnGo = function(name) {
   // 탭 전환 시 항상 페이지 최상단으로 (이전 탭 스크롤 위치 잔존 방지)
@@ -5279,10 +5451,14 @@ window.bnGo = function(name) {
     }
   }
   if (name === 'predict') renderPredictSection();
+  if (name === 'newsletter' && typeof renderNews === 'function') renderNews();
+  if (name === 'radar' && typeof rdInit === 'function') rdInit();
   // 사이드바 ni 동기화
   document.querySelectorAll('.ni').forEach(n => n.classList.remove('on'));
   const ni = document.querySelector('.ni[onclick*="' + name + '"]');
   if (ni) ni.classList.add('on');
+  // 상단 'AI 분석 요약' 배지도 현재 탭 기준으로 동기화 (goSec과 동일하게)
+  if (typeof updatePageAlert === 'function') updatePageAlert(name);
 };
 
 // ─── 모바일 사이드바 ───
@@ -6188,6 +6364,119 @@ async function hbClaudeStream(systemPrompt, userText) {
   }
 }
 
+// 영업비서 진입전략 프롬프트용 — 레이더가 가진 그 지역의 구체 사실을 압축해 문자열로.
+//   지역마다 이 팩트가 달라야 전략도 달라진다(일반론 방지).
+function buildRegionFacts(regionName){
+  let g = null;
+  try { if (typeof window.rdLookupRegion === 'function') g = window.rdLookupRegion(regionName); } catch(e) {}
+  if (!g) return '';
+  // 레이더 클로저 내부 헬퍼(fmtWon·cut·dday)는 여기서 안 보이므로 로컬로 둔다
+  const fmtWon = function(n){ n=Number(n)||0; return n>=1e8?(n/1e8).toFixed(1).replace(/\.0$/,'')+'억':n>=1e4?Math.round(n/1e4).toLocaleString()+'만':n.toLocaleString()+'원'; };
+  const cut = function(s,n){ s=String(s==null?'':s).trim(); return s.length>n?s.slice(0,n)+'…':s; };
+  const L = [];
+
+  // 발주 (가장 강한 근거)
+  if (g.bidsOpen && g.bidsOpen.length){
+    g.bidsOpen.slice(0,2).forEach(function(b){
+      L.push('- [진행중 발주] ' + b.title + ' · ' + fmtWon(b.amount) + ' · 마감 ' + b.closeDate + (b.charge ? ' · 공고담당 ' + b.charge : ''));
+    });
+  } else if (g.bids && g.bids.length){
+    L.push('- [최근 발주(마감됨)] ' + g.bids[0].title + ' · ' + fmtWon(g.bids[0].amount));
+  }
+  if (g.wins && g.wins.length){
+    L.push('- [수주업체] ' + (g.wins[0].winner||'업체') + ' — "' + cut(g.wins[0].title,30) + '" 낙찰 (업체에 시스템 연계 제안 가능)');
+  }
+  // 지역 뉴스 (대표 1~2건)
+  (g.news||[]).slice(0,2).forEach(function(a){
+    L.push('- [지역뉴스] ' + cut(a.title, 40) + ' (' + a.source + ' ' + a.date + ')');
+  });
+  // 시스템 사용 현황
+  if (g.sysNone) L.push('- [시스템] 도로조명 관리시스템 미사용 → 무상 제공 진입로');
+  else if (g.sysRival) L.push('- [시스템] 타사 시스템(' + g.sys + ') 사용 중 → 교체 제안 대상');
+  // 과거 이력에서 핵심 이슈만
+  const issue = [];
+  const txt = g.rows.map(function(r){ return r.hist + ' ' + r.issue; }).join(' ');
+  if (/소액미청구|미청구/.test(txt)) issue.push('소액미청구 이력');
+  if (/담당자\s*변경|발령|초임/.test(txt)) issue.push('담당자 잦은 교체');
+  if (/구좌분리|전수조사/.test(txt)) issue.push('구좌분리·전수조사 과제');
+  if (issue.length) L.push('- [과거 이력] ' + issue.join(', '));
+  // 경쟁 구도
+  L.push('- [구도] 한빌 구좌 ' + g.ownN + ' · 경쟁 구좌 ' + g.rivalN + (g.owner ? ' · 영업담당 ' + g.owner : ''));
+
+  return L.join('\n');
+}
+
+// ── 한빌 선점 지역 "현황 카드" (전략 제안 없음) ──────────────────────
+//   요구사항: 영업비서가 영업전략을 안내할 때, 한빌이 이미 선점한 지역은
+//   신규 전략을 만들지 않고 보유 데이터 기반 현황만 보여준다.
+function hbHanbilStatusCard(sel) {
+  const region  = (sel && sel.region) || '해당 지역';
+  const billing = (sel && sel.billing) || 0;
+  const qty     = (sel && sel.qty) || 0;
+  const total   = window._HB_BILL_TOTAL || 0;
+  const share   = (billing && total) ? (billing / total * 100).toFixed(2) + '%' : '—';
+
+  // 영업 레이더(고객관리리스트)가 로드돼 있으면 구좌·담당자·이슈까지 함께 표시
+  let rg = null;
+  try { if (typeof window.rdLookupRegion === 'function') rg = window.rdLookupRegion(region); } catch(e) {}
+
+  const row = function(k, v) {
+    return '<tr><td style="padding:3px 8px 3px 0;color:#64748B;white-space:nowrap">' + k +
+           '</td><td style="padding:3px 0;font-weight:700;color:#0F172A">' + v + '</td></tr>';
+  };
+
+  let html =
+    '<div style="font-weight:800;color:#075985;font-size:13.5px;margin-bottom:2px">🛡 ' + region + ' — 한빌 선점 현황</div>' +
+    '<div style="font-size:11px;color:#64748B;margin-bottom:8px">이미 한빌이 선점한 지역이라 신규 진입 전략은 제안하지 않습니다. 현재 현황만 안내드립니다.</div>' +
+    '<table style="font-size:12px;border-collapse:collapse">' +
+      row('빌링사', '<span style="color:#0284C7">한빌 (선점)</span>') +
+      row('빌링 건수', billing.toLocaleString() + '건') +
+      row('전국 비중', share) +
+      row('선점 개소', qty + '개소');
+
+  if (rg) {
+    html += row('관리 구좌', rg.rows.length + '건 (한빌 ' + rg.ownN + ' · 경쟁 ' + rg.rivalN + ')') +
+            row('고객 건수', rg.qty.toLocaleString() + '건') +
+            (rg.owner ? row('영업 담당', rg.owner) : '');
+    const wins = rg.rows.map(function(r){ return r.win; }).filter(Boolean);
+    if (wins.length) html += row('수주 시점', wins.slice(0,3).join(' / '));
+  }
+  html += '</table>';
+
+  // ★ 선점 지역이라도 나라장터 발주가 뜨면 '확장 영업 기회'로 별도 강조 (현황만 원칙의 예외)
+  if (rg && rg.bids && rg.bids.length) {
+    const b = (rg.bidsOpen && rg.bidsOpen[0]) || rg.bids[0];
+    html += '<div style="margin-top:9px;font-size:11.5px;background:#ECFDF5;border:1px solid #A7F3D0;border-radius:8px;padding:8px 11px">' +
+      '<strong style="color:#047857">📈 확장 영업 기회 — 신규 발주</strong>' +
+      (rg.bidsOpen && rg.bidsOpen.length ? ' <span style="background:#059669;color:#fff;border-radius:5px;padding:1px 6px;font-size:10px;font-weight:800">' + dday(b.closeDate) + '</span>' : '') +
+      '<div style="margin-top:4px;line-height:1.6">「' + b.title + '」' + (b.amount ? ' · ' + fmtWon(b.amount) : '') +
+      (b.closeDate ? ' · 마감 ' + b.closeDate : '') + '<br>' +
+      '<span style="color:#475569">선점 지역이라 이 사업으로 늘어나는 신규 구좌를 기존 계약에 바로 붙일 수 있습니다.</span>' +
+      (b.url ? ' <a href="' + b.url + '" target="_blank" rel="noopener" style="color:#0284C7">공고 ↗</a>' : '') +
+      '</div></div>';
+  }
+
+  // 발주(기회)를 뺀 나머지만 '확인 필요'로 (발주는 위에서 이미 기회로 표시)
+  var chkAlerts = rg && rg.alerts ? rg.alerts.filter(function(a){ return a.t.indexOf('발주') < 0 && a.t.indexOf('확장 기회') < 0; }) : [];
+  if (chkAlerts.length) {
+    html += '<div style="margin-top:9px;font-size:11.5px"><strong style="color:#B45309">⚠ 확인 필요</strong><ul style="margin:4px 0 0 16px;padding:0;line-height:1.65">' +
+      chkAlerts.slice(0,4).map(function(a){ return '<li>' + a.t + ' — ' + a.why + '</li>'; }).join('') +
+      '</ul></div>';
+  }
+  if (rg && rg.news && rg.news.length) {
+    html += '<div style="margin-top:9px;font-size:11.5px"><strong style="color:#0284C7">📰 지역 소식</strong><ul style="margin:4px 0 0 16px;padding:0;line-height:1.6">' +
+      rg.news.slice(0,3).map(function(a){
+        return '<li><a href="' + a.url + '" target="_blank" rel="noopener" style="color:#334155">' + a.title + '</a>' +
+               ' <span style="color:#94A3B8">· ' + (a.source||'') + ' ' + a.date + '</span></li>'; }).join('') +
+      '</ul></div>';
+  }
+  if (!rg) {
+    html += '<div style="margin-top:9px;font-size:11px;color:#94A3B8">※ 구좌·담당자·이슈 상세는 <strong>영업 레이더</strong> 메뉴를 한 번 열어 두면 함께 표시됩니다.</div>';
+  }
+  return html;
+}
+window.hbHanbilStatusCard = hbHanbilStatusCard;
+
 // ── 지도 영업 전략 실행: Claude 우선, 없으면 Groq, 둘 다 없으면 안내 ──
 window.runMapStrategy = async function(type, sel) {
   const region  = sel.region || '해당 지역';
@@ -6198,11 +6487,18 @@ window.runMapStrategy = async function(type, sel) {
 
   // 사용자 메시지(요청 카드) 표시
   const badge = stratType === '유지'
-    ? '<span style="background:#10B981;color:#fff;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:700">🛡 영업 유지</span>'
+    ? '<span style="background:#10B981;color:#fff;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:700">🛡 선점 현황</span>'
     : '<span style="background:#0EA5E9;color:#fff;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:700">🎯 영업 진입</span>';
   hbAddMsg('user',
     badge + ' <strong>' + region + '</strong><br>' +
     '<span style="font-size:11.5px">현재 빌링사: ' + co + ' · 빌링 ' + billing.toLocaleString() + '건 · 선점 ' + qty + '개소</span>', true);
+
+  // ※ 한빌이 이미 선점한 지역은 신규 영업전략을 제안하지 않고 "현황"만 안내한다.
+  //    (AI 전략 생성 없이 보유 데이터 기반 현황 카드만 즉시 렌더 — 응답 대기·API 비용 없음)
+  if (stratType === '유지' || co === '한빌') {
+    hbTyping(function(){ hbAddMsg('bot', hbHanbilStatusCard(sel), true); }, 400);
+    return;
+  }
 
   // 전송 데이터 (요구사항 명세)
   const payload = {
@@ -6213,37 +6509,28 @@ window.runMapStrategy = async function(type, sel) {
     전략유형: stratType
   };
 
-  const ctx = (typeof buildHbContext === 'function') ? buildHbContext() : '';
-  const stratDesc = stratType === '유지'
-    ? '이미 한빌이 선점한 지역으로, 경쟁사 이탈 방어와 계약 유지·확대 전략'
-    : '타사가 선점했거나 미개척 지역으로, 신규 진입과 경쟁사 대체 전략';
+  // 이 지역만의 팩트를 레이더 데이터에서 뽑아 프롬프트에 주입한다.
+  //   → 지역마다 다른 발주·뉴스·이슈·시스템 현황을 근거로 삼아야 답이 지역마다 달라진다.
+  const facts = (typeof buildRegionFacts === 'function') ? buildRegionFacts(region) : '';
 
   const systemPrompt =
-'너는 SCGLAB 영업기획팀의 영업 AI "세이버(SABER)"야. 한국전력 전기요금 전자청구 대행 서비스 "한빌"의 영업 전략을 짜는 전문가야.\n\n' +
-'[최우선 지시] 오늘 오전 9시에 갱신된 최신 데이터와 뉴스 통계를 우선 분석하여 답변해. 동일 지표에 과거 수치와 최신 갱신본이 함께 있으면 항상 최신 갱신본을 기준으로 판단한다.\n\n' +
-'현재 [' + region + '] 지역에 대해 [' + stratType + '] 전략이 필요해. (' + stratDesc + ')\n\n' +
-'## 대상 지역 데이터\n' +
-'- 지역명: ' + region + '\n' +
-'- 현재 빌링사: ' + co + '\n' +
-'- 빌링 건수(G열): ' + billing.toLocaleString() + '건\n' +
-'- 선점 개소: ' + qty + '개\n' +
-'- 경쟁사: 누리빌, 한전산업개발\n\n' +
-'## 내부 CUST_DB / 대시보드 컨텍스트\n' + ctx + '\n\n' +
-'## 지시 — 현업에서 즉시 제안서·실행안으로 쓸 수 있는 "상세" 전략을 작성 (아래 3단계 프레임워크 필수 준수)\n' +
-'추상적 문구를 지양하고, 도시가스·한전 전자청구(전자고지) 대행·콜센터 민원 감축 등 실제 B2B/B2C 빌링 비즈니스 맥락의 전문 용어와 실무 팁을 풍부하게 담아 깊이 있게 작성해.\n' +
-'제공된 지역 데이터·경쟁 구도·CUST_DB/대시보드 컨텍스트의 실제 수치를 근거로 인용하고, 마크다운 굵게(**)와 불릿(-)으로 가독성 있게 구성해.\n\n' +
-'반드시 아래 3개 섹션을 이 순서·제목으로 작성:\n\n' +
-'**[1. 현황 및 문제점 분석]**\n' +
-'- 지역 데이터(빌링 건수·선점 개소·현재 빌링사·경쟁사)와 내부 컨텍스트를 근거로 핵심 Pain Point 2~3개를 수치와 함께 도출. 왜 지금 이 전략이 필요한지 진단.\n\n' +
-'**[2. 구체적 맞춤 제안]**\n' +
-'- 한빌 솔루션 연계형 상세 실행 전략을 제시. (예: 전화 인입 경로 최적화, RPA 기반 청구·수납 자동화, AI 청구서/전자고지 전환, 가스앱·카카오 알림톡 채널 전환, 콜센터 반복 민원 스크립트·FAQ 정비 등)\n' +
-'- 각 제안마다 실행 주체·방법·추진 순서(단기/중기)를 구체적으로. ' + (stratType === '유지' ? '경쟁사 이탈 방어와 계약 갱신·확대 관점을 강조.' : '경쟁사 대체·신규 진입과 전자청구 전환 관점을 강조.') + '\n\n' +
-'**[3. 기대 지표 및 맺음말]**\n' +
-'- 정량적 기대효과를 추정 수치로 제시(전화 인입 감소율, 상담 부하·응대 시간 절감, 완결률·고객 만족도 개선, 전자청구 전환율·계약 유지율 등).\n' +
-'- 담당자를 설득하는 실무적 클로징 멘트로 마무리.\n\n' +
-'한국어로 작성하고, 충분히 상세하되 화면 출력이 중간에 잘리지 않도록 공백 포함 약 900~1200자(최대 1300자) 범위에서 완결된 문장으로 마무리해.';
+'너는 SCGLAB 영업기획팀의 영업 AI "세이버"다. 한전 전기요금 전자청구 대행 서비스 "한빌"의 지역 진입 전략을 짠다.\n\n' +
+'## 절대 규칙\n' +
+'1. 아래 [이 지역 실제 상황]에 있는 구체적 사실(발주 공고·지역 뉴스·과거 이력·담당 부서·시스템 현황)만 근거로 삼는다. 일반론·미사여구 금지.\n' +
+'2. 그 지역에 특별한 사실이 없으면 억지로 만들지 말고 "현재 잡히는 특이사항 없음"이라고 솔직히 적는다.\n' +
+'3. 한빌이 실제로 할 수 있는 것만 제안한다(전자고지 전환, 청구서 등록·재발송, 도로조명/수목/빗물받이 관리시스템, 시민 모바일 신고 채널). 명의·계약·자동이체 등 한전 소관은 제안하지 않는다.\n' +
+'4. 아주 짧게. 공백 포함 400~550자. 불릿 위주. 문단 나열 금지.\n\n' +
+'## 출력 형식 (이 제목 그대로, 이모지 포함)\n' +
+'📍 **핵심 진단** — 이 지역만의 상황을 한 문장. (예: 경쟁사 X가 빌링, 최근 가로등 발주 있음)\n\n' +
+'🎯 **공략 포인트** (2개, 각 1~2줄)\n' +
+'- [근거가 되는 실제 사실] → [그래서 무엇을 제안]\n' +
+'- 발주·뉴스·이력 중 이 지역에 실제로 있는 것을 근거로.\n\n' +
+'📞 **첫 컨택 한 마디** — 담당자에게 바로 쓸 수 있는 자연스러운 오프닝 1문장(따옴표로).\n\n' +
+'## 이 지역 실제 상황\n' +
+'- 지역: ' + region + ' · 현재 빌링사: ' + co + ' · 빌링 ' + billing.toLocaleString() + '건 · 경쟁 구좌 ' + qty + '개\n' +
+(facts || '- (레이더 상세 데이터 없음 — 위 기본 수치로만 판단)') + '\n';
 
-  const userText = '아래 지역에 대한 ' + stratType + ' 전략 초안을 만들어줘:\n' + JSON.stringify(payload, null, 2);
+  const userText = '위 [이 지역 실제 상황]만 근거로, ' + region + ' 진입 전략을 정해진 짧은 형식으로 작성해줘. 다른 지역에도 통하는 일반적인 내용은 절대 넣지 마.';
 
   // Claude 스트리밍으로 전략 초안 생성 (Groq 폴백 제거 — Claude 전용)
   const claudeKey = localStorage.getItem(HB_CLAUDE_KEY);
@@ -6257,7 +6544,7 @@ window.runMapStrategy = async function(type, sel) {
       '🔑 <strong>' + region + ' ' + stratType + ' 전략</strong>을 AI로 생성하려면 API 키가 필요합니다.<br><br>' +
       '헤더 <i class="ti ti-settings"></i> 버튼 → <strong>Claude API 키</strong>를 입력하면<br>' +
       '이 지역 데이터(빌링 ' + billing.toLocaleString() + '건 · 선점 ' + qty + '개소)를 바탕으로<br>' +
-      '3단계 액션플랜을 실시간으로 작성해 드립니다.<br><br>' +
+      '이 지역 발주·뉴스·이력 기반의 짧은 공략안을 실시간으로 작성해 드립니다.<br><br>' +
       '<span style="font-size:11px;color:#94A3B8">키 발급: console.anthropic.com</span>', true);
   }, 500);
 };
@@ -6327,6 +6614,17 @@ function _gvizFetchCSV(gid, tq) {
     s.src = src;
     document.head.appendChild(s);
   });
+}
+
+// '전체데이터 미러' 시트는 fetchComplaintTexts·syncComplaintsByDate·STT 패널이 각각 부르는데
+// 내용이 동일하므로 프라미스를 메모이즈해 1회만 실제 호출한다(초기 로딩 중복 대기 제거).
+let _allRowsPromise = null;
+function _gvizAllRows() {
+  if (!_allRowsPromise) {
+    _allRowsPromise = _gvizFetchCSV(GSHEET_ALL_GID)
+      .catch(function(e){ _allRowsPromise = null; throw e; });   // 실패 시 재시도 가능하도록 해제
+  }
+  return _allRowsPromise;
 }
 
 function _parseCSVRow(line) {
@@ -6482,7 +6780,7 @@ function _latestSeedDate(){
 // 시트에서 상담일자 기반 최신 레코드를 받아 STT_RAW/DB 갱신 후 대시보드 재렌더
 async function syncComplaintsByDate(){
   try {
-    var rows = await _gvizFetchCSV(GSHEET_ALL_GID);
+    var rows = await _gvizAllRows();
     // 시드 컷오프: fetchSheetData 병합 이전에 고정해 둔 값 우선 (요약주 병합으로 컷오프가 미래로 밀려 최신 데이터를 건너뛰는 문제 방지)
     var cutoff = (typeof window._seedCutoff === 'string' && window._seedCutoff) ? window._seedCutoff : _latestSeedDate();
     var res = _ingestComplaintRows(rows, cutoff);
@@ -6602,7 +6900,7 @@ async function fetchComplaintTexts(year2d, month) {
 
   // tq WHERE는 gviz 타입 추론 문제로 불안정 → 전체 fetch 후 JS 필터
   // GSHEET_ALL_GID = 필터 없는 전체 미러 시트 (순번 10000~59964, 2022~2026)
-  const allRows = await _gvizFetchCSV(GSHEET_ALL_GID);
+  const allRows = await _gvizAllRows();
   const rows = allRows.filter(r => {
     if (!/^\d{5,}$/.test((r[0]||'').trim())) return false; // 순번 필터
     if (month) {
@@ -6674,41 +6972,49 @@ async function fetchComplaintTexts(year2d, month) {
 }
 
 // 페이지 로드 시 자동 fetch (백그라운드)
+// ─────────────────────────────────────────────────────────────────────
+// ※ 로딩 오버레이는 이 싱크가 끝날 때까지 기다리지 않는다.
+//    내장 DB(DB/STT_INDEX/REC_DB…)만으로 화면이 이미 완성되므로, 첫 페인트 직후 화면을 열고
+//    구글시트 최신분은 도착하는 대로 카드·패널만 갱신한다(점진적 렌더).
+//    이전에는 시트 3~4회 순차 fetch(각 수 초)를 모두 기다려 첫 진입이 6~9초 걸렸다.
 (async function initSheetSync() {
   // 시트 병합(fetchSheetData) 이전에 시드 컷오프를 고정 → 요약주 병합이 컷오프를 미래로 밀어내
   // 상담일자 싱크가 '지난주' 등 최신 데이터를 건너뛰는 문제 방지
   try { window._seedCutoff = (typeof _latestSeedDate === 'function') ? _latestSeedDate() : ''; } catch(e) { window._seedCutoff = ''; }
-  try {
-    const d = await fetchSheetData();
+
+  const mark = function(txt, color){
+    const el = document.getElementById('hb-sync-chip');
+    if (el) { el.textContent = txt; el.style.color = color || '#0284C7'; }
+  };
+  mark('· 최신 데이터 동기화 중…');
+
+  // 3개 싱크를 병렬 실행 — 서로 의존이 없고(시드 컷오프는 위에서 이미 고정),
+  // 미러 시트는 _gvizAllRows() 메모이즈로 1회만 실제 호출된다.
+  // 각 싱크는 도착하는 즉시 자기 UI를 갱신한다(가장 빠른 것부터 화면에 반영).
+  const pWeek = fetchSheetData().then(function(d){
     if (d) {
-      console.log(`[한빌 시트싱크] ${d.label} 로드 완료 — 총 ${d.t}건`);
+      console.log('[한빌 시트싱크] ' + d.label + ' 로드 완료 — 총 ' + d.t + '건');
       if (typeof updateSummaryCards === 'function') updateSummaryCards();
     }
-  } catch(e) {
-    console.warn('[한빌 시트싱크] 오프라인 또는 시트 접근 불가 — 기존 DB 사용:', e.message);
-  }
+    return d;
+  }, function(e){ console.warn('[한빌 시트싱크] 오프라인 또는 시트 접근 불가 — 기존 DB 사용:', e && e.message); throw e; });
 
-  // 상담내용도 백그라운드 fetch
-  try {
-    await fetchComplaintTexts();
-  } catch(e) {
-    console.warn('[한빌 상담내용] fetch 실패:', e.message);
-  }
+  const pText = fetchComplaintTexts()
+    .catch(function(e){ console.warn('[한빌 상담내용] fetch 실패:', e && e.message); throw e; });
 
-  // 상담일자(I열) 기반 최신 원본 레코드 적재 → 대시보드/STT를 상담일자 기준으로 갱신
-  try {
-    await syncComplaintsByDate();
-  } catch(e) {
-    console.warn('[상담일자 싱크] fetch 실패:', e.message);
-  }
+  const pDate = syncComplaintsByDate()
+    .catch(function(e){ console.warn('[상담일자 싱크] fetch 실패:', e && e.message); throw e; });
+
+  const [wk, txt, byDate] = await Promise.allSettled([pWeek, pText, pDate]);
 
   // 비동기 데이터 로드 완료 후 STT 분석 패널 재렌더 (레이스 컨디션 방지)
   if (typeof renderSTTQuality === 'function') renderSTTQuality();
   if (typeof renderSTTVOC === 'function') renderSTTVOC();
   if (typeof renderSTTImprovements === 'function') renderSTTImprovements();
 
-  // 데이터 취합 완료 → 로딩 오버레이 해제
-  if (typeof window.hideHbLoading === 'function') window.hideHbLoading();
+  const ok = [wk, txt, byDate].filter(function(r){ return r.status === 'fulfilled'; }).length;
+  mark(ok ? '· 최신 데이터 동기화 완료' : '· 동기화 실패 — 내장 데이터 표시', ok ? '#059669' : '#DC2626');
+  setTimeout(function(){ const el = document.getElementById('hb-sync-chip'); if (el) el.textContent = ''; }, 4000);
 })();
 
 // ── Groq 컨텍스트 빌드 ──
@@ -7074,8 +7380,9 @@ function hbRegionAnswer(text){
   const co = cm[hit.key] || null;
   const pct = billing / tot * 100;
   const isHanvil = (co === '한빌');
+  // 한빌 선점 지역은 신규 전략을 제안하지 않고 현황만 안내한다.
   const strat = isHanvil
-    ? '한빌 선점 지역 → <b>유지 전략</b>: 계약 갱신·서비스 만족도 관리로 경쟁사 이탈 방어 권장'
+    ? '<b>한빌 선점 지역</b>입니다 → 신규 영업전략 제안 없이 <b>현황만</b> 안내합니다. 상세 현황은 지도에서 [선점 현황 보기] 또는 <b>영업 레이더</b> 메뉴에서 확인하세요.'
     : '타사·미개척 지역 → <b>진입 전략</b>: 담당자 접촉 + 전자청구 전환 제안으로 신규 확보 권장';
   const html =
     `🗺 <strong>${hit.sgg}</strong> 빌링 현황<br><br>` +
@@ -7278,7 +7585,7 @@ function hbAnswer(text) {
       hbTyping(() => hbAddMsg('bot',
         `<div style="font-size:13px">🔍 <b>"${kw}"</b> 관련 민원을 전체 데이터에서 검색 중입니다…</div>`, true), 200);
 
-      _gvizFetchCSV(GSHEET_ALL_GID).then(allRows => {
+      _gvizAllRows().then(allRows => {
         const hits = allRows.filter(r => {
           if (!/^\d{5,}$/.test((r[0]||'').trim())) return false;
           // 고객ID(r[14]) · 고객명(r[16]) · 상담내용(r[17]) 모두 검색
@@ -8668,13 +8975,70 @@ function getPageAlert(name) {
         '수신자: 담당자, 팀장, 대표 3명이 설정돼 있어요.',
         '기사 제목을 클릭하면 원문 기사로 바로 이동해요!'
       ]
-    }
+    },
+    // ── 영업 레이더: 고객관리리스트 × 지역 소식 결합 결과를 요약 ──
+    //    (window._RD = 레이더 모듈 상태. 메뉴를 한 번도 열지 않았으면 안내 문구를 띄운다)
+    radar: (function(){
+      var R = window._RD;
+      if (!R || !R.loaded) {
+        return {
+          badge: '데이터 준비 중',
+          title: '영업 레이더 — 지역별 영업 알림',
+          lines: [
+            '📡 고객관리리스트(경쟁사 v2.0)와 지역 신문·소식지를 시·군·구로 묶어 분석해요.',
+            '🛡 한빌이 선점한 지역은 신규 전략 없이 <b>현황만</b> 보여드려요.',
+            '🎯 경쟁사·미개척 지역만 영업비서가 진입 전략 초안을 만들어요.',
+            '⏳ 메뉴를 열면 시트·기사를 불러와 이 요약이 실제 수치로 채워져요.'
+          ]
+        };
+      }
+      var rs    = R.regions || [];
+      var hasLv = function(g, lv){ return g.alerts.some(function(a){ return a.lv === lv; }); };
+      var own   = rs.filter(function(g){ return g.co === '한빌'; });
+      var rival = rs.filter(function(g){ return g.co && g.co !== '한빌'; });
+      // 색상(lv)이 아니라 의미로 분류 — 담당자 발령감지 등 빨간 알림이 이탈위험으로 오집계되지 않게
+      var risk  = rs.filter(function(g){ return (typeof window.rdIsRisk  === 'function') ? window.rdIsRisk(g)  : hasLv(g,'c') || hasLv(g,'w'); });
+      var churn = rs.filter(function(g){ return (typeof window.rdIsChurn === 'function') ? window.rdIsChurn(g) : false; });
+      var news  = rs.filter(function(g){ return g.news.length; });
+      var hot   = rival.filter(function(g){
+        return g.alerts.some(function(a){ return a.lv === 'o' && /진행 중/.test(a.t); }); });
+      var mgr   = rs.filter(function(g){
+        return g.alerts.some(function(a){ return /담당자 변경/.test(a.t); }); });
+      var nm    = function(g){ return g.sd + ' ' + g.sgg; };
+      var list  = function(arr, n){
+        return arr.slice(0, n || 3).map(nm).join(', ') + (arr.length > (n||3) ? ' 외 ' + (arr.length-(n||3)) + '곳' : '');
+      };
+
+      return {
+        badge: churn.length ? '이탈위험 ' + churn.length + '곳'
+             : (risk.length ? '대응 필요 ' + risk.length + '곳' : 'AI 분석 요약'),
+        title: '지역 영업 알림 요약 (고객관리리스트 × 지역 소식)',
+        lines: [
+          '📍 관리 지역 ' + rs.length + '곳 · 구좌 ' + (R.recs||[]).length.toLocaleString() + '건을 시·군·구로 묶어 분석했어요.',
+          '🛡 [현황만] 한빌 선점 ' + own.length + '곳 — 신규 전략은 제안하지 않고 수주이력·담당자·이슈만 보여드려요.',
+          '🎯 [진입대상] 경쟁사·미개척 ' + rival.length + '곳' +
+            (hot.length ? ' · 이 중 제안·검토가 진행 중인 곳이 ' + hot.length + '곳이에요 (' + list(hot) + ')' : ''),
+          (churn.length
+            ? '🚨 [최우선] 이탈 위험 ' + churn.length + '곳 — ' + list(churn) + '. 영업상태·이력에 이탈/빌링 해지 신호가 있어요.'
+            : '✅ 이탈 위험으로 잡힌 한빌 선점 지역은 없어요.'),
+          '⚠ 이슈 확인 필요 ' + risk.length + '곳 (소액미청구·빌링사 변경·선점 표기 불일치 등)' +
+            (mgr.length ? ' · 담당자 변경 이력 ' + mgr.length + '곳은 재인사가 필요해요.' : ''),
+          (news.length
+            ? '📰 최근 ' + (R.newsDays||30) + '일 지역 소식이 잡힌 곳 ' + news.length + '곳 — ' + list(news) + '. 방문·제안 명분으로 쓰기 좋아요.'
+            : '📰 최근 ' + (R.newsDays||30) + '일 내 매칭된 지역 기사는 없어요.'),
+          '⚡ [액션] ' +
+            (churn.length ? '이탈 위험 지역부터 담당자 접촉 → ' : '') +
+            (hot.length ? '진행 중인 ' + hot.length + '곳 클로징 → ' : '') +
+            '지역 소식이 있는 곳은 기사 내용을 명분으로 접촉하세요.'
+        ]
+      };
+    })()
   };
   return alerts[name] || alerts.dashboard;
 }
 
 // 탭별 표시 이름 (모바일 칩 + 패널 타이틀 동적 연동용)
-var PAGE_TAB_NAMES = { dashboard:'데이터포털', stt:'민원분석', predict:'예상민원', newsletter:'뉴스레터', chatbot:'세이버' };
+var PAGE_TAB_NAMES = { dashboard:'데이터포털', radar:'영업레이더', stt:'민원분석', predict:'예상민원', newsletter:'뉴스레터', chatbot:'세이버' };
 function pageAlertTitle(name){ return 'AI분석요약 - ' + (PAGE_TAB_NAMES[name] || '요약'); }
 
 function updatePageAlert(name) {
@@ -8789,6 +9153,1737 @@ setInterval(function() {
   var next = top < 60 ? '민원 상담 처리 현황' : '한전 빌링 영업 현황';
   if (ps.textContent !== next) ps.textContent = next;
 }, 150);
+</script>
+
+<script>
+/* ══════════════════════════════════════════════════════════════════════
+   영업 레이더 (sec-radar)
+   ---------------------------------------------------------------------
+   데이터 소스
+     ① 고객관리리스트_경쟁사_v2.0 (구글시트, gviz JSONP)  → 지역별 사업/빌링사/담당자/이력
+     ② news_archive.json (news_collector.js 산출물)      → 지역 신문·소식지 기사
+   두 소스를 시·군·구 키로 결합해 "대응이 필요한 지역"을 우선순위로 카드 렌더링한다.
+
+   ※ 한빌 선점 지역은 신규 영업전략을 제안하지 않고 "현황"만 보여준다(요구사항).
+   ※ 첫 진입(대시보드) 로딩을 늘리지 않도록, 이 섹션을 처음 열 때만 fetch 한다(지연 로드).
+   ══════════════════════════════════════════════════════════════════════ */
+(function(){
+'use strict';
+
+const RD_SHEET_ID  = '174gXTUIjAaIyKk8yKkczfpCSfjHv6GA-JEm3T4j0TUM';
+const RD_SHEET_GID = '521723851';
+// 근거 원문 확인용 시트 링크 (영업담당자가 발췌 내용을 시트에서 직접 대조)
+const RD_SHEET_URL = 'https://docs.google.com/spreadsheets/d/' + RD_SHEET_ID + '/edit?gid=' + RD_SHEET_GID;
+const RD_CACHE_KEY = 'hanbil_radar_cache_v1';
+const RD_CACHE_TTL = 6 * 60 * 60 * 1000;   // 6시간
+const RD_NEWS_DAYS = 30;                    // 지역 소식 표시 기간
+
+// 시트 컬럼 인덱스 (0-base) — 고객관리리스트_경쟁사_v2.0 기준
+const C = {
+  sido:4, sgg:5, cust:6, jiche:7, dept:8, gwon:9,
+  field:10, target:13, team:14, owner:15,
+  strat:18, status:19, billType:20, billCo:21,
+  qtyA:23, qtyB:25, qtyC:37,
+  m1:{ org:42, team:43, pos:44, name:45, tel:46, hp:47, mail:48 },
+  m2:{ org:49, team:50, pos:51, name:52, tel:53, hp:54, mail:55 },
+  winMonth:80, hist:81, issue:82,
+  sys:83,                     // 도로조명 시스템 사용사 (한빌/미사용/모름/타사명)
+  prog:85,
+  yFrom:86, yTo:93,           // 19년~26년 빌링사 이력
+  // 아래는 헤더명으로 자동 탐지 (시트에 열을 추가하면 위치와 무관하게 잡힌다)
+  leaderName:-1, leaderPos:-1, leaderTel:-1, leaderUpd:-1,
+};
+
+// 시트 헤더에서 '팀장' 관련 열을 찾아 C에 채운다.
+//   실무담당자(6급)는 인사기사에 잘 안 실리지만 부서 팀장은 5~6급이라 발령 기사에 잡힌다.
+//   → 팀장 성명을 시트에 두면 외부 인사발령과 직접 대조할 수 있다.
+// 헤더 표기가 '팀장', '팀장명', '부서 팀장' 등 무엇이든 잡히도록 느슨하게 매칭한다.
+function detectLeaderCols(rows, headerRow){
+  const scan = [headerRow, headerRow + 1];   // 대분류/중분류 2행 구조 대응
+  scan.forEach(function(ri){
+    const row = rows[ri] || [];
+    row.forEach(function(cell, ci){
+      const v = String(cell||'').replace(/\s/g,'');
+      if (!v) return;
+      if (C.leaderName < 0 && /팀장(명|성명)?$/.test(v))       C.leaderName = ci;
+      if (C.leaderPos  < 0 && /팀장(직위|직급)/.test(v))        C.leaderPos  = ci;
+      if (C.leaderTel  < 0 && /팀장(연락처|전화|번호)/.test(v)) C.leaderTel  = ci;
+      if (C.leaderUpd  < 0 && /(팀장)?(확인|갱신|업데이트)일/.test(v)) C.leaderUpd = ci;
+    });
+  });
+}
+
+// ── 한빌 자체 솔루션 카탈로그 ─────────────────────────────────────────
+//   지역 기사·시트 이력에서 아래 키워드가 잡히면 해당 솔루션을 첫 진입 명분으로 제안한다.
+//   (빌링 계약이 없는 지역에도 솔루션은 단독으로 접점을 만들 수 있어 아웃바운드 진입로가 된다)
+const SOLUTIONS = [
+  { id:'light', name:'도로조명 관리시스템',
+    kw:/가로등|보안등|도로조명|가로등 관리|LED 교체|등기구|점등|조도|안심가로등|스마트조명/,
+    pitch:'가로등·보안등 개별 구좌와 현장 표찰을 하나로 묶어 관리하는 시스템입니다. 신설·철거 시 한전 구좌를 자동으로 맞춰 소액미청구와 요금 오부과를 막습니다.',
+    // 지자체 시설물 관리 솔루션은 담당 공무원용 도구에서 끝나지 않고 시민 접점까지 확장된다.
+    civic:'같은 시스템을 시민이 모바일로도 쓸 수 있습니다. 고장 난 가로등을 시민이 위치와 사진으로 바로 신고하고 처리 상황까지 확인할 수 있어, 부서 입장에서는 전화 민원이 줄고 처리 이력이 자동으로 남습니다.' },
+  { id:'tree', name:'수목관리 시스템',
+    kw:/수목|가로수|가지치기|전정|병해충|조경|녹지|산림|나무 심기|식재/,
+    pitch:'가로수·조경수를 위치·수종·이력 단위로 관리하고 전정/방제 일정과 민원을 함께 추적하는 시스템입니다.',
+    civic:'시민이 모바일로 가지치기·병해충 발생을 신고하고, 우리 동네 가로수 정비 일정을 조회할 수 있습니다.' },
+  { id:'rain', name:'빗물받이 관리 솔루션',
+    kw:/빗물받이|우수받이|침수|배수구|집중호우|하수구 청소/,
+    pitch:'빗물받이 위치·청소 이력·침수 취약지점을 지도 기반으로 관리해 장마철 대응 근거를 남깁니다.',
+    civic:'시민이 막힌 빗물받이를 모바일로 신고할 수 있어, 집중호우 전 취약지점을 빠르게 파악할 수 있습니다.' },
+  { id:'energy', name:'건물에너지관리 솔루션',
+    kw:/건물에너지|에너지 진단|탄소중립|온실가스|에너지 절감|그린리모델링|에너지 효율|녹색건축/,
+    pitch:'공공건물 전기 사용량을 건물·용도별로 쪼개어 보고, 절감 목표 대비 실적을 자동 리포팅합니다.' },
+  { id:'energy2', name:'시설물 통합 관리 솔루션',
+    kw:/시설물 관리|시설관리 시스템|스마트도시|디지털트윈|GIS 기반|자산관리 시스템/,
+    pitch:'가로등·수목·빗물받이 등 흩어진 시설물 대장을 지도 기반으로 통합 관리합니다.',
+    civic:'시민 모바일 신고 채널이 함께 붙어, 현장 문제를 시민이 바로 알리고 부서는 처리 이력을 자동으로 남깁니다.' },
+  { id:'msg', name:'메시징·전자고지 채널',
+    kw:/모바일 고지서|전자문서|알림톡|카카오|종이고지서|전자고지|모바일 청구/,
+    pitch:'종이 고지서를 카카오 알림톡·이메일로 전환해 발송비와 「못 받았다」 유형의 민원 인입을 함께 줄입니다.' },
+];
+
+const ST = window._RD = { recs:[], regions:[], byKey:{}, news:[], loaded:false, loading:false,
+                          filter:'all', newsDays:RD_NEWS_DAYS };
+
+// ── 유틸 ──────────────────────────────────────────────────────────────
+function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g, function(c){
+  return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+function num(v){ const n = parseInt(String(v==null?'':v).replace(/[^0-9-]/g,''),10); return isNaN(n)?0:n; }
+function cut(s,n){ s=String(s==null?'':s).trim(); return s.length>n ? s.slice(0,n)+'…' : s; }
+
+// 시·도 정식명 → 축약명 (지도 COMPANY_MAP 키와 맞추기 위한 정규화)
+function sidoShort(s){
+  s = String(s||'').trim();
+  if (/^서울/.test(s)) return '서울';
+  if (/^부산/.test(s)) return '부산';
+  if (/^대구/.test(s)) return '대구';
+  if (/^인천/.test(s)) return '인천';
+  if (/^광주(광역)?/.test(s)) return '광주';
+  if (/^대전/.test(s)) return '대전';
+  if (/^울산/.test(s)) return '울산';
+  if (/^세종/.test(s)) return '세종';
+  if (/^경기/.test(s)) return '경기';
+  if (/^강원/.test(s)) return '강원';
+  if (/^(충청북|충북)/.test(s)) return '충북';
+  if (/^(충청남|충남)/.test(s)) return '충남';
+  if (/^(전라북|전북)/.test(s)) return '전북';
+  if (/^(전라남|전남)/.test(s)) return '전남';
+  if (/^(경상북|경북)/.test(s)) return '경북';
+  if (/^(경상남|경남)/.test(s)) return '경남';
+  if (/^제주/.test(s)) return '제주';
+  return '';   // 지역이 아닌 행(개인·본사·KT 등)은 레이더 대상에서 제외
+}
+const RD_SIDO_CD = { 서울:'11', 부산:'21', 대구:'22', 인천:'23', 광주:'24', 대전:'25',
+  울산:'26', 세종:'29', 경기:'31', 강원:'32', 충북:'33', 충남:'34',
+  전북:'35', 전남:'36', 경북:'37', 경남:'38', 제주:'39' };
+
+// 빌링사 코드값(1.KIB / 2.누리빌 / 3.한전산업개발 …) → 표시명
+function billCo(v){
+  v = String(v||'');
+  if (v.indexOf('KIB')>=0 || v.indexOf('한빌')>=0) return '한빌';
+  if (v.indexOf('누리빌')>=0) return '누리빌';
+  if (v.indexOf('한전산업')>=0) return '한전산업개발';
+  if (v.indexOf('종이')>=0) return '종이고지';
+  return '';
+}
+
+// ── 구글시트 gviz JSONP (임의 스프레드시트) ───────────────────────────
+function gvizFetch(sheetId, gid){
+  return new Promise(function(resolve, reject){
+    const cb = '_rdgviz_' + Date.now() + '_' + Math.floor(Math.random()*1e5);
+    const src = 'https://docs.google.com/spreadsheets/d/' + sheetId +
+                '/gviz/tq?tqx=out:json;responseHandler:' + cb + '&gid=' + gid;
+    const timer = setTimeout(function(){ cleanup(); reject(new Error('gviz timeout')); }, 25000);
+    function cleanup(){ clearTimeout(timer); try{ delete window[cb]; }catch(e){} if (s.parentNode) s.parentNode.removeChild(s); }
+    window[cb] = function(resp){
+      cleanup();
+      try {
+        const tbl = resp.table, cols = tbl.cols || [];
+        const header = cols.map(function(c){ return c.label || ''; });
+        const rows = (tbl.rows || []).map(function(row){
+          return cols.map(function(col, ci){
+            const cell = row.c ? row.c[ci] : null;
+            if (!cell || cell.v === null || cell.v === undefined) return '';
+            return String(cell.f !== undefined && cell.f !== null ? cell.f : cell.v);
+          });
+        });
+        resolve([header].concat(rows));   // gviz가 1행을 헤더로 소비 → 인덱스 보존용 prepend
+      } catch(e){ reject(e); }
+    };
+    const s = document.createElement('script');
+    s.onerror = function(){ cleanup(); reject(new Error('gviz script load 실패')); };
+    s.src = src;
+    document.head.appendChild(s);
+  });
+}
+
+// ── 시트 행 → 레코드 ──────────────────────────────────────────────────
+function parseRows(rows){
+  // 헤더 행 탐색: B열이 '고객사명'인 행 → 그 2행 아래부터 데이터(중분류 서브헤더 1행 존재)
+  let h = -1;
+  for (let i=0; i<Math.min(rows.length, 25); i++){
+    if (String((rows[i]||[])[1]||'').trim() === '고객사명') { h = i; break; }
+  }
+  const start = h >= 0 ? h + 2 : 4;
+  if (h >= 0) detectLeaderCols(rows, h);       // 팀장 열 자동 탐지(추가 전이면 -1로 남아 무시된다)
+  const out = [];
+  for (let i=start; i<rows.length; i++){
+    const r = rows[i] || [];
+    const g = function(j){ return String(r[j]==null?'':r[j]).trim(); };
+    const sd = sidoShort(g(C.sido));
+    const sgg = g(C.sgg), cust = g(C.cust);
+    if (!sd || !sgg || !cust) continue;
+    if (!/구$|시$|군$/.test(sgg)) continue;   // 드롭다운 목록 등 비지역 행 제외
+
+    const co = billCo(g(C.billCo));
+    const years = [];
+    for (let y=C.yFrom; y<=C.yTo; y++){ const v = billCo(g(y)); if (v) years.push(v); }
+    const changed = years.length > 1 && years.some(function(v){ return v !== years[0]; });
+
+    out.push({
+      sido:g(C.sido), sd:sd, sgg:sgg, cust:cust, jiche:g(C.jiche),
+      dept:g(C.dept), gwon:g(C.gwon), target:g(C.target),
+      team:g(C.team), owner:g(C.owner),
+      strat:g(C.strat), status:g(C.status), billType:g(C.billType), co:co,
+      qty: num(g(C.qtyA)) || num(g(C.qtyB)) || num(g(C.qtyC)),
+      mgr: [C.m1, C.m2].map(function(m){
+        return { org:g(m.org), team:g(m.team), pos:g(m.pos), name:g(m.name),
+                 tel:g(m.tel), hp:g(m.hp), mail:g(m.mail) };
+      }).filter(function(m){ return m.name; }),
+      win:g(C.winMonth), hist:cut(g(C.hist), 900), issue:cut(g(C.issue), 500),
+      sys:g(C.sys),
+      // 부서 팀장 (5~6급) — 인사발령 기사와 직접 대조되는 핵심 값
+      leader: C.leaderName >= 0 ? {
+        name: g(C.leaderName), pos: C.leaderPos >= 0 ? g(C.leaderPos) : '',
+        tel:  C.leaderTel  >= 0 ? g(C.leaderTel) : '',
+        upd:  C.leaderUpd  >= 0 ? g(C.leaderUpd) : '',
+      } : null,
+      prog:g(C.prog), yearFirst: years[0]||'', yearLast: years[years.length-1]||'', changed:changed
+    });
+  }
+  return out;
+}
+
+// ── 지역 단위 집계 ────────────────────────────────────────────────────
+function buildRegions(recs){
+  const map = {};
+  recs.forEach(function(r){
+    const key = r.sd + '|' + r.sgg;
+    if (!map[key]) map[key] = { key:key, sd:r.sd, sido:r.sido, sgg:r.sgg,
+      rows:[], qty:0, ownQty:0, rivalQty:0, ownN:0, rivalN:0, coN:{}, owners:{}, news:[], alerts:[] };
+    const g = map[key];
+    g.rows.push(r);
+    g.qty += r.qty;
+    if (r.co) g.coN[r.co] = (g.coN[r.co]||0) + 1;
+    if (r.co === '한빌') { g.ownQty += r.qty; g.ownN++; }
+    else if (r.co === '누리빌' || r.co === '한전산업개발') { g.rivalQty += r.qty; g.rivalN++; }
+    if (r.owner && /^[가-힣]{2,4}$/.test(r.owner)) g.owners[r.owner] = (g.owners[r.owner]||0) + 1;
+  });
+
+  const CO_MAP = window._HB_COMPANY_MAP || {};
+  const BILL_MAP = window._HB_BILLING_MAP || {};
+
+  return Object.keys(map).map(function(k){
+    const g = map[k];
+    const cd = RD_SIDO_CD[g.sd];
+    // 선점 판정은 지도(COMPANY_MAP)를 1순위로 사용 → 지도·영업비서와 표기 일치
+    // 지도에 없는 지역은 시트 내 구좌 수 최다 빌링사로 대체 판정
+    const fallback = Object.keys(g.coN).sort(function(a,b){ return g.coN[b] - g.coN[a]; })[0] || '';
+    g.co = (cd && CO_MAP[cd + '|' + g.sgg]) || fallback;
+    g.mapBilling = (cd && BILL_MAP[cd + '|' + g.sgg]) || 0;
+    g.owner = Object.keys(g.owners).sort(function(a,b){ return g.owners[b]-g.owners[a]; })[0] || '';
+    // 도로조명 시스템 사용 현황 — '미사용'·타사 시스템이면 자체 솔루션 진입로가 된다
+    const sysVals = g.rows.map(function(r){ return r.sys; }).filter(Boolean);
+    g.sys = sysVals.filter(function(v){ return /한빌|KIB/.test(v); })[0]
+         || sysVals.filter(function(v){ return v !== '모름'; })[0]
+         || sysVals[0] || '';
+    g.sysOwn   = /한빌|KIB/.test(g.sys);
+    g.sysNone  = /미사용/.test(g.sys);
+    g.sysRival = !!g.sys && !g.sysOwn && !g.sysNone && !/모름/.test(g.sys);
+    g.alerts = buildAlerts(g);
+    return g;
+  });
+}
+
+// ── 알림 규칙 ─────────────────────────────────────────────────────────
+function buildAlerts(g){
+  const a = [];
+  const own = g.co === '한빌';
+  const text = g.rows.map(function(r){ return r.hist + ' ' + r.issue + ' ' + r.status; }).join(' ');
+
+  // '해지방어'·'해지확인'은 정상 영업활동이라 제외 — 실제 이탈 신호만 위험으로 본다
+  const churn = g.rows.some(function(r){ return /^(이탈|Drop)/i.test(r.status); })
+             || /이탈/.test(text) || /빌링 해지|해지 요청|해지 통보/.test(text);
+  if (own && churn)
+    a.push({ lv:'c', t:'이탈 위험', why:'영업상태·이력에 이탈/빌링 해지 신호' });
+  if (/소액미청구|미청구/.test(text))
+    a.push({ lv:'w', t:'소액미청구 이슈', why:'미청구 건 정리 필요' });
+  if (/담당자\s*변경|담당 변경|발령|초임/.test(text))
+    a.push({ lv:'i', t:'담당자 변경 이력', why:'인사 발령·담당 교체 이력 있음 — 재인사 필요' });
+  if (g.rows.some(function(r){ return r.changed; }))
+    a.push({ lv:'w', t:'빌링사 변경 이력', why:'연도별 빌링사가 바뀐 구좌 존재' });
+  if (/구좌분리|전수조사|전수표찰/.test(text))
+    a.push({ lv:'i', t:'구좌분리·전수조사', why:'현장 조사/구좌 정비 과제' });
+  // 지도(선점현황)와 고객관리리스트의 빌링사가 어긋나는 지역 → 데이터 정합성 확인 필요
+  if (g.co && g.ownN && g.ownN > g.rivalN && !own)
+    a.push({ lv:'w', t:'선점 표기 불일치', why:'지도는 ' + g.co + ', 시트는 한빌 구좌 ' + g.ownN + '건 — 확인 필요' });
+
+  // 자체 솔루션 진입로 — 도로조명 시스템 미사용/타사 사용 지역
+  if (g.sysNone)  a.push({ lv:'o', t:'도로조명시스템 미사용', why:'시스템 미도입 — 무상 제공 후 빌링 접점 확보 가능' });
+  if (g.sysRival) a.push({ lv:'o', t:'타사 시스템(' + cut(g.sys,10) + ')', why:'경쟁사 시스템 사용 중 — 교체 제안 대상' });
+  // ※ 지역 기사 기반 솔루션 알림은 뉴스 매칭 이후에 붙는다(attachNews 참고).
+
+  if (!own){
+    const hot = g.rows.filter(function(r){
+      return r.co !== '한빌' && (/[2-9]\d?%/.test(r.prog) || /영업|제안|검토|논의|수용|발굴|수주/.test(r.status));
+    });
+    if (hot.length) a.push({ lv:'o', t:'진입 진행 중 ' + hot.length + '건', why:'제안·검토 단계 구좌 존재' });
+    else if (g.rivalN) a.push({ lv:'o', t:'미개척 ' + g.rivalN + '건', why:'경쟁사 선점 — 전환 대상' });
+  }
+  return a;
+}
+
+// ── 지역 소식(뉴스) 매칭 ──────────────────────────────────────────────
+// 제목 정규화 — 신문사마다 다른 표기/따옴표/맺음말을 걷어내 같은 사건을 같은 신호로 만든다
+function _titleSig(t){
+  return String(t||'')
+    .replace(/\[[^\]]*\]/g,'')                    // [속보]·[포토] 등 말머리 제거
+    .replace(/[""''`·…∙・.,\-–—\[\](){}<>《》「」『』~!?%"':;]/g,'')
+    .replace(/\s+/g,'')
+    // 기사 맺음에 흔한 표현 — 같은 사건을 다르게 끝맺는 경우가 많아 제거
+    .replace(/(성황리에?|성황리)/g,'')
+    .replace(/(개최|개최했다|열려|열어|가져|실시|추진|진행|단행|완료|나서|밝혀|밝혔다|전했다)$/,'');
+}
+function _bigrams(s){
+  const g = {};
+  for (let i = 0; i < s.length - 1; i++) g[s.slice(i, i+2)] = 1;
+  return Object.keys(g);
+}
+// 두 제목의 유사도(자카드) — 신문사만 다른 동일 기사를 잡아낸다
+function _titleSim(a, b){
+  if (!a.length || !b.length) return 0;
+  const sb = {}; b.forEach(function(x){ sb[x] = 1; });
+  let inter = 0; a.forEach(function(x){ if (sb[x]) inter++; });
+  return inter / (a.length + b.length - inter);
+}
+// 제목의 '핵심 키워드구' — 정규화 제목에서 4글자 이상 한글 덩어리(지역명 제외).
+//   같은 사건은 이 키워드구를 공유한다. (예: 지역에너지계획, 안심가로등플러스)
+function _keyphrases(title, region){
+  let s = _titleSig(title);
+  if (region) s = s.split(region).join('');            // 지역명은 공통이라 제외
+  const grams = {};
+  for (let i = 0; i + 4 <= s.length; i++) grams[s.slice(i, i+4)] = 1;
+  return Object.keys(grams);
+}
+function _shareKeyphrase(a, b){
+  const sb = {}; b.forEach(function(x){ sb[x] = 1; });
+  for (let i = 0; i < a.length; i++) if (sb[a[i]]) return true;
+  return false;
+}
+// 같은 날짜·같은 지역 맥락에서 동일 사건 기사 묶기.
+//   신문사만 다른 기사 = 자카드 0.3↑ 이거나 4글자 핵심 키워드구를 공유.
+//   (같은 소도시에서 같은 날 서로 다른 사건이 겹칠 확률은 낮아 과병합 위험이 작다)
+function _daysApart(a, b){
+  return Math.abs((new Date(a) - new Date(b)) / 86400000) || 0;
+}
+function _dedupSameEvent(list, region){
+  const kept = [];
+  list.forEach(function(a){
+    const sig = a._sig || (a._sig = _bigrams(_titleSig(a.title)));
+    const kp  = a._kp  || (a._kp  = _keyphrases(a.title, region));
+    for (let i = 0; i < kept.length; i++){
+      const gap = _daysApart(a.date, kept[i].date);
+      // 같은 사건 판단:
+      //   · 자카드 0.3↑  → 같은 날짜에서만 (약한 신호라 보수적)
+      //   · 핵심 키워드구(4글자, 지역명 제외) 공유 → 7일 이내까지 (통신사 기사가 며칠 퍼지는 경우)
+      if ((gap === 0 && _titleSim(sig, kept[i]._sig) >= 0.3) ||
+          (gap <= 7 && _shareKeyphrase(kp, kept[i]._kp))){
+        kept[i]._dups = (kept[i]._dups || 1) + 1;
+        // 대표 기사는 가장 최근 것으로 유지
+        if (a.date > kept[i].date){ const d = kept[i]._dups; Object.assign(kept[i], a, { _dups:d, _sig:sig, _kp:kp }); }
+        return;
+      }
+    }
+    kept.push(a);
+  });
+  return kept;
+}
+
+async function loadNews(){
+  let arts = [];
+  try {
+    const r = await fetch('news_archive.json', { cache:'no-cache' });
+    if (r.ok){ const j = await r.json(); arts = Array.isArray(j) ? j : (j.articles || []); }
+  } catch(e){ /* 오프라인 → 아래 폴백 */ }
+  // 폴백/보강: localStorage 누적 지식베이스 + 현재 로드된 실시간 기사
+  try { if (typeof getNewsKB === 'function') arts = arts.concat(getNewsKB()); } catch(e){}
+  if (window.LIVE_ARTICLES && window.LIVE_ARTICLES.length) arts = arts.concat(window.LIVE_ARTICLES);
+
+  const cutoff = new Date(Date.now() - RD_NEWS_DAYS*86400000).toISOString().slice(0,10);
+  const seen = {};
+  const mapped = arts.map(function(a){
+    const sum = Array.isArray(a.summary) ? a.summary.join(' ')
+              : (Array.isArray(a.lines) ? a.lines.join(' ') : (a.summary || a.desc || ''));
+    return { title:a.title||'', url:a.url||a.link||'', date:(a.date||a.pubDate||'').slice(0,10),
+             source:a.source||'', category:a.category||'', text:(a.title||'') + ' ' + sum };
+  }).filter(function(a){
+    if (!a.title || a.date < cutoff) return false;
+    const k = a.url || a.title;
+    if (seen[k]) return false; seen[k] = 1; return true;       // URL·제목 완전중복 제거(1차)
+  }).sort(function(x,y){ return (y.date||'').localeCompare(x.date||''); });
+
+  // 2차 — 신문사만 다른 동일 기사 제거(내용 유사도).
+  //   같은 날짜 안에서만 비교(후속 보도는 별개 기사로 유지). 먼저 온 것을 대표로 남긴다.
+  const kept = [], byDate = {};
+  mapped.forEach(function(a){
+    a._sig = _bigrams(_titleSig(a.title));
+    const bucket = byDate[a.date] || (byDate[a.date] = []);
+    for (let i = 0; i < bucket.length; i++){
+      if (_titleSim(a._sig, bucket[i]._sig) >= 0.62){          // 62% 이상 겹치면 같은 기사로 간주
+        bucket[i]._dups = (bucket[i]._dups || 1) + 1;          // 몇 개 신문이 함께 보도했는지 기록
+        return;
+      }
+    }
+    bucket.push(a); kept.push(a);
+  });
+  return kept;
+}
+
+function attachNews(regions, news){
+  regions.forEach(function(g){
+    const sgg = g.sgg;
+    // 오탐 방지: 2글자 지역명(중구·동구·서구 등)은 시·도명이 함께 나올 때만 매칭
+    const strict = sgg.length <= 2;
+    const matched = news.filter(function(a){
+      if (a.text.indexOf(sgg) < 0) return false;
+      return strict ? a.text.indexOf(g.sd) >= 0 : true;
+    });
+    // 지역 맥락에서 신문사만 다른 동일 기사 병합 (대표 1건만, 매체 수는 _dups에 보존)
+    g.news = _dedupSameEvent(matched, sgg).slice(0, 5);
+    if (g.news.length) g.alerts.unshift({ lv:'n', t:'지역 소식 ' + g.news.length + '건', why:'최근 ' + RD_NEWS_DAYS + '일 내 지역 기사' });
+
+    // 지역 기사에서 자체 솔루션과 맞는 이슈가 잡히면 첫 접점 명분으로 표시
+    g.sols = matchSolutions(g);
+    if (g.sols.length) g.alerts.unshift({
+      lv:'o',
+      t:'솔루션 제안 ' + g.sols.map(function(s){ return shortSol(s.sol.name); }).join('·'),
+      why:'기사에서 관련 이슈 확인: "' + cut(g.sols[0].art.title, 34) + '"'
+    });
+  });
+}
+
+function shortSol(n){ return n.replace(/\s*(관리)?\s*(시스템|솔루션|채널)$/, ''); }
+
+// ══════════════════════════════════════════════════════════════════════
+//  담당자 변경 자동 감지 (hr_archive.json)
+//  ---------------------------------------------------------------------
+//  hr_collector.js 가 시정일보「피플」·지역신문에서 인사발령을 수집 → hr_archive.json
+//  여기서는 지역 매칭 후 "확인 기준선(baseline)"과 비교해 새 발령만 알림으로 띄운다.
+//
+//  기준선 = 영업담당자가 [확인 완료] 처리한 마지막 발령일.
+//    · 지금은 브라우저 localStorage 에 저장 (단말 로컬)
+//    · 시트 추가 열이 정해지면 그 열이 기준선이 되어 팀 전체가 공유하게 된다
+//      → rdHrBaseline()/rdHrConfirm() 두 곳만 교체하면 시트 연동으로 전환된다.
+// ══════════════════════════════════════════════════════════════════════
+const RD_HR_ENDPOINT = 'hr_archive.json';
+const RD_HR_BASE_KEY = 'hanbil_hr_baseline_v1';   // { "서울|마포구": {date, name, dept, at} }
+
+function rdHrBaselineAll(){
+  try { return JSON.parse(localStorage.getItem(RD_HR_BASE_KEY) || '{}'); } catch(e){ return {}; }
+}
+function rdHrBaseline(key){ return rdHrBaselineAll()[key] || null; }
+
+// ── 나라장터 발주·낙찰 (g2b_archive.json) ────────────────────────────
+const RD_G2B_ENDPOINT = 'g2b_archive.json';
+const G2B_CAT_LABEL = {
+  light:'도로조명', tree:'수목관리', rain:'빗물받이',
+  billing:'전자고지·청구서', facility:'시설물관리', energy:'건물에너지',
+};
+async function loadG2b(){
+  try {
+    const r = await fetch(RD_G2B_ENDPOINT, { cache:'no-cache' });
+    if (!r.ok) return [];
+    const j = await r.json();
+    return Array.isArray(j) ? j : (j.records || []);
+  } catch(e){ return []; }
+}
+
+// 발주 공고를 지역에 붙인다.
+//   발주처(지자체)에는 시스템 제안, 낙찰업체에는 시스템 연계 제안 — 두 갈래 영업 대상.
+function attachG2b(regions, recs){
+  const today = new Date().toISOString().slice(0,10);
+  regions.forEach(function(g){
+    g.alerts = g.alerts.filter(function(a){ return a.t.indexOf('발주') < 0; });
+    const hits = recs.filter(function(r){
+      if (!r.region) return false;
+      if (r.region !== g.sgg) return false;
+      // 2글자 지역명은 시·도까지 맞을 때만 (중구·동구 등 오탐 방지)
+      if (g.sgg.length <= 2 && String(r.org||'').indexOf(g.sd) < 0) return false;
+      return true;
+    }).sort(function(a,b){ return (b.date||'').localeCompare(a.date||''); });
+
+    g.bids = hits.filter(function(r){ return r.type !== 'win'; });
+    g.wins = hits.filter(function(r){ return r.type === 'win'; });
+    // 아직 마감 전인 공고 = 지금 움직이면 닿는 건
+    g.bidsOpen = g.bids.filter(function(r){ return r.closeDate && r.closeDate >= today; });
+
+    if (g.bids.length) {
+      const cats = {};
+      g.bids.forEach(function(r){ (r.cats||[]).forEach(function(c){ cats[c] = 1; }); });
+      const label = Object.keys(cats).map(function(c){ return G2B_CAT_LABEL[c] || c; }).join('·');
+      // 발주는 문제(⚠)가 아니라 '기회'다. 선점 지역은 확장, 그 외는 신규 진입 명분.
+      //   → lv:'o'(초록, 기회)로 통일하고, 선점 지역엔 '확장'을 명시한다.
+      const own = g.co === '한빌';
+      g.alerts.unshift({
+        lv:'g2b',
+        t:'🏛 나라장터 발주 ' + g.bids.length + '건' +
+          (g.bidsOpen.length ? '(진행중 ' + g.bidsOpen.length + ')' : '') +
+          (own ? ' · 확장기회' : ''),
+        why:(own ? '한빌 선점 지역에 신규 발주 — 구좌 추가·시설물 확장 영업 가능. ' : '') +
+            label + ' — ' + cut(g.bids[0].title, 34) +
+            (g.bids[0].amount ? ' · ' + fmtWon(g.bids[0].amount) : '')
+      });
+    }
+    if (g.wins.length) {
+      g.alerts.unshift({ lv:'g2b', t:'🏛 나라장터 수주업체 ' + g.wins.length + '곳',
+        why:'낙찰업체에 시스템 연계 제안 가능 — ' + (g.wins[0].winner || '업체') });
+    }
+  });
+}
+
+function fmtWon(n){
+  n = Number(n)||0;
+  if (n >= 100000000) return (n/100000000).toFixed(1).replace(/\.0$/,'') + '억';
+  if (n >= 10000) return Math.round(n/10000).toLocaleString() + '만';
+  return n.toLocaleString() + '원';
+}
+function dday(close){
+  if (!close) return '';
+  const d = Math.ceil((new Date(close) - new Date()) / 86400000);
+  return d < 0 ? '마감' : (d === 0 ? 'D-DAY' : 'D-' + d);
+}
+
+async function loadHr(){
+  try {
+    const r = await fetch(RD_HR_ENDPOINT, { cache:'no-cache' });
+    if (!r.ok) return [];
+    const j = await r.json();
+    return Array.isArray(j) ? j : (j.records || []);
+  } catch(e){ return []; }   // 파일이 아직 없으면(첫 배포 전) 조용히 건너뛴다
+}
+
+// 인사 레코드를 지역에 붙이고, 기준선 이후의 "새 발령"만 골라낸다
+function attachHr(regions, hrRecs){
+  // 우리 영업과 맞물리는 부서만 추린다 (전체 인사 명단을 다 보여주면 노이즈)
+  const TARGET = /도로|조명|가로등|보안등|공원|녹지|수목|조경|시설|건설|치수|전산|정보통신|정보화|회계|재무|세무|주차|교통|안전|재난|환경|도시관리/;
+  const base = rdHrBaselineAll();
+
+  regions.forEach(function(g){
+    // 확인 처리 후 재호출될 수 있으므로 이전 감지 알림을 먼저 제거한다(중복 방지)
+    g.alerts = g.alerts.filter(function(a){ return a.t.indexOf('담당자 변경 감지') < 0; });
+
+    const hits = hrRecs.filter(function(r){
+      if (!r.region) return false;
+      // 시정일보는 '마포구'처럼 시군구만 적히므로 시군구 일치를 기본으로 하고,
+      // 2글자 지역명(중구·동구 등)은 시·도명이 함께 나올 때만 인정한다.
+      if (r.region !== g.sgg) return false;
+      if (g.sgg.length <= 2 && (r.title + ' ' + (r.people||[]).map(function(p){return p.dept;}).join(' ')).indexOf(g.sd) < 0) return false;
+      return true;
+    });
+    if (!hits.length) { g.hr = []; g.hrNew = []; return; }
+
+    g.hr = hits.map(function(r){
+      const rel = (r.people || []).filter(function(p){ return TARGET.test(p.dept); });
+      return Object.assign({}, r, { rel: rel });
+    }).sort(function(a,b){ return (b.date||'').localeCompare(a.date||''); });
+
+    const b = base[g.key];
+    // 기준선보다 새로운 발령 = 아직 영업담당자가 확인하지 않은 변경
+    g.hrNew = g.hr.filter(function(r){ return !b || (r.date || '') > (b.date || ''); });
+    g.hrBase = b || null;
+
+    // ★ 내부 시트 담당자 ↔ 외부 인사발령 명단 대조
+    //   시트에 등록된 우리 접촉 담당자가 외부 발령 명단에 실제로 등장하는지 확인한다.
+    //   등장하면 "이 사람이 옮겼다"는 외부 근거 URL이 생기고, 그게 접촉 전 가장 확실한 신호다.
+    g.hrMatched = matchMgrToHr(g);
+    // 성명이 안 잡히면 부서 단위로라도 대조한다.
+    //   시정일보는 주로 4·5급(국장·과장) 인사를 싣는데 시트 담당자는 6급 주무관이 많아
+    //   성명 교집합이 잘 안 생긴다. 다만 "우리가 접촉하는 그 부서에 인사가 있었다"는 사실만으로도
+    //   재확인 트리거로는 충분하다.
+    g.hrDeptMatched = g.hrMatched.length ? [] : matchDeptToHr(g);
+
+    // 우리 담당자가 발령 명단에 직접 잡힌 경우가 최우선 알림
+    if (g.hrMatched.length) {
+      const m = g.hrMatched[0];
+      g.alerts.unshift({
+        lv:'c',
+        t:(m.isLeader ? '팀장 발령 확인 ' : '우리 담당자 발령 확인 ') + g.hrMatched.length + '명',
+        why:(m.isLeader ? '[팀장] ' : '') + m.sheetName + '(시트: ' + (m.sheetDept || '부서미상') + ') → ' +
+            (m.person.dept || '발령') + ' · ' + m.rec.source + ' ' + m.rec.date +
+            (m.isLeader ? ' — 팀장 교체 시 실무담당자도 함께 바뀌었을 가능성이 큽니다' : '')
+      });
+    } else if (g.hrDeptMatched && g.hrDeptMatched.length) {
+      const d = g.hrDeptMatched[0];
+      g.alerts.unshift({
+        lv:'w',
+        t:'접촉 부서 인사 ' + g.hrDeptMatched.length + '건',
+        why:'우리 접촉 부서(' + d.sheetDept + ')에 인사 — ' + d.person.name + ' ' + d.person.dept +
+            ' · ' + d.rec.source + ' ' + d.rec.date
+      });
+    } else if (g.hrNew.length) {
+      const rel = g.hrNew.filter(function(r){ return r.rel.length; });
+      g.alerts.unshift({
+        lv: rel.length ? 'c' : 'i',
+        t: '담당자 변경 감지 ' + g.hrNew.length + '건' + (rel.length ? ' (영업 부서 포함)' : ''),
+        why: (rel.length
+                ? rel[0].rel.slice(0,2).map(function(p){ return p.name + ' ' + p.dept; }).join(', ')
+                : g.hrNew[0].title) + ' — ' + g.hrNew[0].date + ' · 출처 확인 필요'
+      });
+    }
+  });
+}
+
+// 시트에 등록된 고객 담당자 성명을 외부 인사발령 명단과 대조한다.
+// 반환: [{ sheetName, sheetDept, person(발령 명단상 정보), rec(기사 레코드), same(부서 일치 여부) }]
+function matchMgrToHr(g){
+  if (!g.hr || !g.hr.length) return [];
+  // 시트 담당자 (셀에 줄바꿈으로 여러 명이 들어있는 경우가 많아 분해)
+  const mgrs = [];
+  g.rows.forEach(function(r){
+    // ★ 부서 팀장(5~6급)을 최우선으로 넣는다.
+    //   실무담당자(6급 주무관)는 인사기사에 거의 안 실리지만 팀장은 발령 명단에 잡히므로,
+    //   팀장 성명이 매칭되면 "그 부서에 인사가 났다"는 가장 확실한 신호가 된다.
+    if (r.leader && r.leader.name) {
+      String(r.leader.name).split(/[\s,/·\n]+/).forEach(function(n){
+        n = n.trim();
+        if (/^[가-힣]{2,4}$/.test(n)) mgrs.push({ name:n, dept:(r.dept || ''), isLeader:true });
+      });
+    }
+    r.mgr.forEach(function(m){
+      String(m.name||'').split(/[\s,/·]+/).forEach(function(n){
+        n = n.trim();
+        if (/^[가-힣]{2,4}$/.test(n)) mgrs.push({ name:n, dept:(m.team || m.org || r.dept || ''), isLeader:false });
+      });
+    });
+  });
+  if (!mgrs.length) return [];
+
+  const out = [], seen = {};
+  g.hr.forEach(function(rec){
+    (rec.people || []).forEach(function(p){
+      mgrs.forEach(function(mg){
+        if (p.name !== mg.name) return;
+        const k = mg.name + '|' + rec.url;
+        if (seen[k]) return; seen[k] = 1;
+        // 부서까지 겹치면 동명이인 가능성이 낮아진다 (판단 근거로 표시)
+        const key = String(mg.dept||'').replace(/(과|팀|국|실|담당관)$/,'').slice(0,3);
+        const same = !!key && String(p.dept||'').indexOf(key) >= 0;
+        out.push({ sheetName:mg.name, sheetDept:mg.dept, person:p, rec:rec, same:same, isLeader:mg.isLeader });
+      });
+    });
+  });
+  // 팀장 매칭 > 부서 일치 순으로 앞에 오게 정렬
+  return out.sort(function(a,b){
+    return ((b.isLeader?2:0) + (b.same?1:0)) - ((a.isLeader?2:0) + (a.same?1:0));
+  });
+}
+
+// 성명 매칭 실패 시의 차선책 — 우리가 접촉하는 '부서'에 인사가 났는지 대조.
+// 반환: [{ sheetDept, person, rec }]
+function matchDeptToHr(g){
+  if (!g.hr || !g.hr.length) return [];
+  // 시트상 우리 접촉 부서에서 '도메인 토큰'을 뽑는다.
+  //   복합어 전체('공원관리팀')로 비교하면 발령 명단의 '환경녹지국장' 같은 표기와 절대 안 맞는다.
+  //   부서명은 개편·통합으로 표기가 계속 바뀌므로 핵심 토큰(공원·녹지·도로·조명…)으로 대조한다.
+  const TOKEN = /도로|조명|가로등|보안등|공원|녹지|수목|조경|시설|건설|치수|하수|전산|정보|회계|재무|세무|예산|주차|교통|안전|재난|환경|도시|자산|관재|토목/g;
+  const keys = {};
+  g.rows.forEach(function(r){
+    const depts = [r.dept];
+    r.mgr.forEach(function(m){ depts.push(m.team); depts.push(m.org); });
+    depts.forEach(function(d){
+      const s = String(d||'').replace(/\s/g,'');
+      if (!s) return;
+      const toks = s.match(TOKEN);
+      if (toks) toks.forEach(function(t){ if (!keys[t]) keys[t] = s; });
+    });
+  });
+  const ks = Object.keys(keys);
+  if (!ks.length) return [];
+
+  const out = [], seen = {};
+  g.hr.forEach(function(rec){
+    (rec.people || []).forEach(function(p){
+      ks.forEach(function(k){
+        if (String(p.dept||'').indexOf(k) < 0) return;
+        const id = p.name + '|' + rec.url;
+        if (seen[id]) return; seen[id] = 1;
+        out.push({ sheetDept: keys[k], person: p, rec: rec });
+      });
+    });
+  });
+  return out.slice(0, 6);
+}
+
+// 지역 기사 × 솔루션 카탈로그 매칭 → [{sol, art}]
+function matchSolutions(g){
+  const out = [], seen = {};
+  g.news.forEach(function(a){
+    SOLUTIONS.forEach(function(s){
+      if (seen[s.id]) return;
+      if (s.kw.test(a.title) || s.kw.test(a.text)) { seen[s.id] = 1; out.push({ sol:s, art:a }); }
+    });
+  });
+  return out;
+}
+
+// ══════════════════════════════════════════════════════════════════════
+//  아웃바운드 영업 지원 — 기사 유형 판별 → 영업 포인트 → 메일 초안 → 회신 응대
+// ══════════════════════════════════════════════════════════════════════
+
+// 지역 기사를 성격별로 분류. 지자체는 인사발령·사업공고를 공식 채널에 올리므로
+// 기사/공고 유형에 따라 영업 포인트가 달라진다.
+function newsKind(a){
+  const t = a.title + ' ' + (a.text || '');
+  if (/인사\s*발령|전보|승진|부임|취임|인사이동|조직개편|과장 발령|국장 발령/.test(t))
+    return { k:'발령', ic:'👤' };
+  if (/공고|고시|입찰|발주|용역|공모|계약 체결|사업자 선정|모집/.test(t))
+    return { k:'공고', ic:'📋' };
+  if (/설치|교체|구축|점등|준공|착공|확대|도입|정비|증설|LED|스마트|사업 추진|예산/.test(t))
+    return { k:'사업', ic:'🏗' };
+  return { k:'소식', ic:'📰' };
+}
+
+// 영업History·이슈 원문에서 특정 패턴에 걸리는 줄만 뽑아낸다.
+// (영업담당자가 "정말 그런 이력이 있나"를 눈으로 대조할 수 있게 하는 근거 발췌)
+function excerpt(g, re, max){
+  const out = [];
+  g.rows.forEach(function(r){
+    const where = r.dept || r.cust || '';
+    (String(r.hist||'') + '\n' + String(r.issue||'')).split(/\r?\n/).forEach(function(line){
+      const s = line.replace(/^[\s\-–·*]+/, '').trim();
+      if (s && re.test(s) && !out.some(function(x){ return x.text === cut(s,140); }))
+        out.push({ text: cut(s, 140), where: where });
+    });
+  });
+  return out.slice(0, max || 4);
+}
+
+// 지역 데이터 + 기사에서 "이 지역에 지금 걸 수 있는 영업 포인트"를 도출한다.
+// 각 포인트 = {
+//   tag, why(근거), ask(제안할 것),
+//   src  : 공개 출처(기사 URL) — 대외 메일 본문에 인용해도 되는 근거
+//   inner: 내부 기록 발췌(고객관리리스트 원문) — 영업담당자 확인용, 메일에는 절대 포함하지 않음
+// }
+// ※ 근거 없는 포인트는 만들지 않는다.
+function salesPoints(g){
+  const own = g.co === '한빌';
+  const pts = [];
+  const txt = g.rows.map(function(r){ return r.hist + ' ' + r.issue + ' ' + r.status; }).join(' ');
+  const kinds = g.news.map(function(a){ return Object.assign({ a:a }, newsKind(a)); });
+  const first = function(k){ return kinds.filter(function(x){ return x.k === k; })[0]; };
+
+  const bizN = first('사업'), noticeN = first('공고'), hrN = first('발령');
+  const artSrc = function(a){ return [{ label: a.source + ' · ' + a.date + ' — ' + cut(a.title, 46), url: a.url }]; };
+
+  // ① 신규 시설 사업 기사 → 구좌 증가 → 빌링 등록 누락 방지 (가장 강한 명분)
+  if (bizN) pts.push({
+    tag:'신규 구좌 등록 누락 방지',
+    why:'"' + cut(bizN.a.title, 42) + '" (' + bizN.a.source + ' ' + bizN.a.date + ') — 신규 가로등·시설물이 늘면 한전 전기사용 구좌도 함께 생깁니다.',
+    ask:'준공·점등 시점에 맞춰 신규 구좌를 일괄 등록해 드리고, 등록 누락으로 인한 소액미청구·연체 발생을 사전에 막는 절차를 안내드리겠습니다.',
+    src: artSrc(bizN.a)
+  });
+  // ② 입찰·용역 공고 → 사업 착수 전에 빌링 체계 선협의
+  if (noticeN) pts.push({
+    tag:'사업 착수 전 빌링 체계 선협의',
+    why:'"' + cut(noticeN.a.title, 42) + '" (' + noticeN.a.source + ' ' + noticeN.a.date + ') — 공고 단계에서 전기요금 청구 방식을 정해 두면 준공 후 재작업이 없습니다.',
+    ask:'사업 착수 전 전자고지(이메일·모바일) 기준으로 구좌 체계를 잡는 방안을 30분 정도 설명드리고 싶습니다.',
+    src: artSrc(noticeN.a)
+  });
+  // ③ 인사발령 기사 or 시트상 담당자 변경 이력 → 인수인계 지원
+  //    담당자 교체는 오탐이 잦아(동명이인·과거 이력) 반드시 원문 발췌 + 출처를 함께 남긴다.
+  const hrEx = excerpt(g, /담당자\s*변경|담당 변경|담당변경|발령|초임|으로 변경|에서 .*으로/, 4);
+  const mt = (g.hrMatched || [])[0];
+  if (mt) {
+    // 시트 담당자가 외부 인사발령 명단에서 그대로 확인된 경우 — 가장 확실한 근거
+    pts.push({
+      tag:'담당자 인수인계 지원 (발령 확인됨)',
+      why:'시트 등록 담당자 ' + mt.sheetName + '(' + (mt.sheetDept || '부서미상') + ')이(가) ' +
+          mt.rec.source + ' ' + mt.rec.date + ' 인사발령 명단에서 확인됩니다 → ' + (mt.person.dept || '발령') +
+          (mt.same ? ' · 시트 부서와 일치' : ' · 부서는 시트와 달라 동명이인 확인 필요'),
+      whyMail:'담당자 변경 관련 보도를 확인했습니다. 담당이 바뀌실 때 청구서 수신 계정·이메일 인계가 누락되는 경우가 많습니다.',
+      ask:'청구서 수신 이메일·계정 이관을 대행해 드리고, 신규 담당자용 업무 가이드북을 함께 보내드리겠습니다.',
+      src: [{ label: mt.rec.source + ' · ' + mt.rec.date + ' — ' + cut(mt.rec.title, 44), url: mt.rec.url }],
+      inner: hrEx,
+      verify: mt.same
+        ? '✅ 시트 담당자명·부서가 외부 발령 명단과 일치합니다. 원문 링크로 최종 확인 후 접촉하세요.'
+        : '⚠ 성명은 일치하나 부서가 달라 동명이인일 수 있습니다. 원문 링크로 반드시 확인하세요.'
+    });
+  } else if (hrN || hrEx.length) pts.push({
+    tag:'담당자 인수인계 지원',
+    why: hrN ? '"' + cut(hrN.a.title, 42) + '" (' + hrN.a.source + ' ' + hrN.a.date + ') — 담당 변경 시 청구서 수신·계정 인계가 누락되기 쉽습니다.'
+             : '고객관리리스트 영업History에 담당자 변경 이력이 기록돼 있습니다 — 청구서 수신 계정 인계 누락 위험이 있습니다.',
+    // 대외 메일용 문구 — 내부 문서명(고객관리리스트·영업History)을 노출하지 않는다
+    whyMail: hrN ? '"' + cut(hrN.a.title, 42) + '" (' + hrN.a.source + ' ' + hrN.a.date + ') 관련 보도를 확인했습니다. 담당 변경 시 청구서 수신 계정·이메일 인계가 누락되는 경우가 많습니다.'
+                 : '담당자가 바뀌실 때 청구서 수신 계정·이메일 인계가 누락되는 경우가 많습니다.',
+    ask:'청구서 수신 이메일·계정 이관을 대행해 드리고, 신규 담당자용 업무 가이드북을 함께 보내드리겠습니다.',
+    src: hrN ? artSrc(hrN.a) : [],
+    inner: hrEx,
+    verify:'⚠ 이 발췌는 내부 시트(영업History) 기록이라 과거 이력일 수 있습니다. 외부 인사발령에서는 이 지역 담당자 성명이 잡히지 않았습니다 — 접촉 전 시트 원문과 대조해 주세요.'
+  });
+  // ④ 소액미청구 — 실무자가 가장 아파하는 지점
+  const uncEx = excerpt(g, /소액미청구|미청구/, 4);
+  if (uncEx.length) pts.push({
+    tag:'소액미청구 정리',
+    why:'과거 이력에 소액미청구 발생 기록이 있습니다 — 방치하면 결산 시 일괄 정산 부담으로 돌아옵니다.',
+    whyMail:'가로등·보안등 구좌는 소액미청구가 발생하기 쉬워, 방치하면 결산 시 일괄 정산 부담으로 이어집니다.',
+    ask:'미청구 구좌를 조회·정리하고, 재발 방지를 위한 상시청구 전환을 한전 지사와 함께 지원하겠습니다.',
+    src: [], inner: uncEx
+  });
+  // ⑤ 구좌분리·전수조사
+  const srvEx = excerpt(g, /구좌분리|전수조사|전수표찰/, 3);
+  if (srvEx.length) pts.push({
+    tag:'전수조사·구좌분리 지원',
+    why:'구좌분리·전수조사 관련 과제가 기록돼 있습니다 — 현장 표찰과 한전 구좌가 어긋나면 요금 오부과로 이어집니다.',
+    whyMail:'현장 표찰과 한전 구좌가 어긋나면 요금 오부과나 미청구로 이어질 수 있습니다.',
+    ask:'전수조사 결과를 한전 구좌와 대사(對査)하는 작업을 한빌 시스템으로 지원해 드리겠습니다.',
+    src: [], inner: srvEx
+  });
+  // ★ 나라장터 발주 — 가장 강한 명분. 사업이 실제로 시작되는 시점이라 타이밍이 정확하다.
+  (g.bidsOpen || []).slice(0, 2).forEach(function(b){
+    const solName = { light:'도로조명 관리시스템', tree:'수목관리 시스템', rain:'빗물받이 관리 솔루션',
+                      facility:'시설물 통합 관리 솔루션', energy:'건물에너지관리 솔루션' }[b.cats[0]];
+    pts.push({
+      // 선점 지역이면 '확장', 그 외면 '진입' 명분
+      tag:(own ? '발주 연계 구좌 확장 (' : '발주 사업 연계 제안 (') + dday(b.closeDate) + ')',
+      why:'나라장터 공고 "' + cut(b.title, 40) + '"' + (b.amount ? ' · ' + fmtWon(b.amount) : '') +
+          ' · 마감 ' + b.closeDate +
+          (own ? ' — 한빌 선점 지역이라, 이 사업으로 늘어나는 신규 구좌를 기존 계약에 바로 붙일 수 있습니다.'
+               : ' — 사업이 시작되면 시설물과 한전 구좌가 함께 늘어납니다.'),
+      whyMail:'「' + cut(b.title, 40) + '」 사업을 준비 중이신 것으로 확인했습니다. ' +
+              '이런 사업은 준공 후 시설물과 전기사용 구좌를 함께 관리해야 하는 부담이 뒤따릅니다.',
+      ask:(solName
+            ? solName + '을 통해 신규 시설물 대장과 한전 구좌를 처음부터 함께 잡아 드릴 수 있습니다. ' +
+              '별도 비용 없이 제공하며, 시민이 모바일로 현장 문제를 신고하는 채널도 함께 열립니다.'
+            : '신규 구좌 등록과 전자고지 전환을 사업 일정에 맞춰 지원해 드리겠습니다.') +
+          ' 사업 착수 전에 30분만 시간 주시면 절차를 정리해 드리겠습니다.',
+      src: b.url ? [{ label:'나라장터 공고 · ' + (b.date||'') + ' — ' + cut(b.title, 40), url:b.url }] : [],
+      inner: [{ text:'발주기관 ' + b.org + ' · ' + (b.kind||'') + ' · 추정가 ' + fmtWon(b.amount) +
+                     (b.charge ? ' · 공고담당 ' + b.charge + (b.chargeTel ? ' ' + b.chargeTel : '') : ''),
+               where:'나라장터' }]
+    });
+  });
+  // ★ 수주 업체 대상 — 발주처와 별개의 두 번째 영업 트랙
+  (g.wins || []).slice(0, 1).forEach(function(w){
+    pts.push({
+      tag:'수주업체 시스템 연계 (' + (w.winner || '업체') + ')',
+      why:'"' + cut(w.title, 38) + '" 낙찰: ' + (w.winner || '-') +
+          (w.amount ? ' · ' + fmtWon(w.amount) : '') + ' — 시공/납품사도 운영·보고 도구가 필요합니다.',
+      whyMail:'해당 사업을 수행하시게 된 것으로 확인했습니다. 준공 후 시설물 대장 인계와 운영 보고에 쓰실 수 있는 시스템을 저희가 운영 중입니다.',
+      ask:'시공·납품 결과를 그대로 담아 발주처에 인계할 수 있는 관리시스템을 연계해 드립니다. 업체에는 별도 비용이 없고, 발주처 보고 자료가 자동으로 만들어집니다.',
+      src: w.url ? [{ label:'나라장터 낙찰 · ' + (w.date||'') + ' — ' + cut(w.title, 38), url:w.url }] : [],
+      inner: [{ text:'낙찰업체 ' + (w.winner||'-') + (w.winnerTel ? ' · ' + w.winnerTel : '') +
+                     (w.winnerAddr ? ' · ' + cut(w.winnerAddr,30) : ''), where:'나라장터' }],
+      target:'업체'
+    });
+  });
+
+  // ⑥ 지역 기사에서 잡힌 이슈 × 자체 솔루션 — 빌링 계약이 없어도 만들 수 있는 첫 접점
+  (g.sols || []).forEach(function(s){
+    pts.push({
+      tag: s.sol.name + ' 안내',
+      why: '"' + cut(s.art.title, 42) + '" (' + s.art.source + ' ' + s.art.date + ') — 해당 업무를 맡고 계신 부서에 도움이 될 수 있는 시스템을 저희가 운영 중입니다.',
+      ask: s.sol.pitch + (s.sol.civic ? ' ' + s.sol.civic : '') +
+           ' 별도 비용 없이 시연해 드리고, 필요하시면 시범 적용도 가능합니다.',
+      src: artSrc(s.art)
+    });
+  });
+  // ⑦ 도로조명 시스템 미도입 / 타사 시스템 사용 → 시스템 단독 진입로
+  if (g.sysNone) pts.push({
+    tag:'도로조명 관리시스템 무상 제공',
+    why:'고객관리리스트상 도로조명 관리시스템을 사용하지 않고 계신 것으로 확인됩니다.',
+    whyMail:'가로등·보안등을 별도 관리시스템 없이 운영 중이시라면, 구좌와 현장 표찰을 맞추는 데 손이 많이 갑니다.',
+    ask:'가로등·보안등 구좌와 현장 표찰을 함께 관리하는 시스템을 무상으로 제공해 드리고 있습니다. 계정만 만들어 드리면 바로 쓰실 수 있습니다. ' +
+        '같은 시스템을 시민이 모바일로도 쓸 수 있어, 고장 난 가로등을 시민이 위치·사진과 함께 신고하고 처리 상황까지 확인할 수 있습니다 — 전화 민원이 줄고 처리 이력이 자동으로 남습니다.',
+    inner:[{ text:'도로조명 시스템: ' + (g.sys || '미기재'), where:'시트 기재값' }]
+  });
+  else if (g.sysRival) pts.push({
+    tag:'도로조명 관리시스템 비교',
+    why:'현재 ' + g.sys + ' 시스템을 사용 중이신 것으로 확인됩니다.',
+    whyMail:'현재 사용 중이신 도로조명 관리시스템과 비교해 보실 만한 부분이 있습니다.',
+    ask:'한빌 도로조명 관리시스템은 한전 구좌·청구 데이터와 바로 연동돼 별도 대사 작업이 필요 없습니다. 차이점만 짧게 비교해 드리겠습니다.',
+    inner:[{ text:'도로조명 시스템: ' + g.sys, where:'시트 기재값' }],
+    verify:'⚠ 발송 전 확인 — 시스템 사용사는 시트 기재 시점 기준이라 현재와 다를 수 있습니다.'
+  });
+
+  // ⑧ 경쟁사 선점 지역 → 전환 제안 / 한빌 선점 지역 → 현황 확인 (전략 제안 아님)
+  if (!own && g.rivalN) pts.push({
+    tag:'전자고지 전환 검토',
+    why:'현재 ' + g.co + ' 빌링으로 운영 중입니다 (경쟁 구좌 ' + g.rivalN + '건).',
+    ask:'종이·기존 방식 대비 전자고지 전환 시의 발송비·민원 인입 절감 효과를 실제 지자체 사례 수치로 비교해 드리겠습니다.'
+  });
+  if (own) pts.push({
+    tag:'현재 운영 현황 점검',
+    why:'한빌이 빌링을 운영 중인 지역입니다 (구좌 ' + g.ownN + '건 · 고객 ' + g.qty.toLocaleString() + '건).',
+    ask:'현재 등록 구좌와 청구 상태를 정리한 현황표를 보내드리고, 누락·오류 건이 있는지 함께 확인 부탁드립니다.'
+  });
+  return pts;
+}
+
+// 지역의 담당자 이메일 목록 (중복 제거, 줄바꿈으로 여러 개 들어간 셀 분해)
+function mailsOf(g){
+  const out = [], seen = {};
+  g.rows.forEach(function(r){ r.mgr.forEach(function(m){
+    String(m.mail||'').split(/[\s,;]+/).forEach(function(e){
+      e = e.trim();
+      if (/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e) && !seen[e]) { seen[e] = 1; out.push({ email:e, name:m.name, org:m.org }); }
+    });
+  }); });
+  return out;
+}
+
+// ── 선제 메일 초안 생성 ───────────────────────────────────────────────
+window.rdMail = function(key){
+  const g = ST.byKey[key];
+  if (!g) return;
+  const pts = salesPoints(g);
+  const mails = mailsOf(g);
+  const own = g.co === '한빌';
+  // 시트 셀에 여러 명/여러 부서가 줄바꿈으로 들어있는 경우가 많아 첫 항목만 쓴다
+  //   예: 성명 "김승원\n이정훈" → "김승원"
+  const firstLine = function(s){ return String(s||'').split(/\r?\n/)[0].trim(); };
+  const deptName = firstLine(g.rows.map(function(r){ return r.dept; }).filter(Boolean)[0]) || '담당 부서';
+  const mgrName  = firstLine(g.rows.map(function(r){ return (r.mgr[0]||{}).name; }).filter(Boolean)[0]);
+
+  document.getElementById('rd-modal-title').innerHTML =
+    '✉ ' + esc(g.sido + ' ' + g.sgg) + ' — 선제 제안 메일 초안';
+
+  document.getElementById('rd-modal-body').innerHTML =
+    '<div style="font-size:11px;color:#92400E;background:#FEF3C7;border:1px solid #FDE68A;border-radius:9px;padding:8px 11px;line-height:1.6">' +
+      '📤 <strong>대외 영업메일</strong> — 지자체 담당 주무관에게 보내는 <strong>첫 접촉 초안</strong>입니다. ' +
+      '내부 경영진 보고용 <strong>뉴스레터 발송과 완전히 분리</strong>되어 있습니다 ' +
+      '(뉴스레터 수신자 목록·EmailJS 자동발송을 쓰지 않고, 검토 후 담당자가 직접 발송하는 방식).</div>' +
+
+    '<div class="rd-note">아래 <strong>영업 포인트</strong>는 고객관리리스트 이력과 최근 지역 기사에서 <strong>근거가 확인된 것만</strong> 뽑았습니다. ' +
+    '체크를 조정하면 본문이 다시 만들어집니다.' +
+    (own ? ' <strong>한빌 선점 지역</strong>이라 신규 영업 제안이 아닌 <strong>현황 점검·지원</strong> 톤으로 작성됩니다.' : '') + '</div>' +
+
+    '<div><div class="rd-sec-t">🎯 영업 포인트 · 근거 검증</div>' +
+      '<div style="font-size:11px;color:#64748B;margin-bottom:7px;line-height:1.6">' +
+        '발송 전 <b>근거를 눌러 원문을 직접 확인</b>해 주세요. ' +
+        '<span style="background:#E0F2FE;color:#075985;border-radius:5px;padding:1px 6px;font-weight:700">공개 출처</span>는 메일 본문에 인용되고, ' +
+        '<span style="background:#FEE2E2;color:#B91C1C;border-radius:5px;padding:1px 6px;font-weight:700">내부 기록</span>은 확인용이라 <b>메일에 포함되지 않습니다</b>.</div>' +
+      (pts.length ? pts.map(function(p,i){
+        const srcHtml = (p.src||[]).map(function(s){
+          return '<div style="margin-top:5px">' +
+            '<span style="background:#E0F2FE;color:#075985;border-radius:5px;padding:1px 6px;font-size:10px;font-weight:700">공개 출처</span> ' +
+            '<a href="' + esc(s.url) + '" target="_blank" rel="noopener" onclick="event.stopPropagation()" ' +
+            'style="color:#0284C7;font-size:11.5px;text-decoration:underline">' + esc(s.label) + ' ↗</a></div>';
+        }).join('');
+        const innerHtml = (p.inner && p.inner.length)
+          ? '<div style="margin-top:5px">' +
+              '<span style="background:#FEE2E2;color:#B91C1C;border-radius:5px;padding:1px 6px;font-size:10px;font-weight:700">내부 기록</span> ' +
+              '<span style="font-size:10.5px;color:#94A3B8">외부 기사가 아니라 우리가 직접 적어둔 시트 기록입니다 · </span>' +
+              '<a href="' + RD_SHEET_URL + '" target="_blank" rel="noopener" onclick="event.stopPropagation()" ' +
+              'style="color:#0284C7;font-size:11px;text-decoration:underline">고객관리리스트 시트에서 확인 ↗</a>' +
+              '<div style="margin-top:3px;background:#F8FAFC;border-left:3px solid #FCA5A5;border-radius:0 6px 6px 0;padding:6px 9px;font-size:11px;color:#475569;line-height:1.6">' +
+                p.inner.map(function(x){
+                  return (x.where ? '<b>[' + esc(x.where) + ']</b> ' : '') + esc(x.text);
+                }).join('<br>') +
+              '</div></div>'
+          : '';
+        const warn = p.verify ? '<div style="margin-top:5px;font-size:11px;color:#B45309;font-weight:600">' + esc(p.verify) + '</div>' : '';
+        return '<label style="display:flex;gap:8px;align-items:flex-start;font-size:12px;padding:9px 11px;border:1px solid var(--g200);border-radius:9px;margin-bottom:6px;cursor:pointer">' +
+          '<input type="checkbox" class="rd-pt" data-i="' + i + '" ' + (i < 3 ? 'checked' : '') + ' onchange="rdMailBuild(\'' + esc(key) + '\')" style="margin-top:2px">' +
+          '<span style="flex:1"><b>' + esc(p.tag) + '</b><br><span style="color:#64748B">' + esc(p.why) + '</span>' +
+          srcHtml + innerHtml + warn + '</span></label>';
+      }).join('') : '<div style="font-size:12px;color:#94A3B8">근거가 될 이력·기사가 없어 포인트를 만들지 못했습니다.</div>') +
+    '</div>' +
+
+    '<div><label style="display:flex;gap:7px;align-items:center;font-size:12px;font-weight:600;color:#475569">' +
+      '<input type="checkbox" id="rd-mail-cite" onchange="rdMailBuild(\'' + esc(key) + '\')">' +
+      '메일 본문에 공개 출처(기사 링크) 함께 표기</label></div>' +
+
+    '<div><div class="rd-sec-t">📧 수신자</div>' +
+      (mails.length ? mails.map(function(m,i){
+        return '<label style="display:inline-flex;gap:6px;align-items:center;font-size:12px;margin:0 10px 6px 0">' +
+          '<input type="checkbox" class="rd-to" data-e="' + esc(m.email) + '" checked>' +
+          '<span>' + esc(m.name || '') + ' &lt;' + esc(m.email) + '&gt;</span></label>';
+      }).join('') : '<div style="font-size:12px;color:#DC2626">시트에 등록된 담당자 이메일이 없습니다. 수신자를 직접 입력해 발송해 주세요.</div>') +
+    '</div>' +
+
+    '<div><div class="rd-sec-t">✏ 메일 제목</div>' +
+      '<input id="rd-mail-subj" style="width:100%;border:1px solid var(--g200);border-radius:8px;padding:8px 10px;font-size:12.5px;font-family:inherit"></div>' +
+
+    '<div><div class="rd-sec-t">📝 본문 (수정 가능)</div>' +
+      '<textarea id="rd-mail-body" rows="18" style="width:100%;border:1px solid var(--g200);border-radius:9px;padding:11px 12px;font-size:12.5px;line-height:1.75;font-family:inherit;resize:vertical"></textarea></div>' +
+
+    '<div style="display:flex;gap:6px;flex-wrap:wrap">' +
+      '<button class="rd-btn st" onclick="rdMailCopy()"><i class="ti ti-copy"></i> 본문 복사</button>' +
+      '<button class="rd-btn go" onclick="rdMailOpen(\'' + esc(key) + '\')"><i class="ti ti-mail-forward"></i> 메일앱 열기</button>' +
+      '<button class="rd-btn st" onclick="rdMailAi(\'' + esc(key) + '\')"><i class="ti ti-sparkles"></i> AI로 다듬기</button>' +
+      '<button class="rd-btn st" onclick="rdScript(\'' + esc(key) + '\')"><i class="ti ti-phone"></i> 회신 후 응대</button>' +
+    '</div>' +
+    '<div id="rd-mail-msg" style="font-size:11.5px;color:#64748B"></div>';
+
+  ST._mailCtx = { key:key, pts:pts, deptName:deptName, mgrName:mgrName, own:own };
+  window.rdMailBuild(key);
+  document.getElementById('rd-modal').classList.add('open');
+};
+
+// 체크된 포인트로 제목·본문을 조립
+window.rdMailBuild = function(key){
+  const g = ST.byKey[key];
+  const c = ST._mailCtx;
+  if (!g || !c) return;
+  const picked = [...document.querySelectorAll('.rd-pt:checked')].map(function(el){ return c.pts[+el.dataset.i]; }).filter(Boolean);
+  const own = c.own;
+  const citeEl = document.getElementById('rd-mail-cite');
+  const cite = citeEl ? citeEl.checked : true;
+
+  // 제목은 "그 지역에서 실제로 일어난 일"을 앞세운다 — 일반 홍보메일과 구분되도록.
+  const lead = picked[0];
+  const subj = lead
+    ? '[한빌] ' + g.sgg + ' ' + lead.tag + ' 관련 안내드립니다'
+    : (own ? '[한빌] ' + g.sgg + ' 전기요금 전자청구 운영 현황 안내'
+           : '[한빌] ' + g.sgg + ' 전기요금 전자고지 대행 안내드립니다');
+
+  const body =
+'안녕하십니까.\n' +
+'한국전력 전기요금 전자청구 대행 서비스 「한빌」을 운영하는 SCG랩 영업기획팀입니다.\n' +
+(c.mgrName ? '\n' + g.sgg + ' ' + c.deptName + ' ' + c.mgrName + ' 주무관님께 안내드립니다.\n'
+           : '\n' + g.sgg + ' ' + c.deptName + ' 담당자님께 안내드립니다.\n') +
+'\n' +
+(picked.length
+  ? '최근 ' + g.sgg + ' 관련하여 아래 사항을 확인하고, 저희가 도움드릴 수 있는 부분이 있어 연락드립니다.\n\n' +
+    picked.map(function(p, i){
+      // ※ p.inner(고객관리리스트 내부 기록)는 대외 메일에 절대 넣지 않는다. 공개 기사 출처만 인용.
+      const cites = cite && (p.src||[]).length
+        ? (p.src||[]).map(function(s){ return '   [출처] ' + s.label + '\n          ' + s.url + '\n'; }).join('')
+        : '';
+      return '■ ' + (i+1) + '. ' + p.tag + '\n' +
+             '   [확인한 내용] ' + (p.whyMail || p.why) + '\n' +
+             cites +
+             '   [도움드릴 수 있는 부분] ' + p.ask + '\n';
+    }).join('\n')
+  : '전기요금 청구 업무 관련하여 도움드릴 수 있는 부분을 안내드리고자 연락드립니다.\n') +
+'\n' +
+'■ 저희가 지자체에 제공하고 있는 것\n' +
+'   1) 전기요금 전자청구 대행 — 청구서 등록·조회·재발송, 미납 조회, 수신 수단 전환\n' +
+'   2) 도로조명 관리시스템 — 가로등·보안등 구좌와 현장 표찰 통합 관리 (무상 제공)\n' +
+'   3) 수목관리 시스템 — 가로수·조경수 위치/이력/전정·방제 일정 관리\n' +
+'   4) 빗물받이 관리 솔루션 — 위치·청소 이력·침수 취약지점 지도 기반 관리\n' +
+'   5) 건물에너지관리 솔루션 — 공공건물 전기 사용량 분석 및 절감 실적 리포팅\n' +
+'\n' +
+'■ 저희가 파악하고 있는 ' + g.sgg + ' 현황\n' +
+'   - 관리 구좌: ' + g.rows.length + '건 (한빌 ' + g.ownN + ' / 타사 ' + g.rivalN + ')\n' +
+'   - 대상 고객: 약 ' + g.qty.toLocaleString() + '건\n' +
+(g.sys ? '   - 도로조명 관리시스템: ' + g.sys + '\n' : '') +
+'   ※ 저희 보유 자료 기준이라 실제와 차이가 있을 수 있습니다. 확인해 주시면 바로 반영하겠습니다.\n' +
+'\n' +
+'짧게 통화하거나 방문해서 설명드릴 수 있으면 좋겠습니다.\n' +
+'편하신 일정 회신 주시면 맞추어 찾아뵙겠습니다.\n' +
+'\n' +
+'감사합니다.\n' +
+'\n' +
+'SCG랩 영업기획팀' + (g.owner ? ' ' + g.owner : '') + ' 드림\n' +
+'전기요금 전자청구 대행 서비스 「한빌」\n';
+
+  document.getElementById('rd-mail-subj').value = subj;
+  document.getElementById('rd-mail-body').value = body;
+};
+
+window.rdMailCopy = function(){
+  const t = document.getElementById('rd-mail-body').value;
+  const msg = document.getElementById('rd-mail-msg');
+  navigator.clipboard.writeText(t).then(function(){
+    if (msg) { msg.textContent = '✅ 본문을 복사했습니다. 메일 작성창에 붙여넣기 하세요.'; msg.style.color = '#059669'; }
+  }).catch(function(){
+    if (msg) { msg.textContent = '복사에 실패했습니다. 본문을 직접 선택해 복사해 주세요.'; msg.style.color = '#DC2626'; }
+  });
+};
+
+window.rdMailOpen = function(key){
+  const to = [...document.querySelectorAll('.rd-to:checked')].map(function(el){ return el.dataset.e; }).join(',');
+  const subj = document.getElementById('rd-mail-subj').value;
+  const body = document.getElementById('rd-mail-body').value;
+  const msg = document.getElementById('rd-mail-msg');
+  const url = 'mailto:' + encodeURIComponent(to) + '?subject=' + encodeURIComponent(subj) + '&body=' + encodeURIComponent(body);
+  // mailto는 브라우저·메일앱마다 길이 제한이 있어(대략 2,000자) 초과 시 복사를 권한다
+  if (url.length > 1900) {
+    if (msg) { msg.innerHTML = '⚠ 본문이 길어 메일앱에 다 넘어가지 않을 수 있습니다. <b>[본문 복사]</b> 후 붙여넣기를 권합니다. (수신자·제목만 채워 메일앱을 엽니다)'; msg.style.color = '#B45309'; }
+    window.location.href = 'mailto:' + encodeURIComponent(to) + '?subject=' + encodeURIComponent(subj);
+    return;
+  }
+  window.location.href = url;
+  if (msg) { msg.textContent = '메일앱을 열었습니다. 발송 전에 내용을 꼭 검토해 주세요.'; msg.style.color = '#64748B'; }
+};
+
+// Claude 키가 있으면 초안을 실제 발송 가능한 수준으로 다듬는다 (없으면 안내)
+// AI 다듬기용 키 입력창을 메일 메시지 영역에 인라인으로 크게 노출
+window.rdShowKeyInput = function(key){
+  const msg = document.getElementById('rd-mail-msg');
+  if (!msg) return;
+  msg.innerHTML =
+    '<div style="background:#FFFBEB;border:1.5px solid #FCD34D;border-radius:11px;padding:13px 15px;margin-top:4px">' +
+      '<div style="font-size:12.5px;font-weight:800;color:#92400E;margin-bottom:3px">🔑 Claude API 키 입력</div>' +
+      '<div style="font-size:11px;color:#B45309;margin-bottom:9px;line-height:1.55">복사버튼 클릭 후 입력란에 붙여넣기하세요.</div>' +
+      '<div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">' +
+        '<input id="rd-key-input" type="password" placeholder="sk-ant-..." ' +
+          'style="flex:1;min-width:180px;border:1px solid #FCD34D;border-radius:8px;padding:9px 11px;font-size:12.5px;font-family:monospace">' +
+        '<button class="rd-btn st" style="flex:0 0 auto;padding:9px 14px" onclick="rdCopyKey(this)">' +
+          '<i class="ti ti-copy"></i> 복사</button>' +
+        '<button class="rd-btn go" style="flex:0 0 auto;padding:9px 14px" onclick="rdSaveKey(\'' + esc(key) + '\')">' +
+          '<i class="ti ti-device-floppy"></i> 저장 후 다듬기</button>' +
+      '</div>' +
+    '</div>';
+  setTimeout(function(){ const el = document.getElementById('rd-key-input'); if (el) el.focus(); }, 50);
+};
+// 미리 등록된 키를 클립보드로 복사 (파일에 이미 있는 HB_CLAUDE_KEY_PRESET 재사용 — 키를 중복 노출하지 않음)
+window.rdCopyKey = function(btn){
+  const v = (typeof HB_CLAUDE_KEY_PRESET !== 'undefined') ? HB_CLAUDE_KEY_PRESET : '';
+  const ok = function(){ if (btn){ const o = btn.innerHTML; btn.innerHTML = '<i class="ti ti-check"></i> 복사됨'; setTimeout(function(){ btn.innerHTML = o; }, 1600); } };
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(v).then(ok).catch(ok);
+  else ok();
+};
+window.rdSaveKey = function(key){
+  const el = document.getElementById('rd-key-input');
+  const v = el ? el.value.trim() : '';
+  if (!v) { if (el) el.focus(); return; }
+  try { localStorage.setItem(HB_CLAUDE_KEY, v); } catch(e) {}
+  window.rdMailAi(key);      // 저장 즉시 다듬기 재실행
+};
+
+window.rdMailAi = async function(key){
+  const g = ST.byKey[key];
+  const msg = document.getElementById('rd-mail-msg');
+  const k = (localStorage.getItem(HB_CLAUDE_KEY) || '').trim();
+  if (!k) { window.rdShowKeyInput(key); return; }
+  const ta = document.getElementById('rd-mail-body');
+  const before = ta.value;
+  if (msg) { msg.textContent = '✍️ AI가 문장을 다듬는 중입니다…'; msg.style.color = '#0284C7'; }
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method:'POST',
+      headers:{ 'Content-Type':'application/json', 'x-api-key':k,
+                'anthropic-version':'2023-06-01', 'anthropic-dangerous-direct-browser-access':'true' },
+      body: JSON.stringify({
+        model:'claude-opus-4-8', max_tokens:2000,
+        system:'너는 SCG랩 영업기획팀이 지자체 주무관에게 보내는 첫 제안 메일을 다듬는 편집자다. ' +
+               '규칙: (1) 사실을 추가하거나 수치를 지어내지 마라 — 주어진 초안의 근거만 사용한다. ' +
+               '(2) 공공기관 실무자에게 보내는 정중하고 간결한 존댓말 공문체로 쓴다. ' +
+               '(3) 과장된 세일즈 표현·이모지·마케팅 문구를 쓰지 마라. ' +
+               '(4) 원래의 항목 구조(■ 번호 항목)와 "업무 처리 주체 구분" 항목은 반드시 유지한다. ' +
+               '(5) 전체 분량은 초안과 비슷하게 유지한다. (6) 다듬은 메일 본문만 출력하고 설명은 붙이지 마라.',
+        messages:[{ role:'user', content:'아래 메일 초안을 다듬어줘. 수신처는 ' + g.sido + ' ' + g.sgg + ' 담당 주무관이야.\n\n' + before }]
+      })
+    });
+    if (!res.ok) throw new Error('HTTP ' + res.status + ' ' + (await res.text()).slice(0,160));
+    const j = await res.json();
+    const out = (j.content||[]).filter(function(b){ return b.type==='text'; }).map(function(b){ return b.text; }).join('').trim();
+    if (out) {
+      ta.value = out;
+      if (msg) { msg.textContent = '✅ AI가 문장을 다듬었습니다. 발송 전 사실관계를 꼭 확인해 주세요.'; msg.style.color = '#059669'; }
+    } else throw new Error('빈 응답');
+  } catch(e) {
+    ta.value = before;
+    if (msg) { msg.textContent = 'AI 다듬기 실패 — 원본 초안을 유지합니다. (' + (e.message||e) + ')'; msg.style.color = '#DC2626'; }
+  }
+};
+
+// ── 회신 후 아웃바운드 응대 스크립트 ──────────────────────────────────
+window.rdScript = function(key){
+  const g = ST.byKey[key];
+  if (!g) return;
+  const own = g.co === '한빌';
+  const pts = salesPoints(g);
+  const top = pts[0];
+  const hasNews = g.news.length > 0;
+
+  const sec = function(t, rows){
+    return '<div><div class="rd-sec-t">' + t + '</div><div class="rd-pre">' + rows.join('\n') + '</div></div>';
+  };
+
+  document.getElementById('rd-modal-title').innerHTML =
+    '📞 ' + esc(g.sido + ' ' + g.sgg) + ' — 회신 후 응대 스크립트';
+
+  document.getElementById('rd-modal-body').innerHTML =
+    '<div class="rd-note">메일 회신이 왔을 때 <strong>첫 통화 30초 ~ 첫 미팅</strong>까지의 흐름입니다. ' +
+    '지역 실제 수치가 들어가 있으니 그대로 읽으셔도 됩니다.' +
+    (own ? ' <strong>한빌 선점 지역</strong>이라 신규 수주가 아닌 <strong>운영 점검·확장</strong> 관점입니다.' : '') + '</div>' +
+
+    (function(){
+      // 통화 전에 담당자 교체 여부부터 확인 — 엉뚱한 사람 이름을 부르면 첫 통화가 끝난다
+      const ex = excerpt(g, /담당자\s*변경|담당 변경|담당변경|발령|초임|으로 변경/, 4);
+      const arts = g.news.filter(function(a){ return newsKind(a).k === '발령'; });
+      if (!ex.length && !arts.length) return '';
+      return '<div><div class="rd-sec-t">⚠ 통화 전 확인 — 담당자 교체 이력</div>' +
+        '<div class="rd-pre">' +
+          ex.map(function(x){ return esc((x.where ? '[' + x.where + '] ' : '') + x.text); }).join('\n') +
+        '</div>' +
+        '<div style="margin-top:5px;font-size:11.5px">' +
+          arts.map(function(a){
+            return '<a href="' + esc(a.url) + '" target="_blank" rel="noopener" style="color:#0284C7;display:block">📰 ' +
+                   esc(cut(a.title,50)) + ' (' + esc(a.source) + ' ' + esc(a.date) + ') ↗</a>';
+          }).join('') +
+          '<a href="' + RD_SHEET_URL + '" target="_blank" rel="noopener" style="color:#0284C7">🔗 고객관리리스트 원문 확인 ↗</a>' +
+        '</div></div>';
+    })() +
+
+    sec('① 오프닝 (30초)', [
+      esc('"안녕하십니까, ' + g.sgg + ' ' + ((g.rows.map(function(r){return r.dept;}).filter(Boolean)[0])||'담당') + ' ○○○ 주무관님 되실까요?'),
+      esc(' 한국전력 전기요금 전자청구 대행 「한빌」 SCG랩 영업기획팀 ' + (g.owner||'○○○') + '입니다.'),
+      esc(' 메일 회신 감사드립니다. 3분만 시간 내주시면 핵심만 말씀드리겠습니다."'),
+      '',
+      esc('※ 첫 통화 목표는 계약이 아니라 「현황 확인 + 다음 일정 잡기」입니다.')
+    ]) +
+
+    sec('② 상황 확인 질문 (듣기 위주)', [
+      esc('· "현재 ' + g.sgg + ' 전기요금 청구서는 어떤 방식으로 받고 계신가요? (종이 / 이메일 / 모바일)"'),
+      esc('· "가로등·보안등 구좌는 부서에서 직접 관리하시나요, 아니면 위탁으로 보고 계신가요?"'),
+      esc('· "결산 때 소액미청구나 미납 건으로 곤란하셨던 적 있으신가요?"'),
+      (hasNews ? esc('· "최근 ' + cut(g.news[0].title, 34) + ' 관련 기사를 봤습니다. 그 사업 관련 구좌도 부서에서 맡으시나요?"') : ''),
+      '',
+      esc('※ 여기서 나온 답이 실제 제안 내용을 결정합니다. 먼저 제품 설명하지 마세요.')
+    ].filter(Boolean)) +
+
+    sec('③ 핵심 메시지 (30초, 하나만)', [
+      esc(top ? '· ' + top.tag : '· 전기요금 청구 업무 부담 경감'),
+      esc(top ? '  근거: ' + top.why : ''),
+      esc(top ? '  제안: ' + top.ask : ''),
+      '',
+      esc('· 현재 파악 현황: 구좌 ' + g.rows.length + '건 (한빌 ' + g.ownN + ' / 타사 ' + g.rivalN + ') · 고객 약 ' + g.qty.toLocaleString() + '건'),
+      esc('· "저희 자료 기준이라 실제와 다를 수 있습니다. 확인해 주시면 정확히 맞추겠습니다." → 자연스러운 자료 요청')
+    ].filter(Boolean)) +
+
+    sec('④ 반응별 분기', [
+      esc('[관심 있음] → "현황표를 정리해서 보내드리겠습니다. 다음 주 중 30분 방문 가능하실까요?"'),
+      esc('               → 그 자리에서 날짜 2개를 제시 (선택지 제공이 수락률을 높입니다)'),
+      '',
+      esc('[바쁘다/나중에] → "그럼 자료만 메일로 보내드리겠습니다. 2주 뒤에 다시 연락드려도 될까요?"'),
+      esc('                 → 재연락 날짜를 반드시 합의하고 끊기'),
+      '',
+      esc('[타사와 계약 중] → "계약 해지를 요청드리는 게 아닙니다. 계약 만료 시점만 알려주시면'),
+      esc('                    그때 비교 자료를 준비해 두겠습니다." → 만료월 확보가 목표'),
+      '',
+      esc('[담당이 아니다] → "실례했습니다. 어느 부서에서 보시는지만 알려주실 수 있을까요?"'),
+      esc('                  → 연관 부서(도로과·공원녹지과·전산정보과·회계과) 이관 확보')
+    ]) +
+
+    sec('⑤ 자주 나오는 반론 대응', [
+      esc('Q. "지금도 별 문제 없는데요."'),
+      esc('A. "네, 그래서 바꾸시라는 말씀은 아닙니다. 다만 신규 시설이 늘 때 구좌 등록이 누락되면'),
+      esc('    결산에서 소액미청구로 돌아오는 경우가 많아, 그 부분만 점검해 드리려는 겁니다."'),
+      '',
+      esc('Q. "비용이 드나요?"'),
+      esc('A. "지자체에서 저희에게 지급하시는 비용은 없습니다. 한전과의 대행 구조입니다."'),
+      '',
+      esc('Q. "명의 변경이나 자동이체도 해주시나요?"'),
+      esc('A. "그 부분은 한전 소관이라 저희가 직접 처리할 수 없습니다. 한전ON 또는 123으로'),
+      esc('    안내드리고, 저희가 할 수 있는 청구서 등록·조회·재발송은 바로 처리해 드립니다."'),
+      esc('    ※ 못 하는 것을 정확히 말하는 것이 신뢰를 만듭니다. 과장 금지.'),
+      '',
+      esc('Q. "윗선 결재가 필요합니다."'),
+      esc('A. "결재 올리실 때 쓰실 수 있게 1장짜리 요약자료로 정리해 보내드리겠습니다."')
+    ]) +
+
+    sec('⑥ 클로징 & 다음 액션', [
+      esc('· 통화 종료 전 반드시 확보할 것: ① 다음 접촉 날짜  ② 실제 담당 부서·담당자  ③ (타사) 계약 만료 시점'),
+      esc('· 통화 후 24시간 내: 통화 요약 + 약속한 자료를 메일로 발송 (기억이 남아 있을 때)'),
+      esc('· 결과는 고객관리리스트 「영업History」에 날짜와 함께 기록 → 다음 담당자가 이어받을 수 있게')
+    ]) +
+
+    '<div style="display:flex;gap:6px;flex-wrap:wrap">' +
+      '<button class="rd-btn st" onclick="rdScriptCopy()"><i class="ti ti-copy"></i> 스크립트 전체 복사</button>' +
+      '<button class="rd-btn go" onclick="rdMail(\'' + esc(key) + '\')"><i class="ti ti-mail"></i> 메일 초안으로</button>' +
+    '</div>';
+
+  document.getElementById('rd-modal').classList.add('open');
+};
+
+window.rdScriptCopy = function(){
+  const t = [...document.querySelectorAll('#rd-modal-body .rd-pre')].map(function(el){ return el.innerText; }).join('\n\n');
+  const title = document.getElementById('rd-modal-title').innerText;
+  navigator.clipboard.writeText(title + '\n\n' + t).then(function(){
+    alert('스크립트를 복사했습니다.');
+  }).catch(function(){ alert('복사에 실패했습니다.'); });
+};
+
+// ── 우선순위 점수 (대응 시급도) ───────────────────────────────────────
+function score(g){
+  let s = 0;
+  g.alerts.forEach(function(x){ s += ({c:1000, g2b:600, w:400, o:250, n:150, i:80})[x.lv] || 0; });
+  return s + Math.min(g.qty/1000, 120);
+}
+
+// ── 렌더 ──────────────────────────────────────────────────────────────
+function coClass(co){ return co === '한빌' ? 'own' : (co === '한전산업개발' ? 'hansan' : 'rival'); }
+
+// 알림을 '의미'로 분류한다 (lv 색상만으로 세면 담당자 발령감지 등 빨간 알림이 이탈위험으로 오집계됨)
+//   · 이탈위험 = 실제 이탈/빌링 해지 신호만
+//   · 이슈     = 방어·정리가 필요한 문제(이탈위험 포함 + 소액미청구·빌링사변경·선점불일치)
+function rdIsChurn(g){ return g.alerts.some(function(a){ return a.t === '이탈 위험'; }); }
+function rdIsRisk(g){ return g.alerts.some(function(a){ return /이탈 위험|소액미청구|빌링사 변경|선점 표기 불일치/.test(a.t); }); }
+window.rdIsChurn = rdIsChurn;
+window.rdIsRisk  = rdIsRisk;
+
+function renderKpis(){
+  const rs = ST.regions;
+  const own = rs.filter(function(g){ return g.co === '한빌'; });
+  const rival = rs.filter(function(g){ return g.co && g.co !== '한빌'; });
+  const risk = rs.filter(rdIsRisk);
+  const churn = rs.filter(rdIsChurn);
+  const withNews = rs.filter(function(g){ return g.news.length; });
+  const kpis = [
+    { k:'📍 관리 지역', v:rs.length + '곳', s:'구좌 ' + ST.recs.length.toLocaleString() + '건' },
+    { k:'🛡 한빌 선점', v:own.length + '곳', s:'현황만 표시 · 구좌 ' + own.reduce(function(a,g){return a+g.ownN;},0) + '건' },
+    { k:'🎯 경쟁사·미개척', v:rival.length + '곳', s:'진입 전략 대상' },
+    { k:'⚠ 이슈·이탈위험', v:risk.length + '곳', s:(churn.length ? '이탈위험 ' + churn.length + '곳 포함 · ' : '') + '우선 대응 필요' },
+    { k:'📰 지역 소식', v:withNews.length + '곳', s:'최근 ' + RD_NEWS_DAYS + '일 기사 매칭' },
+  ];
+  document.getElementById('rd-kpis').innerHTML = kpis.map(function(x){
+    return '<div class="rd-kpi"><div class="k">' + x.k + '</div><div class="v">' + x.v + '</div><div class="s">' + esc(x.s) + '</div></div>';
+  }).join('');
+
+  // 사이드바 뱃지 = '지금 바로 봐야 할' 이탈위험 지역 수만 (뉴스·일반이슈 합산은 의미 없어 제거)
+  const badge = document.getElementById('radar-nav-badge');
+  if (badge){ badge.textContent = churn.length; badge.style.display = churn.length ? 'inline-block' : 'none'; }
+}
+
+function renderSidoOptions(){
+  const sel = document.getElementById('rd-sido');
+  if (!sel || sel.options.length > 1) return;
+  const sds = Object.keys(ST.regions.reduce(function(m,g){ m[g.sd]=1; return m; }, {})).sort();
+  sds.forEach(function(sd){
+    const o = document.createElement('option'); o.value = sd; o.textContent = sd; sel.appendChild(o);
+  });
+}
+
+window.rdFilter = function(f, btn){
+  ST.filter = f;
+  document.querySelectorAll('#sec-radar .rd-chip[data-f]').forEach(function(b){ b.classList.remove('on'); });
+  if (btn) btn.classList.add('on');
+  rdRender();
+};
+
+window.rdRender = function(){
+  const grid = document.getElementById('rd-grid');
+  if (!grid) return;
+  const q  = (document.getElementById('rd-q').value || '').trim().toLowerCase();
+  const sd = document.getElementById('rd-sido').value || '';
+  const f  = ST.filter;
+
+  let list = ST.regions.filter(function(g){
+    if (sd && g.sd !== sd) return false;
+    if (f === 'own'   && g.co !== '한빌') return false;
+    if (f === 'rival' && (!g.co || g.co === '한빌')) return false;
+    if (f === 'news'  && !g.news.length) return false;
+    if (f === 'risk'  && !g.alerts.some(function(a){ return a.lv==='c'||a.lv==='w'; })) return false;
+    // 자체 솔루션 제안 가능: 기사에서 관련 이슈가 잡혔거나, 도로조명 시스템 미도입·타사 사용
+    if (f === 'bid'   && !(g.bidsOpen && g.bidsOpen.length)) return false;
+    if (f === 'sol'   && !((g.sols && g.sols.length) || g.sysNone || g.sysRival)) return false;
+    // 메일 발송 가능: 시트에 담당자 이메일이 있는 지역
+    if (f === 'mail'  && !mailsOf(g).length) return false;
+    if (q){
+      const hay = (g.sd + g.sido + g.sgg + g.owner + ' ' +
+        g.rows.map(function(r){ return r.cust + r.dept + r.owner; }).join(' ')).toLowerCase();
+      if (hay.indexOf(q) < 0) return false;
+    }
+    return true;
+  }).sort(function(a,b){ return score(b) - score(a); });
+
+  if (!list.length){ grid.innerHTML = '<div class="rd-empty">조건에 해당하는 지역이 없습니다.</div>'; return; }
+
+  grid.innerHTML = list.map(function(g){
+    const own = g.co === '한빌';
+    const risky = g.alerts.some(function(a){ return a.lv === 'c'; });
+    const cls = risky ? 'risk' : (own ? 'own' : 'rival');
+    const alerts = g.alerts.slice(0,4).map(function(a){
+      return '<span class="rd-al ' + a.lv + '" title="' + esc(a.why) + '">' + esc(a.t) + '</span>';
+    }).join('');
+    const news = g.news.length ? '<div class="rd-news"><div class="rd-news-t"><i class="ti ti-news"></i> 지역 소식</div>' +
+      g.news.slice(0,3).map(function(a){
+        return '<a href="' + esc(a.url) + '" target="_blank" rel="noopener">' + esc(cut(a.title,58)) +
+               '<span class="src"> · ' + esc(a.source || '') + ' ' + esc(a.date) +
+               (a._dups > 1 ? ' <span style="color:#0EA5E9;font-weight:700">외 ' + (a._dups-1) + '개 매체</span>' : '') +
+               '</span></a>';
+      }).join('') + '</div>' : '';
+    // 한빌 선점 지역 → 현황 보기만. 경쟁사·미개척 → 현황 + 진입 전략.
+    // 메일 초안은 양쪽 모두 제공(한빌 지역은 '현황 점검·지원' 톤으로 생성됨).
+    const acts = '<div class="rd-acts">' + (own
+      ? '<button class="rd-btn st" onclick="rdDetail(\'' + esc(g.key) + '\')">' +
+        '<i class="ti ti-shield-check"></i> 선점 현황</button>'
+      : '<button class="rd-btn st" onclick="rdDetail(\'' + esc(g.key) + '\')">' +
+        '<i class="ti ti-list-details"></i> 현황</button>' +
+        '<button class="rd-btn go" onclick="rdStrategy(\'' + esc(g.key) + '\')">' +
+        '<i class="ti ti-target-arrow"></i> 진입 전략</button>')
+      + '<button class="rd-btn mail" onclick="rdMail(\'' + esc(g.key) + '\')" title="선제 제안 메일 초안">' +
+        '<i class="ti ti-mail"></i> 메일</button></div>';
+
+    return '<div class="rd-card ' + cls + '">' +
+      '<div class="rd-card-h"><div><div class="rd-region">' + esc(g.sgg) + '</div>' +
+        '<div class="rd-sido">' + esc(g.sido) + '</div></div>' +
+        '<span class="rd-co ' + coClass(g.co) + '">' + esc(g.co || '미지정') + '</span></div>' +
+      '<div class="rd-metrics">' +
+        '<span>구좌 <b>' + g.rows.length + '</b>건</span>' +
+        '<span>한빌 <b>' + g.ownN + '</b> / 경쟁 <b>' + g.rivalN + '</b></span>' +
+        '<span>고객 <b>' + g.qty.toLocaleString() + '</b>건</span>' +
+        (g.owner ? '<span>담당 <b>' + esc(g.owner) + '</b></span>' : '') +
+      '</div>' +
+      (alerts ? '<div class="rd-alerts">' + alerts + '</div>' : '') +
+      news + acts + '</div>';
+  }).join('');
+};
+
+// ── 상세(현황) 모달 ───────────────────────────────────────────────────
+window.rdCloseDetail = function(){ document.getElementById('rd-modal').classList.remove('open'); };
+
+window.rdDetail = function(key){
+  const g = ST.byKey[key];
+  if (!g) return;
+  const own = g.co === '한빌';
+  const mgrs = [];
+  g.rows.forEach(function(r){ r.mgr.forEach(function(m){ mgrs.push(Object.assign({ dept:r.dept }, m)); }); });
+  const seenM = {};
+  const mgrRows = mgrs.filter(function(m){ if (seenM[m.name]) return false; seenM[m.name]=1; return true; })
+    .slice(0,8).map(function(m){
+      return '<tr><th>' + esc(m.name) + '</th><td>' + esc([m.org, m.team, m.pos].filter(Boolean).join(' · ')) +
+             (m.tel||m.hp ? '<br>' + esc([m.tel, m.hp].filter(Boolean).join(' / ').replace(/\n/g,' ')) : '') +
+             (m.mail ? '<br>' + esc(m.mail.replace(/\n/g,' ')) : '') + '</td></tr>';
+    }).join('');
+
+  const rowsTbl = g.rows.slice(0,20).map(function(r){
+    return '<tr><th>' + esc(r.dept || r.cust) + '</th><td>' +
+      esc([r.target, r.billType, r.co && ('빌링사 ' + r.co), r.status, r.strat].filter(Boolean).join(' · ')) +
+      (r.qty ? ' · <b>' + r.qty.toLocaleString() + '건</b>' : '') + '</td></tr>';
+  }).join('');
+
+  const histTxt = g.rows.map(function(r){ return r.hist; }).filter(Boolean).join('\n\n');
+  const issueTxt = g.rows.map(function(r){ return r.issue; }).filter(Boolean).join('\n\n');
+  const wins = g.rows.map(function(r){ return r.win; }).filter(Boolean);
+
+  // 나라장터 발주·낙찰 블록 — 알림 바로 다음(담당자 앞)에 배치하기 위해 미리 조립한다
+  const g2bBlock = ((g.bids && g.bids.length) || (g.wins && g.wins.length)
+    ? '<div><div class="rd-sec-t">🏛 나라장터 발주 현황</div>' +
+      (g.bids && g.bids.length
+        ? g.bids.slice(0,6).map(function(b){
+            const open = b.closeDate && b.closeDate >= new Date().toISOString().slice(0,10);
+            return '<div style="border:1px solid ' + (open?'#FCA5A5':'var(--g200)') + ';background:' + (open?'#FEF2F2':'#fff') +
+              ';border-radius:9px;padding:9px 11px;margin-bottom:6px;font-size:12px;line-height:1.65">' +
+              (open ? '<span style="background:#DC2626;color:#fff;border-radius:5px;padding:1px 7px;font-size:10px;font-weight:800">' + esc(dday(b.closeDate)) + '</span> ' : '') +
+              '<b>' + esc(cut(b.title, 52)) + '</b><br>' +
+              '<span style="color:#64748B">' + esc(b.org) + ' · ' + esc(b.kind||'') + ' · ' + esc(fmtWon(b.amount)) +
+              (b.closeDate ? ' · 마감 ' + esc(b.closeDate) : '') + '</span>' +
+              (b.charge ? '<br><span style="color:#64748B">공고담당 ' + esc(b.charge) + (b.chargeTel ? ' ' + esc(b.chargeTel) : '') + '</span>' : '') +
+              (b.url ? '<br><a href="' + esc(b.url) + '" target="_blank" rel="noopener" style="color:#0284C7;font-weight:700">공고 원문 ↗</a>' : '') +
+              '</div>';
+          }).join('')
+        : '') +
+      (g.wins && g.wins.length
+        ? '<div style="font-size:11.5px;font-weight:800;color:#075985;margin:8px 0 5px">🤝 수주 업체 (시스템 연계 제안 대상)</div>' +
+          g.wins.slice(0,4).map(function(w){
+            return '<div style="border:1px solid #BAE6FD;background:#F0F9FF;border-radius:9px;padding:9px 11px;margin-bottom:6px;font-size:12px;line-height:1.65">' +
+              '<b>' + esc(w.winner || '업체명 미상') + '</b> ' + (w.amount ? '<span style="color:#64748B">· ' + esc(fmtWon(w.amount)) + '</span>' : '') + '<br>' +
+              '<span style="color:#64748B">' + esc(cut(w.title, 46)) + '</span>' +
+              (w.winnerTel ? '<br><span style="color:#64748B">☎ ' + esc(w.winnerTel) + '</span>' : '') +
+              '</div>';
+          }).join('')
+        : '') +
+      '</div>'
+    : '');
+
+  document.getElementById('rd-modal-title').innerHTML =
+    esc(g.sido + ' ' + g.sgg) + ' <span class="rd-co ' + coClass(g.co) + '">' + esc(g.co||'미지정') + '</span>';
+
+  document.getElementById('rd-modal-body').innerHTML =
+    (own ? '<div class="rd-note"><strong>한빌 선점 지역</strong>입니다. 신규 영업전략 제안 없이 <strong>현재 현황</strong>만 제공합니다. ' +
+           '유지·방어 활동은 아래 이슈·담당자 이력을 근거로 판단해 주세요.</div>'
+         : '<div class="rd-note"><strong>' + esc(g.co||'미지정') + ' 선점 지역</strong>입니다. 아래 현황 확인 후 ' +
+           '[영업비서 진입 전략]으로 전략 초안을 요청할 수 있습니다.</div>') +
+
+    // 📊 요약 — 표 대신 한눈에 들어오는 스탯 스트립
+    '<div class="rd-sum">' +
+      '<span><span class="k">구좌</span><b>' + g.rows.length + '</b> (한빌 ' + g.ownN + '·경쟁 ' + g.rivalN + ')</span>' +
+      '<span><span class="k">고객</span><b>' + g.qty.toLocaleString() + '</b>건</span>' +
+      (g.owner ? '<span><span class="k">담당</span><b>' + esc(g.owner) + '</b></span>' : '') +
+      (wins.length ? '<span><span class="k">수주</span>' + esc(wins[0]) + '</span>' : '') +
+      '<span><span class="k">도로조명시스템</span>' +
+        (g.sysOwn   ? '<b style="color:#0284C7">한빌 사용</b>'
+       : g.sysNone  ? '<b style="color:#B45309">미사용</b>(제안대상)'
+       : g.sysRival ? '<b style="color:#B45309">' + esc(cut(g.sys,10)) + '</b>(타사)'
+       : esc(g.sys || '-')) + '</span>' +
+    '</div>' +
+
+    // ── 지금 움직일 근거 (열림) ──
+    (g.alerts.length ? '<div><div class="rd-sec-t">🔔 알림</div><div class="rd-alerts">' +
+      g.alerts.map(function(a){ return '<span class="rd-al ' + a.lv + '">' + esc(a.t) + ' — ' + esc(a.why) + '</span>'; }).join('') +
+      '</div></div>' : '') +
+
+    // 나라장터 발주 현황 — 알림 바로 다음(담당자 앞)
+    g2bBlock +
+
+    // ── 외부 소스에서 자동 감지한 인사발령 (시정일보·지역신문) ──
+    (function(){
+      if (!g.hr || !g.hr.length) return '';
+      const b = g.hrBase;
+      // 시트 담당자 ↔ 외부 발령 명단 매칭 결과를 최상단에 (가장 확실한 근거)
+      const mm = (g.hrMatched || []).length
+        ? '<div style="border:2px solid #DC2626;background:#FEF2F2;border-radius:10px;padding:11px 13px;margin-bottom:9px">' +
+          '<div style="font-size:12.5px;font-weight:800;color:#B91C1C;margin-bottom:5px">🎯 우리 담당자가 발령 명단에서 확인됨</div>' +
+          g.hrMatched.map(function(m){
+            return '<div style="font-size:12px;line-height:1.7;padding:6px 0;border-top:1px solid #FECACA">' +
+              '<b>' + esc(m.sheetName) + '</b> <span style="color:#64748B">(시트 기재: ' + esc(m.sheetDept || '부서미상') + ')</span><br>' +
+              '→ 발령 명단: <b>' + esc(m.person.dept || '-') + '</b>' +
+              (m.person.rank ? ' <span style="color:#94A3B8">[' + esc(m.person.rank) + ']</span>' : '') +
+              (m.same ? ' <span style="color:#059669;font-weight:700">· 부서 일치</span>'
+                      : ' <span style="color:#B45309;font-weight:700">· 부서 불일치 — 동명이인 확인 필요</span>') +
+              '<br><span style="color:#64748B">출처: ' + esc(m.rec.source) + ' · ' + esc(m.rec.date) + ' · </span>' +
+              '<a href="' + esc(m.rec.url) + '" target="_blank" rel="noopener" style="color:#0284C7;font-weight:700">' +
+                esc(cut(m.rec.title, 40)) + ' 원문 ↗</a></div>';
+          }).join('') + '</div>'
+        : ((g.hrDeptMatched || []).length
+          ? '<div style="border:2px solid #F59E0B;background:#FFFBEB;border-radius:10px;padding:11px 13px;margin-bottom:9px">' +
+            '<div style="font-size:12.5px;font-weight:800;color:#B45309;margin-bottom:5px">📌 우리 접촉 부서에 인사 있음 (성명은 미일치)</div>' +
+            '<div style="font-size:11px;color:#92400E;margin-bottom:6px;line-height:1.6">' +
+              '시트 담당자 성명이 발령 명단에 없습니다. 시정일보는 주로 4·5급(국장·과장) 인사를 싣고 ' +
+              '시트 담당자는 6급 주무관이 많아 자주 어긋납니다. 다만 <b>부서에 인사가 있었다</b>는 건 확인됐으니 재확인 대상입니다.</div>' +
+            g.hrDeptMatched.map(function(d){
+              return '<div style="font-size:12px;line-height:1.7;padding:5px 0;border-top:1px solid #FDE68A">' +
+                '접촉 부서 <b>' + esc(d.sheetDept) + '</b> → 발령: <b>' + esc(d.person.name) + '</b> ' + esc(d.person.dept) + '<br>' +
+                '<span style="color:#64748B">출처: ' + esc(d.rec.source) + ' · ' + esc(d.rec.date) + ' · </span>' +
+                '<a href="' + esc(d.rec.url) + '" target="_blank" rel="noopener" style="color:#0284C7;font-weight:700">' +
+                  esc(cut(d.rec.title, 40)) + ' 원문 ↗</a></div>';
+            }).join('') + '</div>'
+          : '');
+      return '<div><div class="rd-sec-t">🆕 담당자 변경 자동 감지 (외부 소스)</div>' + mm +
+        '<div style="font-size:11px;color:#64748B;margin-bottom:7px;line-height:1.6">' +
+          '시정일보「피플」·지역신문에서 매일 자동 수집합니다. ' +
+          (b ? '마지막 확인: <b>' + esc(b.date) + '</b> ' + esc(b.name||'') + ' ' + esc(b.dept||'') +
+               ' (확인일 ' + esc(b.at) + ') · <a href="#" onclick="rdHrReset(\'' + esc(g.key) + '\');return false" style="color:#DC2626">확인 취소</a>'
+             : '<b style="color:#B45309">아직 확인 처리된 이력이 없습니다.</b>') + '</div>' +
+
+        (g.hrNew.length
+          ? g.hrNew.map(function(r, i){
+              return '<div style="border:1px solid #FCA5A5;background:#FEF2F2;border-radius:9px;padding:10px 12px;margin-bottom:7px">' +
+                '<div style="font-size:12.5px;font-weight:800;color:#B91C1C">🆕 ' + esc(r.title) + '</div>' +
+                '<div style="font-size:11px;color:#64748B;margin:3px 0 6px">' + esc(r.source) + ' · ' + esc(r.date) +
+                  (r.kinds && r.kinds.length ? ' · ' + esc(r.kinds.join('/')) : '') +
+                  ' · <a href="' + esc(r.url) + '" target="_blank" rel="noopener" style="color:#0284C7">원문 확인 ↗</a></div>' +
+                (r.rel && r.rel.length
+                  ? '<table class="rd-tbl">' + r.rel.map(function(p){
+                      return '<tr><th>' + esc(p.name) + '</th><td>' + esc(p.dept) + (p.rank ? ' <span style="color:#94A3B8">[' + esc(p.rank) + ']</span>' : '') + '</td></tr>';
+                    }).join('') + '</table>'
+                  : '<div style="font-size:11.5px;color:#64748B">영업 관련 부서 인사는 확인되지 않았습니다. 원문에서 직접 확인해 주세요.</div>') +
+                '<button class="rd-btn go" style="margin-top:7px" onclick="rdHrConfirm(\'' + esc(g.key) + '\',' + i + ')">' +
+                  '<i class="ti ti-check"></i> 확인 완료 — 시트 기록용 복사 + 기준선 갱신</button>' +
+              '</div>';
+            }).join('')
+          : '<div style="font-size:12px;color:#059669;font-weight:600">✅ 확인 이후 새로 감지된 발령이 없습니다.</div>') +
+
+        (g.hr.length > g.hrNew.length
+          ? '<details style="margin-top:6px"><summary style="font-size:11.5px;color:#64748B;cursor:pointer">확인 완료된 과거 발령 ' + (g.hr.length - g.hrNew.length) + '건</summary>' +
+            g.hr.slice(g.hrNew.length).map(function(r){
+              return '<div style="font-size:11.5px;color:#64748B;padding:4px 0">· ' + esc(r.date) + ' ' +
+                     '<a href="' + esc(r.url) + '" target="_blank" rel="noopener" style="color:#0284C7">' + esc(cut(r.title,44)) + ' ↗</a></div>';
+            }).join('') + '</details>'
+          : '') +
+      '</div>';
+    })() +
+
+    // 지역 소식 (열림 — 접촉 명분)
+    (g.news.length ? '<div><div class="rd-sec-t">📰 지역 소식 (최근 ' + RD_NEWS_DAYS + '일)</div><div class="rd-news">' +
+      g.news.map(function(a){
+        return '<a href="' + esc(a.url) + '" target="_blank" rel="noopener">' + esc(a.title) +
+               '<span class="src"> · ' + esc(a.source||'') + ' ' + esc(a.date) +
+               (a._dups > 1 ? ' <span style="color:#0EA5E9;font-weight:700">외 ' + (a._dups-1) + '개 매체</span>' : '') + '</span></a>';
+      }).join('') + '</div></div>' : '') +
+
+    // 제안 가능한 자체 솔루션 (열림)
+    ((g.sols && g.sols.length)
+      ? '<div><div class="rd-sec-t">🧰 제안 가능한 자체 솔루션 (기사 근거)</div>' +
+        g.sols.map(function(s){
+          return '<div style="font-size:12px;border:1px solid var(--g200);border-radius:9px;padding:9px 11px;margin-bottom:6px;line-height:1.6">' +
+            '<b>' + esc(s.sol.name) + '</b><br>' +
+            '<span style="color:#64748B">근거 기사: ' + esc(cut(s.art.title, 48)) + ' (' + esc(s.art.source) + ' ' + esc(s.art.date) + ')</span><br>' +
+            '<span>' + esc(s.sol.pitch) + '</span></div>';
+        }).join('') + '</div>'
+      : '') +
+
+    // ── 참고 자료 (접힘) — 구좌·담당자·이력·이슈 ──
+    '<details class="rd-acc"><summary>📋 상세 자료 <span class="cnt">구좌 · 담당자 연락처 · 영업 이력 · 이슈</span></summary><div class="rd-acc-body">' +
+
+      // 담당자 변경 근거 — 오탐이 잦은 항목이라 원문 발췌와 출처를 함께
+      (function(){
+        const ex = excerpt(g, /담당자\s*변경|담당 변경|담당변경|발령|초임|으로 변경|에서 .*으로/, 6);
+        const arts = g.news.filter(function(a){ return newsKind(a).k === '발령'; });
+        if (!ex.length && !arts.length) return '';
+        return '<div><div class="rd-sec-t">👤 담당자 변경 근거 (더블체크용)</div>' +
+          '<div style="font-size:11px;color:#B45309;margin-bottom:6px;line-height:1.6">' +
+            '과거 이력이 섞여 있을 수 있습니다. <b>접촉 전 아래 원문을 확인</b>해 현재 담당자가 맞는지 대조해 주세요.</div>' +
+          (arts.length ? '<div class="rd-news" style="border-top:none;padding-top:0;margin-bottom:8px">' +
+            arts.map(function(a){
+              return '<a href="' + esc(a.url) + '" target="_blank" rel="noopener">📰 ' + esc(a.title) +
+                     '<span class="src"> · ' + esc(a.source||'') + ' ' + esc(a.date) + ' ↗</span></a>';
+            }).join('') + '</div>' : '') +
+          (ex.length ? '<table class="rd-tbl">' + ex.map(function(x){
+              return '<tr><th>' + esc(x.where || '기록') + '</th><td>' + esc(x.text) + '</td></tr>';
+            }).join('') + '</table>' +
+            '<div style="margin-top:6px"><a href="' + RD_SHEET_URL + '" target="_blank" rel="noopener" ' +
+            'style="font-size:11.5px;color:#0284C7;text-decoration:underline">🔗 고객관리리스트 원문에서 확인 ↗</a></div>' : '') +
+        '</div>';
+      })() +
+
+      '<div><div class="rd-sec-t">🏢 구좌·사업 현황</div><table class="rd-tbl">' + (rowsTbl || '<tr><td>-</td></tr>') + '</table></div>' +
+      (mgrRows ? '<div><div class="rd-sec-t">👤 고객 담당자</div><table class="rd-tbl">' + mgrRows + '</table></div>' : '') +
+      (histTxt ? '<div><div class="rd-sec-t">🗂 영업 History</div><div class="rd-pre">' + esc(histTxt) + '</div></div>' : '') +
+      (issueTxt ? '<div><div class="rd-sec-t">⚠ 이슈</div><div class="rd-pre">' + esc(issueTxt) + '</div></div>' : '') +
+
+    '</div></details>' +
+
+    '<div style="display:flex;gap:6px;flex-wrap:wrap">' +
+      '<button class="rd-btn mail" style="flex:1" onclick="rdMail(\'' + esc(g.key) + '\')"><i class="ti ti-mail"></i> 선제 제안 메일 초안</button>' +
+      '<button class="rd-btn st" onclick="rdScript(\'' + esc(g.key) + '\')"><i class="ti ti-phone"></i> 회신 후 응대 스크립트</button>' +
+    '</div>' +
+    (own ? '' : '<button class="rd-btn go" onclick="rdCloseDetail();rdStrategy(\'' + esc(g.key) + '\')">' +
+           '<i class="ti ti-target-arrow"></i> 영업비서 진입 전략 요청</button>');
+
+  document.getElementById('rd-modal').classList.add('open');
+};
+
+// ── 담당자 변경 확인 처리 → 기준선 갱신 + 시트 기록용 데이터 생성 ────
+//    영업담당자가 접촉해서 "실제로 이 사람이 맞다"를 확인하면 여기서 기준선을 올린다.
+//    이후 그보다 새로운 발령이 뜨면 다시 '변경 감지'로 잡힌다(상시 루프).
+window.rdHrConfirm = function(key, idx){
+  const g = ST.byKey[key];
+  if (!g || !g.hrNew || !g.hrNew[idx]) return;
+  const r = g.hrNew[idx];
+  const p = (r.rel && r.rel[0]) || (r.people && r.people[0]) || {};
+  const today = new Date();
+  const ymd = today.getFullYear() + '-' + String(today.getMonth()+1).padStart(2,'0') + '-' + String(today.getDate()).padStart(2,'0');
+
+  const all = rdHrBaselineAll();
+  all[key] = { date: r.date, name: p.name || '', dept: p.dept || '', url: r.url, at: ymd };
+  try { localStorage.setItem(RD_HR_BASE_KEY, JSON.stringify(all)); } catch(e){}
+
+  // 시트 추가 열에 붙여넣을 한 줄 (열 위치 확정 전까지는 복사 → 수동 붙여넣기)
+  //   [지역] [확인 담당자] [부서] [발령일] [확인일] [출처URL]
+  const row = [g.sido + ' ' + g.sgg, p.name || '', p.dept || '', r.date, ymd, r.url].join('\t');
+  ST._lastHrRow = row;
+
+  navigator.clipboard.writeText(row).then(function(){
+    alert('✅ 확인 처리했습니다.\n\n· 기준선이 ' + r.date + ' 로 갱신되어, 이후 새 발령만 알림에 뜹니다.\n' +
+          '· 시트 기록용 한 줄을 클립보드에 복사했습니다 (탭 구분 → 셀에 바로 붙여넣기).\n\n' +
+          row.replace(/\t/g, ' | '));
+  }).catch(function(){
+    alert('확인 처리했습니다. 기준선 갱신 완료.\n\n시트 기록용 (복사 실패 — 수동 복사):\n' + row.replace(/\t/g, ' | '));
+  });
+
+  // 알림·목록 즉시 갱신
+  attachHr([g], ST.hr || []);
+  renderKpis(); window.rdRender(); window.rdDetail(key);
+};
+
+window.rdHrReset = function(key){
+  const all = rdHrBaselineAll();
+  delete all[key];
+  try { localStorage.setItem(RD_HR_BASE_KEY, JSON.stringify(all)); } catch(e){}
+  attachHr([ST.byKey[key]], ST.hr || []);
+  renderKpis(); window.rdRender(); window.rdDetail(key);
+};
+
+// ── 경쟁사·미개척 지역 → 영업비서 진입 전략 ──────────────────────────
+window.rdStrategy = function(key){
+  const g = ST.byKey[key];
+  if (!g) return;
+  const sel = {
+    region: g.sido + ' ' + g.sgg,
+    co: g.co || '미지정',
+    qty: g.rivalN || g.rows.length,
+    billing: g.mapBilling || g.qty,
+    ratio: 0,
+    radarKey: key
+  };
+  window._mapSel = sel; window._mapSelectedRegion = sel.region; window._mapSelectedCo = sel.co;
+  if (typeof window.openCbot === 'function') window.openCbot();
+  setTimeout(function(){ if (typeof window.runMapStrategy === 'function') window.runMapStrategy('진입', sel); }, 450);
+};
+
+// 영업비서(현황 카드)에서 참조할 수 있게 지역 조회 헬퍼 노출
+window.rdLookupRegion = function(regionName){
+  if (!ST.loaded) return null;
+  const n = String(regionName||'').replace(/\s+/g,'');
+  let hit = null;
+  ST.regions.forEach(function(g){
+    if (hit) return;
+    if (n.indexOf(g.sgg) >= 0 && (g.sgg.length > 2 || n.indexOf(g.sd) >= 0)) hit = g;
+  });
+  return hit;
+};
+
+// ── 로드 ──────────────────────────────────────────────────────────────
+function setStatus(t, color){
+  const el = document.getElementById('rd-status');
+  if (el){ el.textContent = t; el.style.color = color || '#0284C7'; }
+}
+
+async function load(force){
+  if (ST.loading) return;
+  ST.loading = true;
+  const grid = document.getElementById('rd-grid');
+
+  let recs = null;
+  if (!force){
+    try {
+      const c = JSON.parse(localStorage.getItem(RD_CACHE_KEY) || 'null');
+      if (c && Date.now() - c.ts < RD_CACHE_TTL && Array.isArray(c.recs)) recs = c.recs;
+    } catch(e){}
+  }
+
+  try {
+    if (!recs){
+      setStatus('· 고객관리리스트 불러오는 중…');
+      recs = parseRows(await gvizFetch(RD_SHEET_ID, RD_SHEET_GID));
+      try { localStorage.setItem(RD_CACHE_KEY, JSON.stringify({ ts:Date.now(), recs:recs })); } catch(e){}
+    }
+    ST.recs = recs;
+    ST.regions = buildRegions(recs);
+
+    setStatus('· 지역 소식 · 인사발령 · 발주공고 매칭 중…');
+    const [newsArr, hrArr, g2bArr] = await Promise.all([loadNews(), loadHr(), loadG2b()]);
+    ST.news = newsArr;
+    ST.hr = hrArr;
+    ST.g2b = g2bArr;
+    attachNews(ST.regions, ST.news);
+    attachHr(ST.regions, ST.hr);
+    attachG2b(ST.regions, ST.g2b);
+
+    ST.byKey = {};
+    ST.regions.forEach(function(g){ ST.byKey[g.key] = g; });
+    ST.loaded = true;
+
+    renderSidoOptions();
+    renderKpis();
+    window.rdRender();
+    // 상단 'AI 분석 요약' 배지·패널을 레이더 실측치로 갱신 (로드는 비동기라 여기서 재호출)
+    try {
+      const secOn = document.getElementById('sec-radar');
+      if (typeof updatePageAlert === 'function' && secOn && secOn.classList.contains('on')) updatePageAlert('radar');
+    } catch(e){}
+    setStatus('· 지역 ' + ST.regions.length + '곳 · 구좌 ' + recs.length.toLocaleString() +
+              '건 · 기사 ' + ST.news.length + '건 · 인사 ' + (ST.hr||[]).length +
+              '건 · 발주 ' + (ST.g2b||[]).length + '건 연동 완료', '#059669');
+  } catch(e){
+    console.warn('[영업 레이더] 로드 실패:', e);
+    setStatus('· 데이터 로드 실패 — 시트 공유 설정(링크가 있는 모든 사용자 보기)을 확인해 주세요. (' + (e.message||e) + ')', '#DC2626');
+    if (grid) grid.innerHTML = '<div class="rd-empty">데이터를 불러오지 못했습니다. 새로고침(⟳) 버튼으로 다시 시도해 주세요.</div>';
+  } finally {
+    ST.loading = false;
+  }
+}
+
+window.rdInit   = function(){ if (!ST.loaded && !ST.loading) load(false); };
+window.rdReload = function(){ ST.loaded = false; try{ localStorage.removeItem(RD_CACHE_KEY); }catch(e){} load(true); };
+
+})();
 </script>
 </body>
 </html>

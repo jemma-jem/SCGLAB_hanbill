@@ -7,21 +7,22 @@
  *
  * 동작 흐름:
  *   .github/workflows/news-collect.yml (매일 크론)
- *     → node news_collector.js        (RSS 수집 → [AI 요약] → news_archive.json 갱신·커밋)
+ *     → node collectors/news_collector.js        (RSS 수집 → [AI 요약] → news_archive.json 갱신·커밋)
  *     → GitHub Pages 가 news_archive.json 서빙
  *     → ax-admin-v2.html 의 fetchLiveNews() 가 자동 반영 (실패 시 NEWS_DATA 폴백)
  *
  * AI 요약(선택): 환경변수 ANTHROPIC_API_KEY 설정 시 신규 기사를 Claude로 2줄 요약.
  *   미설정이면 자동 스킵(규칙 기반 폴백 요약 유지). 모델은 ANTHROPIC_MODEL 로 변경(기본 claude-opus-4-8).
  *
- * 로컬 실행: `node news_collector.js`  (Node 18+ · 내장 fetch 사용, 외부 의존성 없음)
+ * 로컬 실행: `node collectors/news_collector.js`  (Node 18+ · 내장 fetch 사용, 외부 의존성 없음)
  */
 'use strict';
 
 const fs = require('fs');
 const path = require('path');
 
-const ARCHIVE_PATH = path.join(__dirname, 'news_archive.json');
+// 산출물은 저장소 루트에 둔다(웹페이지가 루트 기준으로 fetch). 수집기는 collectors/ 하위.
+const ARCHIVE_PATH = path.join(__dirname, '..', 'news_archive.json');
 
 // ── AI 요약(선택) ─────────────────────────────────────────────────────
 // GitHub Secret ANTHROPIC_API_KEY 가 설정돼 있으면 신규 기사 제목을 Claude로
@@ -39,6 +40,20 @@ const JICHE_KW = [
   '빗물받이 관리 솔루션','수목관리솔루션','전자문서중계사업자','모바일 고지서'
 ];
 
+// 자체 솔루션(도로조명·수목관리·빗물받이·건물에너지) 영업 진입로가 되는 지자체 사업 키워드.
+// 지자체는 이런 사업을 공식 채널(보도자료·공고)에 올리므로, 첫 아웃바운드의 명분이 된다.
+// ※ 아래는 모두 '구체 키워드'라 단독 OR 검색해도 노이즈가 적다.
+const SOLUTION_KW = [
+  // 도로조명
+  '가로등 교체','보안등 설치','LED 가로등','스마트 가로등','안심가로등','등기구 교체','도로조명 정비',
+  // 수목관리
+  '가로수 정비','가로수 전정','가지치기','수목 병해충','조경수 관리','가로수 식재','수목관리',
+  // 빗물받이·배수
+  '빗물받이 청소','우수받이 정비','침수 취약지역',
+  // 건물에너지
+  '공공건물 에너지','그린리모델링','녹색건축물','에너지 진단 사업',
+];
+
 // 수집 대상 검색어 (구글 뉴스). when:Nd = 최근 N일 기사만
 const BASE_KW = ['전기요금','한전','전자청구서','에너지바우처','에너지정책','도시가스',
   '가로등','보안등','시설물관리','도로조명','탄소중립포인트','에너지 마일리지',
@@ -51,6 +66,9 @@ const GENERIC_JICHE_KW = ['포인트','마일리지','전수조사','탄소중�
 const CONTEXT_KW = ['지자체','지방자치','지방정부','시청','도청','군청','구청',
   '한전','한국전력','전기요금','에너지'];
 
+// 지자체 인사발령 — 담당자 교체는 영업 재접촉의 핵심 트리거라 별도 수집한다.
+const HR_KW = ['인사발령','정기인사','전보 발령','과장 전보','국장 전보','조직개편'];
+
 // 구체 키워드(단독으로도 안전) = 기본 + 지자체 확장 − 일반어. 그대로 OR 검색.
 const SPECIFIC_KW = Array.from(new Set(BASE_KW.concat(JICHE_KW)))
   .filter(function(k){ return GENERIC_JICHE_KW.indexOf(k) < 0; });
@@ -60,8 +78,14 @@ const QUERY_MAIN = SPECIFIC_KW.map(function(k){ return '"' + k + '"'; }).join(' 
 // 쿼리 2: (일반어 OR …) AND (맥락어 OR …) — 노이즈 차단하며 지자체 사업 기사만 능동 수집
 const QUERY_JICHE = '(' + GENERIC_JICHE_KW.map(function(k){ return '"' + k + '"'; }).join(' OR ') + ')'
   + ' (' + CONTEXT_KW.map(function(k){ return '"' + k + '"'; }).join(' OR ') + ') when:3d';
-const QUERY = QUERY_MAIN + ' || ' + QUERY_JICHE;   // 로그·메타 표기용
-const RSS_URLS = [QUERY_MAIN, QUERY_JICHE].map(function(q){
+// 쿼리 3: 자체 솔루션(도로조명·수목·빗물받이·건물에너지) 진입로가 되는 지자체 사업
+const QUERY_SOL = SOLUTION_KW.map(function(k){ return '"' + k + '"'; }).join(' OR ') + ' when:3d';
+// 쿼리 4: 지자체 인사발령 (담당자 교체 → 재접촉 트리거)
+const QUERY_HR = '(' + HR_KW.map(function(k){ return '"' + k + '"'; }).join(' OR ') + ')'
+  + ' (' + ['시청','군청','구청','도청','지자체','시장','군수','구청장'].map(function(k){ return '"' + k + '"'; }).join(' OR ') + ') when:3d';
+
+const QUERY = [QUERY_MAIN, QUERY_JICHE, QUERY_SOL, QUERY_HR].join(' || ');   // 로그·메타 표기용
+const RSS_URLS = [QUERY_MAIN, QUERY_JICHE, QUERY_SOL, QUERY_HR].map(function(q){
   return 'https://news.google.com/rss/search?q=' + encodeURIComponent(q) + '&hl=ko&gl=KR&ceid=KR:ko';
 });
 
@@ -73,8 +97,12 @@ const CORE_KW = Array.from(new Set([
   '청구서','빌링','납부','자동이체','도시가스','가스요금','에너지바우처','에너지 바우처','에너지정책','전력수급',
   '가로등','보안등','구좌분리','시설물관리','도로조명','도로과','전수표찰',
   '에너지 마일리지','에너지 절감','건물에너지관리','종이고지서','우리집 에너지','탄소중립포인트',
-  '빗물받이','수목관리','전자문서중계','모바일 고지서'
-].concat(CONTEXT_KW)));
+  '빗물받이','수목관리','전자문서중계','모바일 고지서',
+  // 솔루션 영업 진입로 키워드 (가로수·전정·침수 등 단독어도 관련 기사로 인정)
+  '가로수','전정','가지치기','병해충','조경','녹지','우수받이','침수','그린리모델링','녹색건축',
+  // 인사발령 (담당자 교체 트리거)
+  '인사발령','전보','조직개편'
+].concat(CONTEXT_KW).concat(SOLUTION_KW).concat(HR_KW)));
 function isRelevant(title) {
   const t = title || '';
   for (const k of CORE_KW) if (t.indexOf(k) >= 0) return true;
@@ -82,13 +110,13 @@ function isRelevant(title) {
 }
 
 const KEEP_DAYS = 60;   // 이 기간 이내 기사만 보관
-const MAX_ITEMS = 200;  // 최대 보관 건수(발행일 최신순) — 여러 날짜분 누적 유지('지난 기사' 탭 누적용)
+const MAX_ITEMS = 320;  // 최대 보관 건수(발행일 최신순) — 여러 날짜분 누적 유지('지난 기사' 탭 누적용)
 
 // 지자체 키워드 → 'local', 그 외 → 'energy'
 // '시장'(단독)은 '글로벌/주식 시장' 등 오분류를 유발하므로 제외한다.
 const LOCAL_KW = ['지자체','지방자치','지방정부','지방의회','시청','도청','군청','구청',
   '광역시','특별시','특별자치','시·군','시군구','조례','도지사','군수','읍면동','행정복지']
-  .concat(JICHE_KW);
+  .concat(JICHE_KW).concat(SOLUTION_KW).concat(HR_KW);
 
 function decode(s) {
   return (s || '')
