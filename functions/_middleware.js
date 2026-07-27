@@ -192,11 +192,13 @@ export async function onRequest(context) {
     return Response.redirect(url.origin + target, 302);
   }
 
-  // 인증 통과분에 브라우저 캐시 허용 → 재방문 시 2.3MB HTML 재다운로드 방지.
-  // 로그인 뒤 개인화 응답이므로 반드시 private (공용/CDN 캐시 금지).
-  // stale-while-revalidate: 만료 후에도 캐시본을 먼저 보여주고 뒤에서 갱신 → 체감 즉시 로딩.
+  // 인증 통과분은 절대 캐시하지 않는다(no-store).
+  //   ⚠ 과거 max-age/stale-while-revalidate 캐시가 심각한 보안 결함을 유발했다:
+  //     로그아웃 후 보호 페이지를 브라우저가 서버 확인 없이 캐시본으로 그대로 보여줌.
+  //   보호 페이지는 매 요청마다 미들웨어를 거쳐 세션을 재검증해야 하므로 no-store 필수.
   const res = await next();
   const out = new Response(res.body, res);
-  out.headers.set('Cache-Control', 'private, max-age=300, stale-while-revalidate=86400');
+  out.headers.set('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
+  out.headers.set('Pragma', 'no-cache');
   return out;
 }
