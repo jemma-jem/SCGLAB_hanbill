@@ -4209,7 +4209,7 @@ const NL_PROFILES = {
   partner01: {
     sender: { team:'SCGLAB 영업기획팀', name:'강승봉', email:'hanbill@scglab.com' },
     serviceId: 'service_jlmexa9',   // EmailJS: hanbill@scglab.com 연결 서비스 → 실제 From이 hanbill로 발송
-    lock: true,   // 아래 5명은 고정(발송 ON/OFF·편집·삭제 불가). 단, 추가 수신자는 허용.
+    lock: false,  // [테스트용] false=발송 ON/OFF·편집 가능. 테스트 끝나면 true로 되돌려 5명 고정.
     recipients: [
       { id:1, role:'SCGLAB',      email:'hanbill@scglab.com',    active:true },
       { id:2, role:'SCGLAB',      email:'eastern@scglab.com',    active:true },
@@ -4247,21 +4247,33 @@ function nlExtraKey(){ return LS_KEY + '_' + hbCurrentUser(); }
 
 function loadRecipients() {
   const p = nlProfile();
-  if (p && p.lock) {
-    // 고정 5명(fixed) + 사용자가 추가한 수신자(localStorage)
-    const base = p.recipients.map(function(r){ return Object.assign({ fixed:true }, r); });
-    let extras = [];
-    try { extras = JSON.parse(localStorage.getItem(nlExtraKey())) || []; } catch(e){}
-    return base.concat(extras);
+  if (p && p.recipients) {
+    const key = nlExtraKey();
+    if (p.lock) {
+      // 고정 5명(fixed, 토글·편집·삭제 불가) + 사용자가 추가한 수신자
+      const base = p.recipients.map(function(r){ return Object.assign({ fixed:true }, r); });
+      let extras = [];
+      try { extras = JSON.parse(localStorage.getItem(key)) || []; } catch(e){}
+      return base.concat(extras);
+    }
+    // 테스트 모드(lock:false): 프로필 5명을 사용자 키에 시드해 일반 편집 가능 목록으로
+    let saved = null;
+    try { saved = JSON.parse(localStorage.getItem(key)); } catch(e){}
+    if (!saved || !saved.length) {
+      saved = p.recipients.map(function(r){ return Object.assign({}, r); });
+      try { localStorage.setItem(key, JSON.stringify(saved)); } catch(e){}
+    }
+    return saved;
   }
   try { return JSON.parse(localStorage.getItem(LS_KEY)) || DEFAULT_RECIPIENTS; }
   catch { return DEFAULT_RECIPIENTS; }
 }
 function saveRecipients(list) {
-  if (nlLocked()) {
-    // 고정(fixed) 제외한 추가분만 사용자별 키에 저장
-    const extras = list.filter(function(r){ return !r.fixed; });
-    try { localStorage.setItem(nlExtraKey(), JSON.stringify(extras)); } catch(e){}
+  const p = nlProfile();
+  if (p && p.recipients) {
+    // 고정 프로필: 추가분만 저장 / 테스트 모드: 전체 저장 — 모두 사용자별 키에
+    const toSave = p.lock ? list.filter(function(r){ return !r.fixed; }) : list;
+    try { localStorage.setItem(nlExtraKey(), JSON.stringify(toSave)); } catch(e){}
     return;
   }
   localStorage.setItem(LS_KEY, JSON.stringify(list));
