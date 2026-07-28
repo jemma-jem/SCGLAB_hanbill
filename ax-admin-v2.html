@@ -2202,7 +2202,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
     <div class="panel">
       <div class="ph">
         <div class="ptt"><i class="ti ti-mail"></i> 발송 설정</div>
-        <button onclick="addRecipient()" class="btn bo" style="font-size:11px;padding:4px 10px">
+        <button onclick="addRecipient()" id="add-recipient-btn" class="btn bo" style="font-size:11px;padding:4px 10px">
           <i class="ti ti-plus"></i> 수신자 추가
         </button>
       </div>
@@ -4179,7 +4179,7 @@ function renderNews() {
   }
 
   html += '<hr style="border:none;border-top:1px solid #E2E8F0;margin-top:18px;margin-bottom:14px">';
-  html += '<p style="font-size:12px;color:#94A3B8;line-height:1.7;margin:0">고맙습니다.<br>SCGLAB 영업기획팀 강승봉 드림, hanbill@scglab.com</p>';
+  html += '<p style="font-size:12px;color:#94A3B8;line-height:1.7;margin:0">고맙습니다.<br>' + nlSenderName() + ' 드림, ' + nlSenderEmail() + '</p>';
   html += '</div>'; // end 본문
   html += '</div>'; // end 래퍼
 
@@ -4199,19 +4199,53 @@ const DEFAULT_RECIPIENTS = [
   { id:3, role:'대표',   email:'jieunmi1218@naver.com',active:true  },
 ];
 
+// ── 로그인 사용자별 뉴스레터 프로필 (발신인·수신인 다르게 적용) ──
+//   hb_user 쿠키로 로그인 계정을 구분한다. partner01은 발신 푸터·수신자가 고정.
+function hbCurrentUser() {
+  const m = (document.cookie || '').match(/(?:^|; )hb_user=([^;]+)/);
+  try { return m ? decodeURIComponent(m[1]) : ''; } catch (e) { return m ? m[1] : ''; }
+}
+const NL_PROFILES = {
+  partner01: {
+    sender: { team:'영업기획팀', name:'강승봉', email:'hanbill@scglab.com' },
+    lock: true,   // 수신자 고정 — 발송 ON/OFF·편집·추가·삭제 모두 불가
+    recipients: [
+      { id:1, role:'SCGLAB',      email:'hanbill@scglab.com',    active:true },
+      { id:2, role:'SCGLAB',      email:'eastern@scglab.com',    active:true },
+      { id:3, role:'서울도시가스', email:'jhkuk@seoulgas.co.kr',  active:true },
+      { id:4, role:'서울도시가스', email:'shhong2@seoulgas.co.kr', active:true },
+      { id:5, role:'서울도시가스', email:'parkjh@seoulgas.co.kr', active:true },
+    ],
+  },
+};
+function nlProfile(){ return NL_PROFILES[hbCurrentUser()] || null; }
+function nlLocked(){ const p = nlProfile(); return !!(p && p.lock); }
+// 발신 푸터 텍스트 (기본: SCGLAB 영업기획팀 강승봉)
+function nlSenderFooter(){
+  const p = nlProfile();
+  if (p && p.sender) return p.sender.team + ' ' + p.sender.name + ' 드림, ' + p.sender.email;
+  return 'SCGLAB 영업기획팀 강승봉 드림, hanbill@scglab.com';
+}
+function nlSenderName(){ const p = nlProfile(); return (p && p.sender) ? (p.sender.team + ' ' + p.sender.name) : 'SCGLAB 영업기획팀 강승봉'; }
+function nlSenderEmail(){ const p = nlProfile(); return (p && p.sender) ? p.sender.email : 'hanbill@scglab.com'; }
+
 function loadRecipients() {
+  const p = nlProfile();
+  if (p && p.lock) return p.recipients.map(function(r){ return Object.assign({}, r); }); // 고정: localStorage 무시
   try { return JSON.parse(localStorage.getItem(LS_KEY)) || DEFAULT_RECIPIENTS; }
   catch { return DEFAULT_RECIPIENTS; }
 }
 function saveRecipients(list) {
+  if (nlLocked()) return;   // 고정 프로필은 저장하지 않음
   localStorage.setItem(LS_KEY, JSON.stringify(list));
 }
 
 function renderRecipients() {
+  const locked = nlLocked();
   const list = loadRecipients();
   const active = list.filter(r => r.active);
   document.getElementById('active-count').textContent =
-    `활성 ${active.length}명 / 전체 ${list.length}명`;
+    locked ? `고정 수신 ${list.length}명 (편집 불가)` : `활성 ${active.length}명 / 전체 ${list.length}명`;
   document.getElementById('recipients-body').innerHTML = list.map(r => `
     <tr id="row-${r.id}">
       <td>
@@ -4220,6 +4254,10 @@ function renderRecipients() {
       <td>
         <span class="rec-email" data-id="${r.id}" style="font-family:monospace;font-size:12px">${r.email}</span>
       </td>
+      ${ locked ? `
+      <td style="text-align:center"><span style="font-size:11px;color:#059669;font-weight:700">✓ 발송</span></td>
+      <td style="text-align:center"><span style="font-size:11px;color:var(--g400)"><i class="ti ti-lock"></i> 고정</span></td>
+      ` : `
       <td style="text-align:center">
         <button onclick="toggleRecipient(${r.id})"
           style="width:40px;height:22px;border-radius:11px;border:none;cursor:pointer;transition:all .2s;position:relative;
@@ -4238,10 +4276,16 @@ function renderRecipients() {
           <i class="ti ti-trash"></i>
         </button>
       </td>
+      ` }
     </tr>`).join('');
+
+  // 고정 프로필(partner01)이면 '수신자 추가' 버튼 숨김
+  const addBtn = document.getElementById('add-recipient-btn');
+  if (addBtn) addBtn.style.display = locked ? 'none' : '';
 }
 
 window.toggleRecipient = function(id) {
+  if (nlLocked()) return;   // 고정 수신자: 변경 불가
   const list = loadRecipients();
   const r = list.find(x => x.id === id);
   if (r) { r.active = !r.active; saveRecipients(list); renderRecipients();
@@ -4250,6 +4294,7 @@ renderPredictSection(); }
 };
 
 window.editRecipient = function(id) {
+  if (nlLocked()) return;   // 고정 수신자: 편집 불가
   const list = loadRecipients();
   const r = list.find(x => x.id === id);
   if (!r) return;
@@ -4279,12 +4324,14 @@ window.saveEdit = function(id) {
 };
 
 window.deleteRecipient = function(id) {
+  if (nlLocked()) return;   // 고정 수신자: 삭제 불가
   if (!confirm('이 수신자를 삭제하시겠습니까?')) return;
   const list = loadRecipients().filter(x => x.id !== id);
   saveRecipients(list); renderRecipients();
 };
 
 window.addRecipient = function() {
+  if (nlLocked()) return;   // 고정 프로필: 수신자 추가 불가
   const list = loadRecipients();
   const newId = (list.length ? Math.max(...list.map(x=>x.id)) : 0) + 1;
   list.push({ id:newId, role:'', email:'', active:true });
@@ -4878,7 +4925,7 @@ window.sendNewsletter = function() {
     <table width="100%" cellpadding="0" cellspacing="0">${articlesHtml}</table>
     <p style="margin:24px 0 0;font-size:13px;color:#64748B;line-height:1.7">
       고맙습니다.<br>
-      <strong style="color:#334155">SCGLAB 영업기획팀 강승봉 드림</strong>, hanbill@scglab.com
+      <strong style="color:#334155">${nlSenderName()} 드림</strong>, ${nlSenderEmail()}
     </p>
   </td></tr>
   <tr><td style="background:#F1F5F9;padding:14px 32px;text-align:center">
@@ -4897,11 +4944,16 @@ window.sendNewsletter = function() {
   if (btn) { btn.innerHTML = '<i class="ti ti-loader"></i> 발송 중...'; btn.disabled = true; }
 
   // 수신자별 개별 발송 (Gmail은 TO 다중 주소 미지원)
+  //   from_name·from_email·reply_to는 로그인 사용자 프로필 기준. 실제 발신 주소가
+  //   partner01 것으로 찍히려면 EmailJS 템플릿에서 이 변수들을 From/Reply-To에 매핑해야 함.
   const sends = list.map(r =>
     emailjs.send('service_l9ilhce', 'template_7c03nyj', {
       subject:      subject,
       to_email:     r.email,
       html_content: html_content,
+      from_name:    nlSenderName(),
+      from_email:   nlSenderEmail(),
+      reply_to:     nlSenderEmail(),
     })
   );
 
@@ -5018,7 +5070,7 @@ window.copyNewsletterHtml = function() {
         </table>
         <p style="margin:24px 0 0;font-size:13px;color:#64748B;line-height:1.7">
           고맙습니다.<br>
-          <strong style="color:#334155">SCGLAB 영업기획팀 강승봉 드림</strong>, hanbill@scglab.com
+          <strong style="color:#334155">${nlSenderName()} 드림</strong>, ${nlSenderEmail()}
         </p>
       </td>
     </tr>
