@@ -2213,7 +2213,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
           <i class="ti ti-send" style="color:var(--sky-mid);font-size:18px"></i>
           <div style="flex:1">
             <div style="font-size:11px;font-weight:700;color:var(--g500)">발신 계정 (담당자)</div>
-            <div style="font-size:13px;font-weight:600;color:var(--sky-dark)">jem@scglab.com</div>
+            <div style="font-size:13px;font-weight:600;color:var(--sky-dark)" id="nl-sender-account">jem@scglab.com</div>
           </div>
           <span style="font-size:11px;background:#D1FAE5;color:#065F46;padding:3px 8px;border-radius:10px;font-weight:600">기본 메일앱 연동</span>
         </div>
@@ -4208,7 +4208,8 @@ function hbCurrentUser() {
 const NL_PROFILES = {
   partner01: {
     sender: { team:'SCGLAB 영업기획팀', name:'강승봉', email:'hanbill@scglab.com' },
-    lock: true,   // 수신자 고정 — 발송 ON/OFF·편집·추가·삭제 모두 불가
+    serviceId: 'service_jlmexa9',   // EmailJS: hanbill@scglab.com 연결 서비스 → 실제 From이 hanbill로 발송
+    lock: true,   // 아래 5명은 고정(발송 ON/OFF·편집·삭제 불가). 단, 추가 수신자는 허용.
     recipients: [
       { id:1, role:'SCGLAB',      email:'hanbill@scglab.com',    active:true },
       { id:2, role:'SCGLAB',      email:'eastern@scglab.com',    active:true },
@@ -4231,25 +4232,49 @@ function nlSenderEmail(){
   if (p && p.sender) return p.sender.email;
   return 'hanbill@scglab.com';
 }
+// 발송 설정에 표시되는 '발신 계정(담당자)' — 기본 jem, partner01 hanbill
+function nlSenderAccount(){
+  const p = nlProfile();
+  if (p && p.sender) return p.sender.account || p.sender.email;
+  return 'jem@scglab.com';
+}
 function nlSenderFooter(){ return nlSenderName() + ' 드림, ' + nlSenderEmail(); }
+// 로그인 사용자별 EmailJS 발송 서비스 (partner01은 hanbill 계정 서비스로 실제 From 변경)
+function nlServiceId(){ const p = nlProfile(); return (p && p.serviceId) || 'service_l9ilhce'; }
+
+// 고정 프로필의 추가 수신자 저장 키(사용자별)
+function nlExtraKey(){ return LS_KEY + '_' + hbCurrentUser(); }
 
 function loadRecipients() {
   const p = nlProfile();
-  if (p && p.lock) return p.recipients.map(function(r){ return Object.assign({}, r); }); // 고정: localStorage 무시
+  if (p && p.lock) {
+    // 고정 5명(fixed) + 사용자가 추가한 수신자(localStorage)
+    const base = p.recipients.map(function(r){ return Object.assign({ fixed:true }, r); });
+    let extras = [];
+    try { extras = JSON.parse(localStorage.getItem(nlExtraKey())) || []; } catch(e){}
+    return base.concat(extras);
+  }
   try { return JSON.parse(localStorage.getItem(LS_KEY)) || DEFAULT_RECIPIENTS; }
   catch { return DEFAULT_RECIPIENTS; }
 }
 function saveRecipients(list) {
-  if (nlLocked()) return;   // 고정 프로필은 저장하지 않음
+  if (nlLocked()) {
+    // 고정(fixed) 제외한 추가분만 사용자별 키에 저장
+    const extras = list.filter(function(r){ return !r.fixed; });
+    try { localStorage.setItem(nlExtraKey(), JSON.stringify(extras)); } catch(e){}
+    return;
+  }
   localStorage.setItem(LS_KEY, JSON.stringify(list));
 }
 
 function renderRecipients() {
-  const locked = nlLocked();
   const list = loadRecipients();
   const active = list.filter(r => r.active);
-  document.getElementById('active-count').textContent =
-    locked ? `고정 수신 ${list.length}명 (편집 불가)` : `활성 ${active.length}명 / 전체 ${list.length}명`;
+  document.getElementById('active-count').textContent = `활성 ${active.length}명 / 전체 ${list.length}명`;
+  // 발신 계정(담당자) 표시를 로그인 프로필 기준으로 갱신
+  const accEl = document.getElementById('nl-sender-account');
+  if (accEl) accEl.textContent = nlSenderAccount();
+
   document.getElementById('recipients-body').innerHTML = list.map(r => `
     <tr id="row-${r.id}">
       <td>
@@ -4258,7 +4283,7 @@ function renderRecipients() {
       <td>
         <span class="rec-email" data-id="${r.id}" style="font-family:monospace;font-size:12px">${r.email}</span>
       </td>
-      ${ locked ? `
+      ${ r.fixed ? `
       <td style="text-align:center"><span style="font-size:11px;color:#059669;font-weight:700">✓ 발송</span></td>
       <td style="text-align:center"><span style="font-size:11px;color:var(--g400)"><i class="ti ti-lock"></i> 고정</span></td>
       ` : `
@@ -4283,25 +4308,24 @@ function renderRecipients() {
       ` }
     </tr>`).join('');
 
-  // 고정 프로필(partner01)이면 '수신자 추가' 버튼 숨김
+  // '수신자 추가'는 항상 표시 (고정 프로필도 추가는 가능)
   const addBtn = document.getElementById('add-recipient-btn');
-  if (addBtn) addBtn.style.display = locked ? 'none' : '';
+  if (addBtn) addBtn.style.display = '';
 }
 
 window.toggleRecipient = function(id) {
-  if (nlLocked()) return;   // 고정 수신자: 변경 불가
   const list = loadRecipients();
   const r = list.find(x => x.id === id);
+  if (r && r.fixed) return;   // 고정 수신자만 변경 불가
   if (r) { r.active = !r.active; saveRecipients(list); renderRecipients();
 updatePageAlert('dashboard');
 renderPredictSection(); }
 };
 
 window.editRecipient = function(id) {
-  if (nlLocked()) return;   // 고정 수신자: 편집 불가
   const list = loadRecipients();
   const r = list.find(x => x.id === id);
-  if (!r) return;
+  if (!r || r.fixed) return;   // 고정 수신자만 편집 불가
   const row = document.getElementById('row-' + id);
   row.innerHTML = `
     <td><input id="ed-role-${id}" value="${r.role}"
@@ -4328,14 +4352,14 @@ window.saveEdit = function(id) {
 };
 
 window.deleteRecipient = function(id) {
-  if (nlLocked()) return;   // 고정 수신자: 삭제 불가
+  const cur = loadRecipients().find(x => x.id === id);
+  if (cur && cur.fixed) return;   // 고정 수신자만 삭제 불가
   if (!confirm('이 수신자를 삭제하시겠습니까?')) return;
   const list = loadRecipients().filter(x => x.id !== id);
   saveRecipients(list); renderRecipients();
 };
 
 window.addRecipient = function() {
-  if (nlLocked()) return;   // 고정 프로필: 수신자 추가 불가
   const list = loadRecipients();
   const newId = (list.length ? Math.max(...list.map(x=>x.id)) : 0) + 1;
   list.push({ id:newId, role:'', email:'', active:true });
@@ -4948,10 +4972,11 @@ window.sendNewsletter = function() {
   if (btn) { btn.innerHTML = '<i class="ti ti-loader"></i> 발송 중...'; btn.disabled = true; }
 
   // 수신자별 개별 발송 (Gmail은 TO 다중 주소 미지원)
-  //   from_name·from_email·reply_to는 로그인 사용자 프로필 기준. 실제 발신 주소가
-  //   partner01 것으로 찍히려면 EmailJS 템플릿에서 이 변수들을 From/Reply-To에 매핑해야 함.
+  //   발송 서비스(service_id)를 로그인 사용자별로 분기 → partner01은 hanbill 계정 서비스로
+  //   실제 From이 hanbill@scglab.com으로 나간다. from_name/reply_to는 템플릿 변수로 반영.
+  const svc = nlServiceId();
   const sends = list.map(r =>
-    emailjs.send('service_l9ilhce', 'template_7c03nyj', {
+    emailjs.send(svc, 'template_7c03nyj', {
       subject:      subject,
       to_email:     r.email,
       html_content: html_content,
