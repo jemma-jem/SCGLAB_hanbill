@@ -731,7 +731,8 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
   </div>
   <nav class="sb-nav">
     <div class="ni on" onclick="goSec('dashboard',this)"><i class="ti ti-dashboard"></i>데이터 포털</div>
-    <div class="ni" onclick="goSec('radar',this)"><i class="ti ti-radar-2"></i>영업 레이더<span class="ni-badge" id="radar-nav-badge" style="display:none"></span></div>
+    <!-- 영업 레이더: 재설계 예정으로 메뉴 숨김 (섹션·로직·수집기는 그대로 유지) -->
+    <div class="ni" onclick="goSec('radar',this)" style="display:none"><i class="ti ti-radar-2"></i>영업 레이더<span class="ni-badge" id="radar-nav-badge" style="display:none"></span></div>
     <div class="ni" onclick="goSec('stt',this)"><i class="ti ti-microphone-2"></i>AI 민원분석</div>
     <div class="ni" onclick="goSec('newsletter',this)"><i class="ti ti-news"></i>뉴스레터</div>
   </nav>
@@ -2320,7 +2321,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
       <div class="bn-icon"><i class="ti ti-dashboard"></i></div>
       <span class="bn-label">데이터 포털</span>
     </button>
-    <button class="bn-item" id="bn-radar" onclick="bnGo('radar')" aria-label="영업 레이더">
+    <button class="bn-item" id="bn-radar" onclick="bnGo('radar')" aria-label="영업 레이더" style="display:none">
       <div class="bn-icon"><i class="ti ti-radar-2"></i></div>
       <span class="bn-label">영업레이더</span>
     </button>
@@ -11031,7 +11032,9 @@ window.rdMarkSeen = async function(){
 };
 
 // 페이지 로드 직후(첫 페인트 방해 안 하도록 지연) NEW 여부 체크
-setTimeout(function(){ try { window.rdCheckNew(); } catch(e){} }, 1800);
+// 영업 레이더 메뉴 숨김 상태라 NEW 뱃지 자동 체크를 중단(불필요한 아카이브 조회 방지).
+//   재설계로 메뉴를 다시 노출할 때 아래 한 줄을 되살리면 된다.
+// setTimeout(function(){ try { window.rdCheckNew(); } catch(e){} }, 1800);
 
 })();
 </script>
