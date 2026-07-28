@@ -4207,7 +4207,7 @@ function hbCurrentUser() {
 }
 const NL_PROFILES = {
   partner01: {
-    sender: { team:'영업기획팀', name:'강승봉', email:'hanbill@scglab.com' },
+    sender: { team:'SCGLAB 영업기획팀', name:'강승봉', email:'hanbill@scglab.com' },
     lock: true,   // 수신자 고정 — 발송 ON/OFF·편집·추가·삭제 모두 불가
     recipients: [
       { id:1, role:'SCGLAB',      email:'hanbill@scglab.com',    active:true },
@@ -4220,14 +4220,18 @@ const NL_PROFILES = {
 };
 function nlProfile(){ return NL_PROFILES[hbCurrentUser()] || null; }
 function nlLocked(){ const p = nlProfile(); return !!(p && p.lock); }
-// 발신 푸터 텍스트 (기본: SCGLAB 영업기획팀 강승봉)
-function nlSenderFooter(){
+// 발신 서명 (기본: 'SCGLAB 영업기획팀' 팀 서명 · partner01: 'SCGLAB 영업기획팀 강승봉')
+function nlSenderName(){
   const p = nlProfile();
-  if (p && p.sender) return p.sender.team + ' ' + p.sender.name + ' 드림, ' + p.sender.email;
-  return 'SCGLAB 영업기획팀 강승봉 드림, hanbill@scglab.com';
+  if (p && p.sender) return (p.sender.team + ' ' + (p.sender.name || '')).replace(/\s+/g,' ').trim();
+  return 'SCGLAB 영업기획팀';
 }
-function nlSenderName(){ const p = nlProfile(); return (p && p.sender) ? (p.sender.team + ' ' + p.sender.name) : 'SCGLAB 영업기획팀 강승봉'; }
-function nlSenderEmail(){ const p = nlProfile(); return (p && p.sender) ? p.sender.email : 'hanbill@scglab.com'; }
+function nlSenderEmail(){
+  const p = nlProfile();
+  if (p && p.sender) return p.sender.email;
+  return 'hanbill@scglab.com';
+}
+function nlSenderFooter(){ return nlSenderName() + ' 드림, ' + nlSenderEmail(); }
 
 function loadRecipients() {
   const p = nlProfile();
