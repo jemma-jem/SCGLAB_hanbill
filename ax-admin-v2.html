@@ -2218,7 +2218,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
             <div style="font-size:11px;font-weight:700;color:var(--g500)">발신 계정 (담당자)</div>
             <div style="font-size:13px;font-weight:600;color:var(--sky-dark)" id="nl-sender-account">jem@scglab.com</div>
           </div>
-          <span style="font-size:11px;background:#D1FAE5;color:#065F46;padding:3px 8px;border-radius:10px;font-weight:600">기본 메일앱 연동</span>
+          <span style="font-size:11px;background:#D1FAE5;color:#065F46;padding:3px 8px;border-radius:10px;font-weight:600">이메일 자동 발송</span>
         </div>
 
         <!-- 수신자 테이블 -->
@@ -2230,7 +2230,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
         <div style="margin-top:10px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px">
           <div style="font-size:11.5px;color:var(--g400)">
             <i class="ti ti-info-circle" style="vertical-align:-2px;margin-right:3px"></i>
-            '이메일 발송' 클릭 시 담당자 메일앱이 열리며 활성 수신자가 자동 입력됩니다
+            '이메일 발송' 클릭 시 활성 수신자에게 개별 이메일로 자동 발송됩니다
           </div>
           <div style="font-size:11.5px;color:var(--g500)" id="active-count"></div>
         </div>
@@ -4264,12 +4264,15 @@ function loadRecipients() {
       try { extras = JSON.parse(localStorage.getItem(key)) || []; } catch(e){}
       return base.concat(extras);
     }
-    // 테스트 모드(lock:false): 프로필 5명을 사용자 키에 시드해 일반 편집 가능 목록으로
-    let saved = null;
+    // 테스트 모드(lock:false): 프로필 5명을 사용자 키에 시드해 일반 편집 가능 목록으로.
+    //   프로필 수신자 구성(이메일 집합)이 바뀌면 자동으로 다시 시드해 최신 역할·이메일 반영.
+    const profSig = p.recipients.map(function(r){ return r.role + '|' + r.email; }).sort().join(',');
+    let saved = null, savedSig = '';
     try { saved = JSON.parse(localStorage.getItem(key)); } catch(e){}
-    if (!saved || !saved.length) {
+    try { savedSig = localStorage.getItem(key + '_sig') || ''; } catch(e){}
+    if (!saved || !saved.length || savedSig !== profSig) {
       saved = p.recipients.map(function(r){ return Object.assign({}, r); });
-      try { localStorage.setItem(key, JSON.stringify(saved)); } catch(e){}
+      try { localStorage.setItem(key, JSON.stringify(saved)); localStorage.setItem(key + '_sig', profSig); } catch(e){}
     }
     return saved;
   }
@@ -9101,16 +9104,23 @@ function getPageAlert(name) {
         '미리 안내 문자를 보내면 전화를 많이 줄일 수 있어요!'
       ]
     },
-    newsletter: {
-      badge: newsCnt > 0 ? '발송 준비 완료' : '수집 대기',
-      title: '뉴스레터 발송 전 확인해 주세요',
-      lines: [
-        '오늘 한전 관련 기사 ' + newsCnt + '건이 준비됐어요.',
-        '발송 버튼을 누르면 담당자 이메일앱이 자동으로 열려요.',
-        '수신자: 담당자, 팀장, 대표 3명이 설정돼 있어요.',
-        '기사 제목을 클릭하면 원문 기사로 바로 이동해요!'
-      ]
-    },
+    newsletter: (function(){
+      // 실제 수신자·발신 정보를 반영 (하드코딩된 '3명' 대신 현재 설정값)
+      var rcpts = (typeof loadRecipients === 'function') ? loadRecipients() : [];
+      var act = rcpts.filter(function(r){ return r.active; });
+      var roleList = act.map(function(r){ return r.role || r.email; }).slice(0,6).join(', ');
+      var from = (typeof nlSenderAccount === 'function') ? nlSenderAccount() : '';
+      return {
+        badge: newsCnt > 0 ? '발송 준비 완료' : '수집 대기',
+        title: '뉴스레터 발송 전 확인해 주세요',
+        lines: [
+          '오늘 한전 관련 기사 ' + newsCnt + '건이 준비됐어요. (제목 날짜는 발송일+1로 표기)',
+          '발송 버튼을 누르면 선택한 기사가 활성 수신자에게 이메일로 발송돼요' + (from ? ' (발신: ' + from + ')' : '') + '.',
+          '활성 수신자 ' + act.length + '명' + (roleList ? ' — ' + roleList : '') + '.',
+          '기사 제목을 클릭하면 원문 기사로 바로 이동해요!'
+        ]
+      };
+    })(),
     // ── 영업 레이더: 고객관리리스트 × 지역 소식 결합 결과를 요약 ──
     //    (window._RD = 레이더 모듈 상태. 메뉴를 한 번도 열지 않았으면 안내 문구를 띄운다)
     radar: (function(){
