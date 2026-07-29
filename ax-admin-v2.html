@@ -4214,11 +4214,11 @@ const NL_PROFILES = {
     serviceId: 'service_jlmexa9',   // EmailJS: hanbill@scglab.com 연결 서비스 → 실제 From이 hanbill로 발송
     lock: false,  // [테스트용] false=발송 ON/OFF·편집 가능. 테스트 끝나면 true로 되돌려 5명 고정.
     recipients: [
-      { id:1, role:'SCGLAB',      email:'hanbill@scglab.com',    active:true },
-      { id:2, role:'SCGLAB',      email:'eastern@scglab.com',    active:true },
-      { id:3, role:'서울도시가스', email:'jhkuk@seoulgas.co.kr',  active:true },
-      { id:4, role:'서울도시가스', email:'shhong2@seoulgas.co.kr', active:true },
-      { id:5, role:'서울도시가스', email:'parkjh@seoulgas.co.kr', active:true },
+      { id:1, role:'팀장',    email:'telekang@hanbill.com',   active:true },
+      { id:2, role:'대표님',  email:'eastern@scglab.com',     active:true },
+      { id:3, role:'팀장(S)', email:'jhkuk@seoulgas.co.kr',   active:true },
+      { id:4, role:'담당1',   email:'shhong2@seoulgas.co.kr', active:true },
+      { id:5, role:'담당2',   email:'parkjh@seoulgas.co.kr',  active:true },
     ],
   },
 };
@@ -4914,7 +4914,7 @@ window.sendNewsletter = function() {
   if (!checkedBoxes.length) { alert('발송할 기사를 1건 이상 선택해 주세요.'); return; }
 
   const today = new Date().toLocaleDateString('ko-KR', { year:'numeric', month:'long', day:'numeric' });
-  const todayW = new Date().toLocaleDateString('ko-KR', { year:'numeric', month:'long', day:'numeric', weekday:'short' }); // 발송일(요일 포함)
+  const todayW = new Date(Date.now() + 86400000).toLocaleDateString('ko-KR', { year:'numeric', month:'long', day:'numeric', weekday:'short' }); // 제목과 동일하게 발송일+1
   const subject = `한전 Newsletter (${nlSubjectDate()})`;
 
   // 브리핑/영업제안 DOM에서 추출
@@ -5055,7 +5055,7 @@ window.copyNewsletterHtml = function() {
   if (!checkedBoxes.length) { alert('복사할 기사를 1건 이상 선택해 주세요.'); return; }
 
   const today = new Date().toLocaleDateString('ko-KR', { year:'numeric', month:'long', day:'numeric' });
-  const todayW = new Date().toLocaleDateString('ko-KR', { year:'numeric', month:'long', day:'numeric', weekday:'short' }); // 발송일(요일 포함)
+  const todayW = new Date(Date.now() + 86400000).toLocaleDateString('ko-KR', { year:'numeric', month:'long', day:'numeric', weekday:'short' }); // 제목과 동일하게 발송일+1
 
   // 브리핑/영업제안 DOM에서 추출
   const briefingEl  = document.getElementById('news-briefing-text');
