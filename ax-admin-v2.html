@@ -11143,9 +11143,19 @@ window.rdMarkSeen = async function(){
 };
 
 // 페이지 로드 직후(첫 페인트 방해 안 하도록 지연) NEW 여부 체크
-// 영업 레이더 메뉴 숨김 상태라 NEW 뱃지 자동 체크를 중단(불필요한 아카이브 조회 방지).
-//   재설계로 메뉴를 다시 노출할 때 아래 한 줄을 되살리면 된다.
-// setTimeout(function(){ try { window.rdCheckNew(); } catch(e){} }, 1800);
+// 영업 레이더 메뉴는 재설계 중이라 기본 숨김. 단, 아래 관리자 계정에서만 노출한다.
+//   (로그인 사용자 = hb_user 쿠키. 확장하려면 RADAR_ADMINS 에 아이디 추가)
+(function(){
+  var RADAR_ADMINS = ['jem'];
+  var u = (typeof hbCurrentUser === 'function') ? hbCurrentUser() : '';
+  if (RADAR_ADMINS.indexOf(u) < 0) return;   // 관리자 아니면 계속 숨김
+  var ni = document.querySelector('.sb-nav .ni[onclick*="radar"]');
+  if (ni) ni.style.display = '';
+  var bn = document.getElementById('bn-radar');
+  if (bn) bn.style.display = '';
+  // NEW 뱃지 자동 체크도 관리자에게만
+  setTimeout(function(){ try { window.rdCheckNew(); } catch(e){} }, 1800);
+})();
 
 })();
 </script>
