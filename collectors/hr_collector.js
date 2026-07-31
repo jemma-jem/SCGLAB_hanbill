@@ -41,12 +41,25 @@ const SIJUNG_FEEDS = [
   { url: 'https://www.sijung.co.kr/rss/allArticle.xml',  source: '시정일보' },
 ];
 
-// 구글 뉴스 — 지역 신문의 지자체 인사 기사
+// 지역지 직접 RSS — 링크가 '진짜 기사 URL'이라 본문 취득→명단 전체 파싱이 가능하다.
+//   (구글뉴스 링크는 news.google.com 중간페이지로 리다이렉트되지 않아 본문 취득 불가)
+//   ※ 모두 동일 CMS(#article-view-content-div) → 아래 fetchBody 로직이 그대로 적용된다.
+//   ※ 커버 지역을 넓히려면 같은 형식의 지역지 RSS를 이 배열에 추가하면 된다.
+const LOCAL_FEEDS = [
+  { url: 'https://www.dongbunews.co.kr/rss/allArticle.xml', source: '동부뉴스' },   // 강동·송파
+  { url: 'https://www.todaygunsan.co.kr/rss/allArticle.xml', source: '투데이군산' }, // 군산
+  { url: 'https://www.djtimes.co.kr/rss/allArticle.xml',    source: '당진신문' },   // 당진
+  { url: 'https://www.yntoday.co.kr/rss/allArticle.xml',    source: '영남투데이' }, // 경북(청도·상주·봉화·칠곡 등)
+];
+
+// 구글 뉴스 — 전국 지역지의 지자체 인사 기사(지역·날짜·출처 신호. 본문은 구글링크라 명단 추출은 best-effort)
 const GNEWS_QUERIES = [
-  '"인사발령" (구청 OR 시청 OR 군청 OR 구의회 OR 시의회) when:14d',
-  '"정기인사" (구청 OR 시청 OR 군청) when:14d',
-  '("승진" OR "전보") ("5급" OR "6급" OR "사무관" OR "주무관") (시청 OR 군청 OR 구청) when:14d',
-  '"과장 전보" OR "국장 전보" OR "인사 단행" (지자체 OR 시청 OR 구청 OR 군청) when:14d',
+  '"[인사]" (구청 OR 시청 OR 군청) when:21d',                                   // 지역지 정기인사 명단 기사(가장 정확)
+  '"인사발령" (구청 OR 시청 OR 군청 OR 구의회 OR 시의회) when:21d',
+  '"정기인사" (구청 OR 시청 OR 군청) when:21d',
+  '("승진" OR "전보") ("5급" OR "6급" OR "사무관" OR "주무관") (시청 OR 군청 OR 구청) when:21d',
+  '"과장 전보" OR "국장 전보" OR "인사 단행" (지자체 OR 시청 OR 구청 OR 군청) when:21d',
+  '("도로" OR "조명" OR "시설" OR "건설" OR "전산") ("과장" OR "팀장") (전보 OR 승진 OR 발령) 시청 when:21d', // 영업부서 우선
 ];
 
 // 한빌 영업과 직접 맞물리는 부서 — 이 부서가 인사에 포함되면 우선 알림 대상(hit)
@@ -92,6 +105,20 @@ async function fetchText(url, tries) {
     }
   }
   return '';
+}
+
+// 기사 본문 텍스트 추출 — 한국 지역지 공통 CMS(#article-view-content-div)에서 본문만 뽑는다.
+//   RSS <description>은 리드(앞부분)만 담겨 인사 명단이 잘리므로, 본문을 받아 전체 명단을 파싱한다.
+function extractArticleBody(html) {
+  const m = String(html || '').match(/id=["']article-view-content-div["'][^>]*>([\s\S]*?)<\/div>/i);
+  if (!m) return '';
+  return decode(m[1]
+    .replace(/<(script|style)[\s\S]*?<\/\1>/gi, ' ')
+    .replace(/<br\s*\/?>(?=)/gi, ' '));
+}
+// 구글뉴스 링크는 본문 취득 불가(중간페이지). 직접 기사 URL만 본문을 받는다.
+function isDirectArticle(url) {
+  return /articleView\.html/i.test(url) && !/news\.google\./i.test(url);
 }
 
 // ── 지자체명 추출 ────────────────────────────────────────────────────
@@ -170,7 +197,7 @@ function parsePeople(desc) {
   return out.filter(function (p) {
     const k = p.name + '|' + p.dept;
     if (seen[k]) return false; seen[k] = 1; return true;
-  }).slice(0, 60);
+  }).slice(0, 150);   // 팀장 전보 등 대량 명단 기사 대비(본문 파싱 시 100+건 흔함)
 }
 
 function extractKinds(text) {
@@ -266,6 +293,8 @@ function merge(existing, fresh) {
 // ── 메인 ─────────────────────────────────────────────────────────────
 (async function main() {
   const fresh = [];
+  const archive = loadArchive();
+  const knownKeys = new Set(archive.map(keyOf));   // 본문 보강 시 이미 보관된 건은 재취득 안 함
 
   console.log('① 시정일보 수집');
   for (const f of SIJUNG_FEEDS) {
@@ -276,7 +305,17 @@ function merge(existing, fresh) {
     fresh.push(...got);
   }
 
-  console.log('② 구글 뉴스 수집');
+  console.log('② 지역지 직접 RSS 수집');
+  for (const f of LOCAL_FEEDS) {
+    const xml = await fetchText(f.url);
+    if (!xml) { console.warn('   실패(계속): ' + f.url); continue; }
+    const got = parseFeed(xml, f.source);
+    console.log('   ' + f.source + ' → 인사 기사 ' + got.length + '건');
+    fresh.push(...got);
+    await sleep(500);
+  }
+
+  console.log('③ 구글 뉴스 수집');
   for (const q of GNEWS_QUERIES) {
     const u = 'https://news.google.com/rss/search?q=' + encodeURIComponent(q) + '&hl=ko&gl=KR&ceid=KR:ko';
     const xml = await fetchText(u);
@@ -287,14 +326,41 @@ function merge(existing, fresh) {
     await sleep(800);
   }
 
-  const merged = merge(loadArchive(), fresh);
+  // ④ 기사 본문 보강 — 직접 기사 URL(지역지·시정일보)의 신규 HR건은 본문을 받아 명단 전체를 파싱
+  //    RSS 요약엔 명단이 잘려 담기므로, 본문(#article-view-content-div)에서 △성명·부서를 온전히 뽑는다.
+  console.log('④ 기사 본문 보강(직접 URL 신규건)');
+  const BODY_FETCH_CAP = 120;
+  let bodyTried = 0, bodyGain = 0;
+  for (const r of fresh) {
+    if (bodyTried >= BODY_FETCH_CAP) break;
+    if (!isDirectArticle(r.url)) continue;          // 구글링크는 본문 취득 불가 → 건너뜀
+    if (knownKeys.has(keyOf(r))) continue;          // 이미 보관된 건
+    if ((r.people || []).length >= 8) continue;     // RSS 요약만으로도 충분히 파싱됨
+    const html = await fetchText(r.url, 2);
+    bodyTried++;
+    if (!html) continue;
+    const body = extractArticleBody(html);
+    if (!body) continue;
+    const bp = parsePeople(body);
+    if (bp.length > (r.people || []).length) {
+      bodyGain++;
+      r.people = bp;
+      r.kinds = extractKinds(r.title + ' ' + body);
+      r.hit = bp.some(function (p) { return TARGET_DEPT.test(p.dept); }) || TARGET_DEPT.test(r.title);
+      if (!r.region) r.region = extractRegion(r.title, body);
+    }
+    await sleep(400);
+  }
+  console.log('   본문 취득 ' + bodyTried + '건 · 명단 보강 ' + bodyGain + '건');
+
+  const merged = merge(archive, fresh);
   const withPeople = merged.all.filter(function (r) { return (r.people || []).length; }).length;
   const hits = merged.all.filter(function (r) { return r.hit; }).length;
   const withRegion = merged.all.filter(function (r) { return r.region; }).length;
 
   fs.writeFileSync(ARCHIVE_PATH, JSON.stringify({
     updated_at: new Date().toISOString(),
-    sources: ['시정일보 RSS(피플/전체)', '구글 뉴스 RSS'],
+    sources: ['시정일보 RSS(피플/전체)', '지역지 직접 RSS(' + LOCAL_FEEDS.map(function(f){ return f.source; }).join('·') + ')', '구글 뉴스 RSS', '기사 본문 보강'],
     count: merged.all.length,
     records: merged.all,
   }, null, 2) + '\n', 'utf8');
