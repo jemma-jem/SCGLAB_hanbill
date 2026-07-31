@@ -957,7 +957,8 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
         "39|서귀포시":7248
       };
       // 전체 빌링건수(G) 합계 → 팝업 '빌링 선점 비율'(H열 = G건수 대비 비율) 계산용
-      const BILL_TOTAL_ALL = Object.values(BILLING_MAP).reduce(function(a,b){ return a + b; }, 0);
+      //   시트 최신화 시 재계산되므로 let. (BILLING_MAP·COMPANY_MAP은 내용만 교체해 참조 유지)
+      let BILL_TOTAL_ALL = Object.values(BILLING_MAP).reduce(function(a,b){ return a + b; }, 0);
       const COMPANY_MAP = {
         "11|관악구":"한빌","11|마포구":"한빌","11|영등포구":"한빌","11|강서구":"한빌","11|양천구":"한빌",
         "11|강남구":"누리빌","11|광진구":"한빌","11|구로구":"누리빌","11|금천구":"누리빌","11|노원구":"누리빌",
@@ -1428,11 +1429,79 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
         if (el) el.textContent = Math.round(tot/10000) + '만';
       }
 
-      // 즉시 실행: pre-rendered 경로로 지도 표시
+      // ── 고객관리리스트 시트에서 빌링 선점 현황을 열 때마다 조회해 지도 최신화 ──
+      //   col4(지자체 전체명) → 시도=첫토큰·시군구=마지막토큰(일반구 구분), col5 빌링사, col6 빌링건수.
+      //   내장값(위 하드코딩)은 초기/오프라인 폴백. 조회 성공 시 내용만 교체하고 재렌더.
+      const CUST_SHEET_ID  = '174gXTUIjAaIyKk8yKkczfpCSfjHv6GA-JEm3T4j0TUM';
+      const CUST_SHEET_GID = '281360527';
+      function _mapGviz(sheetId, gid) {
+        return new Promise(function(resolve, reject){
+          const cb = '_mapgviz_' + Date.now() + '_' + Math.floor(Math.random()*1e5);
+          const src = 'https://docs.google.com/spreadsheets/d/' + sheetId +
+                      '/gviz/tq?tqx=out:json;responseHandler:' + cb + '&gid=' + gid;
+          const timer = setTimeout(function(){ cleanup(); reject(new Error('gviz timeout')); }, 20000);
+          function cleanup(){ clearTimeout(timer); try{ delete window[cb]; }catch(e){} if (s.parentNode) s.parentNode.removeChild(s); }
+          window[cb] = function(resp){ cleanup(); try {
+            const tbl = resp.table, cols = tbl.cols || [];
+            const data = (tbl.rows || []).map(function(row){
+              return cols.map(function(col, ci){ const c = row.c ? row.c[ci] : null; return (!c || c.v == null) ? '' : String(c.f != null ? c.f : c.v); });
+            });
+            resolve([cols.map(function(c){ return c.label || ''; })].concat(data));
+          } catch(e){ reject(e); } };
+          const s = document.createElement('script');
+          s.onerror = function(){ cleanup(); reject(new Error('gviz load fail')); };
+          s.src = src; document.head.appendChild(s);
+        });
+      }
+      const _MAP_SIDO_CD = { 서울:'11', 부산:'21', 대구:'22', 인천:'23', 광주:'24', 대전:'25', 울산:'26', 세종:'29',
+        경기:'31', 강원:'32', 충북:'33', 충남:'34', 전북:'35', 전남:'36', 경북:'37', 경남:'38', 제주:'39' };
+      function _mapSido(s){ s = String(s||'').trim();
+        const m = [[/^서울/,'서울'],[/^부산/,'부산'],[/^대구/,'대구'],[/^인천/,'인천'],[/^광주(광역)?/,'광주'],[/^대전/,'대전'],[/^울산/,'울산'],[/^세종/,'세종'],[/^경기/,'경기'],[/^강원/,'강원'],[/^(충청북|충북)/,'충북'],[/^(충청남|충남)/,'충남'],[/^(전라북|전북)/,'전북'],[/^(전라남|전남)/,'전남'],[/^(경상북|경북)/,'경북'],[/^(경상남|경남)/,'경남'],[/^제주/,'제주']];
+        for (let i=0;i<m.length;i++) if (m[i][0].test(s)) return m[i][1]; return ''; }
+      function _mapNum(v){ const n = parseInt(String(v==null?'':v).replace(/[^0-9-]/g,''),10); return isNaN(n)?0:n; }
+      function _mapCo(v){ v = String(v||'').trim();
+        if (/한빌|KIB/.test(v)) return '한빌';
+        if (/누리빌/.test(v)) return '누리빌';
+        if (/한전산업/.test(v)) return '한전산업개발';
+        if (/종이/.test(v)) return '종이고지'; return v || ''; }
+      async function refreshMapFromSheet(){
+        try {
+          const rows = await _mapGviz(CUST_SHEET_ID, CUST_SHEET_GID);
+          const bill = {}, cc = {};
+          rows.forEach(function(r){
+            const full = String((r||[])[4]||'').trim();
+            if (!full) return;
+            const toks = full.split(/\s+/);
+            const sd = _mapSido(toks[0]);
+            const sgg = toks[toks.length-1];
+            if (!sd || !sgg || !/구$|시$|군$/.test(sgg)) return;
+            const cd = _MAP_SIDO_CD[sd]; if (!cd) return;
+            const key = cd + '|' + sgg;
+            bill[key] = (bill[key]||0) + _mapNum(r[6]);
+            const co = _mapCo(r[5]); if (co){ cc[key] = cc[key]||{}; cc[key][co] = (cc[key][co]||0) + 1; }
+          });
+          if (Object.keys(bill).length < 50) throw new Error('데이터 부족(' + Object.keys(bill).length + ') — 내장값 유지');
+          const co = {};
+          Object.keys(cc).forEach(function(k){ co[k] = Object.keys(cc[k]).sort(function(a,b){ return cc[k][b]-cc[k][a]; })[0]; });
+          // const 객체는 내용만 교체(참조·window 노출 유지)
+          Object.keys(BILLING_MAP).forEach(function(k){ delete BILLING_MAP[k]; });
+          Object.keys(COMPANY_MAP).forEach(function(k){ delete COMPANY_MAP[k]; });
+          Object.assign(BILLING_MAP, bill); Object.assign(COMPANY_MAP, co);
+          BILL_TOTAL_ALL = Object.values(BILLING_MAP).reduce(function(a,b){ return a + b; }, 0);
+          window._HB_BILLING_MAP = BILLING_MAP; window._HB_COMPANY_MAP = COMPANY_MAP; window._HB_BILL_TOTAL = BILL_TOTAL_ALL;
+          renderMapFromPrerender(); renderPie();
+          console.log('[지도] 시트 최신화 완료 — ' + Object.keys(BILLING_MAP).length + '개 지역');
+        } catch(e){
+          console.warn('[지도] 시트 조회 실패 — 내장 데이터 유지:', e.message || e);
+        }
+      }
+
+      // 즉시 실행: pre-rendered 경로로 지도 표시(내장값) → 곧바로 시트 조회로 최신화
       renderMapFromPrerender();
       renderPie();
       renderMarketDonut();
       renderCustTypeDonut();
+      refreshMapFromSheet();   // 열 때마다 최신 시트 반영(비동기, 첫 페인트 방해 안 함)
       window.addEventListener('resize', function() {
         renderMarketDonut(); renderCustTypeDonut();
       });
@@ -9311,7 +9380,7 @@ setInterval(function() {
    영업 레이더 (sec-radar)
    ---------------------------------------------------------------------
    데이터 소스
-     ① 고객관리리스트_경쟁사_v2.0 (구글시트, gviz JSONP)  → 지역별 사업/빌링사/담당자/이력
+     ① 고객관리리스트 (구글시트 gid 281360527, gviz JSONP)  → 지역별 빌링사/담당자/이력
      ② news_archive.json (news_collector.js 산출물)      → 지역 신문·소식지 기사
    두 소스를 시·군·구 키로 결합해 "대응이 필요한 지역"을 우선순위로 카드 렌더링한다.
 
@@ -9322,26 +9391,22 @@ setInterval(function() {
 'use strict';
 
 const RD_SHEET_ID  = '174gXTUIjAaIyKk8yKkczfpCSfjHv6GA-JEm3T4j0TUM';
-const RD_SHEET_GID = '521723851';
+const RD_SHEET_GID = '281360527';
 // 근거 원문 확인용 시트 링크 (영업담당자가 발췌 내용을 시트에서 직접 대조)
 const RD_SHEET_URL = 'https://docs.google.com/spreadsheets/d/' + RD_SHEET_ID + '/edit?gid=' + RD_SHEET_GID;
 const RD_CACHE_KEY = 'hanbil_radar_cache_v1';
 const RD_CACHE_TTL = 6 * 60 * 60 * 1000;   // 6시간
 const RD_NEWS_DAYS = 30;                    // 지역 소식 표시 기간
 
-// 시트 컬럼 인덱스 (0-base) — 고객관리리스트_경쟁사_v2.0 기준
+// 시트 컬럼 인덱스 (0-base) — gid 281360527(간소화 시트) 기준
+//   col2 광역시 · col3 구 · col4 지자체(전체명) · col5 빌링사 · col6 빌링건수
+//   col8 영업담당자 · col9 영업상태 · col10 솔루션 · col11 부서 · col12 팀
+//   col13 담당자(고객) · col14 연락처 · col15 이메일 · col16 영업이력
 const C = {
-  sido:4, sgg:5, cust:6, jiche:7, dept:8, gwon:9,
-  field:10, target:13, team:14, owner:15,
-  strat:18, status:19, billType:20, billCo:21,
-  qtyA:23, qtyB:25, qtyC:37,
-  m1:{ org:42, team:43, pos:44, name:45, tel:46, hp:47, mail:48 },
-  m2:{ org:49, team:50, pos:51, name:52, tel:53, hp:54, mail:55 },
-  winMonth:80, hist:81, issue:82,
-  sys:83,                     // 도로조명 시스템 사용사 (한빌/미사용/모름/타사명)
-  prog:85,
-  yFrom:86, yTo:93,           // 19년~26년 빌링사 이력
-  // 아래는 헤더명으로 자동 탐지 (시트에 열을 추가하면 위치와 무관하게 잡힌다)
+  sido:2, sgg:3, jiche:4, billCo:5, qty:6,
+  owner:8, status:9, sys:10, dept:11, team:12,
+  mgrName:13, mgrTel:14, mgrMail:15, hist:16,
+  // 팀장 열은 헤더명으로 자동 탐지 (시트에 추가하면 위치 무관하게 잡힘)
   leaderName:-1, leaderPos:-1, leaderTel:-1, leaderUpd:-1,
 };
 
@@ -9349,9 +9414,8 @@ const C = {
 //   실무담당자(6급)는 인사기사에 잘 안 실리지만 부서 팀장은 5~6급이라 발령 기사에 잡힌다.
 //   → 팀장 성명을 시트에 두면 외부 인사발령과 직접 대조할 수 있다.
 // 헤더 표기가 '팀장', '팀장명', '부서 팀장' 등 무엇이든 잡히도록 느슨하게 매칭한다.
-function detectLeaderCols(rows, headerRow){
-  const scan = [headerRow, headerRow + 1];   // 대분류/중분류 2행 구조 대응
-  scan.forEach(function(ri){
+function detectLeaderCols(rows){
+  for (let ri = 0; ri < Math.min(rows.length, 6); ri++){   // 상단 헤더행들 스캔
     const row = rows[ri] || [];
     row.forEach(function(cell, ci){
       const v = String(cell||'').replace(/\s/g,'');
@@ -9361,7 +9425,7 @@ function detectLeaderCols(rows, headerRow){
       if (C.leaderTel  < 0 && /팀장(연락처|전화|번호)/.test(v)) C.leaderTel  = ci;
       if (C.leaderUpd  < 0 && /(팀장)?(확인|갱신|업데이트)일/.test(v)) C.leaderUpd = ci;
     });
-  });
+  }
 }
 
 // ── 한빌 자체 솔루션 카탈로그 ─────────────────────────────────────────
@@ -9470,48 +9534,41 @@ function gvizFetch(sheetId, gid){
 
 // ── 시트 행 → 레코드 ──────────────────────────────────────────────────
 function parseRows(rows){
-  // 헤더 행 탐색: B열이 '고객사명'인 행 → 그 2행 아래부터 데이터(중분류 서브헤더 1행 존재)
-  let h = -1;
-  for (let i=0; i<Math.min(rows.length, 25); i++){
-    if (String((rows[i]||[])[1]||'').trim() === '고객사명') { h = i; break; }
-  }
-  const start = h >= 0 ? h + 2 : 4;
-  if (h >= 0) detectLeaderCols(rows, h);       // 팀장 열 자동 탐지(추가 전이면 -1로 남아 무시된다)
+  detectLeaderCols(rows);   // 팀장 열 자동 탐지(없으면 -1로 남아 무시)
   const out = [];
-  for (let i=start; i<rows.length; i++){
-    const r = rows[i] || [];
+  rows.forEach(function(r){
+    r = r || [];
     const g = function(j){ return String(r[j]==null?'':r[j]).trim(); };
-    const sd = sidoShort(g(C.sido));
-    const sgg = g(C.sgg), cust = g(C.cust);
-    if (!sd || !sgg || !cust) continue;
-    if (!/구$|시$|군$/.test(sgg)) continue;   // 드롭다운 목록 등 비지역 행 제외
+    // col4(지자체 전체명)에서 시도=첫토큰·시군구=마지막토큰 → 일반구까지 정확히 구분
+    const full = g(C.jiche);
+    if (!full) return;
+    const toks = full.split(/\s+/);
+    const sd = sidoShort(toks[0]);
+    const sgg = toks[toks.length-1];
+    if (!sd || !sgg || !/구$|시$|군$/.test(sgg)) return;   // 헤더·요약·비지역 행 제외
 
     const co = billCo(g(C.billCo));
-    const years = [];
-    for (let y=C.yFrom; y<=C.yTo; y++){ const v = billCo(g(y)); if (v) years.push(v); }
-    const changed = years.length > 1 && years.some(function(v){ return v !== years[0]; });
-
+    const mgrName = g(C.mgrName);
     out.push({
-      sido:g(C.sido), sd:sd, sgg:sgg, cust:cust, jiche:g(C.jiche),
-      dept:g(C.dept), gwon:g(C.gwon), target:g(C.target),
-      team:g(C.team), owner:g(C.owner),
-      strat:g(C.strat), status:g(C.status), billType:g(C.billType), co:co,
-      qty: num(g(C.qtyA)) || num(g(C.qtyB)) || num(g(C.qtyC)),
-      mgr: [C.m1, C.m2].map(function(m){
-        return { org:g(m.org), team:g(m.team), pos:g(m.pos), name:g(m.name),
-                 tel:g(m.tel), hp:g(m.hp), mail:g(m.mail) };
-      }).filter(function(m){ return m.name; }),
-      win:g(C.winMonth), hist:cut(g(C.hist), 900), issue:cut(g(C.issue), 500),
-      sys:g(C.sys),
-      // 부서 팀장 (5~6급) — 인사발령 기사와 직접 대조되는 핵심 값
+      sido: toks[0], sd:sd, sgg:sgg, cust:full, jiche:full,
+      dept:g(C.dept), team:g(C.team), owner:g(C.owner),
+      status:g(C.status), co:co,
+      qty: num(g(C.qty)),
+      sys:g(C.sys),                          // 솔루션 표기 (예: 도로조명(한빌))
+      mgr: mgrName ? [{ org:g(C.dept), team:g(C.team), pos:'',
+                        name:mgrName, tel:g(C.mgrTel), hp:'', mail:g(C.mgrMail) }] : [],
+      hist: cut(g(C.hist), 900),
+      issue: '',                             // 새 시트엔 별도 이슈 컬럼 없음 → 이력만 사용
       leader: C.leaderName >= 0 ? {
         name: g(C.leaderName), pos: C.leaderPos >= 0 ? g(C.leaderPos) : '',
         tel:  C.leaderTel  >= 0 ? g(C.leaderTel) : '',
         upd:  C.leaderUpd  >= 0 ? g(C.leaderUpd) : '',
       } : null,
-      prog:g(C.prog), yearFirst: years[0]||'', yearLast: years[years.length-1]||'', changed:changed
+      // 새 시트에 없는 필드(하위 렌더 호환용 빈값)
+      gwon:'', target:'', strat:'', billType:'', win:'', prog:'',
+      yearFirst:'', yearLast:'', changed:false
     });
-  }
+  });
   return out;
 }
 
