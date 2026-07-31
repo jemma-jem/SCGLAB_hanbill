@@ -822,6 +822,10 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
                 <span class="mp-label">전국 비중</span>
                 <span id="map-popup-ratio" class="mp-val" style="color:#4ADE80"></span>
               </div>
+              <div class="mp-row" id="map-popup-wp-row" style="display:none">
+                <span class="mp-label">수주확도</span>
+                <span id="map-popup-wp" class="mp-val" style="font-weight:800"></span>
+              </div>
               <!-- 한빌 선점 지역: 전략 제안 없이 현황만 표시 -->
               <button id="map-popup-cta-keep" class="map-cta" onclick="mapStrategy('유지', event)">
                 <i class="ti ti-shield-check" style="font-size:15px"></i> 선점 현황 보기
@@ -838,9 +842,9 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
         <!-- ══ 지도 하단 3단 도넛 ══ -->
         <div class="donut-row">
 
-          <!-- [1] 한전 선점 비율 (구 전체 시장 규모 점유율 · 데이터 J14:O14 · 총계 표시) -->
+          <!-- [1] 전국 시장점유율 (시트 우측 요약블록 '총계'행 · 열 때마다 시트 갱신) -->
           <div class="donut-card">
-            <div class="donut-card-title">전국 시장점유율 <span>1,012만 고객</span></div>
+            <div class="donut-card-title">전국 시장점유율 <span id="market-donut-cap">1,012만 고객</span></div>
             <div class="map-pie-wrap" style="width:150px;height:150px">
               <canvas id="market-donut" width="150" height="150"></canvas>
               <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none">
@@ -849,11 +853,11 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
               </div>
             </div>
             <div class="donut-legend">
-              <div class="lg"><span class="sw" style="background:#0EA5E9"></span><span class="nm">한빌</span><span class="vl" style="color:#0EA5E9">16.4% · 166만</span></div>
-              <div class="lg"><span class="sw" style="background:#F59E0B"></span><span class="nm">누리빌</span><span class="vl" style="color:#F59E0B">23.0% · 233만</span></div>
-              <div class="lg"><span class="sw" style="background:#10B981"></span><span class="nm">한전산업개발</span><span class="vl" style="color:#10B981">11.6% · 117만</span></div>
-              <div class="lg"><span class="sw" style="background:#94A3B8"></span><span class="nm">한전ON</span><span class="vl" style="color:#64748B">49.0% · 496만</span></div>
-              <div class="lg" style="border-top:1px solid var(--g200);margin-top:5px;padding-top:7px"><span class="sw" style="background:transparent"></span><span class="nm" style="font-weight:800;color:var(--g700)">합계</span><span class="vl" style="color:var(--g800);font-weight:800">100% · 1,012만</span></div>
+              <div class="lg"><span class="sw" style="background:#0EA5E9"></span><span class="nm">한빌</span><span class="vl" id="mkt-leg-0" style="color:#0EA5E9">16.4% · 166만</span></div>
+              <div class="lg"><span class="sw" style="background:#F59E0B"></span><span class="nm">누리빌</span><span class="vl" id="mkt-leg-1" style="color:#F59E0B">23.0% · 233만</span></div>
+              <div class="lg"><span class="sw" style="background:#10B981"></span><span class="nm">한전산업개발</span><span class="vl" id="mkt-leg-2" style="color:#10B981">11.6% · 117만</span></div>
+              <div class="lg"><span class="sw" style="background:#94A3B8"></span><span class="nm">한전ON</span><span class="vl" id="mkt-leg-3" style="color:#64748B">49.0% · 496만</span></div>
+              <div class="lg" style="border-top:1px solid var(--g200);margin-top:5px;padding-top:7px"><span class="sw" style="background:transparent"></span><span class="nm" style="font-weight:800;color:var(--g700)">합계</span><span class="vl" id="mkt-leg-total" style="color:var(--g800);font-weight:800">100% · 1,012만</span></div>
             </div>
           </div>
 
@@ -875,9 +879,9 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
             </div>
           </div>
 
-          <!-- [3] 한빌 고객 유형 비율 (구 한빌 고객 유형 구성 · 데이터 K11:K14 · 총계 표시) -->
+          <!-- [3] 한빌 고객층 점유율 (시트 우측 요약블록 '한빌' 열 · 열 때마다 시트 갱신) -->
           <div class="donut-card">
-            <div class="donut-card-title">한빌 고객층 점유율 <span>166만 고객</span></div>
+            <div class="donut-card-title">한빌 고객층 점유율 <span id="custtype-donut-cap">166만 고객</span></div>
             <div class="map-pie-wrap" style="width:150px;height:150px">
               <canvas id="custtype-donut" width="150" height="150"></canvas>
               <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none">
@@ -886,10 +890,10 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
               </div>
             </div>
             <div class="donut-legend">
-              <div class="lg"><span class="sw" style="background:#0EA5E9"></span><span class="nm">지자체</span><span class="vl" style="color:#0EA5E9">44.8% · 74.5만</span></div>
-              <div class="lg"><span class="sw" style="background:#38BDF8"></span><span class="nm">통신·기관</span><span class="vl" style="color:#0284C7">8.9% · 14.8만</span></div>
-              <div class="lg"><span class="sw" style="background:#7DD3FC"></span><span class="nm">개인</span><span class="vl" style="color:#0369A1">46.3% · 77.1만</span></div>
-              <div class="lg" style="border-top:1px solid var(--g200);margin-top:5px;padding-top:7px"><span class="sw" style="background:transparent"></span><span class="nm" style="font-weight:800;color:var(--g700)">합계</span><span class="vl" style="color:var(--g800);font-weight:800">100% · 166.4만</span></div>
+              <div class="lg"><span class="sw" style="background:#0EA5E9"></span><span class="nm">지자체</span><span class="vl" id="ct-leg-0" style="color:#0EA5E9">44.8% · 74.5만</span></div>
+              <div class="lg"><span class="sw" style="background:#38BDF8"></span><span class="nm">통신·기관</span><span class="vl" id="ct-leg-1" style="color:#0284C7">8.9% · 14.8만</span></div>
+              <div class="lg"><span class="sw" style="background:#7DD3FC"></span><span class="nm">개인</span><span class="vl" id="ct-leg-2" style="color:#0369A1">46.3% · 77.1만</span></div>
+              <div class="lg" style="border-top:1px solid var(--g200);margin-top:5px;padding-top:7px"><span class="sw" style="background:transparent"></span><span class="nm" style="font-weight:800;color:var(--g700)">합계</span><span class="vl" id="ct-leg-total" style="color:var(--g800);font-weight:800">100% · 166.4만</span></div>
             </div>
           </div>
 
@@ -1148,6 +1152,20 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
             var _hRatio = (billingCnt && BILL_TOTAL_ALL) ? (billingCnt / BILL_TOTAL_ALL * 100) : 0;
             document.getElementById('map-popup-ratio').textContent = billingCnt ? _hRatio.toFixed(2) + '%' : '—';
             document.getElementById('map-popup-count').style.color = co ? (COMPANY_COLOR[co]||'#38BDF8') : '#94A3B8';
+            // 수주확도 — 영업 레이더(고객관리리스트)가 로드돼 있을 때만 표시
+            (function(){
+              const wpRow = document.getElementById('map-popup-wp-row');
+              const wpEl  = document.getElementById('map-popup-wp');
+              let rg = null;
+              try { if (typeof window.rdLookupRegion === 'function') rg = window.rdLookupRegion(p.adm_nm); } catch(e){}
+              const wp = (rg && typeof window.hbWinProb === 'function') ? window.hbWinProb(rg) : null;
+              if (wp && wpRow && wpEl){
+                wpEl.textContent = wp.label + ' ' + wp.score + '%';
+                wpEl.style.color = wp.color;
+                wpEl.title = wp.factors.map(function(f){ return f.delta==null ? (f.t+' (기준 '+f.base+')') : (f.t+' ('+(f.delta>0?'+':'')+f.delta+')'); }).join('\n');
+                wpRow.style.display = '';
+              } else if (wpRow){ wpRow.style.display = 'none'; }
+            })();
             // 선택 지역 데이터 저장 (전략 제안용)
             window._mapSel = {
               region: p.adm_nm,
@@ -1186,8 +1204,34 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
 
 
 
-        // 시도명 라벨
+        // 시도명 라벨 — 마우스오버 시 광역 집계(한빌/타사·지자체) 툴팁 표시
+        const _fmtK = (n) => Number(n||0).toLocaleString();
+        const _sidoTipHTML = (lb) => {
+          const A = (typeof window.hbSidoAgg === 'function') ? window.hbSidoAgg(lb.cd) : null;
+          if (!A || !A.jiche) return '<b>' + lb.name + '</b><br><span style="opacity:.8">집계 데이터 없음</span>';
+          return '<b style="font-size:12px">' + A.name + '</b> <span style="opacity:.7">지자체 ' + A.jiche + '곳</span>'
+            + '<br><span style="color:#7DD3FC">■</span> 한빌 <b>' + A.hanN + '</b>개 · ' + _fmtK(A.hanB) + '건'
+            + '<br><span style="color:#FCD34D">■</span> 타사 <b>' + A.rivalN + '</b>개 <span style="opacity:.75">(누리빌 ' + A.nuriN + '·한전산업 ' + A.hanjeonN + ')</span>'
+            + (A.openN ? '<br><span style="color:#94A3B8">■</span> 미개척 <b>' + A.openN + '</b>개' : '')
+            + '<br><span style="opacity:.85">한빌 점유 ' + A.hanShare.toFixed(1) + '%</span>';
+        };
         pr.labels.forEach(lb => {
+          // 넓은 히트 영역(투명 원) — 얇은 글자 대신 잡기 쉽게
+          const hit = document.createElementNS(NS, 'circle');
+          hit.setAttribute('cx', lb.cx); hit.setAttribute('cy', lb.cy);
+          hit.setAttribute('r', '13'); hit.setAttribute('fill', 'transparent');
+          hit.style.cursor = 'help';
+          hit.addEventListener('mouseover', (e) => {
+            _mapTip.innerHTML = _sidoTipHTML(lb);
+            _mapTip.style.whiteSpace = 'nowrap';
+            _mapTip.style.lineHeight = '1.55';
+            _mapTip.style.display = 'block';
+            _moveTip(e);
+          });
+          hit.addEventListener('mousemove', _moveTip);
+          hit.addEventListener('mouseout', () => { _mapTip.style.display = 'none'; });
+          svgEl.appendChild(hit);
+
           const t = document.createElementNS(NS, 'text');
           t.setAttribute('x', lb.cx); t.setAttribute('y', lb.cy + 4);
           t.setAttribute('text-anchor', 'middle');
@@ -1403,30 +1447,35 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
         }
         requestAnimationFrame(frame);
       }
+      const _donMan = function(n){ n = Number(n)||0; return (n/10000).toLocaleString(undefined,{maximumFractionDigits:0}) + '만'; };
+      const _donSet = function(id,v){ const e = document.getElementById(id); if (e) e.textContent = v; };
+      // 전국 시장점유율 — 시트 우측 요약블록('총계'행) 우선, 없으면 내장 폴백
       function renderMarketDonut() {
-        const data = [
-          { color:'#0EA5E9', n:1663343 },  // 한빌
-          { color:'#F59E0B', n:2327600 },  // 누리빌
-          { color:'#10B981', n:1173285 },  // 한전산업개발
-          { color:'#94A3B8', n:4957000 },  // 한전ON
-        ];
+        const M = window._HB_MARKET;
+        const players = (M && M.players && M.players.length) ? M.players : [
+          { name:'한빌', cust:1663343, color:'#0EA5E9' }, { name:'누리빌', cust:2327600, color:'#F59E0B' },
+          { name:'한전산업개발', cust:1173285, color:'#10B981' }, { name:'한전ON', cust:4957000, color:'#94A3B8' } ];
+        const data = players.map(function(p){ return { color:p.color, n:p.cust }; });
         drawDonut('market-donut', data);
-        // 중앙값 = 실제 데이터(한빌 점유율)로 자동 계산
-        const tot = data.reduce((s,x)=>s+x.n,0);
-        const el = document.getElementById('market-donut-pct');
-        if (el) el.textContent = (data[0].n / tot * 100).toFixed(1) + '%';
+        const tot = data.reduce(function(s,x){ return s + x.n; }, 0) || 1;
+        _donSet('market-donut-pct', (players[0].cust / tot * 100).toFixed(1) + '%');
+        _donSet('market-donut-cap', _donMan(tot) + ' 고객');
+        players.forEach(function(p,i){ _donSet('mkt-leg-'+i, (p.cust/tot*100).toFixed(1) + '% · ' + _donMan(p.cust)); });
+        _donSet('mkt-leg-total', '100% · ' + _donMan(tot));
       }
+      // 한빌 고객층 점유율 — 시트 요약블록 '한빌' 열(지자체/통신·기관/개인) 우선
       function renderCustTypeDonut() {
-        const data = [
-          { color:'#0EA5E9', n:744960 },  // 지자체
-          { color:'#38BDF8', n:147765 },  // 통신·기관
-          { color:'#7DD3FC', n:770618 },  // 개인
-        ];
+        const M = window._HB_MARKET;
+        const COLORS = ['#0EA5E9','#38BDF8','#7DD3FC'];
+        const seg = (M && M.hanvil && M.hanvil.seg && M.hanvil.seg.length) ? M.hanvil.seg : [
+          { name:'지자체', cust:744960 }, { name:'통신·기관', cust:147765 }, { name:'개인', cust:770618 } ];
+        const data = seg.map(function(s,i){ return { color:COLORS[i]||'#7DD3FC', n:s.cust }; });
         drawDonut('custtype-donut', data);
-        // 중앙값 = 실제 총 고객수로 자동 계산
-        const tot = data.reduce((s,x)=>s+x.n,0);
-        const el = document.getElementById('custtype-donut-total');
-        if (el) el.textContent = Math.round(tot/10000) + '만';
+        const tot = data.reduce(function(s,x){ return s + x.n; }, 0) || 1;
+        _donSet('custtype-donut-total', _donMan(tot));
+        _donSet('custtype-donut-cap', _donMan(tot) + ' 고객');
+        seg.forEach(function(s,i){ _donSet('ct-leg-'+i, (s.cust/tot*100).toFixed(1) + '% · ' + _donMan(s.cust)); });
+        _donSet('ct-leg-total', '100% · ' + _donMan(tot));
       }
 
       // ── 고객관리리스트 시트에서 빌링 선점 현황을 열 때마다 조회해 지도 최신화 ──
@@ -1489,8 +1538,32 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
           Object.assign(BILLING_MAP, bill); Object.assign(COMPANY_MAP, co);
           BILL_TOTAL_ALL = Object.values(BILLING_MAP).reduce(function(a,b){ return a + b; }, 0);
           window._HB_BILLING_MAP = BILLING_MAP; window._HB_COMPANY_MAP = COMPANY_MAP; window._HB_BILL_TOTAL = BILL_TOTAL_ALL;
-          renderMapFromPrerender(); renderPie();
-          console.log('[지도] 시트 최신화 완료 — ' + Object.keys(BILLING_MAP).length + '개 지역');
+          // ── 시트 우측 요약블록(전국 시장/고객 M/S) 파싱 → 좌·우 도넛도 시트값으로 갱신 ──
+          //    col18 라벨(지자체/통신·기관/개인/총계) 행 · col19~22 회사별(한빌/누리빌/한전산업/한국전력)
+          try {
+            const lbl = function(r){ return String((r||[])[18]||'').replace(/\s/g,''); };
+            const rJiche = rows.find(function(r){ return lbl(r) === '지자체'; });   // 블록B: col18='지자체'(블록A는 '한빌'로 시작해 충돌 없음)
+            const rTong  = rows.find(function(r){ return /^통신|기관/.test(lbl(r)); });
+            const rInd   = rows.find(function(r){ return lbl(r) === '개인'; });
+            if (rJiche && rInd) {
+              const cell = function(r,i){ return _mapNum((r||[])[i]); };
+              // 회사별 총계 = 세그먼트(지자체+통신·기관+개인) 합 — '총계'행 대신 직접 합산해 블록A 충돌 회피
+              const comp = function(i){ const j=cell(rJiche,i), t=rTong?cell(rTong,i):0, d=cell(rInd,i); return { jiche:j, tong:t, ind:d, tot:j+t+d }; };
+              const han = comp(19), nuri = comp(20), hansan = comp(21), kepco = comp(22);
+              const grand = han.tot + nuri.tot + hansan.tot + kepco.tot;
+              if (grand > 0 && han.tot > 0) {
+                window._HB_MARKET = {
+                  total: grand,
+                  players: [ { name:'한빌', cust:han.tot, color:'#0EA5E9' }, { name:'누리빌', cust:nuri.tot, color:'#F59E0B' },
+                             { name:'한전산업개발', cust:hansan.tot, color:'#10B981' }, { name:'한전ON', cust:kepco.tot, color:'#94A3B8' } ],
+                  hanvil: { total:han.tot, seg:[ { name:'지자체', cust:han.jiche }, { name:'통신·기관', cust:han.tong }, { name:'개인', cust:han.ind } ] }
+                };
+              }
+            }
+          } catch(e){ console.warn('[지도] 시장 요약블록 파싱 실패 — 내장값 유지:', e.message||e); }
+          renderMapFromPrerender(); renderPie(); renderMarketDonut(); renderCustTypeDonut();
+          console.log('[지도] 시트 최신화 완료 — ' + Object.keys(BILLING_MAP).length + '개 지역' +
+                      (window._HB_MARKET ? ' · 시장 M/S 갱신' : ''));
         } catch(e){
           console.warn('[지도] 시트 조회 실패 — 내장 데이터 유지:', e.message || e);
         }
@@ -7591,19 +7664,34 @@ function hbRegionAnswer(text){
   const strat = isHanvil
     ? '<b>한빌 선점 지역</b>입니다 → 신규 영업전략 제안 없이 <b>현황만</b> 안내합니다. 상세 현황은 지도에서 [선점 현황 보기] 또는 <b>영업 레이더</b> 메뉴에서 확인하세요.'
     : '타사·미개척 지역 → <b>진입 전략</b>: 담당자 접촉 + 전자청구 전환 제안으로 신규 확보 권장';
+  // 수주확도 — 영업 레이더 로드 시 내부 영업상태+외부 신호 결합값 표기
+  let wpLine = '';
+  try {
+    const rg = (typeof window.rdLookupRegion === 'function') ? window.rdLookupRegion(hit.sgg) : null;
+    const wp = (rg && typeof window.hbWinProb === 'function') ? window.hbWinProb(rg) : null;
+    if (wp) wpLine = `• <b style="color:${wp.color}">${wp.label} ${wp.score}%</b> <span style="color:#94A3B8">(영업상태+기사·발주 결합)</span><br>`;
+  } catch(e){}
   const html =
     `🗺 <strong>${hit.sgg}</strong> 빌링 현황<br><br>` +
     `• 현재 빌링사: <b style="color:${isHanvil?'#0EA5E9':'#334155'}">${co || '미개척(선점사 없음)'}</b><br>` +
     `• 빌링 건수: <b>${billing.toLocaleString()}건</b><br>` +
-    `• 전국 빌링 대비 비중: <b>${pct.toFixed(2)}%</b><br><br>` +
+    `• 전국 빌링 대비 비중: <b>${pct.toFixed(2)}%</b><br>` +
+    wpLine + `<br>` +
     `💡 ${strat}`;
   hbTyping(function(){ hbAddMsg('bot', html, true); }, 400);
   return true;
 }
 
-// 전국 시장점유율 답변
+// 전국 시장점유율 답변 — 시트 요약블록(window._HB_MARKET) 우선, 없으면 내장 HB_MARKET
 function hbMarketAnswer(){
-  const m = HB_MARKET;
+  const dm = window._HB_MARKET;
+  const m = (dm && dm.players && dm.total) ? {
+    total: dm.total,
+    players: dm.players.map(function(p){ return { name:p.name, pct:+(p.cust/dm.total*100).toFixed(1), cust:p.cust }; }),
+    hanvilSeg: (dm.hanvil && dm.hanvil.seg && dm.hanvil.total)
+      ? dm.hanvil.seg.map(function(s){ return { name:s.name, pct:+(s.cust/dm.hanvil.total*100).toFixed(1), cust:s.cust }; })
+      : HB_MARKET.hanvilSeg
+  } : HB_MARKET;
   const rows = m.players.map(function(p){
     const nm = p.name === '한빌' ? '<b style="color:#0EA5E9">한빌</b>' : p.name;
     return `• ${nm}: <b>${p.pct}%</b> (${hbFmtMan(p.cust)})`;
@@ -7615,6 +7703,172 @@ function hbMarketAnswer(){
     `<span style="color:#0EA5E9;font-weight:700">한빌 고객층 구성</span> (166만)<br>` + seg + `<br><br>` +
     `💡 한전ON(자사앱) 49%를 제외한 대행 시장에서 누리빌·한전산업개발과 경쟁 중이며, 지자체·개인 채널에서 한빌 점유율 확대 여지가 있습니다.`;
   hbTyping(function(){ hbAddMsg('bot', html, true); }, 400);
+}
+
+// ═══ 광역시도(도·광역시) 집계 · 수주확도 — 지도·레이더·영업비서 공용 ═══
+// 시도 코드↔명칭 (지도 라벨 cd·BILLING_MAP 키 앞 2자리와 동일 체계)
+const HB_SIDO_NAME = { '11':'서울','21':'부산','22':'대구','23':'인천','24':'광주','25':'대전',
+  '26':'울산','29':'세종','31':'경기','32':'강원','33':'충북','34':'충남','35':'전북',
+  '36':'전남','37':'경북','38':'경남','39':'제주' };
+// 질의문에서 시도명 감지 — 정식/약칭 모두. 긴 별칭 우선(경상북도 > 경북 등 무관하게 코드 동일)
+const HB_SIDO_ALIAS = [
+  ['서울특별시','11'],['서울','11'],['부산광역시','21'],['부산','21'],['대구광역시','22'],['대구','22'],
+  ['인천광역시','23'],['인천','23'],['광주광역시','24'],['대전광역시','25'],['대전','25'],
+  ['울산광역시','26'],['울산','26'],['세종특별자치시','29'],['세종시','29'],['세종','29'],
+  ['경기도','31'],['경기','31'],['강원특별자치도','32'],['강원도','32'],['강원','32'],
+  ['충청북도','33'],['충북','33'],['충청남도','34'],['충남','34'],
+  ['전북특별자치도','35'],['전라북도','35'],['전북','35'],['전라남도','36'],['전남','36'],
+  ['경상북도','37'],['경북','37'],['경상남도','38'],['경남','38'],
+  ['제주특별자치도','39'],['제주도','39'],['제주','39'],['광주','24'] ];
+// '광주'는 광역시(24)이자 경기 광주시 — 시군구 조회(경기광주시)가 hbSend에서 먼저 잡히므로 맨 뒤에 둔다.
+function hbDetectSido(text){
+  const t = (text||'').replace(/\s/g,'');
+  for (let i=0;i<HB_SIDO_ALIAS.length;i++){
+    if (t.indexOf(HB_SIDO_ALIAS[i][0]) >= 0) return { cd:HB_SIDO_ALIAS[i][1], name:HB_SIDO_NAME[HB_SIDO_ALIAS[i][1]] };
+  }
+  return null;
+}
+// 시도 단위 집계 — 데이터포털 지도데이터(열 때마다 갱신되는 BILLING_MAP/COMPANY_MAP) 기준
+window.hbSidoAgg = function(cd){
+  const bm = window._HB_BILLING_MAP || {}, cm = window._HB_COMPANY_MAP || {};
+  const seen = {};
+  const A = { cd:cd, name:HB_SIDO_NAME[cd]||'', jiche:0,
+              hanN:0, hanB:0, nuriN:0, nuriB:0, hanjeonN:0, hanjeonB:0, openN:0, openB:0, totalB:0 };
+  const keys = Object.keys(bm).concat(Object.keys(cm));
+  keys.forEach(function(k){
+    if (k.slice(0, k.indexOf('|')) !== cd) return;
+    if (seen[k]) return; seen[k] = 1;
+    A.jiche++;
+    const co = cm[k], b = bm[k] || 0;
+    A.totalB += b;
+    if (co === '한빌') { A.hanN++; A.hanB += b; }
+    else if (co === '누리빌') { A.nuriN++; A.nuriB += b; }
+    else if (co === '한전산업개발') { A.hanjeonN++; A.hanjeonB += b; }
+    else { A.openN++; A.openB += b; }
+  });
+  A.rivalN = A.nuriN + A.hanjeonN;
+  A.rivalB = A.nuriB + A.hanjeonB;
+  A.hanShare = A.totalB ? (A.hanB / A.totalB * 100) : 0;
+  return A;
+};
+
+// ── 수주확도(Win Probability) — 내부 영업상태(J열) + 외부(기사·나라장터·인사) AI 결합 ──
+//   담당자 판단(영업상태)을 베이스로, 데이터포털·레이더가 수집한 외부 신호를 가감해 확장 산출한다.
+//   투명성을 위해 기여 요인(factors)을 함께 반환한다.
+window.hbWinProb = function(g){
+  if (!g) return null;
+  const own = g.co === '한빌';
+  const factors = [];
+  // 1) 내부 영업상태(J열) 키워드 → 베이스 점수 (구좌들 중 가장 진전된 상태 채택)
+  const statusTxt = (g.rows||[]).map(function(r){ return String(r.status||''); }).join(' ');
+  const STAGE = [
+    [/수주|낙찰|계약\s*완료|계약체결|도입\s*완료/, 90, '수주·계약 완료 상태'],
+    [/수용|선정|확정|우선협상|계약\s*예정/,        76, '수용·확정 단계'],
+    [/제안|검토|협의|미팅|논의|긍정/,              52, '제안·검토 진행'],
+    [/접촉|발굴|관심|문의|초기/,                    34, '초기 접촉·발굴'],
+    [/거절|실패|중단|관심\s*없|보류/,               10, '거절·보류 이력'],
+  ];
+  let base = null, baseWhy = '';
+  for (let i=0;i<STAGE.length;i++){ if (STAGE[i][0].test(statusTxt)){ base = STAGE[i][1]; baseWhy = STAGE[i][2]; break; } }
+  if (base === null){ base = own ? 70 : 20; baseWhy = own ? '한빌 선점(유지 기준)' : '영업상태 미기재'; }
+  factors.push({ t:'영업상태 — ' + baseWhy, delta: null, base: base });
+  let score = base;
+  // 2) 외부 신호 가감
+  const addF = function(cond, delta, label){ if (cond){ score += delta; factors.push({ t:label, delta:delta }); } };
+  addF(g.bidsOpen && g.bidsOpen.length, +12, '진행중 발주 ' + ((g.bidsOpen&&g.bidsOpen.length)||0) + '건(나라장터)');
+  addF(!(g.bidsOpen && g.bidsOpen.length) && g.bids && g.bids.length, +4, '최근 발주 이력');
+  addF((g.hr && g.hr.length), +4, '관련 인사발령 ' + ((g.hr&&g.hr.length)||0) + '건 — 재인사 접점');
+  addF((g.news && g.news.length), +4, '지역 소식 ' + ((g.news&&g.news.length)||0) + '건');
+  addF((g.sols && g.sols.length), +6, '자체 솔루션 진입 명분 ' + ((g.sols&&g.sols.length)||0) + '건');
+  addF(g.sysNone, +6, '도로조명시스템 미사용 — 무상 진입로');
+  addF(g.sysRival && !g.sysNone, +4, '타사 시스템 사용 — 교체 제안 대상');
+  if (!own){ addF(g.rivalN >= 3, -6, '경쟁사 다수 선점(' + g.rivalN + '구좌)'); }
+  // 3) 클램프
+  score = Math.max(5, Math.min(95, Math.round(score)));
+  const label = own ? '유지확도' : '수주확도';
+  const tier = score >= 70 ? 'high' : (score >= 45 ? 'mid' : 'low');
+  const color = tier === 'high' ? '#059669' : (tier === 'mid' ? '#D97706' : '#DC2626');
+  return { score:score, label:label, own:own, tier:tier, color:color, factors:factors };
+};
+
+// ── 영업비서: 광역시도 집계 답변(#1) + 영업전략 안내(#3, 10줄 이내) ──
+function hbSidoAnswer(text, sido){
+  const t = (text||'').replace(/\s/g,'');
+  const wantStrat = /영업전략|전략|공략|어떻게|방안|접근|어디부터|우선순위|타겟|타깃/.test(t);
+  const A = window.hbSidoAgg(sido.cd);
+  if (!A || !A.jiche){
+    hbTyping(function(){ hbAddMsg('bot',
+      '🗺 <strong>' + sido.name + '</strong> 데이터가 아직 로드되지 않았습니다.<br>' +
+      '<small style="color:#8A98A8">데이터 포털(지도)을 한 번 열어 두면 광역시도 집계가 활성화됩니다.</small>', true); }, 400);
+    return;
+  }
+  const fmt = function(n){ return Number(n||0).toLocaleString(); };
+  // #1 — 한빌/타사 건수 및 지자체 건수 카드
+  let html =
+    '🗺 <strong>' + A.name + '</strong> 광역 영업 현황 <span style="color:#94A3B8">(지자체 ' + A.jiche + '곳)</span><br><br>' +
+    '<table style="font-size:12.5px;border-collapse:collapse;line-height:1.7">' +
+      '<tr><td style="padding:1px 10px 1px 0;color:#0284C7;font-weight:700">한빌 선점</td>' +
+        '<td><b>' + A.hanN + '</b>개 지자체 · 빌링 <b>' + fmt(A.hanB) + '</b>건</td></tr>' +
+      '<tr><td style="padding:1px 10px 1px 0;color:#B45309;font-weight:700">타사 선점</td>' +
+        '<td><b>' + A.rivalN + '</b>개 지자체 · 빌링 <b>' + fmt(A.rivalB) + '</b>건' +
+        ' <span style="color:#94A3B8">(누리빌 ' + A.nuriN + ' · 한전산업 ' + A.hanjeonN + ')</span></td></tr>' +
+      (A.openN ? '<tr><td style="padding:1px 10px 1px 0;color:#64748B;font-weight:700">미개척</td>' +
+        '<td><b>' + A.openN + '</b>개 지자체</td></tr>' : '') +
+      '<tr><td style="padding:1px 10px 1px 0;color:#334155;font-weight:700">한빌 점유</td>' +
+        '<td><b>' + A.hanShare.toFixed(1) + '%</b> <span style="color:#94A3B8">(빌링건수 기준)</span></td></tr>' +
+    '</table>';
+  if (!wantStrat){
+    html += '<div style="margin-top:8px;font-size:11px;color:#94A3B8">💡 "<b>' + A.name + ' 영업전략</b>"이라고 물으면 진입 전략을 10줄 이내로 안내해 드려요.</div>';
+    hbTyping(function(){ hbAddMsg('bot', html, true); }, 400);
+    return;
+  }
+  // #3 — 영업전략(10줄 이내). Claude 키 있으면 AI, 없으면 규칙 기반.
+  hbAddMsg('bot', html, true);
+  const facts = hbSidoStratFacts(A.cd);
+  const key = localStorage.getItem(HB_CLAUDE_KEY);
+  if (key){
+    const prompt = '아래는 SCGLAB 한빌(전기요금 전자청구 대행)의 ' + A.name + ' 광역 영업 현황입니다.\n' +
+      '한빌 선점 ' + A.hanN + '곳(빌링 ' + fmt(A.hanB) + '건) · 타사 선점 ' + A.rivalN + '곳(누리빌 ' + A.nuriN + '·한전산업 ' + A.hanjeonN + ') · 미개척 ' + A.openN + '곳 · 한빌 점유 ' + A.hanShare.toFixed(1) + '%.\n' +
+      (facts ? '주요 기회 신호:\n' + facts + '\n' : '') +
+      '\n' + A.name + ' 광역 영업전략을 제시하세요. 규칙: 두괄식, 불릿("- ")만, 최대 8불릿, 각 줄 60자 이내, 전체 10줄 이내. 실제 수치·지역명 근거로 우선순위(진입 타깃 지역/솔루션/접점)를 구체화. 한국어.';
+    hbClaudeQuery(prompt, function(){ return hbSidoStratStatic(A, facts); });
+  } else {
+    hbTyping(function(){ hbAddMsg('bot', hbSidoStratStatic(A, facts), true); }, 500);
+  }
+}
+// 시도 내 기회 신호(발주·미개척·솔루션 진입로) 압축 — 레이더 로드 시에만 상세
+function hbSidoStratFacts(cd){
+  try {
+    const ST = window._RD; if (!ST || !ST.loaded) return '';
+    const L = [];
+    const regs = ST.regions.filter(function(g){ return RD_SIDO_CD_REV(g.sd) === cd; });
+    // 진행중 발주 지역
+    regs.forEach(function(g){ if (g.bidsOpen && g.bidsOpen.length && L.length < 6)
+      L.push('- [발주] ' + g.sgg + ' 「' + String(g.bidsOpen[0].title||'').slice(0,26) + '」 진행중'); });
+    // 미개척/타사 + 솔루션 진입로
+    regs.forEach(function(g){ if (L.length < 8 && g.co !== '한빌' && (g.sysNone || (g.sols && g.sols.length)))
+      L.push('- [진입로] ' + g.sgg + (g.sysNone ? ' 도로조명 미사용' : ' 솔루션 명분 ' + g.sols.length + '건')); });
+    return L.join('\n');
+  } catch(e){ return ''; }
+}
+// 시도 short → 코드 (레이더 g.sd 기준)
+function RD_SIDO_CD_REV(sdShort){
+  const M = { '서울':'11','부산':'21','대구':'22','인천':'23','광주':'24','대전':'25','울산':'26',
+    '세종':'29','경기':'31','강원':'32','충북':'33','충남':'34','전북':'35','전남':'36','경북':'37','경남':'38','제주':'39' };
+  return M[sdShort] || '';
+}
+// 규칙 기반 시도 전략(10줄 이내) — Claude 키 없거나 한도 초과 폴백
+function hbSidoStratStatic(A, facts){
+  const L = [];
+  if (A.openN) L.push('- 미개척 <b>' + A.openN + '곳</b> 우선 — 담당자 접촉 + 전자청구 전환 제안으로 신규 확보');
+  if (A.rivalN) L.push('- 타사 선점 <b>' + A.rivalN + '곳</b>은 계약 만료·담당 교체 시점 노려 전환 타깃');
+  if (A.hanN) L.push('- 한빌 선점 <b>' + A.hanN + '곳</b>은 발주 확장분을 기존 계약에 즉시 연계');
+  if (facts){ facts.split('\n').slice(0,4).forEach(function(l){ if (l) L.push(l.replace(/^- /,'- ')); }); }
+  L.push('- 도로조명·수목·빗물받이 등 자체 솔루션을 빌링 없는 지역의 첫 접점으로 활용');
+  L.push('- 광역 단위 인사발령·발주 공고를 주기 점검해 접점 타이밍 포착');
+  const out = L.slice(0, 8).join('<br>');
+  return '<div style="font-size:12.5px;line-height:1.75"><b style="color:#075985">🎯 ' + A.name + ' 영업전략</b><br>' + out +
+         '<br><small style="color:#94A3B8">※ 통계·수집데이터 기반 요약</small></div>';
 }
 
 function hbAnswer(text) {
@@ -8271,6 +8525,13 @@ function hbAnswer(text) {
   if (t.includes('점유율') || t.includes('시장점유') || (t.includes('시장') && (t.includes('점유') || t.includes('비중')))) {
     if (hbRegionAnswer(text)) return;   // 특정 지역이 포함되면 지역 현황 우선
     return hbMarketAnswer();            // 아니면 전국 시장점유율
+  }
+
+  // ── 광역시도(도·광역시) 검색 → 한빌/타사·지자체 집계 + (전략어 포함 시) 영업전략 ──
+  //    시군구는 hbSend에서 먼저 잡히므로 여기 도달하는 시도명은 광역 단위 질의다.
+  {
+    const _sido = (typeof hbDetectSido === 'function') ? hbDetectSido(text) : null;
+    if (_sido) { hbSidoAnswer(text, _sido); return; }
   }
 
   // ── 특정 지역(시군구) 빌링·영업전략 질문 ──
@@ -10763,6 +11024,14 @@ window.rdRender = function(){
     const own = g.co === '한빌';
     const risky = g.alerts.some(function(a){ return a.lv === 'c'; });
     const cls = risky ? 'risk' : (own ? 'own' : 'rival');
+    // 수주확도(내부 영업상태 + 외부 기사·발주·인사 결합) — 근거 요인을 title로 노출
+    const wp = (typeof window.hbWinProb === 'function') ? window.hbWinProb(g) : null;
+    const wpTip = wp ? wp.factors.map(function(f){
+      return f.delta == null ? ('· ' + f.t + ' (기준 ' + f.base + ')') : ('· ' + f.t + ' (' + (f.delta>0?'+':'') + f.delta + ')');
+    }).join('\n') : '';
+    const wpBadge = wp ? '<span class="rd-wp" title="' + esc('[' + wp.label + ' ' + wp.score + '%]\n' + wpTip) +
+      '" style="background:' + wp.color + '1A;color:' + wp.color + ';border:1px solid ' + wp.color + '55;' +
+      'border-radius:6px;padding:1px 7px;font-weight:800;white-space:nowrap">' + wp.label + ' ' + wp.score + '%</span>' : '';
     const alerts = g.alerts.slice(0,4).map(function(a){
       return '<span class="rd-al ' + a.lv + '" title="' + esc(a.why) + '">' + esc(a.t) + '</span>';
     }).join('');
@@ -10794,6 +11063,7 @@ window.rdRender = function(){
         '<span>한빌 <b>' + g.ownN + '</b> / 경쟁 <b>' + g.rivalN + '</b></span>' +
         '<span>고객 <b>' + g.qty.toLocaleString() + '</b>건</span>' +
         (g.owner ? '<span>담당 <b>' + esc(g.owner) + '</b></span>' : '') +
+        (wpBadge ? '<span style="margin-left:auto">' + wpBadge + '</span>' : '') +
       '</div>' +
       (alerts ? '<div class="rd-alerts">' + alerts + '</div>' : '') +
       news + acts + '</div>';
