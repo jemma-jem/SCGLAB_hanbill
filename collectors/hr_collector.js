@@ -46,10 +46,20 @@ const SIJUNG_FEEDS = [
 //   ※ 모두 동일 CMS(#article-view-content-div) → 아래 fetchBody 로직이 그대로 적용된다.
 //   ※ 커버 지역을 넓히려면 같은 형식의 지역지 RSS를 이 배열에 추가하면 된다.
 const LOCAL_FEEDS = [
-  { url: 'https://www.dongbunews.co.kr/rss/allArticle.xml', source: '동부뉴스' },   // 강동·송파
-  { url: 'https://www.todaygunsan.co.kr/rss/allArticle.xml', source: '투데이군산' }, // 군산
-  { url: 'https://www.djtimes.co.kr/rss/allArticle.xml',    source: '당진신문' },   // 당진
-  { url: 'https://www.yntoday.co.kr/rss/allArticle.xml',    source: '영남투데이' }, // 경북(청도·상주·봉화·칠곡 등)
+  { url: 'https://www.dongbunews.co.kr/rss/allArticle.xml', source: '동부뉴스' },   // 서울 강동·송파
+  { url: 'https://www.todaygunsan.co.kr/rss/allArticle.xml', source: '투데이군산' }, // 전북 군산
+  { url: 'https://www.djtimes.co.kr/rss/allArticle.xml',    source: '당진신문' },   // 충남 당진
+  { url: 'https://www.yntoday.co.kr/rss/allArticle.xml',    source: '영남투데이' }, // 경북(청도·상주·봉화·칠곡)
+  { url: 'https://www.suwonilbo.kr/rss/allArticle.xml',     source: '수원일보' },   // 경기 수원권
+  { url: 'https://www.ggilbo.com/rss/allArticle.xml',       source: '금강일보' },   // 충남·대전
+  { url: 'https://www.dtnews24.com/rss/allArticle.xml',     source: '디트뉴스' },   // 대전·세종·충남
+  { url: 'https://www.jjn.co.kr/rss/allArticle.xml',        source: '전북중앙' },   // 전북
+  { url: 'https://www.namdonews.com/rss/allArticle.xml',    source: '남도일보' },   // 광주·전남
+  { url: 'https://www.gjdream.com/rss/allArticle.xml',      source: '광주드림' },   // 광주
+  { url: 'https://www.kyongbuk.co.kr/rss/allArticle.xml',   source: '경북일보' },   // 경북·대구
+  { url: 'https://www.ujeil.com/rss/allArticle.xml',        source: '울산제일일보' }, // 울산
+  { url: 'https://www.jejusori.net/rss/allArticle.xml',     source: '제주의소리' }, // 제주
+  { url: 'https://www.sjsori.com/rss/allArticle.xml',       source: '세종의소리' }, // 세종
 ];
 
 // 구글 뉴스 — 전국 지역지의 지자체 인사 기사(지역·날짜·출처 신호. 본문은 구글링크라 명단 추출은 best-effort)
