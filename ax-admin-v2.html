@@ -826,7 +826,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
                 <span class="mp-label">수주확도</span>
                 <span id="map-popup-wp" class="mp-val" style="font-weight:800"></span>
               </div>
-              <!-- 한빌 선점 지역: 전략 제안 없이 현황만 표시 -->
+              <!-- 한빌 고객 지역: 전략 제안 없이 현황만 표시 -->
               <button id="map-popup-cta-keep" class="map-cta" onclick="mapStrategy('유지', event)">
                 <i class="ti ti-shield-check" style="font-size:15px"></i> 선점 현황 보기
               </button>
@@ -2413,19 +2413,19 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
 
   </div><!-- /sec-newsletter -->
 
-  <!-- ══════════ 4. 영업 레이더 (고객관리리스트 × 지역 소식) ══════════ -->
+  <!-- ══════════ 4. 영업 레이더 (고객관리리스트 × 고객 소식) ══════════ -->
   <div class="sec" id="sec-radar">
 
     <div class="rd-note" style="margin-bottom:14px">
       <strong>영업 레이더</strong>는 <strong>고객관리리스트(경쟁사 v2.0)</strong>에 4가지 외부 데이터를 시·군·구로 결합해
       <strong>대응이 필요한 지역</strong>을 우선순위로 띄웁니다.<br>
       <span style="display:inline-block;margin:6px 0 2px">
-        📰 <strong>지역 소식</strong>(신문·소식지) ·
+        📰 <strong>고객 소식</strong>(신문·소식지) ·
         🏛 <strong>나라장터 발주·낙찰</strong> ·
         🆕 <strong>담당자 인사발령</strong>(시정일보) ·
         🧰 <strong>자체 솔루션</strong>(도로조명·수목·빗물받이) 매칭</span><br>
-      · <strong>한빌 선점 지역</strong> — 신규 전략 제안 없이 <strong>현황</strong>만 표시. 단, <strong>발주가 뜨면 구좌 확장 기회</strong>로 안내합니다.<br>
-      · <strong>경쟁사·미개척 지역</strong> — 발주·인사·이력을 근거로 <strong>선제 제안 메일 초안</strong>과 영업비서 <strong>진입 전략</strong>을 만들 수 있습니다.
+      · <strong>한빌 고객 지역</strong> — 신규 전략 제안 없이 <strong>현황</strong>만 표시. 단, <strong>발주가 뜨면 구좌 확장 기회</strong>로 안내합니다.<br>
+      · <strong>타사 고객 지역</strong> — 발주·인사·이력을 근거로 <strong>선제 제안 메일 초안</strong>과 영업비서 <strong>진입 전략</strong>을 만들 수 있습니다.
       <span id="rd-status" style="display:block;margin-top:6px;font-weight:700;color:#0284C7"></span>
     </div>
 
@@ -2436,11 +2436,11 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
 
     <div class="rd-bar">
       <button class="rd-chip on" data-f="all"   onclick="rdFilter('all',this)">전체</button>
-      <button class="rd-chip"    data-f="own"   onclick="rdFilter('own',this)">🛡 한빌 선점(현황)</button>
+      <button class="rd-chip"    data-f="own"   onclick="rdFilter('own',this)">🛡 한빌 고객(현황)</button>
       <button class="rd-chip"    data-f="rival" onclick="rdFilter('rival',this)">🎯 경쟁사·기회</button>
-      <button class="rd-chip"    data-f="news"  onclick="rdFilter('news',this)">📰 지역 소식 有</button>
+      <button class="rd-chip"    data-f="news"  onclick="rdFilter('news',this)">📰 고객 소식 有</button>
       <button class="rd-chip"    data-f="risk"  onclick="rdFilter('risk',this)">⚠ 이슈 점검</button>
-      <button class="rd-chip"    data-f="bid"   onclick="rdFilter('bid',this)">🏛 발주 진행중</button>
+      <button class="rd-chip"    data-f="bid"   onclick="rdFilter('bid',this)">🏛 입찰 대상</button>
       <button class="rd-chip"    data-f="sol"   onclick="rdFilter('sol',this)">🧰 솔루션 제안</button>
       <button class="rd-chip"    data-f="mail"  onclick="rdFilter('mail',this)">✉ 메일 발송 가능</button>
       <select id="rd-sido" onchange="rdRender()" style="margin-left:auto"><option value="">전체 시·도</option></select>
@@ -3906,7 +3906,7 @@ function renderDashboardSummary(){
     var done = _txtNum('billing-stat-done'), left = _txtNum('billing-stat-left');
     var share = (done+left)>0 ? Math.round(done/(done+left)*100) : 0;
     salesEl.innerHTML = _dashMetrics([
-      { l:'한빌 선점', v: (done||'—') + '개소', c:'#0EA5E9' },
+      { l:'한빌 고객', v: (done||'—') + '개소', c:'#0EA5E9' },
       { l:'경쟁사 선점', v: (left||'—') + '개소', c:'#F59E0B' },
       { l:'선점 점유율', v: share + '%', c:'#10B981' },
       { l:'전체 시장 규모', v:'1,012만 고객', c:'#0369A1', wide:true }
@@ -6686,7 +6686,7 @@ function buildRegionFacts(regionName){
   return L.join('\n');
 }
 
-// ── 한빌 선점 지역 "현황 카드" (전략 제안 없음) ──────────────────────
+// ── 한빌 고객 지역 "현황 카드" (전략 제안 없음) ──────────────────────
 //   요구사항: 영업비서가 영업전략을 안내할 때, 한빌이 이미 선점한 지역은
 //   신규 전략을 만들지 않고 보유 데이터 기반 현황만 보여준다.
 function hbHanbilStatusCard(sel) {
@@ -6706,7 +6706,7 @@ function hbHanbilStatusCard(sel) {
   };
 
   let html =
-    '<div style="font-weight:800;color:#075985;font-size:13.5px;margin-bottom:2px">🛡 ' + region + ' — 한빌 선점 현황</div>' +
+    '<div style="font-weight:800;color:#075985;font-size:13.5px;margin-bottom:2px">🛡 ' + region + ' — 한빌 고객 현황</div>' +
     '<div style="font-size:11px;color:#64748B;margin-bottom:8px">이미 한빌이 선점한 지역이라 신규 진입 전략은 제안하지 않습니다. 현재 현황만 안내드립니다.</div>' +
     '<table style="font-size:12px;border-collapse:collapse">' +
       row('빌링사', '<span style="color:#0284C7">한빌 (선점)</span>') +
@@ -6744,7 +6744,7 @@ function hbHanbilStatusCard(sel) {
       '</ul></div>';
   }
   if (rg && rg.news && rg.news.length) {
-    html += '<div style="margin-top:9px;font-size:11.5px"><strong style="color:#0284C7">📰 지역 소식</strong><ul style="margin:4px 0 0 16px;padding:0;line-height:1.6">' +
+    html += '<div style="margin-top:9px;font-size:11.5px"><strong style="color:#0284C7">📰 고객 소식</strong><ul style="margin:4px 0 0 16px;padding:0;line-height:1.6">' +
       rg.news.slice(0,3).map(function(a){
         return '<li><a href="' + a.url + '" target="_blank" rel="noopener" style="color:#334155">' + a.title + '</a>' +
                ' <span style="color:#94A3B8">· ' + (a.source||'') + ' ' + a.date + '</span></li>'; }).join('') +
@@ -7660,9 +7660,9 @@ function hbRegionAnswer(text){
   const co = cm[hit.key] || null;
   const pct = billing / tot * 100;
   const isHanvil = (co === '한빌');
-  // 한빌 선점 지역은 신규 전략을 제안하지 않고 현황만 안내한다.
+  // 한빌 고객 지역은 신규 전략을 제안하지 않고 현황만 안내한다.
   const strat = isHanvil
-    ? '<b>한빌 선점 지역</b>입니다 → 신규 영업전략 제안 없이 <b>현황만</b> 안내합니다. 상세 현황은 지도에서 [선점 현황 보기] 또는 <b>영업 레이더</b> 메뉴에서 확인하세요.'
+    ? '<b>한빌 고객 지역</b>입니다 → 신규 영업전략 제안 없이 <b>현황만</b> 안내합니다. 상세 현황은 지도에서 [선점 현황 보기] 또는 <b>영업 레이더</b> 메뉴에서 확인하세요.'
     : '타사·미개척 지역 → <b>진입 전략</b>: 담당자 접촉 + 전자청구 전환 제안으로 신규 확보 권장';
   // 수주확도 — 영업 레이더 로드 시 내부 영업상태+외부 신호 결합값 표기
   let wpLine = '';
@@ -7770,7 +7770,7 @@ window.hbWinProb = function(g){
   ];
   let base = null, baseWhy = '';
   for (let i=0;i<STAGE.length;i++){ if (STAGE[i][0].test(statusTxt)){ base = STAGE[i][1]; baseWhy = STAGE[i][2]; break; } }
-  if (base === null){ base = own ? 70 : 20; baseWhy = own ? '한빌 선점(유지 기준)' : '영업상태 미기재'; }
+  if (base === null){ base = own ? 70 : 20; baseWhy = own ? '한빌 고객(유지 기준)' : '영업상태 미기재'; }
   factors.push({ t:'영업상태 — ' + baseWhy, delta: null, base: base });
   let score = base;
   // 2) 외부 신호 가감
@@ -7778,7 +7778,7 @@ window.hbWinProb = function(g){
   addF(g.bidsOpen && g.bidsOpen.length, +12, '진행중 발주 ' + ((g.bidsOpen&&g.bidsOpen.length)||0) + '건(나라장터)');
   addF(!(g.bidsOpen && g.bidsOpen.length) && g.bids && g.bids.length, +4, '최근 발주 이력');
   addF((g.hr && g.hr.length), +4, '관련 인사발령 ' + ((g.hr&&g.hr.length)||0) + '건 — 재인사 접점');
-  addF((g.news && g.news.length), +4, '지역 소식 ' + ((g.news&&g.news.length)||0) + '건');
+  addF((g.news && g.news.length), +4, '고객 소식 ' + ((g.news&&g.news.length)||0) + '건');
   addF((g.sols && g.sols.length), +6, '자체 솔루션 진입 명분 ' + ((g.sols&&g.sols.length)||0) + '건');
   addF(g.sysNone, +6, '도로조명시스템 미사용 — 무상 진입로');
   addF(g.sysRival && !g.sysNone, +4, '타사 시스템 사용 — 교체 제안 대상');
@@ -7807,7 +7807,7 @@ function hbSidoAnswer(text, sido){
   let html =
     '🗺 <strong>' + A.name + '</strong> 광역 영업 현황 <span style="color:#94A3B8">(지자체 ' + A.jiche + '곳)</span><br><br>' +
     '<table style="font-size:12.5px;border-collapse:collapse;line-height:1.7">' +
-      '<tr><td style="padding:1px 10px 1px 0;color:#0284C7;font-weight:700">한빌 선점</td>' +
+      '<tr><td style="padding:1px 10px 1px 0;color:#0284C7;font-weight:700">한빌 고객</td>' +
         '<td><b>' + A.hanN + '</b>개 지자체 · 빌링 <b>' + fmt(A.hanB) + '</b>건</td></tr>' +
       '<tr><td style="padding:1px 10px 1px 0;color:#B45309;font-weight:700">타사 선점</td>' +
         '<td><b>' + A.rivalN + '</b>개 지자체 · 빌링 <b>' + fmt(A.rivalB) + '</b>건' +
@@ -7828,7 +7828,7 @@ function hbSidoAnswer(text, sido){
   const key = localStorage.getItem(HB_CLAUDE_KEY);
   if (key){
     const prompt = '아래는 SCGLAB 한빌(전기요금 전자청구 대행)의 ' + A.name + ' 광역 영업 현황입니다.\n' +
-      '한빌 선점 ' + A.hanN + '곳(빌링 ' + fmt(A.hanB) + '건) · 타사 선점 ' + A.rivalN + '곳(누리빌 ' + A.nuriN + '·한전산업 ' + A.hanjeonN + ') · 미개척 ' + A.openN + '곳 · 한빌 점유 ' + A.hanShare.toFixed(1) + '%.\n' +
+      '한빌 고객 ' + A.hanN + '곳(빌링 ' + fmt(A.hanB) + '건) · 타사 선점 ' + A.rivalN + '곳(누리빌 ' + A.nuriN + '·한전산업 ' + A.hanjeonN + ') · 미개척 ' + A.openN + '곳 · 한빌 점유 ' + A.hanShare.toFixed(1) + '%.\n' +
       (facts ? '주요 기회 신호:\n' + facts + '\n' : '') +
       '\n' + A.name + ' 광역 영업전략을 제시하세요. 규칙: 두괄식, 불릿("- ")만, 최대 8불릿, 각 줄 60자 이내, 전체 10줄 이내. 실제 수치·지역명 근거로 우선순위(진입 타깃 지역/솔루션/접점)를 구체화. 한국어.';
     hbClaudeQuery(prompt, function(){ return hbSidoStratStatic(A, facts); });
@@ -7862,7 +7862,7 @@ function hbSidoStratStatic(A, facts){
   const L = [];
   if (A.openN) L.push('- 미개척 <b>' + A.openN + '곳</b> 우선 — 담당자 접촉 + 전자청구 전환 제안으로 신규 확보');
   if (A.rivalN) L.push('- 타사 선점 <b>' + A.rivalN + '곳</b>은 계약 만료·담당 교체 시점 노려 전환 타깃');
-  if (A.hanN) L.push('- 한빌 선점 <b>' + A.hanN + '곳</b>은 발주 확장분을 기존 계약에 즉시 연계');
+  if (A.hanN) L.push('- 한빌 고객 <b>' + A.hanN + '곳</b>은 발주 확장분을 기존 계약에 즉시 연계');
   if (facts){ facts.split('\n').slice(0,4).forEach(function(l){ if (l) L.push(l.replace(/^- /,'- ')); }); }
   L.push('- 도로조명·수목·빗물받이 등 자체 솔루션을 빌링 없는 지역의 첫 접점으로 활용');
   L.push('- 광역 단위 인사발령·발주 공고를 주기 점검해 접점 타이밍 포착');
@@ -8638,7 +8638,7 @@ window.hbSend = function() {
     window._mapSel = _rg;
     window._mapSelectedRegion = _rg.region;
     window._mapSelectedCo = _rg.co;
-    window.runMapStrategy(_rg.co === '한빌' ? '유지' : '진입', _rg);   // 유지(한빌 선점)/진입(그 외)
+    window.runMapStrategy(_rg.co === '한빌' ? '유지' : '진입', _rg);   // 유지(한빌 고객)/진입(그 외)
     return;
   }
 
@@ -9401,8 +9401,8 @@ function getPageAlert(name) {
       badge: 'AI 분석 요약',
       title: '오늘의 영업·민원 현황 요약',
       lines: [
-        '💼 [영업] 한빌 선점 ' + (_sDone || '—') + '개소 · 경쟁사 ' + (_sLeft || '—') + '개소 (선점 점유율 ' + _sShare + '%)',
-        '🗺 전체 시장 1,012만 고객 기준, 경쟁사·미개척 지역에 신규 진입 여지가 남아 있어요.',
+        '💼 [영업] 한빌 고객 ' + (_sDone || '—') + '개소 · 경쟁사 ' + (_sLeft || '—') + '개소 (선점 점유율 ' + _sShare + '%)',
+        '🗺 전체 시장 1,012만 고객 기준, 타사 고객 지역에 신규 진입 여지가 남아 있어요.',
         '📥 [민원] 총 ' + tot + '건 접수 · 상담원 직접 해결 ' + dn + '건(' + dr + '%)',
         '🏢 운영팀·한전 이관 ' + hj + '건 · 미해결률 ' + _unres + '% · 부정 감정 ' + _neg + '%',
         '🔎 1위 민원은 "' + top + '"이에요.',
@@ -9451,7 +9451,7 @@ function getPageAlert(name) {
         ]
       };
     })(),
-    // ── 영업 레이더: 고객관리리스트 × 지역 소식 결합 결과를 요약 ──
+    // ── 영업 레이더: 고객관리리스트 × 고객 소식 결합 결과를 요약 ──
     //    (window._RD = 레이더 모듈 상태. 메뉴를 한 번도 열지 않았으면 안내 문구를 띄운다)
     radar: (function(){
       var R = window._RD;
@@ -9462,7 +9462,7 @@ function getPageAlert(name) {
           lines: [
             '📡 고객관리리스트(경쟁사 v2.0)와 지역 신문·소식지를 시·군·구로 묶어 분석해요.',
             '🛡 한빌이 선점한 지역은 신규 전략 없이 <b>현황만</b> 보여드려요.',
-            '🎯 경쟁사·미개척 지역만 영업비서가 진입 전략 초안을 만들어요.',
+            '🎯 타사 고객 지역만 영업비서가 진입 전략 초안을 만들어요.',
             '⏳ 메뉴를 열면 시트·기사를 불러와 이 요약이 실제 수치로 채워져요.'
           ]
         };
@@ -9497,20 +9497,20 @@ function getPageAlert(name) {
         title: '지역 영업 알림 요약 (고객리스트 × 지역소식·나라장터·인사)',
         lines: [
           '📍 관리 지역 ' + rs.length + '곳 · 구좌 ' + (R.recs||[]).length.toLocaleString() + '건을 시·군·구로 묶어 분석했어요.',
-          '🛡 [현황만] 한빌 선점 ' + own.length + '곳 — 신규 전략 없이 현황만. 단 발주가 뜨면 확장 기회로 안내해요.',
-          '🎯 [진입대상] 경쟁사·미개척 ' + rival.length + '곳' +
+          '🛡 [현황만] 한빌 고객 ' + own.length + '곳 — 신규 전략 없이 현황만. 단 발주가 뜨면 확장 기회로 안내해요.',
+          '🎯 [진입대상] 타사 고객 ' + rival.length + '곳' +
             (hot.length ? ' · 이 중 제안·검토 진행 중 ' + hot.length + '곳 (' + list(hot) + ')' : ''),
           (urgentBid.length
             ? '🏛 [최우선] 발주 마감 임박 ' + urgentBid.length + '곳 — ' + list(urgentBid) + '. 마감 전 오늘 중 접촉하세요.'
-            : (bidOpen.length ? '🏛 나라장터 발주 진행중 ' + bidOpen.length + '곳 — 마감 전 접촉 기회예요.' : '🏛 진행중 발주 없음.')),
+            : (bidOpen.length ? '🏛 나라장터 입찰 대상 ' + bidOpen.length + '곳 — 마감 전 접촉 기회예요.' : '🏛 진행중 발주 없음.')),
           (mgr.length ? '🆕 담당자 인사발령 감지 ' + mgr.length + '곳 — 신규 담당자 인수인계 안내 대상이에요.' : '🆕 감지된 인사발령 없음.'),
           (news.length
-            ? '📰 최근 ' + (R.newsDays||30) + '일 지역 소식 ' + news.length + '곳 — ' + list(news) + '. 방문·제안 명분으로 좋아요.'
+            ? '📰 최근 ' + (R.newsDays||30) + '일 고객 소식 ' + news.length + '곳 — ' + list(news) + '. 방문·제안 명분으로 좋아요.'
             : '📰 최근 ' + (R.newsDays||30) + '일 내 매칭 기사 없음.'),
           '⚡ [액션] ' +
             (urgentBid.length ? '마감 임박 발주부터 통화 → ' : '') +
             (mgr.length ? '인사발령 지역 인수인계 → ' : '') +
-            '지역 소식이 있는 곳은 기사를 명분으로 접촉하세요.'
+            '고객 소식이 있는 곳은 기사를 명분으로 접촉하세요.'
         ]
       };
     })()
@@ -9645,7 +9645,7 @@ setInterval(function() {
      ② news_archive.json (news_collector.js 산출물)      → 지역 신문·소식지 기사
    두 소스를 시·군·구 키로 결합해 "대응이 필요한 지역"을 우선순위로 카드 렌더링한다.
 
-   ※ 한빌 선점 지역은 신규 영업전략을 제안하지 않고 "현황"만 보여준다(요구사항).
+   ※ 한빌 고객 지역은 신규 영업전략을 제안하지 않고 "현황"만 보여준다(요구사항).
    ※ 첫 진입(대시보드) 로딩을 늘리지 않도록, 이 섹션을 처음 열 때만 fetch 한다(지연 로드).
    ══════════════════════════════════════════════════════════════════════ */
 (function(){
@@ -9657,7 +9657,7 @@ const RD_SHEET_GID = '281360527';
 const RD_SHEET_URL = 'https://docs.google.com/spreadsheets/d/' + RD_SHEET_ID + '/edit?gid=' + RD_SHEET_GID;
 const RD_CACHE_KEY = 'hanbil_radar_cache_v1';
 const RD_CACHE_TTL = 6 * 60 * 60 * 1000;   // 6시간
-const RD_NEWS_DAYS = 30;                    // 지역 소식 표시 기간
+const RD_NEWS_DAYS = 30;                    // 고객 소식 표시 기간
 
 // 시트 컬럼 인덱스 (0-base) — gid 281360527(간소화 시트) 기준
 //   col2 광역시 · col3 구 · col4 지자체(전체명) · col5 빌링사 · col6 빌링건수
@@ -9908,7 +9908,7 @@ function buildAlerts(g){
   return a;
 }
 
-// ── 지역 소식(뉴스) 매칭 ──────────────────────────────────────────────
+// ── 고객 소식(뉴스) 매칭 ──────────────────────────────────────────────
 // 제목 정규화 — 신문사마다 다른 표기/따옴표/맺음말을 걷어내 같은 사건을 같은 신호로 만든다
 function _titleSig(t){
   return String(t||'')
@@ -10025,7 +10025,7 @@ function attachNews(regions, news){
     });
     // 지역 맥락에서 신문사만 다른 동일 기사 병합 (대표 1건만, 매체 수는 _dups에 보존)
     g.news = _dedupSameEvent(matched, sgg).slice(0, 5);
-    if (g.news.length) g.alerts.unshift({ lv:'n', t:'지역 소식 ' + g.news.length + '건', why:'최근 ' + RD_NEWS_DAYS + '일 내 지역 기사' });
+    if (g.news.length) g.alerts.unshift({ lv:'n', t:'고객 소식 ' + g.news.length + '건', why:'최근 ' + RD_NEWS_DAYS + '일 내 지역 기사' });
 
     // 지역 기사에서 자체 솔루션과 맞는 이슈가 잡히면 첫 접점 명분으로 표시
     g.sols = matchSolutions(g);
@@ -10104,7 +10104,7 @@ function attachG2b(regions, recs){
         t:'🏛 나라장터 발주 ' + g.bids.length + '건' +
           (g.bidsOpen.length ? '(진행중 ' + g.bidsOpen.length + ')' : '') +
           (own ? ' · 확장기회' : ''),
-        why:(own ? '한빌 선점 지역에 신규 발주 — 구좌 추가·시설물 확장 영업 가능. ' : '') +
+        why:(own ? '한빌 고객 지역에 신규 발주 — 구좌 추가·시설물 확장 영업 가능. ' : '') +
             label + ' — ' + cut(g.bids[0].title, 34) +
             (g.bids[0].amount ? ' · ' + fmtWon(g.bids[0].amount) : '')
       });
@@ -10414,7 +10414,7 @@ function salesPoints(g){
       tag:(own ? '발주 연계 구좌 확장 (' : '발주 사업 연계 제안 (') + dday(b.closeDate) + ')',
       why:'나라장터 공고 "' + cut(b.title, 40) + '"' + (b.amount ? ' · ' + fmtWon(b.amount) : '') +
           ' · 마감 ' + b.closeDate +
-          (own ? ' — 한빌 선점 지역이라, 이 사업으로 늘어나는 신규 구좌를 기존 계약에 바로 붙일 수 있습니다.'
+          (own ? ' — 한빌 고객 지역이라, 이 사업으로 늘어나는 신규 구좌를 기존 계약에 바로 붙일 수 있습니다.'
                : ' — 사업이 시작되면 시설물과 한전 구좌가 함께 늘어납니다.'),
       whyMail:'「' + cut(b.title, 40) + '」 사업을 준비 중이신 것으로 확인했습니다. ' +
               '이런 사업은 준공 후 시설물과 전기사용 구좌를 함께 관리해야 하는 부담이 뒤따릅니다.',
@@ -10472,7 +10472,7 @@ function salesPoints(g){
     verify:'⚠ 발송 전 확인 — 시스템 사용사는 시트 기재 시점 기준이라 현재와 다를 수 있습니다.'
   });
 
-  // ⑧ 경쟁사 선점 지역 → 전환 제안 / 한빌 선점 지역 → 현황 확인 (전략 제안 아님)
+  // ⑧ 경쟁사 선점 지역 → 전환 제안 / 한빌 고객 지역 → 현황 확인 (전략 제안 아님)
   if (!own && g.rivalN) pts.push({
     tag:'전자고지 전환 검토',
     why:'현재 ' + g.co + ' 빌링으로 운영 중입니다 (경쟁 구좌 ' + g.rivalN + '건).',
@@ -10522,7 +10522,7 @@ window.rdMail = function(key){
 
     '<div class="rd-note">아래 <strong>영업 포인트</strong>는 고객관리리스트 이력과 최근 지역 기사에서 <strong>근거가 확인된 것만</strong> 뽑았습니다. ' +
     '체크를 조정하면 본문이 다시 만들어집니다.' +
-    (own ? ' <strong>한빌 선점 지역</strong>이라 신규 영업 제안이 아닌 <strong>현황 점검·지원</strong> 톤으로 작성됩니다.' : '') + '</div>' +
+    (own ? ' <strong>한빌 고객 지역</strong>이라 신규 영업 제안이 아닌 <strong>현황 점검·지원</strong> 톤으로 작성됩니다.' : '') + '</div>' +
 
     '<div><div class="rd-sec-t">🎯 영업 포인트 · 근거 검증</div>' +
       '<div style="font-size:11px;color:#64748B;margin-bottom:7px;line-height:1.6">' +
@@ -10766,7 +10766,7 @@ window.rdScript = function(key){
   document.getElementById('rd-modal-body').innerHTML =
     '<div class="rd-note">메일 회신이 왔을 때 <strong>첫 통화 30초 ~ 첫 미팅</strong>까지의 흐름입니다. ' +
     '지역 실제 수치가 들어가 있으니 그대로 읽으셔도 됩니다.' +
-    (own ? ' <strong>한빌 선점 지역</strong>이라 신규 수주가 아닌 <strong>운영 점검·확장</strong> 관점입니다.' : '') + '</div>' +
+    (own ? ' <strong>한빌 고객 지역</strong>이라 신규 수주가 아닌 <strong>운영 점검·확장</strong> 관점입니다.' : '') + '</div>' +
 
     (function(){
       // 통화 전에 담당자 교체 여부부터 확인 — 엉뚱한 사람 이름을 부르면 첫 통화가 끝난다
@@ -10900,8 +10900,8 @@ function rdRegionAction(g){
     return { p:72, cat:'win', ic:'🤝', act:'수주업체 ' + cut(g.wins[0].winner || '업체', 14) + ' — 시스템 연계 제안', cta:'메일 초안', fn:'rdMail' };
   // 4. 진행중 발주 (여유)
   if (g.bidsOpen && g.bidsOpen.length)
-    return { p:62, cat:'bid', ic:'🏛', act:(g.co === '한빌' ? '발주 연계 구좌 확장 — ' : '발주 진행중 — ') + '사업 착수 전 제안 · ' + cut(g.bidsOpen[0].title, 22), cta:'메일 초안', fn:'rdMail' };
-  // 5. 솔루션 매칭 / 지역 소식
+    return { p:62, cat:'bid', ic:'🏛', act:(g.co === '한빌' ? '발주 연계 구좌 확장 — ' : '입찰 대상 — ') + '사업 착수 전 제안 · ' + cut(g.bidsOpen[0].title, 22), cta:'메일 초안', fn:'rdMail' };
+  // 5. 솔루션 매칭 / 고객 소식
   if (g.sols && g.sols.length)
     return { p:52, cat:'sol', ic:'🧰', act:g.sols[0].sol.name + ' 제안 — 지역 기사 명분으로 접촉', cta:'메일 초안', fn:'rdMail' };
   return null;
@@ -10927,7 +10927,19 @@ function renderBriefing(){
     used[c] = (used[c] || 0) + 1;
     top.push(it);
   });
-  if (!top.length){ el.innerHTML = ''; return; }
+  if (!top.length){ el.innerHTML = ''; ST.actRank = {}; return; }
+
+  // 오늘의 우선 액션(상위 7) 이후 — 동일 우선순위(점수순)로 8~20위를 카드에 마킹한다.
+  ST.actRank = {};
+  (function(){
+    const shown = {};
+    top.forEach(function(it){ shown[it.g.key] = 1; });
+    let rk = top.length;                       // 보통 7
+    items.forEach(function(it){
+      if (shown[it.g.key] || rk >= 20) return; // 이미 노출됐거나 20위 초과면 제외
+      ST.actRank[it.g.key] = ++rk;             // 8위부터 순차 부여
+    });
+  })();
 
   el.innerHTML =
     '<div class="rd-brief">' +
@@ -10941,9 +10953,9 @@ function renderBriefing(){
         return '<div class="rd-act' + (a.urgent ? ' p-urgent' : '') + '">' +
           '<span class="rk">' + (i+1) + '</span>' +
           '<span class="ic">' + a.ic + '</span>' +
-          '<span class="body"><span class="rg">' + esc(g.sd + ' ' + g.sgg) + coTag + '</span>' +
+          '<span class="body" style="cursor:pointer" onclick="rdDetail(\'' + esc(g.key) + '\')"><span class="rg">' + esc(g.sd + ' ' + g.sgg) + coTag + '</span>' +
           '<span class="ac">' + esc(a.act) + '</span></span>' +
-          '<button class="go" onclick="' + a.fn + '(\'' + esc(g.key) + '\')">' + esc(a.cta) + ' ›</button>' +
+          '<button class="go" onclick="rdDetail(\'' + esc(g.key) + '\')">현황 ›</button>' +
         '</div>';
       }).join('') +
     '</div>';
@@ -10955,15 +10967,15 @@ function renderKpis(){
   const rival = rs.filter(function(g){ return g.co && g.co !== '한빌'; });
   const risk = rs.filter(rdIsRisk);
   const withNews = rs.filter(function(g){ return g.news.length; });
-  // 발주 진행중(마감 임박 포함) — 지금 움직이면 닿는 기회
+  // 입찰 대상(마감 임박 포함) — 지금 움직이면 닿는 기회
   const bidOpen = rs.filter(function(g){ return g.bidsOpen && g.bidsOpen.length; });
   const kpis = [
     { k:'📍 관리 지역', v:rs.length + '곳', s:'구좌 ' + ST.recs.length.toLocaleString() + '건' },
-    { k:'🛡 한빌 선점', v:own.length + '곳', s:'현황만 표시 · 구좌 ' + own.reduce(function(a,g){return a+g.ownN;},0) + '건' },
-    { k:'🎯 경쟁사·미개척', v:rival.length + '곳', s:'진입 전략 대상' },
-    { k:'🏛 발주 진행중', v:bidOpen.length + '곳', s:'마감 전 접촉 기회' },
+    { k:'🛡 한빌 고객', v:own.length + '곳', s:'현황만 표시 · 구좌 ' + own.reduce(function(a,g){return a+g.ownN;},0) + '건' },
+    { k:'🎯 타사 고객', v:rival.length + '곳', s:'진입 전략 대상' },
+    { k:'🏛 입찰 대상', v:bidOpen.length + '곳', s:'마감 전 접촉 기회' },
     { k:'⚠ 이슈 점검', v:risk.length + '곳', s:'빌링사 변경·선점 불일치 등' },
-    { k:'📰 지역 소식', v:withNews.length + '곳', s:'최근 ' + RD_NEWS_DAYS + '일 기사 매칭' },
+    { k:'📰 고객 소식', v:withNews.length + '곳', s:'최근 ' + RD_NEWS_DAYS + '일 기사 매칭' },
   ];
   document.getElementById('rd-kpis').innerHTML = kpis.map(function(x){
     return '<div class="rd-kpi"><div class="k">' + x.k + '</div><div class="v">' + x.v + '</div><div class="s">' + esc(x.s) + '</div></div>';
@@ -11035,14 +11047,14 @@ window.rdRender = function(){
     const alerts = g.alerts.slice(0,4).map(function(a){
       return '<span class="rd-al ' + a.lv + '" title="' + esc(a.why) + '">' + esc(a.t) + '</span>';
     }).join('');
-    const news = g.news.length ? '<div class="rd-news"><div class="rd-news-t"><i class="ti ti-news"></i> 지역 소식</div>' +
+    const news = g.news.length ? '<div class="rd-news"><div class="rd-news-t"><i class="ti ti-news"></i> 고객 소식</div>' +
       g.news.slice(0,3).map(function(a){
         return '<a href="' + esc(a.url) + '" target="_blank" rel="noopener">' + esc(cut(a.title,58)) +
                '<span class="src"> · ' + esc(a.source || '') + ' ' + esc(a.date) +
                (a._dups > 1 ? ' <span style="color:#0EA5E9;font-weight:700">외 ' + (a._dups-1) + '개 매체</span>' : '') +
                '</span></a>';
       }).join('') + '</div>' : '';
-    // 한빌 선점 지역 → 현황 보기만. 경쟁사·미개척 → 현황 + 진입 전략.
+    // 한빌 고객 지역 → 현황 보기만. 타사 고객 → 현황 + 진입 전략.
     // 메일 초안은 양쪽 모두 제공(한빌 지역은 '현황 점검·지원' 톤으로 생성됨).
     const acts = '<div class="rd-acts">' + (own
       ? '<button class="rd-btn st" onclick="rdDetail(\'' + esc(g.key) + '\')">' +
@@ -11054,8 +11066,11 @@ window.rdRender = function(){
       + '<button class="rd-btn mail" onclick="rdMail(\'' + esc(g.key) + '\')" title="선제 제안 메일 초안">' +
         '<i class="ti ti-mail"></i> 메일</button></div>';
 
+    // 오늘의 우선 액션(상위 7) 이후 8~20위 지역은 카드에 순위 뱃지를 표시한다.
+    const _rk = (ST.actRank && ST.actRank[g.key]) || 0;
+    const rkBadge = _rk ? ' <span title="오늘의 우선 액션 ' + _rk + '위" style="display:inline-flex;align-items:center;justify-content:center;min-width:19px;height:19px;padding:0 5px;margin-left:6px;border-radius:10px;background:#F97316;color:#fff;font-size:11px;font-weight:800;vertical-align:middle;line-height:1">' + _rk + '</span>' : '';
     return '<div class="rd-card ' + cls + '">' +
-      '<div class="rd-card-h"><div><div class="rd-region">' + esc(g.sgg) + '</div>' +
+      '<div class="rd-card-h"><div><div class="rd-region">' + esc(g.sgg) + rkBadge + '</div>' +
         '<div class="rd-sido">' + esc(g.sido) + '</div></div>' +
         '<span class="rd-co ' + coClass(g.co) + '">' + esc(g.co || '미지정') + '</span></div>' +
       '<div class="rd-metrics">' +
@@ -11089,13 +11104,12 @@ window.rdDetail = function(key){
 
   const rowsTbl = g.rows.slice(0,20).map(function(r){
     return '<tr><th>' + esc(r.dept || r.cust) + '</th><td>' +
-      esc([r.target, r.billType, r.co && ('빌링사 ' + r.co), r.status, r.strat].filter(Boolean).join(' · ')) +
+      esc([r.co, r.status].filter(Boolean).join(' · ')) +
       (r.qty ? ' · <b>' + r.qty.toLocaleString() + '건</b>' : '') + '</td></tr>';
   }).join('');
 
   const histTxt = g.rows.map(function(r){ return r.hist; }).filter(Boolean).join('\n\n');
   const issueTxt = g.rows.map(function(r){ return r.issue; }).filter(Boolean).join('\n\n');
-  const wins = g.rows.map(function(r){ return r.win; }).filter(Boolean);
 
   // 나라장터 발주·낙찰 블록 — 알림 바로 다음(담당자 앞)에 배치하기 위해 미리 조립한다
   const g2bBlock = ((g.bids && g.bids.length) || (g.wins && g.wins.length)
@@ -11131,18 +11145,16 @@ window.rdDetail = function(key){
     esc(g.sido + ' ' + g.sgg) + ' <span class="rd-co ' + coClass(g.co) + '">' + esc(g.co||'미지정') + '</span>';
 
   document.getElementById('rd-modal-body').innerHTML =
-    (own ? '<div class="rd-note"><strong>한빌 선점 지역</strong>입니다. 신규 영업전략 제안 없이 <strong>현재 현황</strong>만 제공합니다. ' +
+    (own ? '<div class="rd-note"><strong>한빌 고객 지역</strong>입니다. 신규 영업전략 제안 없이 <strong>현재 현황</strong>만 제공합니다. ' +
            '유지·방어 활동은 아래 이슈·담당자 이력을 근거로 판단해 주세요.</div>'
          : '<div class="rd-note"><strong>' + esc(g.co||'미지정') + ' 선점 지역</strong>입니다. 아래 현황 확인 후 ' +
            '[영업비서 진입 전략]으로 전략 초안을 요청할 수 있습니다.</div>') +
 
     // 📊 요약 — 표 대신 한눈에 들어오는 스탯 스트립
     '<div class="rd-sum">' +
-      '<span><span class="k">구좌</span><b>' + g.rows.length + '</b> (한빌 ' + g.ownN + '·경쟁 ' + g.rivalN + ')</span>' +
-      '<span><span class="k">고객</span><b>' + g.qty.toLocaleString() + '</b>건</span>' +
+      '<span><span class="k">빌링 규모</span><b>' + g.qty.toLocaleString() + '</b>건/월</span>' +
       (g.owner ? '<span><span class="k">담당</span><b>' + esc(g.owner) + '</b></span>' : '') +
-      (wins.length ? '<span><span class="k">수주</span>' + esc(wins[0]) + '</span>' : '') +
-      '<span><span class="k">도로조명시스템</span>' +
+      '<span><span class="k">솔루션</span>' +
         (g.sysOwn   ? '<b style="color:#0284C7">한빌 사용</b>'
        : g.sysNone  ? '<b style="color:#B45309">미사용</b>(제안대상)'
        : g.sysRival ? '<b style="color:#B45309">' + esc(cut(g.sys,10)) + '</b>(타사)'
@@ -11225,8 +11237,8 @@ window.rdDetail = function(key){
       '</div>';
     })() +
 
-    // 지역 소식 (열림 — 접촉 명분)
-    (g.news.length ? '<div><div class="rd-sec-t">📰 지역 소식 (최근 ' + RD_NEWS_DAYS + '일)</div><div class="rd-news">' +
+    // 고객 소식 (열림 — 접촉 명분)
+    (g.news.length ? '<div><div class="rd-sec-t">📰 고객 소식 (최근 ' + RD_NEWS_DAYS + '일)</div><div class="rd-news">' +
       g.news.map(function(a){
         return '<a href="' + esc(a.url) + '" target="_blank" rel="noopener">' + esc(a.title) +
                '<span class="src"> · ' + esc(a.source||'') + ' ' + esc(a.date) +
@@ -11326,7 +11338,7 @@ window.rdHrReset = function(key){
   renderKpis(); window.rdRender(); window.rdDetail(key);
 };
 
-// ── 경쟁사·미개척 지역 → 영업비서 진입 전략 ──────────────────────────
+// ── 타사 고객 지역 → 영업비서 진입 전략 ──────────────────────────
 window.rdStrategy = function(key){
   const g = ST.byKey[key];
   if (!g) return;
@@ -11383,7 +11395,7 @@ async function load(force){
     ST.recs = recs;
     ST.regions = buildRegions(recs);
 
-    setStatus('· 지역 소식 · 인사발령 · 발주공고 매칭 중…');
+    setStatus('· 고객 소식 · 인사발령 · 발주공고 매칭 중…');
     const [newsArr, hrArr, g2bArr] = await Promise.all([loadNews(), loadHr(), loadG2b()]);
     ST.news = newsArr;
     ST.hr = hrArr;
