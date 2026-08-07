@@ -1,19 +1,584 @@
 {
-  "updated_at": "2026-08-06T03:30:38.265Z",
+  "updated_at": "2026-08-07T03:13:30.318Z",
   "sources": [
     "시정일보 RSS(피플/전체)",
     "지역지 직접 RSS(동부뉴스·투데이군산·당진신문·영남투데이·수원일보·금강일보·디트뉴스·전북중앙·남도일보·광주드림·경북일보·울산제일일보·제주의소리·세종의소리)",
     "구글 뉴스 RSS",
     "기사 본문 보강"
   ],
-  "count": 434,
+  "count": 474,
   "records": [
+    {
+      "date": "2026-08-07",
+      "url": "http://www.gjdream.com/news/articleView.html?idxno=671636",
+      "source": "광주드림",
+      "title": "뽑긴 뽑나요? 광주 초등교사 임용 단 3명",
+      "region": "학령인구",
+      "kinds": [
+        "임용"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-07",
+      "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBtVXA5Ykp5T3ZpMGVhTE5HWjUyOXoxSEEtZ0gwUjRTWjlKc1NlT3NyYVJCMG42a3ktSkVFQWFFOXNnV2huS21CTllqV21wTnhrR2NhTmlqdkMzTkFWNEVlQjhB?oc=5",
+      "source": "서울Pn",
+      "title": "인사발령(국과장 전보, 고위공무원 임용)",
+      "region": "",
+      "kinds": [
+        "전보",
+        "임용"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-07",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5rNFF1dllnc0cxc0lncWotZVJOcU1Gb1N2VmExaWZmODhlTF9EWEZRQ19DUnA5b1llQVMtOVFJbmRGbWcwckNXVjh6eGkyT0lSaGRtbmlTSDBKcy1KUVpzQVBpNWtVWW1mZXc?oc=5",
+      "source": "도민연합뉴스",
+      "title": "산림청 인사발령 [ 2026년 8월 7일자 ]",
+      "region": "",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-07",
+      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1tR21lU1lhUUFjb3ZXYmZWdVFpZWRSUzlKLXFPcHhvamIyMVdlR1lpTVVVTFhKZU1QaEthVkZKZVRURHUyR1F2bm05TFNTWXg1b2FYWU9WeWlMclpjSlBjdjlFcW9YRXAzdEJnck5oQQ?oc=5",
+      "source": "내외일보",
+      "title": "서울특별시교육청 ‘2026. 9. 1.자 정기 인사’ 단행",
+      "region": "서울특별시",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
     {
       "date": "2026-08-06",
       "url": "https://www.sijung.co.kr/news/articleView.html?idxno=434405",
       "source": "시정일보",
       "title": "황대성 송파문화재단 대표 취임식 “서강석 구청장 ‘섬김행정’ 발맞춰 K-컬처 문화도시 완성”",
       "region": "문화도시",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-06",
+      "url": "https://www.sijung.co.kr/news/articleView.html?idxno=434439",
+      "source": "시정일보",
+      "title": "[인사] 도봉구",
+      "region": "도봉구",
+      "kinds": [],
+      "people": [
+        {
+          "name": "김봉식",
+          "dept": "행정지원과",
+          "rank": ""
+        },
+        {
+          "name": "박효진",
+          "dept": "기획예산과",
+          "rank": ""
+        },
+        {
+          "name": "김홍",
+          "dept": "감사담당관",
+          "rank": "담당관"
+        },
+        {
+          "name": "박수관",
+          "dept": "재난안전과",
+          "rank": ""
+        },
+        {
+          "name": "조자훈",
+          "dept": "청년미래과",
+          "rank": ""
+        },
+        {
+          "name": "최정라",
+          "dept": "아동청소년과",
+          "rank": ""
+        }
+      ],
+      "hit": true
+    },
+    {
+      "date": "2026-08-06",
+      "url": "https://www.sijung.co.kr/news/articleView.html?idxno=434434",
+      "source": "시정일보",
+      "title": "[인사] 노원구",
+      "region": "노원구",
+      "kinds": [],
+      "people": [
+        {
+          "name": "장주현",
+          "dept": "자치행정과",
+          "rank": ""
+        },
+        {
+          "name": "김태휘",
+          "dept": "공동주택지원과",
+          "rank": ""
+        },
+        {
+          "name": "표수진",
+          "dept": "행정지원과",
+          "rank": ""
+        },
+        {
+          "name": "김산규",
+          "dept": "자치행정과",
+          "rank": ""
+        },
+        {
+          "name": "고경희",
+          "dept": "체육도시과",
+          "rank": ""
+        },
+        {
+          "name": "이은희",
+          "dept": "징수과",
+          "rank": ""
+        },
+        {
+          "name": "정미경",
+          "dept": "어르신지원과",
+          "rank": ""
+        },
+        {
+          "name": "김일곤",
+          "dept": "공동주택지원과",
+          "rank": ""
+        },
+        {
+          "name": "이현정",
+          "dept": "도시경관과",
+          "rank": ""
+        },
+        {
+          "name": "서지혜",
+          "dept": "감사담당관",
+          "rank": "담당관"
+        },
+        {
+          "name": "박소영",
+          "dept": "행정지원과",
+          "rank": ""
+        },
+        {
+          "name": "김현식",
+          "dept": "문화도시과",
+          "rank": ""
+        },
+        {
+          "name": "최성수",
+          "dept": "기획예산과",
+          "rank": ""
+        },
+        {
+          "name": "구정아",
+          "dept": "재무과",
+          "rank": ""
+        },
+        {
+          "name": "안지은",
+          "dept": "청년정책과",
+          "rank": ""
+        },
+        {
+          "name": "황소화",
+          "dept": "고령사회정책과",
+          "rank": ""
+        },
+        {
+          "name": "진주연",
+          "dept": "교통행정과",
+          "rank": ""
+        },
+        {
+          "name": "김정민",
+          "dept": "푸른도시과",
+          "rank": ""
+        },
+        {
+          "name": "류현준",
+          "dept": "월계1동",
+          "rank": ""
+        },
+        {
+          "name": "최경희",
+          "dept": "중계1동 (이상 행정)",
+          "rank": ""
+        },
+        {
+          "name": "이은미",
+          "dept": "장애인복지과",
+          "rank": ""
+        },
+        {
+          "name": "최은미",
+          "dept": "통합돌봄과",
+          "rank": ""
+        },
+        {
+          "name": "최정란",
+          "dept": "월계3동 (이상 사회복지)",
+          "rank": ""
+        }
+      ],
+      "hit": true
+    },
+    {
+      "date": "2026-08-06",
+      "url": "https://www.ggilbo.com/news/articleView.html?idxno=1174000",
+      "source": "금강일보",
+      "title": "[인사] 충남교육청",
+      "region": "",
+      "kinds": [
+        "전보",
+        "승진"
+      ],
+      "people": [
+        {
+          "name": "가람유",
+          "dept": "최승희◇유치원장 전직",
+          "rank": ""
+        },
+        {
+          "name": "조양유",
+          "dept": "한복연◇유치원장 승진",
+          "rank": ""
+        },
+        {
+          "name": "곽정은",
+          "dept": "천안불당유",
+          "rank": ""
+        },
+        {
+          "name": "금산유",
+          "dept": "송윤근◇초등학교장 전보",
+          "rank": ""
+        },
+        {
+          "name": "김지한",
+          "dept": "천안일봉초",
+          "rank": ""
+        },
+        {
+          "name": "김영선",
+          "dept": "천안쌍정초",
+          "rank": ""
+        },
+        {
+          "name": "문영애",
+          "dept": "천안용곡초",
+          "rank": ""
+        },
+        {
+          "name": "신가초",
+          "dept": "배상식",
+          "rank": ""
+        },
+        {
+          "name": "광덕초",
+          "dept": "신기섭",
+          "rank": ""
+        },
+        {
+          "name": "이윤미",
+          "dept": "천안새샘초",
+          "rank": ""
+        },
+        {
+          "name": "학봉초",
+          "dept": "오유석",
+          "rank": ""
+        },
+        {
+          "name": "신관초",
+          "dept": "이상원",
+          "rank": ""
+        },
+        {
+          "name": "경천초",
+          "dept": "이한숙",
+          "rank": ""
+        },
+        {
+          "name": "반포초",
+          "dept": "조미용",
+          "rank": ""
+        },
+        {
+          "name": "청보초",
+          "dept": "김은숙",
+          "rank": ""
+        },
+        {
+          "name": "남포초",
+          "dept": "김현숙",
+          "rank": ""
+        },
+        {
+          "name": "청룡초",
+          "dept": "오미선",
+          "rank": ""
+        },
+        {
+          "name": "주포초",
+          "dept": "이광열",
+          "rank": ""
+        },
+        {
+          "name": "월전초",
+          "dept": "이재천",
+          "rank": ""
+        },
+        {
+          "name": "대천초",
+          "dept": "정경아",
+          "rank": ""
+        },
+        {
+          "name": "강석원",
+          "dept": "온양온천초",
+          "rank": ""
+        },
+        {
+          "name": "염티초",
+          "dept": "심동섭",
+          "rank": ""
+        },
+        {
+          "name": "연화초",
+          "dept": "윤광수",
+          "rank": ""
+        },
+        {
+          "name": "이은규",
+          "dept": "온양신정초",
+          "rank": ""
+        },
+        {
+          "name": "이인희",
+          "dept": "아산용연초",
+          "rank": ""
+        },
+        {
+          "name": "음봉초",
+          "dept": "함경의",
+          "rank": ""
+        },
+        {
+          "name": "엄사초",
+          "dept": "류신",
+          "rank": ""
+        },
+        {
+          "name": "노성초",
+          "dept": "유연",
+          "rank": ""
+        }
+      ],
+      "hit": false
+    },
+    {
+      "date": "2026-08-06",
+      "url": "http://www.dtnews24.com/news/articleView.html?idxno=814051",
+      "source": "디트뉴스",
+      "title": "[인사] 충남교육청, 9월 1일자 교원・교육전문직원 인사",
+      "region": "",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-06",
+      "url": "http://www.dtnews24.com/news/articleView.html?idxno=814020",
+      "source": "디트뉴스",
+      "title": "충남도 새 조직 진용...조직 개편 후 첫 인사",
+      "region": "안착시",
+      "kinds": [
+        "전보",
+        "승진"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-06",
+      "url": "http://www.ujeil.com/news/articleView.html?idxno=389993",
+      "source": "울산제일일보",
+      "title": "동구 하반기 5급이상 인사 (8월 10일자)",
+      "region": "",
+      "kinds": [
+        "전보",
+        "승진"
+      ],
+      "people": [
+        {
+          "name": "김남규",
+          "dept": "남목3동장",
+          "rank": "동장"
+        },
+        {
+          "name": "오미영",
+          "dept": "기획예산실장",
+          "rank": ""
+        },
+        {
+          "name": "홍윤경",
+          "dept": "회계과장 (총무과 지원근무)",
+          "rank": "과장"
+        },
+        {
+          "name": "강명옥",
+          "dept": "보건행정과장",
+          "rank": "과장"
+        }
+      ],
+      "hit": true
+    },
+    {
+      "date": "2026-08-06",
+      "url": "https://www.jejusori.net/news/articleView.html?idxno=505365",
+      "source": "제주의소리",
+      "title": "이상봉 제주시장 인사청문 ‘연 없는 초선 전진배치’",
+      "region": "제주시",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-06",
+      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE05RUpqVkRwanRrTjgteGdsZU03YXRlaXFmd2RCWmlNTDNZejdtYS1Fdy1FdloybmthNnF3MXNTMnZhbDR2RWpsQm9yemRJa0xNYzhOamlwd1VxaVd4S1BFeWd2RFotc3pNOHpmcWkxQdIBc0FVX3lxTE9PQWNCa1RUSHRlaHA0NUV4cTFMcU9qNVNuZTIyTFFxeGNzOHJiVURHcUJCdl9YbExOampmaEFnZ19ibmVGanlzNU1YRjJMX3JMOXQ5cmMxd3l1Q2NOTWM1eDRWNVVsYVBEQk1GUUtRUFR0TVE?oc=5",
+      "source": "시사저널",
+      "title": "전남광주시 초대 정무부시장 후보 내정 두고 ‘코드 인사’ 논란",
+      "region": "정무부시",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-06",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBXT2JmNV9rSUlERl9scmFmaUFGa255d0lsQ3RSOW1Oa2R3ek13X19oWVE3THNoNHNnekFBTjVQMmI0YkZ3UHZxM2R3bjZQLU4taTlxU3V5Z3MwNFI2QzE3LXB3em91MWM?oc=5",
+      "source": "울산시민신문",
+      "title": "민선9기 울산시 첫 정기인사 13일 단행 예정",
+      "region": "울산시",
+      "kinds": [
+        "정기인사"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-06",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE00OW9rMjItWkZQdHBZWXFIM2hiZVdXTy1VUHpieHBPcmIweUJiUjc1RUxIYUtoM1hVb3pSdUZpMFRDRC1xQ0tiM0ZSTHF6d3Q3dk1FbkxXNHdCQVkxZTZlTkN4cXpiYzNxSnc?oc=5",
+      "source": "천지일보",
+      "title": "영광군, 조직개편 맞춰 간부 인사… 4개 국장 임명",
+      "region": "영광군",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-06",
+      "url": "https://news.google.com/rss/articles/CBMiR0FVX3lxTE1JY3NYdm94WmpNZjBmekgzOTF4ZFFTYU12TC1EVFpIaDhhYWI3NTVFVmh4Wml2WHJfYkdjT2ZFcWR4R2FLVzh3?oc=5",
+      "source": "아산뉴스",
+      "title": "충남교육청, 9월 1일자 교원・교육전문직원 인사 발령",
+      "region": "",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-06",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBWRU1tTW5KVlJTUENjYnZoSHJuVDVkR0tpNklBb0xXNTAxcFNWMklVX0s2bEtoQXFUQklPd2RxX0JiSzdpb3ZScDlwcURCSmdycVJ6VW5wYWNFUmhMNjVURTMwZTZiNHc?oc=5",
+      "source": "광주뉴스",
+      "title": "광주시청 김미경ㆍ정지영 팀장 5급 승진",
+      "region": "광주시",
+      "kinds": [
+        "승진"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-06",
+      "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTFBScjl0MjJ5QzMwLWhrZWttd3NmclNjZ1F3NjB3UnE2bno0VG5faFk0V3A3X2hPWkZIczV3MDU4TnljQ3d1ZWN3X1ZkZ24?oc=5",
+      "source": "뉴스체인지",
+      "title": "[인사] 광주시 2026년 8월 10일자 승진대상자 사전예고",
+      "region": "광주시",
+      "kinds": [
+        "승진"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-06",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9zN085bWJFaWNBRTlSUVFpaWhVeXJTNzN2a0FxMV9odHA1a3F5RDZkR2h0QTJBYnZCTmpzRUxiSUR1ZmVURzhmVjMwcHRKS3Q1cXV2T293dld5QzF0bE8tWjdCaXhzY0JW?oc=5",
+      "source": "창업일보",
+      "title": "국세청 6급 이하 수시 승진 1150명 단행... 일선 세무서와 장기근속자 발탁 인사의 핵심 배경은?",
+      "region": "",
+      "kinds": [
+        "승진"
+      ],
+      "people": [],
+      "hit": true
+    },
+    {
+      "date": "2026-08-06",
+      "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1nalE5eTdUU0tVMHM3enlaYjRUMnVlcjRqak9oTUJjMy1VOWxqZTc5Q3FCZ0lGU0lGMmxrOHdSNzdwTTNGTElFb3pvWExRMmhJX18yaVNtN2JlcDl4TVkwT2dn?oc=5",
+      "source": "timess.co.kr",
+      "title": "광주시, 5급 승진 2명 예고",
+      "region": "광주시",
+      "kinds": [
+        "승진"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-06",
+      "url": "https://news.google.com/rss/articles/CBMiQ0FVX3lxTFBrcHFVX29EcjdJWWctMWd5YlM0a0xxR2hxMjB2RHQ1ZVlxZFp5aXpubXJ3aVFHMFc1cEFyLVBqOTBsM28?oc=5",
+      "source": "경기in",
+      "title": "[인사] 광주시 2026년 8월 10일자 승진대상자 사전예고",
+      "region": "광주시",
+      "kinds": [
+        "승진"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-06",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFB1YWppSUUyVGtlZEpReTJqeFo0UGoyeHBHTFdjUXBleTFuSVZiLU1SXzNKYVF2ZFlOT3ZjTl80c2NiX0lrV2F5Q2F2VVVtdXN3TmVyU3hZbVZGX3M0VGVGM0ZUUnVSbGV2Y3lB?oc=5",
+      "source": "충청뉴스",
+      "title": "충남도, 현장 성과 중심 조직개편 인사 단행",
+      "region": "",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-06",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFAwOFZXZ3NaOWJPaWVHQ2hCSjJoUUFBM3o3TkVoRmlfaGpmQzhBZkN5Q1JGNGw2MmkxQ1VXMkFOVVdPY3lsNUFUMnZsNmdZTlFCaTllQTQ0WjBJWHBORVByVWF5NnJORWFRUFhPeg?oc=5",
+      "source": "atnnews.co.kr",
+      "title": "충남도, 민선 9기 첫 조직개편에 맞춘 인사 단행…4급 이상 77명",
+      "region": "",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-06",
+      "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1PMGx1Q3pTS3lJblM1d0JlWEEwcWtMRkdoeFp6TTc4NEhpRVk0ZEk4VzFUaFdZTmtocWE3R2szQUZYbEZLdi1rRkVDeXEwLWQ5Qmx1ZFBRdlJzX3FPcEpDbEkxRQ?oc=5",
+      "source": "쿠키뉴스",
+      "title": "충남도, 민선 9기 첫 조직개편 인사 단행",
+      "region": "",
       "kinds": [],
       "people": [],
       "hit": false
@@ -184,6 +749,65 @@
       "source": "애드뉴스인천",
       "title": "[인사] 인천시 간부급 인사…경제청 차장 조인권",
       "region": "인천시",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-05",
+      "url": "http://www.dtnews24.com/news/articleView.html?idxno=814010",
+      "source": "디트뉴스",
+      "title": "[인사] 대전 동구",
+      "region": "",
+      "kinds": [
+        "전입",
+        "전출"
+      ],
+      "people": [
+        {
+          "name": "이능우",
+          "dept": "미래세대국장 (전입)",
+          "rank": "국장"
+        },
+        {
+          "name": "동구의회",
+          "dept": "박규영 □ 5급 (전출)",
+          "rank": "5급"
+        },
+        {
+          "name": "유원식",
+          "dept": "미래교육과장 (전입)",
+          "rank": "과장"
+        },
+        {
+          "name": "최원숙",
+          "dept": "효동장",
+          "rank": "동장"
+        },
+        {
+          "name": "동구의회",
+          "dept": "전동배 (전출)",
+          "rank": ""
+        }
+      ],
+      "hit": false
+    },
+    {
+      "date": "2026-08-05",
+      "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE8zVWtLTk5UTnRtUnFfeTZ2andxVnBseHZ6UFQzRmpRWDBOVkNTSkE0VTM0bHBqYWV3NnZyaEExOHcyd3I4aHVvZU9mTnA1eFlvRHZja0p3VkU2ZnVyaVJGUmFBWUZJTWVzLXpVN1BLbXhTY04za2tQdNIBeEFVX3lxTE8zVWtLTk5UTnRtUnFfeTZ2andxVnBseHZ6UFQzRmpRWDBOVkNTSkE0VTM0bHBqYWV3NnZyaEExOHcyd3I4aHVvZU9mTnA1eFlvRHZja0p3VkU2ZnVyaVJGUmFBWUZJTWVzLXpVN1BLbXhTY04za2tQdA?oc=5",
+      "source": "뉴시스",
+      "title": "\"부산TP 회의비로 숙박·식사, 인사·임금피크제 부적정\"",
+      "region": "",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-05",
+      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTFAweG8tcUc3MVgtY0RJVjQzZmdZYmZ1VGpuVFFPZF9nemh0cTRjdzhjamx6WWJjdURtRDRZRDA0V1Rmd3U5TUY0ZVNOeWUzb0ZyQkJybkVCR1JYN3JpNnVHZEZLOV9tTnRLZHFPVUxpeGFhWGZY?oc=5",
+      "source": "강원일보",
+      "title": "[포토뉴스]철원소방서 2026년 하반기 인사발령 임명장 수여식",
+      "region": "",
       "kinds": [],
       "people": [],
       "hit": false
@@ -644,6 +1268,72 @@
       "hit": false
     },
     {
+      "date": "2026-08-04",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5Gb3ZoYTJYNXRwVmFqQm1yS24xRG5ZNjJ1bDlyclBtRFEyRE8wOThwRGpsb0pLUmRMRnYxS0RkeW1yTmlBdUJlTUhXQnZZeTFSRFQxdUlfS1NCN2dHMXg5RWxMemdiM2RBUmZR?oc=5",
+      "source": "시정일보",
+      "title": "강남구, 하반기 인사·조직개편 단행…\"연공서열 깨고 AI·성과 중심 체제 전환\"",
+      "region": "강남구",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-04",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBkN3ZUeVp5UEZNRmV2V2Y0OEpNXzFzaFltS2J1d0Nkb2RDY2p0YVhvYlh6cXQyOWJYYkQ3eXNGUkZ0LUJVYzZhQzl3MzNISjZ4dHZVZ2hOU0pNQ3VFS1o5bQ?oc=5",
+      "source": "TV서울",
+      "title": "강남구, 성과·협업 중심 하반기 인사 단행… AI 시대 조직개편 시동",
+      "region": "강남구",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-04",
+      "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFBleTlMTWtTbkhaVldqYVE5S29LVWRLQjZMQ3hOM2JQbUdHOGk3MjRLV1BFVWhUcW8xOFVwaWNGMVB6Y0JaUHkyaERJMkhNZFk?oc=5",
+      "source": "뉴스1",
+      "title": "[속보]중수청 수사관 6급 이하 특별승진 30% 목표…5급 이하 승진시험",
+      "region": "승진시",
+      "kinds": [
+        "승진"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-04",
+      "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE1YWVVYVzd5TFliZGNFaWlaOG9xempuRFVYck1QVHdhNGFOV1NVZ0tqdzlHOGZIaVhtVlFyOUtzYVcwUkNMbUdXa2dTdw?oc=5",
+      "source": "뉴스체인지",
+      "title": "[인사] 광명시 2026년 8월 승진대상자 사전예고",
+      "region": "광명시",
+      "kinds": [
+        "승진"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-04",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1sNVBLQ0JhWXJuWHNpQ3lhWlhtNXNYSXBXVDFiMWNsaGVpdEdnNG51aTFHa3FibE9xRmQyNm5vV2gwRUR5dmZRT1FDUnBSNTZES3h1T3pfaVJacVBPeV9fYWR2dXpFNlhGZDBvems3dE0?oc=5",
+      "source": "미디어써치",
+      "title": "강남구 인사 개혁…2027년부터 승진에 ‘AI 능력’ 반영한다",
+      "region": "강남구",
+      "kinds": [
+        "승진"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-04",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5TcnoyRnBoVWRCcUtZcXZLenF4dVh0Mm16ZmlsV01KY3doaGVvdWJ3MjU3MS13aGpyT2M2eGN5ajVVcWVrVk1YUWhEbGw1N3NWMG5lSE9pcGlUaUlMNnRjM1Q0Y1V2Q0E3eV9R?oc=5",
+      "source": "퍼블릭뉴스통신",
+      "title": "강남구 인사 단행…성과·문제해결 역량 중심 평가",
+      "region": "강남구",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
       "date": "2026-08-03",
       "url": "http://www.suwonilbo.kr/news/articleView.html?idxno=317037",
       "source": "수원일보",
@@ -1070,6 +1760,16 @@
       "hit": false
     },
     {
+      "date": "2026-08-03",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9Cc2VTakluZVNySTY0VlR2OTVoQVNQeWpaVlRScnJzd2l1aHVYRThaN2o3ZDZsbF84SVdvMjN1cVRPR0d4VWR1YkVRZmRwTDRFWW1DMF9sU2F1dEdpM2h5RFlxdENPcmxTZy05U9IBcEFVX3lxTE1vWW00S1o4dUhoQU4xTUNhcjJJc1BvZU1ldEZ1akRiVzVQTlJ2dXlNQWpvUXpCalA5UzFIWE5XMmxsd05fQ1VjWTBQNmlEWlNxXzAtRHZraGdpZ2RHSUd5NG1SVWxyZHhyLXNqd1JCZHk?oc=5",
+      "source": "남도일보",
+      "title": "현 체제 유지 vs 급별 인사 분리…통합시 인사안 윤곽 나올까",
+      "region": "통합시",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
       "date": "2026-08-02",
       "url": "https://www.ggilbo.com/news/articleView.html?idxno=1172614",
       "source": "금강일보",
@@ -1257,6 +1957,16 @@
       "kinds": [
         "승진"
       ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-02",
+      "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE01eGRsWUVsS3BTNWZDTXNaNHJuMTlJUDMzdXN4Y19UNXpLbGRoMS1Dc3B2U0lQR3lDaElMY2tCMmx3dk1Ob3c?oc=5",
+      "source": "v.daum.net",
+      "title": "추경호표 첫 대규모 인사…‘경제·공간·민생’ 전면 재편",
+      "region": "",
+      "kinds": [],
       "people": [],
       "hit": false
     },
@@ -1884,6 +2594,26 @@
       "hit": false
     },
     {
+      "date": "2026-07-31",
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5qMUlRU2VmNEVEWXNIeXVSRlFscmJrY3ZUa2t1MWRWY1ROVTBQeFF4WVBGenpEcDNNenFYdzlnM2dES3l0RnBFSVpCZTNpZmdUbXRyWTJNS1pTTEXSAWBBVV95cUxQUC1sQTV4OUxmMzNLV1NLVmNXc2EwcDE4SUpPTldRYl9kSlJ1VE96Sk9BT19iUEhnNWwtOEp1NkZzMjBXWldrQ3hCaXA3MjBsT0t0TVJlWGhaOXZIZWY3OEo?oc=5",
+      "source": "연합뉴스",
+      "title": "부산시 공공기관 대표 선임 '속도'…인사청문 확대 보류로 탄력",
+      "region": "부산시",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-07-31",
+      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE94SzN2X0Y4M0tpQWtONlFJLVZvc01Tbm9yMEhQUjRabk43MWVMcXl5Y2YtMGJKblF0MXFpNFQ0ektHa2lFOXdMS2VpZ2g4eGktai1mTFJzZl80QQ?oc=5",
+      "source": "브릿지경제",
+      "title": "【인사】거창군",
+      "region": "거창군",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
       "date": "2026-07-30",
       "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBhbmtweWIzei1ydHo0UDdMRkxXYl84TkxvV2E4eGVzdnlhcGMtUVRPMk94TUNqbDFWYWhnSlJuWW9uVjRsLWZ1bEJpalZLdGtLR0JBZUZCS0FiVVNWU1kzRUtyTzE?oc=5",
       "source": "m-i.kr",
@@ -2284,6 +3014,18 @@
       "hit": false
     },
     {
+      "date": "2026-07-30",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBuVDdBbXE0ZllMQ0NnUWIzd21Id2RUX0hJTnhvSGNlaXVYR2U0V2JrR2N3c3kxcDZkb3VIRENubl9VTElGdTkxQTl3cUE5dUZOaDluUi1NLVhhVVJqWEZuckFUcEwzSUE?oc=5",
+      "source": "음성타임즈",
+      "title": "음성군, 8월1일자 수시인사 … 최종순 비서실장 직무대리 등 8명",
+      "region": "음성군",
+      "kinds": [
+        "직무대리"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
       "date": "2026-07-29",
       "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9YYkdDTzNROFZfdDR3TXZvTDJ4akRyQVFaVTA1QUs3STA4X1NIV3lMM0d6V21oZGJJQ3g3MnZsSllHOUZLanVMTnFiWDRrR3BncHhXbzZXRWNuOXhKN3VYaEVld1VjeWQ2V3oxcl90LXlJaTRZ0gF4QVVfeXFMT2tZRm9ldUV1SnN3OU9vWVlud0NIYlNLMGlqRTh3UGs5M0NUcWZwb0JCcjVnUV9pc2k4ZUptNnE4TUdpVFVBMC03T0RJWEFUQTNWNHQ2Q0ZUVmVsd0tMNlF1S2xWeWhvbzVWdGRjb1lpaGo0MV9VOFpY?oc=5",
       "source": "인천신문",
@@ -2583,6 +3325,19 @@
       "title": "[데스크 칼럼-이주형] 추경호式 인사 철학의 첫 시험대",
       "region": "",
       "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-07-29",
+      "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5rSTUtMEd0TjBKVW5SRXBqUG80WXVhbUFvaFZCQ2ZJa1VfZ19HSFlXWW1wYzlmZnd1aEpSb3RSQ0JwLWstZFl0bnR0WkZVZ05SWDEySg?oc=5",
+      "source": "더경남뉴스",
+      "title": "[인사] 경남 김해시 하반기 정기인사(6급이하 전보)",
+      "region": "김해시",
+      "kinds": [
+        "전보",
+        "정기인사"
+      ],
       "people": [],
       "hit": false
     },
@@ -3411,6 +4166,18 @@
       "hit": false
     },
     {
+      "date": "2026-07-27",
+      "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTFAzZTE2NEUyS2NBY08tajE4elBQZHRrUHk5cUhrYWgyaHhBeVdlb0dXNFVBaC0yYWpreURxTlVwRG1SWFBtM2c?oc=5",
+      "source": "v.daum.net",
+      "title": "인천시, 하반기 정기인사 294명 발표",
+      "region": "인천시",
+      "kinds": [
+        "정기인사"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
       "date": "2026-07-26",
       "url": "https://www.sijung.co.kr/news/articleView.html?idxno=433835",
       "source": "시정일보",
@@ -3956,6 +4723,18 @@
       "region": "통영시",
       "kinds": [
         "전보",
+        "승진"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-07-24",
+      "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1sclpfM3RNZ2Mxa2pLc0lCa2J6eUptYVR2c2dlYkhCeVl5RjFhSi0yYzJFbEQyYWZuV3k3R2dRUjM4X1ZicEptRW8taFJSQUtsSTZseA?oc=5",
+      "source": "v.daum.net",
+      "title": "강남구 노조위원장 하반기 승진 인사 “민선 8기 빚 청산 느낌”",
+      "region": "강남구",
+      "kinds": [
         "승진"
       ],
       "people": [],
