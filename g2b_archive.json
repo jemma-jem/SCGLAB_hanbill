@@ -1,8 +1,93 @@
 {
-  "updated_at": "2026-08-09T03:00:06.644Z",
+  "updated_at": "2026-08-10T02:42:00.038Z",
   "source": "조달청_나라장터 입찰공고정보서비스 (공공데이터포털)",
-  "count": 752,
+  "count": 763,
   "records": [
+    {
+      "kind": "물품",
+      "cats": [
+        "tree"
+      ],
+      "title": "2026년 벼 병해충 본답방제 지원사업 항공방제 3차 약제 구입",
+      "org": "경상남도 하동군 고전면",
+      "ntceInstt": "경상남도 하동군 고전면",
+      "region": "하동군",
+      "bidNo": "R26BK01672924-000",
+      "date": "2026-08-09",
+      "closeDate": "2026-08-18",
+      "amount": 35836364,
+      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01672924&bidPbancOrd=000",
+      "charge": "김대규",
+      "chargeTel": "***********"
+    },
+    {
+      "kind": "공사",
+      "cats": [
+        "light"
+      ],
+      "title": "2026년 하반기 도로조명 유지보수공사 단가계약(1지역)",
+      "org": "충청남도 아산시",
+      "ntceInstt": "충청남도 아산시",
+      "region": "아산시",
+      "bidNo": "R26BK01672880-000",
+      "date": "2026-08-08",
+      "closeDate": "2026-08-14",
+      "amount": 90909091,
+      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01672880&bidPbancOrd=000",
+      "charge": "임태혁",
+      "chargeTel": "041-540-2276"
+    },
+    {
+      "kind": "공사",
+      "cats": [
+        "light"
+      ],
+      "title": "2026년 하반기 도로조명 유지보수공사 단가계약(2지역)",
+      "org": "충청남도 아산시",
+      "ntceInstt": "충청남도 아산시",
+      "region": "아산시",
+      "bidNo": "R26BK01672881-000",
+      "date": "2026-08-08",
+      "closeDate": "2026-08-14",
+      "amount": 90909091,
+      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01672881&bidPbancOrd=000",
+      "charge": "임태혁",
+      "chargeTel": "041-540-2276"
+    },
+    {
+      "kind": "공사",
+      "cats": [
+        "light"
+      ],
+      "title": "2026년 하반기 도로조명 유지보수공사 단가계약(3지역)",
+      "org": "충청남도 아산시",
+      "ntceInstt": "충청남도 아산시",
+      "region": "아산시",
+      "bidNo": "R26BK01672883-000",
+      "date": "2026-08-08",
+      "closeDate": "2026-08-14",
+      "amount": 90909091,
+      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01672883&bidPbancOrd=000",
+      "charge": "임태혁",
+      "chargeTel": "041-540-2276"
+    },
+    {
+      "kind": "공사",
+      "cats": [
+        "light"
+      ],
+      "title": "2026년 하반기 도로조명 유지보수공사 단가계약(4지역)",
+      "org": "충청남도 아산시",
+      "ntceInstt": "충청남도 아산시",
+      "region": "아산시",
+      "bidNo": "R26BK01672885-000",
+      "date": "2026-08-08",
+      "closeDate": "2026-08-14",
+      "amount": 90909091,
+      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01672885&bidPbancOrd=000",
+      "charge": "임태혁",
+      "chargeTel": "041-540-2276"
+    },
     {
       "kind": "물품",
       "cats": [
@@ -221,7 +306,7 @@
       "winner": "(주)정토건설",
       "winnerCeo": "손영준",
       "winnerTel": "061-864-2402",
-      "winnerAddr": "전남광주통합특별시 장흥군 장흥읍 북부로 39, 상가동 201호 (수창아트빌아파트)",
+      "winnerAddr": "전남광주통합특별시 장흥군 부산면 자미1길 92-15 ",
       "amount": 58846740,
       "url": ""
     },
@@ -259,6 +344,24 @@
       "winnerTel": "043-421-3110",
       "winnerAddr": "충청북도 단양군 단양읍 상진14길 7-0",
       "amount": 33359700,
+      "url": ""
+    },
+    {
+      "type": "win",
+      "kind": "공사",
+      "cats": [
+        "tree"
+      ],
+      "title": "2026년 남부권역 가로수 병해충 방제사업(2차,단가)",
+      "org": "경기도 이천시",
+      "region": "이천시",
+      "bidNo": "R26BK01671337-000",
+      "date": "2026-08-07",
+      "winner": "주식회사 에버그린나무병원",
+      "winnerCeo": "양정희",
+      "winnerTel": "031-631-1421",
+      "winnerAddr": "경기도 이천시 단월로 78-0 (단월동) 1층,상가1호",
+      "amount": 29700000,
       "url": ""
     },
     {
@@ -518,6 +621,24 @@
       "winnerTel": "054-734-8800",
       "winnerAddr": "경상북도 영덕군 강구면 강구해안길 64-0 ,2층",
       "amount": 51624876,
+      "url": ""
+    },
+    {
+      "type": "win",
+      "kind": "공사",
+      "cats": [
+        "light"
+      ],
+      "title": "2026년 노후 가로보안등 정비공사",
+      "org": "충청남도 서산시",
+      "region": "서산시",
+      "bidNo": "R26BK01660858-000",
+      "date": "2026-08-06",
+      "winner": "영진이앤지 주식회사",
+      "winnerCeo": "이중완",
+      "winnerTel": "031-435-8409",
+      "winnerAddr": "충청남도 서산시 해미면 내포로 2478",
+      "amount": 31322800,
       "url": ""
     },
     {
@@ -869,6 +990,60 @@
       "url": ""
     },
     {
+      "type": "win",
+      "kind": "공사",
+      "cats": [
+        "light"
+      ],
+      "title": "2026년 처인구 가로등 유지보수 연간단가공사(5권역_2차)",
+      "org": "경기도 용인시 처인구",
+      "region": "처인구",
+      "bidNo": "R26BK01656295-000",
+      "date": "2026-08-05",
+      "winner": "대성건설",
+      "winnerCeo": "문서연",
+      "winnerTel": "031-285-6979",
+      "winnerAddr": "경기도 용인시 기흥구 강남동로114번길 19 (상하동) 102호",
+      "amount": 128760262,
+      "url": ""
+    },
+    {
+      "type": "win",
+      "kind": "공사",
+      "cats": [
+        "light"
+      ],
+      "title": "2026년 처인구 가로등 유지보수 연간단가공사(1권역_2차)",
+      "org": "경기도 용인시 처인구",
+      "region": "처인구",
+      "bidNo": "R26BK01656077-000",
+      "date": "2026-08-05",
+      "winner": "(주)두원이엔씨",
+      "winnerCeo": "김윤숙",
+      "winnerTel": "031-757-6821",
+      "winnerAddr": "경기도 용인시 처인구 모현면 백옥대로 2182-31",
+      "amount": 126890000,
+      "url": ""
+    },
+    {
+      "type": "win",
+      "kind": "공사",
+      "cats": [
+        "light"
+      ],
+      "title": "2026년 처인구 가로등 유지보수 연간단가공사(3권역_2차)",
+      "org": "경기도 용인시 처인구",
+      "region": "처인구",
+      "bidNo": "R26BK01656179-000",
+      "date": "2026-08-05",
+      "winner": "주식회사 자담이엔지",
+      "winnerCeo": "정재진",
+      "winnerTel": "070-8888-4206",
+      "winnerAddr": "경기도 용인시 기흥구 강남로 8, 9층 905-19호 (구갈동,우성메디피아)",
+      "amount": 127912720,
+      "url": ""
+    },
+    {
       "kind": "공사",
       "cats": [
         "light"
@@ -1177,6 +1352,24 @@
       "winnerTel": "***********",
       "winnerAddr": "경상북도 울진군 평해읍 오곡1길 176",
       "amount": 53772600,
+      "url": ""
+    },
+    {
+      "type": "win",
+      "kind": "공사",
+      "cats": [
+        "rain"
+      ],
+      "title": "우기철 긴급민원 빗물받이 정비공사",
+      "org": "인천광역시 계양구",
+      "region": "계양구",
+      "bidNo": "R26BK01654136-000",
+      "date": "2026-08-04",
+      "winner": "넥시아 주식회사",
+      "winnerCeo": "박준위",
+      "winnerTel": "032-831-1666",
+      "winnerAddr": "인천광역시 연수구 인천타워대로 420호",
+      "amount": 67653380,
       "url": ""
     },
     {
