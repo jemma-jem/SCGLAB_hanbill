@@ -1,13 +1,767 @@
 {
-  "updated_at": "2026-08-09T02:24:27.150Z",
+  "updated_at": "2026-08-10T02:29:31.468Z",
   "sources": [
     "시정일보 RSS(피플/전체)",
     "지역지 직접 RSS(동부뉴스·투데이군산·당진신문·영남투데이·수원일보·금강일보·디트뉴스·전북중앙·남도일보·광주드림·경북일보·울산제일일보·제주의소리·세종의소리)",
     "구글 뉴스 RSS",
     "기사 본문 보강"
   ],
-  "count": 527,
+  "count": 550,
   "records": [
+    {
+      "date": "2026-08-10",
+      "url": "https://www.ggilbo.com/news/articleView.html?idxno=1174357",
+      "source": "금강일보",
+      "title": "음성군 안전보안관, 무극시장 일원서 폭염 대응 안전캠페인 실시",
+      "region": "음성군",
+      "kinds": [
+        "전보"
+      ],
+      "people": [
+        {
+          "name": "갈증을",
+          "dept": "느끼지 않더라도 충분한 물을 자주 마시기",
+          "rank": ""
+        },
+        {
+          "name": "가장",
+          "dept": "더운 시간대인 낮에는 야외 활동과 농작업 자제하기",
+          "rank": ""
+        },
+        {
+          "name": "가급적",
+          "dept": "그늘이나 실내 등 시원한 장소에서 휴식하기",
+          "rank": ""
+        }
+      ],
+      "hit": true
+    },
+    {
+      "date": "2026-08-10",
+      "url": "https://www.ggilbo.com/news/articleView.html?idxno=1174341",
+      "source": "금강일보",
+      "title": "음성군, ‘출입국·외국인사무소 음성출장소’ 설치 건의",
+      "region": "음성군",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-10",
+      "url": "https://www.jejusori.net/news/articleView.html?idxno=505437",
+      "source": "제주의소리",
+      "title": "도의원 출신 ‘청문 불패’? 이상봉 제주시장 후보자 인사청문 21일",
+      "region": "제주시",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-10",
+      "url": "https://www.sjsori.com/news/articleView.html?idxno=88025",
+      "source": "세종의소리",
+      "title": "강미애 교육감 첫 인사, 교육국장 김명숙 등 101명 이동",
+      "region": "세종특별자치시",
+      "kinds": [
+        "전보",
+        "승진",
+        "정기인사"
+      ],
+      "people": [
+        {
+          "name": "김명숙",
+          "dept": "교육국장",
+          "rank": "국장"
+        },
+        {
+          "name": "오기열",
+          "dept": "학교정책과장",
+          "rank": "과장"
+        },
+        {
+          "name": "김일환",
+          "dept": "미래기획관",
+          "rank": ""
+        },
+        {
+          "name": "최미연",
+          "dept": "교원인사과장",
+          "rank": "과장"
+        },
+        {
+          "name": "정정숙",
+          "dept": "세종교육원 교육연수부장",
+          "rank": ""
+        },
+        {
+          "name": "감사관",
+          "dept": "청렴감찰담당 최수영",
+          "rank": ""
+        },
+        {
+          "name": "한유화",
+          "dept": "학교정책과 학교정책기획담당",
+          "rank": ""
+        },
+        {
+          "name": "양한준",
+          "dept": "유초등교육과 특수교육지원센터담당",
+          "rank": ""
+        },
+        {
+          "name": "팽주만",
+          "dept": "중등교육과 중등교육과정담당",
+          "rank": ""
+        },
+        {
+          "name": "김율리",
+          "dept": "중등교육과 중등장학담당",
+          "rank": ""
+        },
+        {
+          "name": "유지연",
+          "dept": "교원인사과 유초등인사담당",
+          "rank": ""
+        },
+        {
+          "name": "김도영",
+          "dept": "교원인사과 중등인사담당",
+          "rank": ""
+        },
+        {
+          "name": "신동님",
+          "dept": "교원인사과 교원역량강화담당",
+          "rank": ""
+        },
+        {
+          "name": "김제천",
+          "dept": "운영지원과 정책보좌담당",
+          "rank": ""
+        },
+        {
+          "name": "이연주",
+          "dept": "교육복지과 교육복지담당",
+          "rank": ""
+        },
+        {
+          "name": "박민아",
+          "dept": "노사정책과 노사정책담당",
+          "rank": ""
+        },
+        {
+          "name": "김동겸",
+          "dept": "학교지원본부 교권보호담당",
+          "rank": ""
+        },
+        {
+          "name": "문경미",
+          "dept": "미래기획관",
+          "rank": ""
+        },
+        {
+          "name": "김세나",
+          "dept": "학교정책과",
+          "rank": ""
+        },
+        {
+          "name": "이미향",
+          "dept": "학교정책과",
+          "rank": ""
+        },
+        {
+          "name": "노우석",
+          "dept": "중등교육과",
+          "rank": ""
+        },
+        {
+          "name": "신세일",
+          "dept": "중등교육과",
+          "rank": ""
+        },
+        {
+          "name": "한동헌",
+          "dept": "중등교육과",
+          "rank": ""
+        },
+        {
+          "name": "심현아",
+          "dept": "중등교육과",
+          "rank": ""
+        },
+        {
+          "name": "남수정",
+          "dept": "교원인사과",
+          "rank": ""
+        },
+        {
+          "name": "류지은",
+          "dept": "교원인사과",
+          "rank": ""
+        },
+        {
+          "name": "유주현",
+          "dept": "교원인사과",
+          "rank": ""
+        },
+        {
+          "name": "이형곤",
+          "dept": "학교지원본부",
+          "rank": ""
+        },
+        {
+          "name": "황나영",
+          "dept": "학교지원본부",
+          "rank": ""
+        },
+        {
+          "name": "강영숙",
+          "dept": "학교지원본부",
+          "rank": ""
+        },
+        {
+          "name": "박지연",
+          "dept": "평생교육원",
+          "rank": ""
+        },
+        {
+          "name": "감사관",
+          "dept": "남정아",
+          "rank": ""
+        },
+        {
+          "name": "유명희",
+          "dept": "유초등교육과",
+          "rank": ""
+        },
+        {
+          "name": "김정미",
+          "dept": "교육복지과",
+          "rank": ""
+        },
+        {
+          "name": "홍성무",
+          "dept": "노사정책과",
+          "rank": ""
+        },
+        {
+          "name": "전보",
+          "dept": "교육문화원 김수정 □ 교장․원장",
+          "rank": ""
+        },
+        {
+          "name": "도란유",
+          "dept": "최은영",
+          "rank": ""
+        },
+        {
+          "name": "전의중",
+          "dept": "홍순덕 □ 교장․원장 전직",
+          "rank": ""
+        },
+        {
+          "name": "새롬초",
+          "dept": "김삼헌",
+          "rank": ""
+        },
+        {
+          "name": "종촌초",
+          "dept": "박병관",
+          "rank": ""
+        },
+        {
+          "name": "연양초",
+          "dept": "정종필",
+          "rank": ""
+        },
+        {
+          "name": "최복락",
+          "dept": "조치원신봉초",
+          "rank": ""
+        },
+        {
+          "name": "도담중",
+          "dept": "백윤희 □ 교장․원장 승진",
+          "rank": ""
+        },
+        {
+          "name": "늘봄유",
+          "dept": "김미덕",
+          "rank": ""
+        },
+        {
+          "name": "솔빛숲유",
+          "dept": "양영란",
+          "rank": ""
+        },
+        {
+          "name": "나성중",
+          "dept": "김송이",
+          "rank": ""
+        },
+        {
+          "name": "다정중",
+          "dept": "신현숙",
+          "rank": ""
+        },
+        {
+          "name": "새롬고",
+          "dept": "김응현 □ 교장․원장 중임",
+          "rank": ""
+        },
+        {
+          "name": "감성초",
+          "dept": "김상희",
+          "rank": ""
+        },
+        {
+          "name": "여울초",
+          "dept": "류상의",
+          "rank": ""
+        },
+        {
+          "name": "솔빛초",
+          "dept": "정원식",
+          "rank": ""
+        },
+        {
+          "name": "새뜸중",
+          "dept": "박길선",
+          "rank": ""
+        },
+        {
+          "name": "세종중",
+          "dept": "박헌정 □ 교감․원감 전보",
+          "rank": ""
+        },
+        {
+          "name": "해들유",
+          "dept": "문소영",
+          "rank": ""
+        },
+        {
+          "name": "가득유",
+          "dept": "조현서",
+          "rank": ""
+        },
+        {
+          "name": "나성초",
+          "dept": "김은경",
+          "rank": ""
+        },
+        {
+          "name": "아름초",
+          "dept": "박주호",
+          "rank": ""
+        },
+        {
+          "name": "의랑초",
+          "dept": "백선수",
+          "rank": ""
+        },
+        {
+          "name": "연서초",
+          "dept": "정상희",
+          "rank": ""
+        },
+        {
+          "name": "연양초",
+          "dept": "최유리",
+          "rank": ""
+        },
+        {
+          "name": "해밀중",
+          "dept": "박은영",
+          "rank": ""
+        },
+        {
+          "name": "부강중",
+          "dept": "안선미",
+          "rank": ""
+        },
+        {
+          "name": "두루고",
+          "dept": "박일숙 □ 교감․원감 전직",
+          "rank": ""
+        },
+        {
+          "name": "소담초",
+          "dept": "서영선",
+          "rank": ""
+        },
+        {
+          "name": "반곡초",
+          "dept": "주정훈",
+          "rank": ""
+        },
+        {
+          "name": "글벗중",
+          "dept": "김영주",
+          "rank": ""
+        },
+        {
+          "name": "다정고",
+          "dept": "최선미",
+          "rank": ""
+        },
+        {
+          "name": "온세종",
+          "dept": "박지현 □ 교감․원감 승진",
+          "rank": ""
+        },
+        {
+          "name": "새움유",
+          "dept": "김미진",
+          "rank": ""
+        },
+        {
+          "name": "글벗유",
+          "dept": "서혜영",
+          "rank": ""
+        },
+        {
+          "name": "나래유",
+          "dept": "손현진",
+          "rank": ""
+        }
+      ],
+      "hit": false
+    },
+    {
+      "date": "2026-08-10",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5EQm1yUjVRcFBSekhfRWFSX1JvV251M3hGQWRWUEVteUVDXzIzVk5uZUJPVExnTUhGc0psVXpLOGZfazdfVXNQdl9Ndng3UURLcVJQRWstV051NUIxaG83ZNIBeEFVX3lxTFBKY0ZrRk5KbW5sazdCT190LW5IZXFHaWdEVUJoS1NvMEhIZGtCWlNnbHJFc3JDWGF1d3pybEYtWEtWTDF3eTViQUVtUFU5NnZSMVFaNThGNE1LcG82WUZzdFFrRnduZEFpaDliVmhCNGNyWGRLMjBOZA?oc=5",
+      "source": "뉴시스",
+      "title": "울산시, 민선9기 5급 이상 첫 정기인사 171명…능력중심",
+      "region": "울산시",
+      "kinds": [
+        "정기인사"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-10",
+      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBBaF9ZSzZZZWxMbm5hQmU2TXpIUDh0blk1bHFLblJMbjdtS08zeXNpWklObTRESTBCWjN5QzFSal90QU82QnJsVkxKR2dSdzNoaFdHbmtwaERWcXp5NGRFeFV0WkljVmJiTmpLeGlYT3E1ZG_SAXZBVV95cUxNZXZEUlphR2ExNEtMTXA1V3JrQjJOTXdtOW5qVjlLUzNkVFMzQjliX0ZoZGlqUjEtQUFPV0JiVWU2TmpZTWROdUwweG5pQTEwcmFiR3ZBb2tqV1l3UVJqSjdjejJaTWVYemVnX29pU1B3QXNKUzd3?oc=5",
+      "source": "LG헬로비전",
+      "title": "인천시교육청, 470명 대상 정기인사 단행",
+      "region": "인천시",
+      "kinds": [
+        "정기인사"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-09",
+      "url": "http://www.suwonilbo.kr/news/articleView.html?idxno=317216",
+      "source": "수원일보",
+      "title": "[인사] 국무조정실·국무총리비서실",
+      "region": "",
+      "kinds": [],
+      "people": [
+        {
+          "name": "방진아",
+          "dept": "청년정책기획관",
+          "rank": ""
+        },
+        {
+          "name": "이순아",
+          "dept": "청년정책협력관",
+          "rank": ""
+        },
+        {
+          "name": "손진욱",
+          "dept": "정무기획비서관",
+          "rank": ""
+        },
+        {
+          "name": "이화원",
+          "dept": "디지털소통비서관",
+          "rank": ""
+        },
+        {
+          "name": "범정부",
+          "dept": "생명지킴추진본부 자살예방총괄국장 박용우",
+          "rank": "국장"
+        },
+        {
+          "name": "송호근",
+          "dept": "평가관리팀장",
+          "rank": "팀장"
+        },
+        {
+          "name": "최서락",
+          "dept": "청년정책지원과장",
+          "rank": "과장"
+        },
+        {
+          "name": "최태용",
+          "dept": "행정안전부 국민생명안전기획단 피해지원총괄과장",
+          "rank": "과장"
+        }
+      ],
+      "hit": true
+    },
+    {
+      "date": "2026-08-09",
+      "url": "http://www.suwonilbo.kr/news/articleView.html?idxno=317215",
+      "source": "수원일보",
+      "title": "[인사] 경기 광명시청",
+      "region": "광명시",
+      "kinds": [
+        "전보",
+        "승진"
+      ],
+      "people": [
+        {
+          "name": "박광희",
+          "dept": "행정안전국장",
+          "rank": "국장"
+        },
+        {
+          "name": "황희민",
+          "dept": "돌봄복지국장",
+          "rank": "국장"
+        },
+        {
+          "name": "오하정",
+          "dept": "시민소통관",
+          "rank": ""
+        },
+        {
+          "name": "이미경",
+          "dept": "예산법무과장",
+          "rank": "과장"
+        },
+        {
+          "name": "유연홍",
+          "dept": "정보통신과장",
+          "rank": "과장"
+        },
+        {
+          "name": "황용운",
+          "dept": "안전총괄과장",
+          "rank": "과장"
+        },
+        {
+          "name": "홍찬용",
+          "dept": "세정과장",
+          "rank": "과장"
+        },
+        {
+          "name": "이상진",
+          "dept": "체육진흥과장",
+          "rank": "과장"
+        },
+        {
+          "name": "엄인봉",
+          "dept": "도차량관리과장",
+          "rank": "과장"
+        },
+        {
+          "name": "김정임",
+          "dept": "건강증진과장",
+          "rank": "과장"
+        },
+        {
+          "name": "박진영",
+          "dept": "도서관정책과장",
+          "rank": "과장"
+        },
+        {
+          "name": "김서영",
+          "dept": "광명2동장",
+          "rank": "동장"
+        },
+        {
+          "name": "김복자",
+          "dept": "철산2동장",
+          "rank": "동장"
+        },
+        {
+          "name": "김선미",
+          "dept": "철산3동장",
+          "rank": "동장"
+        },
+        {
+          "name": "최미현",
+          "dept": "복지정책과장",
+          "rank": "과장"
+        },
+        {
+          "name": "박준용",
+          "dept": "노인장애인과장",
+          "rank": "과장"
+        },
+        {
+          "name": "서혜승",
+          "dept": "보육정책과장",
+          "rank": "과장"
+        },
+        {
+          "name": "손영만",
+          "dept": "자원순환과장",
+          "rank": "과장"
+        },
+        {
+          "name": "이승용",
+          "dept": "정수과장",
+          "rank": "과장"
+        },
+        {
+          "name": "나기효",
+          "dept": "보건위생과장",
+          "rank": "과장"
+        },
+        {
+          "name": "박해권",
+          "dept": "감염병관리과장",
+          "rank": "과장"
+        }
+      ],
+      "hit": true
+    },
+    {
+      "date": "2026-08-09",
+      "url": "http://www.jjn.co.kr/news/articleView.html?idxno=1048891",
+      "source": "전북중앙",
+      "title": "도교육청, 하반기 초중등 교육공무원 정기인사 단행",
+      "region": "",
+      "kinds": [
+        "임용",
+        "정기인사"
+      ],
+      "people": [
+        {
+          "name": "이강자",
+          "dept": "전주교육장 (전주효정중학교장)",
+          "rank": ""
+        },
+        {
+          "name": "주중일",
+          "dept": "군산교육장 (전주오송초등학교장)",
+          "rank": ""
+        },
+        {
+          "name": "정영수",
+          "dept": "익산교육장 (웅포중학교장)",
+          "rank": ""
+        },
+        {
+          "name": "오문환",
+          "dept": "정읍교육장 (완주중학교장)",
+          "rank": ""
+        },
+        {
+          "name": "이정수",
+          "dept": "무주교육장 (옥산초등학교장)",
+          "rank": ""
+        },
+        {
+          "name": "사향희",
+          "dept": "장수교육장 (수지초등학교장)",
+          "rank": ""
+        },
+        {
+          "name": "황수지",
+          "dept": "완주교육장 (전주솔빛중학교장)",
+          "rank": ""
+        },
+        {
+          "name": "허인석",
+          "dept": "순창교육장 (인계초등학교장)",
+          "rank": ""
+        }
+      ],
+      "hit": false
+    },
+    {
+      "date": "2026-08-09",
+      "url": "http://www.jjn.co.kr/news/articleView.html?idxno=1048863",
+      "source": "전북중앙",
+      "title": "전북자치도, 첫 정기인사 근평 공정성 문제 날세워",
+      "region": "",
+      "kinds": [
+        "전보",
+        "승진",
+        "정기인사"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-09",
+      "url": "https://www.namdonews.com/news/articleView.html?idxno=919501",
+      "source": "남도일보",
+      "title": "시민추천 부시장 인사청문회 벼르는 통합시의회",
+      "region": "통합시",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-09",
+      "url": "http://www.ujeil.com/news/articleView.html?idxno=390064",
+      "source": "울산제일일보",
+      "title": "송재창 한국은행 울산본부장 부임",
+      "region": "",
+      "kinds": [
+        "보직부여"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-09",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5LbTJ1NkpjVmROR0xfaTRsRVlFd0FCSERsNXY4dkFzNWpudDZMWkdoNHlFVUVOSXdEbmNGOW42Q01SYWRqVXZ2OThRYUlJN1dONEZTQTNla0xONXdfM281eGpFRUpOR1N4SXpTQ3dB?oc=5",
+      "source": "G밸리타임스",
+      "title": "한달반 미뤘던 광명시 정기인사…민선9기 첫 조직개편 주인공은",
+      "region": "광명시",
+      "kinds": [
+        "정기인사"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-09",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5OcC1WOW4xR085aUZhWHY5b0xFS0xEVHc4Z0xrRHlobmZHc1Boak5XR2h3SVVEZ0R1WERuaGJJSnE0X1BaaWZZOERieGh6MnQyeWxJbzgzWHBlcklmWWlxeVBhNXZfMWt1QTk3d1YtaWw?oc=5",
+      "source": "dailyguard.co.kr",
+      "title": "[인사] 경기도 광주시 (2026년 8월 10일자)",
+      "region": "광주시",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-09",
+      "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFBHR2JjdlZHVGRzRlJvT004aU55cHl6SmJkT0tYZWpidkVodWp1dHl0cm9qVGRJOGpmUmdWQ09aMkhwd3JETnhlNHBTNDZ0ZW8?oc=5",
+      "source": "v.daum.net",
+      "title": "강삼영 교육감 ‘역대 최대 폭’ 인사 단행… 일선 학교장 전진 배치",
+      "region": "",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-09",
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5VMGNpT2J4UXNFUUZBRXp4UnoxWFZmSmVNY0lGcFUxUWo0TS1WbFNqMUdJZXpvQlEyLTgyaGczbTdkWDlqLWtGaER2R0NVU3VRdnlBMjdxUE1ydlhOd0xmZW5pbUJmdw?oc=5",
+      "source": "충청게릴라뉴스",
+      "title": "대전교육청 9월 1일자 인사 단행… 명달호 교육국장·김옥세 교육정책과장",
+      "region": "",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-09",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9DdjN4Z3pjVFR4a2RGb184NnlRdTBKN0I0ek5Yd05hZktDdmFyVU5sY3N4aTdJT2U4ZlFMTWQteGRfWVhYaFc2dEtkaUVQekFFeDU5YmU0a3Jzck8zMVBVTU9GM0wwdy1lRkZqdg?oc=5",
+      "source": "전국매일신문",
+      "title": "광명시, 민선9기 첫 조직개편 인사 단행",
+      "region": "광명시",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
     {
       "date": "2026-08-08",
       "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBZOVpZazN3aGVoTWotMF9YZ0FHcUExSzNWVVRsQkJnclJneEpsOVZiTEFsZjd1enBSZmxYbVVKZU1nSXRoWHpxdmxTWW52eTBqV3JncUhzQWNIVTNtOVpFOE5VOU9uMXpaTkFZUE9n?oc=5",
@@ -547,6 +1301,32 @@
       "title": "전북교육청 신임 교육국장에 최지윤 교장…교원·전문직 인사 단행",
       "region": "",
       "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-07",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE4zdGI5S0o5S0ROSUR4WWpOTTdSTjNrNjlfZjRPLU9rcEktVVhlRzByWGh5VlBCTmpHaWhhTXJVS21sdlZ4TTVLWXFBQnJNWmJ5SExvY19COFNRTnNEWkhaVWZpai1IdjAycUdB?oc=5",
+      "source": "웹플러스뉴스",
+      "title": "[인사] 대구시,5급 승진 전보",
+      "region": "대구시",
+      "kinds": [
+        "전보",
+        "승진"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-07",
+      "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1ocUZVd1RsWmxIVGVjekxpNjJ1S1RwR2hPQUFxVU0zZE5lUENFU0kxT3RIdzdOSk5KSG1EcDlMT0xLOTVDSGhwTnlqb2c4WVMtamkzOUZOR2Q2OXpmTGZjc3Vn0gFmQVVfeXFMT1RxVC1ZdFNjc21WMGVIS04ya1o4T3ZfNE5Qb3dSbDhWSXVsM3NHbGJBd2M5MWd5UUo5aTVSZFV1ekNNQl8zeXZLT0tRdmtsbVo3SkZtVXpNY2hVLTViWURCaV83dXlR?oc=5",
+      "source": "거제인터넷신문",
+      "title": "[2신]거제시, 7일 승진자 13명 보직 부여 및 25명 수시인사 단행",
+      "region": "거제시",
+      "kinds": [
+        "승진",
+        "보직부여"
+      ],
       "people": [],
       "hit": false
     },
@@ -1117,6 +1897,16 @@
       "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9ib2N3ZTdaakgxdzJud29SVVU5UzFYZl9FUjRicjUzLXNEWE0yMmpCaERxdS1SbFJ5dWVBRlRMdVBMNVR2czJ2UC1qa0lnVzFyVVFlMjgtVnJsdw?oc=5",
       "source": "파이낸셜뉴스",
       "title": "충남도 첫 조직개편 후 인사 단행…4급 이상 총 77명",
+      "region": "",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-06",
+      "url": "https://news.google.com/rss/articles/CBMiREFVX3lxTFA5R0M0QWZKUmdhY1YySDNUX3pqcFNERV9RRDh4SnVuSUpKN3lzU2FTYVhwelREYmpLMHZjRTJnRktfeWYw?oc=5",
+      "source": "광역행정신문",
+      "title": "충남도, 민선 9기 조직개편 맞물려 4급 이상 77명 인사 단행",
       "region": "",
       "kinds": [],
       "people": [],
@@ -2368,6 +3158,16 @@
         "승진",
         "정기인사"
       ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-03",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBkYzltay1jZkVnNGVzT1lzMTVieWoyTXc5aUhNMXpBeFV6eHR0X1F0YVZWZzJSazJDYjJURzJEU24zRnp0SEdvM01VRlV6VC12U2Rlc21qektBcVVfeVRDM1R5MWdaY2lSMmhTcDJB?oc=5",
+      "source": "서울Pn",
+      "title": "[인사]",
+      "region": "",
+      "kinds": [],
       "people": [],
       "hit": false
     },
@@ -4359,6 +5159,16 @@
       "source": "iusm.co.kr",
       "title": "울산시의회 6급 이하 인사",
       "region": "울산시",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-07-28",
+      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE4xUWZXOC1xMEt3SlNJTk5wZ2VaS2xSMDM4Yjl1bjRmc2IxTWZvX3Z4MG43VXNyN1BPNC1ibXBLSjNQLWZKYVBWVUdiNDRycUJFWDRJenJzZnZjQkdCTlFHdnJoY0xST0lJa3c2Y05Ycw?oc=5",
+      "source": "양산신문",
+      "title": "민선9기 첫 인사, 조직 안정·연속성 방점",
+      "region": "",
       "kinds": [],
       "people": [],
       "hit": false
@@ -6406,6 +7216,16 @@
         "승진",
         "정기인사"
       ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-07-20",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBLdFRRdW9iZkZiaXdva2dTSDBWaGs3WVlvNzFwR1pnR0lVSXA0QjdjQWRkN3B1RExXOXRubnE0Z09KMWQ4bFk3c1lyT2czTE9pRWttRS1xd05Belp6ZVJOQ0lRZXo?oc=5",
+      "source": "베타뉴스",
+      "title": "IBK투자증권, 임원·부서장급 인사 단행",
+      "region": "",
+      "kinds": [],
       "people": [],
       "hit": false
     },
