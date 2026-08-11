@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-08-10T02:29:31.468Z",
+  "updated_at": "2026-08-11T02:23:02.560Z",
   "sources": [
     "시정일보 RSS(피플/전체)",
     "지역지 직접 RSS(동부뉴스·투데이군산·당진신문·영남투데이·수원일보·금강일보·디트뉴스·전북중앙·남도일보·광주드림·경북일보·울산제일일보·제주의소리·세종의소리)",
     "구글 뉴스 RSS",
     "기사 본문 보강"
   ],
-  "count": 550,
+  "count": 594,
   "records": [
     {
       "date": "2026-08-10",
@@ -451,6 +451,665 @@
       "hit": false
     },
     {
+      "date": "2026-08-10",
+      "url": "http://www.suwonilbo.kr/news/articleView.html?idxno=317234",
+      "source": "수원일보",
+      "title": "[인사] 문화체육관광부",
+      "region": "",
+      "kinds": [
+        "전보"
+      ],
+      "people": [
+        {
+          "name": "배양희",
+          "dept": "기획조정실 양성평등정책담당관",
+          "rank": "담당관"
+        },
+        {
+          "name": "이재순",
+          "dept": "문화미디어산업실 저작권보호과장",
+          "rank": "과장"
+        }
+      ],
+      "hit": false
+    },
+    {
+      "date": "2026-08-10",
+      "url": "http://www.suwonilbo.kr/news/articleView.html?idxno=317233",
+      "source": "수원일보",
+      "title": "[인사] 방위사업청",
+      "region": "",
+      "kinds": [
+        "임용"
+      ],
+      "people": [
+        {
+          "name": "이승호",
+          "dept": "화력사업부장",
+          "rank": ""
+        }
+      ],
+      "hit": false
+    },
+    {
+      "date": "2026-08-10",
+      "url": "https://www.ggilbo.com/news/articleView.html?idxno=1174573",
+      "source": "금강일보",
+      "title": "㈜워코-대전보건대, 베트남 유학생 인재 양성 본격화",
+      "region": "대전시",
+      "kinds": [
+        "전보"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-10",
+      "url": "http://www.dtnews24.com/news/articleView.html?idxno=814123",
+      "source": "디트뉴스",
+      "title": "충남공무원노조 \"갑질 간부 인사 철회하라\"",
+      "region": "",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-10",
+      "url": "http://www.dtnews24.com/news/articleView.html?idxno=814091",
+      "source": "디트뉴스",
+      "title": "[인사] 세종시교육청",
+      "region": "세종시",
+      "kinds": [],
+      "people": [
+        {
+          "name": "김명숙",
+          "dept": "교육국장",
+          "rank": "국장"
+        },
+        {
+          "name": "오기열",
+          "dept": "학교정책과장",
+          "rank": "과장"
+        },
+        {
+          "name": "김일환",
+          "dept": "미래기획관",
+          "rank": ""
+        },
+        {
+          "name": "최미연",
+          "dept": "교원인사과장",
+          "rank": "과장"
+        },
+        {
+          "name": "정정숙",
+          "dept": "세종교육원 교육연수부장",
+          "rank": ""
+        },
+        {
+          "name": "감사관",
+          "dept": "청렴감찰담당 최수영",
+          "rank": ""
+        },
+        {
+          "name": "한유화",
+          "dept": "학교정책과 학교정책기획담당",
+          "rank": ""
+        },
+        {
+          "name": "양한준",
+          "dept": "유초등교육과 특수교육지원센터담당",
+          "rank": ""
+        },
+        {
+          "name": "팽주만",
+          "dept": "중등교육과 중등교육과정담당",
+          "rank": ""
+        },
+        {
+          "name": "중등교육",
+          "dept": "",
+          "rank": ""
+        }
+      ],
+      "hit": false
+    },
+    {
+      "date": "2026-08-10",
+      "url": "http://www.jjn.co.kr/news/articleView.html?idxno=1049045",
+      "source": "전북중앙",
+      "title": "군산해경 주요 보직인사 단행-폭염 안전관리 점검",
+      "region": "",
+      "kinds": [
+        "보직부여"
+      ],
+      "people": [],
+      "hit": true
+    },
+    {
+      "date": "2026-08-10",
+      "url": "https://www.namdonews.com/news/articleView.html?idxno=919631",
+      "source": "남도일보",
+      "title": "통합교육청 주요 보직 인사…전남·광주 핵심라인 새판",
+      "region": "남광주통합특별시",
+      "kinds": [
+        "승진",
+        "임용",
+        "보직부여"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-10",
+      "url": "https://www.namdonews.com/news/articleView.html?idxno=919625",
+      "source": "남도일보",
+      "title": "전남 동부·경남 서부 해역에 적조 '비상'…위기경보 ‘주의’ 발령",
+      "region": "",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-10",
+      "url": "https://www.namdonews.com/news/articleView.html?idxno=919623",
+      "source": "남도일보",
+      "title": "[인사]전남광주통합특별시 교육청",
+      "region": "남광주통합특별시",
+      "kinds": [
+        "전보"
+      ],
+      "people": [
+        {
+          "name": "김병남",
+          "dept": "미래성장국장",
+          "rank": "국장"
+        },
+        {
+          "name": "박철완",
+          "dept": "인재교육국장",
+          "rank": "국장"
+        },
+        {
+          "name": "안병모",
+          "dept": "미래교육전략기획관",
+          "rank": ""
+        },
+        {
+          "name": "김보경",
+          "dept": "유아초등교육과장",
+          "rank": "과장"
+        },
+        {
+          "name": "전성아",
+          "dept": "중등교육과장",
+          "rank": "과장"
+        },
+        {
+          "name": "양회룡",
+          "dept": "진로교육과장",
+          "rank": "과장"
+        },
+        {
+          "name": "서영옥",
+          "dept": "전남학생교육원장",
+          "rank": ""
+        },
+        {
+          "name": "김영신",
+          "dept": "여수교육장",
+          "rank": ""
+        },
+        {
+          "name": "신자경",
+          "dept": "고흥교육장",
+          "rank": ""
+        },
+        {
+          "name": "문태홍",
+          "dept": "영암교육장",
+          "rank": ""
+        },
+        {
+          "name": "임도선",
+          "dept": "무안교육장",
+          "rank": ""
+        },
+        {
+          "name": "김회옥",
+          "dept": "장성교육장",
+          "rank": ""
+        },
+        {
+          "name": "윤양석",
+          "dept": "완도교육장",
+          "rank": ""
+        },
+        {
+          "name": "김정우",
+          "dept": "미래정책국장",
+          "rank": "국장"
+        },
+        {
+          "name": "김치곤",
+          "dept": "대외협력담당관",
+          "rank": "담당관"
+        },
+        {
+          "name": "정원미",
+          "dept": "중등특수교육과장",
+          "rank": "과장"
+        },
+        {
+          "name": "김종화",
+          "dept": "체육건강예술교육과장",
+          "rank": "과장"
+        },
+        {
+          "name": "유정종",
+          "dept": "광주교육연수원장",
+          "rank": ""
+        },
+        {
+          "name": "우재학",
+          "dept": "광주학생교육원장",
+          "rank": ""
+        }
+      ],
+      "hit": false
+    },
+    {
+      "date": "2026-08-10",
+      "url": "http://www.ujeil.com/news/articleView.html?idxno=390198",
+      "source": "울산제일일보",
+      "title": "울산시 “능력·전문성 중심” 민선9기 첫 정기인사",
+      "region": "울산시",
+      "kinds": [
+        "전보",
+        "정기인사"
+      ],
+      "people": [
+        {
+          "name": "실용주의",
+          "dept": "‘시민 중심 행정’",
+          "rank": ""
+        },
+        {
+          "name": "확보",
+          "dept": "‘능력·전문성 중심’ 인재 배치를 통한 조직 추진동력",
+          "rank": ""
+        }
+      ],
+      "hit": false
+    },
+    {
+      "date": "2026-08-10",
+      "url": "http://www.ujeil.com/news/articleView.html?idxno=390124",
+      "source": "울산제일일보",
+      "title": "울산시 2026년 8월 정기인사(13일자)",
+      "region": "울산시",
+      "kinds": [
+        "승진",
+        "정기인사"
+      ],
+      "people": [
+        {
+          "name": "송연주",
+          "dept": "분권인구정책국장",
+          "rank": "국장"
+        },
+        {
+          "name": "정연용",
+          "dept": "녹지정원국장",
+          "rank": "국장"
+        },
+        {
+          "name": "이상철",
+          "dept": "정책기획관",
+          "rank": ""
+        },
+        {
+          "name": "이판균",
+          "dept": "AI산업전략과장",
+          "rank": "과장"
+        },
+        {
+          "name": "박미정",
+          "dept": "저출생대응과장",
+          "rank": "과장"
+        },
+        {
+          "name": "이용주",
+          "dept": "하수관리과장",
+          "rank": "과장"
+        },
+        {
+          "name": "신용정",
+          "dept": "종합건설본부 관리시설부장",
+          "rank": ""
+        },
+        {
+          "name": "임문선",
+          "dept": "용연수질개선사업소장",
+          "rank": ""
+        },
+        {
+          "name": "김재영",
+          "dept": "농축산과장",
+          "rank": "과장"
+        },
+        {
+          "name": "이봉건",
+          "dept": "태화강국가정원과장",
+          "rank": "과장"
+        },
+        {
+          "name": "양별",
+          "dept": "상수도사업본부 회야정수사업소장",
+          "rank": ""
+        },
+        {
+          "name": "중구",
+          "dept": "박일숙 (국장요원)",
+          "rank": "국장"
+        },
+        {
+          "name": "박혜경",
+          "dept": "자연재난과 (5급요원)",
+          "rank": "5급"
+        },
+        {
+          "name": "김윤정",
+          "dept": "상생지원과 (5급요원)",
+          "rank": "5급"
+        }
+      ],
+      "hit": true
+    },
+    {
+      "date": "2026-08-10",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5sa2FVYzI2aGJWU3ZfUWZPVG9SQTgwRW9BQVBDSWc0ZWZVaG5yWHVRVFo0U3ZGeFBIM2d2SFpvWndqSmJPeVZwY1NVTjUzVlc1aXRrTHlxdW9Ya2hmNVE5R9IBYEFVX3lxTE5sa2FVYzI2aGJWU3ZfUWZPVG9SQTgwRW9BQVBDSWc0ZWZVaG5yWHVRVFo0U3ZGeFBIM2d2SFpvWndqSmJPeVZwY1NVTjUzVlc1aXRrTHlxdW9Ya2hmNVE5Rw?oc=5",
+      "source": "연합뉴스",
+      "title": "울산시, 5급 이상 간부 171명 인사 \"능력·청렴성 최우선 기준\"",
+      "region": "울산시",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-10",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBycFlCUU11MXN5RmpSaWJwd0JfeU5DSEJHZ0JTdWh3M3hQMmJ3eEZYM2k2Z3hKQkpuTDJZbUdlR3ZYdUNqTG53cFJWNEczOUMyRHA5NVZBd19KWUU5M2FWZHlkWXVxVWl4bGFaMEV30gFuQVVfeXFMUHJwWUJRTXUxc3lGalJpYnB3Ql95TkNIQkdnQlN1aHczeFAyYnd4RlgzaTZneEpCSm5MMlltR2VHdlh1Q2pMbndwUlY0RzM5QzJEcDk1VkF3X0pZRTkzYVZkeWRZdXFVaXhsYVowRXc?oc=5",
+      "source": "iusm.co.kr",
+      "title": "울산시, 본청 인사 공백 해소…산하기관은 여전히 ‘빈집’",
+      "region": "울산시",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-10",
+      "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE10NGM0cUpIa3RjYjdud1NKelRQODRVcmxLREFsVDhMYXRWTHo0NEZLbVlVSFl4SVFGZnBzVUEzNDB6MldjMG4wSmIyVm03Ti1KcEE?oc=5",
+      "source": "뉴스1",
+      "title": "울산시, 민선 9기 첫 정기인사 단행…\"지연·학연 배제 능력 중심\"",
+      "region": "울산시",
+      "kinds": [
+        "정기인사"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-10",
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE10aW1YbEhwMTEzSXBKQTNiZ2hCZEtDUlVLeXNkWDBaaTZCdFZkbW1lRFpoX1ZOZDA2eFhVWHhDYjhrdkp6QTd0Y1psYzRZaE43ZERnMFZ4N19taDhLQ3YwMTJNbmxBdw?oc=5",
+      "source": "울산제일일보",
+      "title": "울산시 “능력·전문성 중심” 민선9기 첫 정기인사",
+      "region": "울산시",
+      "kinds": [
+        "정기인사"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-10",
+      "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTFBKY0ZrRk5KbW5sazdCT190LW5IZXFHaWdEVUJoS1NvMEhIZGtCWlNnbHJFc3JDWGF1d3pybEYtWEtWTDF3eTViQUVtUFU5NnZSMVFaNThGNE1LcG82WUZzdFFrRnduZEFpaDliVmhCNGNyWGRLMjBOZNIBeEFVX3lxTFBKY0ZrRk5KbW5sazdCT190LW5IZXFHaWdEVUJoS1NvMEhIZGtCWlNnbHJFc3JDWGF1d3pybEYtWEtWTDF3eTViQUVtUFU5NnZSMVFaNThGNE1LcG82WUZzdFFrRnduZEFpaDliVmhCNGNyWGRLMjBOZA?oc=5",
+      "source": "뉴시스",
+      "title": "울산시, 민선9기 5급 이상 첫 정기인사 171명…능력중심",
+      "region": "울산시",
+      "kinds": [
+        "정기인사"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-10",
+      "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxOUmdIa3c0X0hJN0NKLXhLR3BCdUxwUGY0Rkl0THZ6SW5QWXNNUUFsRHZ4WTk3YURuQ0ZLX1hjbkEwZ1JiRVp2aUJLVXZ3RXdhRDZwV3R2alo5UVhjRWpFWjV2dlFLS2YtMTh1VlNpNlltZVlJUl91ZTNjTnM0dk1zR1kwUTh2OWhYSGJaMnowZzUwc00?oc=5",
+      "source": "vietnam.vn",
+      "title": "아우라우 구청은 감사 미사를 맞아 아우라우 본당을 방문하여 축하 인사를 전했습니다.",
+      "region": "",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-10",
+      "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTFBmQi1HTHVvTzZrOWJRUFIxeFl4b0MyQXYyR1YtdE0zc3RiUjR4cUg4cFBhUTIzcE1CV1ZlcGo3Q0lGNGJiTFE?oc=5",
+      "source": "매일경제",
+      "title": "민선 9기 울산시 첫 정기 인사…5급 이상 171명 대상 인사 단행",
+      "region": "울산시",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-10",
+      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9QSFBvR0hueUZHRkR2TGZVSkh4NEtKaFFndDZmdS1faWlleXVjYnJxa01pa0pNTWpMR3MtUjJycHhLcnJCVlF3ZzQ4U0owa2prOURDYjFWS09zM3AwV2Y3clUtOW1FSm9OazRPYXlOY1JHNVlH?oc=5",
+      "source": "부산일보",
+      "title": "울산 민선9기 첫 정기 인사…“지연·학연 배제, 능력·성과 위주”",
+      "region": "",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-10",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1sTk9xS2ZLc2hBd05ISkJyRnVuZEJQYW9wUE1qOUZJRzM2bnh4THFLNHAxTWlFU0w3VnJCOWdNb25pRHVvczBhYVRlUmNzWFBMTXRpbVdHanJYU2pRaWhBTg?oc=5",
+      "source": "네이트",
+      "title": "울산시, 민선 9기 첫 정기인사 단행…\"지연·학연 배제 능력 중심\"",
+      "region": "울산시",
+      "kinds": [
+        "정기인사"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-10",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE93TGlvMnU2WWxxaVBoejVGRzR0eTFwRXBmRENBSmN1MUExSmFrUnhPM1RITzZ2QkhmMV9mUWQxRFpjdVp1MXo1V0JwblhvT0k4N29rUW5JOXhyU0hCUkktQXdlQWc?oc=5",
+      "source": "팩트공감",
+      "title": "김포시 지난 7월 인사, 이기형 \"결원 보충과 인사고과 결과\"",
+      "region": "김포시",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-10",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBkYjZlVXRJZFpKb2p5SVV5OUdzRDdPcGlobWpyLTVGSVFLZS1WcnhTdE5qRFdqSGFmYnRhc0pUVkxueUdNVVBpUTFncUIyNVota0FvYnA0UFNkbHBPc2dxNms0aGdzYWs?oc=5",
+      "source": "광주뉴스",
+      "title": "광주시, 8월 10일자 인사발령",
+      "region": "광주시",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-10",
+      "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFBLOUpaa1otMHBtR2wxOTgtc2l5b2JSSE1HQm13UkdnSHExMUVxUzh0a2NWTTNuWmxMOFRyR25TZjJuRFpOSGJVM05IU051MWs?oc=5",
+      "source": "v.daum.net",
+      "title": "울산 민선9기 첫 정기 인사…“지연·학연 배제, 능력·성과 위주”",
+      "region": "",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-10",
+      "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE12YUV2TE0ya1BaS2pRalpaY29ZV3Nzamx1X0hBdkE2ajFXWmVoVm4wd0ZKOUdqWEVERWYyMkVCTFI3WW44MEE?oc=5",
+      "source": "v.daum.net",
+      "title": "울산시, 민선 9기 첫 정기인사 단행…\"지연·학연 배제 능력 중심\"",
+      "region": "울산시",
+      "kinds": [
+        "정기인사"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-10",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE13UmtCTEVtcW9Lem5LZTUxZzJNN0JzQi1Gbkl6d1I3N0xFYld3UlA2NDRCTi1fTmREU3o0aEJyZDNNTkExWVFCSEpLemtuRjVTcXl3dXUyYXJTQ0FMOTJUcFlrY0hZS2FUalhZ?oc=5",
+      "source": "프레시안",
+      "title": "\"성과·능력 중심 발탁\"…울산시, 민선 9기 첫 정기인사 단행",
+      "region": "울산시",
+      "kinds": [
+        "정기인사"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-10",
+      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5KNXlHNENrZndYOE5QaDMwakFqc3I0akN5M3ZOenk1UDcyMDJRdVgxc3hEdjJqN0xCbGt0ZVB0QTMwemVpTHJMY2ttUXU0UnZOUlBzVUtyWEJBdw?oc=5",
+      "source": "파이낸셜뉴스",
+      "title": "울산시, 민선 9기 첫 정기 인사 단행.. 5급 이상 171명",
+      "region": "울산시",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-10",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9JTXltcHZ2Y0NGQTFzSkFTYlF6OEVuN0JCSnJ5UXF4ZmtsQnZEUFFUZ3Y4aXVJNHBwQXRXeXRjdFNmRWVDQmpfSEZaSWZSU2I4OEtvV3ZHX1BYVjROZHkwR2I3UXJfTE5yTWNoWkZB0gFyQVVfeXFMTlNCaFBURGt2UkU0eGVGblhWaFBrbVBiSUVUYWR1MkxLUW5WMGM0VWE2X2pmOTRoaDZEbl9LWXc3YmlaWnR3ajRwWUFERmI3NEdSczRBbUFIU3FSX201NnRuazJJUWdzZ1BQdlpodjRuQXhn?oc=5",
+      "source": "울산신문",
+      "title": "서남교 행정부시장, 민선 9기 첫 정기인사 브리핑",
+      "region": "행정부시",
+      "kinds": [
+        "정기인사"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-10",
+      "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1IeE1LeWVRQmNiR0VSVmJvbUV5OE5uYU9saUF6eUVadlVSd1owR3g1T0JSUW1tNjdaVi1mdl9Eb05Sa2VLTmIzenV6dTlaNk0?oc=5",
+      "source": "v.daum.net",
+      "title": "김상욱 울산시장 첫 인사 발표, 능력·전문성 중심 인사…시정추진 동력 확보",
+      "region": "울산시",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-10",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5OOFM2WDYxbkd5VHI4d3d5NUV4clE4dlE3NGFyUjNFUDJnNktuQnFITXpqTUtTNWI1NmdYZ19ydm4wc3BuQWJtRnc1SmM4X2ZJVTVKZmpLd0pJNEdIYzhSRA?oc=5",
+      "source": "네이트",
+      "title": "울산시, 민선 9기 첫 정기 인사 단행…5급 이상 171명",
+      "region": "울산시",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-10",
+      "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1PZ3Zxd0F4ZzFvaTd5T2F5YUk0MkFwNFd4cDRsZG1SYXVUMVNZaUR1VjQ5UGFBLVhXVjZvM19sc1JvWngxcEdSSnpVWERWUDQ0VVA4?oc=5",
+      "source": "네이트",
+      "title": "울산시, 민선 9기 5급 이상 첫 정기인사 단행",
+      "region": "울산시",
+      "kinds": [
+        "정기인사"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-10",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOVzdaUmRjM2ZLb2R6aVo1NTFCd2U2LXVNU2xPRWpyZU1oSS1YZm5NSlFFVU9pNUluMlVad0dLRkVDZ21WeFp2VXg0RTI2TUJhWGVycmtKTHhQT1lwbjkyWEEtMzhnbVp1b0NKYTM3MWY1VjZwVEliZkc4VERrWldJWWFKSW8xb180SUROSkF3?oc=5",
+      "source": "국제신문",
+      "title": "김상욱 울산시장 취임 후 첫 간부(5급 이상) 인사 단행",
+      "region": "울산시",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-10",
+      "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5iMjRsQjJVYS1mcVVBVF9DV2dXbnpLNHdqWnhvY1czcVN4MW96Mk9CMWd0TThFdEFuY29oeWtEdUF2aVNPbFRnTmJHYTJlWGs?oc=5",
+      "source": "v.daum.net",
+      "title": "[인사명단]민선9기 울산시 첫 정기인사, 3급 승진 3명 등 5급 이상 171명",
+      "region": "울산시",
+      "kinds": [
+        "승진",
+        "정기인사"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-10",
+      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFAyVEdVUHpXSThweW1mRU5CRENHcGw1cjBIbUNCdGpLTkNWWWZrUlRFN2JUNTloQWg5NTVHY3Ryd2gxZHliRmJOYmlxMWFQeUVQVHI4UXN3?oc=5",
+      "source": "헤럴드경제",
+      "title": "울산시, 민선 9기 5급 이상 첫 정기인사 단행",
+      "region": "울산시",
+      "kinds": [
+        "정기인사"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-10",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1WdHNHRm1UMGdrSnYxZk1PT3JoWDZienV1S19Ca2hwTEtXMmctcUQ1SkhJRlg4UXgzaC1UODl4T19fREJfTllMS25IZUlvWHVFSkdCTVZ4UUd2bk1xVDZOZlpYaEJfRmh0R2lRbXA0QUI?oc=5",
+      "source": "충청일보",
+      "title": "충북교육청, 9월 1일자 교원 509명 인사 단행",
+      "region": "",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-10",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1CQkFES0o2WFlJdkFfN3pCaEcxdGl1d1UzZFE4REVid015aDRxOXBwZmo4b2JDaFhVX3haUFoxZUh1MVoxMGdmM0pvbjFUOVFfX3FyampWcnk4bUwyU3NyMWlySkNDMXU4Z3AzZtIBcEFVX3lxTFBsTklkVW9fbWZCTUtkVzVBUnV5ZnpoYjlFRkc3NG95RXRVb2ExYlFfSGhPS2R0b1VZalVUeG9PMFZfZDAyakx6ampQNzAwTUJORmRiWDZBcll1Nm1acEc0V21KQVFUYUQ5WWtjNHFOaUg?oc=5",
+      "source": "내외뉴스통신",
+      "title": "충북교육청, 9월 1일자 교원·교육전문직원 509명 인사 단행",
+      "region": "",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-10",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFByTVd4Q19uSE1KUDQ3eDF0Z2RHR3FDc0tCQXF2N3hzUFRieHFRbnV2a0hjenVoQTlUWTBIWUZzQTJ2dUZ5VWJyYkxOWUFINWwxS0Z6ejRuOG9KVDVBTGV6UnBxSGc0WGY3TFE?oc=5",
+      "source": "뉴스티앤티",
+      "title": "전남광주통합특별시교육청, 주요 보직 인사 단행",
+      "region": "남광주통합특별시",
+      "kinds": [
+        "보직부여"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-10",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1GNmVSVjN6bkhHQ1RzWlpHXzVWdjA1d0hKS3Rpd0hGS016clRlVkNiSHFvMlFyb2NPVmQ3QTM2amNGalluR1l6NFJndm5HX1dTeW9BYWhvSjA0bG5nanRBYl93NVZGd3hzcWtiMg?oc=5",
+      "source": "경상일보",
+      "title": "김상욱 울산시장 첫 인사 발표, 능력·전문성 중심 인사…시정추진 동력 확보",
+      "region": "울산시",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
       "date": "2026-08-09",
       "url": "http://www.suwonilbo.kr/news/articleView.html?idxno=317216",
       "source": "수원일보",
@@ -763,6 +1422,16 @@
       "hit": false
     },
     {
+      "date": "2026-08-09",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFAwX3kwVEpmazJkWTl6SWE2R25NeV9ZZVFneTVYNkg3dTBSaWhCRmxObnBHSFBzX0Q0Z3FYMk8zTXNndjNPUGljWmlvSjVjUEd5cmdqWFdfRmc0X0VQX2FpRW1aM2ZINF9H?oc=5",
+      "source": "양파티브이뉴스",
+      "title": "대구시가 민선9기 첫 국과장급 인사 단행.. 자리 나누기 줄대기 싹 잘랐다. 대변혁의 신호탄",
+      "region": "대구시",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
       "date": "2026-08-08",
       "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBZOVpZazN3aGVoTWotMF9YZ0FHcUExSzNWVVRsQkJnclJneEpsOVZiTEFsZjd1enBSZmxYbVVKZU1nSXRoWHpxdmxTWW52eTBqV3JncUhzQWNIVTNtOVpFOE5VOU9uMXpaTkFZUE9n?oc=5",
       "source": "gukjenews.com",
@@ -805,6 +1474,16 @@
       "kinds": [],
       "people": [],
       "hit": true
+    },
+    {
+      "date": "2026-08-08",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5iWUhTZGNnNXRoSUtFbnQxem81eHl6T0dVNkRZeHdWSkNKckd2emNkNkJOOXRDdzVraU93bjQ5NjFkZldRM3N1TEwwUEliUTBUSWEwUlpuaXp6RWxkZWNfSg?oc=5",
+      "source": "metroseoul.co.kr",
+      "title": "[인사] 광명시",
+      "region": "광명시",
+      "kinds": [],
+      "people": [],
+      "hit": false
     },
     {
       "date": "2026-08-07",
@@ -1327,6 +2006,16 @@
         "승진",
         "보직부여"
       ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-07",
+      "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE9YS3EyaVdlOS1qaHNFQ05ZZjkwNGpWNmZGNW1qLXJNV01WbmY0a3hNUGphbm1sLVJodmE4TFJYaGtpc21TbnFQakhqcjI?oc=5",
+      "source": "시사일보",
+      "title": "대구시교육청, 2026년 9월 1일 교육공무원 [교(원)장, 교(원)감, 교사, 교육전문직원] 인사 발령",
+      "region": "대구시",
+      "kinds": [],
       "people": [],
       "hit": false
     },
@@ -1909,6 +2598,18 @@
       "title": "충남도, 민선 9기 조직개편 맞물려 4급 이상 77명 인사 단행",
       "region": "",
       "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-08-06",
+      "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5xZThKc2hGYzR4ZWU3RE13eF84ajNveWUzM0RZLTNObllfY2dpS1M2d1EySEtyX0tfSzI0SElhSzJVZWVCcl9Fd3hZckFKTWNVZ1ltZnEycE52YXVoWmlZ?oc=5",
+      "source": "조세일보",
+      "title": "국세청, 하반기 수시승진 단행… 6급 이하 1150명 승진",
+      "region": "",
+      "kinds": [
+        "승진"
+      ],
       "people": [],
       "hit": false
     },
@@ -5174,6 +5875,28 @@
       "hit": false
     },
     {
+      "date": "2026-07-28",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1TSUhqM3lSbjZVMXR5aWVqb0V2MmgzQzcwb2xDRHh5Q1lMNGQ3My1zOVJGOXktMjVXOFUwdlJLN2QtZ3RDQV9KZVpHS0M5a3JJTVBHUW02V2tGWFFWb0NVSk1fUGczWkE?oc=5",
+      "source": "세종의소리",
+      "title": "운영지원과장 이인환… 세종시 4·5급 인사발령",
+      "region": "세종시",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-07-28",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5yVDBicktESDZodkVaQzVJVV9mQklWOGRCU2xzSklNSDlQSXNSZW1rTGh5cHZkNVFjTERHcTlxeEFxUGw0Um9OZ3kxOC15ZVhCODhCaUwtZ0llbGw0b0xUeVNhUkwyLWJRdEVhaw?oc=5",
+      "source": "백제뉴스",
+      "title": "세종시 2026년 하반기 정기인사 4·5급 인사 [인사명단]",
+      "region": "세종시",
+      "kinds": [
+        "정기인사"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
       "date": "2026-07-27",
       "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5feHBtQmJmQzBVUTZKWU11OU1NWkRLYkF4SmZIQ1kzdndTSmoxdWhuMzl6N3NodFNHVWdMNUlBeGJhc3hVczBQMElPd1ZybkNESExEVlMwMHBKUmNvOEJQSjdqTE5NWFIwN3c?oc=5",
       "source": "경남도민일보",
@@ -5660,6 +6383,18 @@
       "kinds": [
         "전보",
         "승진"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-07-27",
+      "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE0tdFdMME1TV3ZuZjBmd0FaQXBHLVZVSmp1WDRHeXdaakxFUTZsdWFDV3JxdHlZbHFkZDY2UWJIWEpJSjc3d2JfNW5aVQ?oc=5",
+      "source": "v.daum.net",
+      "title": "인천시, 하반기 정기인사 294명 발표",
+      "region": "인천시",
+      "kinds": [
+        "정기인사"
       ],
       "people": [],
       "hit": false
