@@ -1,8 +1,371 @@
 {
-  "updated_at": "2026-08-12T03:07:13.688Z",
+  "updated_at": "2026-08-13T03:08:59.046Z",
   "source": "조달청_나라장터 입찰공고정보서비스 (공공데이터포털)",
   "count": 800,
   "records": [
+    {
+      "type": "win",
+      "kind": "공사",
+      "cats": [
+        "energy"
+      ],
+      "title": "이로경로당 그린리모델링 공사(기계)",
+      "org": "강원특별자치도 동해시",
+      "region": "동해시",
+      "bidNo": "R26BK01671834-000",
+      "date": "2026-08-13",
+      "winner": "주식회사 모범산업",
+      "winnerCeo": "유성관",
+      "winnerTel": "033-522-3251",
+      "winnerAddr": "강원특별자치도 동해시 동해대로 5040 (효가동),라호 2층",
+      "amount": 23853900,
+      "url": ""
+    },
+    {
+      "type": "win",
+      "kind": "공사",
+      "cats": [
+        "energy"
+      ],
+      "title": "동막경로당 그린리모델링 공사(전기)",
+      "org": "강원특별자치도 동해시",
+      "region": "동해시",
+      "bidNo": "R26BK01672751-000",
+      "date": "2026-08-13",
+      "winner": "세원전설 주식회사",
+      "winnerCeo": "심일종",
+      "winnerTel": "033-522-5988",
+      "winnerAddr": "강원특별자치도 동해시 공단2로 78 (구호동)",
+      "amount": 21619280,
+      "url": ""
+    },
+    {
+      "type": "win",
+      "kind": "공사",
+      "cats": [
+        "energy"
+      ],
+      "title": "동막경로당 그린리모델링 공사(기계)",
+      "org": "강원특별자치도 동해시",
+      "region": "동해시",
+      "bidNo": "R26BK01672738-000",
+      "date": "2026-08-13",
+      "winner": "일진펌프앤그린씰 주식회사",
+      "winnerCeo": "박수홍",
+      "winnerTel": "033-521-5030",
+      "winnerAddr": "강원특별자치도 동해시 공단7로 41-0 (구호동)",
+      "amount": 26683150,
+      "url": ""
+    },
+    {
+      "kind": "공사",
+      "cats": [
+        "light"
+      ],
+      "title": "광주국토 관내 가로등 설치공사",
+      "org": "국토교통부 익산지방국토관리청 광주국토관리사무소",
+      "ntceInstt": "국토교통부 익산지방국토관리청 광주국토관리사무소",
+      "region": "",
+      "bidNo": "R26BK01678089-000",
+      "date": "2026-08-12",
+      "closeDate": "2026-08-18",
+      "amount": 500000000,
+      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01678089&bidPbancOrd=000",
+      "charge": "손형태",
+      "chargeTel": "062-970-6320"
+    },
+    {
+      "kind": "공사",
+      "cats": [
+        "light"
+      ],
+      "title": "2026년도 하반기 산업단지 및 농공단지 가로등, 공원등 유지보수 공사(단가)",
+      "org": "충청남도 당진시",
+      "ntceInstt": "충청남도 당진시",
+      "region": "당진시",
+      "bidNo": "R26BK01673940-000",
+      "date": "2026-08-12",
+      "closeDate": "2026-08-19",
+      "amount": 5325455,
+      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01673940&bidPbancOrd=000",
+      "charge": "홍성희",
+      "chargeTel": "041-350-3411"
+    },
+    {
+      "kind": "공사",
+      "cats": [
+        "light"
+      ],
+      "title": "군위IC~군위읍 스마트 안전(LED) 가로등 설치공사",
+      "org": "대구광역시 군위군",
+      "ntceInstt": "대구광역시 군위군",
+      "region": "군위군",
+      "bidNo": "R26BK01678635-000",
+      "date": "2026-08-12",
+      "closeDate": "2026-08-20",
+      "amount": 262720000,
+      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01678635&bidPbancOrd=000",
+      "charge": "김덕윤",
+      "chargeTel": "054-380-6137"
+    },
+    {
+      "kind": "공사",
+      "cats": [
+        "light"
+      ],
+      "title": "방어진순환도로, 미포산업로 일원 노후 가로등 교체공사 소액수의 견적제출 안내공고",
+      "org": "울산광역시 동구",
+      "ntceInstt": "울산광역시 동구",
+      "region": "울산광역시",
+      "bidNo": "R26BK01679153-000",
+      "date": "2026-08-12",
+      "closeDate": "2026-08-19",
+      "amount": 52197000,
+      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01679153&bidPbancOrd=000",
+      "charge": "정성희",
+      "chargeTel": "052-209-3122"
+    },
+    {
+      "kind": "공사",
+      "cats": [
+        "light"
+      ],
+      "title": "2026년 읍면지역 보안등 보수단가 3차",
+      "org": "전북특별자치도 익산시",
+      "ntceInstt": "전북특별자치도 익산시",
+      "region": "익산시",
+      "bidNo": "R26BK01679635-000",
+      "date": "2026-08-12",
+      "closeDate": "2026-08-19",
+      "amount": 27272727,
+      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01679635&bidPbancOrd=000",
+      "charge": "김하성",
+      "chargeTel": "063-859-5656"
+    },
+    {
+      "kind": "공사",
+      "cats": [
+        "light"
+      ],
+      "title": "진리관 등 2개동 노후 LED 등기구 교체 전기공사",
+      "org": "전남대학교",
+      "ntceInstt": "전남대학교",
+      "region": "",
+      "bidNo": "R26BK01678261-000",
+      "date": "2026-08-12",
+      "closeDate": "2026-08-19",
+      "amount": 102630910,
+      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01678261&bidPbancOrd=000",
+      "charge": "오대원",
+      "chargeTel": "062-530-1194"
+    },
+    {
+      "kind": "공사",
+      "cats": [
+        "tree"
+      ],
+      "title": "2026년 하반기 기흥구 하천변 수목 병해충 방제공사",
+      "org": "경기도 용인시 기흥구",
+      "ntceInstt": "경기도 용인시 기흥구",
+      "region": "기흥구",
+      "bidNo": "R26BK01675634-000",
+      "date": "2026-08-12",
+      "closeDate": "2026-08-19",
+      "amount": 33853636,
+      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01675634&bidPbancOrd=000",
+      "charge": "정여은",
+      "chargeTel": "031-6193-6041"
+    },
+    {
+      "kind": "공사",
+      "cats": [
+        "tree"
+      ],
+      "title": "2026년 아산 공세리성당 수목정비공사",
+      "org": "충청남도 아산시",
+      "ntceInstt": "충청남도 아산시",
+      "region": "아산시",
+      "bidNo": "R26BK01678471-000",
+      "date": "2026-08-12",
+      "closeDate": "2026-08-19",
+      "amount": 63643636,
+      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01678471&bidPbancOrd=000",
+      "charge": "김영채",
+      "chargeTel": "041-540-2277"
+    },
+    {
+      "kind": "공사",
+      "cats": [
+        "tree"
+      ],
+      "title": "대구 제2수목원 기반시설 조성공사 ",
+      "org": "대구광역시 도시건설본부",
+      "ntceInstt": "대구광역시 도시건설본부",
+      "region": "대구광역시",
+      "bidNo": "R26BK01670011-001",
+      "date": "2026-08-12",
+      "closeDate": "2026-08-21",
+      "amount": 2827942282,
+      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01670011&bidPbancOrd=001",
+      "charge": "양수민",
+      "chargeTel": "053-803-8022"
+    },
+    {
+      "kind": "공사",
+      "cats": [
+        "tree"
+      ],
+      "title": "2026년 가로수 사각가지치기 사업",
+      "org": "서울특별시 서초구",
+      "ntceInstt": "서울특별시 서초구",
+      "region": "서초구",
+      "bidNo": "R26BK01679589-000",
+      "date": "2026-08-12",
+      "closeDate": "2026-08-21",
+      "amount": 229090909,
+      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01679589&bidPbancOrd=000",
+      "charge": "김민정",
+      "chargeTel": "02-2155-6491"
+    },
+    {
+      "kind": "물품",
+      "cats": [
+        "tree"
+      ],
+      "title": "2026년식량작물(벼)돌발병해충긴급방제물품추가구매(입찰대행)",
+      "org": "충청북도 충주시",
+      "ntceInstt": "충청북도 충주시",
+      "region": "충주시",
+      "bidNo": "R26BK01679065-000",
+      "date": "2026-08-12",
+      "closeDate": "2026-08-19",
+      "amount": 165040500,
+      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01679065&bidPbancOrd=000",
+      "charge": "남기훈",
+      "chargeTel": "043-850-5627"
+    },
+    {
+      "kind": "공사",
+      "cats": [
+        "tree"
+      ],
+      "title": "농업환경과 생물자원 활용 병해충 관리기술 보급기반 구축 건축 공사",
+      "org": "전북특별자치도 농업기술원",
+      "ntceInstt": "전북특별자치도 농업기술원",
+      "region": "전북특별자치도",
+      "bidNo": "R26BK01679453-000",
+      "date": "2026-08-12",
+      "closeDate": "2026-08-20",
+      "amount": 280250909,
+      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01679453&bidPbancOrd=000",
+      "charge": "이욱기",
+      "chargeTel": "063-290-6026"
+    },
+    {
+      "kind": "공사",
+      "cats": [
+        "tree"
+      ],
+      "title": "농업환경과 생물자원 활용 병해충 관리기술 보급기반 구축 기계설비공사",
+      "org": "전북특별자치도 농업기술원",
+      "ntceInstt": "전북특별자치도 농업기술원",
+      "region": "전북특별자치도",
+      "bidNo": "R26BK01680021-000",
+      "date": "2026-08-12",
+      "closeDate": "2026-08-20",
+      "amount": 78988182,
+      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01680021&bidPbancOrd=000",
+      "charge": "이욱기",
+      "chargeTel": "063-290-6026"
+    },
+    {
+      "kind": "공사",
+      "cats": [
+        "energy"
+      ],
+      "title": "공공건축물 그린리모델링 사업(보은정보고(폐교) 전기설비) 개선공사",
+      "org": "충청북도 보은군",
+      "ntceInstt": "충청북도 보은군",
+      "region": "보은군",
+      "bidNo": "R26BK01677601-001",
+      "date": "2026-08-12",
+      "closeDate": "2026-08-18",
+      "amount": 30532273,
+      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01677601&bidPbancOrd=001",
+      "charge": "박은경",
+      "chargeTel": "043-540-3157"
+    },
+    {
+      "kind": "공사",
+      "cats": [
+        "energy"
+      ],
+      "title": "공공건축물 그린리모델링 사업(보은정보고(폐교) 전기설비) 개선공사",
+      "org": "충청북도 보은군",
+      "ntceInstt": "충청북도 보은군",
+      "region": "보은군",
+      "bidNo": "R26BK01679088-000",
+      "date": "2026-08-12",
+      "closeDate": "2026-08-19",
+      "amount": 30532273,
+      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01679088&bidPbancOrd=000",
+      "charge": "박은경",
+      "chargeTel": "043-540-3157"
+    },
+    {
+      "type": "win",
+      "kind": "공사",
+      "cats": [
+        "light"
+      ],
+      "title": "2026년 서원구 노후 가로·보안등 LED 교체공사",
+      "org": "충청북도 청주시 서원구",
+      "region": "서원구",
+      "bidNo": "R26BK01668754-000",
+      "date": "2026-08-12",
+      "winner": "청보엔지니어링 주식회사",
+      "winnerCeo": "이미화",
+      "winnerTel": "043-275-7204",
+      "winnerAddr": "충청북도 청주시 흥덕구 옥산면 신촌길 82",
+      "amount": 43862679,
+      "url": ""
+    },
+    {
+      "type": "win",
+      "kind": "공사",
+      "cats": [
+        "tree"
+      ],
+      "title": "강북 관내 수목유지관리 단가계약",
+      "org": "울산광역시교육청 울산광역시강북교육지원청",
+      "region": "울산광역시",
+      "bidNo": "R26BK01669046-000",
+      "date": "2026-08-12",
+      "winner": "(주)한림엔지니어링",
+      "winnerCeo": "이춘미",
+      "winnerTel": "052-258-0223",
+      "winnerAddr": "울산광역시 울주군 온양읍 남창로 439-0 ,3층",
+      "amount": 55677340,
+      "url": ""
+    },
+    {
+      "type": "win",
+      "kind": "공사",
+      "cats": [
+        "tree"
+      ],
+      "title": "2026년 제2회 가로수벽 및 가로화단 예초, 전정공사",
+      "org": "인천광역시 미추홀구시설관리공단",
+      "region": "미추홀구시",
+      "bidNo": "R26BK01660439-000",
+      "date": "2026-08-12",
+      "winner": "주식회사  현대도시조경",
+      "winnerCeo": "이은구",
+      "winnerTel": "032-437-9791",
+      "winnerAddr": "인천광역시 미추홀구 주승로 185, 504호(관교동 관교오피스텔)",
+      "amount": 44836813,
+      "url": ""
+    },
     {
       "kind": "물품",
       "cats": [
@@ -398,6 +761,24 @@
       "url": ""
     },
     {
+      "type": "win",
+      "kind": "공사",
+      "cats": [
+        "rain"
+      ],
+      "title": "성동공원 일원 등 18개소 빗물받이 준설공사",
+      "org": "경기도 평택시",
+      "region": "평택시",
+      "bidNo": "R26BK01674299-000",
+      "date": "2026-08-11",
+      "winner": "주식회사 다원건설",
+      "winnerCeo": "한운옥",
+      "winnerTel": "031-655-8010",
+      "winnerAddr": "경기도 평택시 팽성읍 평궁길 89-0 ,1층",
+      "amount": 37301000,
+      "url": ""
+    },
+    {
       "kind": "공사",
       "cats": [
         "light"
@@ -755,6 +1136,78 @@
       "winnerTel": "032-661-6439",
       "winnerAddr": "경기도 부천시 부흥로 260 (중동)",
       "amount": 141004700,
+      "url": ""
+    },
+    {
+      "type": "win",
+      "kind": "공사",
+      "cats": [
+        "light"
+      ],
+      "title": "2026년 하반기 도로조명 유지보수공사 단가계약(2지역)",
+      "org": "충청남도 아산시",
+      "region": "아산시",
+      "bidNo": "R26BK01664545-000",
+      "date": "2026-08-10",
+      "winner": "상도종합건설(주)",
+      "winnerCeo": "박동필",
+      "winnerTel": "041-544-6337",
+      "winnerAddr": "충청남도 아산시 배방읍 희망로46번길 42-6 호인빌딩 2층",
+      "amount": 122508473,
+      "url": ""
+    },
+    {
+      "type": "win",
+      "kind": "공사",
+      "cats": [
+        "light"
+      ],
+      "title": "2026년 하반기 도로조명 유지보수공사 단가계약(1지역)",
+      "org": "충청남도 아산시",
+      "region": "아산시",
+      "bidNo": "R26BK01664510-000",
+      "date": "2026-08-10",
+      "winner": "주식회사 대광기술단",
+      "winnerCeo": "김경환",
+      "winnerTel": "041-424-2234",
+      "winnerAddr": "충청남도 아산시 신리길 70 (신동)",
+      "amount": 112643360,
+      "url": ""
+    },
+    {
+      "type": "win",
+      "kind": "공사",
+      "cats": [
+        "light"
+      ],
+      "title": "2026년 하반기 도로조명 유지보수공사 단가계약(4지역)",
+      "org": "충청남도 아산시",
+      "region": "아산시",
+      "bidNo": "R26BK01664605-000",
+      "date": "2026-08-10",
+      "winner": "삼성디지컴 주식회사",
+      "winnerCeo": "조풍래",
+      "winnerTel": "041-544-1400",
+      "winnerAddr": "충청남도 아산시 문화로 301-21 (모종동) SD빌딩 3층",
+      "amount": 113301870,
+      "url": ""
+    },
+    {
+      "type": "win",
+      "kind": "공사",
+      "cats": [
+        "light"
+      ],
+      "title": "2026년 하반기 도로조명 유지보수공사 단가계약(3지역)",
+      "org": "충청남도 아산시",
+      "region": "아산시",
+      "bidNo": "R26BK01664572-000",
+      "date": "2026-08-10",
+      "winner": "주식회사 진성파워텍",
+      "winnerCeo": "양승관",
+      "winnerTel": "041-545-6644",
+      "winnerAddr": "충청남도 아산시 염치읍 석정길 55-0",
+      "amount": 112096506,
       "url": ""
     },
     {
@@ -1903,6 +2356,24 @@
       "winnerTel": "02-2284-3333",
       "winnerAddr": "서울특별시 영등포구 선유로3길 10,13층(문래동5가)",
       "amount": 140454600,
+      "url": ""
+    },
+    {
+      "type": "win",
+      "kind": "공사",
+      "cats": [
+        "light"
+      ],
+      "title": "2026년 덕양구 보안등 연간단가 보수공사(1구역 2차)",
+      "org": "경기도 고양시 덕양구",
+      "region": "덕양구",
+      "bidNo": "R26BK01658043-000",
+      "date": "2026-08-05",
+      "winner": "주식회사 화승이엔아이",
+      "winnerCeo": "장진숙",
+      "winnerTel": "031-970-5104",
+      "winnerAddr": "경기도 고양시 덕양구 화신로 259, 401호(화정동, 건영캐스빌)",
+      "amount": 41253880,
       "url": ""
     },
     {
@@ -13433,470 +13904,6 @@
       "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01605178&bidPbancOrd=000",
       "charge": "정영민",
       "chargeTel": "033-450-4873"
-    },
-    {
-      "kind": "용역",
-      "cats": [
-        "tree"
-      ],
-      "title": "마도농협 2026년 벼 병해충 무인항공방제 용역 입찰 공고(긴급)",
-      "org": "마도농업협동조합",
-      "ntceInstt": "마도농업협동조합",
-      "region": "",
-      "bidNo": "R26BK01599581-002",
-      "date": "2026-06-26",
-      "closeDate": "2026-07-07",
-      "amount": 120000000,
-      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01599581&bidPbancOrd=002",
-      "charge": "이흥철",
-      "chargeTel": "031-356-4695"
-    },
-    {
-      "kind": "용역",
-      "cats": [
-        "tree"
-      ],
-      "title": "[긴급]2026년 서화성농협 벼 병해충 공동방제 임차용역",
-      "org": "서화성농업협동조합",
-      "ntceInstt": "서화성농업협동조합",
-      "region": "",
-      "bidNo": "R26BK01604739-000",
-      "date": "2026-06-26",
-      "closeDate": "2026-07-13",
-      "amount": 176000000,
-      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01604739&bidPbancOrd=000",
-      "charge": "유정석",
-      "chargeTel": "031-350-8024"
-    },
-    {
-      "kind": "물품",
-      "cats": [
-        "tree"
-      ],
-      "title": "2026년 벼 병해충 본답방제 1차 약제 구입",
-      "org": "경상남도 하동군 고전면",
-      "ntceInstt": "경상남도 하동군 고전면",
-      "region": "하동군",
-      "bidNo": "R26BK01604142-000",
-      "date": "2026-06-26",
-      "closeDate": "2026-07-03",
-      "amount": 32468364,
-      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01604142&bidPbancOrd=000",
-      "charge": "박준민",
-      "chargeTel": "055-880-6183"
-    },
-    {
-      "kind": "물품",
-      "cats": [
-        "tree"
-      ],
-      "title": "물품 구매 입찰 공고 및 시행(2026년 벼 병해충 본답방제 1차 약제 구입)",
-      "org": "경상남도 하동군 진교면",
-      "ntceInstt": "경상남도 하동군 진교면",
-      "region": "하동군",
-      "bidNo": "R26BK01604133-000",
-      "date": "2026-06-26",
-      "closeDate": "2026-07-03",
-      "amount": 43625455,
-      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01604133&bidPbancOrd=000",
-      "charge": "박인범",
-      "chargeTel": "055-880-6273"
-    },
-    {
-      "kind": "물품",
-      "cats": [
-        "tree"
-      ],
-      "title": "2026년 금성면 벼 병해충 본답방제 지원사업(1차)",
-      "org": "경상남도 하동군 금성면",
-      "ntceInstt": "경상남도 하동군 금성면",
-      "region": "하동군",
-      "bidNo": "R26BK01604558-000",
-      "date": "2026-06-26",
-      "closeDate": "2026-07-02",
-      "amount": 0,
-      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01604558&bidPbancOrd=000",
-      "charge": "신승곤",
-      "chargeTel": "055-880-6243"
-    },
-    {
-      "kind": "용역",
-      "cats": [
-        "billing"
-      ],
-      "title": "모바일 전자고지 서비스 중계사업자 선정",
-      "org": "공무원연금공단",
-      "ntceInstt": "공무원연금공단",
-      "region": "",
-      "bidNo": "R26BK01603778-000",
-      "date": "2026-06-26",
-      "closeDate": "2026-06-26",
-      "amount": 227793910,
-      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01603778&bidPbancOrd=000",
-      "charge": "임관혁",
-      "chargeTel": "064-802-2372"
-    },
-    {
-      "type": "win",
-      "kind": "물품",
-      "cats": [
-        "light"
-      ],
-      "title": "송선장기로 가로등 및 선로 보수공사 관급자재(LED가로등)",
-      "org": "충청남도 공주시",
-      "region": "공주시",
-      "bidNo": "R26BK01603572-000",
-      "date": "2026-06-26",
-      "winner": "주식회사소룩스",
-      "winnerCeo": "정재준",
-      "winnerTel": "***********",
-      "winnerAddr": "충청남도 공주시 정안면 정안농공단지길 32-22",
-      "amount": 34776000,
-      "url": ""
-    },
-    {
-      "type": "win",
-      "kind": "공사",
-      "cats": [
-        "tree"
-      ],
-      "title": "남파로 및 노성로 가로수 주변 잡목제거 공사",
-      "org": "경기도 안성시",
-      "region": "안성시",
-      "bidNo": "R26BK01602042-000",
-      "date": "2026-06-26",
-      "winner": "(주)에코이엔씨",
-      "winnerCeo": "최미경",
-      "winnerTel": "031-677-8985",
-      "winnerAddr": "경기도 안성시 보개원삼로 87, 2층(가사동)",
-      "amount": 52040000,
-      "url": ""
-    },
-    {
-      "type": "win",
-      "kind": "용역",
-      "cats": [
-        "billing"
-      ],
-      "title": "모바일 전자고지 서비스 중계사업자 선정",
-      "org": "공무원연금공단",
-      "region": "",
-      "bidNo": "R26BK01603778-000",
-      "date": "2026-06-26",
-      "winner": "네이버 주식회사",
-      "winnerCeo": "최수연",
-      "winnerTel": "031-784-4152",
-      "winnerAddr": "경기도 성남시 분당구 정자일로 95-0 (정자동)  NAVER 1784",
-      "amount": 225500000,
-      "url": ""
-    },
-    {
-      "type": "win",
-      "kind": "물품",
-      "cats": [
-        "energy"
-      ],
-      "title": "건물에너지관리시스템(BEMS) 구축 자동제어 공사",
-      "org": "충북대학교",
-      "region": "",
-      "bidNo": "R26BK01600533-000",
-      "date": "2026-06-26",
-      "winner": "주식회사 싸이몬",
-      "winnerCeo": "안재봉",
-      "winnerTel": "031-780-1026",
-      "winnerAddr": "경기도 용인시 수지구 포은대로59번길 40, 9층, 8층, 1층, 비201호 ~ 비213호(상현동, 시그니처광교 지식산업센터 2차)",
-      "amount": 795470000,
-      "url": ""
-    },
-    {
-      "kind": "공사",
-      "cats": [
-        "light"
-      ],
-      "title": "고창군 4개면(신림,무장,성송,심원) 보안등 LED 교체 공사",
-      "org": "전북특별자치도 고창군",
-      "ntceInstt": "전북특별자치도 고창군",
-      "region": "고창군",
-      "bidNo": "R26BK01594820-001",
-      "date": "2026-06-25",
-      "closeDate": "2026-06-26",
-      "amount": 110403000,
-      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01594820&bidPbancOrd=001",
-      "charge": "김나희",
-      "chargeTel": "063-560-2506"
-    },
-    {
-      "kind": "공사",
-      "cats": [
-        "light"
-      ],
-      "title": "고창군 4개면(신림,무장,성송,심원) 보안등 LED 교체 공사",
-      "org": "전북특별자치도 고창군",
-      "ntceInstt": "전북특별자치도 고창군",
-      "region": "고창군",
-      "bidNo": "R26BK01602221-000",
-      "date": "2026-06-25",
-      "closeDate": "2026-07-01",
-      "amount": 110403000,
-      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01602221&bidPbancOrd=000",
-      "charge": "김나희",
-      "chargeTel": "063-560-2506"
-    },
-    {
-      "kind": "공사",
-      "cats": [
-        "tree"
-      ],
-      "title": "2026년 재해위험수목 제거사업(2차)",
-      "org": "전남광주통합특별시 곡성군",
-      "ntceInstt": "전남광주통합특별시 곡성군",
-      "region": "곡성군",
-      "bidNo": "R26BK01601481-000",
-      "date": "2026-06-25",
-      "closeDate": "2026-07-01",
-      "amount": 23899091,
-      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01601481&bidPbancOrd=000",
-      "charge": "장철수",
-      "chargeTel": "061-360-2821"
-    },
-    {
-      "kind": "공사",
-      "cats": [
-        "tree"
-      ],
-      "title": "구미 낙산리 고분군 수목정비 공사",
-      "org": "경상북도 구미시",
-      "ntceInstt": "조달청 대구지방조달청",
-      "region": "구미시",
-      "bidNo": "R26BK01597524-000",
-      "date": "2026-06-25",
-      "closeDate": "2026-07-10",
-      "amount": 179872728,
-      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01597524&bidPbancOrd=000",
-      "charge": "이재우",
-      "chargeTel": "070-4056-7940"
-    },
-    {
-      "kind": "공사",
-      "cats": [
-        "tree"
-      ],
-      "title": "2026년 옹기체험관 수목정비공사",
-      "org": "충청남도 아산시",
-      "ntceInstt": "충청남도 아산시",
-      "region": "아산시",
-      "bidNo": "R26BK01602214-000",
-      "date": "2026-06-25",
-      "closeDate": "2026-07-01",
-      "amount": 50884545,
-      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01602214&bidPbancOrd=000",
-      "charge": "홍수연",
-      "chargeTel": "041-540-2277"
-    },
-    {
-      "kind": "공사",
-      "cats": [
-        "tree"
-      ],
-      "title": "남파로 및 노성로 가로수 주변 잡목제거 공사",
-      "org": "경기도 안성시",
-      "ntceInstt": "경기도 안성시",
-      "region": "안성시",
-      "bidNo": "R26BK01602042-000",
-      "date": "2026-06-25",
-      "closeDate": "2026-06-26",
-      "amount": 49808182,
-      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01602042&bidPbancOrd=000",
-      "charge": "장미",
-      "chargeTel": "031-678-2383"
-    },
-    {
-      "kind": "용역",
-      "cats": [
-        "tree"
-      ],
-      "title": "2026년 벼 병해충 공동방제 헬기 임차용역/공원24655",
-      "org": "서울특별시 강서구",
-      "ntceInstt": "서울특별시 강서구",
-      "region": "강서구",
-      "bidNo": "R26BK01569353-001",
-      "date": "2026-06-25",
-      "closeDate": "2026-06-18",
-      "amount": 55598291,
-      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01569353&bidPbancOrd=001",
-      "charge": "장인혜",
-      "chargeTel": "02-2600-1137"
-    },
-    {
-      "kind": "용역",
-      "cats": [
-        "tree"
-      ],
-      "title": "2026년 벼 병해충 공동방제 헬기 임차용역/공원28126",
-      "org": "서울특별시 강서구",
-      "ntceInstt": "서울특별시 강서구",
-      "region": "강서구",
-      "bidNo": "R26BK01601800-000",
-      "date": "2026-06-25",
-      "closeDate": "2026-07-03",
-      "amount": 55598291,
-      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01601800&bidPbancOrd=000",
-      "charge": "장인혜",
-      "chargeTel": "02-2600-1137"
-    },
-    {
-      "kind": "용역",
-      "cats": [
-        "tree"
-      ],
-      "title": "2026년 팔탄농협 벼 병해충 드론 공동방제 임차용역(긴급)",
-      "org": "농협중앙회 팔탄농업협동조합",
-      "ntceInstt": "농협중앙회 팔탄농업협동조합",
-      "region": "",
-      "bidNo": "R26BK01602180-000",
-      "date": "2026-06-25",
-      "closeDate": "2026-07-06",
-      "amount": 148909091,
-      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01602180&bidPbancOrd=000",
-      "charge": "송윤석",
-      "chargeTel": "031-8024-0719"
-    },
-    {
-      "kind": "용역",
-      "cats": [
-        "tree"
-      ],
-      "title": "2026년 팔탄농협 벼 병해충 드론 공동방제 임차용역(긴급)",
-      "org": "농협중앙회 팔탄농업협동조합",
-      "ntceInstt": "농협중앙회 팔탄농업협동조합",
-      "region": "",
-      "bidNo": "R26BK01602180-001",
-      "date": "2026-06-25",
-      "closeDate": "2026-07-06",
-      "amount": 148909091,
-      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01602180&bidPbancOrd=001",
-      "charge": "송윤석",
-      "chargeTel": "031-8024-0719"
-    },
-    {
-      "kind": "용역",
-      "cats": [
-        "tree"
-      ],
-      "title": "영양군 벼 병해충 공동방제 용역(2차)",
-      "org": "경상북도 영양군 농업기술센터",
-      "ntceInstt": "경상북도 영양군 농업기술센터",
-      "region": "영양군",
-      "bidNo": "R26BK01601712-000",
-      "date": "2026-06-25",
-      "closeDate": "2026-07-01",
-      "amount": 44850000,
-      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01601712&bidPbancOrd=000",
-      "charge": "이성민",
-      "chargeTel": "054-680-5211"
-    },
-    {
-      "kind": "물품",
-      "cats": [
-        "tree"
-      ],
-      "title": "2026년 벼 병해충 유·무인 항공방제 농약 구입",
-      "org": "충청남도 보령시 청소면",
-      "ntceInstt": "충청남도 보령시 청소면",
-      "region": "보령시",
-      "bidNo": "R26BK01602016-000",
-      "date": "2026-06-25",
-      "closeDate": "2026-07-02",
-      "amount": 54452727,
-      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01602016&bidPbancOrd=000",
-      "charge": "신수정",
-      "chargeTel": "041-930-4683"
-    },
-    {
-      "kind": "물품",
-      "cats": [
-        "tree"
-      ],
-      "title": "2026년 벼 병해충 본답방제 1차 약제 구입",
-      "org": "경상남도 하동군 양보면",
-      "ntceInstt": "경상남도 하동군 양보면",
-      "region": "하동군",
-      "bidNo": "R26BK01603046-000",
-      "date": "2026-06-25",
-      "closeDate": "2026-07-02",
-      "amount": 34898182,
-      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01603046&bidPbancOrd=000",
-      "charge": "손세빈",
-      "chargeTel": ""
-    },
-    {
-      "kind": "공사",
-      "cats": [
-        "rain"
-      ],
-      "title": "2026년 미추홀구 빗물받이 정비공사",
-      "org": "인천광역시 미추홀구",
-      "ntceInstt": "인천광역시 미추홀구",
-      "region": "미추홀구",
-      "bidNo": "R26BK01601586-000",
-      "date": "2026-06-25",
-      "closeDate": "2026-07-01",
-      "amount": 173010000,
-      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01601586&bidPbancOrd=000",
-      "charge": "최영철",
-      "chargeTel": "032-880-4137"
-    },
-    {
-      "kind": "물품",
-      "cats": [
-        "billing"
-      ],
-      "title": "재산세 정기분 및 독촉장고지서 제작 및 출력",
-      "org": "강원특별자치도 원주시",
-      "ntceInstt": "강원특별자치도 원주시",
-      "region": "원주시",
-      "bidNo": "R26BK01601718-000",
-      "date": "2026-06-25",
-      "closeDate": "2026-06-25",
-      "amount": 30939545,
-      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01601718&bidPbancOrd=000",
-      "charge": "이미림",
-      "chargeTel": "033-737-2422"
-    },
-    {
-      "type": "win",
-      "kind": "물품",
-      "cats": [
-        "billing"
-      ],
-      "title": "재산세 정기분 및 독촉장고지서 제작 및 출력",
-      "org": "강원특별자치도 원주시",
-      "region": "원주시",
-      "bidNo": "R26BK01601718-000",
-      "date": "2026-06-25",
-      "winner": "강원프린팅",
-      "winnerCeo": "윤효정",
-      "winnerTel": "033-747-1130",
-      "winnerAddr": "강원특별자치도 원주시 단구로 80-0, 1층 102호(단계동)",
-      "amount": 29873850,
-      "url": ""
-    },
-    {
-      "kind": "물품",
-      "cats": [
-        "tree"
-      ],
-      "title": "수목원·정원 스탬프 투어 운영물품(기념주화) 제작, 구매",
-      "org": "국립세종수목원",
-      "ntceInstt": "국립세종수목원",
-      "region": "",
-      "bidNo": "R26BK01587841-001",
-      "date": "2026-06-24",
-      "closeDate": "2026-06-25",
-      "amount": 20916164,
-      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01587841&bidPbancOrd=001",
-      "charge": "유현서",
-      "chargeTel": "044-251-0116"
     }
   ]
 }
