@@ -11277,9 +11277,7 @@ window.rdRender = function(){
         '<div class="rd-sido">' + esc(g.sido) + '</div></div>' +
         '<span class="rd-co ' + coClass(g.co) + '">' + esc(g.co || '미지정') + '</span></div>' +
       '<div class="rd-metrics">' +
-        '<span>구좌 <b>' + g.rows.length + '</b>건</span>' +
-        '<span>한빌 <b>' + g.ownN + '</b> / 경쟁 <b>' + g.rivalN + '</b></span>' +
-        '<span>고객 <b>' + g.qty.toLocaleString() + '</b>건</span>' +
+        '<span>빌링 <b>' + g.qty.toLocaleString() + '</b>건</span>' +
         (g.owner ? '<span>담당 <b>' + esc(g.owner) + '</b></span>' : '') +
         (wpBadge ? '<span style="margin-left:auto">' + wpBadge + '</span>' : '') +
       '</div>' +
