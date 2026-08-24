@@ -11210,11 +11210,16 @@ window.rdRender = function(){
     }
     return true;
   });
-  // 정렬 기준을 '오늘의 우선 액션'과 통일: 액션 신호가 있는 지역(발주 마감›인사›낙찰›발주›솔루션)을
-  //   우선순위(rdRegionAction.p) 순으로 상단에, 그 외 지역은 대응 시급도(score)로 그 뒤에 배치.
-  //   (전체 리스트는 카테고리 상한 미적용 — 모든 지역 노출. 상한은 브리핑/지도 핀에만 적용)
+  // 정렬 기준을 '오늘의 우선 액션'과 통일:
+  //   ① 브리핑 상위 목록(ST.actTop = 카테고리 상한 적용)을 브리핑 순서 그대로 최상단에 고정
+  //      → 전체 리스트 1~N위 = 오늘의 우선 액션과 동일(동대문구·강북구 등 낙찰도 같은 4·5위).
+  //   ② 그 아래: 액션 신호 있는 나머지 지역을 우선순위(rdRegionAction.p)순
+  //   ③ 마지막: 액션 없는 지역을 대응 시급도(score)순
+  const _actIdx = {};
+  (ST.actTop || []).forEach(function(it, i){ _actIdx[it.g.key] = i; });
   const _rkMap = {};
   list.forEach(function(g){
+    if (g.key in _actIdx){ _rkMap[g.key] = 9000000 - _actIdx[g.key]; return; }   // 브리핑 순서 고정
     const a = (typeof rdRegionAction === 'function') ? rdRegionAction(g) : null;
     _rkMap[g.key] = a ? (2000000 + a.p * 1000 + Math.min((score(g)||0)/10, 999))
                       : (score(g) || 0);
