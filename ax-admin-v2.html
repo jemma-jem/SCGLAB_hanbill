@@ -6935,11 +6935,22 @@ function _mergeWeekDataToDB(weekData) {
   const monthKey = weekData._monthKey;
   if (!DB.months) DB.months = {};
   const existing = DB.months[monthKey] || { t:0, v:[0,0,0,0,0,0,0,0,0,0] };
-  DB.months[monthKey] = {
+  const merged = {
     ...existing,
-    t: Math.max(existing.t, weekData.t),
-    v: existing.v.map((x,i) => Math.max(x, weekData.v[i])),
+    t: Math.max(existing.t || 0, weekData.t || 0),
+    v: (existing.v || [0,0,0,0,0,0,0,0,0,0]).map((x,i) => Math.max(x || 0, (weekData.v && weekData.v[i]) || 0)),
   };
+  // 상세유형(td)·처리분류(d/hj…)가 아직 없으면(요약만 있는 이번달 등) 요약주 값으로 채워 TOP5·완결률 표시 가능하게.
+  //   (일자 데이터로 이미 채워진 달은 td가 있으므로 건드리지 않음 → 일자 집계가 항상 우선)
+  if (!existing.td || !existing.td.length) {
+    if (weekData.td && weekData.td.length) merged.td = weekData.td;
+    if (weekData.kw && weekData.kw.length) merged.kw = weekData.kw;
+    if (typeof weekData.d  === 'number') merged.d  = weekData.d;
+    if (typeof weekData.hj === 'number') merged.hj = weekData.hj;
+    if (typeof weekData.hk === 'number') merged.hk = weekData.hk;
+    if (typeof weekData.ho === 'number') merged.ho = weekData.ho;
+  }
+  DB.months[monthKey] = merged;
 }
 
 // ════════════════════════════════════════════════════════════════════════
@@ -7092,9 +7103,8 @@ async function syncComplaintsByDate(){
       var _affMonths = {};
       Object.keys(res.dbDaily).forEach(function(d){ _affMonths[d.slice(0,7)] = 1; });
       Object.keys(_affMonths).forEach(function(mk){
-        // 시드 월(상세유형 td 포함)은 보존. 없거나 td가 비면(예: 이번달은 주간요약만 있어 td 없음) 일자 데이터로 재집계.
-        var __ex = DB.months[mk];
-        if (__ex && __ex.td && __ex.td.length) return;
+        // 컷오프 월(=시드가 커버하는 마지막 월) 이하는 시드값 보존, 그 이후(7·8월 등)만 일자 데이터로 재집계
+        if (cutoff && mk <= String(cutoff).slice(0,7)) return;
         var ents = Object.keys(DB.weeks)
           .filter(function(wk){ var v = DB.weeks[wk]; return ((v && v._monthKey) || String(wk).slice(0,7)) === mk; })
           .map(function(wk){ return DB.weeks[wk]; });
