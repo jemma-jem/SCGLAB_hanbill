@@ -7791,12 +7791,13 @@ window.hbWinProb = function(g){
   addF(g.sysNone, +6, '도로조명시스템 미사용 — 무상 진입로');
   addF(g.sysRival && !g.sysNone, +4, '타사 시스템 사용 — 교체 제안 대상');
   if (!own){ addF(g.rivalN >= 3, -6, '경쟁사 다수 선점(' + g.rivalN + '구좌)'); }
-  // 3) 표시값 0~100 클램프 (방어110·충성120·음수 상태 모두 0~100로 표기)
-  score = Math.max(0, Math.min(100, Math.round(score)));
-  // 4) 라벨·색 — 유지(방어/충성)·이탈위험(위험/Drop/이탈)은 별도 표기
+  // 3) 표시값 — 정상 단계(0~100)만 클램프. 유지초과(방어/충성)·이탈위험(음수)은 시트값 그대로 노출(클램프 없음).
+  score = Math.round(score);
+  if (!retention && !churnRisk) score = Math.max(0, Math.min(100, score));
+  // 4) 라벨·색 — 유지초과·이탈위험은 실제 단계명을 라벨로, 시트값(±)을 그대로 표기
   let label, tier, color;
-  if (churnRisk)      { label = '이탈위험'; tier = 'risk'; color = '#DC2626'; }
-  else if (retention) { label = '유지';     tier = 'high'; color = '#059669'; }
+  if (churnRisk)      { label = baseWhy; tier = 'risk'; color = '#DC2626'; }   // 위험/Drop/이탈
+  else if (retention) { label = baseWhy; tier = 'high'; color = '#059669'; }   // 방어/충성
   else {
     label = own ? '유지확도' : '수주확도';
     tier  = score >= 70 ? 'high' : (score >= 45 ? 'mid' : 'low');
