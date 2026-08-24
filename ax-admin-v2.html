@@ -10987,15 +10987,16 @@ function renderBriefing(){
   if (!top.length){ el.innerHTML = ''; ST.actRank = {}; ST.actTop = []; return; }
   ST.actTop = top;   // 지도 핀도 브리핑과 동일한 목록(카테고리 상한 적용된 '오늘의 우선 액션')을 사용
 
-  // 오늘의 우선 액션(상위 7) 이후 — 동일 우선순위(점수순)로 8~20위를 카드에 마킹한다.
+  // 카드 순위 뱃지: 오늘의 우선 액션 상위(1~N)를 그대로 부여하고, 이후 8~20위까지 이어서 마킹.
   ST.actRank = {};
+  top.forEach(function(it, i){ ST.actRank[it.g.key] = i + 1; });   // 1~N (브리핑과 동일 순위)
   (function(){
     const shown = {};
     top.forEach(function(it){ shown[it.g.key] = 1; });
-    let rk = top.length;                       // 보통 7
+    let rk = top.length;                       // 보통 6~7
     items.forEach(function(it){
       if (shown[it.g.key] || rk >= 20) return; // 이미 노출됐거나 20위 초과면 제외
-      ST.actRank[it.g.key] = ++rk;             // 8위부터 순차 부여
+      ST.actRank[it.g.key] = ++rk;             // 상위 목록 다음 순위부터 순차 부여
     });
   })();
 
@@ -11269,7 +11270,8 @@ window.rdRender = function(){
 
     // 오늘의 우선 액션(상위 7) 이후 8~20위 지역은 카드에 순위 뱃지를 표시한다.
     const _rk = (ST.actRank && ST.actRank[g.key]) || 0;
-    const rkBadge = _rk ? ' <span title="오늘의 우선 액션 ' + _rk + '위" style="display:inline-flex;align-items:center;justify-content:center;min-width:19px;height:19px;padding:0 5px;margin-left:6px;border-radius:10px;background:#F97316;color:#fff;font-size:11px;font-weight:800;vertical-align:middle;line-height:1">' + _rk + '</span>' : '';
+    const _rkBg = _rk <= 3 ? '#DC2626' : (_rk <= 6 ? '#F97316' : '#94A3B8');   // 1~3 강조 · 4~6 주황 · 7+ 회색
+    const rkBadge = _rk ? ' <span title="오늘의 우선 액션 ' + _rk + '위" style="display:inline-flex;align-items:center;justify-content:center;min-width:19px;height:19px;padding:0 5px;margin-left:6px;border-radius:10px;background:' + _rkBg + ';color:#fff;font-size:11px;font-weight:800;vertical-align:middle;line-height:1">' + _rk + '</span>' : '';
     return '<div class="rd-card ' + cls + '">' +
       '<div class="rd-card-h"><div><div class="rd-region">' + esc(g.sgg) + rkBadge + '</div>' +
         '<div class="rd-sido">' + esc(g.sido) + '</div></div>' +
