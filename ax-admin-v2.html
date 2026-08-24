@@ -382,7 +382,7 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
   background:var(--err);border:2px solid #fff;
 }
 
-/* ══════════ AI_레인저 (지역 영업 알림) ══════════ */
+/* ══════════ AI 레인저(영업사원) (지역 영업 알림) ══════════ */
 .ni-badge{margin-left:auto;background:var(--err,#EF4444);color:#fff;font-size:10px;font-weight:800;
   width:16px;height:16px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;
   line-height:1;box-shadow:0 0 0 2px rgba(239,68,68,.25);animation:niNewPulse 1.8s ease-in-out infinite}
@@ -731,8 +731,8 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
   </div>
   <nav class="sb-nav">
     <div class="ni on" onclick="goSec('dashboard',this)"><i class="ti ti-dashboard"></i>데이터 포털</div>
-    <!-- AI_레인저: 재설계 예정으로 메뉴 숨김 (섹션·로직·수집기는 그대로 유지) -->
-    <div class="ni" onclick="goSec('radar',this)" style="display:none"><i class="ti ti-radar-2"></i>AI_레인저<span class="ni-badge" id="radar-nav-badge" style="display:none"></span></div>
+    <!-- AI 레인저(영업사원): 재설계 예정으로 메뉴 숨김 (섹션·로직·수집기는 그대로 유지) -->
+    <div class="ni" onclick="goSec('radar',this)" style="display:none"><i class="ti ti-radar-2"></i>AI 레인저(영업사원)<span class="ni-badge" id="radar-nav-badge" style="display:none"></span></div>
     <div class="ni" onclick="goSec('stt',this)"><i class="ti ti-microphone-2"></i>AI 민원분석</div>
     <div class="ni" onclick="goSec('newsletter',this)"><i class="ti ti-news"></i>뉴스레터</div>
   </nav>
@@ -1152,7 +1152,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
             var _hRatio = (billingCnt && BILL_TOTAL_ALL) ? (billingCnt / BILL_TOTAL_ALL * 100) : 0;
             document.getElementById('map-popup-ratio').textContent = billingCnt ? _hRatio.toFixed(2) + '%' : '—';
             document.getElementById('map-popup-count').style.color = co ? (COMPANY_COLOR[co]||'#38BDF8') : '#94A3B8';
-            // 수주확도 — AI_레인저(고객관리리스트)가 로드돼 있을 때만 표시
+            // 수주확도 — AI 레인저(영업사원)(고객관리리스트)가 로드돼 있을 때만 표시
             (function(){
               const wpRow = document.getElementById('map-popup-wp-row');
               const wpEl  = document.getElementById('map-popup-wp');
@@ -2413,11 +2413,11 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
 
   </div><!-- /sec-newsletter -->
 
-  <!-- ══════════ 4. AI_레인저 (고객관리리스트 × 고객 소식) ══════════ -->
+  <!-- ══════════ 4. AI 레인저(영업사원) (고객관리리스트 × 고객 소식) ══════════ -->
   <div class="sec" id="sec-radar">
 
     <div class="rd-note" style="margin-bottom:14px">
-      <strong>AI_레인저</strong>는 <strong>고객관리리스트(경쟁사 v2.0)</strong>에 4가지 외부 데이터를 시·군·구로 결합해
+      <strong>AI 레인저(영업사원)</strong>는 <strong>고객관리리스트(경쟁사 v2.0)</strong>에 4가지 외부 데이터를 시·군·구로 결합해
       <strong>대응이 필요한 지역</strong>을 우선순위로 띄웁니다.<br>
       <span style="display:inline-block;margin:6px 0 2px">
         📰 <strong>고객 소식</strong>(신문·소식지) ·
@@ -2466,9 +2466,9 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
       <div class="bn-icon"><i class="ti ti-dashboard"></i></div>
       <span class="bn-label">데이터 포털</span>
     </button>
-    <button class="bn-item" id="bn-radar" onclick="bnGo('radar')" aria-label="AI_레인저" style="display:none">
+    <button class="bn-item" id="bn-radar" onclick="bnGo('radar')" aria-label="AI 레인저(영업사원)" style="display:none">
       <div class="bn-icon"><i class="ti ti-radar-2"></i></div>
-      <span class="bn-label">AI_레인저</span>
+      <span class="bn-label">AI 레인저(영업사원)</span>
     </button>
     <button class="bn-item" id="bn-stt" onclick="bnGo('stt')" aria-label="AI 민원분석">
       <div class="bn-icon"><i class="ti ti-microphone-2"></i></div>
@@ -2485,7 +2485,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
   </div>
 </nav>
 
-<!-- ── AI_레인저 상세 모달 ── -->
+<!-- ── AI 레인저(영업사원) 상세 모달 ── -->
 <div id="rd-modal" onclick="if(event.target===this)rdCloseDetail()">
   <div id="rd-modal-box">
     <div class="rd-mh">
@@ -5318,7 +5318,7 @@ const SEC_META = {
   stt:['STT 활용 주요 지표','실제 통화 분석 기반 인사이트'],
   predict:['예상 민원','AI 기반 민원 예측 및 개선책'],
   newsletter:['뉴스레터','한전 청구서사업 경영진 일일 스크랩'],
-  radar:['AI_레인저','고객리스트 × 지역소식·나라장터·인사발령 결합 영업 알림'],
+  radar:['AI 레인저(영업사원)','고객리스트 × 지역소식·나라장터·인사발령 결합 영업 알림'],
 };
 window.goSec = function(name, el) {
   // 탭 전환 시 항상 페이지 최상단으로 (이전 탭 스크롤 위치 잔존 방지)
@@ -5710,7 +5710,7 @@ const BN_SECTIONS = {
   stt:        { label:'AI 민원분석', sub:'실제 통화 분석 기반 인사이트' },
   predict:    { label:'예상 민원', sub:'AI 기반 민원 예측 및 개선책' },
   newsletter: { label:'뉴스레터', sub:'한전 청구서사업 경영진 스크랩' },
-  radar:      { label:'AI_레인저', sub:'고객리스트 × 지역소식·나라장터·인사발령 결합 영업 알림' },
+  radar:      { label:'AI 레인저(영업사원)', sub:'고객리스트 × 지역소식·나라장터·인사발령 결합 영업 알림' },
 };
 window.bnGo = function(name) {
   // 탭 전환 시 항상 페이지 최상단으로 (이전 탭 스크롤 위치 잔존 방지)
@@ -6698,7 +6698,7 @@ function hbHanbilStatusCard(sel) {
   const total   = window._HB_BILL_TOTAL || 0;
   const share   = (billing && total) ? (billing / total * 100).toFixed(2) + '%' : '—';
 
-  // AI_레인저(고객관리리스트)가 로드돼 있으면 구좌·담당자·이슈까지 함께 표시
+  // AI 레인저(영업사원)(고객관리리스트)가 로드돼 있으면 구좌·담당자·이슈까지 함께 표시
   let rg = null;
   try { if (typeof window.rdLookupRegion === 'function') rg = window.rdLookupRegion(region); } catch(e) {}
 
@@ -6753,7 +6753,7 @@ function hbHanbilStatusCard(sel) {
       '</ul></div>';
   }
   if (!rg) {
-    html += '<div style="margin-top:9px;font-size:11px;color:#94A3B8">※ 구좌·담당자·이슈 상세는 <strong>AI_레인저</strong> 메뉴를 한 번 열어 두면 함께 표시됩니다.</div>';
+    html += '<div style="margin-top:9px;font-size:11px;color:#94A3B8">※ 구좌·담당자·이슈 상세는 <strong>AI 레인저(영업사원)</strong> 메뉴를 한 번 열어 두면 함께 표시됩니다.</div>';
   }
   return html;
 }
@@ -7664,9 +7664,9 @@ function hbRegionAnswer(text){
   const isHanvil = (co === '한빌');
   // 한빌 고객 지역은 신규 전략을 제안하지 않고 현황만 안내한다.
   const strat = isHanvil
-    ? '<b>한빌 고객 지역</b>입니다 → 신규 영업전략 제안 없이 <b>현황만</b> 안내합니다. 상세 현황은 지도에서 [선점 현황 보기] 또는 <b>AI_레인저</b> 메뉴에서 확인하세요.'
+    ? '<b>한빌 고객 지역</b>입니다 → 신규 영업전략 제안 없이 <b>현황만</b> 안내합니다. 상세 현황은 지도에서 [선점 현황 보기] 또는 <b>AI 레인저(영업사원)</b> 메뉴에서 확인하세요.'
     : '타사·미개척 지역 → <b>진입 전략</b>: 담당자 접촉 + 전자청구 전환 제안으로 신규 확보 권장';
-  // 수주확도 — AI_레인저 로드 시 내부 영업상태+외부 신호 결합값 표기
+  // 수주확도 — AI 레인저(영업사원) 로드 시 내부 영업상태+외부 신호 결합값 표기
   let wpLine = '';
   try {
     const rg = (typeof window.rdLookupRegion === 'function') ? window.rdLookupRegion(hit.sgg) : null;
@@ -9453,14 +9453,14 @@ function getPageAlert(name) {
         ]
       };
     })(),
-    // ── AI_레인저: 고객관리리스트 × 고객 소식 결합 결과를 요약 ──
+    // ── AI 레인저(영업사원): 고객관리리스트 × 고객 소식 결합 결과를 요약 ──
     //    (window._RD = 레이더 모듈 상태. 메뉴를 한 번도 열지 않았으면 안내 문구를 띄운다)
     radar: (function(){
       var R = window._RD;
       if (!R || !R.loaded) {
         return {
           badge: '데이터 준비 중',
-          title: 'AI_레인저 — 지역별 영업 알림',
+          title: 'AI 레인저(영업사원) — 지역별 영업 알림',
           lines: [
             '📡 고객관리리스트(경쟁사 v2.0)와 지역 신문·소식지를 시·군·구로 묶어 분석해요.',
             '🛡 한빌이 선점한 지역은 신규 전략 없이 <b>현황만</b> 보여드려요.',
@@ -9521,7 +9521,7 @@ function getPageAlert(name) {
 }
 
 // 탭별 표시 이름 (모바일 칩 + 패널 타이틀 동적 연동용)
-var PAGE_TAB_NAMES = { dashboard:'데이터포털', radar:'AI_레인저', stt:'민원분석', predict:'예상민원', newsletter:'뉴스레터', chatbot:'세이버' };
+var PAGE_TAB_NAMES = { dashboard:'데이터포털', radar:'AI 레인저(영업사원)', stt:'민원분석', predict:'예상민원', newsletter:'뉴스레터', chatbot:'세이버' };
 function pageAlertTitle(name){ return 'AI분석요약 - ' + (PAGE_TAB_NAMES[name] || '요약'); }
 
 function updatePageAlert(name) {
@@ -9640,7 +9640,7 @@ setInterval(function() {
 
 <script>
 /* ══════════════════════════════════════════════════════════════════════
-   AI_레인저 (sec-radar)
+   AI 레인저(영업사원) (sec-radar)
    ---------------------------------------------------------------------
    데이터 소스
      ① 고객관리리스트 (구글시트 gid 281360527, gviz JSONP)  → 지역별 빌링사/담당자/이력
@@ -11422,7 +11422,7 @@ async function load(force){
               '건 · 기사 ' + ST.news.length + '건 · 인사 ' + (ST.hr||[]).length +
               '건 · 발주 ' + (ST.g2b||[]).length + '건 연동 완료', '#059669');
   } catch(e){
-    console.warn('[AI_레인저] 로드 실패:', e);
+    console.warn('[AI 레인저(영업사원)] 로드 실패:', e);
     setStatus('· 데이터 로드 실패 — 시트 공유 설정(링크가 있는 모든 사용자 보기)을 확인해 주세요. (' + (e.message||e) + ')', '#DC2626');
     if (grid) grid.innerHTML = '<div class="rd-empty">데이터를 불러오지 못했습니다. 새로고침(⟳) 버튼으로 다시 시도해 주세요.</div>';
   } finally {
@@ -11484,12 +11484,13 @@ window.rdMarkSeen = async function(){
 };
 
 // 페이지 로드 직후(첫 페인트 방해 안 하도록 지연) NEW 여부 체크
-// AI_레인저 메뉴는 재설계 중이라 기본 숨김. 단, 아래 관리자 계정에서만 노출한다.
-//   (로그인 사용자 = hb_user 쿠키. 확장하려면 RADAR_ADMINS 에 아이디 추가)
+// AI 레인저(영업사원) 메뉴는 재설계 중이라 외부 파트너 계정에는 숨기고, 그 외(관리자/내부) 계정에는 노출한다.
+//   (로그인 사용자 = hb_user 쿠키. 특정 관리자 아이디에만 노출하려면 아래를 화이트리스트 방식으로 되돌리면 됨)
+//   RADAR_HIDE_USERS 에 넣은 아이디(외부 파트너)에게만 숨김.
 (function(){
-  var RADAR_ADMINS = ['jem'];
+  var RADAR_HIDE_USERS = ['partner01'];   // 외부 파트너 계정 — 여기 없는 모든 계정(관리자 포함)에는 노출
   var u = (typeof hbCurrentUser === 'function') ? hbCurrentUser() : '';
-  if (RADAR_ADMINS.indexOf(u) < 0) return;   // 관리자 아니면 계속 숨김
+  if (RADAR_HIDE_USERS.indexOf(u) >= 0) return;   // 외부 파트너면 계속 숨김
   var ni = document.querySelector('.sb-nav .ni[onclick*="radar"]');
   if (ni) ni.style.display = '';
   var bn = document.getElementById('bn-radar');
