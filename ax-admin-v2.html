@@ -901,6 +901,17 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
       </div>
     </div>
 
+    <!-- ══ 이번달 전략 고객사 (AI 레인저 우선 대응 대상 요약) ══ -->
+    <div class="panel" id="dash-strat-panel" style="margin-bottom:16px">
+      <div class="ph" style="flex-wrap:wrap;gap:8px">
+        <div class="ptt"><i class="ti ti-target-arrow" style="color:#0EA5E9"></i> 이번달 전략 고객사 <span style="font-size:11px;font-weight:400;color:var(--g400)">AI 레인저 우선 대응 대상</span></div>
+        <button onclick="goSec('radar', document.querySelector('.sb-nav .ni[onclick*=&quot;radar&quot;]'))" style="margin-left:auto;font-size:11px;font-weight:700;color:#075985;background:#e0f2fe;border:1px solid #bae6fd;border-radius:8px;padding:5px 10px;cursor:pointer;font-family:inherit">AI 레인저에서 전체 보기 ›</button>
+      </div>
+      <div class="pb">
+        <div id="dash-strat-list"><div style="color:var(--g400);font-size:12px;padding:8px 2px">AI 레인저 데이터 불러오는 중…</div></div>
+      </div>
+    </div>
+
     <script>
     // ── 지도 (pre-rendered SVG paths) ──
     (function() {
@@ -5331,6 +5342,7 @@ window.goSec = function(name, el) {
   if (name === 'dashboard') {
     document.getElementById('ps').textContent = '한전 빌링 영업 현황';
     if (typeof renderDashboardSummary === 'function') renderDashboardSummary();
+    if (typeof window.renderDashStrategic === 'function') window.renderDashStrategic();
   } else {
     document.getElementById('ps').textContent = SEC_META[name][1];
   }
@@ -10976,6 +10988,42 @@ function renderBriefing(){
     '</div>';
 }
 
+// ── 데이터포털 '이번달 전략 고객사' 요약 (AI 레인저 우선순위 상위 N) ──────
+//   레이더가 뽑은 우선 대응 대상을 데이터 포털에서도 간단히 보여준다(같은 랭킹 재사용).
+function rdStrategicList(limit){
+  if (!ST || !ST.loaded || !ST.regions) return [];
+  const items = ST.regions.map(function(g){
+    const a = rdRegionAction(g);
+    return a ? { g:g, a:a, sc:a.p + Math.min((score(g)||0)/2000, 1) } : null;
+  }).filter(Boolean).sort(function(x, y){ return y.sc - x.sc; });
+  return items.slice(0, limit || 5);
+}
+window.renderDashStrategic = function(){
+  const el = document.getElementById('dash-strat-list');
+  if (!el) return;
+  if (!ST.loaded){
+    el.innerHTML = '<div style="color:var(--g400);font-size:12px;padding:8px 2px">AI 레인저 데이터 불러오는 중…</div>';
+    if (!ST.loading && typeof window.rdInit === 'function') window.rdInit();   // 백그라운드 로드(6h 캐시)
+    return;
+  }
+  const top = rdStrategicList(5);
+  if (!top.length){ el.innerHTML = '<div style="color:var(--g400);font-size:12px;padding:8px 2px">이번달 대응 대상이 없습니다.</div>'; return; }
+  el.innerHTML = top.map(function(it, i){
+    const g = it.g, a = it.a;
+    const wp = (typeof window.hbWinProb === 'function') ? window.hbWinProb(g) : null;
+    const wpBadge = wp ? '<span style="background:'+wp.color+'1A;color:'+wp.color+';border:1px solid '+wp.color+'55;border-radius:6px;padding:1px 7px;font-weight:800;font-size:11px;white-space:nowrap">'+esc(wp.label)+' '+wp.score+'%</span>' : '';
+    return '<div onclick="rdDetail(\''+esc(g.key)+'\')" style="display:flex;align-items:center;gap:8px;padding:7px 4px;border-bottom:1px solid #f1f5f9;cursor:pointer">'+
+      '<span style="flex:0 0 18px;height:18px;border-radius:5px;background:#0EA5E9;color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center">'+(i+1)+'</span>'+
+      '<span style="font-size:13px">'+a.ic+'</span>'+
+      '<span style="flex:1;min-width:0">'+
+        '<span style="font-weight:700;color:#1e293b;font-size:12.5px">'+esc(g.sd+' '+g.sgg)+'</span>'+
+        (g.co ? '<span style="font-size:10.5px;color:#94a3b8;margin-left:5px">'+esc(g.co)+'</span>' : '')+
+        '<div style="font-size:11px;color:#64748b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+esc(a.act)+'</div>'+
+      '</span>'+ wpBadge +
+    '</div>';
+  }).join('');
+};
+
 function renderKpis(){
   const rs = ST.regions;
   const own = rs.filter(function(g){ return g.co === '한빌'; });
@@ -11426,6 +11474,7 @@ async function load(force){
     renderSidoOptions();
     renderKpis();
     window.rdRender();
+    if (typeof window.renderDashStrategic === 'function') window.renderDashStrategic();   // 데이터포털 요약도 갱신
     // 상단 'AI 분석 요약' 배지·패널을 레이더 실측치로 갱신 (로드는 비동기라 여기서 재호출)
     try {
       const secOn = document.getElementById('sec-radar');
@@ -11503,13 +11552,19 @@ window.rdMarkSeen = async function(){
 (function(){
   var RADAR_HIDE_USERS = ['partner01'];   // 외부 파트너 계정 — 여기 없는 모든 계정(관리자 포함)에는 노출
   var u = (typeof hbCurrentUser === 'function') ? hbCurrentUser() : '';
-  if (RADAR_HIDE_USERS.indexOf(u) >= 0) return;   // 외부 파트너면 계속 숨김
+  if (RADAR_HIDE_USERS.indexOf(u) >= 0) {
+    var sp = document.getElementById('dash-strat-panel');
+    if (sp) sp.style.display = 'none';   // 외부 파트너: 데이터포털의 전략 고객사 요약도 숨김
+    return;
+  }
   var ni = document.querySelector('.sb-nav .ni[onclick*="radar"]');
   if (ni) ni.style.display = '';
   var bn = document.getElementById('bn-radar');
   if (bn) bn.style.display = '';
   // NEW 뱃지 자동 체크도 관리자에게만
   setTimeout(function(){ try { window.rdCheckNew(); } catch(e){} }, 1800);
+  // 데이터포털(기본 화면) '이번달 전략 고객사' 요약 — 백그라운드 로드 후 렌더
+  setTimeout(function(){ try { if (typeof window.renderDashStrategic === 'function') window.renderDashStrategic(); } catch(e){} }, 400);
 })();
 
 })();
