@@ -6841,7 +6841,7 @@ window.runMapStrategy = async function(type, sel) {
 const GSHEET_ID      = '1xSdzVVLzeRygQDQV5LIhiW1800NFHo9_Oesg9MwAtWo';
 const GSHEET_GID     = '28706063';    // 민원상담_리스트 (필터 적용 — 요약용)
 const GSHEET_ALL_GID = '1396226074'; // 전체데이터 미러 시트 (필터 없음 — 상담내용 분석용)
-const GSHEET_CACHE_KEY = 'hanbil_sheet_cache';
+const GSHEET_CACHE_KEY = 'hanbil_sheet_cache_v2';   // v2: 요약 td 코드 A# 정규화 반영(구버전 캐시 무효화)
 const GSHEET_CACHE_TTL = 6 * 60 * 60 * 1000; // 6시간
 
 // 구글 시트 카테고리 → DB v[] 인덱스 매핑
@@ -7161,14 +7161,14 @@ async function fetchSheetData() {
     const lCat = row[7] || ''; const lCnt = parseInt(row[9]) || 0;
     if (lCat && SHEET_CAT_IDX[lCat] !== undefined && lCnt > 0) {
       v[SHEET_CAT_IDX[lCat]] += lCnt;
-      td.push({ code: lCat, label: lCat, cnt: lCnt });
+      td.push({ code: _detailToCode(lCat) || lCat, label: lCat, cnt: lCnt });   // 코드 A#로 정규화(전기간 대비 매칭)
       total += lCnt;
       hanjeunIkwan += parseInt(row[13]) || 0;
     }
     const rCat = row[14] || ''; const rCnt = parseInt(row[16]) || 0;
     if (rCat && SHEET_CAT_IDX[rCat] !== undefined) {
       v[SHEET_CAT_IDX[rCat]] += rCnt;
-      if (rCnt > 0) { td.push({ code: rCat, label: rCat, cnt: rCnt }); total += rCnt; }
+      if (rCnt > 0) { td.push({ code: _detailToCode(rCat) || rCat, label: rCat, cnt: rCnt }); total += rCnt; }
       hanjeunIkwan += parseInt(row[21]) || 0;
     }
   }
