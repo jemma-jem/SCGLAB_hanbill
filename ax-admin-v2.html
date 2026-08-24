@@ -7092,7 +7092,9 @@ async function syncComplaintsByDate(){
       var _affMonths = {};
       Object.keys(res.dbDaily).forEach(function(d){ _affMonths[d.slice(0,7)] = 1; });
       Object.keys(_affMonths).forEach(function(mk){
-        if (DB.months[mk]) return;   // 시드에 이미 있는 달은 그대로 둔다
+        // 시드 월(상세유형 td 포함)은 보존. 없거나 td가 비면(예: 이번달은 주간요약만 있어 td 없음) 일자 데이터로 재집계.
+        var __ex = DB.months[mk];
+        if (__ex && __ex.td && __ex.td.length) return;
         var ents = Object.keys(DB.weeks)
           .filter(function(wk){ var v = DB.weeks[wk]; return ((v && v._monthKey) || String(wk).slice(0,7)) === mk; })
           .map(function(wk){ return DB.weeks[wk]; });
