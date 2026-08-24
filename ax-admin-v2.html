@@ -904,7 +904,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
     <!-- ══ 이번달 전략 고객사 (AI 레인저 우선 대응 대상 요약) ══ -->
     <div class="panel" id="dash-strat-panel" style="margin-bottom:16px">
       <div class="ph" style="flex-wrap:wrap;gap:8px">
-        <div class="ptt"><i class="ti ti-target-arrow" style="color:#0EA5E9"></i> 이번달 전략 고객사 <span style="font-size:11px;font-weight:400;color:var(--g400)">지도에 <span style="color:#EF4444;font-weight:700">●</span> 핀으로 표기 · AI 레인저 우선 대응 대상</span></div>
+        <div class="ptt"><i class="ti ti-target-arrow" style="color:#0EA5E9"></i> 이번달 전략 고객사 <span style="font-size:11px;font-weight:400;color:var(--g400)">지도에 <span style="color:#EF4444;font-weight:700">●</span> 지역명 핀으로 표기 · AI 레인저 우선 대응 대상</span></div>
         <button onclick="goSec('radar', document.querySelector('.sb-nav .ni[onclick*=&quot;radar&quot;]'))" style="margin-left:auto;font-size:11px;font-weight:700;color:#075985;background:#e0f2fe;border:1px solid #bae6fd;border-radius:8px;padding:5px 10px;cursor:pointer;font-family:inherit">AI 레인저에서 전체 보기 ›</button>
       </div>
       <div class="pb">
@@ -11069,18 +11069,27 @@ window.renderMapStrategicIcons = function(){
                         ' — ' + it.a.act + (wp ? '  [' + wp.label + ' ' + wp.score + '%]' : '');
     grp.appendChild(title);
     const ring = document.createElementNS(NS, 'circle');
-    ring.setAttribute('r', '8'); ring.setAttribute('fill', '#EF4444'); ring.setAttribute('opacity', '0.4');
+    ring.setAttribute('r', '6'); ring.setAttribute('fill', '#EF4444'); ring.setAttribute('opacity', '0.4');
     const a1 = document.createElementNS(NS, 'animate');
-    a1.setAttribute('attributeName','r'); a1.setAttribute('values','8;16;8'); a1.setAttribute('dur','1.8s'); a1.setAttribute('repeatCount','indefinite');
+    a1.setAttribute('attributeName','r'); a1.setAttribute('values','6;13;6'); a1.setAttribute('dur','1.8s'); a1.setAttribute('repeatCount','indefinite');
     const a2 = document.createElementNS(NS, 'animate');
     a2.setAttribute('attributeName','opacity'); a2.setAttribute('values','0.45;0;0.45'); a2.setAttribute('dur','1.8s'); a2.setAttribute('repeatCount','indefinite');
     ring.appendChild(a1); ring.appendChild(a2);
-    const pin = document.createElementNS(NS, 'circle');
-    pin.setAttribute('r', '8'); pin.setAttribute('fill', '#EF4444'); pin.setAttribute('stroke', '#fff'); pin.setAttribute('stroke-width', '1.6');
+    const dot = document.createElementNS(NS, 'circle');
+    dot.setAttribute('r', '5'); dot.setAttribute('fill', '#EF4444'); dot.setAttribute('stroke', '#fff'); dot.setAttribute('stroke-width', '1.5');
+    // 지역명 라벨(핀 오른쪽 흰 배경 알약) — 순위 숫자 대신 어느 고객사인지 바로 보이게
+    const labelTxt = g.sgg || (g.sd + ' ' + g.sgg);
+    const FS = 9, PAD = 5, GAP = 8;
+    const w = Math.max(18, Math.round(labelTxt.length * FS * 1.05) + PAD * 2);
+    const rect = document.createElementNS(NS, 'rect');
+    rect.setAttribute('x', GAP); rect.setAttribute('y', '-8'); rect.setAttribute('width', w); rect.setAttribute('height', '16');
+    rect.setAttribute('rx', '8'); rect.setAttribute('fill', '#ffffff'); rect.setAttribute('fill-opacity', '0.92');
+    rect.setAttribute('stroke', '#EF4444'); rect.setAttribute('stroke-width', '1');
     const tx = document.createElementNS(NS, 'text');
-    tx.setAttribute('text-anchor','middle'); tx.setAttribute('dy','3.4'); tx.setAttribute('font-size','10'); tx.setAttribute('font-weight','800'); tx.setAttribute('fill','#fff');
-    tx.textContent = (i+1);
-    grp.appendChild(ring); grp.appendChild(pin); grp.appendChild(tx);
+    tx.setAttribute('x', GAP + PAD); tx.setAttribute('y', '0'); tx.setAttribute('dy', '3.2');
+    tx.setAttribute('font-size', FS); tx.setAttribute('font-weight', '700'); tx.setAttribute('fill', '#B91C1C');
+    tx.textContent = labelTxt;
+    grp.appendChild(ring); grp.appendChild(dot); grp.appendChild(rect); grp.appendChild(tx);
     grp.addEventListener('click', function(e){ e.stopPropagation(); if (typeof window.rdDetail === 'function') window.rdDetail(g.key); });
     layer.appendChild(grp);
   });
