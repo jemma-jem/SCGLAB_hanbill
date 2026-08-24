@@ -11209,7 +11209,17 @@ window.rdRender = function(){
       if (hay.indexOf(q) < 0) return false;
     }
     return true;
-  }).sort(function(a,b){ return score(b) - score(a); });
+  });
+  // 정렬 기준을 '오늘의 우선 액션'과 통일: 액션 신호가 있는 지역(발주 마감›인사›낙찰›발주›솔루션)을
+  //   우선순위(rdRegionAction.p) 순으로 상단에, 그 외 지역은 대응 시급도(score)로 그 뒤에 배치.
+  //   (전체 리스트는 카테고리 상한 미적용 — 모든 지역 노출. 상한은 브리핑/지도 핀에만 적용)
+  const _rkMap = {};
+  list.forEach(function(g){
+    const a = (typeof rdRegionAction === 'function') ? rdRegionAction(g) : null;
+    _rkMap[g.key] = a ? (2000000 + a.p * 1000 + Math.min((score(g)||0)/10, 999))
+                      : (score(g) || 0);
+  });
+  list.sort(function(a,b){ return (_rkMap[b.key]||0) - (_rkMap[a.key]||0); });
 
   if (!list.length){ grid.innerHTML = '<div class="rd-empty">조건에 해당하는 지역이 없습니다.</div>'; return; }
 
