@@ -7761,19 +7761,25 @@ window.hbWinProb = function(g){
   if (!g) return null;
   const own = g.co === '한빌';
   const factors = [];
-  // 1) 내부 영업상태(J열) 키워드 → 베이스 점수 (구좌들 중 가장 진전된 상태 채택)
-  const statusTxt = (g.rows||[]).map(function(r){ return String(r.status||''); }).join(' ');
-  const STAGE = [
-    [/수주|낙찰|계약\s*완료|계약체결|도입\s*완료/, 90, '수주·계약 완료 상태'],
-    [/수용|선정|확정|우선협상|계약\s*예정/,        76, '수용·확정 단계'],
-    [/제안|검토|협의|미팅|논의|긍정/,              52, '제안·검토 진행'],
-    [/접촉|발굴|관심|문의|초기/,                    34, '초기 접촉·발굴'],
-    [/거절|실패|중단|관심\s*없|보류/,               10, '거절·보류 이력'],
+  // 1) 내부 영업상태(J열) → 시트 정의 베이스 점수. 구좌 여러 개면 가장 진전된(점수 높은) 상태 채택.
+  //    시트 표준 척도: 기회0·발굴10·영업20·제안30·협의40·검토50·보고60·논의70·수용80·계약90·수주100
+  //    유지 단계: 방어110·충성120 / 이탈위험: 위험-30·Drop-50·이탈-90
+  const STAGE_BASE = [
+    ['충성',120],['방어',110],['수주',100],['계약',90],['수용',80],['논의',70],['보고',60],
+    ['검토',50],['협의',40],['제안',30],['영업',20],['발굴',10],['기회',0],
+    ['위험',-30],['이탈',-90],   // 'Drop'(-50)은 영문이라 아래서 별도 처리
   ];
   let base = null, baseWhy = '';
-  for (let i=0;i<STAGE.length;i++){ if (STAGE[i][0].test(statusTxt)){ base = STAGE[i][1]; baseWhy = STAGE[i][2]; break; } }
+  (g.rows||[]).forEach(function(r){
+    const s = String(r.status||''); let v = null, why = '';
+    if (/drop/i.test(s)) { v = -50; why = 'Drop'; }
+    else { for (let i=0;i<STAGE_BASE.length;i++){ if (s.indexOf(STAGE_BASE[i][0])>=0){ v = STAGE_BASE[i][1]; why = STAGE_BASE[i][0]; break; } } }
+    if (v !== null && (base === null || v > base)) { base = v; baseWhy = why; }
+  });
   if (base === null){ base = own ? 70 : 20; baseWhy = own ? '한빌 고객(유지 기준)' : '영업상태 미기재'; }
-  factors.push({ t:'영업상태 — ' + baseWhy, delta: null, base: base });
+  const retention = base >= 110;   // 방어·충성 = 유지 단계
+  const churnRisk = base < 0;      // 위험·Drop·이탈 = 이탈위험
+  factors.push({ t:'영업상태 — ' + baseWhy + ' (' + base + '%)', delta: null, base: base });
   let score = base;
   // 2) 외부 신호 가감
   const addF = function(cond, delta, label){ if (cond){ score += delta; factors.push({ t:label, delta:delta }); } };
@@ -7785,12 +7791,18 @@ window.hbWinProb = function(g){
   addF(g.sysNone, +6, '도로조명시스템 미사용 — 무상 진입로');
   addF(g.sysRival && !g.sysNone, +4, '타사 시스템 사용 — 교체 제안 대상');
   if (!own){ addF(g.rivalN >= 3, -6, '경쟁사 다수 선점(' + g.rivalN + '구좌)'); }
-  // 3) 클램프
-  score = Math.max(5, Math.min(95, Math.round(score)));
-  const label = own ? '유지확도' : '수주확도';
-  const tier = score >= 70 ? 'high' : (score >= 45 ? 'mid' : 'low');
-  const color = tier === 'high' ? '#059669' : (tier === 'mid' ? '#D97706' : '#DC2626');
-  return { score:score, label:label, own:own, tier:tier, color:color, factors:factors };
+  // 3) 표시값 0~100 클램프 (방어110·충성120·음수 상태 모두 0~100로 표기)
+  score = Math.max(0, Math.min(100, Math.round(score)));
+  // 4) 라벨·색 — 유지(방어/충성)·이탈위험(위험/Drop/이탈)은 별도 표기
+  let label, tier, color;
+  if (churnRisk)      { label = '이탈위험'; tier = 'risk'; color = '#DC2626'; }
+  else if (retention) { label = '유지';     tier = 'high'; color = '#059669'; }
+  else {
+    label = own ? '유지확도' : '수주확도';
+    tier  = score >= 70 ? 'high' : (score >= 45 ? 'mid' : 'low');
+    color = tier === 'high' ? '#059669' : (tier === 'mid' ? '#D97706' : '#DC2626');
+  }
+  return { score:score, label:label, own:own, tier:tier, color:color, factors:factors, base:base, retention:retention, churnRisk:churnRisk };
 };
 
 // ── 영업비서: 광역시도 집계 답변(#1) + 영업전략 안내(#3, 10줄 이내) ──
