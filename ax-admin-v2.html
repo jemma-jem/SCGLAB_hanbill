@@ -904,7 +904,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
     <!-- ══ 이번달 전략 고객사 (AI 레인저 우선 대응 대상 요약) ══ -->
     <div class="panel" id="dash-strat-panel" style="margin-bottom:16px">
       <div class="ph" style="flex-wrap:wrap;gap:8px">
-        <div class="ptt"><i class="ti ti-target-arrow" style="color:#0EA5E9"></i> 이번달 전략 고객사 <span style="font-size:11px;font-weight:400;color:var(--g400)">AI 레인저 우선 대응 대상</span></div>
+        <div class="ptt"><i class="ti ti-target-arrow" style="color:#0EA5E9"></i> 이번달 전략 고객사 <span style="font-size:11px;font-weight:400;color:var(--g400)">지도에 <span style="color:#EF4444;font-weight:700">●</span> 핀으로 표기 · AI 레인저 우선 대응 대상</span></div>
         <button onclick="goSec('radar', document.querySelector('.sb-nav .ni[onclick*=&quot;radar&quot;]'))" style="margin-left:auto;font-size:11px;font-weight:700;color:#075985;background:#e0f2fe;border:1px solid #bae6fd;border-radius:8px;padding:5px 10px;cursor:pointer;font-family:inherit">AI 레인저에서 전체 보기 ›</button>
       </div>
       <div class="pb">
@@ -1573,6 +1573,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
             }
           } catch(e){ console.warn('[지도] 시장 요약블록 파싱 실패 — 내장값 유지:', e.message||e); }
           renderMapFromPrerender(); renderPie(); renderMarketDonut(); renderCustTypeDonut();
+          if (typeof window.renderMapStrategicIcons === 'function') window.renderMapStrategicIcons();
           console.log('[지도] 시트 최신화 완료 — ' + Object.keys(BILLING_MAP).length + '개 지역' +
                       (window._HB_MARKET ? ' · 시장 M/S 갱신' : ''));
         } catch(e){
@@ -1585,6 +1586,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
       renderPie();
       renderMarketDonut();
       renderCustTypeDonut();
+      if (typeof window.renderMapStrategicIcons === 'function') window.renderMapStrategicIcons();
       refreshMapFromSheet();   // 열 때마다 최신 시트 반영(비동기, 첫 페인트 방해 안 함)
       window.addEventListener('resize', function() {
         renderMarketDonut(); renderCustTypeDonut();
@@ -11007,7 +11009,7 @@ window.renderDashStrategic = function(){
     return;
   }
   const top = rdStrategicList(5);
-  if (!top.length){ el.innerHTML = '<div style="color:var(--g400);font-size:12px;padding:8px 2px">이번달 대응 대상이 없습니다.</div>'; return; }
+  if (!top.length){ el.innerHTML = '<div style="color:var(--g400);font-size:12px;padding:8px 2px">이번달 대응 대상이 없습니다.</div>'; if (typeof window.renderMapStrategicIcons === 'function') window.renderMapStrategicIcons(); return; }
   el.innerHTML = top.map(function(it, i){
     const g = it.g, a = it.a;
     const wp = (typeof window.hbWinProb === 'function') ? window.hbWinProb(g) : null;
@@ -11022,6 +11024,67 @@ window.renderDashStrategic = function(){
       '</span>'+ wpBadge +
     '</div>';
   }).join('');
+  if (typeof window.renderMapStrategicIcons === 'function') window.renderMapStrategicIcons();
+};
+window.rdStrategicList = rdStrategicList;
+
+// ── 데이터 포털 지도 위에 '이번달 전략 고객사' 아이콘(핀) 오버레이 ──────────
+//   각 전략 지역의 시군구 경로 중심점에 순위 핀을 얹는다. 클릭 시 AI 레인저 상세.
+function _rdPathCentroid(d){
+  const nums = (String(d||'').match(/-?\d+(?:\.\d+)?/g) || []).map(Number);
+  let sx = 0, sy = 0, n = 0;
+  for (let i = 0; i + 1 < nums.length; i += 2){ sx += nums[i]; sy += nums[i+1]; n++; }
+  return n ? { x: sx / n, y: sy / n } : null;
+}
+window.renderMapStrategicIcons = function(){
+  const NS = 'http://www.w3.org/2000/svg';
+  const svg = document.getElementById('korea-map-d3');
+  if (!svg || !svg.getAttribute('viewBox')) return;              // 지도 아직 미렌더
+  const old = document.getElementById('map-strat-icons');        // 기존 오버레이 제거(중복 방지)
+  if (old && old.parentNode) old.parentNode.removeChild(old);
+  const list = (typeof rdStrategicList === 'function') ? rdStrategicList(5) : [];
+  if (!list.length) return;
+  const paths = (typeof MAP_PRERENDER !== 'undefined' && MAP_PRERENDER.sggPaths) || [];
+  const idx = {};
+  paths.forEach(function(p){
+    const cd = String(p.adm_cd||'').slice(0,2);
+    const sgg = String(p.adm_nm||'').split(' ').pop();
+    if (cd && sgg) idx[cd + '|' + sgg] = p;
+  });
+  const layer = document.createElementNS(NS, 'g');
+  layer.setAttribute('id', 'map-strat-icons');
+  list.forEach(function(it, i){
+    const g = it.g;
+    const cd = (typeof RD_SIDO_CD !== 'undefined') ? RD_SIDO_CD[g.sd] : null;
+    const p = cd ? idx[cd + '|' + g.sgg] : null;
+    if (!p) return;                                              // 경로 매칭 실패 시 스킵
+    const c = _rdPathCentroid(p.d);
+    if (!c) return;
+    const wp = (typeof window.hbWinProb === 'function') ? window.hbWinProb(g) : null;
+    const grp = document.createElementNS(NS, 'g');
+    grp.setAttribute('transform', 'translate(' + c.x.toFixed(1) + ',' + c.y.toFixed(1) + ')');
+    grp.style.cursor = 'pointer';
+    const title = document.createElementNS(NS, 'title');
+    title.textContent = (i+1) + '. ' + g.sd + ' ' + g.sgg + (g.co ? ' (' + g.co + ')' : '') +
+                        ' — ' + it.a.act + (wp ? '  [' + wp.label + ' ' + wp.score + '%]' : '');
+    grp.appendChild(title);
+    const ring = document.createElementNS(NS, 'circle');
+    ring.setAttribute('r', '8'); ring.setAttribute('fill', '#EF4444'); ring.setAttribute('opacity', '0.4');
+    const a1 = document.createElementNS(NS, 'animate');
+    a1.setAttribute('attributeName','r'); a1.setAttribute('values','8;16;8'); a1.setAttribute('dur','1.8s'); a1.setAttribute('repeatCount','indefinite');
+    const a2 = document.createElementNS(NS, 'animate');
+    a2.setAttribute('attributeName','opacity'); a2.setAttribute('values','0.45;0;0.45'); a2.setAttribute('dur','1.8s'); a2.setAttribute('repeatCount','indefinite');
+    ring.appendChild(a1); ring.appendChild(a2);
+    const pin = document.createElementNS(NS, 'circle');
+    pin.setAttribute('r', '8'); pin.setAttribute('fill', '#EF4444'); pin.setAttribute('stroke', '#fff'); pin.setAttribute('stroke-width', '1.6');
+    const tx = document.createElementNS(NS, 'text');
+    tx.setAttribute('text-anchor','middle'); tx.setAttribute('dy','3.4'); tx.setAttribute('font-size','10'); tx.setAttribute('font-weight','800'); tx.setAttribute('fill','#fff');
+    tx.textContent = (i+1);
+    grp.appendChild(ring); grp.appendChild(pin); grp.appendChild(tx);
+    grp.addEventListener('click', function(e){ e.stopPropagation(); if (typeof window.rdDetail === 'function') window.rdDetail(g.key); });
+    layer.appendChild(grp);
+  });
+  svg.appendChild(layer);
 };
 
 function renderKpis(){
