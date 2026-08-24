@@ -7086,6 +7086,30 @@ async function syncComplaintsByDate(){
         if (wk <= maxD && end >= minD && !res.dbDaily[wk]) delete DB.weeks[wk];
       });
       Object.keys(res.dbDaily).forEach(function(d){ DB.weeks[d] = res.dbDaily[d]; });
+      // 시드에 없던 최신 월(예: 7·8월)을 일자 엔트리에서 월간 집계로 채운다 → 월간 보기/챗봇 반영
+      //   (시드에 이미 있는 달은 보존 — 덮어쓰지 않아 과거 월 수치 회귀 없음)
+      if (!DB.months) DB.months = {};
+      var _affMonths = {};
+      Object.keys(res.dbDaily).forEach(function(d){ _affMonths[d.slice(0,7)] = 1; });
+      Object.keys(_affMonths).forEach(function(mk){
+        if (DB.months[mk]) return;   // 시드에 이미 있는 달은 그대로 둔다
+        var ents = Object.keys(DB.weeks)
+          .filter(function(wk){ var v = DB.weeks[wk]; return ((v && v._monthKey) || String(wk).slice(0,7)) === mk; })
+          .map(function(wk){ return DB.weeks[wk]; });
+        if (!ents.length) return;
+        var mo = { t:0, d:0, hj:0, hk:0, ho:0, w:0, v:[0,0,0,0,0,0,0,0,0,0] };
+        var tdMap = {}, kwMap = {};
+        ents.forEach(function(e){
+          mo.t += e.t||0; mo.d += e.d||0; mo.hj += e.hj||0; mo.hk += e.hk||0; mo.ho += e.ho||0; mo.w += e.w||0;
+          (e.v||[]).forEach(function(x,i){ mo.v[i] += x||0; });
+          (e.td||[]).forEach(function(t){ if(!tdMap[t.code]) tdMap[t.code]={ code:t.code, label:t.label, cnt:0 }; tdMap[t.code].cnt += t.cnt||0; });
+          (e.kw||[]).forEach(function(k){ kwMap[k.word] = (kwMap[k.word]||0) + (k.cnt||0); });
+        });
+        mo.td = Object.values(tdMap).sort(function(a,b){ return b.cnt - a.cnt; }).slice(0,10);
+        mo.kw = Object.entries(kwMap).sort(function(a,b){ return b[1] - a[1]; }).slice(0,12).map(function(p){ return { word:p[0], cnt:p[1] }; });
+        mo.e = mk + '-31'; mo.source = 'gsheet-daily-month';
+        DB.months[mk] = mo;
+      });
     }
     // 최신 데이터 반영 → '지난주' 기본 기간 재적용 + 요약 갱신
     if (typeof applyDefaultPeriod === 'function') applyDefaultPeriod();
