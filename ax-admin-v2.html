@@ -11057,21 +11057,34 @@ window.renderMapStrategicIcons = function(){
   const list = (typeof rdStrategicList === 'function') ? rdStrategicList(5) : [];
   if (!list.length) return;
   const paths = (typeof MAP_PRERENDER !== 'undefined' && MAP_PRERENDER.sggPaths) || [];
-  const idx = {};
+  const idx = {}, byCd = {};
   paths.forEach(function(p){
     const cd = String(p.adm_cd||'').slice(0,2);
     const sgg = String(p.adm_nm||'').split(' ').pop();
-    if (cd && sgg) idx[cd + '|' + sgg] = p;
+    if (!cd) return;
+    if (sgg) idx[cd + '|' + sgg] = p;
+    (byCd[cd] = byCd[cd] || []).push(p);
   });
+  // 지역 → 지도 좌표: ①시군구 경로 정확 매칭 ②통합시(지도엔 구만 존재)면 시명이 포함된 구 경로들의 중심 평균
+  function _centroidFor(g){
+    const cd = (typeof RD_SIDO_CD !== 'undefined') ? RD_SIDO_CD[g.sd] : null;
+    if (!cd) return null;
+    const p = idx[cd + '|' + g.sgg];
+    if (p) return _rdPathCentroid(p.d);
+    const cands = (byCd[cd] || []).filter(function(q){ return String(q.adm_nm||'').indexOf(g.sgg) >= 0; });
+    if (cands.length){
+      let sx = 0, sy = 0, n = 0;
+      cands.forEach(function(q){ const c = _rdPathCentroid(q.d); if (c){ sx += c.x; sy += c.y; n++; } });
+      if (n) return { x: sx / n, y: sy / n };
+    }
+    return null;
+  }
   const layer = document.createElementNS(NS, 'g');
   layer.setAttribute('id', 'map-strat-icons');
   list.forEach(function(it, i){
     const g = it.g;
-    const cd = (typeof RD_SIDO_CD !== 'undefined') ? RD_SIDO_CD[g.sd] : null;
-    const p = cd ? idx[cd + '|' + g.sgg] : null;
-    if (!p) return;                                              // 경로 매칭 실패 시 스킵
-    const c = _rdPathCentroid(p.d);
-    if (!c) return;
+    const c = _centroidFor(g);
+    if (!c) return;                                              // 경로 매칭 실패 시 스킵
     const wp = (typeof window.hbWinProb === 'function') ? window.hbWinProb(g) : null;
     const grp = document.createElementNS(NS, 'g');
     grp.setAttribute('transform', 'translate(' + c.x.toFixed(1) + ',' + c.y.toFixed(1) + ')');
