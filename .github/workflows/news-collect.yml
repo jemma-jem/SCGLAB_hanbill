@@ -43,7 +43,15 @@ jobs:
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add news_archive.json
             git commit -m "chore(news): 자동 수집 $(TZ='Asia/Seoul' date +%Y-%m-%d)"
-            git push
+            # 동시 push 충돌(non-fast-forward) 대비: rebase 후 재시도 (최대 5회)
+            pushed=""
+            for i in 1 2 3 4 5; do
+              if git push; then pushed="1"; echo "push 성공"; break; fi
+              echo "push 실패 — origin 반영 후 재시도 ($i)"
+              git pull --rebase --autostash origin main || true
+              sleep $((i*3))
+            done
+            if [ -z "$pushed" ]; then echo "::error::5회 재시도 후에도 push 실패"; exit 1; fi
             echo "news_archive.json 갱신 커밋 완료"
           else
             echo "변경 없음 — 커밋 생략"
