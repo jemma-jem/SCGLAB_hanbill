@@ -5147,42 +5147,53 @@ window.sendNewsletter = function() {
   //   발송 서비스(service_id)를 로그인 사용자별로 분기 → partner01은 hanbill 계정 서비스로
   //   실제 From이 hanbill@scglab.com으로 나간다. from_name/reply_to는 템플릿 변수로 반영.
   const svc = nlServiceId();
-  const sends = list.map(r =>
-    emailjs.send(svc, 'template_7c03nyj', {
-      subject:      subject,
-      to_email:     r.email,
-      html_content: html_content,
-      from_name:    nlSenderName(),
-      from_email:   nlSenderEmail(),
-      reply_to:     nlSenderEmail(),
-    })
-  );
-
-  Promise.all(sends)
-  .then(() => {
-    if (btn) {
-      btn.innerHTML = `<i class="ti ti-check"></i> ${list.length}명 발송 완료`;
-      btn.style.background = '#059669'; btn.disabled = false;
-      setTimeout(() => { btn.innerHTML = '<i class="ti ti-send"></i> 선택 기사 발송'; btn.style.background = ''; }, 4000);
+  // 순차 발송: 수신자별로 800ms 간격 1건씩. (전원 동시 발송하면 메일 서비스의 동시 연결
+  //   제한에 걸려 'Connection Limit Exceeded' 오류가 남 — 특히 partner01=hanbill Gmail 서비스)
+  (async function(){
+    const failed = [];
+    for (let i = 0; i < list.length; i++){
+      const r = list[i];
+      if (btn) btn.innerHTML = `<i class="ti ti-loader"></i> 발송 중… (${i+1}/${list.length})`;
+      try {
+        await emailjs.send(svc, 'template_7c03nyj', {
+          subject:      subject,
+          to_email:     r.email,
+          html_content: html_content,
+          from_name:    nlSenderName(),
+          from_email:   nlSenderEmail(),
+          reply_to:     nlSenderEmail(),
+        });
+      } catch (err) {
+        failed.push({ email: r.email, msg: (err && (err.text || err.message)) || JSON.stringify(err) });
+        console.error('EmailJS error(' + r.email + '):', err);
+      }
+      if (i < list.length - 1) await new Promise(function(res){ setTimeout(res, 800); });
     }
-    const toEmails = list.map(r => r.email).join(', ');
-    const toast = document.createElement('div');
-    toast.innerHTML = `✅ HTML 뉴스레터 발송 완료!<br><span style="font-size:12px;opacity:.85">${toEmails}</span>`;
-    Object.assign(toast.style, {
-      position:'fixed', bottom:'80px', left:'50%', transform:'translateX(-50%)',
-      background:'#065F46', color:'#fff', padding:'14px 20px', borderRadius:'10px',
-      fontSize:'13px', lineHeight:'1.6', zIndex:'9999', textAlign:'center',
-      boxShadow:'0 4px 20px rgba(0,0,0,.3)', maxWidth:'360px',
-    });
-    document.body.appendChild(toast);
-    setTimeout(() => toast.remove(), 5000);
-  })
-  .catch(err => {
-    if (btn) { btn.innerHTML = '<i class="ti ti-send"></i> 선택 기사 발송'; btn.disabled = false; }
-    const msg = err.text || err.message || JSON.stringify(err);
-    alert('발송 실패: ' + msg);
-    console.error('EmailJS error:', err);
-  });
+    const okN = list.length - failed.length;
+    if (!failed.length) {
+      if (btn) {
+        btn.innerHTML = `<i class="ti ti-check"></i> ${list.length}명 발송 완료`;
+        btn.style.background = '#059669'; btn.disabled = false;
+        setTimeout(() => { btn.innerHTML = '<i class="ti ti-send"></i> 선택 기사 발송'; btn.style.background = ''; }, 4000);
+      }
+      const toEmails = list.map(r => r.email).join(', ');
+      const toast = document.createElement('div');
+      toast.innerHTML = `✅ HTML 뉴스레터 발송 완료!<br><span style="font-size:12px;opacity:.85">${toEmails}</span>`;
+      Object.assign(toast.style, {
+        position:'fixed', bottom:'80px', left:'50%', transform:'translateX(-50%)',
+        background:'#065F46', color:'#fff', padding:'14px 20px', borderRadius:'10px',
+        fontSize:'13px', lineHeight:'1.6', zIndex:'9999', textAlign:'center',
+        boxShadow:'0 4px 20px rgba(0,0,0,.3)', maxWidth:'360px',
+      });
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 5000);
+    } else {
+      if (btn) { btn.innerHTML = '<i class="ti ti-send"></i> 선택 기사 발송'; btn.disabled = false; }
+      alert('발송 결과: 성공 ' + okN + '명 / 실패 ' + failed.length + '명\n\n[실패]\n' +
+            failed.map(function(f){ return '· ' + f.email + ' — ' + f.msg; }).join('\n') +
+            '\n\n동시 연결 제한(Connection Limit)이면 잠시 후 실패분만 다시 발송해 주세요.');
+    }
+  })();
 
   // ── 발송 이력 저장 ──
   const sentArticles = [];
