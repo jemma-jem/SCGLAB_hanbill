@@ -7123,6 +7123,10 @@ async function syncComplaintsByDate(){
         DB.months[mk] = mo;
       });
     }
+    // 이번달 등 최신 월 데이터가 DB.months에 반영됐으니 '월간' 탭 기본값(DATA.month)도 재계산.
+    //   (loadFromDB('both')는 초기 1회만 실행돼, 비동기 싱크 이후 DATA.month가 옛 월로 남아
+    //    '월간' 탭 ↔ '기간설정>이번달' 수치가 달라지던 문제 해결)
+    try { customPeriodLabel.month = ''; if (typeof loadFromDB === 'function') loadFromDB('month'); } catch(e){}
     // 최신 데이터 반영 → '지난주' 기본 기간 재적용 + 요약 갱신
     if (typeof applyDefaultPeriod === 'function') applyDefaultPeriod();
     if (typeof renderDashboardSummary === 'function') renderDashboardSummary();
