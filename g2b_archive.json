@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-05T04:40:54.625Z",
+  "updated_at": "2026-09-06T04:50:30.146Z",
   "source": "조달청_나라장터 입찰공고정보서비스 (공공데이터포털)",
   "count": 800,
   "records": [
@@ -727,6 +727,24 @@
       "winnerTel": "041-546-2390",
       "winnerAddr": "충청남도 아산시 아산로117번길 7-1 (실옥동)",
       "amount": 44103400,
+      "url": ""
+    },
+    {
+      "type": "win",
+      "kind": "공사",
+      "cats": [
+        "tree"
+      ],
+      "title": "2026년 기흥구 하천변 수목 및 덩굴 정비 연간단가공사(2차)",
+      "org": "경기도 용인시 기흥구",
+      "region": "기흥구",
+      "bidNo": "R26BK01702350-000",
+      "date": "2026-09-03",
+      "winner": "경기씨엔엠 주식회사",
+      "winnerCeo": "박정순",
+      "winnerTel": "031-281-0167",
+      "winnerAddr": "경기도 용인시 기흥구 중부대로681번길 78-1 (상하동)",
+      "amount": 45489700,
       "url": ""
     },
     {
@@ -13922,23 +13940,6 @@
       "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01650322&bidPbancOrd=000",
       "charge": "이용범",
       "chargeTel": "042-724-7515"
-    },
-    {
-      "kind": "공사",
-      "cats": [
-        "tree"
-      ],
-      "title": "2026년 남사읍 도로변 제초 및 수목제거 공사 2차(수의시담)",
-      "org": "경기도 용인시 처인구 남사읍",
-      "ntceInstt": "경기도 용인시 처인구 남사읍",
-      "region": "처인구",
-      "bidNo": "R26BK01653205-000",
-      "date": "2026-07-28",
-      "closeDate": "2026-07-28",
-      "amount": 30909091,
-      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01653205&bidPbancOrd=000",
-      "charge": "박화미",
-      "chargeTel": "031-6193-5642"
     }
   ]
 }
