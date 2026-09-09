@@ -1,0 +1,54 @@
+name: STT 자동 동기화 (라이브 대시보드)
+
+# 매시간 jemma-jem/stt 의 stt_analysis.json 을 받아
+# ax-admin-v2.html 의 STT_RAW / ANALYSIS_INDEX '블록만' 교체 후 커밋·푸시한다.
+# → Cloudflare Pages 가 자동 재배포. 레인저·로그인 등 라이브 전용 코드는 건드리지 않음.
+
+on:
+  schedule:
+    - cron: '20 * * * *'      # 매시간 20분 (stt 파이프라인이 정시에 돌므로 약간 뒤에 실행)
+  workflow_dispatch: {}         # 수동 실행 허용
+
+permissions:
+  contents: write              # ax-admin-v2.html 커밋/푸시 권한
+
+concurrency:
+  group: stt-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 체크아웃
+        uses: actions/checkout@v4
+
+      - name: Node 설치
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: STT 블록 동기화
+        env:
+          # 분석 산출물 위치. jemma-jem/stt 의 raw URL (기본값은 스크립트에 내장).
+          # 저장소가 비공개면 raw 접근용 토큰을 붙인 URL 을 시크릿으로 지정하세요.
+          STT_ANALYSIS_URL: ${{ vars.STT_ANALYSIS_URL }}
+        run: node collectors/stt_sync.js
+
+      - name: 변경분 커밋 & 푸시
+        run: |
+          if [ -n "$(git status --porcelain ax-admin-v2.html)" ]; then
+            git config user.name  "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add ax-admin-v2.html
+            git commit -m "chore(stt): 라이브 대시보드 STT 자동 동기화 $(TZ='Asia/Seoul' date '+%Y-%m-%d %H:%M')"
+            pushed=""
+            for i in 1 2 3 4 5; do
+              if git push; then pushed="1"; echo "push 성공"; break; fi
+              echo "push 실패 — origin 반영 후 재시도 ($i)"
+              git pull --rebase --autostash
+            done
+            [ -n "$pushed" ] || { echo "push 최종 실패"; exit 1; }
+          else
+            echo "변경 없음 — STT 데이터 동일"
+          fi
