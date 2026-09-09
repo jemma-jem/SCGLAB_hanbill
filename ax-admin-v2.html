@@ -1751,8 +1751,8 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
       <i class="ti ti-calendar-stats" style="color:#8B5CF6;font-size:15px"></i>
       <span style="font-size:12px;font-weight:700;color:var(--g700)">분석 기간</span>
       <div style="display:flex;gap:6px;flex-wrap:wrap;margin-left:4px" id="stt-period-btns">
-        <button class="btn bp" id="stt-btn-prev1" onclick="sttGoRel(1)" style="font-size:11px;padding:3px 10px">지난달</button>
         <button class="btn bo" id="stt-btn-prev2" onclick="sttGoRel(2)" style="font-size:11px;padding:3px 10px">2달전</button>
+        <button class="btn bp" id="stt-btn-prev1" onclick="sttGoRel(1)" style="font-size:11px;padding:3px 10px">지난달</button>
         <button class="btn bo" id="stt-btn-all" onclick="sttApplyAll()" style="font-size:11px;padding:3px 10px">전체</button>
       </div>
       <div style="display:flex;align-items:center;gap:6px;margin-left:auto;flex-wrap:wrap">
@@ -5428,9 +5428,7 @@ function _sttRelRanges() {
 // 기간 버튼 라벨 동적 세팅 + 기본값(지난달) 표시
 function sttInitRelBtns() {
   var R = _sttRelRanges(); window._sttRel = R;
-  var b1 = document.getElementById('stt-btn-prev1'), b2 = document.getElementById('stt-btn-prev2');
-  if (b1) b1.textContent = '지난달 (' + R.p1.m + '월)';
-  if (b2) b2.textContent = '2달전 (' + R.p2.m + '월)';
+  // 버튼 라벨은 고정('지난달'/'2달전'/'전체'), 기간 계산만 동적 — 라벨은 건드리지 않음
   setSttPeriod(R.p1.s, R.p1.e);
 }
 function sttGoRel(off) {
