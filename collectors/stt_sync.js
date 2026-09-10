@@ -12,7 +12,11 @@ const fs = require('fs');
 const path = require('path');
 
 const HTML = path.join(__dirname, '..', 'ax-admin-v2.html');
-const URL = process.env.STT_ANALYSIS_URL
+// 데이터 소스: 로컬 파일 경로(권장, 방법 A) 또는 http(s) URL 둘 다 지원.
+//  - STT_ANALYSIS_FILE: 로컬 stt_analysis.json 절대/상대 경로
+//  - STT_ANALYSIS_URL:  http(s) URL 또는 file:// 경로
+const SRC = process.env.STT_ANALYSIS_FILE
+  || process.env.STT_ANALYSIS_URL
   || 'https://raw.githubusercontent.com/jemma-jem/stt/main/stt_analysis.json';
 
 const sMap = { '만족': 1, '불만': -1, '중립': 0 };
@@ -82,10 +86,17 @@ function replaceBlock(html, varName, newContent) {
 }
 
 (async () => {
-  process.stdout.write('stt_analysis.json 다운로드: ' + URL + ' ... ');
-  const res = await fetch(URL);
-  if (!res.ok) throw new Error('다운로드 실패 ' + res.status);
-  const data = await res.json();
+  let data;
+  if (/^https?:\/\//.test(SRC)) {
+    process.stdout.write('stt_analysis.json 다운로드: ' + SRC + ' ... ');
+    const res = await fetch(SRC);
+    if (!res.ok) throw new Error('다운로드 실패 ' + res.status);
+    data = await res.json();
+  } else {
+    const p = SRC.replace(/^file:\/\//, '');
+    process.stdout.write('stt_analysis.json 읽기(로컬): ' + p + ' ... ');
+    data = JSON.parse(fs.readFileSync(p, 'utf8'));
+  }
   if (!Array.isArray(data) || !data.length) throw new Error('분석 데이터 비어있음');
   console.log(data.length + '건');
 
