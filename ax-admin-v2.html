@@ -5460,6 +5460,7 @@ function _sttSyncActiveBtn(s, e) {
 function setSttPeriod(s, e) {
   var c = _clampToData(s, e);         // 데이터 있는 기간만 검색 활성화
   s = c.s; e = c.e;
+  window._activeRange = { s: s, e: e };  // 선택 기간을 전역에 반영 → 요약카드·해결률차트가 badge와 일치
   document.getElementById('stt-start').value = s;
   document.getElementById('stt-end').value   = e;
   applySTTFilter(s, e);
