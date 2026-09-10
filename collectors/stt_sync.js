@@ -116,6 +116,13 @@ function replaceBlock(html, varName, newContent) {
   if (removed > 0) console.log('중복 제거:', removed + '건 → ' + deduped.length + '건');
   data = deduped;
 
+  // ── 진단: 9월 레코드 파일명 출력 (실제 9월 녹취가 없다는데 데이터가 나오는 원인 파악용) ──
+  const sepRecs = data.filter(r => (r.date || '').startsWith('2026-09'));
+  if (sepRecs.length) {
+    console.log('⚠ 9월 레코드', sepRecs.length + '건 발견 — 파일명 샘플:');
+    sepRecs.slice(0, 10).forEach(r => console.log('   date=' + r.date + ' | file=' + (r.file || '(파일명없음)')));
+  }
+
   const { sttRaw, ANALYSIS_INDEX } = buildBlocks(data);
 
   let html = fs.readFileSync(HTML, 'utf8');
