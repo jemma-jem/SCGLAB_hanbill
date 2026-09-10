@@ -100,6 +100,22 @@ function replaceBlock(html, varName, newContent) {
   if (!Array.isArray(data) || !data.length) throw new Error('분석 데이터 비어있음');
   console.log(data.length + '건');
 
+  // ── 중복 통화 제거 ──
+  // 같은 통화가 Drive에 " (1).mp3" 복사본으로 중복 업로드된 경우 대비.
+  // 키: 날짜+시간+전화 (동일 초·동일 번호 = 같은 통화). 파일명에 " (n)" 없는 원본을 우선 보존.
+  const byKey = new Map();
+  const isCopy = f => / \(\d+\)\.[^.]+$/.test(f || '');   // "... (1).mp3" 형태
+  data.forEach(r => {
+    const key = (r.date || '') + '|' + (r.time || '') + '|' + (r.phone || '');
+    const prev = byKey.get(key);
+    if (!prev) byKey.set(key, r);
+    else if (isCopy(prev.file) && !isCopy(r.file)) byKey.set(key, r); // 원본으로 교체
+  });
+  const deduped = [...byKey.values()];
+  const removed = data.length - deduped.length;
+  if (removed > 0) console.log('중복 제거:', removed + '건 → ' + deduped.length + '건');
+  data = deduped;
+
   const { sttRaw, ANALYSIS_INDEX } = buildBlocks(data);
 
   let html = fs.readFileSync(HTML, 'utf8');
