@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-14T04:47:44.564Z",
+  "updated_at": "2026-09-15T04:46:18.204Z",
   "sources": [
     "시정일보 RSS(피플/전체)",
     "지역지 직접 RSS(동부뉴스·투데이군산·당진신문·영남투데이·수원일보·금강일보·디트뉴스·전북중앙·남도일보·광주드림·경북일보·울산제일일보·제주의소리·세종의소리)",
@@ -8,6 +8,83 @@
   ],
   "count": 600,
   "records": [
+    {
+      "date": "2026-09-15",
+      "url": "http://www.suwonilbo.kr/news/articleView.html?idxno=318233",
+      "source": "수원일보",
+      "title": "경기도교육청, 지방공무원 공개경쟁임용시험 최종합격자 383명 발표",
+      "region": "개경쟁임용시",
+      "kinds": [
+        "임용"
+      ],
+      "people": [
+        {
+          "name": "교육행정",
+          "dept": "305명",
+          "rank": ""
+        },
+        {
+          "name": "전산",
+          "dept": "34명",
+          "rank": ""
+        },
+        {
+          "name": "공업",
+          "dept": "15명 (일반기계 5명, 일반전기 10명)",
+          "rank": ""
+        },
+        {
+          "name": "보건",
+          "dept": "3명",
+          "rank": ""
+        },
+        {
+          "name": "식품위생",
+          "dept": "11명",
+          "rank": ""
+        },
+        {
+          "name": "시설",
+          "dept": "14명 (건축)",
+          "rank": ""
+        }
+      ],
+      "hit": false
+    },
+    {
+      "date": "2026-09-15",
+      "url": "https://www.jejusori.net/news/articleView.html?idxno=506551",
+      "source": "제주의소리",
+      "title": "제주도, 중앙협력본부장·대변인 임용",
+      "region": "",
+      "kinds": [
+        "임용"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-09-15",
+      "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE95YVhLNzBhd2lUNzVpc3JRVzZJeTJnRmRTZHlWZF9YUk5hSG5DSktIdEdFaGNYY080U252bkJxLWhvZG8xUVZmUkYzemFKc3F5M1hEZnN4aWpVWWNYVFA4WjMwQXNORGRteUpsZkEtcWUtd2gxbnc?oc=5",
+      "source": "YTN",
+      "title": "김승원 법무부장관 후보자 인사청문회 ②",
+      "region": "",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-09-15",
+      "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1yU1ZNN3hqWE1VamQ2elBfVXEyeWxUeFhYZlpHTDY5Nmk4LTVUODNMbDVhQUhlSDVmX0tTYVZnbUVDRTNBbHNud1JwM1VLUWZOaUZSUFl6T0g4dXl1Z3NRVjdwSQ?oc=5",
+      "source": "경기뉴스원",
+      "title": "영덕군청공무원노동조합, 영덕군수에 제도 개선안 제안 '주요 보직 공무원 청렴도 조사'·'다면평가 시범운영' 제안",
+      "region": "영덕군",
+      "kinds": [
+        "보직부여"
+      ],
+      "people": [],
+      "hit": false
+    },
     {
       "date": "2026-09-14",
       "url": "https://www.namdonews.com/news/articleView.html?idxno=923285",
@@ -19,6 +96,38 @@
       ],
       "people": [],
       "hit": true
+    },
+    {
+      "date": "2026-09-14",
+      "url": "http://www.suwonilbo.kr/news/articleView.html?idxno=318224",
+      "source": "수원일보",
+      "title": "이동기 제8대 수원특례시 제2부시장 취임",
+      "region": "수원특례시",
+      "kinds": [
+        "임용"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-09-14",
+      "url": "http://www.ujeil.com/news/articleView.html?idxno=392042",
+      "source": "울산제일일보",
+      "title": "구연희 울산교육청 부교육감 취임… “울산 교육 새 도약·성장 뒷받침”",
+      "region": "울산시",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-09-14",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9ZTUcxMEozaW5vU2VBOHFXLW4tNzZPS2FSMFI2NzlFaDBVOTcyMUNJVF9yVGRnSVNxMU5rbFRkc2wtUXpoalNrblF1X2VReW1vOGhEVEltTVgteXlkaFJaY1M4azl3Z1k3LUR0WklR?oc=5",
+      "source": "gukjenews.com",
+      "title": "서해구의회 이한종 의원, \"인사운영 방침과 철학 밝혀 달라\" 요구",
+      "region": "서해구",
+      "kinds": [],
+      "people": [],
+      "hit": false
     },
     {
       "date": "2026-09-13",
@@ -499,6 +608,18 @@
       "title": "박연병 신임 대전시 행정부시장 취임…\"공공기관 이전·AX 전환 챙기겠다\"",
       "region": "대전시",
       "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-09-10",
+      "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE43LUpvcU9rbms4WDV3SU1NZkFvZHEyRkkwUy1odkd4WlhuNEF2Q3BQWU1RX29KOXNfS29aWUVYSTl1Tk9meEVnMkI4dw?oc=5",
+      "source": "뉴스체인지",
+      "title": "[인사] 평택시 2026년 9월 10일 승진예정자 사전예고",
+      "region": "평택시",
+      "kinds": [
+        "승진"
+      ],
       "people": [],
       "hit": false
     },
@@ -3494,6 +3615,16 @@
       "kinds": [],
       "people": [],
       "hit": false
+    },
+    {
+      "date": "2026-08-28",
+      "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE51OE8yWmxTLUVDdENGWWhHdkpMRHViTml6UU44RVhXU3cxaG90NzZLNnpCNURzZTY0dEZvUUI0YlpRcmRnd2c?oc=5",
+      "source": "v.daum.net",
+      "title": "'인사청탁 혐의 재판' 이재수 전 춘천시장, 재임 당시 '인사 공정성 시비' 재조명",
+      "region": "춘천시",
+      "kinds": [],
+      "people": [],
+      "hit": true
     },
     {
       "date": "2026-08-27",
@@ -8435,104 +8566,6 @@
       "kinds": [
         "승진"
       ],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-08-13",
-      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBIcmlrandQRTVKMlZQejJfVjJwV25zVU5DcHlhbzdiOElrMENRUUdnaS1XU2hYQUdvSFJoc2ludnJia2VGUFVxUktfV0pkdmRFeUtSQUdyWTFCS05waFplZmZzTkRYZng2TlE?oc=5",
-      "source": "비알뉴스",
-      "title": "대전시, 8월 14일자 6급 이하 142명 승진 인사발령 단행",
-      "region": "대전시",
-      "kinds": [
-        "승진"
-      ],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-08-13",
-      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9OaDZ6TnpvNkFkUFdNLXRHYm9yanRUWk5ubm5melpJUnpIUFFFZzE0VUY1QU50ZHQ3R0g5X0JKd0ZnZzA5YlppWF80MHh3cWRrY3V6MEYyZ3BEWXVGYVRZcEpUN1VTNjNXbEE?oc=5",
-      "source": "도민연합뉴스",
-      "title": "대전시, 2026. 8. 14.字 6급이하 승진 인사",
-      "region": "대전시",
-      "kinds": [
-        "승진"
-      ],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-08-13",
-      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE11QjJSZTF2NGhxbjhKWEhISF9uTldLeHJvUmpCNXlQMExoV3dOcGxZX1hDN3d6RU1IT002eFpoRlVvVER0S0prWmg0aHIwdHc0SFU2dThkU3UxSXVzcGc2V1ZZcE5xaDBYNlE?oc=5",
-      "source": "도민연합뉴스",
-      "title": "청주시의회 2026.8.14.자 의회사무국 6급이하 직원 전보 알림",
-      "region": "청주시",
-      "kinds": [
-        "전보"
-      ],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-08-13",
-      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1wSFJoY241anJJb2pYV2ZEYkpwam1jLS0tQU1SS3FERVBxLUdONWRobzdtajR1bEtaT01DZXRCTHZtVDVmdmhkbXQ2eXdBNzhzaHdsTDFsazVRRVoyeEFJZ0RxUXM?oc=5",
-      "source": "매일일보",
-      "title": "청양군, 민선9기 ‘새로운 청양, 희망찬 출발’ 위한 조직개편·인사 단행",
-      "region": "청양군",
-      "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-08-13",
-      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9DNDZka2pGQ214VUdIMDlDSldhSHJtQk1GTUYzMjFXRFdUYlJMbG9pUU93UlFhbXdJVmx3alE5d2JmRlVvTlM3TF8yc05fa1NUX2V5TFJVQVRWcXMtdmVUdTM2dWdrUQ?oc=5",
-      "source": "충청게릴라뉴스",
-      "title": "대전교육청, 교육공무직원 482명 정기인사 단행",
-      "region": "",
-      "kinds": [
-        "정기인사"
-      ],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-08-13",
-      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9CTzFXT0pEdU80OU5UaFRuMmxKZXBuWFA3NUhMWlFiRHlCZ0UwdXBJSkI4T1l2S0JJdUdUNnRxczIyZjU0QWhYVDBLZ0lPUEY2YThPQm9xS0JhTnRycWtRSG9iMkZxcDFk?oc=5",
-      "source": "경남신문",
-      "title": "‘공교육 강화’ 권순기 경남교육감 첫 교원 인사 단행",
-      "region": "",
-      "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-08-13",
-      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE85QXZCYlRFbVdBWGtSbUlyay1UQVFmVk9nRHluaG16aVVkb2dhdnp2aGI0YkNKZ1I2dUNzSUlGRmU4UWNaRWFSYWFjajVOb3lUZUVlYTNxQktjYTM3REw1eTk4QWw?oc=5",
-      "source": "ctnews.kr",
-      "title": "[인사]청양군",
-      "region": "청양군",
-      "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-08-13",
-      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1SVzItYVBrVlJRVVczS3VjUExMY0JrMGltU2ZMcDRxdnAyVUtCMHZMNmMtOUpEd0RXWWt3SGJDMkRsLUpzSFZPYkJaQnFWaEltZTRoaVhPT1lCdW5yOUFTWF9ieUFybHFi?oc=5",
-      "source": "뉴스밴드",
-      "title": "청양군, 민선9기 본격 시동...조직개편 이어 인사 단행",
-      "region": "청양군",
-      "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-08-13",
-      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTFB1U0hzbXhDVFN2QzJ4NXY2UzBUMk1tcFl3WEUyRnZxd3MzV1lkbUhvMzMzZjF0ajFrSjFCT0tUTl90Z0VKODlNQ2E5Y3JnLXlHclk1cjc1eEhIeE9lZmRWTFlxbFZtekNTeEVpeTlJUl9pYTA?oc=5",
-      "source": "뉴스프리존",
-      "title": "청양군, 민선9기 본격 시동...조직개편 이어 인사 단행",
-      "region": "청양군",
-      "kinds": [],
       "people": [],
       "hit": false
     }
