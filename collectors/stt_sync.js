@@ -50,6 +50,20 @@ function buildBlocks(data) {
   const improvements = [...new Set(data.filter(r => r.improvement).map(r => cleanHanja(r.improvement)).filter(Boolean))].slice(0, 6);
   const bestPhrases = data.filter(r => r.bestPhrase && r.bestPhrase.length > 5).slice(0, 5).map(r => ({ phrase: r.bestPhrase, cat: r.categoryLabel || r.category, sentiment: r.sentiment }));
   const negIssues = data.filter(r => r.sentiment === '불만' && r.coreIssue).map(r => r.coreIssue).slice(0, 5);
+  // 날짜별 문장 텍스트(개선제안 i / 우수발화 b) — 대시보드가 기간별로 필터링할 수 있도록 별도 블록으로 주입.
+  // 문장이 있는 레코드만 담아 용량 최소화. 합성(시트) 레코드는 애초에 여기 없음(녹취 분석분만).
+  const sttTexts = data
+    .filter(r => r.date && (r.improvement || (r.bestPhrase && r.bestPhrase.length > 5)))
+    .map(r => ({
+      d: r.date,
+      c: r.category || 'Z1',
+      cat: r.categoryLabel || r.category || '',
+      s: r.sentiment || '',
+      i: cleanHanja(r.improvement) || '',
+      b: (r.bestPhrase && r.bestPhrase.length > 5) ? r.bestPhrase : '',
+    }))
+    .filter(x => x.i || x.b)
+    .sort((a, b) => a.d.localeCompare(b.d));
   const ANALYSIS_INDEX = {
     generatedAt: new Date().toISOString().slice(0, 16),
     total,
@@ -60,7 +74,7 @@ function buildBlocks(data) {
     agentQuality: { good: scriptGood, ok: scriptOk, improve: scriptImprove, goodRate: Math.round(scriptGood / total * 100), improveRate: Math.round(scriptImprove / total * 100) },
     topCats, allCats, topIssues, improvements, bestPhrases, negIssues,
   };
-  return { sttRaw, ANALYSIS_INDEX };
+  return { sttRaw, ANALYSIS_INDEX, sttTexts };
 }
 
 // 문자열 리터럴 내부 괄호를 무시하고 블록 끝(매칭 닫는 괄호)을 찾는다.
@@ -123,11 +137,14 @@ function replaceBlock(html, varName, newContent) {
     sepRecs.slice(0, 10).forEach(r => console.log('   date=' + r.date + ' | file=' + (r.file || '(파일명없음)')));
   }
 
-  const { sttRaw, ANALYSIS_INDEX } = buildBlocks(data);
+  const { sttRaw, ANALYSIS_INDEX, sttTexts } = buildBlocks(data);
 
   let html = fs.readFileSync(HTML, 'utf8');
   html = replaceBlock(html, 'STT_RAW', JSON.stringify(sttRaw));
   html = replaceBlock(html, 'ANALYSIS_INDEX', JSON.stringify(ANALYSIS_INDEX));
+  // STT_TEXTS 자리(placeholder)가 있을 때만 주입 — 구버전 HTML 호환
+  try { html = replaceBlock(html, 'STT_TEXTS', JSON.stringify(sttTexts)); console.log('✅ STT_TEXTS 주입 —', sttTexts.length, '건(문장 보유 통화)'); }
+  catch (e) { console.log('⚠ STT_TEXTS 블록 없음(구버전 HTML) — 건너뜀'); }
   fs.writeFileSync(HTML, html, 'utf8');
 
   const months = {};
