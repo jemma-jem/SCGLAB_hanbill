@@ -5542,6 +5542,7 @@ function setSttPeriod(s, e) {
   var c = _clampToData(s, e);         // 데이터 있는 기간만 검색 활성화
   s = c.s; e = c.e;
   window._activeRange = { s: s, e: e };  // 선택 기간을 전역에 반영 → 요약카드·해결률차트가 badge와 일치
+  window._sttSel = { s: s, e: e };       // STT 탭 자체 기간 기억 → 메인 '지난주' 기본기간이 STT를 덮어도 복원용
   document.getElementById('stt-start').value = s;
   document.getElementById('stt-end').value   = e;
   applySTTFilter(s, e);
@@ -5763,6 +5764,11 @@ window.applyDateRange = function() {
       console.warn('DB 미로드 — dashboard_compact.js 확인 필요');
     }
     renderAll();
+  }
+  // ★ STT 탭은 자체 기간(_sttSel, 기본 지난달) 유지 — 메인 기본기간(지난주→당월)이 STT 화면을 덮지 않도록 복원.
+  //   _activeRange(데이터포털용)는 건드리지 않고 STT 패널만 자기 기간으로 재렌더.
+  if (window._sttInited && window._sttSel && window._sttSel.s && typeof applySTTFilter === 'function') {
+    applySTTFilter(window._sttSel.s, window._sttSel.e);
   }
   closeDateModal();
 };
