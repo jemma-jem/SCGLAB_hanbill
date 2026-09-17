@@ -7184,9 +7184,11 @@ function _ingestComplaintRows(rows, cutoff){
 }
 // 시드(내장 STT_RAW/DB.weeks)가 커버하는 마지막 날짜 → 이 이후만 새로 적재
 function _latestSeedDate(){
+  // 상담(시트) 데이터의 시드 컷오프는 '상담 시드'(DB.weeks)의 마지막 날짜여야 한다.
+  // ※ STT_RAW(녹취)는 별개 데이터셋 — 이걸 컷오프로 쓰면 녹취가 커버하는 달(예: 8월)의
+  //   상담 일자 데이터를 "이미 있다"고 오판해 건너뛰어 데이터포털 주간이 비게 된다.
   var maxD = '';
   try {
-    if (typeof STT_RAW !== 'undefined') STT_RAW.forEach(function(r){ if (r.d > maxD) maxD = r.d; });
     if (typeof DB !== 'undefined' && DB.weeks) Object.keys(DB.weeks).forEach(function(wk){
       var e = (DB.weeks[wk] && DB.weeks[wk].e) || wk; if (e > maxD) maxD = e;
     });
