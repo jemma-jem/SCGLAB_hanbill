@@ -76,7 +76,8 @@ function applySTTFilter(s,e){
   if(typeof renderSTTQuality==='function') renderSTTQuality();
   if(typeof renderSTTVOC==='function') renderSTTVOC();
   if(typeof renderSTTImprovements==='function') renderSTTImprovements();
-  if(typeof renderKwCloud==='function') renderKwCloud();
+  if(typeof renderKeywordCloud==='function') renderKeywordCloud();   // 인입 키워드(녹취 기반, 기간 연동)
+  if(typeof renderPredictSection==='function') renderPredictSection(); // 예상 민원(녹취 기반) 갱신
   // B섹션 고도화 렌더
   if(typeof renderAiSummaryCards==='function') renderAiSummaryCards(filtered,s,e);
   if(typeof renderResolutionDual==='function') renderResolutionDual(filtered,s,e);
@@ -1834,7 +1835,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
         </div>
       </div>
       <div class="pb">
-        <div style="font-size:11.5px;color:var(--g400);margin-bottom:10px">VOC 패턴 + 계절성 + 청구 일정 기반 — 이번 달 인입될 가능성이 높은 민원(예상 확률)</div>
+        <div style="font-size:11.5px;color:var(--g400);margin-bottom:10px">실제 통화 녹취(STT) 월별 분석 추세 기반 — 최근 인입 비중이 늘고 있는 민원(예상 확률)</div>
         <div id="predict-section-list-stt"></div>
       </div>
     </div>
@@ -2851,6 +2852,62 @@ function computePredictions() {
   });
 }
 
+// 녹취(STT) 기반 예상 민원: STT_RAW(실제 통화 분석)를 월별로 집계해 최근 달 vs 직전 달 증감으로 예측.
+// DB.weeks(시트) 대신 MP3 녹취 분석 데이터를 사용 → STT 파이프라인 갱신 시 자동 반영.
+function computePredictionsSTT() {
+  if (typeof STT_RAW === 'undefined' || !STT_RAW.length) return [];
+  var CL = (typeof CAT_LABEL !== 'undefined') ? CAT_LABEL : {};
+  var recs = STT_RAW.filter(function(r){ return !r.syn; });   // 녹취(MP3) 분석만 — 시트 합성 레코드 제외
+  if (!recs.length) return [];
+  var byMonthLetter = {}, byMonthCode = {}, monthsSet = {};
+  recs.forEach(function(r){
+    if (!r.d || !r.c) return;
+    var mk = r.d.slice(0,7), L = r.c[0];
+    monthsSet[mk] = 1;
+    (byMonthLetter[mk] = byMonthLetter[mk] || {})[L] = (byMonthLetter[mk][L] || 0) + 1;
+    (byMonthCode[mk] = byMonthCode[mk] || {})[r.c] = (byMonthCode[mk][r.c] || 0) + 1;
+  });
+  var months = Object.keys(monthsSet).sort();
+  if (!months.length) return [];
+  // 월별 처리량(녹취 분석 건수)이 크게 달라 원시 건수 비교는 왜곡됨 → 카테고리 '비중(share)'으로 비교.
+  var totalOf = function(mk){ var o = byMonthLetter[mk] || {}, s = 0; CAT_LETTERS.forEach(function(L){ s += o[L] || 0; }); return s; };
+  var shareOf = function(mk, L){ var t = totalOf(mk); return t > 0 ? (byMonthLetter[mk][L] || 0) / t : 0; };
+  var recent = months[months.length - 1];
+  var priorMonths = months.slice(Math.max(0, months.length - 4), months.length - 1); // 직전 최대 3개월
+  var recentCodes = byMonthCode[recent] || {};
+  var cand = CAT_LETTERS.map(function(L){
+    var rc = (byMonthLetter[recent] || {})[L] || 0;
+    var recentShare = shareOf(recent, L);
+    var priorShare = priorMonths.length
+      ? priorMonths.reduce(function(s, mk){ return s + shareOf(mk, L); }, 0) / priorMonths.length
+      : recentShare;
+    var growth = priorShare > 0
+      ? Math.round((recentShare - priorShare) / priorShare * 100)
+      : (recentShare > 0 ? 100 : 0);
+    var best = null, bestN = -1;
+    Object.keys(recentCodes).forEach(function(code){
+      if (code[0] === L && recentCodes[code] > bestN) { best = code; bestN = recentCodes[code]; }
+    });
+    return { L:L, rc:rc, sharePct: Math.round(recentShare * 100), growth:growth, code:best };
+  }).filter(function(c){ return c.rc >= 3; });   // 최근 달 3건 이상만(노이즈 제거)
+  if (!cand.length) return [];
+  cand.sort(function(a,b){ return b.growth - a.growth || b.sharePct - a.sharePct; });
+  var top = cand.slice(0, 4);
+  return top.map(function(c){
+    var idx = CAT_LETTERS.indexOf(c.L);
+    var gClamp = Math.max(-40, Math.min(60, c.growth));            // 확률 산정용 증감 클램프
+    var prob = Math.max(52, Math.min(92, Math.round(60 + gClamp * 0.4)));
+    var color = prob >= 85 ? '#EF4444' : prob >= 70 ? '#F59E0B' : prob >= 55 ? '#0EA5E9' : '#10B981';
+    var catLabel = CAT_LABELS10[idx];
+    var detailTxt = c.code ? (CL[c.code] || (catLabel + ' 문의')) : (catLabel + ' 문의');
+    var trendTxt = c.growth >= 0
+      ? '녹취 분석 기준 최근 달 비중 ' + c.sharePct + '%(' + c.rc + '건), 직전 평균 대비 +' + c.growth + '% 상승'
+      : '녹취 분석 기준 최근 달 비중 ' + c.sharePct + '%(' + c.rc + '건)로 여전히 높은 수준';
+    return { prob:prob, color:color, type:detailTxt, desc:trendTxt, reason:trendTxt,
+             tip: PRED_TIP_FALLBACK[c.L] || '상담원 응대 스크립트 보완' };
+  });
+}
+
 // 예상 민원: 사전 생성(PREDICTIONS_STATIC) 고정값을 제거하고, 매 렌더 시 DB.weeks(실제 상담
 // 주간/일자 통계)에서 computePredictions()로 실시간 계산한다. (시트 싱크로 DB가 갱신되면 자동 반영)
 let PREDICTIONS = computePredictions();
@@ -3503,17 +3560,14 @@ function renderKeywordCloud() {
   const el = document.getElementById('kw-cloud');
   if (!el) return;
 
-  // ── 1순위: 선택된 기간 DB 키워드 (DATA[cur].keywords) ──
-  // 기간을 바꾸면 이 값이 바뀌므로 기간 연동됨
-  const periodKw = (DATA[cur] && DATA[cur].keywords) ? DATA[cur].keywords : [];
-
-  // ── 2순위: STT_INDEX 키워드 (보조) — STT_INDEX가 null(해당 기간 통화 데이터 없음)일 수 있어 방어 ──
-  const sttKw = (typeof STT_INDEX !== 'undefined' && STT_INDEX && STT_INDEX.topKw) ? STT_INDEX.topKw : [];
-
-  // 두 소스 병합 — 기간 키워드 우선, STT로 보강
+  // ── 녹취(STT) 기반 인입 키워드 ──
+  // 시트 합성 레코드(r.syn) 제외, 선택 기간의 '실제 녹취'만 카테고리 라벨 빈도로 집계 → 기간 연동
+  const _r = window._activeRange;
+  const _CL = (typeof CAT_LABEL !== 'undefined') ? CAT_LABEL : {};
+  const _recs = (typeof STT_RAW !== 'undefined' ? STT_RAW : []).filter(r =>
+    !r.syn && r.c && (!_r || (r.d >= _r.s && r.d <= _r.e)));
   const merged = {};
-  periodKw.forEach(k => { merged[k.word] = (merged[k.word] || 0) + k.cnt * 2; }); // 기간 데이터 2배 가중치
-  sttKw.forEach(k => { merged[k.word] = (merged[k.word] || 0) + k.cnt; });        // STT 보강
+  _recs.forEach(r => { const w = _CL[r.c] || r.c; merged[w] = (merged[w] || 0) + 1; });
 
   const keywords = Object.entries(merged)
     .sort((a, b) => b[1] - a[1])
@@ -3521,12 +3575,12 @@ function renderKeywordCloud() {
     .map(([word, cnt]) => ({ word, cnt }));
 
   if (!keywords.length) {
-    el.innerHTML = '<div style="color:var(--g400);font-size:12px;padding:10px">키워드 데이터 없음</div>';
+    el.innerHTML = '<div style="color:var(--g400);font-size:12px;padding:10px">녹취 분석 키워드 없음</div>';
     return;
   }
 
-  // STT에서 추출된 단어 세트 (뱃지용)
-  const sttWordSet = new Set(sttKw.map(k => k.word));
+  // 모든 키워드가 녹취(STT) 출처 → 전부 STT 뱃지 표기
+  const sttWordSet = new Set(keywords.map(k => k.word));
 
   const maxCnt = keywords[0].cnt;
   el.innerHTML = keywords.map((k, i) => {
@@ -9357,9 +9411,9 @@ function predExample(type) {
 }
 
 function renderPredictSection() {
-  PREDICTIONS = computePredictions();   // 최신 DB.weeks 기준으로 매 렌더 시 실시간 재계산
+  PREDICTIONS = computePredictions();   // DB.weeks 기준(독립 '예상 민원' 탭용)
   var bgByColor = { '#EF4444':'#FEE2E2', '#F59E0B':'#FEF3C7', '#0EA5E9':'#E0F2FE', '#10B981':'#D1FAE5' };
-  var html = PREDICTIONS.map(function(p,i) {
+  function buildPredHtml(list){ return list.map(function(p,i) {
     var col = p.color || '#94A3B8';
     var bg  = bgByColor[col] || '#F1F5F9';
     // 서술형 분석: 원인(reason) → 결과(예상). 제목(type)과 중복되던 한줄(desc)은 제거하고 문장으로 통합
@@ -9379,12 +9433,14 @@ function renderPredictSection() {
       + '<div style="background:' + bg + ';border-radius:8px;padding:8px 12px;font-size:12px;color:var(--g700)">'
       + '<span style="font-weight:700;color:' + col + '">💡 대응 팁:</span> ' + p.tip + '</div></div>'
       + '</div></div>';
-  }).join('');
-  // 예상 민원 섹션 + AI 민원분석 내 패널 둘 다 업데이트
+  }).join(''); }
+  // 예상 민원 탭: DB.weeks 기반 / AI 민원분석(STT 탭): 녹취(STT_RAW) 기반
   var el1 = document.getElementById('predict-section-list');
-  if (el1) el1.innerHTML = html;
+  if (el1) el1.innerHTML = buildPredHtml(PREDICTIONS);
+  var sttList = computePredictionsSTT();
+  if (!sttList.length) sttList = PREDICTIONS;   // 녹취 데이터 없으면 DB로 폴백
   var el2 = document.getElementById('predict-section-list-stt');
-  if (el2) el2.innerHTML = html;
+  if (el2) el2.innerHTML = buildPredHtml(sttList);
 }
 
 // ─── 녹취 현황 패널 ───
