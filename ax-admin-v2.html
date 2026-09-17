@@ -92,7 +92,8 @@ function computeSTTIdx(records){
   };
 }
 function applySTTFilter(s,e){
-  var filtered=s?STT_RAW.filter(function(r){return r.d>=s&&r.d<=e;}):STT_RAW;
+  // STT 탭은 실제 녹취(MP3)만 반영 — 시트 상담 합성 레코드(r.syn)는 제외
+  var filtered=(s?STT_RAW.filter(function(r){return r.d>=s&&r.d<=e;}):STT_RAW).filter(function(r){return !r.syn;});
   ANALYSIS_INDEX=computeAI(filtered);
   // 선택 기간의 실제 녹취 문장으로 개선제안·우수발화 교체(STT_TEXTS 있을 때). 없으면 computeAI 스냅샷 유지.
   if(ANALYSIS_INDEX){ var _pt=_sttPeriodTexts(s,e); if(_pt){ if(_pt.improvements.length) ANALYSIS_INDEX.improvements=_pt.improvements; if(_pt.bestPhrases.length) ANALYSIS_INDEX.bestPhrases=_pt.bestPhrases; } }
@@ -5461,7 +5462,7 @@ window.goSec = function(name, el) {
 function _sttDataRange() {
   var min = '', max = '';
   if (typeof STT_RAW !== 'undefined') STT_RAW.forEach(function(r){
-    if (r && r.d) { if (!min || r.d < min) min = r.d; if (!max || r.d > max) max = r.d; }
+    if (r && r.d && !r.syn) { if (!min || r.d < min) min = r.d; if (!max || r.d > max) max = r.d; }  // 녹취(MP3)만 — 시트 합성분 제외
   });
   return { min: min || '2026-04-01', max: max || '2026-06-30' };
 }
