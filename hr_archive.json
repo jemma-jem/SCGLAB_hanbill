@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-20T04:47:27.472Z",
+  "updated_at": "2026-09-21T04:47:46.850Z",
   "sources": [
     "시정일보 RSS(피플/전체)",
     "지역지 직접 RSS(동부뉴스·투데이군산·당진신문·영남투데이·수원일보·금강일보·디트뉴스·전북중앙·남도일보·광주드림·경북일보·울산제일일보·제주의소리·세종의소리)",
@@ -8,6 +8,28 @@
   ],
   "count": 600,
   "records": [
+    {
+      "date": "2026-09-21",
+      "url": "https://www.namdonews.com/news/articleView.html?idxno=924060",
+      "source": "남도일보",
+      "title": "생활안전보건연합, 농촌 3천765명에 건강·안전 재능나눔",
+      "region": "",
+      "kinds": [
+        "전보"
+      ],
+      "people": [],
+      "hit": true
+    },
+    {
+      "date": "2026-09-21",
+      "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1jVWJMY0NxQmlOcTllbzRZbHRsYXJEdGtRNXhLNzlpQ3ZpaWpOaEVjVVRlNjZTY05yRzBfbGRYcmFFempaRkF3V2VxUjZsNElrVGpnUDF1VG9qVVFvV2dvblJ3?oc=5",
+      "source": "서울Pn",
+      "title": "정부인사 발령(개인정보보호위원회)",
+      "region": "",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
     {
       "date": "2026-09-20",
       "url": "https://www.sjsori.com/news/articleView.html?idxno=88740",
@@ -24,6 +46,76 @@
       "source": "뉴시스",
       "title": "구청장 시절 '갈등' 민형배, 통합시 첫 부단체장 인사는?",
       "region": "통합시",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-09-20",
+      "url": "https://www.kyongbuk.co.kr/news/articleView.html?idxno=4084928",
+      "source": "경북일보",
+      "title": "이재용 대구도시개발공사 사장 취임…‘3대 혁신’ 제시",
+      "region": "대구도시",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-09-20",
+      "url": "https://www.kyongbuk.co.kr/news/articleView.html?idxno=4084901",
+      "source": "경북일보",
+      "title": "김승수 국민의힘 대구시당위원장 취임…“TK 홀대 논란, 함께 대응해야”",
+      "region": "대구시",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-09-20",
+      "url": "http://www.ujeil.com/news/articleView.html?idxno=392412",
+      "source": "울산제일일보",
+      "title": "울산교육청, 趙교육감 취임 후 첫 조직 개편",
+      "region": "울산시",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-09-20",
+      "url": "http://www.ujeil.com/news/articleView.html?idxno=392403",
+      "source": "울산제일일보",
+      "title": "여야, 추석 앞두고 밥상 민심잡기 총… 與 ‘민생 성과’·野 ‘인사·부동산 공세’",
+      "region": "",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-09-20",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1qRkhjWkkxeTdqek53Q2VTN0lvbU1QTjJ6ZUp2WHZZSlFxLWxxc3FjZHVBRkxiNW5uelZ1VUtDNzFFZVRXcTNwSTVETXZtS3pTRFVSV3l3MXpTRkViQmRsaXN4MUx0VmhOZ0NrMGFrM2k?oc=5",
+      "source": "원주투데이",
+      "title": "위법한 인사기준 적용, 감사한다",
+      "region": "",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-09-20",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBMWDZ0NllodWd6Qkhwd3lsRmNGN0NqX3gwRzRIT1pRWlRtS3p2V2hscHBKTGJsNU1vYkd6djJPQ21ROE9ackZnSHJWYVF3a0l3aHBkUGlPQ2pvMTUxakhlVC1VTzFobzA?oc=5",
+      "source": "경기매일",
+      "title": "감사원 인사발령(9. 21. 자)",
+      "region": "",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-09-20",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBZa19mQ3dyWEwwUVE2OUVZWTUyYUl5dGhOdFJnVjZsSWp1MmczUU5MaXIxZEphbDVSVjNRRkc0TjJxb0FpaHNqSkpYOHJxYnRabm9NdDlpcmZCT3B6QjItVl9tQVU2YjdVOUHSAW5BVV95cUxNbXdYUjA2TDNYZGdYTkpiMmxORDdqWk5yVnVGMldwUlhPeWI5NUZucmJxcVp2RHdXV09FQ1hEbDlla1JWaGZtaDllX2R4N2ZpU3ZQT1JMaURVcjdadmVPaUhuNkJ2djFDVEx1R1BwQQ?oc=5",
+      "source": "음성신문",
+      "title": "충북도, 9월 21일자 6급 이하 수시인사 단행",
+      "region": "",
       "kinds": [],
       "people": [],
       "hit": false
@@ -522,6 +614,28 @@
       "title": "화천군 350명 대규모 인사 단행",
       "region": "화천군",
       "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-09-18",
+      "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxPOHhSZlFUX3R1SXUyZHktam9BRTd5bFJEaXFOaXIyUkhEWHFXTThSN3g4aEZVWHp4Wm02TGY5NHRESnpCMGptZGI5YjdvTW9Fc3dvNTllQUlUbjloQW5sNFBocnVlMmZmMEcwR244V1ZOTzR6b0Y1V3ZsV2hocHJXcGV0RWEtVTJiVjJTdVhuS0p2QUZiSEtLa3FveE5KREpRQldjNmcwTHpvNzlxR09uNFRIMVZ6bHhPbzJLclB1M2xBLVZIUmJsSFN4QjJVeWxRSUNaWDhFRDQ?oc=5",
+      "source": "부산일보",
+      "title": "23일 조직개편 앞둔 부산시, 5급 이상 간부 인사",
+      "region": "부산시",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-09-18",
+      "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE52RlFfVWFOTUppR01hRldSdl9oanRnTEt5M2Y5X1pGMFptQ0piUDd6eHJ0ZWg0aTJCVWhscU84SEtSUDU4WUpmeVNLNkU?oc=5",
+      "source": "모닝투데이",
+      "title": "수원특례시 총 166명 규모 하반기 정기승진 사전예고 단행",
+      "region": "수원특례시",
+      "kinds": [
+        "승진"
+      ],
       "people": [],
       "hit": false
     },
@@ -1129,6 +1243,28 @@
       "kinds": [
         "보직부여"
       ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-09-15",
+      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5HbzAteWFBcXFWbWpINWliUGI0QzA2bHlCMXY3bkFlTDd2NzJIb2pTWFg2N2xVYmFYSjZhVURiMXVjQmxpZjktVmZtNjZNa0xOZjF5aVFDYTA?oc=5",
+      "source": "신경북뉴스",
+      "title": "영덕군청공무원노동조합, 영덕군수에 제도 개선안 제안 '주요 보직 공무원 청렴도 조사'·'다면평가 시범운영' 제안",
+      "region": "영덕군",
+      "kinds": [
+        "보직부여"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-09-15",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1kbWtPTkZxQmd5UHVaNGhjOUEyWmlOU3l4ZG1jTldzV1ZlUndES1pYSkp1UFR6V2lBNURzQ1E5bTBldEpabVZkRjVvbWwtbGtaMUZVemJyQndfZE1RbUl0StIBeEFVX3lxTFAtN0dJRmRzTHg5LXRZT3hhWlJMamI1VnphLXlkUGhBakZqRjFDYkFGR0lJQlUwUGRtaDNJZXVNVWNLRXBrOUlKN3JNSzVsNWJjc1VzZHRJSnhVZ0d5OHRBdDF0THNkOXpsbmgzWEs5MjhpQWE4bjJwVA?oc=5",
+      "source": "뉴시스",
+      "title": "전남광주 첫 조직개편 기재위 통과…추석 전후 인사할 듯",
+      "region": "",
+      "kinds": [],
       "people": [],
       "hit": false
     },
@@ -3088,6 +3224,16 @@
       "kinds": [
         "승진"
       ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-09-04",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5BRGVVYlltOHg0RzAtbmhCS3ExNEw5VnlSUXNNUXRNY1FKMkZDTjNoRmhkc01FbUl4UmZRbVZxSzRUWmtsSlB3WElBem5fcVpUTFN4ZzVKUjBfNnc3RkpET0pFdE8yZHc?oc=5",
+      "source": "경기매일",
+      "title": "인천시, 군‧구 인사 교류 상생 협의회 개최",
+      "region": "인천시",
+      "kinds": [],
       "people": [],
       "hit": false
     },
@@ -8281,149 +8427,6 @@
       "kinds": [
         "임용"
       ],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-08-20",
-      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5HNmE3UVphUlU5Y0VFRl8wenMwNXh4SWthMnI3aXhjLTZKV3h4MHo3c2MzWXB6bGl4NWtjRHRkMGN2VEw0RUV5Um1Od3Qyak1qTlU0Znloc3M0NHJESWpEMnBqZWw1QdIBakFVX3lxTFBRb3lHVG56M2t1UnJEaEYxLTBlM0I4bVhET01DNkNBcFEzWHFraVI0X0hxTWlsMWt2TWFGbTBSTGtlTzVOZWpsNUxoSWQ0dk1hYzY5cGI3UHdkWERVeDVDZzJBbkF2X2UzSUE?oc=5",
-      "source": "세종매일",
-      "title": "대전시, 인사발령(8월 14일자)",
-      "region": "대전시",
-      "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-08-20",
-      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5ibU0ta1dteDJCVEIyQjFPRDF2Mi1fRGh2SHlkdXFhRXdtTVZmWkNya3lMX0xyYVhzcThCNGxEU21Od0VYQzYtMzdtVmFiemItMFdwQUxRZnFpMkJWS3FyQ3NVWGRLMFAtUHc?oc=5",
-      "source": "인천일보",
-      "title": "인천시, 2026년 하반기 인사 단행…24일자 단행",
-      "region": "인천시",
-      "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-08-20",
-      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9mbUlOMVhybmh6TmlzSWlfeVdnRFJ0MmV2akR6eEp0Uk02a2l0ajRlblhnQjZhNGt0UTQ1cmFQUk1DbnExNWRicl84a2xoMWtZOEVfcC05ZGlWd2Z5M2h4RzZTRXdtaWZveEhqVTRmOA?oc=5",
-      "source": "기호일보",
-      "title": "인천시 24일 1천442명 대규모 인사…민선 9기 첫 인사 마무리",
-      "region": "인천시",
-      "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-08-20",
-      "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE95SERMYmdxdWs2Ukt6cHRFMTJnZ1Z3YnVfVkgtSUgyMXI0MFBtLXdnQ2VubnppQjc1NDhITmRlZE1rNkRMXy1pb0RPVmY1VFE?oc=5",
-      "source": "v.daum.net",
-      "title": "인천시 24일 1천442명 대규모 인사…민선 9기 첫 인사 마무리",
-      "region": "인천시",
-      "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-08-20",
-      "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE85eWRDNEdpYVJOX3JSWDZMdWw5UEhyeElFVTJqamE1WUw3cG12YXNpSzQ2WVRVaU1FQjhDY2JuQm9kdFJ2S1E?oc=5",
-      "source": "v.daum.net",
-      "title": "공로연수 직후 다시 보건소장?.. 남양주시 ‘인사 놓고 내부’ 논란",
-      "region": "남양주시",
-      "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-08-20",
-      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1Vb2NHdFB6bGpCMjFMN1pIYlhpOXJ1MzZNcWFvR0Z5VkFZRGRudGIwTlVIc3BsZER2WVlsU1VHY1Y2MlBIMnl3MDRuaWdVekExUWVsNGRpaG9KUHZCYUQwRnlmQk9BNy1laG0wVdIBcEFVX3lxTE5nRnZkWFQxV1RxblBKd3E2WkszQm5tTEpfUXJSRVRRLWFHc2hMU2RjNzBiUnN0NW1EMzNpVllUVldIUFhBbEpZOENlTUpUN2pXbkZiSTZPdGZYNkVRczNhSVlGZzhyb01GbW5HWTFRN1A?oc=5",
-      "source": "남도일보",
-      "title": "전남광주교육청, 9월 1일자 일반직 275명 인사",
-      "region": "",
-      "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-08-20",
-      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBVcUstakd6RHRCeVVzbFRoTEhRZG9fV01GU2hieERTWTdMYXVOcU9tNU9UWFZCZDMxS3RwdkZ3cXdvS0UtX2RhdExleDB5U0NYcGdFWXdtbk12TWZ2dUV4Yg?oc=5",
-      "source": "네이트",
-      "title": "전남광주통합특별시교육청, 일반직공무원 인사…'유보통합 강화'",
-      "region": "남광주통합특별시",
-      "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-08-20",
-      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9Pcm9Gd2c2a3lqYmRKOUhLa0FsX0lnQTlUckx6OW1VNlE5dnJJMklrZ1pRY0ZQWlhlS2I1NkZ3c1lzWG9xcGtzQzdkY3pwcDJVWlcyMHpmUXlGUks3YU9UQUNjQndGRHVUXzZLNHhaOWk?oc=5",
-      "source": "인천일보",
-      "title": "인천시, 2026년 하반기 인사 단행…24일자 단행",
-      "region": "인천시",
-      "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-08-20",
-      "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1iRWhfUUlLN2REZjdkMzhVRFhWSG5MS25NT1J1aG91aERVUERXZXdFM3RKRWFtZWQyaXF6QmdURU9GZVROYXNYSkMwM2psN0NNR2c?oc=5",
-      "source": "노컷뉴스",
-      "title": "전남광주교육청 전남청사, 일반직 공무원 인사 단행",
-      "region": "",
-      "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-08-20",
-      "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBZREhKQVdiYTBzZFBWVnI2LUR1ZXFGUkx1TFBzRE5NS2h3VkhnRUhVTHNNNHFsb2Q1dVhWNllMd09GZnRkQThNRk9oM0QzdlJ5RExpdFo0R1FIdC1hc3VIVElqOA?oc=5",
-      "source": "우리일보",
-      "title": "[속보] 인천광역시, 과장급 이하 대규모 전보·승진 인사 단행",
-      "region": "인천광역시",
-      "kinds": [
-        "전보",
-        "승진"
-      ],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-08-20",
-      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9xZ1RRN1JTN2t3N253WUFsbi1JQkg1VVFGMy12TEVHaTJCQVpOZEJ6dTF1VjhDT3EzWTFycG13ekl6V0Y4RldkUFN3QjcwOFh0dEpiNjB3TGUwa1lQbEFGQjhNNnUtUjhDQktwMQ?oc=5",
-      "source": "theleader.co.kr",
-      "title": "전남광주통합특별시교육청, 일반직공무원 인사 단행",
-      "region": "남광주통합특별시",
-      "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-08-20",
-      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5JM0dyZzBqc19iTW1PM3F0V1VVZUtrQWRwcWZRNnZneHl1bWdqYmVqMlloNEtyZk5kLVloTV93bWtQeEs5YlBXYmw1N2xtLVBGTHpTa00tN0hIakJ4Q2loZDFsdWlWNzBYYVNDbEE0czU?oc=5",
-      "source": "더코리아",
-      "title": "전남광주통합특별시교육청, 2026년 9월 1일 자 일반직공무원 인사 단행 > 뉴스",
-      "region": "남광주통합특별시",
-      "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-08-20",
-      "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE12U2xLbU5DOE9tTmRRbF92MlhucDRrbXZUbm9LNGtQZGJzU0EwQVQ3cUtZTHNtMVpjYkhJZ2gzekJPc3lUTHM3eQ?oc=5",
-      "source": "브레이크뉴스",
-      "title": "전남광주특별시교육청, 9월 1일 자 일반직공무원 275명 인사 단행",
-      "region": "",
-      "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-08-20",
-      "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE5hVXRNb3phM1NuM1RoQlVTRk1hYnV0SEpzSUtyVFdaTS1BMU40UHlGWVlmWUw3WXh1VEFHWWJxcjJ2VURlWVRXUTk2dw?oc=5",
-      "source": "문화매일신문",
-      "title": "전남광주통합특별시교육청, 2026. 9. 1.자 일반직공무원 인사 단행",
-      "region": "남광주통합특별시",
-      "kinds": [],
       "people": [],
       "hit": false
     }
