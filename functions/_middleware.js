@@ -58,8 +58,8 @@ async function hmacHex(secret, msg) {
   const sig = await crypto.subtle.sign('HMAC', key, enc.encode(msg));
   return [...new Uint8Array(sig)].map((b) => b.toString(16).padStart(2, '0')).join('');
 }
-async function makeToken(user, secret, hours) {
-  const payload = user + '|' + (Date.now() + hours * 3600 * 1000);
+async function makeToken(user, secret, sec) {
+  const payload = user + '|' + (Date.now() + sec * 1000);
   return b64urlEncode(payload) + '.' + (await hmacHex(secret, payload));
 }
 async function verifyToken(token, secret) {
@@ -132,7 +132,10 @@ export async function onRequest(context) {
   const { request, env, next } = context;
   const url = new URL(request.url);
   const secret = env.SESSION_SECRET || '';
-  const hours = Number(env.SESSION_HOURS || 12);
+  // 세션 쿠키 유지 시간: 기본 20분(클라이언트 15분 유휴 자동로그아웃 + 연장 팝업이 슬라이딩 갱신).
+  // SESSION_MINUTES(분) 우선 → 없으면 SESSION_HOURS(시간)×60 → 둘 다 없으면 20분.
+  const minutes = Number(env.SESSION_MINUTES) || (Number(env.SESSION_HOURS) ? Number(env.SESSION_HOURS) * 60 : 20);
+  const maxAgeSec = Math.max(60, Math.round(minutes * 60));
 
   // ── 공개 경로: 로그인 없이 그대로 통과 ──
   if (isPublicPath(url.pathname)) {
@@ -155,6 +158,21 @@ export async function onRequest(context) {
     return new Response(null, { status: 302, headers: h });
   }
 
+  // ── 세션 연장(슬라이딩) ── 현재 쿠키가 유효하면 만료시각을 갱신해 재발급(재로그인 불필요)
+  if (url.pathname === '/session/extend') {
+    const cur = await verifyToken(getCookie(request, COOKIE), secret);
+    if (!cur) {
+      return new Response(JSON.stringify({ ok: false }), {
+        status: 401, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' } });
+    }
+    const token = await makeToken(cur, secret, maxAgeSec);
+    const base = `Path=/; Secure; SameSite=Lax; Max-Age=${maxAgeSec}`;
+    const h = new Headers({ 'Content-Type': 'application/json', 'Cache-Control': 'no-store' });
+    h.append('Set-Cookie', `${COOKIE}=${token}; HttpOnly; ${base}`);
+    h.append('Set-Cookie', `${UI_COOKIE}=${encodeURIComponent(cur)}; ${base}`);
+    return new Response(JSON.stringify({ ok: true, minutes }), { status: 200, headers: h });
+  }
+
   // ── 로그인 페이지 / 처리 ──
   if (url.pathname === '/login') {
     if (request.method === 'POST') {
@@ -167,9 +185,9 @@ export async function onRequest(context) {
       const stored = Object.prototype.hasOwnProperty.call(users, id) ? String(users[id]) : null;
       const ok = !!secret && stored !== null && pw.length > 0 && timingSafeEqual(pw, stored);
       if (ok) {
-        const token = await makeToken(id, secret, hours);
+        const token = await makeToken(id, secret, maxAgeSec);
         const h = new Headers({ Location: nextPath });
-        const base = `Path=/; Secure; SameSite=Lax; Max-Age=${hours * 3600}`;
+        const base = `Path=/; Secure; SameSite=Lax; Max-Age=${maxAgeSec}`;
         h.append('Set-Cookie', `${COOKIE}=${token}; HttpOnly; ${base}`);
         h.append('Set-Cookie', `${UI_COOKIE}=${encodeURIComponent(id)}; ${base}`);
         return new Response(null, { status: 302, headers: h });

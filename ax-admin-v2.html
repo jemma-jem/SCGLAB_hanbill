@@ -11840,5 +11840,103 @@ window.rdMarkSeen = async function(){
 
 })();
 </script>
+
+<!-- ══════════ 유휴 자동 로그아웃(15분) + 연장 팝업 ══════════ -->
+<script>
+(function(){
+  var IDLE_MIN   = 15;                 // 유휴 15분이면 자동 로그아웃
+  var WARN_SEC   = 60;                 // 로그아웃 60초 전 연장 팝업
+  var SLIDE_MS   = 10 * 60 * 1000;     // 활동 중이면 10분마다 서버 쿠키 조용히 연장(슬라이딩)
+  var IDLE_MS    = IDLE_MIN * 60 * 1000;
+  var WARN_MS    = WARN_SEC * 1000;
+
+  var warnTimer = null, logoutTimer = null, countTimer = null;
+  var lastSlide = Date.now();
+  var warnOpen  = false;
+
+  function doLogout(){ try { location.href = '/logout'; } catch(e){ location.reload(); } }
+
+  function extend(silent){
+    return fetch('/session/extend', { method: 'POST', credentials: 'same-origin', cache: 'no-store' })
+      .then(function(r){ return r.ok; })
+      .catch(function(){ return false; });
+  }
+
+  // ── 연장 팝업 ──
+  function buildModal(){
+    if (document.getElementById('sess-modal')) return;
+    var wrap = document.createElement('div');
+    wrap.id = 'sess-modal';
+    wrap.setAttribute('hidden','');
+    wrap.style.cssText = 'position:fixed;inset:0;z-index:99999;background:rgba(15,23,42,.55);display:flex;align-items:center;justify-content:center;padding:20px';
+    wrap.innerHTML =
+      '<div role="alertdialog" aria-live="assertive" style="background:#fff;border-radius:16px;max-width:380px;width:100%;box-shadow:0 20px 50px rgba(0,0,0,.3);overflow:hidden;font-family:inherit">'
+      + '<div style="background:#0284C7;color:#fff;padding:16px 20px;font-size:15px;font-weight:700;display:flex;align-items:center;gap:8px">'
+      +   '<span style="font-size:18px">⏱</span> 세션 만료 임박'
+      + '</div>'
+      + '<div style="padding:20px">'
+      +   '<div style="font-size:13.5px;color:#334155;line-height:1.7">보안을 위해 <b>15분간 활동이 없어</b> 곧 자동 로그아웃됩니다.<br>계속 사용하시려면 세션을 연장해 주세요.</div>'
+      +   '<div style="margin:16px 0;text-align:center;font-size:13px;color:#64748B">남은 시간 <b id="sess-count" style="color:#DC2626;font-size:20px;font-variant-numeric:tabular-nums">' + WARN_SEC + '</b>초</div>'
+      +   '<div style="display:flex;gap:8px">'
+      +     '<button id="sess-logout" style="flex:1;padding:11px;border:1px solid #CBD5E1;background:#fff;color:#475569;border-radius:9px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer">로그아웃</button>'
+      +     '<button id="sess-extend" style="flex:2;padding:11px;border:none;background:#0EA5E9;color:#fff;border-radius:9px;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer">세션 연장하기</button>'
+      +   '</div>'
+      + '</div></div>';
+    document.body.appendChild(wrap);
+    document.getElementById('sess-logout').addEventListener('click', doLogout);
+    document.getElementById('sess-extend').addEventListener('click', function(){
+      extend(false).then(function(ok){ if (ok) { closeWarn(); resetIdle(); } else { doLogout(); } });
+    });
+  }
+
+  function showWarn(){
+    if (warnOpen) return;
+    warnOpen = true;
+    buildModal();
+    var m = document.getElementById('sess-modal');
+    var c = document.getElementById('sess-count');
+    if (c) c.textContent = WARN_SEC;
+    if (m) m.hidden = false;
+    var left = WARN_SEC;
+    clearInterval(countTimer);
+    countTimer = setInterval(function(){
+      left--;
+      if (c) c.textContent = left;
+      if (left <= 0) { clearInterval(countTimer); doLogout(); }
+    }, 1000);
+    // 안전장치: 팝업 후 WARN_SEC 지나면 강제 로그아웃
+    clearTimeout(logoutTimer);
+    logoutTimer = setTimeout(doLogout, WARN_MS + 1500);
+  }
+
+  function closeWarn(){
+    warnOpen = false;
+    clearInterval(countTimer);
+    var m = document.getElementById('sess-modal');
+    if (m) m.hidden = true;
+  }
+
+  function resetIdle(){
+    clearTimeout(warnTimer);
+    clearTimeout(logoutTimer);
+    warnTimer = setTimeout(showWarn, Math.max(0, IDLE_MS - WARN_MS));  // 14분 뒤 경고
+  }
+
+  function onActivity(){
+    if (warnOpen) return;               // 팝업 떠있는 동안은 버튼으로만 처리
+    resetIdle();
+    // 활동 중 서버 쿠키 슬라이딩 갱신(만료 전 미리 연장)
+    if (Date.now() - lastSlide > SLIDE_MS) { lastSlide = Date.now(); extend(true); }
+  }
+
+  ['mousemove','mousedown','keydown','scroll','touchstart','click'].forEach(function(ev){
+    window.addEventListener(ev, onActivity, { passive: true });
+  });
+  // 다른 탭에서 로그아웃/연장 시 동기화는 생략(단순화). 탭 복귀 시 유휴 재계산.
+  document.addEventListener('visibilitychange', function(){ if (!document.hidden && !warnOpen) resetIdle(); });
+
+  resetIdle();  // 시작
+})();
+</script>
 </body>
 </html>
