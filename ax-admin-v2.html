@@ -764,6 +764,8 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
     <div class="ni" onclick="goSec('radar',this)" style="display:none"><i class="ti ti-radar-2"></i>AI 레인저(영업사원)<span class="ni-badge" id="radar-nav-badge" style="display:none"></span></div>
     <div class="ni" onclick="goSec('stt',this)"><i class="ti ti-microphone-2"></i>AI 민원분석</div>
     <div class="ni" onclick="goSec('newsletter',this)"><i class="ti ti-news"></i>뉴스레터</div>
+    <!-- AI 영업 성과 보드 — jem 로그인 시에만 표시(아래 게이팅 스크립트에서 노출) -->
+    <div class="ni" id="ni-salesboard" onclick="goSec('salesboard',this)" style="display:none"><i class="ti ti-trophy"></i>AI 영업 성과 보드</div>
   </nav>
   <div class="sb-foot">
     <strong>SCGLAB 영업기획팀 관리</strong>
@@ -2447,6 +2449,15 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
   </div><!-- /sec-newsletter -->
 
   <!-- ══════════ 4. AI 레인저(영업사원) (고객관리리스트 × 고객 소식) ══════════ -->
+  <!-- ══════════ AI 영업 성과 보드 (jem 전용) ══════════ -->
+  <div class="sec" id="sec-salesboard">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px">
+      <div style="font-size:12.5px;color:#64748B">인사 기사 → 표준 제안서 자동발송 현황 · 갱신 <span id="sb-updated">—</span></div>
+      <button onclick="renderSalesBoard()" style="font-size:12px;padding:5px 12px;border:1px solid #CBD5E1;border-radius:6px;background:#fff;cursor:pointer;color:#334155">새로고침</button>
+    </div>
+    <div id="sb-body"><div style="padding:40px;text-align:center;color:#94A3B8">불러오는 중…</div></div>
+  </div>
+
   <div class="sec" id="sec-radar">
 
     <div class="rd-note" style="margin-bottom:14px">
@@ -5416,6 +5427,7 @@ const SEC_META = {
   predict:['예상 민원','AI 기반 민원 예측 및 개선책'],
   newsletter:['뉴스레터','한전 청구서사업 경영진 일일 스크랩'],
   radar:['AI 레인저(영업사원)','고객리스트 × 지역소식·나라장터·인사발령 결합 영업 알림'],
+  salesboard:['AI 영업 성과 보드','인사 기사 → 표준 제안서 자동발송 현황 (발송·회신·회신율)'],
 };
 window.goSec = function(name, el) {
   // 탭 전환 시 항상 페이지 최상단으로 (이전 탭 스크롤 위치 잔존 방지)
@@ -5438,6 +5450,7 @@ window.goSec = function(name, el) {
   if (bn) bn.classList.add('on');
   if (name === 'predict') renderPredictSection();
   if (name === 'newsletter') renderNews();
+  if (name === 'salesboard' && typeof renderSalesBoard === 'function') renderSalesBoard();
   if (name === 'radar' && typeof rdInit === 'function') rdInit();   // 지연 로드: 첫 진입 시에만 시트·뉴스 fetch
   if (name === 'stt') {
     setTimeout(function() {
@@ -5455,6 +5468,74 @@ window.goSec = function(name, el) {
     }, 0);
   }
   updatePageAlert(name);
+};
+
+/* ══════════ AI 영업 성과 보드 (jem 전용) ══════════
+   데이터 = Apps Script 웹앱(doGet) JSON. URL 설정 전엔 안내만 표시. */
+var SALES_BOARD_URL = '';   // ← Apps Script 웹앱 배포 URL 넣기 (예: https://script.google.com/macros/s/.../exec)
+
+// jem 로그인 시에만 메뉴 노출
+(function sbGate(){
+  try {
+    var m = (document.cookie || '').match(/(?:^|; )hb_user=([^;]+)/);
+    var u = m ? decodeURIComponent(m[1]).toLowerCase() : '';
+    if (u === 'jem') {
+      var ni = document.getElementById('ni-salesboard');
+      if (ni) ni.style.display = '';
+    }
+  } catch(_){}
+})();
+
+function _sbCard(label, val, sub, color){
+  return '<div style="flex:1;min-width:120px;background:#fff;border:1px solid #E2E8F0;border-radius:10px;padding:14px 16px">'+
+    '<div style="font-size:12px;color:#64748B">'+label+'</div>'+
+    '<div style="font-size:26px;font-weight:800;color:'+(color||'#004098')+';line-height:1.2;margin-top:2px">'+val+'</div>'+
+    (sub?'<div style="font-size:11px;color:#94A3B8;margin-top:2px">'+sub+'</div>':'')+'</div>';
+}
+function _esc(s){ return String(s==null?'':s).replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];}); }
+
+window.renderSalesBoard = function(){
+  var body = document.getElementById('sb-body');
+  var upd = document.getElementById('sb-updated');
+  if (!body) return;
+  if (!SALES_BOARD_URL) {
+    body.innerHTML = '<div style="padding:28px;border:1px dashed #CBD5E1;border-radius:10px;background:#F8FAFC;color:#475569;line-height:1.7">'+
+      '<b style="color:#004098">데이터 연결 설정 필요</b><br>'+
+      '① Apps Script 편집기 → 배포 → 새 배포 → 유형 <b>웹 앱</b> (실행: 나 / 액세스: 모든 사용자)<br>'+
+      '② 생성된 <b>웹앱 URL</b>을 ax-admin-v2.html의 <code>SALES_BOARD_URL</code> 에 입력 후 배포<br>'+
+      '<span style="font-size:12px;color:#94A3B8">※ 발송로그가 1건 이상 쌓이면 수치가 표시됩니다.</span></div>';
+    return;
+  }
+  body.innerHTML = '<div style="padding:40px;text-align:center;color:#94A3B8">불러오는 중…</div>';
+  fetch(SALES_BOARD_URL, { cache:'no-store' })
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if (upd) upd.textContent = d.updated || '—';
+      var kw = (d.keywords||[]).map(function(x){ return '<span style="display:inline-block;background:#E0F2FE;color:#004098;border-radius:14px;padding:3px 11px;margin:3px;font-size:12px;font-weight:600">'+_esc(x.k)+' <b>'+x.n+'</b></span>'; }).join('') || '<span style="color:#94A3B8;font-size:12px">아직 없음</span>';
+      var sends = (d.recentSends||[]).map(function(s){ return '<tr><td style="padding:6px 8px;color:#64748B;font-size:11px">'+_esc(s.t)+'</td><td style="padding:6px 8px;font-weight:600">'+_esc(s.region)+'</td><td style="padding:6px 8px">'+_esc(s.name)+'</td><td style="padding:6px 8px;color:#64748B;font-size:12px">'+_esc(s.email)+'</td></tr>'; }).join('') || '<tr><td colspan="4" style="padding:14px;text-align:center;color:#94A3B8">발송 내역 없음</td></tr>';
+      var reps = (d.recentReplies||[]).map(function(s){ return '<tr><td style="padding:6px 8px;color:#64748B;font-size:11px">'+_esc(s.t)+'</td><td style="padding:6px 8px;font-weight:600">'+_esc(s.region)+(s.neg?' <span style="color:#DC2626;font-size:11px">(부정)</span>':'')+'</td><td style="padding:6px 8px;font-size:12px;color:#334155">'+_esc(s.summary)+'</td><td style="padding:6px 8px;font-size:11px;color:#0EA5E9">'+_esc(s.kw)+'</td></tr>'; }).join('') || '<tr><td colspan="4" style="padding:14px;text-align:center;color:#94A3B8">회신 없음</td></tr>';
+      body.innerHTML =
+        '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px">'+
+          _sbCard('발송', d.sent||0, '건', '#004098')+
+          _sbCard('회신(지자체)', d.replyRegions||0, (d.replyMsgs||0)+'메시지', '#0EA5E9')+
+          _sbCard('회신율', (d.replyRate||0)+'%', '지자체 기준', '#0EA5E9')+
+          _sbCard('긍정/부정', (d.positive||0)+' / '+(d.negative||0), '회신 신호', '#004098')+
+          _sbCard('발송 대기', d.pending||0, '승인 검토', '#F59E0B')+
+        '</div>'+
+        '<div style="background:#fff;border:1px solid #E2E8F0;border-radius:10px;padding:14px 16px;margin-bottom:14px">'+
+          '<div style="font-size:13px;font-weight:700;color:#004098;margin-bottom:8px">회신 키워드</div>'+kw+'</div>'+
+        '<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px" class="sb-grid">'+
+          '<div style="background:#fff;border:1px solid #E2E8F0;border-radius:10px;padding:14px 16px;overflow:auto">'+
+            '<div style="font-size:13px;font-weight:700;color:#004098;margin-bottom:6px">최근 발송</div>'+
+            '<table style="width:100%;border-collapse:collapse;font-size:12.5px"><tbody>'+sends+'</tbody></table></div>'+
+          '<div style="background:#fff;border:1px solid #E2E8F0;border-radius:10px;padding:14px 16px;overflow:auto">'+
+            '<div style="font-size:13px;font-weight:700;color:#0EA5E9;margin-bottom:6px">최근 회신</div>'+
+            '<table style="width:100%;border-collapse:collapse;font-size:12.5px"><tbody>'+reps+'</tbody></table></div>'+
+        '</div>';
+    })
+    .catch(function(e){
+      body.innerHTML = '<div style="padding:24px;color:#DC2626">현황 데이터를 불러오지 못했습니다. ('+_esc(String(e))+')<br><span style="font-size:12px;color:#94A3B8">웹앱 URL·배포 액세스(모든 사용자)를 확인하세요.</span></div>';
+    });
 };
 
 // ─── STT 기간 필터 UI ───
