@@ -5501,11 +5501,16 @@ function _lastDayOf(ym) {
 // - 데이터 전체 범위와 같으면 '전체'
 // - 특정 월 전체(1일~말일)면 그 월 버튼
 // - 그 외(달력으로 지정한 임의 구간)면 어떤 버튼도 활성 안 함(= 직접 지정 상태)
-// 오늘 기준 상대 월(지난달/2달전) 범위 계산
+// 상대 월(지난달/2달전) 범위 계산 — 기준은 '오늘'이 아니라 실제 녹취 데이터가 있는 '최신 월'.
+//   (당월에 녹취가 없어 달력이 넘어가도 기본기간이 빈 달로 떨어지지 않도록 보장)
 function _sttRelRanges() {
-  var now = new Date(), pad = function(n){ return String(n).padStart(2,'0'); };
-  function mr(off){ var d = new Date(now.getFullYear(), now.getMonth()-off, 1); var y=d.getFullYear(), m=d.getMonth()+1, last=new Date(y,m,0).getDate(); return { s:y+'-'+pad(m)+'-01', e:y+'-'+pad(m)+'-'+pad(last), ym:y+'-'+pad(m), m:m }; }
-  return { p1: mr(1), p2: mr(2) };
+  var pad = function(n){ return String(n).padStart(2,'0'); };
+  var dr = (typeof _sttDataRange === 'function') ? _sttDataRange() : { max:'' };
+  var base = /^\d{4}-\d{2}/.test(dr.max || '')
+    ? new Date(Number(dr.max.slice(0,4)), Number(dr.max.slice(5,7)) - 1, 1)   // 데이터 최신 월 1일
+    : new Date();
+  function mr(off){ var d = new Date(base.getFullYear(), base.getMonth()-off, 1); var y=d.getFullYear(), m=d.getMonth()+1, last=new Date(y,m,0).getDate(); return { s:y+'-'+pad(m)+'-01', e:y+'-'+pad(m)+'-'+pad(last), ym:y+'-'+pad(m), m:m }; }
+  return { p1: mr(0), p2: mr(1) };   // p1 = 데이터 최신 월(기본·'지난달' 버튼), p2 = 그 전 월('2달전' 버튼)
 }
 // 기간 버튼 라벨 동적 세팅 + 기본값(지난달) 표시
 function sttInitRelBtns() {
