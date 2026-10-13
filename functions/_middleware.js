@@ -23,8 +23,10 @@ const UI_COOKIE = 'hb_user';   // 표시용(비보안) — 포털 헤더에 사�
 // 여기에 넣은 페이지는 세션이 없어도 그대로 서빙된다.
 // ※ Cloudflare Pages 는 `/foo.html` 을 확장자 없는 `/foo` 로 리다이렉트(clean URL)하므로
 //    두 형태를 모두 등록한다. 아래 isPublicPath() 가 .html 유무를 자동 보정한다.
-// (한전ON 가이드(hanjeon-on-guide)는 사용 중단되어 제거됨 — 현재 공개 경로 없음)
-const PUBLIC_PATHS = new Set([]);
+// (한전ON 가이드(hanjeon-on-guide)는 사용 중단되어 제거됨)
+// hr_archive.json: 지자체 인사발령(공개 RSS 기반) 데이터. Apps Script 자동발송기가 로그인 없이 읽어야 해 공개.
+//   (민감정보 아님 — 공개 뉴스 수집분. 다른 데이터/페이지는 여전히 로그인 필요)
+const PUBLIC_PATHS = new Set(['/hr_archive.json']);
 
 // 요청 경로가 공개 대상인지 판정(.html 유무·후행 슬래시 차이를 흡수).
 function isPublicPath(pathname) {
