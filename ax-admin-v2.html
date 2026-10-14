@@ -11571,6 +11571,8 @@ window.rdDetail = function(key){
 
     // 📊 요약 — 표 대신 한눈에 들어오는 스탯 스트립
     '<div class="rd-sum">' +
+      (function(){ var wp = (typeof window.hbWinProb === 'function') ? window.hbWinProb(g) : null;
+        return wp ? '<span><span class="k">' + esc(wp.label) + '</span><b style="color:' + wp.color + '">' + wp.score + '</b>%</span>' : ''; })() +
       '<span><span class="k">빌링 규모</span><b>' + g.qty.toLocaleString() + '</b>건/월</span>' +
       (g.owner ? '<span><span class="k">담당</span><b>' + esc(g.owner) + '</b></span>' : '') +
       '<span><span class="k">솔루션</span>' +
