@@ -54,6 +54,17 @@ const SOLUTION_KW = [
   '공공건물 에너지','그린리모델링','녹색건축물','에너지 진단 사업',
 ];
 
+// LPG 판매/공급 사업자 대상 CMS 고지·정산 서비스 영업 기회 키워드.
+//   접점: 중소 LPG 판매사업자 · 소형저장탱크 · 마을단위 LPG 배관망 사업(지자체) · 안전점검 고지.
+//   경쟁사(고지·정산 IT솔루션): 조아테크(ERP), 엔콤(고지·정산).
+//   ※ 모두 '구체 키워드'라 단독 OR 검색해도 노이즈가 적다. (바 'LPG' 단독은 아래 QUERY_LPG에서 맥락AND)
+const LPG_KW = [
+  'LPG 배관망','마을 LPG 배관망','LPG 소형저장탱크','소형저장탱크',
+  'LPG 판매사업자','LPG 공급사업자','액화석유가스 판매','LPG 충전소',
+  'LPG 안전점검','LPG 고지서','LPG 정산',
+  '조아테크','엔콤',
+];
+
 // 수집 대상 검색어 (구글 뉴스). when:Nd = 최근 N일 기사만
 const BASE_KW = ['전기요금','한전','전자청구서','에너지바우처','에너지정책','도시가스',
   '가로등','보안등','시설물관리','도로조명','탄소중립포인트','에너지 마일리지',
@@ -69,8 +80,8 @@ const CONTEXT_KW = ['지자체','지방자치','지방정부','시청','도청',
 // 지자체 인사발령 — 담당자 교체는 영업 재접촉의 핵심 트리거라 별도 수집한다.
 const HR_KW = ['인사발령','정기인사','전보 발령','과장 전보','국장 전보','조직개편'];
 
-// 구체 키워드(단독으로도 안전) = 기본 + 지자체 확장 − 일반어. 그대로 OR 검색.
-const SPECIFIC_KW = Array.from(new Set(BASE_KW.concat(JICHE_KW)))
+// 구체 키워드(단독으로도 안전) = 기본 + 지자체 확장 + LPG − 일반어. 그대로 OR 검색.
+const SPECIFIC_KW = Array.from(new Set(BASE_KW.concat(JICHE_KW).concat(LPG_KW)))
   .filter(function(k){ return GENERIC_JICHE_KW.indexOf(k) < 0; });
 
 // 쿼리 1: 구체 키워드 OR 검색
@@ -83,9 +94,14 @@ const QUERY_SOL = SOLUTION_KW.map(function(k){ return '"' + k + '"'; }).join(' O
 // 쿼리 4: 지자체 인사발령 (담당자 교체 → 재접촉 트리거)
 const QUERY_HR = '(' + HR_KW.map(function(k){ return '"' + k + '"'; }).join(' OR ') + ')'
   + ' (' + ['시청','군청','구청','도청','지자체','시장','군수','구청장'].map(function(k){ return '"' + k + '"'; }).join(' OR ') + ') when:3d';
+// 쿼리 5: LPG 고지·정산 영업 — 바 'LPG'는 맥락어(요금·고지·정산·판매사업자 등)와 AND로 묶어 노이즈 차단
+const QUERY_LPG = '"LPG" ('
+  + ['요금','고지','정산','청구','판매사업자','공급사업자','충전소','배관망','소형저장탱크','안전점검','협회']
+      .map(function(k){ return '"' + k + '"'; }).join(' OR ')
+  + ') when:3d';
 
-const QUERY = [QUERY_MAIN, QUERY_JICHE, QUERY_SOL, QUERY_HR].join(' || ');   // 로그·메타 표기용
-const RSS_URLS = [QUERY_MAIN, QUERY_JICHE, QUERY_SOL, QUERY_HR].map(function(q){
+const QUERY = [QUERY_MAIN, QUERY_JICHE, QUERY_SOL, QUERY_HR, QUERY_LPG].join(' || ');   // 로그·메타 표기용
+const RSS_URLS = [QUERY_MAIN, QUERY_JICHE, QUERY_SOL, QUERY_HR, QUERY_LPG].map(function(q){
   return 'https://news.google.com/rss/search?q=' + encodeURIComponent(q) + '&hl=ko&gl=KR&ceid=KR:ko';
 });
 
@@ -101,8 +117,10 @@ const CORE_KW = Array.from(new Set([
   // 솔루션 영업 진입로 키워드 (가로수·전정·침수 등 단독어도 관련 기사로 인정)
   '가로수','전정','가지치기','병해충','조경','녹지','우수받이','침수','그린리모델링','녹색건축',
   // 인사발령 (담당자 교체 트리거)
-  '인사발령','전보','조직개편'
-].concat(CONTEXT_KW).concat(SOLUTION_KW).concat(HR_KW)));
+  '인사발령','전보','조직개편',
+  // LPG 고지·정산 영업 (판매/공급 사업자 타겟 + 경쟁사)
+  'LPG','액화석유가스','소형저장탱크','배관망','충전소','조아테크','엔콤',
+].concat(CONTEXT_KW).concat(SOLUTION_KW).concat(HR_KW).concat(LPG_KW)));
 function isRelevant(title) {
   const t = title || '';
   for (const k of CORE_KW) if (t.indexOf(k) >= 0) return true;
