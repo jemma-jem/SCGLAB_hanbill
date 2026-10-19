@@ -764,8 +764,8 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
     <div class="ni" onclick="goSec('radar',this)" style="display:none"><i class="ti ti-radar-2"></i>AI 레인저(영업사원)<span class="ni-badge" id="radar-nav-badge" style="display:none"></span></div>
     <div class="ni" onclick="goSec('stt',this)"><i class="ti ti-microphone-2"></i>AI 민원분석</div>
     <div class="ni" onclick="goSec('newsletter',this)"><i class="ti ti-news"></i>뉴스레터</div>
-    <!-- AI 영업 성과 보드 — jem 로그인 시에만 표시(아래 게이팅 스크립트에서 노출) -->
-    <div class="ni" id="ni-salesboard" onclick="goSec('salesboard',this)" style="display:none"><i class="ti ti-trophy"></i>AI 영업 성과 보드</div>
+    <!-- 제안메일 발송현황 — jem 로그인 시에만 표시(아래 게이팅 스크립트에서 노출) -->
+    <div class="ni" id="ni-salesboard" onclick="goSec('salesboard',this)" style="display:none"><i class="ti ti-trophy"></i>제안메일 발송현황</div>
   </nav>
   <div class="sb-foot">
     <strong>SCGLAB 영업기획팀 관리</strong>
@@ -2449,7 +2449,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
   </div><!-- /sec-newsletter -->
 
   <!-- ══════════ 4. AI 레인저(영업사원) (고객관리리스트 × 고객 소식) ══════════ -->
-  <!-- ══════════ AI 영업 성과 보드 (jem 전용) ══════════ -->
+  <!-- ══════════ 제안메일 발송현황 (jem 전용) ══════════ -->
   <div class="sec" id="sec-salesboard">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px">
       <div style="font-size:12.5px;color:#64748B">인사 기사 → 표준 제안서 자동발송 현황 · 갱신 <span id="sb-updated">—</span></div>
@@ -5427,7 +5427,7 @@ const SEC_META = {
   predict:['예상 민원','AI 기반 민원 예측 및 개선책'],
   newsletter:['뉴스레터','한전 청구서사업 경영진 일일 스크랩'],
   radar:['AI 레인저(영업사원)','고객리스트 × 지역소식·나라장터·인사발령 결합 영업 알림'],
-  salesboard:['AI 영업 성과 보드','인사 기사 → 표준 제안서 자동발송 현황 (발송·회신·회신율)'],
+  salesboard:['제안메일 발송현황','인사 기사 → 표준 제안서 자동발송 현황 (발송·회신·회신율)'],
 };
 window.goSec = function(name, el) {
   // 탭 전환 시 항상 페이지 최상단으로 (이전 탭 스크롤 위치 잔존 방지)
@@ -5470,7 +5470,7 @@ window.goSec = function(name, el) {
   updatePageAlert(name);
 };
 
-/* ══════════ AI 영업 성과 보드 (jem 전용) ══════════
+/* ══════════ 제안메일 발송현황 (jem 전용) ══════════
    데이터 = Apps Script 웹앱(doGet) JSON. URL 설정 전엔 안내만 표시. */
 var SALES_BOARD_URL = 'https://script.google.com/macros/s/AKfycbzL-VwRDcNCxBZ2ftrrGZQVQA91poYEVd-l56w20OQZ9habN4Fsh2LFogVcN3nLHWlW/exec';
 // 발송 토큰 — Cloudflare 미들웨어가 jem 로그인일 때만 실제 값으로 치환. 그 외 계정/미설정은 공란 → 발송 UI 비노출.
