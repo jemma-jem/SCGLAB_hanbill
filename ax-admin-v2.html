@@ -5565,11 +5565,12 @@ function sbLoadQueue(){
     .then(function(d){
       var rows = (d && d.rows) || [];
       if (!rows.length) { box.innerHTML = '<div style="padding:16px;text-align:center;color:#94A3B8">발송대기 없음 — Apps Script 메뉴 ①(인사기사 감지)로 생성</div>'; return; }
-      var tr = rows.map(function(r){
-        var ok = r.hasEmail && r.status !== '발송완료';
+      var main = rows.filter(function(r){ return r.hasEmail; });   // 이메일 보유 = 발송 대상
+      var none = rows.filter(function(r){ return !r.hasEmail; });  // 이메일 없음 = 하단 접힘
+      var mtr = main.map(function(r){
+        var ok = r.status !== '발송완료';
         var cb = ok ? '<input type="checkbox" class="sb-chk" value="'+_esc(r.key)+'">' : '<span style="color:#CBD5E1">—</span>';
         var st = r.status==='발송완료' ? '<span style="color:#059669">완료</span>'
-               : !r.hasEmail ? '<span style="color:#DC2626">이메일없음</span>'
                : '<span style="color:#B45309">'+_esc(r.status||'대기')+'</span>';
         return '<tr>'+
           '<td style="padding:5px 8px;text-align:center">'+cb+'</td>'+
@@ -5579,13 +5580,30 @@ function sbLoadQueue(){
           '<td style="padding:5px 8px;font-size:12px">'+st+'</td>'+
           '<td style="padding:5px 8px;color:#64748B;font-size:11px">'+_esc(r.title)+'</td>'+
         '</tr>';
-      }).join('');
-      box.innerHTML =
-        '<div style="margin-bottom:6px"><label style="font-size:12px;color:#475569;cursor:pointer"><input type="checkbox" id="sb-all" onclick="sbToggleAll(this)"> 전체 선택</label></div>'+
+      }).join('') || '<tr><td colspan="6" style="padding:14px;text-align:center;color:#94A3B8">발송 가능한 대기 없음(이메일 보유 건 없음)</td></tr>';
+      var html =
+        '<div style="margin-bottom:6px"><label style="font-size:12px;color:#475569;cursor:pointer"><input type="checkbox" id="sb-all" onclick="sbToggleAll(this)"> 전체 선택</label> <span style="font-size:11px;color:#94A3B8">(발송 가능 '+main.length+'건)</span></div>'+
         '<div style="overflow:auto"><table style="width:100%;border-collapse:collapse;font-size:12.5px">'+
         '<thead><tr style="color:#64748B;font-size:11px;text-align:left;border-bottom:1px solid #E2E8F0">'+
           '<th style="padding:5px 8px;width:34px"></th><th style="padding:5px 8px">지자체</th><th style="padding:5px 8px">담당자</th><th style="padding:5px 8px">이메일</th><th style="padding:5px 8px">상태</th><th style="padding:5px 8px">기사</th>'+
-        '</tr></thead><tbody>'+tr+'</tbody></table></div>';
+        '</tr></thead><tbody>'+mtr+'</tbody></table></div>';
+      if (none.length){
+        var ntr = none.map(function(r){
+          return '<tr>'+
+            '<td style="padding:4px 8px;font-weight:600">'+_esc(r.region)+'</td>'+
+            '<td style="padding:4px 8px">'+_esc(r.name)+'</td>'+
+            '<td style="padding:4px 8px;color:#64748B;font-size:11px">'+_esc(r.title)+'</td>'+
+          '</tr>';
+        }).join('');
+        html += '<details style="margin-top:10px">'+
+          '<summary style="cursor:pointer;color:#64748B;font-size:12px;font-weight:600">이메일 없음 '+none.length+'건 — 접힘(클릭해 펼치기)</summary>'+
+          '<div style="overflow:auto;margin-top:6px"><table style="width:100%;border-collapse:collapse;font-size:12px">'+
+          '<thead><tr style="color:#94A3B8;font-size:11px;text-align:left;border-bottom:1px solid #EEF2F6">'+
+            '<th style="padding:4px 8px">지자체</th><th style="padding:4px 8px">담당자</th><th style="padding:4px 8px">기사</th></tr></thead>'+
+          '<tbody>'+ntr+'</tbody></table>'+
+          '<div style="font-size:11px;color:#94A3B8;margin-top:4px">※ AX활용 데이터 P열(이메일) 미기재분 · 이메일 입력 시 발송 대상에 포함됩니다.</div></div></details>';
+      }
+      box.innerHTML = html;
     })
     .catch(function(e){ box.innerHTML = '<div style="padding:14px;color:#DC2626;font-size:12px">발송대기 로드 실패 ('+_esc(String(e))+')</div>'; });
 }
