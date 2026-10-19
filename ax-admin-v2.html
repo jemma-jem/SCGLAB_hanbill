@@ -5497,64 +5497,147 @@ function _sbCard(label, val, sub, color){
 }
 function _esc(s){ return String(s==null?'':s).replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];}); }
 
+window._sbD = null;
+window._sbPeriod = 'month';   // 기본: 이번달
+
 window.renderSalesBoard = function(){
   var body = document.getElementById('sb-body');
-  var upd = document.getElementById('sb-updated');
   if (!body) return;
   if (!SALES_BOARD_URL) {
     body.innerHTML = '<div style="padding:28px;border:1px dashed #CBD5E1;border-radius:10px;background:#F8FAFC;color:#475569;line-height:1.7">'+
-      '<b style="color:#004098">데이터 연결 설정 필요</b><br>'+
-      '① Apps Script 편집기 → 배포 → 새 배포 → 유형 <b>웹 앱</b> (실행: 나 / 액세스: 모든 사용자)<br>'+
-      '② 생성된 <b>웹앱 URL</b>을 ax-admin-v2.html의 <code>SALES_BOARD_URL</code> 에 입력 후 배포<br>'+
-      '<span style="font-size:12px;color:#94A3B8">※ 발송로그가 1건 이상 쌓이면 수치가 표시됩니다.</span></div>';
+      '<b style="color:#004098">데이터 연결 설정 필요</b><br>Apps Script 웹앱 URL을 SALES_BOARD_URL 에 입력하세요.</div>';
     return;
   }
   body.innerHTML = '<div style="padding:40px;text-align:center;color:#94A3B8">불러오는 중…</div>';
   fetch(SALES_BOARD_URL, { cache:'no-store' })
     .then(function(r){ return r.json(); })
-    .then(function(d){
-      if (upd) upd.textContent = d.updated || '—';
-      var cats = (d.cats||[]).map(function(x){ var on=x.n>0; var col=x.color||'94A3B8'; return '<span style="display:inline-block;background:'+(on?('#'+col+'1A'):'#F1F5F9')+';color:'+(on?('#'+col):'#94A3B8')+';border:1px solid '+(on?('#'+col+'55'):'#E2E8F0')+';border-radius:14px;padding:4px 12px;margin:3px;font-size:12px;font-weight:700">'+_esc(x.k)+' '+x.n+'</span>'; }).join('') || '<span style="color:#94A3B8;font-size:12px">아직 없음</span>';
-      var sends = (d.recentSends||[]).map(function(s){ return '<tr><td style="padding:6px 8px;color:#64748B;font-size:11px;white-space:nowrap">'+_esc(s.t)+'</td><td style="padding:6px 8px;font-weight:600">'+_esc(s.region)+'</td><td style="padding:6px 8px">'+_esc(s.name)+'</td><td style="padding:6px 8px;color:#64748B;font-size:12px">'+_esc(s.email)+'</td></tr>'; }).join('') || '<tr><td colspan="4" style="padding:14px;text-align:center;color:#94A3B8">발송 내역 없음</td></tr>';
-      var reps = (d.recentReplies||[]).map(function(s){ var col=s.color||'94A3B8'; var badge=(s.cat && s.cat!=='기타') ? '<span style="display:inline-block;background:#'+col+'1A;color:#'+col+';border:1px solid #'+col+'55;border-radius:10px;padding:2px 8px;font-size:11px;font-weight:700;white-space:nowrap">'+_esc(s.cat)+'</span>' : '<span style="color:#94A3B8;font-size:11px">기타</span>'; return '<tr><td style="padding:6px 8px;color:#64748B;font-size:11px;white-space:nowrap">'+_esc(s.t)+'</td><td style="padding:6px 8px;font-weight:600;white-space:nowrap">'+_esc(s.region)+'</td><td style="padding:6px 8px">'+badge+'</td><td style="padding:6px 8px;font-size:12px;color:#334155">'+_esc(s.summary)+'</td></tr>'; }).join('') || '<tr><td colspan="4" style="padding:14px;text-align:center;color:#94A3B8">회신 없음</td></tr>';
-      body.innerHTML =
-        '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px">'+
-          _sbCard('발송', d.sent||0, '건', '#004098')+
-          _sbCard('회신(지자체)', d.replyRegions||0, (d.replyMsgs||0)+'메시지', '#0EA5E9')+
-          _sbCard('회신율', (d.replyRate||0)+'%', '지자체 기준', '#0EA5E9')+
-          _sbCard('긍정/부정', (d.positive||0)+' / '+(d.negative||0), '회신 신호', '#004098')+
-          _sbCard('발송 대기', d.pending||0, '승인 검토', '#F59E0B')+
-        '</div>'+
-        '<div style="background:#fff;border:1px solid #E2E8F0;border-radius:10px;padding:14px 16px;margin-bottom:14px">'+
-          '<div style="font-size:13px;font-weight:700;color:#004098;margin-bottom:8px">회신 분류 (의향)</div>'+cats+'</div>'+
-        '<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px" class="sb-grid">'+
-          '<div style="background:#fff;border:1px solid #E2E8F0;border-radius:10px;padding:14px 16px;overflow:auto">'+
-            '<div style="font-size:13px;font-weight:700;color:#004098;margin-bottom:6px">최근 발송</div>'+
-            '<table style="width:100%;border-collapse:collapse;font-size:12.5px"><tbody>'+sends+'</tbody></table></div>'+
-          '<div style="background:#fff;border:1px solid #E2E8F0;border-radius:10px;padding:14px 16px;overflow:auto">'+
-            '<div style="font-size:13px;font-weight:700;color:#0EA5E9;margin-bottom:6px">최근 회신</div>'+
-            '<table style="width:100%;border-collapse:collapse;font-size:12.5px"><tbody>'+reps+'</tbody></table></div>'+
-        '</div>';
-      // 발송대기 패널 — jem(토큰 주입)일 때만 노출
-      if (SB_TOKEN) {
-        body.insertAdjacentHTML('beforeend',
-          '<div style="background:#fff;border:1px solid #FDE68A;border-radius:10px;padding:14px 16px;margin-top:14px">'+
-            '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:8px">'+
-              '<div style="font-size:13px;font-weight:700;color:#B45309">📮 발송대기 · 발신 cs@scglab.com <span style="font-size:11px;color:#94A3B8;font-weight:500">(jem 전용)</span></div>'+
-              '<div style="display:flex;gap:6px">'+
-                '<button onclick="sbPreviewSelected()" style="font-size:12px;padding:6px 12px;border:1px solid #CBD5E1;border-radius:6px;background:#fff;cursor:pointer;color:#334155">선택 미리보기(초안)</button>'+
-                '<button onclick="sbSendSelected()" style="font-size:12px;padding:6px 14px;border:none;border-radius:6px;background:#004098;color:#fff;cursor:pointer;font-weight:700">선택 발송</button>'+
-              '</div>'+
-            '</div>'+
-            '<div id="sb-queue"><div style="padding:16px;text-align:center;color:#94A3B8">발송대기 불러오는 중…</div></div>'+
-          '</div>');
-        sbLoadQueue();
-      }
-    })
+    .then(function(d){ window._sbD = d; var upd=document.getElementById('sb-updated'); if(upd) upd.textContent=d.updated||'—'; sbDraw(); })
     .catch(function(e){
-      body.innerHTML = '<div style="padding:24px;color:#DC2626">현황 데이터를 불러오지 못했습니다. ('+_esc(String(e))+')<br><span style="font-size:12px;color:#94A3B8">웹앱 URL·배포 액세스(모든 사용자)를 확인하세요.</span></div>';
+      body.innerHTML = '<div style="padding:24px;color:#DC2626">현황 데이터를 불러오지 못했습니다. ('+_esc(String(e))+')</div>';
     });
 };
+window.sbSetPeriod = function(p){ window._sbPeriod=p; sbDraw(); };
+
+function _sbIso(dt){ return dt.getFullYear()+'-'+('0'+(dt.getMonth()+1)).slice(-2)+'-'+('0'+dt.getDate()).slice(-2); }
+function _sbRange(p){
+  var now=new Date(), y=now.getFullYear(), m=now.getMonth(), dd=now.getDate();
+  if(p==='week'){ var off=(now.getDay()+6)%7; return {from:_sbIso(new Date(y,m,dd-off)), to:_sbIso(now), label:'이번주'}; }
+  if(p==='month'){ return {from:_sbIso(new Date(y,m,1)), to:_sbIso(now), label:'이번달'}; }
+  if(p==='lastmonth'){ return {from:_sbIso(new Date(y,m-1,1)), to:_sbIso(new Date(y,m,0)), label:'지난달'}; }
+  return {from:'0000-01-01', to:'9999-12-31', label:'전체'};
+}
+function _sbBadge(cat,color){ var col=color||'94A3B8'; return (cat && cat!=='기타') ? '<span style="display:inline-block;background:#'+col+'1A;color:#'+col+';border:1px solid #'+col+'55;border-radius:10px;padding:2px 8px;font-size:11px;font-weight:700;white-space:nowrap">'+_esc(cat)+'</span>' : '<span style="color:#CBD5E1;font-size:11px">기타</span>'; }
+var _SB_CATS=[['관심·문의','059669'],['담당 안내','7C3AED'],['거절·보류','DC2626'],['기타','94A3B8']];
+
+// 발송 vs 회신 추이 막대그래프(SVG) — 기간 짧으면 일별, 길면 주별 집계
+function _sbChart(sends,reps,R){
+  var all=sends.concat(reps).map(function(x){return x.d;}).filter(Boolean).sort();
+  if(!all.length) return '<div style="color:#94A3B8;font-size:12px;padding:16px;text-align:center">기간 내 데이터가 없습니다.</div>';
+  var from=(R.from>'0001-01-01')?R.from:all[0], to=(R.to<'9999')?R.to:all[all.length-1];
+  var fD=new Date(from.replace(/-/g,'/')), tD=new Date(to.replace(/-/g,'/'));
+  var days=Math.round((tD-fD)/86400000)+1; var weekly=days>31;
+  function keyOf(dt){ if(weekly){ var off=(dt.getDay()+6)%7; return _sbIso(new Date(dt.getFullYear(),dt.getMonth(),dt.getDate()-off)); } return _sbIso(dt); }
+  var map={}, buckets=[], cur=new Date(fD);
+  while(cur<=tD){ var k=keyOf(cur); if(!map[k]){ map[k]={k:k,s:0,r:0}; buckets.push(map[k]); } cur.setDate(cur.getDate()+1); }
+  sends.forEach(function(x){ var k=keyOf(new Date(x.d.replace(/-/g,'/'))); if(map[k]) map[k].s++; });
+  reps.forEach(function(x){ var k=keyOf(new Date(x.d.replace(/-/g,'/'))); if(map[k]) map[k].r++; });
+  if(buckets.length>31) buckets=buckets.slice(-31);
+  var max=1; buckets.forEach(function(b){ max=Math.max(max,b.s,b.r); });
+  var step=30, W=Math.max(buckets.length*step+46,280), H=150, top=14, bh=H-top-22;
+  var bars=buckets.map(function(b,i){ var x=40+i*step;
+    var sh=Math.round(b.s/max*bh), rh=Math.round(b.r/max*bh);
+    return '<rect x="'+x+'" y="'+(top+bh-sh)+'" width="11" height="'+sh+'" fill="#004098" rx="2"><title>'+b.k+' 발송 '+b.s+'</title></rect>'+
+           '<rect x="'+(x+12)+'" y="'+(top+bh-rh)+'" width="11" height="'+rh+'" fill="#0EA5E9" rx="2"><title>'+b.k+' 회신 '+b.r+'</title></rect>'+
+           '<text x="'+(x+11)+'" y="'+(H-6)+'" font-size="9" fill="#94A3B8" text-anchor="middle">'+b.k.slice(5)+'</text>';
+  }).join('');
+  return '<div style="overflow-x:auto"><svg width="'+W+'" height="'+H+'" style="max-width:100%">'+
+    '<text x="4" y="'+(top+4)+'" font-size="9" fill="#CBD5E1">'+max+'</text>'+
+    '<line x1="38" y1="'+(top+bh)+'" x2="'+W+'" y2="'+(top+bh)+'" stroke="#E2E8F0"/>'+bars+'</svg></div>'+
+    '<div style="font-size:11px;color:#475569;margin-top:4px">'+
+      '<span style="display:inline-flex;align-items:center;gap:4px;margin-right:14px"><i style="width:10px;height:10px;border-radius:2px;background:#004098;display:inline-block"></i>발송</span>'+
+      '<span style="display:inline-flex;align-items:center;gap:4px"><i style="width:10px;height:10px;border-radius:2px;background:#0EA5E9;display:inline-block"></i>회신</span>'+
+      '<span style="color:#94A3B8;margin-left:8px">('+(weekly?'주별':'일별')+')</span></div>';
+}
+// 회신 분류 분포(가로 막대)
+function _sbCatBar(catN){
+  var total=0; _SB_CATS.forEach(function(c){ total+=catN[c[0]]||0; });
+  if(!total) return '<span style="color:#94A3B8;font-size:12px">기간 내 회신 없음</span>';
+  var seg=_SB_CATS.map(function(c){ var n=catN[c[0]]||0; if(!n) return ''; return '<div title="'+c[0]+' '+n+'" style="width:'+(n/total*100)+'%;background:#'+c[1]+';height:100%"></div>'; }).join('');
+  var leg=_SB_CATS.map(function(c){ var n=catN[c[0]]||0; return '<span style="display:inline-flex;align-items:center;gap:4px;margin-right:12px;font-size:11px;color:'+(n?'#334155':'#94A3B8')+'"><i style="width:10px;height:10px;border-radius:2px;background:#'+c[1]+';display:inline-block"></i>'+c[0]+' '+n+'</span>'; }).join('');
+  return '<div style="display:flex;height:16px;border-radius:8px;overflow:hidden;background:#F1F5F9;margin-bottom:8px">'+seg+'</div><div>'+leg+'</div>';
+}
+
+function sbDraw(){
+  var d=window._sbD, body=document.getElementById('sb-body'); if(!d||!body) return;
+  var R=_sbRange(window._sbPeriod);
+  var inR=function(x){ return x.d && x.d>=R.from && x.d<=R.to; };
+  var sends=(d.allSends||[]).filter(inR);
+  var reps=(d.allReplies||[]).filter(inR);
+  var norm=function(s){ return String(s||'').replace(/\s/g,''); };
+  // 지자체별 최신 회신 매칭
+  var repByRegion={}; reps.forEach(function(r){ var k=norm(r.region); if(!repByRegion[k]||r.d>repByRegion[k].d) repByRegion[k]=r; });
+  // 지표(지자체 단위)
+  var sentRegions={}; sends.forEach(function(s){ sentRegions[norm(s.region)]=1; });
+  var sentRegionN=Object.keys(sentRegions).length;
+  var replyRegionN=Object.keys(sentRegions).filter(function(k){return repByRegion[k];}).length;
+  var rate=sentRegionN?Math.round(replyRegionN/sentRegionN*1000)/10:0;
+  var catN={}; reps.forEach(function(r){ var c=r.cat||'기타'; catN[c]=(catN[c]||0)+1; });
+  // 기간 버튼
+  var ps=[['week','이번주'],['month','이번달'],['lastmonth','지난달'],['all','전체']];
+  var btns=ps.map(function(p){ var on=window._sbPeriod===p[0]; return '<button onclick="sbSetPeriod(\''+p[0]+'\')" style="font-size:12px;padding:6px 14px;border-radius:7px;cursor:pointer;border:1px solid '+(on?'#004098':'#CBD5E1')+';background:'+(on?'#004098':'#fff')+';color:'+(on?'#fff':'#475569')+';font-weight:'+(on?'700':'500')+'">'+p[1]+'</button>'; }).join('');
+  // 통합 발송→회신 테이블(기간 내 전체, 최신순)
+  var rows=sends.slice().reverse().map(function(s){ var k=norm(s.region); var rep=repByRegion[k];
+    var ok=rep?'<span style="color:#059669;font-weight:800">○</span>':'<span style="color:#CBD5E1">✕</span>';
+    var badge=rep?_sbBadge(rep.cat,rep.color):'<span style="color:#CBD5E1">—</span>';
+    var summ=rep?_esc(rep.summary||''):'<span style="color:#CBD5E1">—</span>';
+    return '<tr style="border-bottom:1px solid #F1F5F9"><td style="padding:6px 8px;color:#64748B;font-size:11px;white-space:nowrap">'+_esc(s.t)+'</td>'+
+      '<td style="padding:6px 8px;font-weight:600;white-space:nowrap">'+_esc(s.region)+'</td>'+
+      '<td style="padding:6px 8px">'+_esc(s.name)+'</td>'+
+      '<td style="padding:6px 8px;text-align:center">'+ok+'</td>'+
+      '<td style="padding:6px 8px">'+badge+'</td>'+
+      '<td style="padding:6px 8px;font-size:12px;color:#334155">'+summ+'</td></tr>';
+  }).join('') || '<tr><td colspan="6" style="padding:16px;text-align:center;color:#94A3B8">기간 내 발송 없음</td></tr>';
+
+  body.innerHTML =
+    '<div style="display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap;align-items:center">'+btns+
+      '<span style="font-size:11px;color:#94A3B8;margin-left:4px">'+R.from+' ~ '+R.to+'</span></div>'+
+    '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px">'+
+      _sbCard('발송', sends.length, R.label, '#004098')+
+      _sbCard('회신 지자체', replyRegionN, '/ 발송 '+sentRegionN, '#0EA5E9')+
+      _sbCard('회신율', rate+'%', '지자체 기준', '#0EA5E9')+
+      _sbCard('관심·문의', catN['관심·문의']||0, '긍정 신호', '#059669')+
+      _sbCard('거절·보류', catN['거절·보류']||0, '부정 신호', '#DC2626')+
+      _sbCard('발송 대기', d.pending||0, '전체 미발송', '#F59E0B')+
+    '</div>'+
+    '<div style="display:grid;grid-template-columns:1.3fr 1fr;gap:14px;margin-bottom:14px" class="sb-grid">'+
+      '<div style="background:#fff;border:1px solid #E2E8F0;border-radius:10px;padding:14px 16px">'+
+        '<div style="font-size:13px;font-weight:700;color:#004098;margin-bottom:8px">발송 · 회신 추이</div>'+_sbChart(sends,reps,R)+'</div>'+
+      '<div style="background:#fff;border:1px solid #E2E8F0;border-radius:10px;padding:14px 16px">'+
+        '<div style="font-size:13px;font-weight:700;color:#004098;margin-bottom:8px">회신 분류 분포</div>'+_sbCatBar(catN)+'</div>'+
+    '</div>'+
+    '<div style="background:#fff;border:1px solid #E2E8F0;border-radius:10px;padding:14px 16px">'+
+      '<div style="font-size:13px;font-weight:700;color:#004098;margin-bottom:8px">발송 → 회신 현황 <span style="font-size:11px;color:#94A3B8;font-weight:500">('+sends.length+'건)</span></div>'+
+      '<div style="overflow:auto;max-height:360px"><table style="width:100%;border-collapse:collapse;font-size:12.5px">'+
+        '<thead><tr style="color:#64748B;font-size:11px;text-align:left;border-bottom:1px solid #E2E8F0;position:sticky;top:0;background:#fff">'+
+          '<th style="padding:6px 8px">발송일</th><th style="padding:6px 8px">지자체</th><th style="padding:6px 8px">담당자</th><th style="padding:6px 8px;text-align:center">회신</th><th style="padding:6px 8px">분류</th><th style="padding:6px 8px">회신 요약</th>'+
+        '</tr></thead><tbody>'+rows+'</tbody></table></div></div>';
+
+  // 발송대기 패널 — jem(토큰)일 때만
+  if (SB_TOKEN) {
+    body.insertAdjacentHTML('beforeend',
+      '<div style="background:#fff;border:1px solid #FDE68A;border-radius:10px;padding:14px 16px;margin-top:14px">'+
+        '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:8px">'+
+          '<div style="font-size:13px;font-weight:700;color:#B45309">📮 발송대기 · 발신 cs@scglab.com <span style="font-size:11px;color:#94A3B8;font-weight:500">(jem 전용)</span></div>'+
+          '<div style="display:flex;gap:6px">'+
+            '<button onclick="sbPreviewSelected()" style="font-size:12px;padding:6px 12px;border:1px solid #CBD5E1;border-radius:6px;background:#fff;cursor:pointer;color:#334155">선택 미리보기(초안)</button>'+
+            '<button onclick="sbSendSelected()" style="font-size:12px;padding:6px 14px;border:none;border-radius:6px;background:#004098;color:#fff;cursor:pointer;font-weight:700">선택 발송</button>'+
+          '</div>'+
+        '</div>'+
+        '<div id="sb-queue"><div style="padding:16px;text-align:center;color:#94A3B8">발송대기 불러오는 중…</div></div>'+
+      '</div>');
+    sbLoadQueue();
+  }
+}
 
 // ─── 발송대기 로드/발송 (jem 전용) ───
 function sbLoadQueue(){
