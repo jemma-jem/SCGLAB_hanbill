@@ -217,7 +217,23 @@ export async function onRequest(context) {
   //     로그아웃 후 보호 페이지를 브라우저가 서버 확인 없이 캐시본으로 그대로 보여줌.
   //   보호 페이지는 매 요청마다 미들웨어를 거쳐 세션을 재검증해야 하므로 no-store 필수.
   const res = await next();
-  const out = new Response(res.body, res);
+
+  // ── 발송 토큰 주입: ax-admin-v2 페이지의 '__SB_TOKEN__' 자리표시자를
+  //    로그인 계정이 'jem' 일 때만 실제 토큰(env.SB_TOKEN)으로 치환한다.
+  //    그 외 계정은 공란으로 치환 → 토큰 자체를 받지 못해 대시보드에서 발송 불가(보기 전용).
+  //    (토큰은 저장소가 아니라 Cloudflare 환경변수 SB_TOKEN 에만 존재)
+  const cleanPath = (url.pathname || '').replace(/\/+$/, '');
+  const isDash = cleanPath === '/ax-admin-v2' || cleanPath === '/ax-admin-v2.html';
+  let out;
+  if (isDash) {
+    let html = await res.text();
+    const tok = (String(user).toLowerCase() === 'jem') ? (env.SB_TOKEN || '') : '';
+    html = html.split('__SB_TOKEN__').join(tok);
+    out = new Response(html, res);
+    out.headers.delete('Content-Length');
+  } else {
+    out = new Response(res.body, res);
+  }
   out.headers.set('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
   out.headers.set('Pragma', 'no-cache');
   return out;

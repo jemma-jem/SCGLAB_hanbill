@@ -5472,7 +5472,10 @@ window.goSec = function(name, el) {
 
 /* ══════════ AI 영업 성과 보드 (jem 전용) ══════════
    데이터 = Apps Script 웹앱(doGet) JSON. URL 설정 전엔 안내만 표시. */
-var SALES_BOARD_URL = '';   // ← Apps Script 웹앱 배포 URL 넣기 (예: https://script.google.com/macros/s/.../exec)
+var SALES_BOARD_URL = 'https://script.google.com/macros/s/AKfycbzL-VwRDcNCxBZ2ftrrGZQVQA91poYEVd-l56w20OQZ9habN4Fsh2LFogVcN3nLHWlW/exec';
+// 발송 토큰 — Cloudflare 미들웨어가 jem 로그인일 때만 실제 값으로 치환. 그 외 계정/미설정은 공란 → 발송 UI 비노출.
+var SB_TOKEN = '__SB_TOKEN__';
+if (SB_TOKEN.indexOf('__SB') === 0) SB_TOKEN = '';
 
 // jem 로그인 시에만 메뉴 노출
 (function sbGate(){
@@ -5532,11 +5535,84 @@ window.renderSalesBoard = function(){
             '<div style="font-size:13px;font-weight:700;color:#0EA5E9;margin-bottom:6px">최근 회신</div>'+
             '<table style="width:100%;border-collapse:collapse;font-size:12.5px"><tbody>'+reps+'</tbody></table></div>'+
         '</div>';
+      // 발송대기 패널 — jem(토큰 주입)일 때만 노출
+      if (SB_TOKEN) {
+        body.insertAdjacentHTML('beforeend',
+          '<div style="background:#fff;border:1px solid #FDE68A;border-radius:10px;padding:14px 16px;margin-top:14px">'+
+            '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:8px">'+
+              '<div style="font-size:13px;font-weight:700;color:#B45309">📮 발송대기 · 발신 cs@scglab.com <span style="font-size:11px;color:#94A3B8;font-weight:500">(jem 전용)</span></div>'+
+              '<div style="display:flex;gap:6px">'+
+                '<button onclick="sbPreviewSelected()" style="font-size:12px;padding:6px 12px;border:1px solid #CBD5E1;border-radius:6px;background:#fff;cursor:pointer;color:#334155">선택 미리보기(초안)</button>'+
+                '<button onclick="sbSendSelected()" style="font-size:12px;padding:6px 14px;border:none;border-radius:6px;background:#004098;color:#fff;cursor:pointer;font-weight:700">선택 발송</button>'+
+              '</div>'+
+            '</div>'+
+            '<div id="sb-queue"><div style="padding:16px;text-align:center;color:#94A3B8">발송대기 불러오는 중…</div></div>'+
+          '</div>');
+        sbLoadQueue();
+      }
     })
     .catch(function(e){
       body.innerHTML = '<div style="padding:24px;color:#DC2626">현황 데이터를 불러오지 못했습니다. ('+_esc(String(e))+')<br><span style="font-size:12px;color:#94A3B8">웹앱 URL·배포 액세스(모든 사용자)를 확인하세요.</span></div>';
     });
 };
+
+// ─── 발송대기 로드/발송 (jem 전용) ───
+function sbLoadQueue(){
+  var box = document.getElementById('sb-queue');
+  if (!box) return;
+  fetch(SALES_BOARD_URL + '?action=queue', { cache:'no-store' })
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      var rows = (d && d.rows) || [];
+      if (!rows.length) { box.innerHTML = '<div style="padding:16px;text-align:center;color:#94A3B8">발송대기 없음 — Apps Script 메뉴 ①(인사기사 감지)로 생성</div>'; return; }
+      var tr = rows.map(function(r){
+        var ok = r.hasEmail && r.status !== '발송완료';
+        var cb = ok ? '<input type="checkbox" class="sb-chk" value="'+_esc(r.key)+'">' : '<span style="color:#CBD5E1">—</span>';
+        var st = r.status==='발송완료' ? '<span style="color:#059669">완료</span>'
+               : !r.hasEmail ? '<span style="color:#DC2626">이메일없음</span>'
+               : '<span style="color:#B45309">'+_esc(r.status||'대기')+'</span>';
+        return '<tr>'+
+          '<td style="padding:5px 8px;text-align:center">'+cb+'</td>'+
+          '<td style="padding:5px 8px;font-weight:600">'+_esc(r.region)+'</td>'+
+          '<td style="padding:5px 8px">'+_esc(r.name)+'</td>'+
+          '<td style="padding:5px 8px;color:#64748B;font-size:12px">'+_esc(r.email)+'</td>'+
+          '<td style="padding:5px 8px;font-size:12px">'+st+'</td>'+
+          '<td style="padding:5px 8px;color:#64748B;font-size:11px">'+_esc(r.title)+'</td>'+
+        '</tr>';
+      }).join('');
+      box.innerHTML =
+        '<div style="margin-bottom:6px"><label style="font-size:12px;color:#475569;cursor:pointer"><input type="checkbox" id="sb-all" onclick="sbToggleAll(this)"> 전체 선택</label></div>'+
+        '<div style="overflow:auto"><table style="width:100%;border-collapse:collapse;font-size:12.5px">'+
+        '<thead><tr style="color:#64748B;font-size:11px;text-align:left;border-bottom:1px solid #E2E8F0">'+
+          '<th style="padding:5px 8px;width:34px"></th><th style="padding:5px 8px">지자체</th><th style="padding:5px 8px">담당자</th><th style="padding:5px 8px">이메일</th><th style="padding:5px 8px">상태</th><th style="padding:5px 8px">기사</th>'+
+        '</tr></thead><tbody>'+tr+'</tbody></table></div>';
+    })
+    .catch(function(e){ box.innerHTML = '<div style="padding:14px;color:#DC2626;font-size:12px">발송대기 로드 실패 ('+_esc(String(e))+')</div>'; });
+}
+function sbToggleAll(el){ var cs=document.querySelectorAll('.sb-chk'); for (var i=0;i<cs.length;i++) cs[i].checked = el.checked; }
+function _sbSelectedKeys(){ var out=[]; var cs=document.querySelectorAll('.sb-chk:checked'); for (var i=0;i<cs.length;i++) out.push(cs[i].value); return out; }
+function _sbPost(action, keys){
+  // Content-Type 미지정(text/plain) → 프리플라이트 없이 전송. Apps Script doPost가 본문 JSON 파싱.
+  return fetch(SALES_BOARD_URL, { method:'POST', body: JSON.stringify({ token:SB_TOKEN, action:action, keys:keys }) })
+    .then(function(r){ return r.json(); });
+}
+function sbSendSelected(){
+  var keys = _sbSelectedKeys();
+  if (!keys.length) { alert('발송할 항목을 선택하세요.'); return; }
+  if (!confirm(keys.length + '건을 cs@scglab.com 으로 발송합니다. 진행할까요?')) return;
+  _sbPost('send', keys).then(function(res){
+    if (res && res.ok) { alert('발송 완료: '+res.sent+'건'+(res.fail?(' / 실패 '+res.fail):'')); sbLoadQueue(); renderSalesBoard(); }
+    else alert('발송 실패: '+((res&&res.error)||'알 수 없음'));
+  }).catch(function(e){ alert('발송 요청 오류: '+e); });
+}
+function sbPreviewSelected(){
+  var keys = _sbSelectedKeys();
+  if (!keys.length) { alert('미리보기할 항목을 선택하세요.'); return; }
+  _sbPost('preview', keys).then(function(res){
+    if (res && res.ok) alert('Gmail 임시보관함에 초안 '+(res.made||res.sent||keys.length)+'건 생성(발송 안 함). Gmail에서 확인하세요.');
+    else alert('미리보기 실패: '+((res&&res.error)||'알 수 없음'));
+  }).catch(function(e){ alert('미리보기 요청 오류: '+e); });
+}
 
 // ─── STT 기간 필터 UI ───
 // 실제 분석 데이터(STT_RAW)가 존재하는 날짜 범위
