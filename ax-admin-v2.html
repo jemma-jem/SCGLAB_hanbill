@@ -5514,9 +5514,9 @@ window.renderSalesBoard = function(){
     .then(function(r){ return r.json(); })
     .then(function(d){
       if (upd) upd.textContent = d.updated || '—';
-      var kw = (d.keywords||[]).map(function(x){ return '<span style="display:inline-block;background:#E0F2FE;color:#004098;border-radius:14px;padding:3px 11px;margin:3px;font-size:12px;font-weight:600">'+_esc(x.k)+' <b>'+x.n+'</b></span>'; }).join('') || '<span style="color:#94A3B8;font-size:12px">아직 없음</span>';
-      var sends = (d.recentSends||[]).map(function(s){ return '<tr><td style="padding:6px 8px;color:#64748B;font-size:11px">'+_esc(s.t)+'</td><td style="padding:6px 8px;font-weight:600">'+_esc(s.region)+'</td><td style="padding:6px 8px">'+_esc(s.name)+'</td><td style="padding:6px 8px;color:#64748B;font-size:12px">'+_esc(s.email)+'</td></tr>'; }).join('') || '<tr><td colspan="4" style="padding:14px;text-align:center;color:#94A3B8">발송 내역 없음</td></tr>';
-      var reps = (d.recentReplies||[]).map(function(s){ return '<tr><td style="padding:6px 8px;color:#64748B;font-size:11px">'+_esc(s.t)+'</td><td style="padding:6px 8px;font-weight:600">'+_esc(s.region)+(s.neg?' <span style="color:#DC2626;font-size:11px">(부정)</span>':'')+'</td><td style="padding:6px 8px;font-size:12px;color:#334155">'+_esc(s.summary)+'</td><td style="padding:6px 8px;font-size:11px;color:#0EA5E9">'+_esc(s.kw)+'</td></tr>'; }).join('') || '<tr><td colspan="4" style="padding:14px;text-align:center;color:#94A3B8">회신 없음</td></tr>';
+      var cats = (d.cats||[]).map(function(x){ var on=x.n>0; var col=x.color||'94A3B8'; return '<span style="display:inline-block;background:'+(on?('#'+col+'1A'):'#F1F5F9')+';color:'+(on?('#'+col):'#94A3B8')+';border:1px solid '+(on?('#'+col+'55'):'#E2E8F0')+';border-radius:14px;padding:4px 12px;margin:3px;font-size:12px;font-weight:700">'+_esc(x.k)+' '+x.n+'</span>'; }).join('') || '<span style="color:#94A3B8;font-size:12px">아직 없음</span>';
+      var sends = (d.recentSends||[]).map(function(s){ return '<tr><td style="padding:6px 8px;color:#64748B;font-size:11px;white-space:nowrap">'+_esc(s.t)+'</td><td style="padding:6px 8px;font-weight:600">'+_esc(s.region)+'</td><td style="padding:6px 8px">'+_esc(s.name)+'</td><td style="padding:6px 8px;color:#64748B;font-size:12px">'+_esc(s.email)+'</td></tr>'; }).join('') || '<tr><td colspan="4" style="padding:14px;text-align:center;color:#94A3B8">발송 내역 없음</td></tr>';
+      var reps = (d.recentReplies||[]).map(function(s){ var col=s.color||'94A3B8'; var badge=(s.cat && s.cat!=='기타') ? '<span style="display:inline-block;background:#'+col+'1A;color:#'+col+';border:1px solid #'+col+'55;border-radius:10px;padding:2px 8px;font-size:11px;font-weight:700;white-space:nowrap">'+_esc(s.cat)+'</span>' : '<span style="color:#94A3B8;font-size:11px">기타</span>'; return '<tr><td style="padding:6px 8px;color:#64748B;font-size:11px;white-space:nowrap">'+_esc(s.t)+'</td><td style="padding:6px 8px;font-weight:600;white-space:nowrap">'+_esc(s.region)+'</td><td style="padding:6px 8px">'+badge+'</td><td style="padding:6px 8px;font-size:12px;color:#334155">'+_esc(s.summary)+'</td></tr>'; }).join('') || '<tr><td colspan="4" style="padding:14px;text-align:center;color:#94A3B8">회신 없음</td></tr>';
       body.innerHTML =
         '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px">'+
           _sbCard('발송', d.sent||0, '건', '#004098')+
@@ -5526,7 +5526,7 @@ window.renderSalesBoard = function(){
           _sbCard('발송 대기', d.pending||0, '승인 검토', '#F59E0B')+
         '</div>'+
         '<div style="background:#fff;border:1px solid #E2E8F0;border-radius:10px;padding:14px 16px;margin-bottom:14px">'+
-          '<div style="font-size:13px;font-weight:700;color:#004098;margin-bottom:8px">회신 키워드</div>'+kw+'</div>'+
+          '<div style="font-size:13px;font-weight:700;color:#004098;margin-bottom:8px">회신 분류 (의향)</div>'+cats+'</div>'+
         '<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px" class="sb-grid">'+
           '<div style="background:#fff;border:1px solid #E2E8F0;border-radius:10px;padding:14px 16px;overflow:auto">'+
             '<div style="font-size:13px;font-weight:700;color:#004098;margin-bottom:6px">최근 발송</div>'+
