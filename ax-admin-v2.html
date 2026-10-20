@@ -5599,6 +5599,9 @@ function sbDraw(){
   }).join('') || '<tr><td colspan="6" style="padding:16px;text-align:center;color:#94A3B8">기간 내 발송 없음</td></tr>';
 
   body.innerHTML =
+    '<div style="background:#EFF6FF;border:1px solid #BFDBFE;border-radius:8px;padding:10px 14px;margin-bottom:12px;font-size:12px;color:#1E40AF;line-height:1.6">'+
+      '📡 <b>스마트 영업 모니터링</b> — 인사기사 기반 선제 제안 메일의 <b>발송·회신 진행 상황</b>을 추적합니다. 발송된 지자체는 <b>AI 레인저 수주확도에 영업 가산점(+8)</b>이 반영됩니다. '+
+      '<span style="color:#64748B">· 현재: 담당자 수동 검수 발송 · 향후: 자동 발송 예정</span></div>'+
     '<div style="display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap;align-items:center">'+btns+
       '<span style="font-size:11px;color:#94A3B8;margin-left:4px">'+R.from+' ~ '+R.to+'</span></div>'+
     '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px">'+
@@ -5702,7 +5705,7 @@ function sbSendSelected(){
   if (!keys.length) { alert('발송할 항목을 선택하세요.'); return; }
   if (!confirm(keys.length + '건을 cs@scglab.com 으로 발송합니다. 진행할까요?')) return;
   _sbPost('send', keys).then(function(res){
-    if (res && res.ok) { alert('발송 완료: '+res.sent+'건'+(res.fail?(' / 실패 '+res.fail):'')); sbLoadQueue(); renderSalesBoard(); }
+    if (res && res.ok) { alert('발송 완료: '+res.sent+'건'+(res.fail?(' / 실패 '+res.fail):'')); try{ _loadSmartSent(); }catch(e){} sbLoadQueue(); renderSalesBoard(); }
     else alert('발송 실패: '+((res&&res.error)||'알 수 없음'));
   }).catch(function(e){ alert('발송 요청 오류: '+e); });
 }
@@ -8185,6 +8188,27 @@ window.hbSidoAgg = function(cd){
 // ── 수주확도(Win Probability) — 내부 영업상태(J열) + 외부(기사·나라장터·인사) AI 결합 ──
 //   담당자 판단(영업상태)을 베이스로, 데이터포털·레이더가 수집한 외부 신호를 가감해 확장 산출한다.
 //   투명성을 위해 기여 요인(factors)을 함께 반환한다.
+// ── 스마트영업 발송 지자체 집합 — 수주확도 가산점용 ──
+window._smartSent = null; window._smartSentInfo = {};
+function _normReg(s){ return String(s||'').replace(/\s/g,''); }
+function _smartSentHas(g){
+  if (!window._smartSent || !g) return false;
+  var sgg=_normReg(g.sgg), full=_normReg((g.sido||'')+(g.sgg||''));
+  return (sgg && window._smartSent.has(sgg)) || (full && window._smartSent.has(full));
+}
+function _loadSmartSent(cb){
+  if (typeof SALES_BOARD_URL==='undefined' || !SALES_BOARD_URL){ window._smartSent=new Set(); if(cb)cb(); return; }
+  fetch(SALES_BOARD_URL, { cache:'no-store' }).then(function(r){ return r.json(); }).then(function(d){
+    var set=new Set(), info={};
+    (d.allSends||[]).forEach(function(s){ var reg=String(s.region||'').trim(); if(!reg) return;
+      var full=_normReg(reg), toks=reg.split(/\s+/), last=_normReg(toks[toks.length-1]);
+      [full,last].forEach(function(k){ if(k){ set.add(k); if(!info[k]||s.d>info[k].d) info[k]={d:s.d, region:reg}; } });
+    });
+    window._smartSent=set; window._smartSentInfo=info; if(cb) cb();
+  }).catch(function(){ window._smartSent=new Set(); if(cb) cb(); });
+}
+try { _loadSmartSent(); } catch(e){}
+
 window.hbWinProb = function(g){
   if (!g) return null;
   const own = g.co === '한빌';
@@ -8218,6 +8242,7 @@ window.hbWinProb = function(g){
   addF((g.sols && g.sols.length), +6, '자체 솔루션 진입 명분 ' + ((g.sols&&g.sols.length)||0) + '건');
   addF(g.sysNone, +6, '도로조명시스템 미사용 — 무상 진입로');
   addF(g.sysRival && !g.sysNone, +4, '타사 시스템 사용 — 교체 제안 대상');
+  addF(_smartSentHas(g), +8, '스마트영업 제안 메일 발송 — 선제 영업 수행');
   if (!own){ addF(g.rivalN >= 3, -6, '경쟁사 다수 선점(' + g.rivalN + '구좌)'); }
   // 3) 표시값 — 정상 단계(0~100)만 클램프. 유지초과(방어/충성)·이탈위험(음수)은 시트값 그대로 노출(클램프 없음).
   score = Math.round(score);
