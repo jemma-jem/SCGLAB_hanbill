@@ -136,7 +136,11 @@ export async function onRequest(context) {
   const secret = env.SESSION_SECRET || '';
   // 세션 쿠키 유지 시간: 기본 20분(클라이언트 15분 유휴 자동로그아웃 + 연장 팝업이 슬라이딩 갱신).
   // SESSION_MINUTES(분) 우선 → 없으면 SESSION_HOURS(시간)×60 → 둘 다 없으면 20분.
-  const minutes = Number(env.SESSION_MINUTES) || (Number(env.SESSION_HOURS) ? Number(env.SESSION_HOURS) * 60 : 20);
+  // ⚠ 쿠키 수명이 '유휴 로그아웃(15분)'보다 짧으면, 연장 팝업이 뜰 때 이미 쿠키가 만료돼
+  //    /session/extend 가 401 → 로그아웃되는 버그가 생긴다. 그래서 최소 20분을 보장한다.
+  const CLIENT_IDLE_MIN = 20;   // 클라이언트 유휴 15분 + 연장 여유. 쿠키는 반드시 이보다 길게.
+  const minutesRaw = Number(env.SESSION_MINUTES) || (Number(env.SESSION_HOURS) ? Number(env.SESSION_HOURS) * 60 : 20);
+  const minutes = Math.max(CLIENT_IDLE_MIN, minutesRaw);
   const maxAgeSec = Math.max(60, Math.round(minutes * 60));
 
   // ── 공개 경로: 로그인 없이 그대로 통과 ──
