@@ -2487,6 +2487,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
       <button class="rd-chip"    data-f="bid"   onclick="rdFilter('bid',this)">🏛 입찰 대상</button>
       <button class="rd-chip"    data-f="sol"   onclick="rdFilter('sol',this)">🧰 솔루션 제안</button>
       <button class="rd-chip"    data-f="mail"  onclick="rdFilter('mail',this)">✉ 메일 발송 가능</button>
+      <button class="rd-chip"    data-f="smart" onclick="rdFilter('smart',this)">📧 스마트영업 진행</button>
       <select id="rd-sido" onchange="rdRender()" style="margin-left:auto"><option value="">전체 시·도</option></select>
       <input type="text" id="rd-q" placeholder="지역·기관·담당자 검색" oninput="rdRender()" style="min-width:160px"
              autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
@@ -8204,7 +8205,9 @@ function _loadSmartSent(cb){
       var full=_normReg(reg), toks=reg.split(/\s+/), last=_normReg(toks[toks.length-1]);
       [full,last].forEach(function(k){ if(k){ set.add(k); if(!info[k]||s.d>info[k].d) info[k]={d:s.d, region:reg}; } });
     });
-    window._smartSent=set; window._smartSentInfo=info; if(cb) cb();
+    window._smartSent=set; window._smartSentInfo=info;
+    try{ var g=document.getElementById('rd-grid'); if(typeof rdRender==='function' && g && g.children.length) rdRender(); }catch(e){}
+    if(cb) cb();
   }).catch(function(){ window._smartSent=new Set(); if(cb) cb(); });
 }
 try { _loadSmartSent(); } catch(e){}
@@ -11629,6 +11632,8 @@ window.rdRender = function(){
     if (f === 'sol'   && !((g.sols && g.sols.length) || g.sysNone || g.sysRival)) return false;
     // 메일 발송 가능: 시트에 담당자 이메일이 있는 지역
     if (f === 'mail'  && !mailsOf(g).length) return false;
+    // 스마트영업 진행: 스마트영업으로 제안 메일이 발송된 지자체
+    if (f === 'smart' && !_smartSentHas(g)) return false;
     if (q){
       const hay = (g.sd + g.sido + g.sgg + g.owner + ' ' +
         g.rows.map(function(r){ return r.cust + r.dept + r.owner; }).join(' ')).toLowerCase();
@@ -11666,6 +11671,9 @@ window.rdRender = function(){
     const wpBadge = wp ? '<span class="rd-wp" title="' + esc('[' + wp.label + ' ' + wp.score + '%]\n' + wpTip) +
       '" style="background:' + wp.color + '1A;color:' + wp.color + ';border:1px solid ' + wp.color + '55;' +
       'border-radius:6px;padding:1px 7px;font-weight:800;white-space:nowrap">' + wp.label + ' ' + wp.score + '%</span>' : '';
+    const _sent = (typeof _smartSentHas==='function') && _smartSentHas(g);
+    const _sentInfo = _sent && window._smartSentInfo ? (window._smartSentInfo[_normReg(g.sgg)] || window._smartSentInfo[_normReg((g.sido||'')+(g.sgg||''))]) : null;
+    const smartChip = _sent ? '<span class="rd-al" title="스마트영업 제안 메일 발송' + (_sentInfo?(' · '+_sentInfo.d):'') + ' — 수주확도 +8" style="background:#DBEAFE;color:#1E40AF;font-weight:800">📧 스마트영업 제안' + (_sentInfo?(' '+String(_sentInfo.d).slice(5)):'') + '</span>' : '';
     const alerts = g.alerts.slice(0,4).map(function(a){
       return '<span class="rd-al ' + a.lv + '" title="' + esc(a.why) + '">' + esc(a.t) + '</span>';
     }).join('');
@@ -11701,7 +11709,7 @@ window.rdRender = function(){
         (g.owner ? '<span>담당 <b>' + esc(g.owner) + '</b></span>' : '') +
         (wpBadge ? '<span style="margin-left:auto">' + wpBadge + '</span>' : '') +
       '</div>' +
-      (alerts ? '<div class="rd-alerts">' + alerts + '</div>' : '') +
+      ((alerts||smartChip) ? '<div class="rd-alerts">' + smartChip + alerts + '</div>' : '') +
       news + acts + '</div>';
   }).join('');
 };
