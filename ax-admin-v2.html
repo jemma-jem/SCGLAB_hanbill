@@ -8189,23 +8189,33 @@ window.hbSidoAgg = function(cd){
 // ── 수주확도(Win Probability) — 내부 영업상태(J열) + 외부(기사·나라장터·인사) AI 결합 ──
 //   담당자 판단(영업상태)을 베이스로, 데이터포털·레이더가 수집한 외부 신호를 가감해 확장 산출한다.
 //   투명성을 위해 기여 요인(factors)을 함께 반환한다.
-// ── 스마트영업 발송 지자체 집합 — 수주확도 가산점용 ──
-window._smartSent = null; window._smartSentInfo = {};
+// ── 스마트영업 발송·회신 지자체 — 수주확도 가산점 + 카드 표기용 ──
+window._smartSent = null; window._smartSentInfo = {}; window._smartReply = {};
 function _normReg(s){ return String(s||'').replace(/\s/g,''); }
+function _yymmdd(iso){ var m=String(iso||'').match(/^(\d{4})-(\d{2})-(\d{2})/); return m ? (m[1].slice(2)+'/'+m[2]+'/'+m[3]) : String(iso||''); }
 function _smartSentHas(g){
   if (!window._smartSent || !g) return false;
   var sgg=_normReg(g.sgg), full=_normReg((g.sido||'')+(g.sgg||''));
   return (sgg && window._smartSent.has(sgg)) || (full && window._smartSent.has(full));
 }
+function _smartReplyOf(g){
+  if (!window._smartReply || !g) return null;
+  var sgg=_normReg(g.sgg), full=_normReg((g.sido||'')+(g.sgg||''));
+  return window._smartReply[sgg] || window._smartReply[full] || null;
+}
 function _loadSmartSent(cb){
   if (typeof SALES_BOARD_URL==='undefined' || !SALES_BOARD_URL){ window._smartSent=new Set(); if(cb)cb(); return; }
   fetch(SALES_BOARD_URL, { cache:'no-store' }).then(function(r){ return r.json(); }).then(function(d){
-    var set=new Set(), info={};
+    var set=new Set(), info={}, rep={};
     (d.allSends||[]).forEach(function(s){ var reg=String(s.region||'').trim(); if(!reg) return;
       var full=_normReg(reg), toks=reg.split(/\s+/), last=_normReg(toks[toks.length-1]);
       [full,last].forEach(function(k){ if(k){ set.add(k); if(!info[k]||s.d>info[k].d) info[k]={d:s.d, region:reg}; } });
     });
-    window._smartSent=set; window._smartSentInfo=info;
+    (d.allReplies||[]).forEach(function(r){ var reg=String(r.region||'').trim(); if(!reg) return;
+      var full=_normReg(reg), toks=reg.split(/\s+/), last=_normReg(toks[toks.length-1]);
+      [full,last].forEach(function(k){ if(k){ if(!rep[k]||r.d>rep[k].d) rep[k]={d:r.d, cat:r.cat, color:r.color}; } });
+    });
+    window._smartSent=set; window._smartSentInfo=info; window._smartReply=rep;
     try{ var g=document.getElementById('rd-grid'); if(typeof rdRender==='function' && g && g.children.length) rdRender(); }catch(e){}
     if(cb) cb();
   }).catch(function(){ window._smartSent=new Set(); if(cb) cb(); });
@@ -11673,7 +11683,12 @@ window.rdRender = function(){
       'border-radius:6px;padding:1px 7px;font-weight:800;white-space:nowrap">' + wp.label + ' ' + wp.score + '%</span>' : '';
     const _sent = (typeof _smartSentHas==='function') && _smartSentHas(g);
     const _sentInfo = _sent && window._smartSentInfo ? (window._smartSentInfo[_normReg(g.sgg)] || window._smartSentInfo[_normReg((g.sido||'')+(g.sgg||''))]) : null;
-    const smartChip = _sent ? '<span class="rd-al" title="스마트영업 제안 메일 발송' + (_sentInfo?(' · '+_sentInfo.d):'') + ' — 수주확도 +8" style="background:#DBEAFE;color:#1E40AF;font-weight:800">📧 스마트영업 제안' + (_sentInfo?(' '+String(_sentInfo.d).slice(5)):'') + '</span>' : '';
+    const _rep = (typeof _smartReplyOf==='function') ? _smartReplyOf(g) : null;
+    let smartChip = '';
+    if (_sent) {
+      smartChip += '<span class="rd-al" title="스마트영업 제안 메일 발송 — 수주확도 +8" style="background:#DBEAFE;color:#1E40AF;font-weight:800">📧 스마트 영업제안' + (_sentInfo?('('+_yymmdd(_sentInfo.d)+')'):'') + '</span>';
+      if (_rep) { const rc=_rep.color||'059669'; const cat=_rep.cat||'회신'; smartChip += '<span class="rd-al" title="스마트영업 제안 회신 — ' + cat + '" style="background:#'+rc+'1A;color:#'+rc+';border:1px solid #'+rc+'55;font-weight:800">💬 회신·' + cat + '(' + _yymmdd(_rep.d) + ')</span>'; }
+    }
     const alerts = g.alerts.slice(0,4).map(function(a){
       return '<span class="rd-al ' + a.lv + '" title="' + esc(a.why) + '">' + esc(a.t) + '</span>';
     }).join('');
