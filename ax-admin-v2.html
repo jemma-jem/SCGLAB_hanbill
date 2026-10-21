@@ -5530,6 +5530,14 @@ window.renderSalesBoard = function(){
     });
 };
 window.sbSetPeriod = function(p){ window._sbPeriod=p; sbDraw(); };
+// 보고용 요약 클립보드 복사
+window.sbCopyReport = function(btn){
+  var el = document.getElementById('sb-report'); if (!el) return;
+  var t = el.textContent || '';
+  var done = function(){ if(btn){ var o=btn.textContent; btn.textContent='복사됨 ✓'; setTimeout(function(){ btn.textContent=o; },1500); } };
+  try { navigator.clipboard.writeText(t).then(done, function(){ /* fallback */ var ta=document.createElement('textarea'); ta.value=t; document.body.appendChild(ta); ta.select(); try{document.execCommand('copy');}catch(e){} document.body.removeChild(ta); done(); }); }
+  catch(e){ var ta=document.createElement('textarea'); ta.value=t; document.body.appendChild(ta); ta.select(); try{document.execCommand('copy');}catch(e2){} document.body.removeChild(ta); done(); }
+};
 
 function _sbIso(dt){ return dt.getFullYear()+'-'+('0'+(dt.getMonth()+1)).slice(-2)+'-'+('0'+dt.getDate()).slice(-2); }
 function _sbRange(p){
@@ -5611,6 +5619,20 @@ function sbDraw(){
       '<td style="padding:6px 8px;font-size:12px;color:#334155">'+summ+'</td></tr>';
   }).join('') || '<tr><td colspan="6" style="padding:16px;text-align:center;color:#94A3B8">기간 내 발송 없음</td></tr>';
 
+  // 보고용 요약 텍스트(선택 기간 기준, 복사용)
+  var _cn=function(c){ return catN[c]||0; };
+  var _rangeTxt = (window._sbPeriod==='all') ? '전체 기간' : (R.from+' ~ '+R.to);
+  var _intRegions=[], _seenI={};
+  reps.forEach(function(r){ if(r.cat==='관심·문의'){ var k=norm(r.region); if(!_seenI[k]){ _seenI[k]=1; _intRegions.push(r.region); } } });
+  var repTxt =
+    '[스마트 영업 현황 — '+R.label+' ('+_rangeTxt+')]\n'+
+    '· 발송: '+sends.length+'건 / 발송 지자체 '+sentRegionN+'곳\n'+
+    '· 회신: '+replyRegionN+'곳 (회신율 '+rate+'%)\n'+
+    '· 분류: 관심·문의 '+_cn('관심·문의')+' · 담당 안내 '+_cn('담당 안내')+' · 거절·보류 '+_cn('거절·보류')+' · 기타 '+_cn('기타')+'\n'+
+    '· 관심·문의 지자체: '+(_intRegions.length ? _intRegions.join(', ') : '없음')+'\n'+
+    '· 발송 대기: '+(d.pending||0)+'곳\n'+
+    '· 비고: 발송 지자체는 AI 레인저 수주확도 +8 가산 반영';
+
   body.innerHTML =
     // ① 한 줄 설명 + 기간
     '<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px">'+
@@ -5624,6 +5646,14 @@ function sbDraw(){
       _sbCard('회신', replyRegionN+' ('+rate+'%)', '/ 발송 '+sentRegionN+' 지자체', '#0EA5E9')+
       _sbCard('관심·문의', catN['관심·문의']||0, '긍정 신호', '#059669')+
       _sbCard('발송 대기', d.pending||0, '미발송', '#F59E0B')+
+    '</div>'+
+    // ②-b 보고용 요약 (복사 가능) — 주간/월간 보고에 그대로 사용
+    '<div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:10px;padding:12px 16px;margin-bottom:14px">'+
+      '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">'+
+        '<div style="font-size:13px;font-weight:700;color:#004098">📋 보고용 요약 <span style="font-size:11px;color:#94A3B8;font-weight:500">('+R.label+')</span></div>'+
+        '<button onclick="sbCopyReport(this)" style="font-size:12px;padding:5px 12px;border:1px solid #CBD5E1;border-radius:6px;background:#fff;cursor:pointer;color:#334155">복사</button>'+
+      '</div>'+
+      '<pre id="sb-report" style="margin:0;white-space:pre-wrap;font-family:inherit;font-size:12.5px;color:#334155;line-height:1.75">'+_esc(repTxt)+'</pre>'+
     '</div>'+
     // ③ 핵심 — 발송 → 회신 현황표
     '<div style="background:#fff;border:1px solid #E2E8F0;border-radius:10px;padding:14px 16px">'+
@@ -10009,13 +10039,52 @@ function getPageAlert(name) {
             '고객 소식이 있는 곳은 기사를 명분으로 접촉하세요.'
         ]
       };
+    })(),
+    // ── 스마트 영업: 선제 제안 메일 발송·회신 현황 요약 (window._sbD) ──
+    salesboard: (function(){
+      var d = window._sbD;
+      if (!d) {
+        return {
+          badge: '데이터 준비 중',
+          title: '스마트 영업 — 선제 제안 메일 현황',
+          lines: [
+            '📨 인사기사 기반 선제 제안 메일(발신 cs@scglab.com)의 발송·회신을 추적해요.',
+            '📧 발송된 지자체는 AI 레인저 수주확도에 +8 가산돼요.',
+            '⏳ 메뉴를 열면 발송·회신 데이터를 불러와 이 요약이 실제 수치로 채워져요.'
+          ]
+        };
+      }
+      var R = (typeof _sbRange === 'function') ? _sbRange(window._sbPeriod) : { from:'0000-01-01', to:'9999-12-31', label:'전체' };
+      var inR = function(x){ return x.d && x.d >= R.from && x.d <= R.to; };
+      var sends = (d.allSends || []).filter(inR), reps = (d.allReplies || []).filter(inR);
+      var norm = function(s){ return String(s||'').replace(/\s/g,''); };
+      var sentRegions = {}; sends.forEach(function(s){ sentRegions[norm(s.region)] = 1; });
+      var repBy = {}; reps.forEach(function(r){ var k = norm(r.region); if (!repBy[k] || r.d > repBy[k].d) repBy[k] = r; });
+      var sentN = Object.keys(sentRegions).length;
+      var repN  = Object.keys(sentRegions).filter(function(k){ return repBy[k]; }).length;
+      var rate  = sentN ? Math.round(repN / sentN * 1000) / 10 : 0;
+      var catN = {}; reps.forEach(function(r){ var c = r.cat || '기타'; catN[c] = (catN[c]||0) + 1; });
+      var interest = catN['관심·문의'] || 0, reject = catN['거절·보류'] || 0;
+      var pending = d.pending || 0;
+      var hot = reps.filter(function(r){ return r.cat === '관심·문의'; }).sort(function(a,b){ return a.d < b.d ? 1 : -1; })[0];
+      return {
+        badge: pending ? '발송 대기 ' + pending + '곳' : (repN ? '회신 ' + repN + '곳' : 'AI 분석 요약'),
+        title: '스마트 영업 — 발송·회신 현황 요약 (' + R.label + ')',
+        lines: [
+          '📨 [발송] ' + R.label + ' 선제 제안 메일 ' + sends.length + '건 · 발송 지자체 ' + sentN + '곳.',
+          '↩ [회신] ' + repN + '곳 회신(회신율 ' + rate + '%) · 관심·문의 ' + interest + ' · 거절·보류 ' + reject + '.',
+          (hot ? '🔥 [관심] ' + hot.region + ' — "' + String(hot.summary||'').slice(0,40) + '" 빠른 후속 필요.' : '🔥 아직 관심·문의 회신이 없어요.'),
+          '📧 [연동] 발송 지자체는 AI 레인저 수주확도 +8 가산으로 반영돼요.',
+          (pending ? '⏳ [대기] 발송 대기 ' + pending + '곳 — jem 계정에서 검수 후 발송하세요.' : '✅ 발송 대기 없음.')
+        ]
+      };
     })()
   };
   return alerts[name] || alerts.dashboard;
 }
 
 // 탭별 표시 이름 (모바일 칩 + 패널 타이틀 동적 연동용)
-var PAGE_TAB_NAMES = { dashboard:'데이터포털', radar:'AI 레인저(영업사원)', stt:'민원분석', predict:'예상민원', newsletter:'뉴스레터', chatbot:'세이버' };
+var PAGE_TAB_NAMES = { dashboard:'데이터포털', radar:'AI 레인저(영업사원)', stt:'민원분석', predict:'예상민원', newsletter:'뉴스레터', chatbot:'세이버', salesboard:'스마트영업' };
 function pageAlertTitle(name){ return 'AI분석요약 - ' + (PAGE_TAB_NAMES[name] || '요약'); }
 
 function updatePageAlert(name) {
