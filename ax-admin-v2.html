@@ -5612,35 +5612,28 @@ function sbDraw(){
   }).join('') || '<tr><td colspan="6" style="padding:16px;text-align:center;color:#94A3B8">기간 내 발송 없음</td></tr>';
 
   body.innerHTML =
-    '<div style="background:#EFF6FF;border:1px solid #BFDBFE;border-radius:8px;padding:10px 14px;margin-bottom:12px;font-size:12px;color:#1E40AF;line-height:1.6">'+
-      '📡 <b>스마트 영업 모니터링</b> — 인사기사 기반 선제 제안 메일의 <b>발송·회신 진행 상황</b>을 추적합니다. 발송된 지자체는 <b>AI 레인저 수주확도에 영업 가산점(+8)</b>이 반영됩니다. '+
-      '<span style="color:#64748B">· 현재: 담당자 수동 검수 발송 · 향후: 자동 발송 예정</span></div>'+
-    '<div style="display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap;align-items:center">'+btns+
-      '<span style="font-size:11px;color:#94A3B8;margin-left:4px">'+R.from+' ~ '+R.to+'</span></div>'+
+    // ① 한 줄 설명 + 기간
+    '<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px">'+
+      '<div style="font-size:12px;color:#1E40AF">📡 <b>스마트 영업</b> — 인사기사 기반 선제 제안 메일의 <b>발송·회신</b> 모니터링 '+
+        '<span style="color:#94A3B8">· 발송 지자체 레인저 수주확도 +8 · 현재 수동 검수 발송</span></div>'+
+      '<div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">'+btns+'</div>'+
+    '</div>'+
+    // ② 한눈 요약 — 핵심 4지표만
     '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px">'+
       _sbCard('발송', sends.length, R.label, '#004098')+
-      _sbCard('회신 지자체', replyRegionN, '/ 발송 '+sentRegionN, '#0EA5E9')+
-      _sbCard('회신율', rate+'%', '지자체 기준', '#0EA5E9')+
+      _sbCard('회신', replyRegionN+' ('+rate+'%)', '/ 발송 '+sentRegionN+' 지자체', '#0EA5E9')+
       _sbCard('관심·문의', catN['관심·문의']||0, '긍정 신호', '#059669')+
-      _sbCard('거절·보류', catN['거절·보류']||0, '부정 신호', '#DC2626')+
-      _sbCard('발송 대기', d.pending||0, '전체 미발송', '#F59E0B')+
+      _sbCard('발송 대기', d.pending||0, '미발송', '#F59E0B')+
     '</div>'+
-    '<div style="display:grid;grid-template-columns:1.3fr 1fr;gap:14px;margin-bottom:14px" class="sb-grid">'+
-      '<div style="background:#fff;border:1px solid #E2E8F0;border-radius:10px;padding:14px 16px">'+
-        '<div style="font-size:13px;font-weight:700;color:#004098;margin-bottom:8px">발송 · 회신 추이</div>'+_sbChart(sends,reps,R)+'</div>'+
-      '<div style="background:#fff;border:1px solid #E2E8F0;border-radius:10px;padding:14px 16px">'+
-        '<div style="font-size:13px;font-weight:700;color:#004098;margin-bottom:8px">회신 분류 분포</div>'+_sbCatBar(catN)+'</div>'+
-    '</div>'+
+    // ③ 핵심 — 발송 → 회신 현황표
     '<div style="background:#fff;border:1px solid #E2E8F0;border-radius:10px;padding:14px 16px">'+
-      '<div style="font-size:13px;font-weight:700;color:#004098;margin-bottom:8px">발송 → 회신 현황 <span style="font-size:11px;color:#94A3B8;font-weight:500">('+sends.length+'건)</span></div>'+
-      '<div style="overflow:auto;max-height:360px"><table style="width:100%;border-collapse:collapse;font-size:12.5px">'+
+      '<div style="font-size:13px;font-weight:700;color:#004098;margin-bottom:8px">발송 → 회신 현황 <span style="font-size:11px;color:#94A3B8;font-weight:500">('+sends.length+'건 · '+R.label+')</span></div>'+
+      '<div style="overflow:auto;max-height:420px"><table style="width:100%;border-collapse:collapse;font-size:12.5px">'+
         '<thead><tr style="color:#64748B;font-size:11px;text-align:left;border-bottom:1px solid #E2E8F0;position:sticky;top:0;background:#fff">'+
           '<th style="padding:6px 8px">발송일</th><th style="padding:6px 8px">지자체</th><th style="padding:6px 8px">담당자</th><th style="padding:6px 8px;text-align:center">회신</th><th style="padding:6px 8px">분류</th><th style="padding:6px 8px">회신 요약</th>'+
-        '</tr></thead><tbody>'+rows+'</tbody></table></div></div>';
-
-  // 발송대기 패널 — jem(토큰)일 때만
-  if (SB_TOKEN) {
-    body.insertAdjacentHTML('beforeend',
+        '</tr></thead><tbody>'+rows+'</tbody></table></div></div>'+
+    // ④ 발송대기 — jem(토큰)일 때만
+    (SB_TOKEN ?
       '<div style="background:#fff;border:1px solid #FDE68A;border-radius:10px;padding:14px 16px;margin-top:14px">'+
         '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:8px">'+
           '<div style="font-size:13px;font-weight:700;color:#B45309">📮 발송대기 · 발신 cs@scglab.com <span style="font-size:11px;color:#94A3B8;font-weight:500">(jem 전용)</span></div>'+
@@ -5650,9 +5643,17 @@ function sbDraw(){
           '</div>'+
         '</div>'+
         '<div id="sb-queue"><div style="padding:16px;text-align:center;color:#94A3B8">발송대기 불러오는 중…</div></div>'+
-      '</div>');
-    sbLoadQueue();
-  }
+      '</div>' : '')+
+    // ⑤ 추이·분류 — 보조 지표(기본 접힘)
+    '<details style="margin-top:14px;background:#fff;border:1px solid #E2E8F0;border-radius:10px;padding:4px 16px">'+
+      '<summary style="cursor:pointer;font-size:13px;font-weight:700;color:#004098;padding:10px 0;list-style:none">📊 추이 · 분류 분포 보기</summary>'+
+      '<div style="display:grid;grid-template-columns:1.3fr 1fr;gap:14px;padding:4px 0 14px" class="sb-grid">'+
+        '<div><div style="font-size:12px;font-weight:700;color:#475569;margin-bottom:8px">발송 · 회신 추이</div>'+_sbChart(sends,reps,R)+'</div>'+
+        '<div><div style="font-size:12px;font-weight:700;color:#475569;margin-bottom:8px">회신 분류 분포</div>'+_sbCatBar(catN)+'</div>'+
+      '</div>'+
+    '</details>';
+
+  if (SB_TOKEN) sbLoadQueue();
 }
 
 // ─── 발송대기 로드/발송 (jem 전용) ───
