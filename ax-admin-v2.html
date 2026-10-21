@@ -426,6 +426,10 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
 .rd-chip{border:1px solid var(--g200,#E2E8F0);background:#fff;color:var(--g600,#475569);border-radius:999px;
   padding:5px 12px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap}
 .rd-chip.on{background:var(--sky,#0EA5E9);border-color:var(--sky,#0EA5E9);color:#fff}
+.rd-grp{font-size:10.5px;font-weight:800;color:#94A3B8;padding:0 1px;white-space:nowrap}
+.rd-div{width:1px;height:16px;background:#E2E8F0;margin:0 3px}
+.rd-chip.sm{border-color:#C7D2FE;color:#1E40AF}
+.rd-chip.sm.on{background:#1E40AF;border-color:#1E40AF;color:#fff}
 .rd-bar input,.rd-bar select{border:1px solid var(--g200,#E2E8F0);border-radius:8px;padding:6px 10px;
   font-size:12px;font-family:inherit;color:var(--g700,#334155)}
 .rd-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px}
@@ -453,6 +457,13 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
 /* 나라장터 발주 — 파스텔 칩 사이에서 눈에 띄도록 진한 하늘색 솔리드 */
 .rd-al.g2b{background:linear-gradient(90deg,#0EA5E9,#0284C7);color:#fff;font-weight:800;
   box-shadow:0 1px 4px rgba(2,132,199,.35);padding:3px 9px}
+/* 카드 내 나라장터 대카테고리(수주·발주 세분화) */
+.rd-g2b{display:inline-flex;align-items:center;gap:5px;flex-wrap:wrap;
+  border:1px solid #BAE6FD;background:#F0F9FF;border-radius:999px;padding:2px 8px 2px 4px}
+.rd-g2b-h{font-size:11px;font-weight:800;color:#075985;background:#E0F2FE;border-radius:999px;padding:2px 9px}
+.rd-g2b-sub{font-size:11px;font-weight:700;border-radius:999px;padding:2px 8px;white-space:nowrap}
+.rd-g2b-sub.bid{background:linear-gradient(90deg,#0EA5E9,#0284C7);color:#fff}
+.rd-g2b-sub.win{background:#fff;color:#075985;border:1px solid #BAE6FD}
 /* ── 오늘의 우선 액션 브리핑 ── */
 #rd-briefing{margin-bottom:14px}
 .rd-brief{background:linear-gradient(180deg,#0F2942,#0B1F33);border-radius:14px;padding:14px 16px;
@@ -2479,15 +2490,16 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
     <div id="rd-briefing"></div>
 
     <div class="rd-bar">
+      <span class="rd-grp">고객</span>
       <button class="rd-chip on" data-f="all"   onclick="rdFilter('all',this)">전체</button>
-      <button class="rd-chip"    data-f="own"   onclick="rdFilter('own',this)">🛡 한빌 고객(현황)</button>
-      <button class="rd-chip"    data-f="rival" onclick="rdFilter('rival',this)">🎯 경쟁사·기회</button>
-      <button class="rd-chip"    data-f="news"  onclick="rdFilter('news',this)">📰 고객 소식 有</button>
-      <button class="rd-chip"    data-f="risk"  onclick="rdFilter('risk',this)">⚠ 이슈 점검</button>
-      <button class="rd-chip"    data-f="bid"   onclick="rdFilter('bid',this)">🏛 입찰 대상</button>
-      <button class="rd-chip"    data-f="sol"   onclick="rdFilter('sol',this)">🧰 솔루션 제안</button>
-      <button class="rd-chip"    data-f="mail"  onclick="rdFilter('mail',this)">✉ 메일 발송 가능</button>
-      <button class="rd-chip"    data-f="smart" onclick="rdFilter('smart',this)">📧 스마트영업 진행</button>
+      <button class="rd-chip"    data-f="own"   onclick="rdFilter('own',this)" title="한빌이 이미 수주한 기존 고객 — 현황 관리 대상">🛡 한빌(기존)</button>
+      <button class="rd-chip"    data-f="rival" onclick="rdFilter('rival',this)" title="타사가 수주 중이거나 미수주 — 신규 영업 대상">🎯 타사(신규)</button>
+      <span class="rd-div"></span>
+      <button class="rd-chip"    data-f="info"  onclick="rdFilter('info',this)" title="최근 고객 소식(기사)·입찰 발주·솔루션 제안 명분·점검 이슈 중 하나라도 감지된 지자체">📰 고객 소식</button>
+      <span class="rd-div"></span>
+      <span class="rd-grp" style="color:#1E40AF">스마트 영업</span>
+      <button class="rd-chip sm" data-f="starget" onclick="rdFilter('starget',this)" title="담당자 인사발령이 감지돼 표준제안서 자동발송 대상이 되는 지자체 (메일 보유 · 아직 미발송)">📧 발송 대상</button>
+      <button class="rd-chip sm" data-f="smart"   onclick="rdFilter('smart',this)" title="스마트영업으로 제안 메일이 이미 발송된 지자체">✅ 발송 완료</button>
       <select id="rd-sido" onchange="rdRender()" style="margin-left:auto"><option value="">전체 시·도</option></select>
       <input type="text" id="rd-q" placeholder="지역·기관·담당자 검색" oninput="rdRender()" style="min-width:160px"
              autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
@@ -11624,6 +11636,14 @@ window.rdFilter = function(f, btn){
   rdRender();
 };
 
+// 담당자 인사발령 신호 감지(스마트영업 발송 대상 판별용):
+//   외부 인사발령 명단(g.hr)·담당자 변경 감지(hrNew)·접촉 부서 인사(hrDeptMatched)
+//   또는 카드 알림에 '담당자 변경/인사'가 잡힌 경우
+function _rdHrSignal(g){
+  return (g.hr && g.hr.length) || (g.hrNew && g.hrNew.length) || (g.hrDeptMatched && g.hrDeptMatched.length)
+      || (g.alerts && g.alerts.some(function(a){ return /담당자 변경|인사/.test(a.t); }));
+}
+
 window.rdRender = function(){
   const grid = document.getElementById('rd-grid');
   if (!grid) return;
@@ -11635,14 +11655,14 @@ window.rdRender = function(){
     if (sd && g.sd !== sd) return false;
     if (f === 'own'   && g.co !== '한빌') return false;
     if (f === 'rival' && (!g.co || g.co === '한빌')) return false;
-    if (f === 'news'  && !g.news.length) return false;
-    if (f === 'risk'  && !g.alerts.some(function(a){ return a.lv==='c'||a.lv==='w'; })) return false;
-    // 자체 솔루션 제안 가능: 기사에서 관련 이슈가 잡혔거나, 도로조명 시스템 미도입·타사 사용
-    if (f === 'bid'   && !(g.bidsOpen && g.bidsOpen.length)) return false;
-    if (f === 'sol'   && !((g.sols && g.sols.length) || g.sysNone || g.sysRival)) return false;
-    // 메일 발송 가능: 시트에 담당자 이메일이 있는 지역
-    if (f === 'mail'  && !mailsOf(g).length) return false;
-    // 스마트영업 진행: 스마트영업으로 제안 메일이 발송된 지자체
+    // 고객 소식: 기사 소식·입찰 발주·솔루션 명분·점검 이슈를 하나로 통합
+    if (f === 'info'  && !(g.news.length
+                           || g.alerts.some(function(a){ return a.lv==='c'||a.lv==='w'; })
+                           || (g.bidsOpen && g.bidsOpen.length)
+                           || (g.sols && g.sols.length) || g.sysNone || g.sysRival)) return false;
+    // 스마트영업 발송 대상: 담당자 인사발령 감지 → 표준제안서 자동발송 후보 (메일 보유 · 미발송)
+    if (f === 'starget' && !(_rdHrSignal(g) && mailsOf(g).length && !_smartSentHas(g))) return false;
+    // 스마트영업 발송 완료: 제안 메일이 이미 발송된 지자체
     if (f === 'smart' && !_smartSentHas(g)) return false;
     if (q){
       const hay = (g.sd + g.sido + g.sgg + g.owner + ' ' +
@@ -11689,7 +11709,17 @@ window.rdRender = function(){
       smartChip += '<span class="rd-al" title="스마트영업 제안 메일 발송 — 수주확도 +8" style="background:#DBEAFE;color:#1E40AF;font-weight:800">📧 스마트 영업제안' + (_sentInfo?('('+_yymmdd(_sentInfo.d)+')'):'') + '</span>';
       if (_rep) { const rc=_rep.color||'059669'; const cat=_rep.cat||'회신'; smartChip += '<span class="rd-al" title="스마트영업 제안 회신 — ' + cat + '" style="background:#'+rc+'1A;color:#'+rc+';border:1px solid #'+rc+'55;font-weight:800">💬 회신·' + cat + '(' + _yymmdd(_rep.d) + ')</span>'; }
     }
-    const alerts = g.alerts.slice(0,4).map(function(a){
+    // 나라장터(g2b)는 '대카테고리'로 묶어 수주·발주를 세분화, 나머지 알림은 평면 칩
+    const g2bAls = g.alerts.filter(function(a){ return a.lv === 'g2b'; })
+      .sort(function(a,b){ return (/발주/.test(b.t)?1:0) - (/발주/.test(a.t)?1:0); });   // 발주 먼저, 수주 다음
+    const etcAls = g.alerts.filter(function(a){ return a.lv !== 'g2b'; });
+    const g2bGroup = g2bAls.length ? '<span class="rd-g2b"><span class="rd-g2b-h">🏛 나라장터</span>' +
+      g2bAls.map(function(a){
+        const sub = a.t.replace(/^🏛\s*나라장터\s*/, '');          // '발주 3건(진행중 1)' · '수주업체 3곳'
+        const isBid = /발주/.test(a.t);
+        return '<span class="rd-g2b-sub ' + (isBid?'bid':'win') + '" title="' + esc(a.why) + '">' + esc(sub) + '</span>';
+      }).join('') + '</span>' : '';
+    const alerts = etcAls.slice(0,4).map(function(a){
       return '<span class="rd-al ' + a.lv + '" title="' + esc(a.why) + '">' + esc(a.t) + '</span>';
     }).join('');
     const news = g.news.length ? '<div class="rd-news"><div class="rd-news-t"><i class="ti ti-news"></i> 고객 소식</div>' +
@@ -11724,7 +11754,7 @@ window.rdRender = function(){
         (g.owner ? '<span>담당 <b>' + esc(g.owner) + '</b></span>' : '') +
         (wpBadge ? '<span style="margin-left:auto">' + wpBadge + '</span>' : '') +
       '</div>' +
-      ((alerts||smartChip) ? '<div class="rd-alerts">' + smartChip + alerts + '</div>' : '') +
+      ((alerts||smartChip||g2bGroup) ? '<div class="rd-alerts">' + smartChip + g2bGroup + alerts + '</div>' : '') +
       news + acts + '</div>';
   }).join('');
 };
