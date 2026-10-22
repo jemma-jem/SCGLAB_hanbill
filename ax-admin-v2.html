@@ -8270,7 +8270,7 @@ window.hbSidoAgg = function(cd){
 //   담당자 판단(영업상태)을 베이스로, 데이터포털·레이더가 수집한 외부 신호를 가감해 확장 산출한다.
 //   투명성을 위해 기여 요인(factors)을 함께 반환한다.
 // ── 스마트영업 발송·회신 지자체 — 수주확도 가산점 + 카드 표기용 ──
-window._smartSent = null; window._smartSentInfo = {}; window._smartReply = {};
+window._smartSent = null; window._smartSentInfo = {}; window._smartReply = {}; window._sbQueueSet = null;
 function _normReg(s){ return String(s||'').replace(/\s/g,''); }
 function _yymmdd(iso){ var m=String(iso||'').match(/^(\d{4})-(\d{2})-(\d{2})/); return m ? (m[1].slice(2)+'/'+m[2]+'/'+m[3]) : String(iso||''); }
 function _smartSentHas(g){
@@ -8299,6 +8299,24 @@ function _loadSmartSent(cb){
     try{ var g=document.getElementById('rd-grid'); if(typeof rdRender==='function' && g && g.children.length) rdRender(); }catch(e){}
     if(cb) cb();
   }).catch(function(){ window._smartSent=new Set(); if(cb) cb(); });
+  // 스마트영업 발송대기 큐를 로드 — 레인저 '발송 대상'을 큐와 동일하게 맞추기 위함
+  fetch(SALES_BOARD_URL + '?action=queue', { cache:'no-store' }).then(function(r){ return r.json(); }).then(function(q){
+    var qs=new Set();
+    (q && q.rows || []).forEach(function(row){
+      if(!row.hasEmail || row.status==='발송완료') return;      // 메일 보유 · 미발송만(= 발송 대기)
+      var reg=String(row.region||'').trim(); if(!reg) return;
+      var full=_normReg(reg), toks=reg.split(/\s+/), last=_normReg(toks[toks.length-1]);
+      if(full) qs.add(full); if(last) qs.add(last);
+    });
+    window._sbQueueSet=qs;
+    try{ var g=document.getElementById('rd-grid'); if(typeof rdRender==='function' && g && g.children.length) rdRender(); }catch(e){}
+  }).catch(function(){ window._sbQueueSet=null; });
+}
+// 레인저 '발송 대상' 판정: 스마트영업 큐가 로드됐으면 큐와 동일, 아니면 null(폴백)
+function _sbQueueHas(g){
+  if(!window._sbQueueSet) return null;
+  var k1=_normReg(g.sgg||''), k2=_normReg((g.sido||'')+(g.sgg||''));
+  return window._sbQueueSet.has(k1)||window._sbQueueSet.has(k2);
 }
 try { _loadSmartSent(); } catch(e){}
 
@@ -11769,8 +11787,12 @@ window.rdRender = function(){
                            || g.alerts.some(function(a){ return a.lv==='c'||a.lv==='w'; })
                            || (g.bidsOpen && g.bidsOpen.length)
                            || (g.sols && g.sols.length) || g.sysNone || g.sysRival)) return false;
-    // 스마트영업 발송 대상: 담당자 인사발령 감지 → 표준제안서 자동발송 후보 (메일 보유 · 미발송)
-    if (f === 'starget' && !(_rdHrSignal(g) && mailsOf(g).length && !_smartSentHas(g))) return false;
+    // 스마트영업 발송 대상 — 실제 발송대기 큐와 동일하게 집계(큐 로드 시). 미로딩 시 인사기사 기준 폴백.
+    if (f === 'starget'){
+      var _q = _sbQueueHas(g);
+      if (_q === null){ if(!(_rdHrSignal(g) && mailsOf(g).length && !_smartSentHas(g))) return false; }
+      else if (!_q){ return false; }
+    }
     // 스마트영업 발송 완료: 제안 메일이 이미 발송된 지자체
     if (f === 'smart' && !_smartSentHas(g)) return false;
     if (q){
