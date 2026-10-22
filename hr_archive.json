@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-21T04:34:08.594Z",
+  "updated_at": "2026-10-22T04:32:39.812Z",
   "sources": [
     "시정일보 RSS(피플/전체)",
     "지역지 직접 RSS(동부뉴스·투데이군산·당진신문·영남투데이·수원일보·금강일보·디트뉴스·전북중앙·남도일보·광주드림·경북일보·울산제일일보·제주의소리·세종의소리)",
@@ -9,6 +9,18 @@
   "count": 600,
   "records": [
     {
+      "date": "2026-10-22",
+      "url": "https://www.ggilbo.com/news/articleView.html?idxno=1188475",
+      "source": "금강일보",
+      "title": "괴산군, ‘군민안전보험’ 보장 30개 항목 확대 ··· 일상 속 실질 안전망 강화",
+      "region": "괴산군",
+      "kinds": [
+        "전보"
+      ],
+      "people": [],
+      "hit": true
+    },
+    {
       "date": "2026-10-21",
       "url": "https://www.ggilbo.com/news/articleView.html?idxno=1188225",
       "source": "금강일보",
@@ -16,6 +28,201 @@
       "region": "임용시",
       "kinds": [
         "임용"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-10-21",
+      "url": "https://www.sijung.co.kr/news/articleView.html?idxno=439539",
+      "source": "시정일보",
+      "title": "행정안전부 인사",
+      "region": "인천광역시",
+      "kinds": [
+        "전보",
+        "승진"
+      ],
+      "people": [
+        {
+          "name": "지용구",
+          "dept": "인천광역시 기획조정실장",
+          "rank": ""
+        },
+        {
+          "name": "유호",
+          "dept": "강원특별자치도 기획조정실장",
+          "rank": ""
+        },
+        {
+          "name": "경상북도",
+          "dept": "기획조정실장 이준식",
+          "rank": ""
+        },
+        {
+          "name": "경상남도",
+          "dept": "기획조정실장 박성민 ◇ 국장급 승진 (’26. 10. 26.)",
+          "rank": "국장"
+        },
+        {
+          "name": "하민상",
+          "dept": "부산광역시 기획조정실장",
+          "rank": ""
+        },
+        {
+          "name": "전보",
+          "dept": "울산광역시 기획조정실장 박현용 ◇ 과장급 (’26. 10. 21.)",
+          "rank": "과장"
+        },
+        {
+          "name": "허승원",
+          "dept": "인공지능정부정책과장",
+          "rank": "과장"
+        },
+        {
+          "name": "박경태",
+          "dept": "공공데이터정책과장",
+          "rank": "과장"
+        },
+        {
+          "name": "김성록",
+          "dept": "공공데이터분석관리과장",
+          "rank": "과장"
+        },
+        {
+          "name": "이영조",
+          "dept": "행정정보공유과장",
+          "rank": "과장"
+        },
+        {
+          "name": "김대영",
+          "dept": "자치행정과장",
+          "rank": "과장"
+        },
+        {
+          "name": "조상언",
+          "dept": "자치새마을협력과장",
+          "rank": "과장"
+        },
+        {
+          "name": "이택길",
+          "dept": "주민과장",
+          "rank": "과장"
+        }
+      ],
+      "hit": true
+    },
+    {
+      "date": "2026-10-21",
+      "url": "http://www.dtnews24.com/news/articleView.html?idxno=816337",
+      "source": "디트뉴스",
+      "title": "세종시교육청, 중학교사 임용후보자 평균 경쟁률 7.6대 1",
+      "region": "세종시",
+      "kinds": [
+        "임용"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-10-21",
+      "url": "https://www.kyongbuk.co.kr/news/articleView.html?idxno=4088070",
+      "source": "경북일보",
+      "title": "경북 2027학년도 중등교사 임용, 공립 6.57대 1·사립 6.58대 1",
+      "region": "임용시",
+      "kinds": [
+        "임용"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-10-21",
+      "url": "https://www.kyongbuk.co.kr/news/articleView.html?idxno=4088064",
+      "source": "경북일보",
+      "title": "이권수 예천경찰서장, 부임 후 첫 현장 행보…일선 경찰관 격려",
+      "region": "",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-10-21",
+      "url": "http://www.ujeil.com/news/articleView.html?idxno=393928",
+      "source": "울산제일일보",
+      "title": "울산 공립 중등교사 임용시험 경쟁률 ‘7.56대 1’",
+      "region": "임용시",
+      "kinds": [
+        "임용"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-10-21",
+      "url": "https://www.jejusori.net/news/articleView.html?idxno=507558",
+      "source": "제주의소리",
+      "title": "제주 중등교사 임용 경쟁률 7.37대 1...체육 19.5대 1 최고",
+      "region": "제주특별자치도",
+      "kinds": [
+        "임용"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-10-21",
+      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9udTUyeEhNS3BpNGg1d0xPWG5VYlBvZjZHN18xOGMwYk82dml4dWhMeWphV0RhVGhlNk5KZE1Ec3ViaU5pd0hkbU5HczZRc3puT3c3aENhdjZ5QTkwZUlqb203ZDQ3c0J2WXlOQmlLNkdWNmQ4?oc=5",
+      "source": "부산일보",
+      "title": "‘전시행정’ vs ‘유튜브·인사 논란’…울산시 국감, 전·현직 시정 동시 검증",
+      "region": "울산시",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-10-21",
+      "url": "https://news.google.com/rss/articles/CBMiSkFVX3lxTE82VGR2eFdYZlNhVkxhN01lVzhVSG1Ud0JybjRYQU1GNkppOURaQVREZmNDMXNwT0h3Qmkxcy1mQ3JvWi01U1JCNzZn?oc=5",
+      "source": "경기평화신문",
+      "title": "경기도교육청율곡연수원, 경기교육대전환 이끌 ‘5급 승진예정자 과정’ 운영",
+      "region": "",
+      "kinds": [
+        "승진"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-10-21",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFA4aEUteHJCalN6T0NHQTNocENKVnp2OVgzd3RCdmVqM1ViMU5HV1RyNXJHRi1oS0QyblBocjU5U2RsR0FZdHJkV2xUUVlQUVZCbUs2X0Y4ejNqemhPY0FSWS1ybkY?oc=5",
+      "source": "매일일보",
+      "title": "전남광주교육청, 역량·실적 반영해 5급 사무관 승진 대상자 25명 선발",
+      "region": "",
+      "kinds": [
+        "승진"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-10-21",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE44VjJuM2tRb2VUX2ZiWm1fUkZwRHJlNVdmVDgzbUUxRVZfX3V2Ty0xMkVZRDJRRG8zT2FnTV84YnNfTVMxTlVZSnQ2b1RsNEdWVHhmNUtJeEM5SUJURjBmQ2IxcnRsSjItbEpV?oc=5",
+      "source": "CNB뉴스",
+      "title": "[인사] 전남광주시교육청 전남청사 5급 승진",
+      "region": "",
+      "kinds": [
+        "승진"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-10-21",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE80bm9LRmQ3endfRUhubXg1U3h0UVZBdEJfTEY1dVN3dUFsdDBiNGtWbGx2TUF3bkJrbUhMbTJxcDMtSkpuX2dQM1dMbkE5Yy16LXNrRGdpMlg4UVJRaXN1YmxDS19uTEhtTUxaODR4c1c?oc=5",
+      "source": "파이낸셜경제",
+      "title": "전남광주교육청, 전남청사 일반직 5급 승진대상자 25명 발표",
+      "region": "",
+      "kinds": [
+        "승진"
       ],
       "people": [],
       "hit": false
@@ -36,6 +243,18 @@
     {
       "date": "2026-10-20",
       "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPY005WEVXUU83eGg3WXpiREJIRWhEVHYydFBINmQ3Vk5pdjgyVGJ1NjVFR19nSVNQRkhUWkRVZ0Y0VVM0SzFKMWVIUFhEdEVaVDhETjQ5bUcxcS0wR2JKLW50cEt3dFJLSkhIdXBSV1lOUlpzNXFvdnhLUFpHOS1aaVlfVmJmdw?oc=5",
+      "source": "문경타임즈",
+      "title": "문경시청인사이동조서(승진) 총33명",
+      "region": "문경시",
+      "kinds": [
+        "승진"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-10-20",
+      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9NdEhBd0tSSTVxYzFHQlZoMXE0Tm9iNl9wTUJCMnRnQzdRWUx5N2UxUlJDQjh0eW5EMkpqbHlVeXVVSUJNYjNaQzdqWmJiWkVyUjBqUVRsLWI?oc=5",
       "source": "문경타임즈",
       "title": "문경시청인사이동조서(승진) 총33명",
       "region": "문경시",
@@ -2244,6 +2463,16 @@
       "hit": false
     },
     {
+      "date": "2026-10-09",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9YMjBuVEZVX0ozYjZLWlVYX2NIZW9wVnVIeHptQmxpOHZmdkNaN3YycjZGRlpPUV9KVkQ4U1hjOTlscGxTNlNDczFnaDhNVUxTazhCdHIweG1XMDlGank1VjVVY0g1WGl3VzZN0gFuQVVfeXFMT0pvdjd1dUFfUnpfWHFmTXd4RDg2UEhkNkl1MVJYNW52TTlHLTc5SGR6UU8zMFVZSFhPbXV4S09JM2Q3dXAxbHZLa2p0dHU3alZ3RFRTbXR3d1Ntd24yVjR6WUxXQ2E4LVVZYUU5bFE?oc=5",
+      "source": "당진시대",
+      "title": "■당진경찰서 인사발령 (7월 4일자)",
+      "region": "",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
       "date": "2026-10-08",
       "url": "https://www.sijung.co.kr/news/articleView.html?idxno=438582",
       "source": "시정일보",
@@ -4184,6 +4413,20 @@
       "hit": false
     },
     {
+      "date": "2026-10-05",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE4yak9wa3U2aTh4d0dlSS1LQ0xmcVhUNmE0dW54MW1BOU5yZHkxWm1HY1hKVnlfSEdyZ3IxWGhuYXBBMGs5eDBCTGpSb3NKcHo5QkFvYkdxbldSVVVBYnh6WG1vLXA?oc=5",
+      "source": "매일일보",
+      "title": "전남광주통합특별시 첫 정기인사…승진·전보 544명",
+      "region": "",
+      "kinds": [
+        "전보",
+        "승진",
+        "정기인사"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
       "date": "2026-10-04",
       "url": "https://www.sijung.co.kr/news/articleView.html?idxno=438340",
       "source": "시정일보",
@@ -5049,6 +5292,16 @@
       "source": "글로컬타임스",
       "title": "[인사] 공주시, 2026년 하반기 수시인사 단행",
       "region": "공주시",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-10-02",
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBSQlhraGd4NVRiTTJQelFNTzdsRDBaVmxUWWxuN25LU003Wi1WLWJ1alhLU2Jyc0Z2NEFMdkY1eGhJQ0xxRUxFNDJRS3Vpcm1QSkZIbEZRVFI2T25weG5waXdmdGlHQdIBakFVX3lxTE1YN3BkYXNJZmM2bS1rNVZmS212ZHF4UmtCSVFJNDEzRTZxTjd3QjBUdDFVU0FqOG9qUW9lNEJieWh2ajB0eDlKbENDdUh0RV96cUJrWnFEZG1Vc0daaElBeU43VjZpQWR4eFE?oc=5",
+      "source": "세종매일",
+      "title": "대전시, 인사 발령(10월 1일자)",
+      "region": "대전시",
       "kinds": [],
       "people": [],
       "hit": false
@@ -8085,184 +8338,6 @@
       "kinds": [
         "전보"
       ],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-09-27",
-      "url": "https://www.kyongbuk.co.kr/news/articleView.html?idxno=4085489",
-      "source": "경북일보",
-      "title": "[포토] 열차 안 가족과 배웅 나온 가족, 아쉬운 작별 인사",
-      "region": "동대구",
-      "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-09-27",
-      "url": "https://www.kyongbuk.co.kr/news/articleView.html?idxno=4085484",
-      "source": "경북일보",
-      "title": "[인사] 국가보훈부",
-      "region": "",
-      "kinds": [],
-      "people": [
-        {
-          "name": "김상현",
-          "dept": "국립4·19민주묘지관리소장",
-          "rank": ""
-        }
-      ],
-      "hit": false
-    },
-    {
-      "date": "2026-09-27",
-      "url": "http://www.ujeil.com/news/articleView.html?idxno=392674",
-      "source": "울산제일일보",
-      "title": "市, 이정미 복지보건국장·유재권 공보담당관 임용",
-      "region": "울산시",
-      "kinds": [
-        "임용"
-      ],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-09-27",
-      "url": "http://www.ujeil.com/news/articleView.html?idxno=392665",
-      "source": "울산제일일보",
-      "title": "울산시의회, 오늘 첫 인사검증 청문회 실시",
-      "region": "울산시",
-      "kinds": [
-        "임용"
-      ],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-09-27",
-      "url": "http://www.ujeil.com/news/articleView.html?idxno=392625",
-      "source": "울산제일일보",
-      "title": "남구, 3분기 산업안전보건위원회",
-      "region": "울산시",
-      "kinds": [
-        "전보"
-      ],
-      "people": [],
-      "hit": true
-    },
-    {
-      "date": "2026-09-27",
-      "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTFBKTWhvcS16MlJlNk91R011T3BodW5PRTdWdmV5anFTa0RITUdWZmwzQkMyTVVsNThjMTIxZExrWnlUakpoWDBEY3B4NA?oc=5",
-      "source": "문화매일신문",
-      "title": "남해군, 2026년 하반기 수시인사 단행",
-      "region": "남해군",
-      "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-09-27",
-      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9pdXRDYmhBbHQyem1sclNMbmxOZU1mTjNNMXRVTElKcnRPaG9aanlQNUw4am5DbEZCNkdiZHI2VGszTHpya1g2ZWFRVk1CTEVodkpUSV9zWWR2eHplZGdLVlk0NTBGREQyaWw4UHV3?oc=5",
-      "source": "한국영농신문",
-      "title": "한국마사회 인사발령 ( 2026.9.23.부 )",
-      "region": "",
-      "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-09-27",
-      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1Lazk3a0kxX0pSdU55NzJQbm9XOFlvQmhmelEtVGhjTzlDZHRsQVk4WUI1ajVETENCS3BkVy1kRV9JTnlLYUJ3V0JxVmUyX3BsZVk2NzREeHVUT3VaSVhVSm54a05DTnM?oc=5",
-      "source": "경기핫타임뉴스",
-      "title": "수원특례시, 2026년 10월 1일자 4급 승진·전보 인사 단행",
-      "region": "수원특례시",
-      "kinds": [
-        "전보",
-        "승진"
-      ],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-09-27",
-      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFAtT2VacnpPOXVQMFdYdFVIS3VvaFRkRUNlNXc3ZndkUzFYQ2JoY2I5Q0dGS3BpMU43TG1KMEZESUJ3Y2tGdmNERGxvdXFJT0dUcmtZSmpXU21SZw?oc=5",
-      "source": "브릿지경제",
-      "title": "남해군, 2026년 하반기 수시인사 단행",
-      "region": "남해군",
-      "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-09-27",
-      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBkcUdGRzhMUWpqQWFrZzZ1OU1DTkdTMTVIS3c3N1I1MEhQZzc2MWhjSmNDQXlieUs4ZzZ5VEFuOXgxd29hSTQybnQ0RGNWLWFOd1BQR1lYRU9PUzVSdGdYaWVKd3rSAWhBVV95cUxQSjhJSlhfV3dwR2FzMTQ3LUV1Q1hYcXNqdmxRMG44Q1N3VHFIUERHVFJqdllMMXBHOTFMYy1GX3BhX04wUFN2SHNxT0ZFU0Y0aGJwTnRPNDVFMU8yczV0Z2d6c19US0Z1UQ?oc=5",
-      "source": "경남경제",
-      "title": "남해군, 2026년 하반기 수시인사 단행",
-      "region": "남해군",
-      "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-09-26",
-      "url": "https://www.namdonews.com/news/articleView.html?idxno=924404",
-      "source": "남도일보",
-      "title": "음주운전 교도관 ‘문책 전보’ 불복했지만…법원 소송 각하",
-      "region": "",
-      "kinds": [
-        "전보",
-        "전출"
-      ],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-09-26",
-      "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1XVmRWc1Zsckl6YmRIc2xWVDRSeTJLQndrenBhNXQ0ZUNKWnlzUkZIWXJrMkpsdElJUHZVeFpfdThuMWJuSndNd0tTYkwzLWpRR1JkS2RPTXFJUXUtdWRIeEw1Y9IBaEFVX3lxTFBYSGhhQ2MwNWlyTmhZSmZRTlRvWmpKeWx5bVROek9HNkExNHdSWUVnTUNQRjhTSHZDMFI2blhETlY3UVQ0UmtlblJpTTJFSzY2OE5YSUdkdmZfUUtqODgwTXNLel80NDJl?oc=5",
-      "source": "tvreport.co.kr",
-      "title": "손예진, ‘붕어빵’ 子가 직접 찍어준 사진 공개→추석 인사로 ‘스캔들’ 시청 당부까지 [RE:스타]",
-      "region": "",
-      "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-09-26",
-      "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE90Tm1iSENWcGM4Yk5lNWZ2WlpKQXJKTUFzVXFYWmEydEdQX0h0X2hSbmUtbHpxcHlFZVZya1JrbVF6NWtwSW9wWWdXckZQY1U?oc=5",
-      "source": "v.daum.net",
-      "title": "손예진, '붕어빵' 子가 직접 찍어준 사진 공개→추석 인사로 '스캔들' 시청 당부까지 [RE:스타]",
-      "region": "",
-      "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-09-26",
-      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQSkN6NHBtRmVqYkQtSWZiOEtvaktfaU5qMkZ5a2hPSjBxVUhvd1V4REFaVmtGc3hfVFJ6SWVMTHlOWlFla2c5aW9kanZKYjFCUUxTMnZNQjQ5cnI3RG9EZVNpNnFFU19QMGh3RURwdFlpTmsxUUwxZVo2YlBhX2JrQlJyN1A2WjNCajNreDJmNVh1dE16dHh1UEVHbGc3bzc4YXlpQzczWm9yLXZBbV9mam1JbGJ5c2UtTUHSAboBQVVfeXFMUEpDejRwbUZlamJELUlmYjhLb2pLX2lOajJGeWtoT0owcVVIb3dVeERBWlZrRnN4X1RSekllTEx5TlpRZWtnOWlvZGp2SmIxQlFMUzJ2TUI0OXJyN0RvRGVTaTZxRVNfUDBod0VEcHRZaU5rMVFMMWVaNmJQYV9ia0JScjdQNlozQmoza3gyZjVYdXRNenR4dVBFR2xnN283OGF5aUM3M1pvci12QW1fZmptSWxieXNlLU1B?oc=5",
-      "source": "tvreport.co.kr",
-      "title": "손예진, ‘붕어빵’ 子가 직접 찍어준 사진 공개→추석 인사로 ‘스캔들’ 시청 당부까지 [RE:스타]",
-      "region": "",
-      "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-09-26",
-      "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE1xYWJwVWhuUlllWmllUGRsS2NuakhzODNqYW9ZZFpmQThNNXVOdUNDZGhNVGhocWNkend6Nk82blUzcUYzWHVnX01DNA?oc=5",
-      "source": "v.daum.net",
-      "title": "손예진, '붕어빵' 子가 직접 찍어준 사진 공개→추석 인사로 '스캔들' 시청 당부까지 [RE:스타]",
-      "region": "",
-      "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-09-26",
-      "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFAxSkJIUjdHVDUxaFI3NnN0TmVnSGRJMGtJX3VQNVQ4cGFjUjRvSmpZXzV4VnM2bzUtcUFUNTVPZXdkRjdiWmlUZzVnVnNlVWt5amNpMA?oc=5",
-      "source": "Daum",
-      "title": "손예진, '붕어빵' 子가 직접 찍어준 사진 공개→추석 인사로 '스캔들' 시청 당부까지 [RE:스타]",
-      "region": "",
-      "kinds": [],
       "people": [],
       "hit": false
     }
