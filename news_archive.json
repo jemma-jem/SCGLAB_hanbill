@@ -1,9 +1,285 @@
 {
-  "updated_at": "2026-10-21T03:44:55.736Z",
+  "updated_at": "2026-10-22T03:43:44.773Z",
   "source": "Google News RSS",
   "query": "\"전기요금\" OR \"한전\" OR \"전자청구서\" OR \"에너지바우처\" OR \"에너지정책\" OR \"도시가스\" OR \"가로등\" OR \"보안등\" OR \"시설물관리\" OR \"도로조명\" OR \"탄소중립포인트\" OR \"에너지 마일리지\" OR \"종이고지서\" OR \"모바일 고지서\" OR \"건물에너지관리솔루션\" OR \"전자문서중계사업자\" OR \"구좌분리\" OR \"도로과\" OR \"전수표찰\" OR \"에너지 절감 정책\" OR \"우리집 에너지 컨설팅\" OR \"빗물받이 관리 솔루션\" OR \"수목관리솔루션\" OR \"LPG 배관망\" OR \"마을 LPG 배관망\" OR \"LPG 소형저장탱크\" OR \"소형저장탱크\" OR \"LPG 판매사업자\" OR \"LPG 공급사업자\" OR \"액화석유가스 판매\" OR \"LPG 충전소\" OR \"LPG 안전점검\" OR \"LPG 고지서\" OR \"LPG 정산\" OR \"조아테크\" OR \"엔콤\" when:3d || (\"포인트\" OR \"마일리지\" OR \"전수조사\" OR \"탄소중립\" OR \"탄소절감활동\") (\"지자체\" OR \"지방자치\" OR \"지방정부\" OR \"시청\" OR \"도청\" OR \"군청\" OR \"구청\" OR \"한전\" OR \"한국전력\" OR \"전기요금\" OR \"에너지\") when:3d || \"가로등 교체\" OR \"보안등 설치\" OR \"LED 가로등\" OR \"스마트 가로등\" OR \"안심가로등\" OR \"등기구 교체\" OR \"도로조명 정비\" OR \"가로수 정비\" OR \"가로수 전정\" OR \"가지치기\" OR \"수목 병해충\" OR \"조경수 관리\" OR \"가로수 식재\" OR \"수목관리\" OR \"빗물받이 청소\" OR \"우수받이 정비\" OR \"침수 취약지역\" OR \"공공건물 에너지\" OR \"그린리모델링\" OR \"녹색건축물\" OR \"에너지 진단 사업\" when:3d || (\"인사발령\" OR \"정기인사\" OR \"전보 발령\" OR \"과장 전보\" OR \"국장 전보\" OR \"조직개편\") (\"시청\" OR \"군청\" OR \"구청\" OR \"도청\" OR \"지자체\" OR \"시장\" OR \"군수\" OR \"구청장\") when:3d || \"LPG\" (\"요금\" OR \"고지\" OR \"정산\" OR \"청구\" OR \"판매사업자\" OR \"공급사업자\" OR \"충전소\" OR \"배관망\" OR \"소형저장탱크\" OR \"안전점검\" OR \"협회\") when:3d",
   "count": 320,
   "articles": [
+    {
+      "title": "농협카드, 도시가스 자동납부 지역 확대…경남·경북·전북 15개 시·군 추가",
+      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9aWG1fT3ZQT2xtazFTQXpMNDBNcFVQaUlTYjRCQV9paTgzOERXRnFaR0dnWWowT2dDVXpMa2FELVZ5QTFzNFdzdmNKWEFqYkhPcXVvSGhrV2xSZw?oc=5",
+      "date": "2026-10-22",
+      "source": "농민신문",
+      "category": "local",
+      "summary": [
+        "농협카드, 경남·경북·전북 15개 시·군 도시가스 자동납부 확대함",
+        "공과금 자동납부·전자청구 연계 수요 확대, 빌링 제휴 기회 전망"
+      ],
+      "ai": true
+    },
+    {
+      "title": "신한證 \"한전채 사채발행한도 부담 재부각…정상화 유예가 현실적\"",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9CQ2hSaFAzM3h5bHRkRkhoaV9PQVNheFg2QkU4am1rcHZVcEFQU0ZoMEkzbWROa0xVZHZ6OWpZa01la2ZZMUloRy1yVnVNbnZwU0FvbzB0ZkZJUEpLMUxqR214bE0zSVVqR0FSY3pDRlE?oc=5",
+      "date": "2026-10-22",
+      "source": "연합인포맥스",
+      "category": "energy",
+      "summary": [
+        "신한증권, 한전채 사채발행한도 부담 재부각·정상화 유예 현실적 진단",
+        "한전 재무구조 변수로 요금체계 변동성 모니터링 필요"
+      ],
+      "ai": true
+    },
+    {
+      "title": "양양군, 안심가로등 사업 선정…군도 1호선 야간 통행환경 개선",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFByWTZqYVQ5QVNCNDE4R1BLeE5lLVkyWFliLTdzTXRuZnlRYlFjMFduNEZQYXFlMjZBNnZKYzZhTFpDTUlPdkRLNkJXLUpnaEFob0k0RndIVGtOeUl3bGJDR9IBYEFVX3lxTFByWTZqYVQ5QVNCNDE4R1BLeE5lLVkyWFliLTdzTXRuZnlRYlFjMFduNEZQYXFlMjZBNnZKYzZhTFpDTUlPdkRLNkJXLUpnaEFob0k0RndIVGtOeUl3bGJDRw?oc=5",
+      "date": "2026-10-22",
+      "source": "연합뉴스",
+      "category": "local",
+      "summary": [
+        "양양군, 안심가로등 사업 선정·군도 1호선 야간 통행환경 개선함",
+        "지자체 가로등 전력설비 사업, 지방정부 협력 접점 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "베트남, 전기요금 5단계 누진체계 조기 도입 추진…가구 94% 전기료 절감효과",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1mLVpCbEpUd3lFOXprU3VIZG9oUG43a284NGtXdGVTdnh3Qkg5QllvN29oU1Q1RFVwSk94eDhGNG4xTkZveUFhemJ2Y0I0TXNzbkJwX3NXMmZaRFRWUmk3c2JJcUs5WllfdGppNA?oc=5",
+      "date": "2026-10-22",
+      "source": "인사이드비나",
+      "category": "energy",
+      "summary": [
+        "베트남, 5단계 누진 전기요금 조기 도입·가구 94% 요금절감 추진",
+        "누진제 개편 해외사례, 요금 구조 변화 흐름 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "완주군, 도시가스 취약지 LPG 소형 저장탱크 보급",
+      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNTDVqOXNEenpyOUJLZzYtUUJ3djd4anlfX1RBM0tscmp4UWhxQ2owQVRqM2NBVXNfVG13X2tQZzRYVkJYMWtKVWp1dG96Y2R4Ym5xdldmeHlXMTVTdC1MX1EyZVZXSmlrMDZhaE9IUWJ6MUhyN3NzbS1semNqWHdic3JpQ2F2a3M?oc=5",
+      "date": "2026-10-22",
+      "source": "전북도민일보",
+      "category": "energy",
+      "summary": [
+        "완주군, 도시가스 취약지에 LPG 소형 저장탱크 보급함",
+        "에너지 공급 격차 해소 사업, 지자체 공과금 과제 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "[단독] 한전 계산 오류에 뒤늦은 '요금 폭탄'...유치원에 날아온 345만원 청구서",
+      "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5YdGNNSUJVNGdic0tTQ2VVTzVDLTRnYVFCWFBHX2ZqQ2VGNkJTVjVHRFV2N0R0MVZMaDRxNGF2Wm1DY0llZi1fUkRySXNNTjJUallQYy1tZkRTejFY?oc=5",
+      "date": "2026-10-22",
+      "source": "뉴스핌",
+      "category": "energy",
+      "summary": [
+        "한전 계산 오류로 유치원에 345만원 요금 폭탄 뒤늦게 청구됨",
+        "청구 정확성·투명성 이슈, 전자청구 신뢰도 강조 포인트"
+      ],
+      "ai": true
+    },
+    {
+      "title": "누적 수주 1조 넘긴 LG전자 스마트팩토리, 에너지·인프라로 영역 확대",
+      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE92N0tob0xHa3RoLTRXdzVQWURWZjVJRWNRa3ZDWXhQcHVCcnhoaWkyb0QxVTl3S0MtUkxWMUtyeWJ2U3RFM29WNVM3Z1VUNXpOalZGb0l3?oc=5",
+      "date": "2026-10-22",
+      "source": "지디넷코리아",
+      "category": "energy",
+      "summary": [
+        "LG전자 스마트팩토리 누적 수주 1조 돌파·에너지 인프라로 확대",
+        "에너지 신산업 디지털화 흐름, 솔루션 시장 확대 전망"
+      ],
+      "ai": true
+    },
+    {
+      "title": "새벽 가로등없는 도로서 경운기 치어 사망사고 낸 운전자 유죄",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE4zX3VCNlNrMlJiU19yS2FoVEJiMnVTS1o0M0U2N0dWazE0RWl6ZG13cnpLSGI0aThkNXJXZ2Ztc3A3d040cVFWcmhwUjFVUE5CY0dDdjNub3pBMVFGWkR3SdIBYEFVX3lxTE4zX3VCNlNrMlJiU19yS2FoVEJiMnVTS1o0M0U2N0dWazE0RWl6ZG13cnpLSGI0aThkNXJXZ2Ztc3A3d040cVFWcmhwUjFVUE5CY0dDdjNub3pBMVFGWkR3SQ?oc=5",
+      "date": "2026-10-22",
+      "source": "연합뉴스",
+      "category": "local",
+      "summary": [
+        "새벽 가로등 없는 도로서 경운기 사망사고 낸 운전자 유죄 판결",
+        "가로등 미설치 안전 이슈, 지자체 설비 수요 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전KDN, 전남·광주 에너지 신산업 육성에 기술·사업화 지원",
+      "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE12ZWVZNnJaRGhMaVpWY2NWbDZ3aGpIMkk4SlZYUHdhSzZKLUt6VENyVFFERnd0SzVXZXFJRk1XMGdEc3dubG1nWmFmQmQwYU9fcGZXNEI0VVlPTVZXX3dpUEpiWQ?oc=5",
+      "date": "2026-10-22",
+      "source": "환경포커스",
+      "category": "energy",
+      "summary": [
+        "한전KDN, 전남·광주 에너지 신산업 기술·사업화 지원함",
+        "한전 계열 지역 에너지 사업 확대, 협력 동향 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "\"한전채, 2029년까지 발행한도 2배 못 맞춰…투자 유의\"",
+      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9VZzBka282QWhNWDVnRE9MbTI1ZHVkSWVOTTVTMVlhTlNURXpZb1hOZDVCamRrUmJpUS1fTFRjc0JtSXB4dW5MY1FpVklGZlkwa0hhbGlOQWhqaTJuREE?oc=5",
+      "date": "2026-10-22",
+      "source": "뉴스투데이",
+      "category": "energy",
+      "summary": [
+        "한전채 2029년까지 발행한도 2배 미달·투자 유의 전망 제기됨",
+        "한전 재무 리스크 지속, 요금 정책 영향 주시 필요"
+      ],
+      "ai": true
+    },
+    {
+      "title": "에이블런, 삼양홀딩스·SH·한전KPS 등 AI 에이전트 AX 전환 지원 성과 공개",
+      "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9sR3dwLUdraW1hWVdwWGhkamt4dlR2UVh0V2ZYMHR0eWdTN3hrellBMThlU2ROQTVBc0t3Z0NnVFBhdTZyT1lhY0dHcjI2VkpjUXJwLU8zR3ZGZFVzUm9R?oc=5",
+      "date": "2026-10-22",
+      "source": "헬로티",
+      "category": "energy",
+      "summary": [
+        "에이블런, 한전KPS 등 AI 에이전트 AX 전환 지원 성과 공개함",
+        "공기업 AI 전환 가속, 빌링·고객응대 자동화 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "영등포구, 다회용컵 쓰면 300원 적립… 탄소중립포인트 제공",
+      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE90dV9XUkJWWS1sbWE2RVNONEx3YXpYaDE0a1J3Q0N6YVEtaVB4OHNWS1dSaWVWSUFIdDgyNEEzdjJrLWp3SVJZaF94a0pMT0hEWHdGdGpXTjlxSndHRFpSYlJMRTJzMVZ0alY5enZCdzE3QU3SAXdBVV95cUxPQ3B0RlE1YXZqbk0xdENtVDRnZlA2bThkSlhIUTJzdFV6NjI4a3VHUUl5SXFIbEpPUHpZSFlNWmg1aTBOUlhWS3puY1kwRE5Ua1U0ZXpTb2Uwa2pBUUQ3dVpKOGcza180VlUxTTBERHh6czhxTURkSQ?oc=5",
+      "date": "2026-10-22",
+      "source": "핀포인트뉴스",
+      "category": "local",
+      "summary": [
+        "영등포구, 다회용컵 사용시 300원 탄소중립포인트 적립 제공함",
+        "지자체 탄소중립 인센티브 사업, 포인트 연계 모델 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "서해구·한전 서인천지사, 도서지역 정전 대응 업무협약",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBnQXM4dUFVWkhpOWZmSXB4WkZqNC1MUGphbjFScllXaXJ5RUNsSU1sVC1fVVVDdWFkQWhmNHFTVHVCdU45RkVCZlpaTlRqeU96TTBDa0ZLYklBejlpQUtKTg?oc=5",
+      "date": "2026-10-22",
+      "source": "메트로신문",
+      "category": "energy",
+      "summary": [
+        "서해구·한전 서인천지사, 도서지역 정전 대응 업무협약 체결함",
+        "지자체-한전 협력 모델, 지역 사업 접점 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전KDN, 전남·광주 동반성장협의체 참여…에너지 신산업 육성 지원",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1uZVJFSXYwdk9MdEozb2RRUHNURGZFUUFTaFcxQmlCWnRDNklmVkVXTlRwVldaQ3piRUVDUmRFMzZKcVAtVnBsbFMwQzNyRXZEbFhkOWxVc0xHaGpNUUFjR3hJdlNXbE9pQjMw?oc=5",
+      "date": "2026-10-22",
+      "source": "일간투데이",
+      "category": "energy",
+      "summary": [
+        "한전KDN, 전남·광주 동반성장협의체 참여·에너지 신산업 지원함",
+        "한전 계열 지역 동반성장 흐름, 협력 기회 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "충남도 ‘탄소중립 실천’ 지방정부·기업 협력 넓힌다",
+      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOd2FwWTgwNjRndXNkMDBDZ0tteE93d2Z3REZDaW9vcHJ4WGh3elZadjYwMEZvdURwRS1YRVYzZEJleFluQm5yZExjTWJLd2N4blpucnkzSmNQYWdoTjVkSFc0M3VXeU8yQ3pYS0FyRm1yV2QwdVNPNG9XbHRWWGg4YWlUSExZZHFHOU9iTEozMjNNSnU0b1FHQjJITV9OampteHc?oc=5",
+      "date": "2026-10-22",
+      "source": "SNS 타임즈",
+      "category": "local",
+      "summary": [
+        "충남도, 탄소중립 실천 위해 지방정부·기업 협력 확대함",
+        "지자체 탄소중립 협력 확대, 에너지 사업 연계 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "양양군, 안심가로등 사업 선정…군도 1호선 야간 통행환경 개선",
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFB6VU16aGx1cE1SRHUzM2NZdjRWOGVKeWVqRUdUZVpyS1hnUzFOQU5YbnYweXhwSjJsMG5kNlJlVV9zRl8ydlRDNkgtSE14QlducWIyQmk3VEN2MGfSAWBBVV95cUxQclk2amFUOUFTQjQxOEdQS3hOZS1ZMlhZYi03c010bmZ5UWJRYzBXbjRGUGFxZTI2QTZ2SmM2YUxaQ01JT3ZESzZCVy1KZ2hBaG9JNEZ3SFRrTnlJd2xiQ0c?oc=5",
+      "date": "2026-10-22",
+      "source": "연합뉴스",
+      "category": "local",
+      "summary": [
+        "양양군, 안심가로등 사업 선정·군도 1호선 야간 통행환경 개선함",
+        "지자체 가로등 전력설비 사업, 지방정부 접점 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "양양군, ‘2026년 안심가로등 플러스지원사업’ 선정 … 태양광 가로등 18본 설치",
+      "url": "https://news.google.com/rss/articles/CBMiR0FVX3lxTE1kMDMtQ0ZGZF9fZzE1NGJpeHJ0YUI4TVc1SV9fODdsaHhyYWMxdUtPNU12YmczU0gtZ0g0akNtbjZIM1RySWdN?oc=5",
+      "date": "2026-10-22",
+      "source": "시사줌뉴스",
+      "category": "local",
+      "summary": [
+        "양양군, 2026년 안심가로등 플러스사업 선정·태양광 가로등 18본 설치",
+        "지자체 태양광 설비 확대, 재생에너지 사업 동향 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "양양군, 노후 가로등 18본 태양광으로 바꾼다… 안심가로등 플러스 공모 선정, 사업비 전액 지원",
+      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5mNFU2cHNzaW1XUWJwWDh4MWI4ZF84YUdpOTdRYUtBTGx5cjNYMFVqdS1sbWRfZnhFV1I3VTQ3c0UtbUdpQkU4Zm9FdGplSWRYcndXY3V5YTjSAVhBVV95cUxOZjRVNnBzc2ltV1FicFg4eDFiOGRfOGFHaTk3UWFLQUxseXIzWDBVanUtbG1kX2Z4RVdSN1U0N3NFLW1HaUJFOGZvRXRqZUlkWHJ3V2N1eWE4?oc=5",
+      "date": "2026-10-22",
+      "source": "아주경제",
+      "category": "local",
+      "summary": [
+        "양양군, 노후 가로등 18본 태양광 교체·사업비 전액 지원받음",
+        "지자체 에너지 효율화 사업, 공모 지원 흐름 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "최정호 시장,첫 조직개편…'대전환' 시동",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFAtdGtyWG8wSVRqWkNTRUZBOUFFR3pjeHNlWE5Cci1TOWRGd1lNdnVzbk8yRTA5UHR2emZ0WWQxaWNYVV9LQUhTSTFvX2kzckFKalhvNTZDSnlzd2g4YjRTN2RkUmQ1Yjc4cGdFd2h4akdOQQ?oc=5",
+      "date": "2026-10-22",
+      "source": "익산열린신문",
+      "category": "local",
+      "summary": [
+        "최정호 익산시장, 첫 조직개편으로 대전환 시동함",
+        "지자체 조직개편 동향, 지역 사업 창구 변화 주시"
+      ],
+      "ai": true
+    },
+    {
+      "title": "삼례 용전마을 79세대에 LPG 저장탱크·배관망 구축",
+      "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9mYTMzYmFnSXNjbFU0SGppcVlvUG9abmdHR09FTXhnRUROcl9YOUdpak1kZHUyV3VWTEhoTEVlVDgyOW42ci1ZNS1jWi1SVzU2YnMtcnlmVGhhQ3NwWmdv?oc=5",
+      "date": "2026-10-22",
+      "source": "완주신문",
+      "category": "energy",
+      "summary": [
+        "삼례 용전마을 79세대에 LPG 저장탱크·배관망 구축함",
+        "에너지 공급 격차 해소 사업, 지자체 과제 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "완주군, 도시가스 취약지 LPG 소형 저장탱크 보급",
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFB3YmMyb0Y4X240YjdyMEtEQ3kyemFkUUkxUlc1bzd3V0JHZzA0QUFuZW5nNDgzU3dNb0RURGtFUko5UjMzeDN3Q19yYzhHaFJpUW5uQ05ZSDItZDhyQzl0cEdHS214UQ?oc=5",
+      "date": "2026-10-22",
+      "source": "전북투데이",
+      "category": "energy",
+      "summary": [
+        "완주군, 도시가스 취약지에 LPG 소형 저장탱크 보급함",
+        "에너지 공급 취약지 지원, 지자체 공과금 과제 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "[완주군] 도시가스 취약지 LPG 소형 저장탱크 보급 확대",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBvTnJGcFViMlRvTEtmNGEtMFNJNjluS2JYZjRySlFNd3Y5MjVXR0Z4c3dfTnIwbkxqa3c5MUd2eFhFc2xBaVY1RVVWVVgyeFdDeFZlNnBHclRHYmZOTUZ5Ukp6c0VlRXpw?oc=5",
+      "date": "2026-10-22",
+      "source": "투데이안",
+      "category": "energy",
+      "summary": [
+        "완주군, 도시가스 취약지 LPG 소형 저장탱크 보급 확대함",
+        "에너지 격차 해소 사업 확대, 지역 공급 동향 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "삼례 용전마을 79세대에 'LPG 배관망' 구축",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5KMjBPN05icFB6Q2JDbmU0Q0tueGlSQ0ZVR1J2djRQeXNlNEdEbGJ3TGYwZEtIZlh5S3dRQUkwME1rSUNYcFh2VDduNW1tWG9mWVFmaU1CajdjZkRhS183Q2ZROXU4aVRnc1dCUWVhbng?oc=5",
+      "date": "2026-10-22",
+      "source": "SK브로드밴드 회사소개",
+      "category": "energy",
+      "summary": [
+        "삼례 용전마을 79세대에 LPG 배관망 구축함",
+        "지역 에너지 인프라 확충, 지자체 사업 참고"
+      ],
+      "ai": true
+    },
     {
       "title": "“공급만 하는 도시가스사에 재생열 의무?”…산업부·기후부 정면 충돌",
       "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1CM0xBeGI0VzVCb3VZVWpRcFZEaWxpa0FJelJuTm1vYXFtZ0l6Tkg2OHR3S3Q1TF9wVEtnaEtwcFVTdG5Tcy04WmVuTzlzdE8xWUx0M2V5cHcybmc?oc=5",
@@ -325,6 +601,258 @@
       "summary": [
         "부천시 가을철 호우 대비 빗물받이 낙엽 제거 전담반 가동함",
         "지자체 생활밀착 행정 사례, 시민 대상 서비스 접점 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "[단독] 한전, ‘사회공헌’ 지역별 편중…“배분 기준 공개해야”",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBLUlVYUmF5S1FsNmx2Ujl1dm90SXhWNmFHLVdhY19vV1ZXMmpBREk0eE5fcTRJNWJ1UmN0eVdpcG9seE40YXVaeXh3WHhzQXhoNXJuZ0paVmhTbVB0NU1zdXJHNF9MYS1aVmJKWkV2dWE?oc=5",
+      "date": "2026-10-21",
+      "source": "서울신문",
+      "category": "energy",
+      "summary": [
+        "한전 사회공헌 지역별 편중·배분 기준 공개 요구 제기됨",
+        "한전 투명성 이슈, 공공 신뢰 관련 동향 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "제천시의회, 학생 통학 불편·도시가스 공급 격차 해소 촉구",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE05aVZ0b0lON1hpNUhQX1VJXzVKM0xDTFMwVUxJU0lDZE5UVzNIRTZYSG1VcDRsQnFNWU9xWm04SDlGb0VPOEhsYmZQU2lrNnJqVmNzVW41LWUzOTRpSzNXczZsZU5vR0VwTTZsZWRUQks?oc=5",
+      "date": "2026-10-21",
+      "source": "신아일보",
+      "category": "energy",
+      "summary": [
+        "제천시의회, 통학 불편·도시가스 공급 격차 해소 촉구함",
+        "지자체 에너지 공급 격차 이슈, 지역 사업 과제 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "박승원 광명시장, 탄소중립 지방정부 지원 국가사업 신설 건의",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9GRzRSWXBTSE1qWEprU2tNQnk2VVBOVW5QOTdXRGZXN0xZblptdTR0V0pKRXRGa0xpRExZVDFORUVCb3B1dWgzdThKUnU2WTZPb0F4WktvVzV0WE5PR2M5S2RZNFR0Q1ZxUloxajZ3?oc=5",
+      "date": "2026-10-21",
+      "source": "국제뉴스",
+      "category": "local",
+      "summary": [
+        "박승원 광명시장, 탄소중립 지방정부 지원 국가사업 신설 건의함",
+        "지자체 탄소중립 사업 확대 시 빌링 연계 서비스 수요 전망"
+      ],
+      "ai": true
+    },
+    {
+      "title": "천안서 탄소중립 국제컨퍼런스 개막…지방정부·기업 협력 모색",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFBGazh0QjhVamlRVUliUWN3Sll4cmhhelJqek1OTXBicDdnZWxGMWZWLVpfbUNoTzhCbUg1Wnh2eE1LQUlWM2pRQjFXV1BGdEppM3JsXzZXN1gta2ZfaTVvN2hkSU80cUlRS0Y3cFdQd1pwUQ?oc=5",
+      "date": "2026-10-21",
+      "source": "프라임경제",
+      "category": "local",
+      "summary": [
+        "천안서 탄소중립 국제컨퍼런스 개막, 지방정부·기업 협력 모색함",
+        "지자체·기업 에너지 협력 확대로 전자청구 제휴 기회 모색"
+      ],
+      "ai": true
+    },
+    {
+      "title": "박승원 광명시장 '탄소중립 선도 지방정부 100' 신설 제안",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBUT1FOcVFJY19vN0hNX1pQNXdNTTRaWW5xbFpzRFdKZ2pVS29ac0VRaUlRR0t5eEpienI0amZZWGlZcG5xb1BXVXpvcHNEanIzSm1SOGVHYVZ4M09QRVNEa0hOWGI3TE5ZUGlFTkNwV3M?oc=5",
+      "date": "2026-10-21",
+      "source": "인천일보",
+      "category": "local",
+      "summary": [
+        "박승원 광명시장 '탄소중립 선도 지방정부 100' 신설 제안함",
+        "선도 지자체 지정 시 에너지 관리·빌링 서비스 접점 확대 전망"
+      ],
+      "ai": true
+    },
+    {
+      "title": "\"버려지는 열, 산업·농생명 에너지로\"… 새만금 탄소중립 실증 무대로",
+      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE1qVGhGVWVQb2tWckpTeVM4VGxmY3Z4NjQzTE5BREpxUHdhWkJKZTF0R2xuLXJKWUJrdlpRdGlxY0xfN1dQQnNMWkF0RG5oWVRHWU5HWGl6bzJuUUdBMG1adWVRS1ZRTE4xOVowS2JKeGFHOWfSAXNBVV95cUxNalRoRlVlUG9rVnJKU3lTOFRsZmN2eDY0M0xOQURKcVB3YVpCSmUxdEdsbi1ySllCa3ZaUXRpcWNMXzdXUEJzTFpBdERuaFlUR1lOR1hpem8yblFHQTBtWnVlUUtWUUxOMTlaMEtiSnhhRzln?oc=5",
+      "date": "2026-10-21",
+      "source": "한국일보",
+      "category": "local",
+      "summary": [
+        "새만금, 버려지는 폐열을 산업·농생명 에너지로 활용 실증 추진함",
+        "에너지 재활용 확산 등 전력 수요 구조 변화 동향 주목"
+      ],
+      "ai": true
+    },
+    {
+      "title": "탄소중립 국제협력 확대…지방정부·기업 대응 전략 모색",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5vc2piS0pQRFlRcHh2aHpjc3ZZenpJSU5JTzkxN3NDMUl2dC14UUI0bGV5WlhacXhzRVJmc1dnclZaLWxaRFpmSlNFd3JHb3I5OE9VTWtoVjNib205TkNZWmtJV2FUSFFFRnBDNGV3?oc=5",
+      "date": "2026-10-21",
+      "source": "뉴스홈(newshome)",
+      "category": "local",
+      "summary": [
+        "탄소중립 국제협력 확대, 지방정부·기업 대응전략 모색함",
+        "지자체 에너지 정책 강화로 전자청구 수요 기반 확대 전망"
+      ],
+      "ai": true
+    },
+    {
+      "title": "충북도청으로 탄소중립 주말 나들이 오세요!",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE12WUEwbkpBOHNpTHVnbVpoeWxqa3E5TTVndGc5M3BVTWl3dm9nclFyQnFlb1p2R0xkSnNGdlR0NVBqN3Blc3dCcUlGMTJxVFIyTzR1a08yckV1TGMtN1liSi1obDJkYTRkalRWQmNic1Y?oc=5",
+      "date": "2026-10-21",
+      "source": "모빅경제",
+      "category": "local",
+      "summary": [
+        "충북도청서 탄소중립 주말 나들이 행사 개최함",
+        "지자체 탄소중립 홍보 활성화로 주민 접점 사업 연계 여지"
+      ],
+      "ai": true
+    },
+    {
+      "title": "전북연구원, \"버려지던 열\" 새만금에서 에너지로…탄소중립 실증 거점 제안",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE44TmF0clFzYi1FNEhfRWctSDZNMTZyaXpBbXEtT2txMHZyd2M1NVVyQ0ZSUU9GZzdiNHp0NE1pUjN4eWJ5Y3dRbzV3QVE5RUhRM2pkS3VHb19VRFJNdkl0T1ItMFNqRG5ndC0wekNB?oc=5",
+      "date": "2026-10-21",
+      "source": "국제뉴스",
+      "category": "local",
+      "summary": [
+        "전북연구원, 새만금 폐열 활용 탄소중립 실증거점 제안함",
+        "지역 에너지 실증사업 확대 등 정책 동향 주목"
+      ],
+      "ai": true
+    },
+    {
+      "title": "충남도, 탄소중립 국제협력 확대… 지방정부·기업 한자리에",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5mbGRSNDd5MVJwMGoycFlUdWpLRGdDWk1nbkJaSk9sWjNoWEFOYlJESXpGMk5KWm5tTDM1eW5tY0pYZ3c0cDRUU0xEN1BORzl5N01uMURVVjY4dGl0YVZVaGMyLWEtQnVqcFh6Mw?oc=5",
+      "date": "2026-10-21",
+      "source": "충청도민일보",
+      "category": "local",
+      "summary": [
+        "충남도, 탄소중립 국제협력 확대 위해 지방정부·기업 소집함",
+        "지자체 주도 에너지 협력 강화로 빌링 제휴 접점 모색"
+      ],
+      "ai": true
+    },
+    {
+      "title": "[로컬라이프] 박승원 광명시장, 김성환 기후부 장관 만나 ‘탄소중립 선도 지방정부 100’ 국가사업 신설 건의",
+      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE04VXl6d0RpZkFVamR2YkVDQ29tVmRJWkcyR1RBWmo2LUhYXzZqUEI1ZmZUXzVDRWcxU0FNdTlYX0pMdmNiX2hNYi1pbFpsRFF5SU9QZFFUQTdETndTRUHSAV5BVV95cUxPUmQ2SURBTlJTMTExODRodHk0aHRIbHc2azdWUlVQOUxBVWVXQUx2SWU5bkRzcTU4OTEzWklzT2RRQjR5VFY2TldiZmtyOU5SblJLWjZVUFhJSXdLWFBB?oc=5",
+      "date": "2026-10-21",
+      "source": "로컬라이프",
+      "category": "local",
+      "summary": [
+        "박승원 광명시장, 김성환 기후부 장관에 지방정부 100 건의함",
+        "기후부-지자체 협력 본격화로 에너지 서비스 수요 확대 전망"
+      ],
+      "ai": true
+    },
+    {
+      "title": "가입만 해도 상품권 당첨 기회가! 창원시 탄소중립포인트제 신규 가입 이벤트",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1tWllDaDdzZC1xOXZPVEhhbFpHcDBIT1Q2R2FUQkp2S2JYa0xCMHNOLXRtRzdUa0NzSU9HQW0wdE9WdUs2dmVmaUxZSUNJTlVFbXU4cjBIOXNKUEJHekI4Q1F4THZJQzNk0gFoQVVfeXFMTW1aWUNoN3NkLXE5dk9USGFsWkdwMEhPVDZHYVRCSnZLYlhrTEIwc04tdG1HN1RrQ3NJT0dBbTB0T1Z1SzZ2ZWZpTFlJQ0lOVUVtdThyMEg5c0pQQkd6QjhDUXhMdklDM2Q?oc=5",
+      "date": "2026-10-21",
+      "source": "경남뉴스통신",
+      "category": "local",
+      "summary": [
+        "창원시, 탄소중립포인트제 신규 가입 상품권 이벤트 진행함",
+        "탄소중립포인트 연계 등 주민 대상 전자고지 접점 활용 여지"
+      ],
+      "ai": true
+    },
+    {
+      "title": "‘탄소중립 실천’ 위한 지방정부·기업 손잡는다…‘국제기후협력·규제 대응’ 집중",
+      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE44eGNreXpmVnNfeC1RTzlzZWxoTFBYd0d6YWNWYTBEY1lPX2dDbXNsWGQtZEE1N3QxRVdWcmEzMWZWLXBWUkpacS1JOHBnRUVSekZjVFhYWi1VbHo3Qm1tMW9mS2dKZjExdFhUM2Q4bzJVeFHSAXNBVV95cUxOOHhja3l6ZlZzX3gtUU85c2VsaExQWHdHemFjVmEwRGNZT19nQ21zbFhkLWRBNTd0MUVXVnJhMzFmVi1wVlJKWnEtSThwZ0VFUnpGY1RYWFotVWx6N0JtbTFvZktnSmYxMXRYVDNkOG8yVXhR?oc=5",
+      "date": "2026-10-21",
+      "source": "대전투데이",
+      "category": "local",
+      "summary": [
+        "탄소중립 실천 위한 지방정부·기업 협력, 기후규제 대응 집중함",
+        "규제 대응 수요 증가로 에너지 데이터·빌링 연계 기회 전망"
+      ],
+      "ai": true
+    },
+    {
+      "title": "'쓰레기통' 된 빗물받이...\"바다로 가기 전에 막아야\"",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1fV0lPMnNiZXJOYlc0b0hhV2hzTklmc3BPOHRLNjg5dkdaQXZkZ1ZIYWR0TWhMSF9IcFI4QWk1cGNIcC1aUHhXS2dKd0RiaWswUXlXTWdtMkNLblI1SDJYeU5IcVJZYnE0WHlVcWhn0gFyQVVfeXFMUFJ1d1lBM0E5dEdkWEEyTlp5UFhSdHhGaFFVdnp4STFpNl9VZjk4TmREamJJY2lKZ3d6VXk5QTZYblRVUmZUT2M1cnJBdzB4aC00QzRnVHhSNEZFbmdHaDRZdFdKOHlNV1BDc281T1IxREl3?oc=5",
+      "date": "2026-10-21",
+      "source": "뉴스펭귄",
+      "category": "energy",
+      "summary": [
+        "빗물받이 쓰레기 투기 문제, 바다 유입 전 차단 필요성 제기함",
+        "환경 관리 이슈 등 지자체 생활환경 정책 동향 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "금산천 잡초 제거·가로수 정비…금산 도심환경 확 달라졌다",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5Ld2FEN3dKYXhDWXcxNGNuaUYwWVA5SjBGZEd6RUc0Wm45MzFlS2w0NmVwbjhRbGlvVk1FSmlUNURFVl81cFItZFdYTnM3OTItcUp0UnZvNWhFeUZjNnNMUWZvYUtRd0w3ODFpTmpn?oc=5",
+      "date": "2026-10-21",
+      "source": "금산중앙신문방송",
+      "category": "local",
+      "summary": [
+        "금산천 잡초 제거·가로수 정비로 도심환경 개선함",
+        "지자체 환경정비 사업 등 지역 행정 동향 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "경남적십자사, 북부경남 LED 보안등 설치사업 시행",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE40bm1qVnFrYzhOa254aE52dkxEN29wRGxBb1VTTEdxaFVUaW9FbGNiTEpGa1dPOF93WVQ5UlVwbUNvU2xwWU1KX2FZdkQ4OUtHQ2wxRXhjaXFFTmlQRFRTQkJxc01YbEhnMERZ?oc=5",
+      "date": "2026-10-21",
+      "source": "경남일보",
+      "category": "local",
+      "summary": [
+        "경남적십자사, 북부경남 LED 보안등 설치사업 시행함",
+        "지역 전력설비 LED 전환 등 에너지 효율화 동향 주목"
+      ],
+      "ai": true
+    },
+    {
+      "title": "[2026행감] 법도 지침도 무시한 김포시청소년재단… 시장 승인 없는 `불법 인사` 강행 파문",
+      "url": "https://news.google.com/rss/articles/CBMiQkFVX3lxTE5LSmw4akZpam5nLVd3UE9tN3lScWJtcHd6bzBRUjJXUmlxeXl3R0xZaHh4VzJwYm16OXZuVXRsX3Y5dw?oc=5",
+      "date": "2026-10-21",
+      "source": "김포시민신문",
+      "category": "local",
+      "summary": [
+        "김포시청소년재단, 시장 승인 없는 불법 인사 강행 파문 발생함",
+        "지자체 산하기관 거버넌스 리스크 등 공공행정 동향 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "전주시 조직개편, 내부 반발에 대폭 수정…\"졸속 추진 도마”",
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE1Lbm1YcEZ2NWZaZER3ejBzakJ0RmhjRWdJYmRHaG4yS0pwZkQteG5telBNMmJNNjBRaTRlbFBHVDF1UUNYMGN2cFpVYkNxT1BNZkJvcm9hVUVXeHc2MWx0WXlmTTc0dw?oc=5",
+      "date": "2026-10-21",
+      "source": "전민일보",
+      "category": "local",
+      "summary": [
+        "전주시 조직개편, 내부 반발로 대폭 수정·졸속 논란 제기됨",
+        "지자체 조직개편 변동 등 공공 파트너 담당부서 변화 주시"
+      ],
+      "ai": true
+    },
+    {
+      "title": "“가격 올려도 적자”…LPG 값 인상에 공급사‧택시업계 ‘동반 한숨’",
+      "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1lWVNaa1NnQUswWDFCdWlWQXRocEN3MVpDNldvUVg1QXFjZlpIZXNLV243Mlk2UE9JSEFxcm9PbmF6NndXR1Q5Mlh0SlZ3ZVdrcExucTNfeElrUUhOMFBnR1NaOA?oc=5",
+      "date": "2026-10-21",
+      "source": "쿠키뉴스",
+      "category": "energy",
+      "summary": [
+        "LPG 값 인상에 공급사·택시업계 적자 지속 호소함",
+        "에너지 가격 상승 등 요금 부담 구조 변화 동향 주목"
+      ],
+      "ai": true
+    },
+    {
+      "title": "가스안전公 서울남부, 수소충전소 가스누출 대응훈련",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9UaGFTVW1WQTdHNl9MNnRwSWc0ekVDNHBtNmhDdUJWSkNRR3k5ZXJ6RlZHMFhEU2E1WHZjRk5OUGNzcmMwdXRwOWpfUXlSWFE0YkVyeENDVkgzT0xmNG5Nd2VVODJhdVY0UGpsUlFiMFlYZw?oc=5",
+      "date": "2026-10-21",
+      "source": "에너지신문",
+      "category": "energy",
+      "summary": [
+        "가스안전공사 서울남부, 수소충전소 가스누출 대응훈련 실시함",
+        "수소 인프라 안전관리 등 에너지 산업 동향 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "박희승 “농촌 에너지 격차 해소해야”…전북도·시군도 책임론",
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5wMlRONTdnV09PRUhmcldFZFRkSWswSjBxSUtHT0lsMzhwQUZMRnVsUXd6T21iTnNtR01DR015bDFQd1BSRGdRMkl1bGZEN2JuQlgwbDZVVkFPU0QzR1lUdTZHRDhPZw?oc=5",
+      "date": "2026-10-21",
+      "source": "전민일보",
+      "category": "energy",
+      "summary": [
+        "박희승 의원, 농촌 에너지 격차 해소 촉구·지자체 책임론 제기함",
+        "농촌 에너지 복지 강화로 지역 전력 서비스 수요 확대 여지"
       ],
       "ai": true
     },
@@ -1445,6 +1973,162 @@
       "ai": true
     },
     {
+      "title": "박승원 광명시장, 기후부 장관에게 '탄소중립 선도 지자체 100' 건의 - 머니투데이",
+      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9NUjI1MExkclYtNHBPaVU1UkgzVGdJLXk2NnNja2NCV2hxTGZHRWZkN3lYaVNXXzI4S0NBbFI0eG1Jemp1RjRRSUlTZTdzSUZ3dEFSX3JhNmZmYUlNTkNZLVRhenNlZTRHRnBMSWtNd9IBb0FVX3lxTE9NUjI1MExkclYtNHBPaVU1UkgzVGdJLXk2NnNja2NCV2hxTGZHRWZkN3lYaVNXXzI4S0NBbFI0eG1Jemp1RjRRSUlTZTdzSUZ3dEFSX3JhNmZmYUlNTkNZLVRhenNlZTRHRnBMSWtNdw?oc=5",
+      "date": "2026-10-20",
+      "source": "머니투데이",
+      "category": "local",
+      "summary": [
+        "박승원 광명시장, 기후부 장관에 탄소중립 선도 지자체 100 건의함",
+        "기후부-지자체 협력 확대로 에너지·빌링 접점 확대 전망"
+      ],
+      "ai": true
+    },
+    {
+      "title": "박승원 광명시장, 김성환 기후부 장관 만나 ‘탄소중립 선도 지방정부 100’ 신설 건의",
+      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTFB2UkllODVwRnRlVjRVelpxcFZscG42YjZhRF9nOFQ2QzJQdXNRcUNGQllEbWZ6Z3dCTmEyZkFZS0pvRG1iRHdxQ0ZxZTAyOGJaWGFZOUtXYmdjR2tBUENkVTl4WHBZQVJYWldwZkc1b0I2bVFU0gF0QVVfeXFMUHZSSWU4NXBGdGVWNFV6WnFwVmxwbjZiNmFEX2c4VDZDMlB1c1FxQ0ZCWURtZnpnd0JOYTJmQVlLSm9EbWJEd3FDRnFlMDI4YlpYYVk5S1diZ2NHa0FQQ2RVOXhYcFlBUlhaV3BmRzVvQjZtUVQ?oc=5",
+      "date": "2026-10-20",
+      "source": "이뉴스투데이",
+      "category": "local",
+      "summary": [
+        "박승원 광명시장, 김성환 장관 만나 선도 지방정부 100 건의함",
+        "선도 지자체 국가사업화 시 전자청구 연계 수요 전망"
+      ],
+      "ai": true
+    },
+    {
+      "title": "주말 충북도청서 탄소중립문화제 열린다",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5MamlNVnFtQ1dIUVk2c1V2c3B0bFluMVhXeGlfR0hnUl9reWZfbGJsWHhXYXJFSE4tdlktZjRDQWhrOXBHYWhjUXd3Qm9mY2tqMF9ra0Q0VUNnV0xCNUU0UVlqckRodlNsS0J2OENn0gFuQVVfeXFMTkxqaU1WcW1DV0hRWTZzVXZzcHRsWW4xWFd4aV9HSGdSX2t5Zl9sYmxYeFdhckVITi12WS1mNENBaGs5cEdhaGNRd3dCb2Zja2owX2trRDRVQ2dXTEI1RTRRWWpyRGh2U2xLQnY4Q2c?oc=5",
+      "date": "2026-10-20",
+      "source": "충청신문",
+      "category": "local",
+      "summary": [
+        "주말 충북도청서 탄소중립문화제 개최 예정함",
+        "지자체 탄소중립 행사 활성화로 주민 홍보 접점 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "[광명시] 박승원 광명시장, 장관 만나 '탄소중립 선도 지방정부 100' 국가사업 신설 건의:시사앤피플",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE0zRm5GQlk5MGVaOWlWZmR4VzBOS2R0T2JyNWZvM2RYbTdFM1pJZGlPNXVIZmh5VEl5LUpSSU5Zb2tSck55d01QX1dGQ2V2aVIzRlE4NmRwY1lpMnpxSXJSTjNiV0XSAWRBVV95cUxNM0ZuRkJZOTBlWjlpVmZkeFcwTktkdE9icjVmbzNkWG03RTNaSWRpTzV1SGZoeVRJeS1KUklOWW9rUnJOeXdNUF9XRkNldmlSM0ZRODZkcGNZaTJ6cUlyUk4zYldF?oc=5",
+      "date": "2026-10-20",
+      "source": "시사앤피플",
+      "category": "local",
+      "summary": [
+        "박승원 광명시장, 장관 만나 선도 지방정부 100 국가사업 건의함",
+        "지자체 탄소중립 국가사업화로 에너지 서비스 수요 확대 전망"
+      ],
+      "ai": true
+    },
+    {
+      "title": "박승원 광명시장, 김성환 기후부 장관 만나 ‘탄소중립 선도 지방정부 100’ 국가사업 신설 건의",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5JZXN4TTY4c3EzUkRIUFc5OU9FWng4dVNFaDVBNVVJaXBIYUVqRC1SUHVSSmtGSGxJOTVmVTZaZmtwd3NBMnlYeHJIWjZlQUxTVVR5ZzBNSkIyTVpZWWtpLVhHR2FON1dpeTlxWjlR?oc=5",
+      "date": "2026-10-20",
+      "source": "서프라이즈뉴스",
+      "category": "local",
+      "summary": [
+        "박승원 광명시장, 김성환 장관에 선도 지방정부 100 신설 건의함",
+        "기후부-지자체 협력 본격화로 빌링 제휴 기회 모색"
+      ],
+      "ai": true
+    },
+    {
+      "title": "박승원 광명시장, 김성환 기후부 장관 만나 ‘탄소중립 선도 지방정부 100’ 국가사업 신설 건의",
+      "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9ZN1VwVHpsd2s0XzNtQ2UwTHhrY055MXdVNHBtallrLTlSbTEyUVdsQk9mY2hJelZHajBMYnRpYlNIOWtmTk81cTA5ZGI5dXNxc0tvNTZCZnZvVE9KWFdiNnJR?oc=5",
+      "date": "2026-10-20",
+      "source": "www.timess.co.kr",
+      "category": "local",
+      "summary": [
+        "박승원 광명시장, 김성환 장관 만나 선도 지방정부 100 건의함",
+        "선도 지자체 지정 확대 시 전자청구 연계 수요 전망"
+      ],
+      "ai": true
+    },
+    {
+      "title": "제주, 2035 탄소중립 앞두고 국회에 에너지전환 지원 요청",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9ZYXRRaWZucjFXdEM5YnhYbHZQci1DOU9aVU5mUmlKWkxlaEFaRExFeXJvNV8yU0FQbVZEQUwyRWVCWlgwRUNtZDgtd0hzZFh1UzJFQ3dKOVFBcHRET2FRaUV5V1E2M0poSmVuZkNR0gFyQVVfeXFMUG1GMFpmSEpVQng1MVdmQVl1MnZhMFlYc2l6UFlWdUhVak5adVB5YlBQeHB6X1RFeFAzMC0tMVdaUnVwR2hFRFB3VzFwWGk2SW9CdDBkd2czVGJWSXh2NjRZM2FQLUwwLXFuNFhJZllFMmNR?oc=5",
+      "date": "2026-10-20",
+      "source": "라이브제주 LIVEJEJU",
+      "category": "local",
+      "summary": [
+        "제주, 2035 탄소중립 위해 국회에 에너지전환 지원 요청함",
+        "지자체 에너지전환 사업 확대 시 빌링·청구 연계 기회 전망"
+      ],
+      "ai": true
+    },
+    {
+      "title": "가을에도 낙엽·쓰레기로 빗물받이 막혔다면 - 카드/한컷 | 멀티미디어",
+      "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxORzZvQVJLTWVlSFlPRzZaMUQ3VE12ZzFOU094VnZSeEJsd0pFeEZQZHV2bnBiS3hta0ZHRmIwTHV2WU5nVG5PTnlzM2x3NGFYR1ZhbVY0ZjZiT0tkYzdDYTlmMWk1UUtfaGVqcWlqbFEzX1pDN1NuWWMxNTVnYUNZRlBsZnd3Q2dUcV9N?oc=5",
+      "date": "2026-10-20",
+      "source": "정책브리핑",
+      "category": "energy",
+      "summary": [
+        "가을 낙엽·쓰레기로 빗물받이 막힘 주의 안내함",
+        "정책 생활안전 캠페인 일반 동향으로 참고 수준"
+      ],
+      "ai": true
+    },
+    {
+      "title": "김해시, 신봉마을 LPG소형저장탱크 보급사업 완료",
+      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE03SDVjdzdsdkdrWkY5QnBlX285dkN6dWVUU1dSSGptb1h3dlp0b1dzNjBvNEQ0VkVESUUzQWMxZHE1UVcycjlJUUh6QlhmdHF1dUNPZ0ZVUDNPTUc0cVlCdURvR2Z3bmZydTh4N1E3MHpaMGM30gF0QVVfeXFMTTdINWN3N2x2R2taRjlCcGVfbzl2Q3p1ZVRTV1JIam1vWHd2WnRvV3M2MG80RDRWRURJRTNBYzFkcTVRVzJyOUlRSHpCWGZ0cXV1Q09nRlVQM09NRzRxWUJ1RG9HZnduZnJ1OHg3UTcwelowYzc?oc=5",
+      "date": "2026-10-20",
+      "source": "경남열린신문",
+      "category": "energy",
+      "summary": [
+        "김해시, 신봉마을 LPG소형저장탱크 보급사업 완료함",
+        "농촌 에너지 공급 지자체 사업, 청구·관리 수요 발굴 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "‘공급은 더디고 요금은 비싸고’ 전북 농촌 도시가스 이중고",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE45bVVSbHRCWEVUb2JnV09jeTU3TDBGeXFXclBha09SdVFLZ05abVYxSWNQVWI3aG1wSVJUUWRaNXBtRk52RXkxMzA1VnB1S0ZrT1ZraVExakVMV3pnUEdrQzhzTFBuMVlnV3c?oc=5",
+      "date": "2026-10-20",
+      "source": "전북도민일보",
+      "category": "energy",
+      "summary": [
+        "전북 농촌, 도시가스 공급 지연·요금 부담 이중고 겪음",
+        "에너지 요금 취약지역 대상 청구 효율화 니즈 주목"
+      ],
+      "ai": true
+    },
+    {
+      "title": "전북 7개 시군 도시가스 보급률 50% 미만, 농촌 소외 심각",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE8xVXZlLVp0enBCT2V3QkQyTllxYU96a3pwSzd0eThDUjd2RXB4OW9FX0s4RTBiY1Z1U21nRTVlaS1hRUIwZnduMVZ6NzRjUjVVelB0STBFWHF1WTJJdkRwbXFQaHJLek9rbFE?oc=5",
+      "date": "2026-10-20",
+      "source": "전북제일신문",
+      "category": "energy",
+      "summary": [
+        "전북 7개 시군 도시가스 보급률 50% 미만, 농촌 소외 심각함",
+        "에너지 소외지역 전자청구·요금관리 솔루션 수요 전망"
+      ],
+      "ai": true
+    },
+    {
+      "title": "김해시, 의생명축제·해외사절단 파견… 태양광 확충으로 에너지 절감",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1scFVBUWRqOWpVTUh5YXZiYTcxLTFIODloX3NWaDRxVzhDYjZrR1VrQ2dwOVZJVUcyakFxVlVBMzloZlQxZ092c1h6U0RuaE1EU0NqTXgzeWl4emxGNExVNXlWR3BIblY2?oc=5",
+      "date": "2026-10-20",
+      "source": "녹색경제신문",
+      "category": "energy",
+      "summary": [
+        "김해시, 태양광 확충으로 에너지 절감 추진함",
+        "지자체 태양광 확대 시 발전·정산 빌링 연계 기회 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "“디젤 트럭 사라지자 LPG가 시장 채웠다”…신규등록 9만대 중 66%가 소형 상용차",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE52ZUQxTGpyZERmOVg5SDBqcU9pMGc0QjU1WnV2N3QzYjVOU0YxT2NGQXJ2RjY2QXlPOUVqbFZxUEEzMzl0RERkdjV4MHNyaldjRDVpaGh6YVJzMU53d3Zhd2kzdUxlQkxIQW5ILUFULVM?oc=5",
+      "date": "2026-10-20",
+      "source": "오토센티널",
+      "category": "energy",
+      "summary": [
+        "디젤 트럭 퇴조로 신규등록 66%가 LPG 소형 상용차 차지함",
+        "에너지 전환 수송부문 동향으로 참고 수준"
+      ],
+      "ai": true
+    },
+    {
       "title": "[국감] 한전, 직원 안면인증 정보·CCTV 비밀번호 유출됐다",
       "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFBvZTRXZFhrTXNjd2FjaXRfM3F5anQ1X1JPWk90ZDZSVS0xZ040aF9DckM2Sy1tdnhvdXN3WXh0d0xvMHFNMC1CVkZSVk5UNFFUWTM4akQ4YXhseVNxb1lnZThfTG0xcTBuc2Nlak0yYTNoZw?oc=5",
       "date": "2026-10-19",
@@ -2429,6 +3113,54 @@
       "ai": true
     },
     {
+      "title": "목포시, 민선 9기 첫 조직개편 추진…시민참여·인구정책 강화",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9YX256Z3M4eDBvb0pGY3phbzRJa1dTQ2c0anRETVdEaEdHQ0pyT0RlYUVOeFQzOEYzNVFOYU5DczZ4UjQ2M01rb2hCejBRMUZWcFg5TWIzbFM0eVhrVXN2VG8yM0RGWlo3SXc?oc=5",
+      "date": "2026-10-19",
+      "source": "무안신안뉴스",
+      "category": "local",
+      "summary": [
+        "목포시, 민선 9기 첫 조직개편으로 시민참여·인구정책 강화함",
+        "지자체 조직개편 시 사업 담당부서 변동 영업 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "LIG D&A, 전사 조직개편 단행…부문장 7명 중 4명 교체",
+      "url": "https://news.google.com/rss/articles/CBMitAJBVV95cUxPNjdRd3hWOFgzSzczbXZaSGo3a0VsanBlRVdKU3JGTE5jRUo2ZXF3V3BtZlBoX0ZMVEtYOXZ6amVGWDlUWm4xZ3dmNUxEeHJ1UGlmY29UYkd1WVdUdktJUldqMHYyTXVvS041OFhVbU80ek5jaU9pdWxOb2xJM29SU2Nwb3c0OXRPeEc5d2NEUk1RVUdwVFd6cVhSd3pZTHFkdjROU3JYLUEwbFdKTTlnTUxVSzc3aW1ocWxlWXNvRE1KV2FTSGFXR1VZWTBUNTJTUnhETzZyeTRaMTduM3hfZ3Rma0gyUjFIM1V4RHNMOTFTbGRneGc4QUtPYmpYczZJS1ptdm9nVndKWHpwcllKZ3M5SDhuYUIyN1Q4dUlnRTY5V2FRSTg3SFdvRm5XVmNDcWItLQ?oc=5",
+      "date": "2026-10-19",
+      "source": "중앙신문",
+      "category": "local",
+      "summary": [
+        "LIG D&A, 전사 조직개편으로 부문장 4명 교체함",
+        "관련 업계 조직변화 일반 동향으로 참고 수준"
+      ],
+      "ai": true
+    },
+    {
+      "title": "농촌 도시가스 보급 격차 여전···요금감면 사각지대도 심각",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFBBSUNkQ2VGZWUyUDlvbnY0WE9NS1JyU2l1bGV0VDZ1SUVKMGpqR0Y4NlNzdy01SEpXRjFSY0FwOUZqdjZGbUEydkllOEktNldiX2FsWVMwdU1MTUZ5eTBHSlg0cUFQOUJhZHV4WmUyQ3BjUQ?oc=5",
+      "date": "2026-10-19",
+      "source": "에너지신문",
+      "category": "energy",
+      "summary": [
+        "농촌 도시가스 보급 격차·요금감면 사각지대 여전함",
+        "요금감면 사각지대 해소 위한 청구관리 개선 수요 주목"
+      ],
+      "ai": true
+    },
+    {
+      "title": "박희승 국회의원, 전북 7개 시군 도시가스 보급률 50% 미만…공급 확대 요구",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1TalFJNTB0aGotVUw1X1hBNlBtRzBtSTJzMUo5QlY3MFNJdTVWNzFiTUdyZlI0LUJRUHlhdUk3dFlKcmtRc1U2SjlkNTRqRElfUnRNQTNQVTVYV3RyMHRkMXVkOWV5WFJWSjBvVGl3?oc=5",
+      "date": "2026-10-19",
+      "source": "국제뉴스",
+      "category": "energy",
+      "summary": [
+        "박희승 의원, 전북 7개 시군 보급률 50% 미만 공급 확대 요구함",
+        "농촌 에너지 복지 정책 확대 시 빌링 연계 기회 전망"
+      ],
+      "ai": true
+    },
+    {
       "title": "전력 공공기관 산재 1위는 한전MCS…한전 사망사고 12명 중 10명은 하청",
       "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBzclhWbHkxaUpXdV9abkVabjRQYUJMMnFhM2R3VWxFS3diaUJleUl1bXA5dWF5LVFPYm1CajhmOUZ2anppM3NCU3RnWEFyWW5IeWpSZDg2OUY5QnF6bE1wMtIBeEFVX3lxTE8tNi1WSkQ3REstVVFFWEFGQU9fR0t1b3hIOTNJa2VDMjRudjRTeGl4Q2FaT09CVThBYXNORmtzM0F0WmJLUzdzeXBFeWJtTS05REdDNXI3MzJrQXFxbFM1czhzNTdhRF9qNWVOWGtfdVhadnE0NUdDRg?oc=5",
       "date": "2026-10-18",
@@ -3109,738 +3841,6 @@
       "summary": [
         "에너지바우처, 기초수급자 61만 세대 미수령 지적",
         "취약계층 요금 지원 사각지대, 지자체 빌링 연계 복지 수요 확대"
-      ],
-      "ai": true
-    },
-    {
-      "title": "[단독] 전기세 밀린 고객 ‘신용정보’ 멋대로 들여다본 한전",
-      "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE91QmxJUnBQSWRfa1p1X3VhYXlVTFlPb1FjdmFGMGhldWRBNXpBeU13VnAtb1JTdURGdnlDN0VjZlhxTldtMm96SU14QWRqT29SNWY5ZQ?oc=5",
-      "date": "2026-10-16",
-      "source": "JTBC",
-      "category": "energy",
-      "summary": [
-        "한전, 전기요금 연체 고객 신용정보 무단 조회 논란",
-        "요금·연체 정보 관리 민감성 부각, 전자청구 개인정보 보안 강화 필요"
-      ],
-      "ai": true
-    },
-    {
-      "title": "경기 광주시, 도시가스 공급망 넓힌다…도척 융복합 협력지구 에너지 기반 확충",
-      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5vWEFEakZ1LW9sMVNGUlM3d1JkakQ4bnZlWTBFOGFGUnB3djVpNENRTjRVSXRCajY0ZWVwckwxV2tIWUJBYzB6eUZJQVJvb2w1Tjl5cmpIdEZzMUxaVk1GUVpwMV8?oc=5",
-      "date": "2026-10-16",
-      "source": "서울경제TV",
-      "category": "energy",
-      "summary": [
-        "경기 광주시, 도척 융복합 협력지구 도시가스 공급망 확충",
-        "지자체 에너지 기반 사업 확대, 공공 빌링 수요처 발굴 참고"
-      ],
-      "ai": true
-    },
-    {
-      "title": "한전KPS 단기계약 68명 논란… 의원실 '정규직 전환 회피' 지적에 회사는 반박",
-      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE16NE9ZeVpadzZwVFpsSnNKTzZIdEVGaXBMMWZidURxU2tibExQTnNYMUgxYUhQUzhZOFNCanlaaFhUSGs3Nnlzc2FXcmpwX2YxNkdQd2lBV3hvT3NnRWcxY21BTFRwTDNP?oc=5",
-      "date": "2026-10-16",
-      "source": "녹색경제신문",
-      "category": "energy",
-      "summary": [
-        "한전KPS 단기계약 68명 두고 정규직 전환 회피 논란·반박",
-        "공공기관 비정규 고용 논쟁, 계약·용역 관리 투명성 쟁점화"
-      ],
-      "ai": true
-    },
-    {
-      "title": "한전KPS 하청노동자들 “협의체 일방 구성 안 돼”",
-      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE8xYkdlaXNKOFNaT1VQcTdKSTMtdGMyaWZLTDFEN3RyUnd6a1hybTNXTFVCdndHTGJYWXp6Sks4VGZzaTJvd3ZITXl5OTdiRkc2YUYtT2F6dXNwSTNiMm9ZalZqU0lrN3BGSDliUHRQYTQ?oc=5",
-      "date": "2026-10-16",
-      "source": "매일노동뉴스",
-      "category": "energy",
-      "summary": [
-        "한전KPS 하청노동자, 협의체 일방 구성 반발",
-        "노사 갈등 지속, 공공 외주 운영 신뢰 이슈 주시"
-      ],
-      "ai": true
-    },
-    {
-      "title": "한전KDN, 英 크라켄과 에너지 플랫폼 기술협력 MOU…유럽 신사업 발굴 모색",
-      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9uRVYtN1VLaHpHVURRY1RQMEotQ0NEcER0SEI1RXhKUW8zbTVzeTdqdVNTSDdnS0dEYS1NRGhabmYySFVzQlJtMDJuemszVVIxcTE1b2FoWFprNnBUeGc?oc=5",
-      "date": "2026-10-16",
-      "source": "더구루",
-      "category": "energy",
-      "summary": [
-        "한전KDN, 英 크라켄과 에너지 플랫폼 기술협력 MOU",
-        "에너지 IT 플랫폼 글로벌 협력 확산, 청구·고객 플랫폼 혁신 참고"
-      ],
-      "ai": true
-    },
-    {
-      "title": "한전, 산업계와 송전급 GFM 계통 안정화 기술 개발 착수",
-      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFB1el9VQ1BzZXBra0JZQktmSXRjaVIzbk1uQjFTbnVhbGFPdHhlellaTTktM1dobHM4aWMzRGpBU0R6MFp3TWxDT1lWb19ydnlGc3prM3pkcFJENUN5czlZb0gydk5VN1hTNmFHUjVaMGY3UQ?oc=5",
-      "date": "2026-10-16",
-      "source": "에너지데일리",
-      "category": "energy",
-      "summary": [
-        "한전, 산업계와 송전급 GFM 계통 안정화 기술 개발 착수",
-        "재생에너지 대응 전력망 기술 투자, 에너지 인프라 고도화 동향"
-      ],
-      "ai": true
-    },
-    {
-      "title": "대통령 ‘부도덕’ 질타에도…한전KPS ‘쪼개기 계약’ 여전",
-      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNSU5salBDWWhvQVkwY1JDVDlwdzM2QUtqc1VEeVNjOGdWdnJVQmNuTXZFY2tqVVROMnREOEU4M0tHc3Y3T0FGb3dtbm95T2stU1hLbkFOcVZmTDBjSW9yamhfZU5Va2dGT3dsemhXR2ZGX1VkYkhPRXhBZHVBVWJ0bzR2Q0tVSlhRblFlMzBiMlFocUZwU0VpN2hxcnd4NW1xcGhqRWFqbTFpdVVv?oc=5",
-      "date": "2026-10-16",
-      "source": "일등방송",
-      "category": "energy",
-      "summary": [
-        "대통령 질타에도 한전KPS '쪼개기 계약' 여전 지적",
-        "공공 고용 관행 논란 지속, 대행·계약 윤리 기준 강화 전망"
-      ],
-      "ai": true
-    },
-    {
-      "title": "도심 지하 도시가스 배관 ‘야간 정밀진단’…데이터 기반 예방관리 강화",
-      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFA2S01qSGl6a2l5bm9EV1ZYRkxiTDFKMHZtc1packxEZUppUWZDNGhGTWkwYy1qRm1lTUJmcEhfQ1Z3MDRXU2djYkFtd1lwN25EY1p3VF9kMkZXdXQ5RFRJU0UweVg0MU5RWUZXZGxfVXFkdw?oc=5",
-      "date": "2026-10-16",
-      "source": "에너지데일리",
-      "category": "energy",
-      "summary": [
-        "도심 지하 도시가스 배관 야간 정밀진단·데이터 예방관리 강화",
-        "데이터 기반 설비관리 확산, 검침·빌링 데이터 활용 참고"
-      ],
-      "ai": true
-    },
-    {
-      "title": "HD현대일렉트릭, 한전과 손잡고 ‘송전급 GFM 인버터’ 실증 본격화",
-      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5mbE1JY1h1THl4LWlxdjROejl3eXhRYk96em1JelJnQjkwdGF5c2NURzRzMXFwVUN6S0N0VWhUcjJ2WEljQjc5YWh2LVlFRnhQeGxUajRvSExER09oSTNZYk53UUJHWmZTZ3FJWdIBcEFVX3lxTFBySzltRzBKallYdk1aaV85RGpMbEZhMmp1ZjUwQjQxdDJ1aFRMa25GZnRjcjRDdGRJaTVrd0xlQjVVZlM3Rkdra0R1RHZNbXFZSXBYR2NYM1pfa0JERkJpNkZtY2ZrUGpLLXY4TXphLWo?oc=5",
-      "date": "2026-10-16",
-      "source": "전기신문",
-      "category": "energy",
-      "summary": [
-        "HD현대일렉트릭, 한전과 송전급 GFM 인버터 실증 본격화",
-        "전력 설비 실증 확대, 계통 안정화 산업 협력 동향"
-      ],
-      "ai": true
-    },
-    {
-      "title": "[생활꿀팁] 전기요금 고지서 '이 칸'부터 확인해 보세요…근거가 생깁니다",
-      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBvR0RxMi1QSjZUa2hUb2szYWhab24zR0xRR01SRUlPbks2NDdSSm02NVFIR3BVXzEtZHBrbUNyelRIVV93UG9YNTVhZXJWSWRXWW9IVXNn?oc=5",
-      "date": "2026-10-16",
-      "source": "위키트리",
-      "category": "energy",
-      "summary": [
-        "전기요금 고지서 핵심 항목 확인 요령 소개",
-        "고지서 가독성·투명성 관심 증가, 전자청구 항목 안내 강화 기회"
-      ],
-      "ai": true
-    },
-    {
-      "title": "박관열 광주시장, 한국가스공사에 도시가스 공급 확대 협력 요청",
-      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBoNmk3V0xsbFVwT3d4TVdoS0lYYXJXN3pQelY2dTlfRldaM1RwYUZBQ19aOXJqa05NWWF2cnZzOWN4Y1kzRlE2alNxM3YxRXRrOTFYRXViWFVRbFBSR0dxWkRwQVh2Wk1rT01R?oc=5",
-      "date": "2026-10-16",
-      "source": "일간투데이",
-      "category": "energy",
-      "summary": [
-        "광주시장, 한국가스공사에 도시가스 공급 확대 협력 요청",
-        "지자체-공공기관 에너지 협력 확대, 공공 빌링 수요 발굴 참고"
-      ],
-      "ai": true
-    },
-    {
-      "title": "재생에너지 100GW 시대, 한전 ‘전력망 안정화’ 기술 개발 나선다",
-      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE03a0p3T3BLNVNlbkF2YWlmdXVYWVBfRlVic2lFaURYVnVFZnMzMVBvdl9GU1h5VVdWT2dYRXdnTnI3UWdjVVIyNl9raUVpejBGY1VYLXNGR3FBcFFrSHJnY3kxdF9idlk?oc=5",
-      "date": "2026-10-16",
-      "source": "산경e뉴스",
-      "category": "energy",
-      "summary": [
-        "재생에너지 100GW 시대, 한전 전력망 안정화 기술 개발",
-        "에너지 전환 가속, 전력 인프라 투자 확대 동향"
-      ],
-      "ai": true
-    },
-    {
-      "title": "옮길 수도 없는 발전소…전기요금 차등제에 지방 발전사 부담 - 머니투데이",
-      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE10MGtqX21hUHFfQkFxZVZvRHJJLUZ1czYxYTN3OGcwdG9qdHgwdVNnNEFKWmVLb0lLQ1pCSjhqa3Y0SjQ2Z0F0S3B2MVVQUXhpcE9tWk90cjgzMFgxREdmMVoyOU1qMmJIUF9McdIBckFVX3lxTFBYWThVZFd4ZV9qb1p4RUxGczA0aC1YQ252OEpQQlNMRFdBLUpNVHNDY1BTS2hkR0FfU3dXTjNyUkVNbUlJSGl3d0pOSlFhWFpMUjFYSXd6Z3E2QnJwUE96REdmRHAtVzdSV1I4RzVReDA1dw?oc=5",
-      "date": "2026-10-16",
-      "source": "머니투데이",
-      "category": "energy",
-      "summary": [
-        "전기요금 차등제에 지방 발전사 부담 지적",
-        "지역별 요금 차등 논의, 청구 체계 다변화 가능성 주시"
-      ],
-      "ai": true
-    },
-    {
-      "title": "한전, 재생에너지 확대 대비 전력망 안정화 기술 개발",
-      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFBRbE9qRnVmMDJ5Q3JqQkozdkVEdXdkdXh1bGUtNTFYc2VaTXlvc2FRVUNfYjJyZ2g1N1BxNk1QM0ZaX3QyZFphMHM5S1hHR3UxWG0xMXdYVzNZbkhTWmptbEF3U25nVXF5T1JkTnBNOHN3dw?oc=5",
-      "date": "2026-10-16",
-      "source": "굿모닝충청",
-      "category": "energy",
-      "summary": [
-        "한전, 재생에너지 확대 대비 전력망 안정화 기술 개발",
-        "재생E 대응 인프라 강화, 에너지 정책 전환 흐름"
-      ],
-      "ai": true
-    },
-    {
-      "title": "한전, 재생E 100GW대비 산업계와··· 송전급 GFM 계통 안정화 기술 개발 착수",
-      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9QdF92VXA4VWJhcVZhWTZHcUVyTXpYTGZPQTFyamNCejJsWGtVQjZHamN2b0JEN2stX1dFWnZ5NWlIMmp5NjFDR2J4YnlBY0QwMWdGRGtobWxfZmdIcW5rdGdfRDM?oc=5",
-      "date": "2026-10-16",
-      "source": "일렉트릭파워",
-      "category": "energy",
-      "summary": [
-        "한전, 재생E 100GW 대비 산업계와 GFM 계통 기술 착수",
-        "전력망 안정화 산학 협력 확대, 에너지 전환 동향"
-      ],
-      "ai": true
-    },
-    {
-      "title": "한전기술, 中企 기술료 부담 덜어주려 감사원行…국감서 눈길",
-      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5GMU9IOGd0bmRncFdrd0pGMHNoRTNVS2xEZ3pyVUlwRzJtc1RqZTU2NFNKMWw4aEx3N1R2YUNJdDBBTDFzaktPUTg3RGZZMDI0bEFDSVd5c0xYazQtMkFFVnd0NG5IajVHSmVtMtIBcEFVX3lxTFBhSlByclhjQmFOczNMcElQWUJCcVk1UHlFTm1LQ0ZDTTVVQzE1UmlfZ1E1RmliUWMxZ1dYVWxobE1UYXpzMllBVjRCaUhKNVBaUXlTc0FKbXZDMy05dXhkZmxrM0gwX2hHa19xLXlUS00?oc=5",
-      "date": "2026-10-16",
-      "source": "전기신문",
-      "category": "energy",
-      "summary": [
-        "한전기술, 中企 기술료 부담 완화 위해 감사원행 국감 눈길",
-        "공공-중소기업 상생 이슈 부각, 협력사 비용 정책 참고"
-      ],
-      "ai": true
-    },
-    {
-      "title": "기후테크로 여는 탄소중립, 에너지 대전환의 미래!‥‘2026 경기도 기후테크 컨퍼런스’",
-      "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOdmdrcGVablhqd3VIQnJWVzdrUVNQNV9CSEhyOE9FWXRHSzRPQzFiV0M3ZFAyY3kzRVRUWDdNVHVwSThHRGhMaWY2QTVJeWxIbXlvZTIyYllaUXU3cGpIUlB6bEowYVUwSUYzWklsYkw3R24xV0N1VWFET19uNDlSUzJGN0UtRl94LWh4WA?oc=5",
-      "date": "2026-10-16",
-      "source": "경기도뉴스포털",
-      "category": "local",
-      "summary": [
-        "'2026 경기도 기후테크 컨퍼런스' 탄소중립·에너지 대전환 조명",
-        "지자체 기후·에너지 행사 확대, 관련 사업 접점 발굴 기회"
-      ],
-      "ai": true
-    },
-    {
-      "title": "[인사] 기후에너지환경부",
-      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBORmhKZ2c1M1JTQnNUeTVCNTlRTXoyWUp4VVF0T1k3MUFxd3FjdnhMcmhjaTJlcUhPV2hUcUVaeUtDTl9JVzQ2Vi16X1R3UzZaWXpXTzFvNGpVelFqcUQ0RER0Q1gyTHhXaE9YYVhDMUVCcFXSAXdBVV95cUxNNkEzck16UTk3eFJvZWVzSjBnQkFHbDBtZ3J6SVlnNHROVHFNdURVaUFzZmpLT1pIUl9SWXZVcGZQVjR2NEhHZWdJZy0ySXZ4ajNrODdPdTROUnRfQTYwVm5kc3psRFRDZWhONml6dE15QlRIUlpKcw?oc=5",
-      "date": "2026-10-16",
-      "source": "핀포인트뉴스",
-      "category": "energy",
-      "summary": [
-        "기후에너지환경부 인사 발표",
-        "에너지 거버넌스 개편, 정책 변화 방향 주시"
-      ],
-      "ai": true
-    },
-    {
-      "title": "[창간 인터뷰] 이승재 한국에너지기술평가원 원장",
-      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE0yaGlqUGhvdEN6OFhzNHU1dW5kSFhidERaajlUV3FETWRrd0pqa09HUV9UVHJvT0k0bGpJcUUyOU1hWE5GZ0wxTVlYNWp5QzlTWkdaeDlPVHc3SXZpaGkwVzRWSE01ZG_SAWtBVV95cUxOTjBVTFF2ckNpMm5WbWJHdkU3bE1Ra3RWN1NOaWZkOWFaUDhQcG80c2NSUmtLVjh2Sy1wS1VMMnJ5U2NoWlpHTmd1YTB4VUx6SjBNanJJUThTNlVhbmJpQmZNYi14TW1rZ1pHTQ?oc=5",
-      "date": "2026-10-16",
-      "source": "인사이트에너지뉴스",
-      "category": "energy",
-      "summary": [
-        "이승재 한국에너지기술평가원 원장 창간 인터뷰",
-        "에너지 R&D 방향성 제시, 기술 정책 동향 참고"
-      ],
-      "ai": true
-    },
-    {
-      "title": "경남교육청, 학교 신재생에너지 설비 관리 강화…249명 실무교육",
-      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9CbGN1Z1JpeGNvYnlSbUkzSWlhUExMSUczOVk2cy1KZ2JEYWo5QTNDY3kzSmNtelY3dzN4NExsSEVPVVQ3ZW1OemZZS2UxdWdWRHA1Uy1MZnh5eUhzODVlcDJiX05QSkJ1?oc=5",
-      "date": "2026-10-16",
-      "source": "더쎈뉴스",
-      "category": "energy",
-      "summary": [
-        "경남교육청, 학교 신재생에너지 설비 관리 249명 실무교육",
-        "공공시설 에너지 관리 강화, 기관 대상 빌링·관리 수요 참고"
-      ],
-      "ai": true
-    },
-    {
-      "title": "광명2동 주민자치회, ‘동네가 예뻐지는 날’로 빗물받이 환경 개선",
-      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFA3WWdGdmxJQVg3TGVMTlhLbkJIVEpqQnJuN2FnaGZmX1F3dldVUzdZTldOSnFFZUI0b0tOWmh2Y1Qxa0JTNzY0WWM4eFliRWhRR05Wa09jb1VNelFsT2MxazBHWWUwMUx2c20wMC1iRndoZw?oc=5",
-      "date": "2026-10-16",
-      "source": "웹이코노미",
-      "category": "energy",
-      "summary": [
-        "광명2동 주민자치회, 빗물받이 환경 개선 활동",
-        "지역 생활환경 사업 동향, 직접 관련성 낮음"
-      ],
-      "ai": true
-    },
-    {
-      "title": "광명2동 주민자치회, ‘동네가 예뻐지는 날’ 빗물받이 환경개선",
-      "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBtZ25FZ2ZldGExTE5IOC1rMTJDZU1RVUlrdlVNWVZWMkc5ZjlRaFdIdVd3NWpnUUdDWnJVOWN2VTlXazMtc1BMTERBdUJ4azBZMHNZREt0MDRaZFB1aWdyLWhSVQ?oc=5",
-      "date": "2026-10-16",
-      "source": "중부시사신문",
-      "category": "energy",
-      "summary": [
-        "광명2동 주민자치회, 빗물받이 환경개선 활동 진행",
-        "지역 주민자치 연계 생활밀착 사업 동향 참고"
-      ],
-      "ai": true
-    },
-    {
-      "title": "오늘 아침 하노이에서는 많은 거리의 유액나무 가지치기 작업이 진행되고 있습니다.",
-      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPZnduN2RHR2hYMmxBTm90NEJNNmE3QTBROFAyaVFKTGJnanN1UTR0aTZUM05yTkJ4X2RLbVdWQXppZENyVEtNbTUtZGRQUElqSkNoMGpMOFFzRnl2UEozandOZHZCcjdvM0FNVG1NZ1ZYNXpVdDJNU181WGhfa194c1lqci05dTg?oc=5",
-      "date": "2026-10-16",
-      "source": "Vietnam.vn",
-      "category": "local",
-      "summary": [
-        "하노이 거리 유액나무 가지치기 작업 진행함",
-        "해외 도시 환경관리 일반 동향 참고"
-      ],
-      "ai": true
-    },
-    {
-      "title": "하노이시는 강한 향기를 줄이기 위해 많은 거리의 밀크우드 나무 가지치기를 시작했습니다.",
-      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxPdnl4TmxrU0I1czJSS2xXbDJ2VVA4ZDBFSFlVOFZuYzFjVDBnQWF5V2YyekxXeFlzQkdzb0hKcGJxYU5OSkthR1VwbnctNkxjWGVoMTBEbWNQbE1ENlJmUFYzT0kzQ0U3anhJM0NMYVlucGpHWjRaMTdoQmVyVUVCX2dUVENfaTdJUWNSNmVRZFlDb21EWDhVOFdZMklwZw?oc=5",
-      "date": "2026-10-16",
-      "source": "Vietnam.vn",
-      "category": "local",
-      "summary": [
-        "하노이시, 강한 향기 저감 위해 밀크우드 가지치기 시작",
-        "해외 도시 환경정비 일반 동향 참고"
-      ],
-      "ai": true
-    },
-    {
-      "title": "하노이 당국은 강한 향기를 줄이기 위해 거리 곳곳에 있는 밀크우드 나무의 가지치기를 하고 있습니다.",
-      "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNeVdkNm5NOTFQU0NDZ3hqNzR3ZUs5bm1VbksxRi1jZEtrcllsMnZmNXhIMExDdFpsdEtJTVgtZWl6RjdzNV9Xck9qLW5Hd1NRMkpKUFJBTUFnNXF0aXE4czJNNlZNV0dRYnAxQ09wLWxXcEJ3NWtyRENCcGpWNURSN3JLQXdia3dJV3FDeEpyTEVKWmM?oc=5",
-      "date": "2026-10-16",
-      "source": "Vietnam.vn",
-      "category": "local",
-      "summary": [
-        "하노이 당국, 향기 저감 목적 거리 밀크우드 가지치기",
-        "해외 환경관리 일반 동향 참고"
-      ],
-      "ai": true
-    },
-    {
-      "title": "하노이시, 약 1,000그루의 밀크우드 나무 가지치기 시작.",
-      "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE5UR3UxWVlLcVJFQUY0OFdfZWVHWG80WU1JUF9wTldvbTA0aUtJVmNINXhpUVpyclV2N0g4bXQtb184Mmw2MFczMDd3eFk3THVhMk8wQXBHanNsRVFGcHJveFZjbEtUQW9ycGNsdjhhdTRzRWM4cGJwdVZR?oc=5",
-      "date": "2026-10-16",
-      "source": "Vietnam.vn",
-      "category": "local",
-      "summary": [
-        "하노이시, 밀크우드 약 1,000그루 가지치기 착수",
-        "해외 도시 환경사업 일반 동향 참고"
-      ],
-      "ai": true
-    },
-    {
-      "title": "하노이시는 13개 거리의 밀크우드 나무 992그루를 동시에 가지치기했습니다.",
-      "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOX3pNU2dBX05lUkpCT2p1SFFWd0xodHVTMUJkTnFwNERPUWxDODJqeFdfRnBSTFZFa0hCSXM5RTBrR0tiTUZocHk3ZFBvVy1FaEdMM3hJNTFUMVJ6TTVhWUExZXZqazNqRGdZRkhYWF9udHdkc2RqMldURmVIRlBDTGdzd3hoenkyaUlGWQ?oc=5",
-      "date": "2026-10-16",
-      "source": "Vietnam.vn",
-      "category": "local",
-      "summary": [
-        "하노이시, 13개 거리 밀크우드 992그루 동시 가지치기",
-        "해외 도시 환경정비 일반 동향 참고"
-      ],
-      "ai": true
-    },
-    {
-      "title": "김중남 시장 강릉시 대규모 조직개편 추진",
-      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE8zTTlUUmJVUDdNWDF3VlVKN1lDblMzclkwM2I2MXo2czRKazRkUzlUMGVYazl1Z1dSS0x2YjhzcHY5UUx4WTVHNEtYa2tMOHNEakxNM1RfVktQZkM1QTA1UjUtd1hNZE0?oc=5",
-      "date": "2026-10-16",
-      "source": "강원도민일보",
-      "category": "local",
-      "summary": [
-        "김중남 강릉시장, 대규모 조직개편 추진함",
-        "지자체 조직개편 시 담당부서 변경 대응 필요"
-      ],
-      "ai": true
-    },
-    {
-      "title": "민선 9기 강릉시 첫 조직개편, 13국 81과로 확대…미래·경제 중점",
-      "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTFB5QUdMYmVjZ0F3VHJPRGhtTTdySGhqbWU2WW8wbUpQbEkway1fTy1oT0ZGakNyQThQQXR5WFI5aEJEY1ROY1IxSVNtSGtRQjNwaFQwZ0FPLVlWcTJJdHZpMjRXMlAtOEVZS3ZJY2ZDU1pBMGktbGfSAXZBVV95cUxQeUFHTGJlY2dBd1RyT0RobU03ckhoam1lNllvMG1KUGxJMGstX08taE9GRmpDckE4UEF0eVhSOWhCRGNUTmNSMUlTbUhrUUIzcGhUMGdBTy1ZVnEySXR2aTI0VzJQLThFWUt2SWNmQ1NaQTBpLWxn?oc=5",
-      "date": "2026-10-16",
-      "source": "LG헬로비전",
-      "category": "local",
-      "summary": [
-        "강릉시 민선9기 첫 조직개편, 13국 81과로 확대",
-        "지자체 조직개편 시 사업 소관부서 재확인 필요"
-      ],
-      "ai": true
-    },
-    {
-      "title": "강릉시 2국 2과 증설…ITS 총회로 미룬 조직개편 시동",
-      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5JUEN3WlJyOUVtN3FPWTVHZHZoWEJtZG9NWUdVWDllRngybkNfRzZzMG8tNkY2OWpacldPLU82Qm96V2t1NGdFUFpubHpQQ1dLWkdLT081aWNLNUHSAWBBVV95cUxOTHBSejdqeTZ5djhJN1dPWF9lazFtcHVGLXJhMVl0WkgzY0FPZjNDWHpzaGlnejBjZFBTdmVXaElHOUlwN05lZGx0YzBYdm5SY3RBXy14V0UzQjQ5Ty1ZUUI?oc=5",
-      "date": "2026-10-16",
-      "source": "연합뉴스",
-      "category": "local",
-      "summary": [
-        "강릉시 2국 2과 증설, ITS 총회로 미룬 개편 시동",
-        "지자체 조직개편 일정 변동 모니터링 필요"
-      ],
-      "ai": true
-    },
-    {
-      "title": "류명현 산청군수 \"민선9기 조직개편 대재적 단행할 것\"",
-      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBJYW1CTGtqdGJJRHdMQk1TbkhoTUtZVEFBRHl5dThFclRDbklJVUY2Wmx2RTh1RzhMaTJQbDlLRjhoS1RnMFhmbm56cmlXUkRvQXcyZGVPODU5d0wySFUzR2EyTGh4Q2x2bTNN?oc=5",
-      "date": "2026-10-16",
-      "source": "프레시안",
-      "category": "local",
-      "summary": [
-        "류명현 산청군수, 민선9기 대대적 조직개편 단행 예고",
-        "지자체 조직개편 시 담당 창구 변경 가능성"
-      ],
-      "ai": true
-    },
-    {
-      "title": "강릉시, 민선 9기 조직개편 추진…11국 79과서 13국 81과로 확대",
-      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBfbFVwZEFzbnF0dUxRS2E5ZFR4MlVWUWMzQWxNQ2tkdkN3MU84OGVyWFEyemhlampJNWc2UGZ3MzB5ZEdYdGJTSnpqakktam9ZUEZjbHNzTzNmS3JjalhSejV5U2pDSzk1cUFucHJPR2I?oc=5",
-      "date": "2026-10-16",
-      "source": "신아일보",
-      "category": "local",
-      "summary": [
-        "강릉시 조직개편, 11국 79과서 13국 81과로 확대",
-        "지자체 조직개편 시 사업 담당부서 재확인 필요"
-      ],
-      "ai": true
-    },
-    {
-      "title": "강릉시, 민선9기 조직개편 추진…11국 79과에서 13국 81과로 확대",
-      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE55NXM5WThFSGJ6Qnhaa2tmX0gxbEFKTXlwdjBvZ05IUDU3ZTB6VHNEMFdHdVRsVzRGWlZRWXBLcERKS2RhaGVQbURfbTRHMGhzcjAzTjBKSjNmZ1JLRmkyQQ?oc=5",
-      "date": "2026-10-16",
-      "source": "NSP통신",
-      "category": "local",
-      "summary": [
-        "강릉시 민선9기 조직개편, 13국 81과로 확대 추진",
-        "지자체 조직개편 대응 및 담당자 파악 필요"
-      ],
-      "ai": true
-    },
-    {
-      "title": "강릉시, 민선 9기 조직개편 추진···11국 79과에서 13국 81과로 확대",
-      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTFB1X2RMOW42Vm44bkE2anlITzRHLTJRTGVvbjNTdE5RM0VWbGxpckd1LVRHTEJIQWZOdUQ3OVROV3JQQ3dwTjJzdzN1eDFPWnBHYjBTUllaVjBOWFduTGpQVkRXYkZEU1VKVzdkMGs1SGk2dUhR0gF0QVVfeXFMUHVfZEw5bjZWbjhuQTZqeUhPNEctMlFMZW9uM1N0TlEzRVZsbGlyR3UtVEdMQkhBZk51RDc5VE5XclBDd3BOMnN3M3V4MU9acEdiMFNSWVpWME5YV25MalBWRFdiRkRTVUpXN2QwazVIaTZ1SFE?oc=5",
-      "date": "2026-10-16",
-      "source": "이뉴스투데이",
-      "category": "local",
-      "summary": [
-        "강릉시 조직개편, 11국 79과서 13국 81과로 확대",
-        "지자체 조직개편 시 소관부서 변경 유의"
-      ],
-      "ai": true
-    },
-    {
-      "title": "강릉시 민선 9기 첫 조직개편…미래기획·기후환경·교통정보국 신설",
-      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1BX25QR09NM243ZkRzTUZDVml6aWpTV2tlTC0wYk94ZlVOSU1rWnBtcG8xTFB4Tjkzc1F5akFKU1BlWDNEaFdnMXpCaklDWlhOa1piQjZIdnk1QQ?oc=5",
-      "date": "2026-10-16",
-      "source": "파이낸셜뉴스",
-      "category": "local",
-      "summary": [
-        "강릉시, 미래기획·기후환경·교통정보국 신설",
-        "기후환경국 신설 등 에너지 관련 창구 변화 주목"
-      ],
-      "ai": true
-    },
-    {
-      "title": "민선 9기 강릉시 첫 조직개편, 13국 81과로 확대…미래·경제 중점",
-      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1rRU12TVpjVEJMSkZtQm1DaF9taGxSU3JEQml0Zkx6NktOT0libDd4ZjcwSTZYdnBsczBDdGlxNmo0SFJKMFZOY2dyQVZJUFlNU1dCTWdJX0hrc3dFSzBjWHlmVDctRlU0MlI3UDNKQXhld9IBdkFVX3lxTFB5QUdMYmVjZ0F3VHJPRGhtTTdySGhqbWU2WW8wbUpQbEkway1fTy1oT0ZGakNyQThQQXR5WFI5aEJEY1ROY1IxSVNtSGtRQjNwaFQwZ0FPLVlWcTJJdHZpMjRXMlAtOEVZS3ZJY2ZDU1pBMGktbGc?oc=5",
-      "date": "2026-10-16",
-      "source": "LG헬로비전",
-      "category": "local",
-      "summary": [
-        "강릉시 민선9기 첫 조직개편, 미래·경제 중점 확대",
-        "지자체 조직개편 시 사업 담당부서 재확인 필요"
-      ],
-      "ai": true
-    },
-    {
-      "title": "남해군, 2026년 하반기 정기인사 단행…관광·농업·해양 분야 조직 경쟁력 강화",
-      "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5ONldROXpXbFN0LU1sWHk5WlBRR1ZFQng5b0FJR3JDQTVXdGhEM19XZ2xlem5wdHliNmUxTGkzMDg3NHhqckJaYkxxTXlUZWtyamxKUG5ZUkVNRFAxOGk1bU9STkZ1XzFLNml1YlVrTUoxT0E2X21B?oc=5",
-      "date": "2026-10-16",
-      "source": "진주인터넷뉴스",
-      "category": "local",
-      "summary": [
-        "남해군, 2026년 하반기 정기인사로 분야별 조직 강화",
-        "지자체 인사·조직변동 시 담당자 재파악 필요"
-      ],
-      "ai": true
-    },
-    {
-      "title": "강릉시, 민선 9기 대규모 조직개편… ‘통합돌봄’으로 복지 혁신 선언",
-      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFBRdXc5alprQkRRSTVRZVFuQUFCUDZCRUVIakxKQmZSVThUSXlhQWRfVHFkaW85Q0VsWnhUZTZQOTVBNm5CbGtRcTJ4dWw3bzJPU1d6MmxqbjBlRGczWkdKYzZ3N2puRko2S2k2ekk2QlFKZw?oc=5",
-      "date": "2026-10-16",
-      "source": "http://www.reporternside.com/",
-      "category": "local",
-      "summary": [
-        "강릉시 조직개편, 통합돌봄 중심 복지 혁신 선언",
-        "지자체 복지·돌봄 사업 연계 가능성 참고"
-      ],
-      "ai": true
-    },
-    {
-      "title": "하이퐁 경찰청: 13개 부서장의 전보 및 임명 결정 발표.",
-      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxPNVAteXMxZmhSWjZGcDYyNFV0SWVnRVhKQ2pGeGdjQ1QtcHRuY0JCLVZGU3FncGVITk5MNWRSUnYtZTNXX0F3YXAxUXhqV1dlT3FvSUU0dWtHeWVnLXo3TUNJR0Yta1Q0NjlJOGJDWGRKVXNIYjBUX3JyMDNOaXhBSkFQcW5CUWJlQkY1LWR2RmhCallMdG9nQWpFbW5NUQ?oc=5",
-      "date": "2026-10-16",
-      "source": "Vietnam.vn",
-      "category": "energy",
-      "summary": [
-        "하이퐁 경찰청, 13개 부서장 전보·임명 결정 발표",
-        "해외 공공기관 인사 일반 동향 참고"
-      ],
-      "ai": true
-    },
-    {
-      "title": "대전 중구의회 정종훈 의원, 조직개편 맞춰 상임위원회 소관 조정 조례안 발의",
-      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1GZWNoazFWa1VwaE81VThtUU1vd2ZYckl5TndKeURqYUtqcExnMzBnczM5Y0I2NzdUSEJ5dlVFRUFwckIyc20tYi1QZVdhSGV4UkNOenRR?oc=5",
-      "date": "2026-10-16",
-      "source": "대한청년일보",
-      "category": "local",
-      "summary": [
-        "대전 중구의회, 조직개편 맞춰 상임위 소관 조정 조례안 발의",
-        "지자체 조직·조례 변동 시 사업 소관 변화 유의"
-      ],
-      "ai": true
-    },
-    {
-      "title": "석유관리원, 고유가 속 LPG충전소 품질·정량 점검",
-      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5xQV95MVNtSnZFN2I1bnBGblpHeHFDYXcwVmEzaTRRaWpKYjdMVExQUjJ0cXJfNktQbXZCMUg4NGdCTmZvZkRqTDQwakxuZ2ZtbWVrbkx6aElFRHF6N3liTGVWYlJiVjdnOVo1Y051RzjSAXBBVV95cUxOcUFfeTFTbUp2RTdiNW5wRm5aR3hxQ2F3MFZhM2k0UWlqSmI3TFRMUFIydHFyXzZLUG12QjFIODRnQk5mb2ZEakw0MGpMbmdmbW1la25MemhJRURxejd5YkxlVmJSYlY3ZzlaNWNOdUc4?oc=5",
-      "date": "2026-10-16",
-      "source": "전기신문",
-      "category": "energy",
-      "summary": [
-        "석유관리원, 고유가 속 LPG충전소 품질·정량 점검",
-        "에너지 품질관리 정책 일반 동향 참고"
-      ],
-      "ai": true
-    },
-    {
-      "title": "석유관리원, LPG 충전소 정량 주입 · 품질 적합 여부 현장 점검",
-      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE0tUjZiZTFmMGpncl9iSWNMSmVGMDAxdG9qYUlhUjk4Ynp5aFJoRlpnQTJaVElzcUpPakw0djdkZ3U5bGJIdVV0OUU3TDM0TEtHOTRNNHNkZU9xZ2RVb1JmZG9EQl81dms2T0ZmWQ?oc=5",
-      "date": "2026-10-16",
-      "source": "투데이에너지",
-      "category": "energy",
-      "summary": [
-        "석유관리원, LPG충전소 정량·품질 현장점검 실시",
-        "에너지 유통 품질관리 일반 동향 참고"
-      ],
-      "ai": true
-    },
-    {
-      "title": "석유관리원, LPG충전소 품질·정량관리 현장점검",
-      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1UMDcyTXgzcWE3QVk0NG5wOGVkb2lhMWh4YTNOeXR0dUxWS3VseC1Jd3dsa25ZM21KeUxYS2FJQ3NsZVpyallFMGJLeFRhVnp3cEpSenlXdnZsZVNUdDBKdG9xRTMwTjJMWmfSAW5BVV95cUxNaHgzakZsMkxhaDdXQ0dTel9nQXhDSDVIWW0zc1MxajI3VlNWY21mcWhJUGJmR1JrQlByY3dSeWUzdmh6Qkl3VDJMQlhxN2Qtd2lwaTh6ZnBqVGpSczFVeWVPQXdXbFpkaERDTWY3UQ?oc=5",
-      "date": "2026-10-16",
-      "source": "가스신문",
-      "category": "energy",
-      "summary": [
-        "석유관리원, LPG충전소 품질·정량관리 현장점검",
-        "에너지 품질관리 정책 일반 동향 참고"
-      ],
-      "ai": true
-    },
-    {
-      "title": "석유관리원, LPG 충전소 관리실태 점검",
-      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9iU2hhRjMyMWwtbmhxMUp4UHM3Ums4LXZmcUY3Vm9RVDZhWm1FTGdMMS1FLVJuck9jbWFRdGdCWUpGcnRPZUZzaVg5enBhMGpOYnl0Q1ZzTUVsOWhvdUl3WUhVMjdsY3fSAWtBVV95cUxPbW9kcTFMZllHZ0s2aE5MNktzXzN0Q3NacVFGYkMtMGpQT0JmclhmTmM3WjNZdGhDMlV1aU12MFpVRWlaNkMzWDJLSkh3Nm9URk95Slo4eUpCM2pxNGFpaVJRSmc4aHFRRFZoWQ?oc=5",
-      "date": "2026-10-16",
-      "source": "이투뉴스",
-      "category": "energy",
-      "summary": [
-        "석유관리원, LPG충전소 관리실태 점검 진행",
-        "에너지 유통 관리 일반 동향 참고"
-      ],
-      "ai": true
-    },
-    {
-      "title": "석유관리원 고성욱 이사, LPG충전소 관리실태 점검",
-      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5XV3F5bG5NdF9wRmh2QWNWRkgzaUUxZkIwaHhVazFSdXJpX1VmOEVvTUZLMzc4UVhkandyZi1BV2IxZ241M3F4RHhfWkloeFJIdUlGOUF3YzdYZkRyeW9GSzI2YXFKQUN3eDJaT9IBcEFVX3lxTFBTQjJONDllSk8yV09IM2dvQ1E5azFPYlV0QXFoZ2pTcGVMc2JKMVRYSnVmbXhiajhyaWQzMFE1SmZiUUtGaEFJbTE0SEJwRGZuNkFYZkZLVDljQTJIZ2huRnBMSC1SUGtDdndMZ2lwRDA?oc=5",
-      "date": "2026-10-16",
-      "source": "에너지플랫폼뉴스",
-      "category": "energy",
-      "summary": [
-        "석유관리원 고성욱 이사, LPG충전소 관리실태 점검",
-        "에너지 품질관리 정책 일반 동향 참고"
-      ],
-      "ai": true
-    },
-    {
-      "title": "고유가에도 잘나가는 LPG 상용차…승용차 부진 속 시장 주도권 견고",
-      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBndzJzazJIQldmRXpjeklSdzNDajIwcm9nRHRUS1B3ZXRaY0JrZEdiNEhySDItTm5SN29YbUVLUU5QS19MUXdrbXZjeEQ3UFZlNGp5SG8ya2LSAVhBVV95cUxQZ3cyc2sySEJXZkV6Y3pJUnczQ2oyMHJvZ0R0VEtQd2V0WmNCa2RHYjRIckgyLU5uUjdvWG1FS1FOUEtfTFF3a212Y3hEN1BWZTRqeUhvMmti?oc=5",
-      "date": "2026-10-16",
-      "source": "아주경제",
-      "category": "energy",
-      "summary": [
-        "고유가 속 LPG 상용차 강세, 승용차 부진 속 주도권 견고",
-        "에너지 가격·수요 변화 일반 동향 참고"
-      ],
-      "ai": true
-    },
-    {
-      "title": "LPG 택시 세금 깎아줘도 의미 없는 이유",
-      "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5Rd0xCYXY2SWlJZXZwekdab1RRWGRjczJuOXdTMkxzMHZjV1NnRDFCdVFhc3o1czFsTWk1X3BneHZ6OVVrSFBqSi10VDZQRlJyMjZVUzRrU0E1enlVNmpr?oc=5",
-      "date": "2026-10-16",
-      "source": "조세일보",
-      "category": "energy",
-      "summary": [
-        "LPG 택시 세금 인하 실효성 부족 지적",
-        "유류·에너지 세제 정책 동향 주목 필요"
-      ],
-      "ai": true
-    },
-    {
-      "title": "지자체가 묵인한 불법 농지, 조사도 지자체가? …정부 \"보완 장치 있다\"",
-      "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE5uNkpZQmVuMnJPaUtqQUFWYkFLSkcya2ZlYjF2a0MtWHhXZDNCQ1c2WFJZbFZ5bExrTkd6UTV5aGx3Y01ybER4WmlFcVFJd0szZ3d4Mm5rZ1dvTW1PNVNuOExGNXdib2ZCQnFFY1paMER5LXBlWi1matIBeEFVX3lxTE5uNkpZQmVuMnJPaUtqQUFWYkFLSkcya2ZlYjF2a0MtWHhXZDNCQ1c2WFJZbFZ5bExrTkd6UTV5aGx3Y01ybER4WmlFcVFJd0szZ3d4Mm5rZ1dvTW1PNVNuOExGNXdib2ZCQnFFY1paMER5LXBlWi1mag?oc=5",
-      "date": "2026-10-16",
-      "source": "뉴시스",
-      "category": "local",
-      "summary": [
-        "불법 농지 조사 주체 논란, 정부 보완장치 있다 해명",
-        "지자체 행정 이슈, 업무 연관성 낮음"
-      ],
-      "ai": true
-    },
-    {
-      "title": "쓰레기도 에너지…새로운 폐기물 에너지화 해법 모색",
-      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFA1OVplTWctbmQ3WlBoQ2FmLUFHdUpTZE1Bc0NqTFdCTTMwV3R5YXlTVVlzNU16dFU0VEdTYVVSNzJITHhsaV9RbnZEODRsUElpTVpYYmlEUm0weUpoblBJV3BmcHB6dnFwNmE00gFrQVVfeXFMUDU5WmVNZy1uZDdaUGhDYWYtQUd1SlNkTUFzQ2pMV0JNMzBXdHlheVNVWXM1TXp0VTRUR1NhVVI3MkhMeGxpX1FudkQ4NGxQSWlNWlhiaURSbTB5SmhuUElXcGZwcHp2cXA2YTQ?oc=5",
-      "date": "2026-10-16",
-      "source": "이투뉴스",
-      "category": "energy",
-      "summary": [
-        "폐기물 에너지화 새 해법 모색 논의",
-        "에너지 전환 정책 동향, 빌링 연관성 낮음"
-      ],
-      "ai": true
-    },
-    {
-      "title": "경남교육청, 학교 행정실장 등 249명 대상 신·재생에너지 연수 실시",
-      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9JNUtFMTBsOHNkQkIyUk90dzZSeWp3ZjRoU3JiMkJkbk5HaklTWGRpNDMzVkk4dmtfYlZFOURoamZLS2h1ZVFWdC1keFRWTzFBLVpMWFk5ZlpNU0hGa2NkQlRaallYYkhndUVxT2RR?oc=5",
-      "date": "2026-10-16",
-      "source": "https://www.newfilenews.com/",
-      "category": "energy",
-      "summary": [
-        "경남교육청, 행정실장 등 249명 신재생에너지 연수 실시",
-        "교육기관 에너지 관리 강화, 공공 빌링 수요 참고"
-      ],
-      "ai": true
-    },
-    {
-      "title": "경남교육청, 학교 신·재생에너지 설비 관리 역량 강화:경찰연합신문",
-      "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE4tbmplTTlKenRuZFRVMnNfTXFMTWE5cS1KY0RobkR5d1hyNjRGcGJCWUpobFRybFAwVTRQbjFtTjJ3TjZsS2s5NmFuN0tWRlFs0gFsQVVfeXFMUGxpZ1dvLVZ0dWNpUDAzZXBTa0RGOWx5MVlaUWl4cEZXckdPeTlFaUt0YUhzdFdNckNPeEREc3ZrQUdlQjZYWFprQWpSYWFIelpOYzdnN1FFZkwzWTF0V21iYl9ub1RaazZKeHJs?oc=5",
-      "date": "2026-10-16",
-      "source": "경찰연합신문",
-      "category": "energy",
-      "summary": [
-        "경남교육청, 학교 신재생에너지 설비 관리 역량 강화",
-        "교육기관 에너지 관리 수요, 공공 사업 기회 모색"
-      ],
-      "ai": true
-    },
-    {
-      "title": "대전 중구의회 정종훈 의원, 조직개편 맞춰 상임위원회 소관 조정 조례안 발의",
-      "url": "https://news.google.com/rss/articles/CBMiQ0FVX3lxTE5SVi1FWFZNdHBQVHBES3NJUDd5M0VkcjBkYWE5SmIwcG9Od19tTW9KZ1doemxMZ01kb2JobjdpbUNjc3c?oc=5",
-      "date": "2026-10-16",
-      "source": "한국공공정책신문",
-      "category": "local",
-      "summary": [
-        "대전 중구의회, 조직개편 맞춰 상임위 소관 조정 조례안 발의",
-        "지자체 조직개편, 담당조직 변경 확인 필요"
-      ],
-      "ai": true
-    },
-    {
-      "title": "산청군, 민선9기 인구소멸대응 조직개편 단행 미래성장동력, 산업화 기반 마련",
-      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1kamVSbWVaYnpWX2ZIbUZBN3gzMU1RZmYzOGV3WTA2dHg1dlVvX1pidDBvRVl3aHVpUU11MUdZaWlXLVdlbkxELTVfTGo1ell0dXlWSHc1bFg3SllEU3dheDlzdV9oR0ZHNHhIdWkyQQ?oc=5",
-      "date": "2026-10-16",
-      "source": "뉴스파이어",
-      "category": "local",
-      "summary": [
-        "산청군, 민선9기 인구소멸대응 조직개편 단행",
-        "지자체 조직개편, 신설부서 영업 접점 파악 필요"
-      ],
-      "ai": true
-    },
-    {
-      "title": "조직 바뀐 중구청에 맞춰 의회 소관 조정…감사 준비도 정비",
-      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBoZ3pIMVhIbXZkUHI4V1ZpY0Q1UDNrUWhSMVZuTDRhZEdGVzF2U19MbWhsbW9GbzRqci1JdkFPXzJlZjVxcUE4SmU3cDBvNjJrSW9OZDRSRTlIdFh0ZHFvY2dwdjZmM2Mta1RnaFVUQlA?oc=5",
-      "date": "2026-10-16",
-      "source": "충청일보",
-      "category": "local",
-      "summary": [
-        "중구청 조직개편 맞춰 의회 소관 조정·감사 준비 정비",
-        "지자체 조직개편, 담당부서 재확인 필요"
-      ],
-      "ai": true
-    },
-    {
-      "title": "경남교육청, 학교 신·재생에너지 설비 관리 역량 강화:경찰연합신문",
-      "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBQY0V1bWVIWVFHM2t2WHJsd0h2UnhOeFdwUmFEUWVKc2o4Q3U5dkZpa3B3STg3cm1nbHhDME1BNUxrYXNtT2plQ21aU25fdGRwdW1sdlBTRGxQZUpD0gFsQVVfeXFMUGxpZ1dvLVZ0dWNpUDAzZXBTa0RGOWx5MVlaUWl4cEZXckdPeTlFaUt0YUhzdFdNckNPeEREc3ZrQUdlQjZYWFprQWpSYWFIelpOYzdnN1FFZkwzWTF0V21iYl9ub1RaazZKeHJs?oc=5",
-      "date": "2026-10-16",
-      "source": "경찰연합신문",
-      "category": "energy",
-      "summary": [
-        "경남교육청, 학교 신·재생에너지 설비 관리 역량 강화함",
-        "교육기관 전력설비 확대로 빌링 수요 발굴 참고 필요함"
-      ],
-      "ai": true
-    },
-    {
-      "title": "한전KDN, 광주 청년·고졸 인재 양성 및 채용 연계 강화",
-      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE50c0FMQmVEVTNwcEdldnNuYXBuQlBiUkNHdVNxTE0xQzJOWnBQaG1TWGdkYUI1MjhtcVJremtoYS1zdDdXNVVKWkxJVWJfazQwYVBSTmQtSVM1RjYxNVBqeXNuV013ZFJiRHl0MG5ldF_SAXRBVV95cUxOb1lZZUs4eHR3Q0JNZ2pnd1hpMDdvMjJ4dTM1TC0xYjlhMkZCSm9oNmxsZUtiRkhHTkdpRHdnR3V5V0kybTgwWjBCdmhKWTh4UmNscjJhX19pY1JhU3lWWHA4Q3FuS2JHdnJRcUprS2JMSDJMNg?oc=5",
-      "date": "2026-10-16",
-      "source": "포인트데일리",
-      "category": "energy",
-      "summary": [
-        "한전KDN, 광주 청년·고졸 인재 양성·채용 연계 강화함",
-        "한전 계열 전력IT 인력정책 동향 참고 필요함"
-      ],
-      "ai": true
-    },
-    {
-      "title": "강릉시, 민선 9기 조직개편 추진···11국 79과에서 13국 81과로 확대",
-      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5FSlFFN2gtRldyejd0ODNEckNrZmh0SDhTd01MUGhWUTFzcVktS2U0SW8zVjRNTGJjb3RkeG0yOFdUWU8tTmxwTVB3T0NFOGhtRV91dzY1V2VCcDQ0UkxiemktX29yWkZLSUg0a3dhZ27SAXRBVV95cUxQdV9kTDluNlZuOG5BNmp5SE80Ry0yUUxlb24zU3ROUTNFVmxsaXJHdS1UR0xCSEFmTnVENzlUTldyUEN3cE4yc3czdXgxT1pwR2IwU1JZWlYwTlhXbkxqUFZEV2JGRFNVSlc3ZDBrNUhpNnVIUQ?oc=5",
-      "date": "2026-10-16",
-      "source": "이뉴스투데이",
-      "category": "local",
-      "summary": [
-        "강릉시 조직개편으로 11국 79과→13국 81과 확대함",
-        "조직 확대 따른 담당부서 변경 영업 대응 필요함"
-      ],
-      "ai": true
-    },
-    {
-      "title": "하노이는 밀크우드 나무 가지치기를 시작합니다.",
-      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9MV3Q5YWFlTGdGbW9obTRmVU54VkRwS1lwYVc2TGFiX21pTG11YkNmSV95RnV6TElQdHN0U1A3N3NDR25sYWliUjJfQXBma2JwSjBVZGhQMFFObVBDXzlOZ1JRdVczZk5LS1hZZw?oc=5",
-      "date": "2026-10-16",
-      "source": "Vietnam.vn",
-      "category": "local",
-      "summary": [
-        "하노이, 밀크우드 나무 가지치기 작업 시작함",
-        "해외 도시 환경관리 소식, 전기요금·빌링과 직접 관련성 낮음"
-      ],
-      "ai": true
-    },
-    {
-      "title": "탄소중립포인트 예산 확대에도 참여 기반은 부족…환경산업기술원 사업관리 실효성 도마",
-      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE5oeFpEaEZRQTIxQlJwdnRtV2pKV0VhQmdWdkZuQ2VXdzRzaGNGUmExZG53TnJ1eS1xX1owMGEtQ2ZGTWo1cDQ3a3VGdnZOSVFTYTRKZFBlTmRJQmswWkdDMVFUc0dpRk1YdWlQbVJ0TDV0QQ?oc=5",
-      "date": "2026-10-15",
-      "source": "에너지데일리",
-      "category": "local",
-      "summary": [
-        "탄소중립포인트 예산 확대에도 참여 기반 부족, 사업관리 실효성 지적",
-        "친환경 참여 유도 시 전자청구 연계 포인트 모델 제안 여지"
-      ],
-      "ai": true
-    },
-    {
-      "title": "[기자수첩] 반도체 기업은 한전의 은행이 아니다",
-      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxOQjdGbFhFNllqUmpGSzFQUFQxazVxZkxrbFlxX0dmbTF5eTJtbzhVTnd0Z1BlalFvVkVHcHB5QTR1RXQzYzBfc281YTNxSmVoTnh5eWwyY29aZkdabWNjQWIxWlI4eHB2NkdNYk1GSGk0WUUyWHRqcThRVFFvUXZBMm03dkE?oc=5",
-      "date": "2026-10-15",
-      "source": "글로벌이코노믹",
-      "category": "energy",
-      "summary": [
-        "반도체 기업에 전력요금 부담 전가 비판하는 기자수첩",
-        "한전 재무·요금 구조 논쟁 지속, 요금 정책 변동성 주시 필요"
-      ],
-      "ai": true
-    },
-    {
-      "title": "아이앤텍, e모바일 전자고지 솔루션 간편결제 기능 확대",
-      "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFBBc09sTE9rLWl4QUNJblRIaElYUXpITGY4d3hpTUthdklGd1o3NHFtOEg1VkcxTlo3MEF2VHRUUzJJclhRUW41aDNuSXl4dw?oc=5",
-      "date": "2026-10-15",
-      "source": "전자신문",
-      "category": "energy",
-      "summary": [
-        "아이앤텍, e모바일 전자고지에 간편결제 기능 확대",
-        "전자고지+간편결제 경쟁 심화, 한빌 결제 편의성 강화 과제"
       ],
       "ai": true
     }
