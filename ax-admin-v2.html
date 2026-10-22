@@ -11747,8 +11747,10 @@ window.rdFilter = function(f, btn){
 //   외부 인사발령 명단(g.hr)·담당자 변경 감지(hrNew)·접촉 부서 인사(hrDeptMatched)
 //   또는 카드 알림에 '담당자 변경/인사'가 잡힌 경우
 function _rdHrSignal(g){
-  return (g.hr && g.hr.length) || (g.hrNew && g.hrNew.length) || (g.hrDeptMatched && g.hrDeptMatched.length)
-      || (g.alerts && g.alerts.some(function(a){ return /담당자 변경|인사/.test(a.t); }));
+  // 스마트영업 buildQueue와 기준 통일 — '인사 기사' 기반 신호만 발송 대상으로 인정.
+  //  g.hr(외부 인사발령 명단) · g.hrNew(담당자 변경 감지) · g.hrDeptMatched(접촉 부서 인사) = hr_archive.json 기반.
+  //  시트상 '담당자 변경 이력' 텍스트(기사 아님)·일반 지역 뉴스는 발송 대상 제외(고객 소식에서 관리).
+  return (g.hr && g.hr.length) || (g.hrNew && g.hrNew.length) || (g.hrDeptMatched && g.hrDeptMatched.length);
 }
 
 window.rdRender = function(){
