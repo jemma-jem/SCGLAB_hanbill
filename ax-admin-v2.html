@@ -8312,11 +8312,20 @@ function _loadSmartSent(cb){
     try{ var g=document.getElementById('rd-grid'); if(typeof rdRender==='function' && g && g.children.length) rdRender(); }catch(e){}
   }).catch(function(){ window._sbQueueSet=null; });
 }
+// 레인저는 자치구 단위(장안구 등), 인사기사·큐는 시 단위(수원시).
+//  시청 담당자 1메일 = 큐 1건이므로, '시청 소재 대표 구' 1곳에만 매칭해 수를 큐와 일치시킨다.
+var GU_TO_SI = {
+  '팔달구':'수원시','중원구':'성남시','동안구':'안양시','단원구':'안산시','처인구':'용인시',
+  '덕양구':'고양시','상당구':'청주시','서북구':'천안시','완산구':'전주시','의창구':'창원시'
+};
 // 레인저 '발송 대상' 판정: 스마트영업 큐가 로드됐으면 큐와 동일, 아니면 null(폴백)
 function _sbQueueHas(g){
   if(!window._sbQueueSet) return null;
   var k1=_normReg(g.sgg||''), k2=_normReg((g.sido||'')+(g.sgg||''));
-  return window._sbQueueSet.has(k1)||window._sbQueueSet.has(k2);
+  if(window._sbQueueSet.has(k1)||window._sbQueueSet.has(k2)) return true;
+  var si=GU_TO_SI[(g.sgg||'').trim()];                     // 자치구 → 상위 시로 매칭(수원시 등)
+  if(si && window._sbQueueSet.has(_normReg(si))) return true;
+  return false;
 }
 try { _loadSmartSent(); } catch(e){}
 
