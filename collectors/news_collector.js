@@ -294,6 +294,8 @@ async function claudeSummarizeBatch(items) {
   const userText = items.map(function (a) {
     return a.i + '. ' + a.title + ' (출처: ' + a.source + ')';
   }).join('\n');
+  // 안정적인 tool-use(함수 호출) 방식으로 구조화 JSON 수신 — output_config(베타) 대비 API 버전 호환성↑
+  const tool = { name: 'emit_summaries', description: '기사별 2줄 요약 배열을 반환', input_schema: schema };
   const res = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
     headers: {
@@ -305,15 +307,15 @@ async function claudeSummarizeBatch(items) {
       model: ANTHROPIC_MODEL,
       max_tokens: 8000,
       system: system,
-      output_config: { format: { type: 'json_schema', schema: schema } },
+      tools: [tool],
+      tool_choice: { type: 'tool', name: 'emit_summaries' },
       messages: [{ role: 'user', content: '아래 기사들을 각각 2줄로 요약해줘.\n\n' + userText }]
     })
   });
   if (!res.ok) throw new Error('Claude HTTP ' + res.status + ' ' + (await res.text()).slice(0, 200));
   const j = await res.json();
-  const text = (j.content || []).filter(function (b) { return b.type === 'text'; })
-    .map(function (b) { return b.text; }).join('');
-  return (JSON.parse(text).summaries) || [];
+  const tu = (j.content || []).find(function (b) { return b.type === 'tool_use' && b.name === 'emit_summaries'; });
+  return (tu && tu.input && tu.input.summaries) || [];
 }
 
 // 아직 AI 요약이 없는(ai!=true) 기사만 배치로 요약해 summary 를 교체. 실패는 조용히 폴백.

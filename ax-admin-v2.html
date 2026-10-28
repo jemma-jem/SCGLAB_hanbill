@@ -4458,10 +4458,11 @@ function renderNews() {
     html += '</div>';
     // 요약 2줄
     html += '<div style="background:#F8FAFC;border-left:3px solid #BAE6FD;border-radius:0 6px 6px 0;padding:10px 14px">';
-    for (var j = 0; j < n.lines.length; j++) {
+    var _lns = (n.lines || []).filter(function(x){ return x && String(x).trim(); });   // 빈 요약 줄 제외(번호 비는 버그 방지)
+    for (var j = 0; j < _lns.length; j++) {
       html += '<div style="display:flex;gap:7px;align-items:flex-start' + (j > 0 ? ';margin-top:7px' : '') + '">';
       html += '<span style="color:#0284C7;font-weight:700;font-size:13px;flex-shrink:0;line-height:1.5">' + (j+1) + '.</span>';
-      html += '<span style="font-size:12.5px;color:#334155;line-height:1.65">' + n.lines[j] + '</span>';
+      html += '<span style="font-size:12.5px;color:#334155;line-height:1.65">' + _lns[j] + '</span>';
       html += '</div>';
     }
     html += '</div>';
