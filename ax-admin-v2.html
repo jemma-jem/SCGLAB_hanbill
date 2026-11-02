@@ -5528,16 +5528,9 @@ var SALES_BOARD_URL = 'https://script.google.com/macros/s/AKfycbzL-VwRDcNCxBZ2ft
 var SB_TOKEN = '__SB_TOKEN__';
 if (SB_TOKEN.indexOf('__SB') === 0) SB_TOKEN = '';
 
-// jem 로그인 시에만 메뉴 노출
+// 메뉴는 전체 admin에 노출(열람 전용) · 발송 제어는 jem(토큰)만
 (function sbGate(){
-  try {
-    var m = (document.cookie || '').match(/(?:^|; )hb_user=([^;]+)/);
-    var u = m ? decodeURIComponent(m[1]).toLowerCase() : '';
-    if (u === 'jem') {
-      var ni = document.getElementById('ni-salesboard');
-      if (ni) ni.style.display = '';
-    }
-  } catch(_){}
+  try { var ni = document.getElementById('ni-salesboard'); if (ni) ni.style.display = ''; } catch(_){}
 })();
 
 function _sbCard(label, val, sub, color){
@@ -5671,21 +5664,63 @@ function sbDraw(){
     '· 발송 대기: '+(d.pending||0)+'곳\n'+
     '· 비고: 발송 지자체는 AI 레인저 수주확도 +8 가산 반영';
 
+  // ── 자동화/세그먼트용 큐 통계 ──
+  var qst=window._sbQueueStats||null;
+  var detected=qst?qst.total:'…', matched=qst?qst.hasEmail:'…', unmatched=qst?qst.noEmail:'…', sentDone=qst?qst.sent:'…';
+  var pendingN=(qst?qst.pending:(d.pending||0));
+  function _pstep(ic,label,val,color){ return '<div style="flex:1;min-width:110px;text-align:center">'+
+    '<div style="font-size:20px">'+ic+'</div>'+
+    '<div style="font-size:11.5px;font-weight:700;color:#334155;margin-top:2px">'+label+'</div>'+
+    '<div style="font-size:18px;font-weight:800;color:'+(color||'#004098')+';margin-top:1px">'+val+'</div></div>'; }
+  var _arw='<div style="color:#CBD5E1;font-size:16px;align-self:center">›</div>';
+  function _segBar(label, segs, total){
+    var tot=total; if(tot==null){ tot=0; segs.forEach(function(s){ tot+=(typeof s[1]==='number'?s[1]:0); }); }
+    var bar=(typeof tot==='number'&&tot>0)? segs.map(function(s){ var v=(typeof s[1]==='number'?s[1]:0); if(!v)return ''; return '<div title="'+s[0]+' '+v+'" style="width:'+(v/tot*100)+'%;background:'+s[2]+';height:100%"></div>'; }).join('') : '';
+    var leg=segs.map(function(s){ return '<span style="display:inline-flex;align-items:center;gap:4px;margin-right:12px;font-size:11px;color:#334155"><i style="width:10px;height:10px;border-radius:2px;background:'+s[2]+';display:inline-block"></i>'+s[0]+' '+(typeof s[1]==='number'?s[1]:'…')+'</span>'; }).join('');
+    return '<div style="margin-bottom:12px"><div style="font-size:11.5px;font-weight:700;color:#475569;margin-bottom:5px">'+label+(typeof tot==='number'?(' <span style="color:#94A3B8;font-weight:500">(합계 '+tot+')</span>'):'')+'</div>'+
+      '<div style="display:flex;height:16px;border-radius:8px;overflow:hidden;background:#F1F5F9;margin-bottom:6px">'+bar+'</div><div>'+leg+'</div></div>';
+  }
+
   body.innerHTML =
-    // ① 한 줄 설명 + 기간
-    '<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px">'+
-      '<div style="font-size:12px;color:#1E40AF">📡 <b>스마트 영업</b> — 인사기사 기반 선제 제안 메일의 <b>발송·회신</b> 모니터링 '+
-        '<span style="color:#94A3B8">· 발송 지자체 레인저 수주확도 +8 · 현재 수동 검수 발송</span></div>'+
+    // 헤더 + 기간
+    '<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px">'+
+      '<div style="font-size:13px;color:#1E40AF;font-weight:700">📧 스마트 영업 — 인사기사 기반 선제 제안 메일 <b>발송·회신 콘솔</b> <span style="font-size:11px;color:#94A3B8;font-weight:500">· 발송 지자체 레인저 수주확도 +8</span></div>'+
       '<div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">'+btns+'</div>'+
     '</div>'+
-    // ② 한눈 요약 — 핵심 4지표만
-    '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px">'+
-      _sbCard('발송', sends.length, R.label, '#004098')+
-      _sbCard('회신', replyRegionN+' ('+rate+'%)', '/ 발송 '+sentRegionN+' 지자체', '#0EA5E9')+
+    // ① 핵심 지표 (KPI)
+    '<div style="font-size:12px;font-weight:800;color:#64748B;margin:0 2px 8px">① 핵심 지표 (KPI)</div>'+
+    '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px">'+
+      _sbCard('발송', sends.length, R.label+' · 지자체 '+sentRegionN, '#004098')+
+      _sbCard('회신율', rate+'%', '회신 '+replyRegionN+' / 발송 '+sentRegionN+'곳', '#0EA5E9')+
       _sbCard('관심·문의', catN['관심·문의']||0, '긍정 신호', '#059669')+
-      _sbCard('발송 대기', d.pending||0, '미발송', '#F59E0B')+
+      _sbCard('거절·보류', catN['거절·보류']||0, '부정 신호', '#DC2626')+
+      _sbCard('발송 대기', pendingN, '메일 보유·미발송', '#F59E0B')+
     '</div>'+
-    // ②-b 보고용 요약 (복사 가능) — 주간/월간 보고에 그대로 사용
+    // ② 자동화 워크플로우 상태
+    '<div style="background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:16px 18px;margin-bottom:14px">'+
+      '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px">'+
+        '<span style="font-size:14px;font-weight:800;color:#004098">② 자동화 워크플로우 상태</span>'+
+        '<span style="display:inline-flex;gap:8px;align-items:center">'+
+          '<span style="font-size:11px;font-weight:700;background:#FEF3C7;color:#92400E;border-radius:999px;padding:3px 10px">🖐 현재: 수동 검수 발송</span>'+
+          '<span style="font-size:10.5px;color:#94A3B8">트리거 발송대기 15:00 · 회신 16:00</span></span>'+
+      '</div>'+
+      '<div style="display:flex;gap:4px;background:#F8FAFC;border:1px solid #EEF0F3;border-radius:10px;padding:14px">'+
+        _pstep('📰','인사기사 감지',detected,'#334155')+_arw+
+        _pstep('🔗','담당자 매칭',matched,'#0EA5E9')+_arw+
+        _pstep('📨','발송('+R.label+')',sentRegionN,'#004098')+_arw+
+        _pstep('↩','회신',replyRegionN,'#059669')+
+      '</div>'+
+      '<div style="font-size:11px;color:#94A3B8;margin-top:8px">· 감지 '+detected+'곳(현재 큐) 중 담당자 메일 보유 '+matched+'곳 · 미매칭(메일 없음) '+unmatched+'곳 · 발송 대기 '+pendingN+'곳 — 미매칭은 구글시트 이메일을 채우면 발송 대상에 자동 포함 · 발송/회신은 '+R.label+' 기준</div>'+
+    '</div>'+
+    // ③ 주소록 · 세그먼트 현황
+    '<div style="background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:16px 18px;margin-bottom:14px">'+
+      '<div style="font-size:14px;font-weight:800;color:#004098;margin-bottom:12px">③ 주소록 · 세그먼트 현황</div>'+
+      _segBar('발송 대상 매칭 (현재 큐)', [['메일 보유(발송 대상)',matched,'#0EA5E9'],['미매칭(메일 없음)',unmatched,'#CBD5E1']], (typeof detected==='number'?detected:null))+
+      _segBar('회신 분류 ('+R.label+')', [['관심·문의',catN['관심·문의']||0,'#059669'],['담당 안내',catN['담당 안내']||0,'#7C3AED'],['거절·보류',catN['거절·보류']||0,'#DC2626'],['기타',catN['기타']||0,'#94A3B8']], reps.length)+
+    '</div>'+
+    // ④ 실시간 로그 · 리포트
+    '<div style="font-size:12px;font-weight:800;color:#64748B;margin:0 2px 8px">④ 실시간 로그 · 리포트</div>'+
+    // 보고용 요약
     '<div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:10px;padding:12px 16px;margin-bottom:14px">'+
       '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">'+
         '<div style="font-size:13px;font-weight:700;color:#004098">📋 보고용 요약 <span style="font-size:11px;color:#94A3B8;font-weight:500">('+R.label+')</span></div>'+
@@ -5693,25 +5728,30 @@ function sbDraw(){
       '</div>'+
       '<pre id="sb-report" style="margin:0;white-space:pre-wrap;font-family:inherit;font-size:12.5px;color:#334155;line-height:1.75">'+_esc(repTxt)+'</pre>'+
     '</div>'+
-    // ③ 핵심 — 발송 → 회신 현황표
+    // 발송 → 회신 현황표
     '<div style="background:#fff;border:1px solid #E2E8F0;border-radius:10px;padding:14px 16px">'+
       '<div style="font-size:13px;font-weight:700;color:#004098;margin-bottom:8px">발송 → 회신 현황 <span style="font-size:11px;color:#94A3B8;font-weight:500">('+sends.length+'건 · '+R.label+')</span></div>'+
-      '<div style="overflow:auto;max-height:420px"><table style="width:100%;border-collapse:collapse;font-size:12.5px">'+
+      '<div style="overflow:auto;max-height:360px"><table style="width:100%;border-collapse:collapse;font-size:12.5px">'+
         '<thead><tr style="color:#64748B;font-size:11px;text-align:left;border-bottom:1px solid #E2E8F0;position:sticky;top:0;background:#fff">'+
           '<th style="padding:6px 8px">발송일</th><th style="padding:6px 8px">지자체</th><th style="padding:6px 8px">담당자</th><th style="padding:6px 8px;text-align:center">회신</th><th style="padding:6px 8px">분류</th><th style="padding:6px 8px">회신 요약</th>'+
         '</tr></thead><tbody>'+rows+'</tbody></table></div></div>'+
-    // ④ 발송대기 — jem(토큰)일 때만
+    // 발송대기 — jem(토큰)일 때만
     (SB_TOKEN ?
       '<div style="background:#fff;border:1px solid #FDE68A;border-radius:10px;padding:14px 16px;margin-top:14px">'+
         '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:8px">'+
           '<div style="font-size:13px;font-weight:700;color:#B45309">📮 발송대기 · 발신 cs@scglab.com <span style="font-size:11px;color:#94A3B8;font-weight:500">(jem 전용)</span></div>'+
           '<div style="display:flex;gap:6px">'+
+            '<button onclick="sbTestSend()" style="font-size:12px;padding:6px 12px;border:1px solid #FDBA74;border-radius:6px;background:#FFF7ED;cursor:pointer;color:#B45309;font-weight:700" title="실제 지자체 대신 테스트 수신자(jem@scglab.com 받는사람 · 팀 3명 참조)에게 1회 시연 발송">🧪 시연 발송(테스트)</button>'+
             '<button onclick="sbPreviewSelected()" style="font-size:12px;padding:6px 12px;border:1px solid #CBD5E1;border-radius:6px;background:#fff;cursor:pointer;color:#334155">선택 미리보기(초안)</button>'+
             '<button onclick="sbSendSelected()" style="font-size:12px;padding:6px 14px;border:none;border-radius:6px;background:#004098;color:#fff;cursor:pointer;font-weight:700">선택 발송</button>'+
           '</div>'+
         '</div>'+
         '<div id="sb-queue"><div style="padding:16px;text-align:center;color:#94A3B8">발송대기 불러오는 중…</div></div>'+
-      '</div>' : '')+
+      '</div>' :
+      // admin 열람(비jem): 발송은 담당자 안내
+      '<div style="background:#F8FAFC;border:1px dashed #CBD5E1;border-radius:10px;padding:14px 16px;margin-top:14px;font-size:12px;color:#64748B;line-height:1.6">'+
+        '📮 <b>발송 대기 '+pendingN+'곳</b> — 발송은 담당자(jem) 계정에서 검수 후 진행합니다. (열람 전용 화면)'+
+      '</div>')+
     // ⑤ 추이·분류 — 보조 지표(기본 접힘)
     '<details style="margin-top:14px;background:#fff;border:1px solid #E2E8F0;border-radius:10px;padding:4px 16px">'+
       '<summary style="cursor:pointer;font-size:13px;font-weight:700;color:#004098;padding:10px 0;list-style:none">📊 추이 · 분류 분포 보기</summary>'+
@@ -5790,6 +5830,14 @@ function sbSendSelected(){
     if (res && res.ok) { alert('발송 완료: '+res.sent+'건'+(res.fail?(' / 실패 '+res.fail):'')); try{ _loadSmartSent(); }catch(e){} sbLoadQueue(); renderSalesBoard(); }
     else alert('발송 실패: '+((res&&res.error)||'알 수 없음'));
   }).catch(function(e){ alert('발송 요청 오류: '+e); });
+}
+// 🧪 시연 발송(테스트) — 실제 지자체 대신 고정 테스트 수신자에게 1회 발송
+function sbTestSend(){
+  if (!confirm('🧪 시연 발송 — 실제 지자체가 아닌 테스트 수신자에게 1건 발송합니다.\n\n받는 사람: jem@scglab.com\n참조(cc): mjpaeng@hanbill.com · telekang@hanbill.com · kjy@hanbill.com\n\n진행할까요?')) return;
+  _sbPost('testsend', []).then(function(res){
+    if (res && res.ok) alert('🧪 시연 발송 완료 — jem@scglab.com 받은편지함과 참조 팀원 메일을 확인하세요.');
+    else alert('시연 발송 실패: '+((res&&res.error)||'알 수 없음')+'\n(※ Apps Script에 testsend 핸들러 반영·재배포가 필요할 수 있습니다)');
+  }).catch(function(e){ alert('시연 발송 요청 오류: '+e); });
 }
 function sbPreviewSelected(){
   var keys = _sbSelectedKeys();
@@ -8302,14 +8350,18 @@ function _loadSmartSent(cb){
   }).catch(function(){ window._smartSent=new Set(); if(cb) cb(); });
   // 스마트영업 발송대기 큐를 로드 — 레인저 '발송 대상'을 큐와 동일하게 맞추기 위함
   fetch(SALES_BOARD_URL + '?action=queue', { cache:'no-store' }).then(function(r){ return r.json(); }).then(function(q){
-    var qs=new Set();
+    var qs=new Set(); var st={total:0,hasEmail:0,noEmail:0,sent:0,pending:0};
     (q && q.rows || []).forEach(function(row){
+      st.total++;
+      if(row.status==='발송완료') st.sent++;
+      if(row.hasEmail){ st.hasEmail++; if(row.status!=='발송완료') st.pending++; } else { st.noEmail++; }
       if(!row.hasEmail || row.status==='발송완료') return;      // 메일 보유 · 미발송만(= 발송 대기)
       var reg=String(row.region||'').trim(); if(!reg) return;
       var full=_normReg(reg), toks=reg.split(/\s+/), last=_normReg(toks[toks.length-1]);
       if(full) qs.add(full); if(last) qs.add(last);
     });
-    window._sbQueueSet=qs;
+    window._sbQueueSet=qs; window._sbQueueStats=st;
+    try{ if(typeof sbDraw==='function' && document.getElementById('sb-body') && document.getElementById('sec-salesboard').style.display!=='none') sbDraw(); }catch(e){}
     try{ var g=document.getElementById('rd-grid'); if(typeof rdRender==='function' && g && g.children.length) rdRender(); }catch(e){}
   }).catch(function(){ window._sbQueueSet=null; });
 }
