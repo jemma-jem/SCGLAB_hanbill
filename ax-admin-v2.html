@@ -5634,6 +5634,7 @@ function sbDraw(){
   var replyRegionN=Object.keys(sentRegions).filter(function(k){return repByRegion[k];}).length;
   var rate=sentRegionN?Math.round(replyRegionN/sentRegionN*1000)/10:0;
   var catN={}; reps.forEach(function(r){ var c=r.cat||'기타'; catN[c]=(catN[c]||0)+1; });
+  var _clicksN=(d.allClicks||[]).filter(inR).length;   // 제안서 웹 링크 열람(클릭)
   // 기간 버튼
   var ps=[['week','이번주'],['month','이번달'],['lastmonth','지난달'],['all','전체']];
   var btns=ps.map(function(p){ var on=window._sbPeriod===p[0]; return '<button onclick="sbSetPeriod(\''+p[0]+'\')" style="font-size:12px;padding:6px 14px;border-radius:7px;cursor:pointer;border:1px solid '+(on?'#004098':'#CBD5E1')+';background:'+(on?'#004098':'#fff')+';color:'+(on?'#fff':'#475569')+';font-weight:'+(on?'700':'500')+'">'+p[1]+'</button>'; }).join('');
@@ -5692,11 +5693,11 @@ function sbDraw(){
     '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px">'+
       _sbCard('발송', sends.length+'건', R.label+' · 지자체 '+sentRegionN+'곳', '#004098')+
       _sbCard('회신율', rate+'%', '회신 '+replyRegionN+' / 발송 '+sentRegionN+'곳', '#0EA5E9')+
+      _sbCard('제안서 열람', (sentRegionN?Math.round(_clicksN/sentRegionN*1000)/10:0)+'%', '웹 링크 클릭 '+_clicksN+'회', '#7C3AED')+
       _sbCard('관심·문의율', (sentRegionN?Math.round((catN['관심·문의']||0)/sentRegionN*1000)/10:0)+'%', '관심·문의 '+(catN['관심·문의']||0)+'건', '#059669')+
-      _sbCard('거절·보류율', (sentRegionN?Math.round((catN['거절·보류']||0)/sentRegionN*1000)/10:0)+'%', '거절·보류 '+(catN['거절·보류']||0)+'건', '#DC2626')+
       _sbCard('발송 대기', pendingN+'곳', '메일 보유·미발송', '#F59E0B')+
     '</div>'+
-    '<div style="font-size:11px;color:#94A3B8;margin:-8px 2px 16px">ⓘ <b>오픈율·클릭율</b>은 Gmail 직접 발송이라 미지원 — <b>회신율·분류</b>로 대체 측정합니다. (정확한 오픈/클릭은 전용 발송 서비스에서만 가능)</div>'+
+    '<div style="font-size:11px;color:#94A3B8;margin:-8px 2px 16px">ⓘ <b>제안서 열람</b>은 메일의 ‘제안서 바로 보기’ 웹 링크 클릭 기준(Gmail 프록시 영향 없어 신뢰도 높음) · <b>오픈율</b>은 미지원 · <b>회신율·분류</b>로 반응 측정</div>'+
     // ② 자동화 워크플로우 상태
     '<div style="background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:16px 18px;margin-bottom:14px">'+
       '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px">'+
