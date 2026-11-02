@@ -5690,12 +5690,13 @@ function sbDraw(){
     // ① 핵심 지표 (KPI)
     '<div style="font-size:12px;font-weight:800;color:#64748B;margin:0 2px 8px">① 핵심 지표 (KPI)</div>'+
     '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px">'+
-      _sbCard('발송', sends.length, R.label+' · 지자체 '+sentRegionN, '#004098')+
+      _sbCard('발송', sends.length+'건', R.label+' · 지자체 '+sentRegionN+'곳', '#004098')+
       _sbCard('회신율', rate+'%', '회신 '+replyRegionN+' / 발송 '+sentRegionN+'곳', '#0EA5E9')+
-      _sbCard('관심·문의', catN['관심·문의']||0, '긍정 신호', '#059669')+
-      _sbCard('거절·보류', catN['거절·보류']||0, '부정 신호', '#DC2626')+
-      _sbCard('발송 대기', pendingN, '메일 보유·미발송', '#F59E0B')+
+      _sbCard('관심·문의율', (sentRegionN?Math.round((catN['관심·문의']||0)/sentRegionN*1000)/10:0)+'%', '관심·문의 '+(catN['관심·문의']||0)+'건', '#059669')+
+      _sbCard('거절·보류율', (sentRegionN?Math.round((catN['거절·보류']||0)/sentRegionN*1000)/10:0)+'%', '거절·보류 '+(catN['거절·보류']||0)+'건', '#DC2626')+
+      _sbCard('발송 대기', pendingN+'곳', '메일 보유·미발송', '#F59E0B')+
     '</div>'+
+    '<div style="font-size:11px;color:#94A3B8;margin:-8px 2px 16px">ⓘ <b>오픈율·클릭율</b>은 Gmail 직접 발송이라 미지원 — <b>회신율·분류</b>로 대체 측정합니다. (정확한 오픈/클릭은 전용 발송 서비스에서만 가능)</div>'+
     // ② 자동화 워크플로우 상태
     '<div style="background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:16px 18px;margin-bottom:14px">'+
       '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px">'+
@@ -5752,14 +5753,14 @@ function sbDraw(){
       '<div style="background:#F8FAFC;border:1px dashed #CBD5E1;border-radius:10px;padding:14px 16px;margin-top:14px;font-size:12px;color:#64748B;line-height:1.6">'+
         '📮 <b>발송 대기 '+pendingN+'곳</b> — 발송은 담당자(jem) 계정에서 검수 후 진행합니다. (열람 전용 화면)'+
       '</div>')+
-    // ⑤ 추이·분류 — 보조 지표(기본 접힘)
-    '<details style="margin-top:14px;background:#fff;border:1px solid #E2E8F0;border-radius:10px;padding:4px 16px">'+
-      '<summary style="cursor:pointer;font-size:13px;font-weight:700;color:#004098;padding:10px 0;list-style:none">📊 추이 · 분류 분포 보기</summary>'+
-      '<div style="display:grid;grid-template-columns:1.3fr 1fr;gap:14px;padding:4px 0 14px" class="sb-grid">'+
+    // ⑤ 추이·분류 — 상시 표시(스티비식 통계 차트)
+    '<div style="margin-top:14px;background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:16px 18px">'+
+      '<div style="font-size:14px;font-weight:800;color:#004098;margin-bottom:12px">⑤ 발송 · 회신 추이 · 분류 분포</div>'+
+      '<div style="display:grid;grid-template-columns:1.3fr 1fr;gap:14px" class="sb-grid">'+
         '<div><div style="font-size:12px;font-weight:700;color:#475569;margin-bottom:8px">발송 · 회신 추이</div>'+_sbChart(sends,reps,R)+'</div>'+
         '<div><div style="font-size:12px;font-weight:700;color:#475569;margin-bottom:8px">회신 분류 분포</div>'+_sbCatBar(catN)+'</div>'+
       '</div>'+
-    '</details>';
+    '</div>';
 
   if (SB_TOKEN) sbLoadQueue();
 }
