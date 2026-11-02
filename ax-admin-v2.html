@@ -5635,20 +5635,30 @@ function sbDraw(){
   var rate=sentRegionN?Math.round(replyRegionN/sentRegionN*1000)/10:0;
   var catN={}; reps.forEach(function(r){ var c=r.cat||'기타'; catN[c]=(catN[c]||0)+1; });
   var _clicksN=(d.allClicks||[]).filter(inR).length;   // 제안서 웹 링크 열람(클릭)
+  // 지자체별 열람(클릭) 횟수 — 이메일 목록 '열람' 컬럼용
+  var clicksByRegion={}; (d.allClicks||[]).filter(inR).forEach(function(c){ var k=norm(c.region); if(k) clicksByRegion[k]=(clicksByRegion[k]||0)+1; });
+  var _isOptOut=function(rep){ if(!rep) return false; return rep.cat==='수신거부' || /수신\s*거부|수신거부/.test(rep.summary||''); };
   // 기간 버튼
   var ps=[['week','이번주'],['month','이번달'],['lastmonth','지난달'],['all','전체']];
   var btns=ps.map(function(p){ var on=window._sbPeriod===p[0]; return '<button onclick="sbSetPeriod(\''+p[0]+'\')" style="font-size:12px;padding:6px 14px;border-radius:7px;cursor:pointer;border:1px solid '+(on?'#004098':'#CBD5E1')+';background:'+(on?'#004098':'#fff')+';color:'+(on?'#fff':'#475569')+';font-weight:'+(on?'700':'500')+'">'+p[1]+'</button>'; }).join('');
-  // 통합 발송→회신 테이블(기간 내 전체, 최신순)
+  // 📧 이메일 목록(스티비식) — 발송 1건 = 1행, 최신순
   var rows=sends.slice().reverse().map(function(s){ var k=norm(s.region); var rep=repByRegion[k];
-    var ok=rep?'<span style="color:#059669;font-weight:800">○</span>':'<span style="color:#CBD5E1">✕</span>';
-    var badge=rep?_sbBadge(rep.cat,rep.color):'<span style="color:#CBD5E1">—</span>';
-    var summ=rep?_esc(rep.summary||''):'<span style="color:#CBD5E1">—</span>';
-    return '<tr style="border-bottom:1px solid #F1F5F9"><td style="padding:6px 8px;color:#64748B;font-size:11px;white-space:nowrap">'+_esc(s.t)+'</td>'+
-      '<td style="padding:6px 8px;font-weight:600;white-space:nowrap">'+_esc(s.region)+'</td>'+
-      '<td style="padding:6px 8px">'+_esc(s.name)+'</td>'+
-      '<td style="padding:6px 8px;text-align:center">'+ok+'</td>'+
-      '<td style="padding:6px 8px">'+badge+'</td>'+
-      '<td style="padding:6px 8px;font-size:12px;color:#334155">'+summ+'</td></tr>';
+    var clk=clicksByRegion[k]||0;
+    var opt=_isOptOut(rep);
+    var subj='[SCGLAB] '+(s.region||'')+' 통합빌링·전자고지 서비스 제안';
+    var sent='<span style="color:#059669;font-weight:700">성공</span>';
+    var view= clk ? '<span style="color:#7C3AED;font-weight:700">열람 '+clk+'회</span>' : '<span style="color:#CBD5E1">미열람</span>';
+    var rply= (rep && !opt) ? _sbBadge(rep.cat,rep.color) : '<span style="color:#CBD5E1">미회신</span>';
+    var optc= opt ? '<span style="color:#DC2626;font-weight:700">거부</span>' : '<span style="color:#CBD5E1">—</span>';
+    var sumT= rep ? _esc(rep.summary||'') : '';
+    return '<tr style="border-bottom:1px solid #F1F5F9"'+(sumT?' title="회신: '+sumT+'"':'')+'>'+
+      '<td style="padding:7px 8px"><div style="font-weight:600;color:#1E293B;font-size:12.5px">'+_esc(subj)+'</div>'+
+        '<div style="font-size:11px;color:#94A3B8;margin-top:1px">'+_esc(s.region||'')+(s.name?(' · '+_esc(s.name)):'')+'</div></td>'+
+      '<td style="padding:7px 8px;text-align:center;white-space:nowrap">'+sent+'</td>'+
+      '<td style="padding:7px 8px;text-align:center;white-space:nowrap">'+view+'</td>'+
+      '<td style="padding:7px 8px;text-align:center">'+rply+'</td>'+
+      '<td style="padding:7px 8px;text-align:center;white-space:nowrap">'+optc+'</td>'+
+      '<td style="padding:7px 8px;color:#64748B;font-size:11.5px;white-space:nowrap">'+_esc(s.t)+'</td></tr>';
   }).join('') || '<tr><td colspan="6" style="padding:16px;text-align:center;color:#94A3B8">기간 내 발송 없음</td></tr>';
 
   // 보고용 요약 텍스트(선택 기간 기준, 복사용)
@@ -5730,13 +5740,23 @@ function sbDraw(){
       '</div>'+
       '<pre id="sb-report" style="margin:0;white-space:pre-wrap;font-family:inherit;font-size:12.5px;color:#334155;line-height:1.75">'+_esc(repTxt)+'</pre>'+
     '</div>'+
-    // 발송 → 회신 현황표
+    // 📧 이메일 목록 (발송된 제안 메일 현황)
     '<div style="background:#fff;border:1px solid #E2E8F0;border-radius:10px;padding:14px 16px">'+
-      '<div style="font-size:13px;font-weight:700;color:#004098;margin-bottom:8px">발송 → 회신 현황 <span style="font-size:11px;color:#94A3B8;font-weight:500">('+sends.length+'건 · '+R.label+')</span></div>'+
-      '<div style="overflow:auto;max-height:360px"><table style="width:100%;border-collapse:collapse;font-size:12.5px">'+
+      '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px">'+
+        '<div style="font-size:13px;font-weight:700;color:#004098">📧 이메일 목록 <span style="font-size:11px;color:#94A3B8;font-weight:500">('+sends.length+'건 · '+R.label+' · 최신순)</span></div>'+
+        '<button onclick="sbDownloadList()" style="font-size:12px;padding:5px 12px;border:1px solid #CBD5E1;border-radius:6px;background:#fff;cursor:pointer;color:#334155">목록 내려받기(CSV)</button>'+
+      '</div>'+
+      '<div style="overflow:auto;max-height:420px"><table style="width:100%;border-collapse:collapse;font-size:12.5px">'+
         '<thead><tr style="color:#64748B;font-size:11px;text-align:left;border-bottom:1px solid #E2E8F0;position:sticky;top:0;background:#fff">'+
-          '<th style="padding:6px 8px">발송일</th><th style="padding:6px 8px">지자체</th><th style="padding:6px 8px">담당자</th><th style="padding:6px 8px;text-align:center">회신</th><th style="padding:6px 8px">분류</th><th style="padding:6px 8px">회신 요약</th>'+
-        '</tr></thead><tbody>'+rows+'</tbody></table></div></div>'+
+          '<th style="padding:6px 8px">제목</th>'+
+          '<th style="padding:6px 8px;text-align:center">발송 성공</th>'+
+          '<th style="padding:6px 8px;text-align:center">열람(링크)</th>'+
+          '<th style="padding:6px 8px;text-align:center">회신</th>'+
+          '<th style="padding:6px 8px;text-align:center">수신거부</th>'+
+          '<th style="padding:6px 8px">발송 완료일</th>'+
+        '</tr></thead><tbody>'+rows+'</tbody></table></div>'+
+        '<div style="font-size:10.5px;color:#94A3B8;margin-top:8px">※ 열람 = ‘제안서 바로 보기’ 웹 링크 클릭 집계 · 오픈율(픽셀)은 Gmail 특성상 미지원 · 회신·수신거부는 회신 수집 분류 기준</div>'+
+      '</div>'+
     // 발송대기 — jem(토큰)일 때만
     (SB_TOKEN ?
       '<div style="background:#fff;border:1px solid #FDE68A;border-radius:10px;padding:14px 16px;margin-top:14px">'+
@@ -5764,6 +5784,30 @@ function sbDraw(){
     '</div>';
 
   if (SB_TOKEN) sbLoadQueue();
+}
+
+// 📧 이메일 목록 CSV 내려받기(현재 기간)
+function sbDownloadList(){
+  var d=window._sbD; if(!d){ alert('데이터가 아직 로드되지 않았습니다.'); return; }
+  var R=_sbRange(window._sbPeriod);
+  var inR=function(x){ return x.d && x.d>=R.from && x.d<=R.to; };
+  var norm=function(s){ return String(s||'').replace(/\s/g,''); };
+  var sends=(d.allSends||[]).filter(inR);
+  var reps=(d.allReplies||[]).filter(inR);
+  var repByRegion={}; reps.forEach(function(r){ var k=norm(r.region); if(!repByRegion[k]||r.d>repByRegion[k].d) repByRegion[k]=r; });
+  var clicksByRegion={}; (d.allClicks||[]).filter(inR).forEach(function(c){ var k=norm(c.region); if(k) clicksByRegion[k]=(clicksByRegion[k]||0)+1; });
+  var optOut=function(rep){ return rep && (rep.cat==='수신거부' || /수신\s*거부|수신거부/.test(rep.summary||'')); };
+  var esc=function(v){ v=String(v==null?'':v); return /[",\n]/.test(v)?('"'+v.replace(/"/g,'""')+'"'):v; };
+  var head=['제목','대상(지자체)','담당자','발송 성공','열람(클릭수)','회신 분류','수신거부','발송 완료일'];
+  var lines=[head.join(',')];
+  sends.slice().reverse().forEach(function(s){ var k=norm(s.region); var rep=repByRegion[k]; var opt=optOut(rep);
+    lines.push([ '[SCGLAB] '+(s.region||'')+' 통합빌링·전자고지 서비스 제안', s.region||'', s.name||'',
+      '성공', (clicksByRegion[k]||0), (rep&&!opt?rep.cat:'미회신'), (opt?'거부':''), s.t||'' ].map(esc).join(','));
+  });
+  var blob=new Blob(['﻿'+lines.join('\r\n')], {type:'text/csv;charset=utf-8'});
+  var a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+  a.download='스마트영업_이메일목록_'+R.from+'_'+R.to+'.csv';
+  document.body.appendChild(a); a.click(); setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 500);
 }
 
 // ─── 발송대기 로드/발송 (jem 전용) ───
