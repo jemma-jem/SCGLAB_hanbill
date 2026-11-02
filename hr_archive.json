@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-01T05:52:07.904Z",
+  "updated_at": "2026-11-02T05:52:24.738Z",
   "sources": [
     "시정일보 RSS(피플/전체)",
     "지역지 직접 RSS(동부뉴스·투데이군산·당진신문·영남투데이·수원일보·금강일보·디트뉴스·전북중앙·남도일보·광주드림·경북일보·울산제일일보·제주의소리·세종의소리)",
@@ -8,6 +8,172 @@
   ],
   "count": 600,
   "records": [
+    {
+      "date": "2026-11-02",
+      "url": "https://www.sijung.co.kr/news/articleView.html?idxno=440369",
+      "source": "시정일보",
+      "title": "행정안전부 인사",
+      "region": "행정부시",
+      "kinds": [
+        "전보",
+        "승진",
+        "임용"
+      ],
+      "people": [
+        {
+          "name": "김성기",
+          "dept": "부산광역시 행정부시장",
+          "rank": ""
+        },
+        {
+          "name": "심영재",
+          "dept": "대구광역시 행정부시장",
+          "rank": ""
+        },
+        {
+          "name": "충청북도",
+          "dept": "행정부지사 김중열 ◇ 국장급 전보 (’26. 10. 28.)",
+          "rank": "국장"
+        },
+        {
+          "name": "이방무",
+          "dept": "인사기획관",
+          "rank": ""
+        },
+        {
+          "name": "황순조",
+          "dept": "사회연대경제국장",
+          "rank": "국장"
+        },
+        {
+          "name": "박용수",
+          "dept": "사회재난대응국장",
+          "rank": "국장"
+        },
+        {
+          "name": "승진",
+          "dept": "재난복구지원국장 김한수 ◇ 국장급 (’26. 10. 29.)",
+          "rank": "국장"
+        },
+        {
+          "name": "임용",
+          "dept": "국립과학수사연구원 법의학부장 이수경 ◇ 시·도 부단체장 (’26. 10. 31.)",
+          "rank": ""
+        },
+        {
+          "name": "경기도",
+          "dept": "행정2부지사 손임성 ◇ 과장급 전보 (’26. 10. 31.)",
+          "rank": "과장"
+        }
+      ],
+      "hit": true
+    },
+    {
+      "date": "2026-11-02",
+      "url": "https://www.sjsori.com/news/articleView.html?idxno=89465",
+      "source": "세종의소리",
+      "title": "세종시, 신입 공무원 69명 임용… 2일부터 현장근무",
+      "region": "세종시",
+      "kinds": [
+        "임용"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-02",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE4zNWZSS0VrNlBxdlgyWUNtRzRyOGV0a3BjS2RwMlJ3N1Z3ck9WZl9hZ0swbnNsQ28wbHRrTGE0b0xPdWgxMk1zd0pud08zVVAySzkxeE5KXzlUN2VmZ0xiVzcyLXA2dkE?oc=5",
+      "source": "한국식품의약신문",
+      "title": "삼양그룹, 정기 임원인사 단행…조직 안정화에 초점",
+      "region": "",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-02",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5ZX2ZJSUJ4X0wzVWFEd1FTOWJlcWZuckNYMm9mYTRrZjJxbUpaLWdWMUxzSlNFMWpYejhOUllLeTl3c3ZKMFlITUVmTHBhWFdIUE9FY2F4bllYUXJqcUpqd01ZV3VPVU9C?oc=5",
+      "source": "SR타임스",
+      "title": "HD현대, 임원인사 단행… 부사장 7명 등 77명 승진·신규 선임",
+      "region": "",
+      "kinds": [
+        "승진"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-02",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE5IUjE5YURKeWxEWXZNdlhLM3E0cF84TjVKWnZ0SEVrR3d0TVZPQURjT0ZVWU4xTlhEX2lnSUg2amxhZmhPWEUwcUlSUW1CMWpNYkh6dnc3a3ZBclRtWURkWW9IZFh2ZWZ1LVlIUFBaUXNPdw?oc=5",
+      "source": "중앙이코노미뉴스",
+      "title": "OCI그룹, 2027년 정기 임원인사 단행…반도체 소재·AI 중심 조직개편",
+      "region": "",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-01",
+      "url": "https://www.kyongbuk.co.kr/news/articleView.html?idxno=4089248",
+      "source": "경북일보",
+      "title": "‘국민 아버지’ 최불암의 마지막 인사…41년 함께한 초록우산 거쳐 영면",
+      "region": "",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-01",
+      "url": "https://www.kyongbuk.co.kr/news/articleView.html?idxno=4089262",
+      "source": "경북일보",
+      "title": "에코프로, 임원 14명 승진…성과·성장 잠재력 갖춘 차세대 리더 발탁",
+      "region": "승진시",
+      "kinds": [
+        "승진"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-01",
+      "url": "http://www.ujeil.com/news/articleView.html?idxno=394488",
+      "source": "울산제일일보",
+      "title": "SK이노, 전력사업 성장기반 강화 사장단 인사 단행",
+      "region": "",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-01",
+      "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9zREhLVnJKTWVRenIzSU1MMDZzV3BlazU3RjgxMkxxdktxWXgxSDA0ZUVFX0tHUDRZYWJYSmhyT01tb01kOWtaRWV3R1ZxQVlrQjVscUhaczlqWVR1S3BYc3pB?oc=5",
+      "source": "경기신문",
+      "title": "박찬대의 인사 칼날, 유정복 사람 자르고 민주당 사람 채우나",
+      "region": "",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-01",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE94Z0dWYzVuVkttR3c5OWJVQ1V2OUp3Y0FFc3NtSFkxaUJaUENLNWdRckh1MUJCRVdTV05hWU9fRHJELUd3TFZiZTlrQ1RndlV6WDl4YWQ4ZmxCdlBaa0IxRGJXQWdqV2I0bk1rSNIBckFVX3lxTE13dVQ2VXdTZkdLbkpYamctNWFYaWRmMXZBN1g2RFB2MjBKaVlaM1YxU2I3RVhoYXhYTE5DeUFPREhIYnhfcHM0ZHJaU3NUMWtMMkQwQWE0QkF3TDB5TTB3OVZqVTNDdGNzVFlWRUdyanh5dw?oc=5",
+      "source": "머니투데이",
+      "title": "삼양그룹, 정기 임원인사 단행…김지섭·정지석 차기 대표이사로 낙점 - 머니투데이",
+      "region": "",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-01",
+      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1jbjFHRnRFSXJGdW8weklMQTY0TG5oTzdiUnhLTkR1UGQ0aW00dmdaSUg1dzJMdUxlbjQzazZjc1FvSXZiMWhvR2tlRVdoZlBWeElzU1hnR2k5QQ?oc=5",
+      "source": "파이낸셜뉴스",
+      "title": "HL그룹, 2026년 임원 인사 단행…HL만도 새 CEO에 박영문 사장",
+      "region": "",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
     {
       "date": "2026-10-31",
       "url": "http://www.suwonilbo.kr/news/articleView.html?idxno=318777",
@@ -173,6 +339,16 @@
       "hit": false
     },
     {
+      "date": "2026-10-30",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE90Z19URzBjY0dXV1lERlROdDFPTDJudmVrRFFxZWhZdGZ4ZDlTTWp6c1Q3Qk4xaTlWVFlneDhXZnpkMm9qOGw5MW5xUXgtbjl5cjE3Q3VUenQtRHhvYlhZV2NhRTNuTk1hSDBWd9IBcEFVX3lxTFBLTmlrMHNoYjdwVGlnRjV2bllIcDlhQk1XUDFNREZkVDFSRTBfZkdVVC1KQUVPcXA0dFE0NUV6SzlzSldZZ1lFV2tmaU53dlJGVVc3UVZqZjVtVDd6V1gyczg2VHgtWWtFSllFWEQxVE0?oc=5",
+      "source": "글로벌경제신문",
+      "title": "에코프로, 정기 임원인사 단행...'현장 경영·기술 초격차' 차세대 리더십 전면 배치",
+      "region": "",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
       "date": "2026-10-29",
       "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFA0RkJIcy1lS0Z6a1kzd3JsSThsRGR4ckhNMlBnbDdIZkdBSl81bEdDOHVCd1BlU2NFaXo5SkhNeURhTXFveVRGWVpsRk9JLTRfdDZTYUR6dHk4NWxNeTJHeDlNOWhqc2dpLXc?oc=5",
       "source": "뉴스티앤티",
@@ -218,6 +394,16 @@
       "source": "ABC뉴스",
       "title": "보령시, 11월 1일 자 하반기 수시 인사",
       "region": "보령시",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-10-29",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9TR1p0ZzBMNE9pTTd6Uzh0bFpqRWFJLUVSWGxucTd6VEhjRWFGbFZZMTJXeUJkWlc2bmFHMG1qQnJzSmlJeE9pVHQ2eFlqTmViOVZvUVlJOG92aE1kb3I3ekNaUkdKSlE?oc=5",
+      "source": "은평시민신문",
+      "title": "은평구, 7월 1일자 300여 명 규모 정기 인사 단행",
+      "region": "은평구",
       "kinds": [],
       "people": [],
       "hit": false
@@ -323,6 +509,16 @@
       "source": "한스경제",
       "title": "김해시, 하반기 팀장급 인사 단행…소통·투자·복지 중점",
       "region": "김해시",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-10-28",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5Sc253bC1VNmkxMHdUUE00c0hfcGpBRmwwdXdpTzhIdW9Ld1lWZHZ1UGl2ZGVhZm9PMmF0cmptd1l1cHVwZlg5VE9VRDliMXIySjNMZksxQzlKMUlsaFdXc19NQzl4S0FuUkNZNnMzcFA?oc=5",
+      "source": "산경일보",
+      "title": "의정부시, 민선9기 첫 조직개편 인사 단행…시민이 원하는 변화에 속도 낸다",
+      "region": "의정부시",
       "kinds": [],
       "people": [],
       "hit": false
@@ -1921,6 +2117,16 @@
       "kinds": [
         "승진"
       ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-10-15",
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBBdWpYUXpEX1Y0ejA3NjNoZ0QxU2xEc0NZVG8wNW1oUnFLaEluLXBKM0F3MWthUXh2eWlJa1ZvUnl2ZnF3TUs0NGNuZEpPeUx5TEc5TEFNNXg5SnZvX01zMGQydjlqZw?oc=5",
+      "source": "데일리대구경북뉴스",
+      "title": "포항시 인사이동 및 실무수습배치 조서(7급 이하)",
+      "region": "포항시",
+      "kinds": [],
       "people": [],
       "hit": false
     },
@@ -7872,165 +8078,6 @@
       "title": "김포시, 6급 이상 304명 대규모 인사발령",
       "region": "김포시",
       "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-09-29",
-      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9SRnk4Sk5XamhPcTRLaWlmWkhGS2h3Mm1yNGJXeGk5QTh5aGUxTnROakVaTDU5UGpDQklfVC1xdGlVX3cwcGFMWElyWVZ5UVBtSEtWQmRiMllEQzFjeUhHMWpfX3ZQZmpOUHlpTQ?oc=5",
-      "source": "저널25방송",
-      "title": "김포시, 10월 6일자 인사발령…국장급 7명·과장급 47명 배치",
-      "region": "김포시",
-      "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-09-29",
-      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFAzU1FlR2ppekVYUkxBS2pveDFWYTRtTUotOEJNM09qb0JYSURBRGpfMVRtUlVoVV9sdUZhd1ZCYjl2UWVfeG9QcEk4Y293VXk3bHNvTlN1MGNHNzFNeFF2cUFmZGRNZw?oc=5",
-      "source": "shilbo.kr",
-      "title": "김포시, 조직 개편 맞춰 '6급 이상 304명' 대규모 인사발령 단행",
-      "region": "김포시",
-      "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-09-29",
-      "url": "https://news.google.com/rss/articles/CBMiQ0FVX3lxTE5jSC1Nd1ljYTlHMnQ4R2VNVFFTTElkeEpQT1Bjb2M0Q0JjdTNMSlFNNmdfZ2NPRnJBdE9BRzZQNHl4VEk?oc=5",
-      "source": "gipress.com",
-      "title": "[인사] 오산시 2026년 9월 30일~10월 1일자 인사발령 사항",
-      "region": "오산시",
-      "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-09-29",
-      "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTFBHVkxIdTA5b1FiakVLRjZCZ1RQS1dTU0lLdTVZX3RLT3I0WDNIcUNwRWg3WVlEME1CTy1lV0w2bXJTUlc4UmlvLS1YZw?oc=5",
-      "source": "뉴스체인지",
-      "title": "[인사] 고양시 2026년 10월 1일자 및 10월 6일자 인사발령 사항",
-      "region": "고양시",
-      "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-09-29",
-      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE96WUcxUGR0aDNOZkVDclZXSmc3dUpocXFnYkpfRUc5RWxfeFR0ZmpyeVdrSTFTMDd2LTJER0VlQ1dYdEdQLVczVHp1OXg0bEtTZnBuTzZJcWJsdmtHdTVZNEZRWmN4bmJIVFNqZg?oc=5",
-      "source": "백제뉴스",
-      "title": "부여군, 5급 승진 의결 [인사명단]",
-      "region": "부여군",
-      "kinds": [
-        "승진"
-      ],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-09-29",
-      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1NcU1jQTV3YU1UZnpmY0dpZHJ1OHBVUjVndEwyZDJJem9HdFV6X2dhQTRFY2V0RWd1NzhFdlBJU3Vac1lZYjJLeXpXWk14Z2hnN2R1ZDQtOXkwdWIySVlNOHVzRXV1VlNOeEE?oc=5",
-      "source": "brnews.co.kr",
-      "title": "대전 동구 10월 1일자 6급 이하 총 241명 인사발령 단행",
-      "region": "",
-      "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-09-29",
-      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1PN1E3NG9mbEZQZGd0eVVnaGZYemRCdnZPNzZwclQzWnE3ajBrcF9PN1ZJYjdKVndBR0ZQWUk1bnhFQmxhaHRxMlFMOWt2MTV0b0loYmtfRkJNaDFva2VVSklSRDFuYk5Lb0lLckln?oc=5",
-      "source": "한국영농신문",
-      "title": "[인사] 농림축산식품부 인사 발령 (2026. 9. 30일자 )",
-      "region": "",
-      "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-09-29",
-      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9mM3ZiSE5EdHA3X1pBXzF0bEJkVllkN0dQNUJ6QzZyOHVfZHRHV3hXVGdZdUZacU5obmZaRnd2UXg3LWRod2FKR29sdXRhQVRDNzd3LUVucTNjblE4akVTajJZWFdJc1g2eWtBd093?oc=5",
-      "source": "gukjenews.com",
-      "title": "[인사] 대전시 6급이하, 동구·중구·서구·유성구 인사, 대전시의회 인사",
-      "region": "대전시",
-      "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-09-29",
-      "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9CdmFhNGVQVUg5TnAyZTBmNFBzdm5Gd2tHMEtsZWJUTjlUWnJwR0VnZTE3ZVNwRzJfbnlEYVRhWlNCV1lMNi1TWXp2TjE5M252Vkd0MWk0LVh3aW5pSGY0?oc=5",
-      "source": "미래세종일보",
-      "title": "대전 동구 5급, 8명 인사발령(2026. 10. 1.자)",
-      "region": "",
-      "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-09-29",
-      "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE5rM1RNXzBQTVFQam1XYUl2alZPdTRndWY2WjBHbUEyYVFxR3AxdXhJd0JnbmZHX2x2WXFuRmt5NEZycEFMRXc?oc=5",
-      "source": "경기북부이슈",
-      "title": "민선 9기 의정부시 두 번째 인사 소폭 전보에 ' 연말 승진 큰 관심 ’",
-      "region": "의정부시",
-      "kinds": [
-        "전보",
-        "승진"
-      ],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-09-29",
-      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBIam1LOXlzLWNaTE5LOENGUVRmV2djRmZVTnpXV0trajBjdm9ZNG1yTTJNMFVQMjI1NDNtQ3dTM2M3bkpSNlN0aTZ0SDlwcFk1RHVZQkp5NFh0UTZQRGhQQlZSOXJnMERPMFE?oc=5",
-      "source": "도민연합뉴스",
-      "title": "서산시 5급 심사승진 의결 결과",
-      "region": "서산시",
-      "kinds": [
-        "승진"
-      ],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-09-29",
-      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBDZ3FObzFscWxoeko1MkZwb01WU0Zlb2R6YzNfRUhEdjRZc0Q5UEFfOEhSMEI0VXZZaGNiaWtoUTN2bGRyaFRvR3VkanNtTS1Da2t6NG9yM3B3U1UwQnBxSk5LY0lld09STUxRQmNpUDlubFdr?oc=5",
-      "source": "구미뉴스",
-      "title": "구미시 10월 1일자 총38명 인사이동 조서 발표",
-      "region": "구미시",
-      "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-09-29",
-      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE80MFNPZE1YaklkNnI3T3IzYlp6a3o5YjRjOXEwN1g4SmwzcjZfcGJsa3dSQkFxV250eVVPRmxuam41YnRVczJYeU92VTcxTVZuelNjZV94TTNicHhnaUlPVm43NGtwY2xHRlFr?oc=5",
-      "source": "충청메시지",
-      "title": "부여군 수시인사 (2026년 9월 29일 자)",
-      "region": "부여군",
-      "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-09-29",
-      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE94dDZFWjEzZV9XaVBSTkZWSFViWlRJcEVBNzN4TTVFcklha3htc2tLUmJfaGhwcXNXVC1wMmZiWkxNQ1JGcjJjdjNvZ2htNWNHOFJyclhoVmwwa05mamRxV2gxTWRkUGtDcWV6NmlEdGY?oc=5",
-      "source": "더 데일리가드",
-      "title": "[인사] 의정부시 (2026년 10월 2일자)",
-      "region": "의정부시",
-      "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-09-29",
-      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE53U2V4WWJrT25ocnJGWlB6VnF4c3doYlBHcmR0UUV4RU1ZcGZqUGRCMTVVaTNDMG1yVXJPMUFsNWZZZ1hjRWNtUmtSRWlZTFJKUVNxb2hOQS1DS2tfRUVSQlBqMkdpMEtEcTI4?oc=5",
-      "source": "미디어디펜스",
-      "title": "구미시, 10월 1일자 인사 단행…박향목 문화체육관광국장 승진",
-      "region": "구미시",
-      "kinds": [
-        "승진"
-      ],
       "people": [],
       "hit": false
     }
