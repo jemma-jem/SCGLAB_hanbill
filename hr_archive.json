@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-02T05:52:24.738Z",
+  "updated_at": "2026-11-03T06:36:19.499Z",
   "sources": [
     "시정일보 RSS(피플/전체)",
     "지역지 직접 RSS(동부뉴스·투데이군산·당진신문·영남투데이·수원일보·금강일보·디트뉴스·전북중앙·남도일보·광주드림·경북일보·울산제일일보·제주의소리·세종의소리)",
@@ -8,6 +8,60 @@
   ],
   "count": 600,
   "records": [
+    {
+      "date": "2026-11-03",
+      "url": "https://www.ggilbo.com/news/articleView.html?idxno=1190801",
+      "source": "금강일보",
+      "title": "부여소방서, 가을철 산불 대비 화재위험경보 ‘경계’ 발령",
+      "region": "",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-03",
+      "url": "https://www.namdonews.com/news/articleView.html?idxno=928038",
+      "source": "남도일보",
+      "title": "글로벌광주방송 제7대 사장에 김영기 전 전남대 교수 취임",
+      "region": "",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-03",
+      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1mamtJY0toX0hsczNQTW9McDJEcEUzV0ZUcFJ3bGdZNDJjaEE2UEtURXNiWHh5SW13QkZJN2FmSmFSMVc4SkpEdTNQWFYwMlk1SkNpWEV5dm1Ndw?oc=5",
+      "source": "브릿지경제",
+      "title": "검단구청·구의회, 인사행정 빗장 풀었다… 인사교류·승진 공동 운영체계 구축",
+      "region": "검단구",
+      "kinds": [
+        "승진"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-03",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE4zLWVlaXNzTFZnRFgyeGZ1QTRaYjBRUDRJcjFRTnpBRkVabEVnMjdDYVJ2YlBWaTVxaDJoajV1QUlkM2ZiQk1XUkVaNzQxTFVNTTdRbFdla2Q0S1dtZC1fREY4OThIdmRsMmRn?oc=5",
+      "source": "뉴스제주",
+      "title": "제주도, ‘발탁추천제’ 폐지...성과 중심 인사로 승진자 결정",
+      "region": "",
+      "kinds": [
+        "승진"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-03",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBtOUNOUWJ3ME8zODE1NUVWaVBYM21Xbk1pTDhlZzdicTQtQUJNTnh6cnBOeEU0N2tGLThwZkd2MGZMMHBiNUhHQmV1RHFkdi1KMHVmNlpTbDBxYV9lN29kN2pLczM1V21w?oc=5",
+      "source": "SR타임스",
+      "title": "LX홀딩스, 2027년 정기 임원인사 단행…\"성과주의 원칙·조직 역량 강화\"",
+      "region": "",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
     {
       "date": "2026-11-02",
       "url": "https://www.sijung.co.kr/news/articleView.html?idxno=440369",
@@ -107,6 +161,96 @@
       "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE5IUjE5YURKeWxEWXZNdlhLM3E0cF84TjVKWnZ0SEVrR3d0TVZPQURjT0ZVWU4xTlhEX2lnSUg2amxhZmhPWEUwcUlSUW1CMWpNYkh6dnc3a3ZBclRtWURkWW9IZFh2ZWZ1LVlIUFBaUXNPdw?oc=5",
       "source": "중앙이코노미뉴스",
       "title": "OCI그룹, 2027년 정기 임원인사 단행…반도체 소재·AI 중심 조직개편",
+      "region": "",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-02",
+      "url": "http://www.ujeil.com/news/articleView.html?idxno=394571",
+      "source": "울산제일일보",
+      "title": "HD현대, 조직 안정·사업 연속성 중점 ‘임원 인사’",
+      "region": "",
+      "kinds": [
+        "승진"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-02",
+      "url": "http://www.ujeil.com/news/articleView.html?idxno=394543",
+      "source": "울산제일일보",
+      "title": "울산 북부소방서, 근속 승진자 임용장 수여식",
+      "region": "울산시",
+      "kinds": [
+        "승진",
+        "임용"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-02",
+      "url": "https://www.jejusori.net/news/articleView.html?idxno=507966",
+      "source": "제주의소리",
+      "title": "민선8기 도입 ‘발탁추천제’ 폐지, 승진 순위 중시",
+      "region": "승진시",
+      "kinds": [
+        "승진",
+        "정기인사"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-02",
+      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE55NXNwaUQ4dGhqZFA0RkJRUGtZMFBqVzY3N0xEXzU4Wk5NTjBBczZIWjZxS0JmZkEzRTh0Ql9tMHkyT293cVdvV3pNb3B6M1p5bExCWUlZU2RfNmdSLVVlOUkwZFBkY1FDVkNDUlpGQUQyb3p3?oc=5",
+      "source": "부산일보",
+      "title": "공공재원 들어간 ‘부산 구·군 문화원’ 인사 관리·감독 허술",
+      "region": "",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-02",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBoS3B0S2Z1T0h3MEFxSWFmZ1NRQ29pUkFtX3FrRHFLR0pWakQ1OFp3Snp1TXczT28xWmZlVkMwRFhKY3BxVXB6c3pvOFpVMWJpMnFqZVJPd0tDcjdEa2dzWnNwMEVyelMtNUd2NQ?oc=5",
+      "source": "이세종경제",
+      "title": "[세종시 인사] 조상호 민선 5기 세종시청의 입에 이희택 씨 임명",
+      "region": "세종시",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-02",
+      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5XTTdZMnJKbG1kenh4MUNlSFJlMzJzTmt6VFJzb0xPek5FMzF4dHFKREpFN0hGaFA1bEg4OUVZWkNmbUtZSXdLSlJpMFpkVEQxS3c1eGxDdldmUWdiUXc?oc=5",
+      "source": "동행미디어 시대",
+      "title": "음주운전 징계자도 특별승진… 경주시 인사행정 '총체적 부실'",
+      "region": "경주시",
+      "kinds": [
+        "승진"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-02",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE8tcWtDX0R0bS1weXotVDBTczlNZUYtZVFQQmpaQlZHa05rMzhsVWtxeEJOcEJzM1ZDejlTazZES0RtODBvY1BtXzl1Y25WOGFNRHEyOHBYSzJBdnNJbmVUTFZuM3B0cm01ckI0?oc=5",
+      "source": "CNB뉴스",
+      "title": "DL그룹, 성과 중심 2027년 임원인사 단행",
+      "region": "",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-02",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBocTBvd0h0ZlRZUHV4ZzZZaXVjeEZqRHp3b1ltcGhiLUJFb0lXUWROczJ5cGVmT0lVX1VHUlF5VUNGMklPLWNQVnhSdWNKUndJdmhfNlpoTm9wTDFHUFlTMkhCaG82RjVIRFFMaWlZM20?oc=5",
+      "source": "비즈트리뷴",
+      "title": "DL그룹, 2027년 임원인사 단행… 성과 중심 젊은 리더 17명 발탁",
       "region": "",
       "kinds": [],
       "people": [],
@@ -1468,6 +1612,18 @@
       "hit": false
     },
     {
+      "date": "2026-10-19",
+      "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5mSGh0eGVQUlplQTgzNDRmSGpxaXU3MFhqNmZQaFlWR1NaWWVUR0puajdqNFhTOTV3UENpclk2eGpDYlJMdW04YmFqS01PM0ZfQnJQRF9TZlJwY25yYVdZ?oc=5",
+      "source": "전북미래교육신문",
+      "title": "[단독] 전북교육청 5급 사무관 승진 21명 합격…교육행정 20명·공업 1명, 학교 8명·본청 10명",
+      "region": "",
+      "kinds": [
+        "승진"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
       "date": "2026-10-18",
       "url": "https://www.ggilbo.com/news/articleView.html?idxno=1187401",
       "source": "금강일보",
@@ -1863,6 +2019,19 @@
       "title": "안동시 인사발령조서",
       "region": "안동시",
       "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-10-16",
+      "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBRSFN5bmtlZ3dHZ0l1MzlwaHB4VFliLUdmYU9ZOWFoLVNaYkpOQ1lZZ1l0SG1ZcUVQWVI3QXg4bEl2bE9OZmlBX3R0c3IyREliS0VfcWs0TWM5ajU5?oc=5",
+      "source": "부산파이낸셜뉴스",
+      "title": "제주도교육청 5급 승진 예정자 18명 확정… 내년 1월 이후 임용",
+      "region": "",
+      "kinds": [
+        "승진",
+        "임용"
+      ],
       "people": [],
       "hit": false
     },
@@ -7743,340 +7912,6 @@
       "source": "울산제일일보",
       "title": "金시장, 취임 후 재산 12억 증가… “은행펀드 투자”",
       "region": "공직윤리시",
-      "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-09-29",
-      "url": "http://www.ujeil.com/news/articleView.html?idxno=392830",
-      "source": "울산제일일보",
-      "title": "북구, 산업안전보건위원회 정기회의",
-      "region": "울산시",
-      "kinds": [
-        "전보"
-      ],
-      "people": [],
-      "hit": true
-    },
-    {
-      "date": "2026-09-29",
-      "url": "http://www.ujeil.com/news/articleView.html?idxno=392751",
-      "source": "울산제일일보",
-      "title": "울산시 동구 2026년 10월 6급 이하 수시인사 시행(10월 1일자)",
-      "region": "울산시",
-      "kinds": [
-        "전보"
-      ],
-      "people": [
-        {
-          "name": "신정현",
-          "dept": "노사외국인지원과",
-          "rank": ""
-        },
-        {
-          "name": "장명심",
-          "dept": "기획예산실",
-          "rank": ""
-        },
-        {
-          "name": "노현채",
-          "dept": "경제정책과",
-          "rank": ""
-        },
-        {
-          "name": "김유진",
-          "dept": "관광과",
-          "rank": ""
-        },
-        {
-          "name": "윤정순",
-          "dept": "복지지원과",
-          "rank": ""
-        },
-        {
-          "name": "김지서",
-          "dept": "도시과",
-          "rank": ""
-        },
-        {
-          "name": "오태승",
-          "dept": "교통행정과",
-          "rank": ""
-        },
-        {
-          "name": "변한솔",
-          "dept": "방어동",
-          "rank": ""
-        },
-        {
-          "name": "최세욱",
-          "dept": "화정동",
-          "rank": ""
-        },
-        {
-          "name": "김상아",
-          "dept": "대송동",
-          "rank": ""
-        },
-        {
-          "name": "이현지",
-          "dept": "전하1동",
-          "rank": ""
-        },
-        {
-          "name": "이아름",
-          "dept": "남목1동",
-          "rank": ""
-        },
-        {
-          "name": "이명돈",
-          "dept": "남목2동",
-          "rank": ""
-        },
-        {
-          "name": "김다슬",
-          "dept": "남목3동",
-          "rank": ""
-        }
-      ],
-      "hit": true
-    },
-    {
-      "date": "2026-09-29",
-      "url": "http://www.ujeil.com/news/articleView.html?idxno=392750",
-      "source": "울산제일일보",
-      "title": "울산 북구 10월 수시인사(10월 1일자)",
-      "region": "",
-      "kinds": [
-        "전보",
-        "승진",
-        "직무대리"
-      ],
-      "people": [
-        {
-          "name": "조수진",
-          "dept": "기획예산실",
-          "rank": ""
-        },
-        {
-          "name": "유은경",
-          "dept": "산업혁신과",
-          "rank": ""
-        },
-        {
-          "name": "송정미",
-          "dept": "농수산과",
-          "rank": ""
-        },
-        {
-          "name": "조은진",
-          "dept": "통합돌봄과",
-          "rank": ""
-        },
-        {
-          "name": "김수정",
-          "dept": "기획예산실",
-          "rank": ""
-        },
-        {
-          "name": "김민정",
-          "dept": "산업혁신과",
-          "rank": ""
-        },
-        {
-          "name": "구경은",
-          "dept": "문화체육과",
-          "rank": ""
-        },
-        {
-          "name": "장유채",
-          "dept": "총무과",
-          "rank": ""
-        },
-        {
-          "name": "이현주",
-          "dept": "회계과",
-          "rank": ""
-        },
-        {
-          "name": "이재균",
-          "dept": "회계과",
-          "rank": ""
-        },
-        {
-          "name": "정다희",
-          "dept": "민원지적과",
-          "rank": ""
-        },
-        {
-          "name": "허선행",
-          "dept": "건설과",
-          "rank": ""
-        },
-        {
-          "name": "남정모",
-          "dept": "자원순환과",
-          "rank": ""
-        },
-        {
-          "name": "이향미",
-          "dept": "세무2과",
-          "rank": ""
-        },
-        {
-          "name": "변지혜",
-          "dept": "통합돌봄과",
-          "rank": ""
-        },
-        {
-          "name": "이현승",
-          "dept": "노인장애인과",
-          "rank": ""
-        },
-        {
-          "name": "정민정",
-          "dept": "문화체육과",
-          "rank": ""
-        },
-        {
-          "name": "이동학",
-          "dept": "농수산과",
-          "rank": ""
-        }
-      ],
-      "hit": true
-    },
-    {
-      "date": "2026-09-29",
-      "url": "https://www.sjsori.com/news/articleView.html?idxno=88884",
-      "source": "세종의소리",
-      "title": "[인사] 행정중심복합도시건설청",
-      "region": "중심복합도시",
-      "kinds": [
-        "전보"
-      ],
-      "people": [
-        {
-          "name": "조인하",
-          "dept": "국가상징구역과장",
-          "rank": "과장"
-        }
-      ],
-      "hit": true
-    },
-    {
-      "date": "2026-09-29",
-      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE1jaEZJUzY5YXlJUEptd1pzYjNBUW9lLXBlZ2lkTWN3bG41enNObWt5dktmT1gzSjdCYWp6THloemVMcUVMNDdrcFU3SzlMUmt1YnRwNkRtOV92YXhVcS1QRUREbGFCdw?oc=5",
-      "source": "데일리대구경북뉴스",
-      "title": "구미시 인사발표",
-      "region": "구미시",
-      "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-09-29",
-      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE82Y3FMczlNSE95Zk5xLWl1YTdodmd4TUdSWnRPd19QZmVudGlwWVBqN1ZGQ0pLR3g2WnpfS2Q5dFZnQTdqcTZzcmh0eEFGdWZQNlVGTTRVbnpsd3BJWVpST1pBc2EtSlRKTXRNSXJ3?oc=5",
-      "source": "gukjenews.com",
-      "title": "[인사] 부여군청 2026 수시인사 ... 5급 승진의결 발표",
-      "region": "부여군",
-      "kinds": [
-        "승진"
-      ],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-09-29",
-      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9ISDE2dUZMcWFvbUIwcjZmMU5sRV9qakNibWZmMThtc2lXbVlPb180NWtOWnhQN3R6Rk5GLWdzeldXZmRsOWJxdldZRUYyUmZNQ1k2Qlh6UWZ0WHdmVE5OYkZPM0VmbjU30gFsQVVfeXFMTWl5RVhOaG9XOHFHSW5Ta3Y0bVNlMUxlSmlTTGRlQkpvbk41a1AyZ1BZalp2ZnpZWUI2WXlFQlcwb3JzbF93ckdSX051LVpNQWFYcVBzUEdWUU9qWFBvUFpkVjlGWDZGNFJMUElG?oc=5",
-      "source": "글로컬타임스",
-      "title": "[인사] 부여군 수시인사 (2026년 9월 29일 자)",
-      "region": "부여군",
-      "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-09-29",
-      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9aeE9rcWZ0TUVJTGJaRV8zQ3dObUVKMWh6cW1VYnNUbUFTSVBocDVpQ0pMMklrbmN0VllDVXBTLVNlUG9FcUw2MVpacV9EbzNua1Q2RjJ3?oc=5",
-      "source": "헤럴드경제",
-      "title": "“인사는 권한 아닌 책임”…진교훈 강서구청장, 직원과 소통하며 조직문화 바꾼다",
-      "region": "강서구",
-      "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-09-29",
-      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5BWktqUG95WjVxTzRJZWRjZUVFdlh5MS1Wbi1VRFdKRG4wYTN5RlpWQ0hnXzhJeFZBN2dieEdyRmRRenNFNkRIdVdadUd6eEV6NkRUNENLbE9KTm1xdHNXaHdwSUd1eWNuOWc?oc=5",
-      "source": "뉴스티앤티",
-      "title": "[인사] 대전시청 8급 승진(2026.10.1.자)",
-      "region": "대전시",
-      "kinds": [
-        "승진"
-      ],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-09-29",
-      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1VaFRvM2oxbU13eFNmN0FuTU4tUk1NdFB4WlJUR00yakZhX1BSekt5aS1oVG9Kb0dQRm9LOWd6aGFvTjZpYkFhMVcxMkU4cUhodkFvVVFvUUVYRkw0WHVueWludFcxa3VnN2dZbjJpWTJCZ9IBckFVX3lxTE1VaFRvM2oxbU13eFNmN0FuTU4tUk1NdFB4WlJUR00yakZhX1BSekt5aS1oVG9Kb0dQRm9LOWd6aGFvTjZpYkFhMVcxMkU4cUhodkFvVVFvUUVYRkw0WHVueWludFcxa3VnN2dZbjJpWTJCZw?oc=5",
-      "source": "잡포스트",
-      "title": "강서구, 직원 50명과 ‘인사 공감 토론’…격무 가산점·오피스빌런 대응 논의",
-      "region": "강서구",
-      "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-09-29",
-      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBZdW9QLU02WHdFRWVxMW9NWXl6UTdSdTNRR0VvdFJyLV9CdFQtdnQyalFJN2lFZG01Z0tyd1Iwel8xLTNhRzFSanZmbEFhb2JOU1hKclVYZVh5b3FMLUNRRmN5QnI4MFRidHc?oc=5",
-      "source": "brnews.co.kr",
-      "title": "대전시의회, 10월 1일자 6급 이하 50명 인사발령 단행",
-      "region": "대전시",
-      "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-09-29",
-      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1Bd291OVJuMWtlUENSaGNMY3FEaXR4bGJ1UktMR0Z3cG92TmlVWUMzV3o5TW5WNEJFT2tWNzJ6RUlLUDk2eUVGWnVzbjVvUTdRWGwwaGRRZXpNdXpKMlRCeQ?oc=5",
-      "source": "제주교통복지신문",
-      "title": "대전시 6급 이하 555명 인사…시의회·자치구 전출 포함",
-      "region": "대전시",
-      "kinds": [
-        "전출"
-      ],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-09-29",
-      "url": "https://news.google.com/rss/articles/CBMiQ0FVX3lxTE1nb0Q2T0luaW4yZDkteHdQWTRRNS1tMmRKRVQtQzJKT1Q0RXk4VkZOZEt0MnVMMzJQMzIzcTdNYXZNclU?oc=5",
-      "source": "더코리아",
-      "title": "대전 중구, 인사발령 > 뉴스",
-      "region": "",
-      "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-09-29",
-      "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE9UM3gtb1pOcGZ0S2U4OHF0LUYxdXZGYW1VYU9PYmlHLWVudi1rU2J6amczdXVFQUNUYU1OdGNfRmxIaGZnUW43MUNQc3A?oc=5",
-      "source": "뉴스체인지",
-      "title": "[인사] 의정부시 2026년 10월 인사발령사항(5급 이상, 6급 팀장)",
-      "region": "의정부시",
-      "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-09-29",
-      "url": "https://news.google.com/rss/articles/CBMiQkFVX3lxTE5QS1BlOFNiMko0QmVfV0FHU1lsZUh3UFk1TENKa25mSk5oWG5sYTBaYXVJY3RYdDZ0cTlUYU5zZEMydw?oc=5",
-      "source": "김포시민신문",
-      "title": "김포시, 6급 이상 304명 대규모 인사발령",
-      "region": "김포시",
       "kinds": [],
       "people": [],
       "hit": false
