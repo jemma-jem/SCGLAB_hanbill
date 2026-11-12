@@ -9380,7 +9380,9 @@ function checkSttDataGaps(filtered, s, e){
     var key=cur.getFullYear()+'-'+String(cur.getMonth()+1).padStart(2,'0');
     var c=counts[key]||0;
     // 기간에 포함되는 월인지 확인 (부분월도 포함)
-    gaps.push({month:key, cnt:c, sparse:c<STT_MIN_PER_MONTH});
+    // ※ 0건(= 해당 월 STT 파일 자체가 없음 = 정상)은 '분석 제한'이 아님 → 경고 제외.
+    //   실제 부분 데이터(1~9건)만 '분석 제한'으로 판정.
+    gaps.push({month:key, cnt:c, sparse:(c>0 && c<STT_MIN_PER_MONTH)});
     cur.setMonth(cur.getMonth()+1);
   }
   var sparseMonths=gaps.filter(function(g){return g.sparse;});
