@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-11T05:59:24.273Z",
+  "updated_at": "2026-11-12T07:01:18.123Z",
   "sources": [
     "시정일보 RSS(피플/전체)",
     "지역지 직접 RSS(동부뉴스·투데이군산·당진신문·영남투데이·수원일보·금강일보·디트뉴스·전북중앙·남도일보·광주드림·경북일보·울산제일일보·제주의소리·세종의소리)",
@@ -8,6 +8,29 @@
   ],
   "count": 600,
   "records": [
+    {
+      "date": "2026-11-12",
+      "url": "https://www.sjsori.com/news/articleView.html?idxno=89659",
+      "source": "세종의소리",
+      "title": "[인사] 행복청, 도시공간건축과장 오진수 등 전보",
+      "region": "",
+      "kinds": [
+        "전보"
+      ],
+      "people": [
+        {
+          "name": "오진수",
+          "dept": "도시공간건축과장",
+          "rank": "과장"
+        },
+        {
+          "name": "박현욱",
+          "dept": "녹색에너지환경과장",
+          "rank": "과장"
+        }
+      ],
+      "hit": true
+    },
     {
       "date": "2026-11-11",
       "url": "https://www.jejusori.net/news/articleView.html?idxno=508220",
@@ -27,6 +50,18 @@
       "title": "최정호 시장, 산하기관 인사 못하나 안하나?",
       "region": "",
       "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-11",
+      "url": "http://www.ujeil.com/news/articleView.html?idxno=395102",
+      "source": "울산제일일보",
+      "title": "市, 시간선택제 임기제 공무원 임용장 수여",
+      "region": "울산시",
+      "kinds": [
+        "임용"
+      ],
       "people": [],
       "hit": false
     },
@@ -229,6 +264,18 @@
       "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE1jdmVKQU9fa196NmdzUjZXUTdzTUpEODNRV3g3eEM5b0NMbDZKWEpfUE5pRGlzSG45UFRyeUF2Y3lrbmZ0YmgyU29zQlFZUUs00gFsQVVfeXFMUFY5T25Dd1RCeXNuNE41MUdWclQtODdyTmlTN0tkUlhWZmxzeDJlSFRQMXFobDFDd2FDYnZCUVhEb29iRmhyT0VjdmxIaFpVWkprTTVLZ2NSdFR4V3piSXZXY1BQczNqbFVEd05N?oc=5",
       "source": "경찰연합신문",
       "title": "군위군, 2026년 하반기 수시 승진인사 단행:경찰연합신문",
+      "region": "군위군",
+      "kinds": [
+        "승진"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-09",
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFB6cXdaS2dUNW5ZdmJPQWVUcU9qMS1ETnZwTlVUa0ZZamJnSm9kLVpXMnl5Q3J2Sml6cllYbElLUW1HN2FLUlV4ZW5rVk5sTzc4Q2FhaF9DVE40aXlFbl9MQmk5c2ZFQQ?oc=5",
+      "source": "데일리대구경북뉴스",
+      "title": "군위군, 2026년 하반기 수시 승진인사 단행",
       "region": "군위군",
       "kinds": [
         "승진"
@@ -1158,6 +1205,16 @@
       "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9FR0RJUEhZMmwwOG5iYnJhSzdRYmtNQk40TVlhWnZlVUZEbnFuUnlBUXNNWHk0UjVicDM2cEJZbUowTllST0xNX1NRU04tTE02RmRpbkJtQ2FoRzlXT2IxRFBYdE5MN2JpUTNpa3d2cnRqeHA30gFyQVVfeXFMTVBBdGdtUEQ0MXBUY0xJVG0zVzl4Nm1LSE9MOWJFd2h2YWZweGJDdGNldU5TMmRHa2RQTFhPYmJONldhU2IyNmJZSFhiT0xzalhONHBGRkJNMVdQaVJHT2pmY005Q2FPcC1zZmdCUFZhN1lR?oc=5",
       "source": "메가경제",
       "title": "[CEO열전] SK이노베이션, 사장단 인사 단행…정승일 총괄사장 선임, 전력사업 전환 가속",
+      "region": "",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-10-30",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5udmM0Vnh4clVJNEU4ajdKNjBGLUJYV2d5WUIwQUVIWkJ3WDZpX3ZzZEZ6OEJMN0V5MGN6YmZlWV80UXI2UHlNbE5HX0xWOHFjcFpZWVNUd3g3c09xemtUYXhNRHFwd2ZRbmUzTA?oc=5",
+      "source": "메디컬투데이",
+      "title": "SK그룹, 27년 사장단 인사 단행…주요 CEO 대거 유임",
       "region": "",
       "kinds": [],
       "people": [],
@@ -7541,59 +7598,6 @@
       ],
       "people": [],
       "hit": true
-    },
-    {
-      "date": "2026-10-01",
-      "url": "https://www.sjsori.com/news/articleView.html?idxno=88927",
-      "source": "세종의소리",
-      "title": "[인사] 더불어민주당 세종시당",
-      "region": "세종시",
-      "kinds": [],
-      "people": [
-        {
-          "name": "박성준",
-          "dept": "정책실장",
-          "rank": ""
-        },
-        {
-          "name": "김성현",
-          "dept": "조직부장",
-          "rank": ""
-        }
-      ],
-      "hit": false
-    },
-    {
-      "date": "2026-10-01",
-      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE50UWhOeUNNTVc5cnZKRC1UWVgxaGhaZW5ZNFF2QjZoUjNycDE0WEJKalFhTURSTm9XOEVwU2VITlZucG91eDZuWjZ6eXF5Z3dqTF9LbnZ0UHRCV1E4YzhxUFl4WFRWc1hrQ3M0?oc=5",
-      "source": "CNB뉴스",
-      "title": "[인사] 구미시",
-      "region": "구미시",
-      "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-10-01",
-      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBqN2xacVZkWmVXN01rcFRxSlMzalZRM0tNV0ZicUIwUFRidEY3cHpUVWtXaVNxRlVRSHZ3SWdMTkxKLV9LdG1rS3puenl5ZVNfMzF6VlpVRnhZczg3enJuVFpJRHI4Z04w?oc=5",
-      "source": "수도권지역뉴스",
-      "title": "평택도시공사, 조직개편 및 인사발령 단행",
-      "region": "평택도시",
-      "kinds": [],
-      "people": [],
-      "hit": false
-    },
-    {
-      "date": "2026-10-01",
-      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE91c3NVVEZ1S2ZuelIzSkJtaHJFcTRybFIta3Q4WHZVMEtXenc1ajEwaHpZaUNoV0FpNzh5MUw4S25Gc09LZ3VhVmw4ZF9aVTdocXZ5WnRLSU9JMmdaUW5DaGxLZG1paUY0Y1E?oc=5",
-      "source": "newscj.com",
-      "title": "장성군, 10월 1일자 56명 인사 단행… 신규 공무원 42명 임용",
-      "region": "장성군",
-      "kinds": [
-        "임용"
-      ],
-      "people": [],
-      "hit": false
     }
   ]
 }
