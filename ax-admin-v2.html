@@ -8454,7 +8454,7 @@ window.hbWinProb = function(g){
   let score = base;
   // 2) 외부 신호 가감
   const addF = function(cond, delta, label){ if (cond){ score += delta; factors.push({ t:label, delta:delta }); } };
-  addF(g.bidsOpen && g.bidsOpen.length, +12, '진행중 발주 ' + ((g.bidsOpen&&g.bidsOpen.length)||0) + '건(나라장터)');
+  addF(g.bidsOpen && g.bidsOpen.length, +6, '진행중 발주 ' + ((g.bidsOpen&&g.bidsOpen.length)||0) + '건(나라장터)');
   addF(!(g.bidsOpen && g.bidsOpen.length) && g.bids && g.bids.length, +4, '최근 발주 이력');
   addF((g.hr && g.hr.length), +4, '관련 인사발령 ' + ((g.hr&&g.hr.length)||0) + '건 — 재인사 접점');
   addF((g.news && g.news.length), +4, '고객 소식 ' + ((g.news&&g.news.length)||0) + '건');
