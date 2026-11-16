@@ -8466,9 +8466,10 @@ window.hbWinProb = function(g){
   addF(g.sysRival && !g.sysNone, +10, '타사 시스템 사용 — 교체 제안 대상');
   addF(_smartSentHas(g), +40, '스마트영업 제안 메일 발송 — 선제 영업 수행');
   if (!own){ addF(g.rivalN >= 3, -60, '경쟁사 다수 선점(' + g.rivalN + '구좌)'); }
-  // 3) 표시값 — 정상 단계(0~100)만 클램프. 유지초과(방어/충성)·이탈위험(음수)은 시트값 그대로 노출(클램프 없음).
+  // 3) 표시값 — 합산 점수가 높을수록 상위. 상한(100) 제거 → 신호가 겹칠수록 점수가 더 커져 변별력 유지.
+  //    (하한 0만 유지: 음수 방지. '수주확도 %'가 아니라 '공략 우선순위 점수' 성격)
   score = Math.round(score);
-  if (!retention && !churnRisk) score = Math.max(0, Math.min(100, score));
+  score = Math.max(0, score);
   // 4) 라벨·색 — 유지초과·이탈위험은 실제 단계명을 라벨로, 시트값(±)을 그대로 표기
   let label, tier, color;
   if (churnRisk)      { label = baseWhy; tier = 'risk'; color = '#64748B'; }   // 위험/Drop/이탈 — 차분한 슬레이트
@@ -11630,29 +11631,35 @@ function rdRegionAction(g){
     const d = Math.ceil((new Date(b.closeDate) - new Date()) / 86400000);
     return d >= 0 && d <= 3;
   });
+  // ※ p = 유형 우선도. 2026-11 검토 반영 — '수주확도 점수 동점 시' 노출 순서를 가르는 타이브레이크 값(의견).
+  //    (의견값: 발주마감임박 30 · 인사발령 50 · 낙찰 10 · 진행중발주 20 · 솔루션 40)
   if (soonD3.length)
-    return { p:100, urgent:true, cat:'bid', ic:'🏛', act:'발주 마감 임박(' + dday(soonD3[0].closeDate) + ') — 마감 전 담당자 통화 · ' + cut(soonD3[0].title, 22), cta:'메일 초안', fn:'rdMail' };
+    return { p:30, urgent:true, cat:'bid', ic:'🏛', act:'발주 마감 임박(' + dday(soonD3[0].closeDate) + ') — 마감 전 담당자 통화 · ' + cut(soonD3[0].title, 22), cta:'메일 초안', fn:'rdMail' };
   // 2. 우리 담당자/부서 인사발령
   if ((g.hrMatched && g.hrMatched.length) || (g.hrDeptMatched && g.hrDeptMatched.length))
-    return { p:82, cat:'hr', ic:'🆕', act:'담당자 인사발령 감지 — 신규 담당자에게 인수인계 안내', cta:'메일 초안', fn:'rdMail' };
+    return { p:50, cat:'hr', ic:'🆕', act:'담당자 인사발령 감지 — 신규 담당자에게 인수인계 안내', cta:'메일 초안', fn:'rdMail' };
   // 3. 수주업체 낙찰 → 업체 연계
   if (g.wins && g.wins.length)
-    return { p:72, cat:'win', ic:'🤝', act:'수주업체 ' + cut(g.wins[0].winner || '업체', 14) + ' — 시스템 연계 제안', cta:'메일 초안', fn:'rdMail' };
+    return { p:10, cat:'win', ic:'🤝', act:'수주업체 ' + cut(g.wins[0].winner || '업체', 14) + ' — 시스템 연계 제안', cta:'메일 초안', fn:'rdMail' };
   // 4. 진행중 발주 (여유)
   if (g.bidsOpen && g.bidsOpen.length)
-    return { p:62, cat:'bid', ic:'🏛', act:(g.co === '한빌' ? '발주 연계 구좌 확장 — ' : '입찰 대상 — ') + '사업 착수 전 제안 · ' + cut(g.bidsOpen[0].title, 22), cta:'메일 초안', fn:'rdMail' };
+    return { p:20, cat:'bid', ic:'🏛', act:(g.co === '한빌' ? '발주 연계 구좌 확장 — ' : '입찰 대상 — ') + '사업 착수 전 제안 · ' + cut(g.bidsOpen[0].title, 22), cta:'메일 초안', fn:'rdMail' };
   // 5. 솔루션 매칭 / 고객 소식
   if (g.sols && g.sols.length)
-    return { p:52, cat:'sol', ic:'🧰', act:g.sols[0].sol.name + ' 제안 — 지역 기사 명분으로 접촉', cta:'메일 초안', fn:'rdMail' };
+    return { p:40, cat:'sol', ic:'🧰', act:g.sols[0].sol.name + ' 제안 — 지역 기사 명분으로 접촉', cta:'메일 초안', fn:'rdMail' };
   return null;
 }
 
 function renderBriefing(){
   const el = document.getElementById('rd-briefing');
   if (!el) return;
+  // 노출 순서: 1순위 = 수주확도 점수(높을수록 상위) · 2순위(동점 시) = 유형 우선도(a.p, 의견값).
+  //   sortKey = 수주확도×1000 + 유형우선도 → 수주확도가 다르면 그대로 순위, 같을 때만 유형우선도로 가름.
   const items = ST.regions.map(function(g){
     const a = rdRegionAction(g);
-    return a ? { g:g, a:a, score:a.p + Math.min((score(g)||0)/2000, 1) } : null;
+    if (!a) return null;
+    const wp = (typeof window.hbWinProb === 'function') ? ((window.hbWinProb(g) || {}).score || 0) : 0;
+    return { g:g, a:a, wp:wp, score: wp * 1000 + a.p };
   }).filter(Boolean).sort(function(x, y){ return y.score - x.score; });
 
   // 유형별 다양성 — 한 종류(예: 발주 마감)가 브리핑을 독점하지 않게 카테고리별 상한을 둔다.
