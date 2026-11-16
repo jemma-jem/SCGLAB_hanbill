@@ -291,6 +291,36 @@ function normUrl(u) {
 }
 function keyOf(r) { return normUrl(r.url) || (r.title + '|' + r.date); }
 
+// ── 이벤트 단위 중복 제거 ────────────────────────────────────────────
+// 같은 지역·같은 발령일 기사는 URL/제목이 달라도 같은 인사발령 1건이다.
+//  예) "[인사] 평택시 2026년 11월 6일자 인사발령 사항" 과
+//      "[인사] 평택시, 11월 6일자 4·5급 등 36명 인사" → 평택시 11-06 하나로 묶음.
+function _balDate(t) {   // 제목에서 발령일(N월 N일) → 'MM-DD'
+  const m = String(t || '').match(/(\d{1,2})\s*월\s*(\d{1,2})\s*일/);
+  return m ? (m[1].padStart(2, '0') + '-' + m[2].padStart(2, '0')) : '';
+}
+function eventKeyOf(r) {
+  const d = _balDate(r.title);
+  const reg = String(r.region || '').trim();
+  return (reg && d) ? (reg + '|' + d) : '';   // 지역·발령일 둘 다 있을 때만 이벤트로 묶는다
+}
+function _richness(x) {   // 더 풍부한 기사 우선: 명단 수 > [인사] 섹션 > 제목 길이
+  return ((x.people || []).length * 100)
+       + (/\[[가-힣·\s]{0,8}인사\]/.test(x.title || '') ? 10 : 0)
+       + String(x.title || '').length * 0.001;
+}
+function dedupEvents(records) {
+  const best = new Map();
+  const passthrough = [];   // 발령일 추출 불가 기사는 묶지 않고 그대로 유지
+  records.forEach(function (r) {
+    const ek = eventKeyOf(r);
+    if (!ek) { passthrough.push(r); return; }
+    const prev = best.get(ek);
+    if (!prev || _richness(r) > _richness(prev)) best.set(ek, r);
+  });
+  return passthrough.concat([...best.values()]);
+}
+
 function merge(existing, fresh) {
   const map = new Map();
   existing.forEach(function (r) { map.set(keyOf(r), r); });
@@ -303,7 +333,7 @@ function merge(existing, fresh) {
     else if ((r.people || []).length > (prev.people || []).length) map.set(k, r);
   });
   const cutoff = new Date(Date.now() - KEEP_DAYS * 86400000).toISOString().slice(0, 10);
-  const all = [...map.values()]
+  const all = dedupEvents([...map.values()])   // 지역+발령일 단위 중복 제거
     .filter(function (r) { return (r.date || '') >= cutoff; })
     .sort(function (a, b) { return (b.date || '').localeCompare(a.date || ''); })
     .slice(0, MAX_ITEMS);
