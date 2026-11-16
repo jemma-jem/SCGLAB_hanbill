@@ -906,7 +906,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
                 <span id="map-popup-ratio" class="mp-val" style="color:#4ADE80"></span>
               </div>
               <div class="mp-row" id="map-popup-wp-row" style="display:none">
-                <span class="mp-label">수주확도</span>
+                <span class="mp-label">우선순위 점수</span>
                 <span id="map-popup-wp" class="mp-val" style="font-weight:800"></span>
               </div>
               <!-- 한빌 고객 지역: 전략 제안 없이 현황만 표시 -->
@@ -1243,7 +1243,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
               try { if (typeof window.rdLookupRegion === 'function') rg = window.rdLookupRegion(p.adm_nm); } catch(e){}
               const wp = (rg && typeof window.hbWinProb === 'function') ? window.hbWinProb(rg) : null;
               if (wp && wpRow && wpEl){
-                wpEl.textContent = wp.label + ' ' + wp.score + '%';
+                wpEl.textContent = wp.score;   // 캡션(우선순위 점수)은 좌측 mp-label에 있음
                 wpEl.style.color = wp.color;
                 wpEl.title = wp.factors.map(function(f){ return f.delta==null ? (f.t+' (기준 '+f.base+')') : (f.t+' ('+(f.delta>0?'+':'')+f.delta+')'); }).join('\n');
                 wpRow.style.display = '';
@@ -8279,7 +8279,7 @@ function hbRegionAnswer(text){
   try {
     const rg = (typeof window.rdLookupRegion === 'function') ? window.rdLookupRegion(hit.sgg) : null;
     const wp = (rg && typeof window.hbWinProb === 'function') ? window.hbWinProb(rg) : null;
-    if (wp) wpLine = `• <b style="color:${wp.color}">${wp.label} ${wp.score}%</b> <span style="color:#94A3B8">(영업상태+기사·발주 결합)</span><br>`;
+    if (wp) wpLine = `• <b style="color:${wp.color}">${wp.label} ${wp.score}</b> <span style="color:#94A3B8">(영업상태+기사·발주 결합)</span><br>`;
   } catch(e){}
   const html =
     `🗺 <strong>${hit.sgg}</strong> 빌링 현황<br><br>` +
@@ -8475,7 +8475,7 @@ window.hbWinProb = function(g){
   if (churnRisk)      { label = baseWhy; tier = 'risk'; color = '#64748B'; }   // 위험/Drop/이탈 — 차분한 슬레이트
   else if (retention) { label = baseWhy; tier = 'high'; color = '#059669'; }   // 방어/충성
   else {
-    label = own ? '유지확도' : '수주확도';
+    label = '우선순위 점수';   // 상한 제거(>100 허용)로 확률(%)이 아닌 '공략 우선순위 점수'로 표기
     tier  = score >= 70 ? 'high' : (score >= 45 ? 'mid' : 'low');
     color = tier === 'high' ? '#059669' : (tier === 'mid' ? '#D97706' : '#64748B');
   }
@@ -11668,7 +11668,7 @@ function renderBriefing(){
   const used = {};
   const top = [];
   items.forEach(function(it){
-    if (top.length >= 7) return;
+    if (top.length >= 5) return;   // 오늘의 우선 액션 = TOP 5
     const c = it.a.cat;
     if ((used[c] || 0) >= (CAP[c] || 2)) return;
     used[c] = (used[c] || 0) + 1;
@@ -11677,13 +11677,13 @@ function renderBriefing(){
   if (!top.length){ el.innerHTML = ''; ST.actRank = {}; ST.actTop = []; return; }
   ST.actTop = top;   // 지도 핀도 브리핑과 동일한 목록(카테고리 상한 적용된 '오늘의 우선 액션')을 사용
 
-  // 카드 순위 뱃지: 오늘의 우선 액션 상위(1~N)를 그대로 부여하고, 이후 8~20위까지 이어서 마킹.
+  // 카드 순위 뱃지: 오늘의 우선 액션 상위(1~5)를 그대로 부여하고, 이후 6~20위까지 이어서 마킹.
   ST.actRank = {};
   top.forEach(function(it, i){ ST.actRank[it.g.key] = i + 1; });   // 1~N (브리핑과 동일 순위)
   (function(){
     const shown = {};
     top.forEach(function(it){ shown[it.g.key] = 1; });
-    let rk = top.length;                       // 보통 6~7
+    let rk = top.length;                       // 보통 5 (TOP 5)
     items.forEach(function(it){
       if (shown[it.g.key] || rk >= 20) return; // 이미 노출됐거나 20위 초과면 제외
       ST.actRank[it.g.key] = ++rk;             // 상위 목록 다음 순위부터 순차 부여
@@ -11697,9 +11697,9 @@ function renderBriefing(){
         '<span class="sub">AI 레인저가 뽑은 지금 움직일 곳</span>' +
         '<span class="cnt">대응 대상 ' + items.length + '곳 중 상위 ' + top.length + '</span></div>' +
       '<div style="font-size:10.5px;color:#94A3B8;padding:0 2px 9px;line-height:1.6" ' +
-        'title="지역마다 신호가 여러 개면 가장 높은 유형 하나로 순위가 정해집니다. 같은 유형이면 대응 시급도(구좌·빌링 규모)순.">' +
-        '<span style="color:#CBD5E1;font-weight:700">우선순위</span> ' +
-        '🏛 발주 마감임박 › 🆕 인사발령 › 🤝 낙찰 › 🏛 진행 발주 › 🧰 솔루션' +
+        'title="수주확도(우선순위) 점수가 높은 지역부터 노출됩니다. 점수가 같을 때만 아래 유형 우선도로 순서를 가립니다.">' +
+        '<span style="color:#CBD5E1;font-weight:700">우선순위 점수 높은 순</span> · 동점 시 유형: ' +
+        '🆕 인사발령 › 🧰 솔루션 › 🏛 발주 마감임박 › 🏛 진행 발주 › 🤝 낙찰' +
       '</div>' +
       top.map(function(it, i){
         const g = it.g, a = it.a;
@@ -11724,7 +11724,9 @@ function rdStrategicList(limit){
   if (!ST || !ST.loaded || !ST.regions) return [];
   const items = ST.regions.map(function(g){
     const a = rdRegionAction(g);
-    return a ? { g:g, a:a, sc:a.p + Math.min((score(g)||0)/2000, 1) } : null;
+    if (!a) return null;
+    const wp = (typeof window.hbWinProb === 'function') ? ((window.hbWinProb(g) || {}).score || 0) : 0;
+    return { g:g, a:a, sc: wp * 1000 + a.p };   // 1순위 수주확도 점수 · 2순위(동점) 유형 우선도
   }).filter(Boolean).sort(function(x, y){ return y.sc - x.sc; });
   return items.slice(0, limit || 5);
 }
@@ -11792,7 +11794,7 @@ window.renderMapStrategicIcons = function(){
     grp.style.cursor = 'pointer';
     const title = document.createElementNS(NS, 'title');
     title.textContent = (i+1) + '. ' + g.sd + ' ' + g.sgg + (g.co ? ' (' + g.co + ')' : '') +
-                        ' — ' + it.a.act + (wp ? '  [' + wp.label + ' ' + wp.score + '%]' : '');
+                        ' — ' + it.a.act + (wp ? '  [' + wp.label + ' ' + wp.score + ']' : '');
     grp.appendChild(title);
     const ring = document.createElementNS(NS, 'circle');
     ring.setAttribute('r', '4'); ring.setAttribute('fill', '#EF4444'); ring.setAttribute('opacity', '0.4');
@@ -11949,9 +11951,9 @@ window.rdRender = function(){
     const wpTip = wp ? wp.factors.map(function(f){
       return f.delta == null ? ('· ' + f.t + ' (기준 ' + f.base + ')') : ('· ' + f.t + ' (' + (f.delta>0?'+':'') + f.delta + ')');
     }).join('\n') : '';
-    const wpBadge = wp ? '<span class="rd-wp" title="' + esc('[' + wp.label + ' ' + wp.score + '%]\n' + wpTip) +
+    const wpBadge = wp ? '<span class="rd-wp" title="' + esc('[' + wp.label + ' ' + wp.score + ']\n' + wpTip) +
       '" style="background:' + wp.color + '1A;color:' + wp.color + ';border:1px solid ' + wp.color + '55;' +
-      'border-radius:6px;padding:1px 7px;font-weight:800;white-space:nowrap">' + wp.label + ' ' + wp.score + '%</span>' : '';
+      'border-radius:6px;padding:1px 7px;font-weight:800;white-space:nowrap">' + wp.label + ' ' + wp.score + '</span>' : '';
     const _sent = (typeof _smartSentHas==='function') && _smartSentHas(g);
     const _sentInfo = _sent && window._smartSentInfo ? (window._smartSentInfo[_normReg(g.sgg)] || window._smartSentInfo[_normReg((g.sido||'')+(g.sgg||''))]) : null;
     const _rep = (typeof _smartReplyOf==='function') ? _smartReplyOf(g) : null;
@@ -11992,7 +11994,7 @@ window.rdRender = function(){
       + '<button class="rd-btn mail" onclick="rdMail(\'' + esc(g.key) + '\')" title="선제 제안 메일 초안">' +
         '<i class="ti ti-mail"></i> 메일</button></div>';
 
-    // 오늘의 우선 액션(상위 7) 이후 8~20위 지역은 카드에 순위 뱃지를 표시한다.
+    // 오늘의 우선 액션(상위 5) 이후 6~20위 지역은 카드에 순위 뱃지를 표시한다.
     const _rk = (ST.actRank && ST.actRank[g.key]) || 0;
     const _rkBg = _rk <= 2 ? '#EA580C' : '#94A3B8';   // 상위 1~2위만 오렌지 포인트 · 나머지 무채색
     const rkBadge = _rk ? ' <span title="오늘의 우선 액션 ' + _rk + '위" style="display:inline-flex;align-items:center;justify-content:center;min-width:19px;height:19px;padding:0 5px;margin-left:6px;border-radius:10px;background:' + _rkBg + ';color:#fff;font-size:11px;font-weight:800;vertical-align:middle;line-height:1">' + _rk + '</span>' : '';
@@ -12078,7 +12080,7 @@ window.rdDetail = function(key){
     // 📊 요약 — 표 대신 한눈에 들어오는 스탯 스트립
     '<div class="rd-sum">' +
       (function(){ var wp = (typeof window.hbWinProb === 'function') ? window.hbWinProb(g) : null;
-        return wp ? '<span><span class="k">' + esc(wp.label) + '</span><b style="color:' + wp.color + '">' + wp.score + '</b>%</span>' : ''; })() +
+        return wp ? '<span><span class="k">' + esc(wp.label) + '</span><b style="color:' + wp.color + '">' + wp.score + '</b></span>' : ''; })() +
       '<span><span class="k">빌링 규모</span><b>' + g.qty.toLocaleString() + '</b>건/월</span>' +
       (g.owner ? '<span><span class="k">담당</span><b>' + esc(g.owner) + '</b></span>' : '') +
       '<span><span class="k">솔루션</span>' +
