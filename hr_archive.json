@@ -1,13 +1,61 @@
 {
-  "updated_at": "2026-11-16T06:13:39.195Z",
+  "updated_at": "2026-11-17T07:46:53.971Z",
   "sources": [
     "시정일보 RSS(피플/전체)",
     "지역지 직접 RSS(동부뉴스·투데이군산·당진신문·영남투데이·수원일보·금강일보·디트뉴스·전북중앙·남도일보·광주드림·경북일보·울산제일일보·제주의소리·세종의소리)",
     "구글 뉴스 RSS",
     "기사 본문 보강"
   ],
-  "count": 296,
+  "count": 313,
   "records": [
+    {
+      "date": "2026-11-17",
+      "url": "https://www.ggilbo.com/news/articleView.html?idxno=1193758",
+      "source": "금강일보",
+      "title": "대전보건환경연구원, 사료시험검사기관 지정",
+      "region": "사료시",
+      "kinds": [
+        "전보"
+      ],
+      "people": [],
+      "hit": true
+    },
+    {
+      "date": "2026-11-17",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE0wZnhvRmVLVExSNm5DRGFaZ1plZnhSM0lmbXVtTVAzQzNBUkctcHJxenNWRzAyTDdMQTd0Z0J4eFlXbjFyYWdab21TRGQ4T2xuTjBmSTc4SGMtd3IwbTd2aDdVdzZiNzNudU9JQUpn?oc=5",
+      "source": "국제뉴스",
+      "title": "천안시 \"내 덕에 승진했지?\" 축하 대신 날아든 승진 계산서 '의혹'",
+      "region": "천안시",
+      "kinds": [
+        "승진"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-17",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1jQmNQZ2o5bGlReEVVZnRPTWJHUTdDc29KNmMwZWIzOEZERi1CVXdZYlVJVFJmcWw5ZHBXRUxDNFQ5YXJBWkFfWE84VFZVWm1KNFNVS1BFSzNOd28zRzZLSlVCUlBRdF9FNWc?oc=5",
+      "source": "천지일보",
+      "title": "창원시, 5급 승진 역량평가 PASS제 폐지… 역량교육 이수제로 전환",
+      "region": "창원시",
+      "kinds": [
+        "승진"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-17",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBYeHFvczAzN1NLYS04aEJsb01ydVpVenJqYkkxVkNwczhtdVBYLTFjX1cwcGFTNEVHYlVPMjFZS2k2UW5taHYtZW9wVmhVcWRzQ01LUlZUSUd2bnJpS2NQRWZOWW85bUcxRl9R?oc=5",
+      "source": "CNB뉴스",
+      "title": "롯데그룹, 임원 인사 단행...‘롯데 3세’ 신유열 사장 승진",
+      "region": "",
+      "kinds": [
+        "승진"
+      ],
+      "people": [],
+      "hit": false
+    },
     {
       "date": "2026-11-16",
       "url": "https://www.jejusori.net/news/articleView.html?idxno=508341",
@@ -49,6 +97,90 @@
       "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBwV0taVnVuWXZMb2FXZURGeVdra21zR0ZUSHBmZ3RDU3pBTVdLcGdvZzJnXzZTVU9TeVIzVE5NOGZva2ZFa0lGTnNUX1BKMk1qSTRfQkMwNUxrV3I0dDhqRTViQUk?oc=5",
       "source": "서울경제TV",
       "title": "KG그룹, 곽정현 부회장 승진…2027 임원 인사 단행",
+      "region": "",
+      "kinds": [
+        "승진"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-16",
+      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9FQjVtQTdyeVJkX1hCd0FjM014MEZRNllDUVdNOHVoblczYzYwN3ZIN3lma0pmWERYOE5wRUhlVVBwMFFnWE94ZXgyY3BYQmhUbGpwZXVLTVhLdldKRGo0dExNaUdDeVJKYks5QUYwMmhxcDA?oc=5",
+      "source": "코리아이글뉴스",
+      "title": "창원특례시, 5급 승진 시험 부담 줄인다… 2028년부터 새 제도 적용 추진",
+      "region": "",
+      "kinds": [
+        "승진"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-16",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE03STRTcDFFUlFXT0JzWUc4Qy1GcmpJZlpsX1dnVmpnT3dBQTNJeWRZN3ZoZk9uVFg4V0J6QWlidWZvZ2RTVGhMemZnMkZFYTdvQ0dQaWttNjM3TDVCaXJLY09Wc0tNemNL0gFoQVVfeXFMTTdJNFNwMUVSUVdPQnNZRzhDLUZyaklmWmxfV2dWamdPd0FBM0l5ZFk3dmhmT25UWDhXQnpBaWJ1Zm9nZFNUaEx6ZmcyRkVhN29DR1Bpa202MzdMNUJpcktjT1ZzS016Y0s?oc=5",
+      "source": "경남경제",
+      "title": "창원특례시, 관행적·불필요 사업 정비 나선다… 5급 승진 ‘역량평가 PASS제’ 폐지",
+      "region": "",
+      "kinds": [
+        "승진"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-16",
+      "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5vLUJYSndFdDVSWEdwMW1fRWZ2Ujdid0pJVkRleWk5Rk1zVEJyN05NTHhTRmdnd2ROWnRuTWZBcUp5OUpaaURHbmpPT1BScEhkTUJJbWxlWDdsVUUxOXVjd0dqQXhQZElocWludmQtSks0aTEtN3Vr0gF3QVVfeXFMTm8tQlhKd0V0NVJYR3AxbV9FZnZSN2J3SklWRGV5aTlGTXNUQnI3Tk1MeFNGZ2d3ZE5adG5NZkFxSnk5SlppREduak9PUFJwSGRNQkltbGVYN2xVRTE5dWN3R2pBeFBkSWhxaW52ZC1KSzRpMS03dWs?oc=5",
+      "source": "뉴스프리존",
+      "title": "창원특례시, 5급 승진 ‘역량평가 PASS제’ 폐지 등 관행적∙불필요 사업 정비 나서",
+      "region": "",
+      "kinds": [
+        "승진"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-16",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE5kQVBvZEY2VXc0M2wwYjgtQXJsdFgyM0JlQmJMQnVvdGl3bjUzVkFEQnN2b3lnN2xGUEFibFFLVVpUQlV4THF1NTA5RDhRYlBNdGUwSTVkaElMY2MtS2NtdC1BRUdZVlZNMFZha2FmTk9Cdw?oc=5",
+      "source": "웹이코노미",
+      "title": "창원특례시, 5급 승진 역량평가 PASS제 폐지…역량교육 이수제로 전면 개편",
+      "region": "",
+      "kinds": [
+        "승진"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-16",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE40YjRrdExOQ081Y0RxdDhVeGlSR2V5aHZTWjhGa3ZqeTVNTTdsYmt2azljQTVqQW00UDdBanBwSW5iOEp2cFg3OVhLRGdJcE9JNjNFQTl3WWxDdDV2OUpWV0FhWVh4eFBtOUc4ZA?oc=5",
+      "source": "메디컬투데이",
+      "title": "KG그룹, 곽정현 부회장 승진... 총 38명 정기 임원 인사 단행",
+      "region": "",
+      "kinds": [
+        "승진"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-16",
+      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE8tdTVtQnJ3WlM3ZXlfcEdVeFVrX3F5QWlVWXhSSjNIblBlaWkxMWJJWkZBTzhtbmRxWkl5VnFtSEdnWDBPd2RrcWctelgtbk9SQTY4U2s4X2ljZw?oc=5",
+      "source": "파이낸셜뉴스",
+      "title": "KG그룹, 곽정현·이익원 부회장 승진..정기임원 인사 단행",
+      "region": "",
+      "kinds": [
+        "승진"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-16",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5jZ2lqMVBKemhXNWFkU1R0ZVc4c2pNdjllYXVOUmZOaGlqUmcxUGsxc0VNVzNna0VqYV81ZF9DVjVES1pWeGRXZVUzZ1JjNXFaeDFMeW1iMUJmM0p3NUZZd2lPazc1YmMzN0plcUNLM1HSAXRBVV95cUxQNkdVeXlNMjFna251N2RMTmZwN3p0UHdYMHlUYS01LTE2WXdWQ0lDR1J1TnJjOUNTNFk3bjBZRF9GUFc0SDJxUUc3ZXdMR08yRDBnX3N2NXpSdE5DXzRnbTRaUGZjdjNscjA4cVdLNlptU1NHMw?oc=5",
+      "source": "뉴스클레임",
+      "title": "[KG스틸 인사 단행] 김성묵·김형도 상무 승진… 신규 임원 3명 선임",
       "region": "",
       "kinds": [
         "승진"
@@ -488,6 +620,16 @@
       "hit": false
     },
     {
+      "date": "2026-11-04",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBpZ2NXdnZYS3c0RnpsZVdNQkE5UjAtSDI5NXNwTkstSXJqV1R0SHZ1RklxTlBuQUluZWVHVDB1aUNLSnBYd25WdDVOcFZVN2xzSjRMbElHaWRZNHVwZE1pelhfdDQ?oc=5",
+      "source": "매일일보",
+      "title": "LX MMA, 2027년 임원인사 단행…한상철 부사장 대표 내정",
+      "region": "",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
       "date": "2026-11-03",
       "url": "https://www.namdonews.com/news/articleView.html?idxno=928038",
       "source": "남도일보",
@@ -574,6 +716,18 @@
       "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFB1RjV3Q2dRa05IUUlScXpTT3BSaWVnM1kyZEpJNi1VdXk2OUNhdmhzNVhoallNSDVjNk5iUWk5YVdqY2V4d0NaMU16TEVWeWktbkdzUlE1bXppd00xcEJfdA?oc=5",
       "source": "메트로신문",
       "title": "LX홀딩스, 염민석·김국현 상무 승진…2027년 정기 인사",
+      "region": "",
+      "kinds": [
+        "승진"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-03",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFByeTFTdUxJM2l5X0NIak9CQ0VGWmE2aVdPMkVvam9SZ0ZLdWNETnBpUmY1WXQzNVNMUUp6VFhsRUMyTDVvWnhzbWdGeGtscUdPQ2U5dk1NZl9HZ3l4aVpfbVd0M0g?oc=5",
+      "source": "매일일보",
+      "title": "LX판토스, 2027년 임원인사 단행…형갑수 전무 등 8명 승진·선임",
       "region": "",
       "kinds": [
         "승진"
@@ -3849,8 +4003,279 @@
       "kinds": [],
       "people": [],
       "hit": false
+    },
+    {
+      "date": "2026-09-07",
+      "url": "https://www.sijung.co.kr/news/articleView.html?idxno=436541",
+      "source": "시정일보",
+      "title": "2026년도 동작구 상반기 인사발령 (2026. 9. 3.字)",
+      "region": "동작구",
+      "kinds": [
+        "전보"
+      ],
+      "people": [
+        {
+          "name": "이선희",
+          "dept": "안전교통국장",
+          "rank": "국장"
+        },
+        {
+          "name": "민영기",
+          "dept": "기획재정국장",
+          "rank": "국장"
+        },
+        {
+          "name": "유재천",
+          "dept": "행정지원국장",
+          "rank": "국장"
+        },
+        {
+          "name": "소미경",
+          "dept": "돌봄복지국장",
+          "rank": "국장"
+        },
+        {
+          "name": "김현호",
+          "dept": "미래교육국장",
+          "rank": "국장"
+        },
+        {
+          "name": "전보",
+          "dept": "생활경제국장 김정원 ◇5급",
+          "rank": "국장"
+        },
+        {
+          "name": "이정심",
+          "dept": "정비사업신속추진단장",
+          "rank": ""
+        },
+        {
+          "name": "김한수",
+          "dept": "공간개발사업단장",
+          "rank": ""
+        },
+        {
+          "name": "황미연",
+          "dept": "교통행정과장",
+          "rank": "과장"
+        },
+        {
+          "name": "여승재",
+          "dept": "주차관리과장",
+          "rank": "과장"
+        },
+        {
+          "name": "김혜란",
+          "dept": "자산회계과장",
+          "rank": "과장"
+        },
+        {
+          "name": "한은경",
+          "dept": "징수과장",
+          "rank": "과장"
+        },
+        {
+          "name": "고병준",
+          "dept": "재산세과장",
+          "rank": "과장"
+        },
+        {
+          "name": "김혜경",
+          "dept": "지방소득세과장",
+          "rank": "과장"
+        },
+        {
+          "name": "김태우",
+          "dept": "스마트행정과장",
+          "rank": "과장"
+        },
+        {
+          "name": "오은숙",
+          "dept": "통합돌봄과장",
+          "rank": "과장"
+        },
+        {
+          "name": "정해영",
+          "dept": "어르신정책과장",
+          "rank": "과장"
+        },
+        {
+          "name": "박지혜",
+          "dept": "장애인복지과장",
+          "rank": "과장"
+        },
+        {
+          "name": "장은주",
+          "dept": "가족지원과장",
+          "rank": "과장"
+        },
+        {
+          "name": "양혜영",
+          "dept": "교육지원과장",
+          "rank": "과장"
+        },
+        {
+          "name": "우은제",
+          "dept": "문화정책과장",
+          "rank": "과장"
+        },
+        {
+          "name": "이우석",
+          "dept": "영유아보육과장",
+          "rank": "과장"
+        }
+      ],
+      "hit": true
+    },
+    {
+      "date": "2026-08-07",
+      "url": "https://www.sijung.co.kr/news/articleView.html?idxno=434444",
+      "source": "시정일보",
+      "title": "[인사] 강북구 (08.01.자)",
+      "region": "강북구",
+      "kinds": [],
+      "people": [
+        {
+          "name": "송정석",
+          "dept": "행정안전국장",
+          "rank": "국장"
+        },
+        {
+          "name": "강상호",
+          "dept": "신청사건립추진단장",
+          "rank": ""
+        },
+        {
+          "name": "최서안",
+          "dept": "홍보담당관",
+          "rank": "담당관"
+        },
+        {
+          "name": "심재범",
+          "dept": "복지정책과장",
+          "rank": "과장"
+        },
+        {
+          "name": "김상연",
+          "dept": "어르신·장애인과장",
+          "rank": "과장"
+        },
+        {
+          "name": "오정환",
+          "dept": "주거정비과장",
+          "rank": "과장"
+        },
+        {
+          "name": "황규현",
+          "dept": "번2동장",
+          "rank": "동장"
+        },
+        {
+          "name": "유상훈",
+          "dept": "번3동장",
+          "rank": "동장"
+        }
+      ],
+      "hit": true
+    },
+    {
+      "date": "2026-07-24",
+      "url": "https://www.yntoday.co.kr/news/articleView.html?idxno=55522",
+      "source": "영남투데이",
+      "title": "[인사] 영천시 인사 이동 조서(2026. 7. 28.字",
+      "region": "영천시",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-07-23",
+      "url": "https://www.yntoday.co.kr/news/articleView.html?idxno=55511",
+      "source": "영남투데이",
+      "title": "[인사]대구광역시 2026년 하반기 인사 승진내정자(5급 이상)",
+      "region": "대구광역시",
+      "kinds": [
+        "승진",
+        "직무대리"
+      ],
+      "people": [
+        {
+          "name": "공보관",
+          "dept": "직무대리 한응민",
+          "rank": ""
+        },
+        {
+          "name": "이상민",
+          "dept": "원스톱기업투자센터장 직무대리",
+          "rank": ""
+        },
+        {
+          "name": "장현섭",
+          "dept": "공보관실 보도담당관 직무대리",
+          "rank": "담당관"
+        },
+        {
+          "name": "박정호",
+          "dept": "재난안전실 사회재난과장 직무대리",
+          "rank": "과장"
+        },
+        {
+          "name": "장성훈",
+          "dept": "재난안전실 자연재난과",
+          "rank": ""
+        },
+        {
+          "name": "김연희",
+          "dept": "보건복지국 어르신복지과",
+          "rank": ""
+        },
+        {
+          "name": "하지영",
+          "dept": "문화체육관광국 문화예술정책과",
+          "rank": ""
+        },
+        {
+          "name": "변명희",
+          "dept": "환경수자원국 물환경과",
+          "rank": ""
+        },
+        {
+          "name": "전채영",
+          "dept": "환경수자원국 공원조성과",
+          "rank": ""
+        },
+        {
+          "name": "김상민",
+          "dept": "맑은물하이웨이추진단 신천개발과장 직무대리",
+          "rank": "과장"
+        },
+        {
+          "name": "심계원",
+          "dept": "미래혁신성장실 의료산업과",
+          "rank": ""
+        },
+        {
+          "name": "심관택",
+          "dept": "미래혁신성장실 AI정책과",
+          "rank": ""
+        },
+        {
+          "name": "김정화",
+          "dept": "경제국 섬유패션과장 직무대리",
+          "rank": "과장"
+        },
+        {
+          "name": "서용열",
+          "dept": "경제국 농산유통과 오창균,",
+          "rank": ""
+        },
+        {
+          "name": "직무대리",
+          "dept": "도시주택국 건설산업과장",
+          "rank": "과장"
+        }
+      ],
+      "hit": true
     }
-  ],
-  "purged_at": "2026-11-16",
-  "purge_note": "인사말 오탐 제거 — 단독 인사(감사 인사/인사 올려 등) 비발령 기사 정리"
+  ]
 }
