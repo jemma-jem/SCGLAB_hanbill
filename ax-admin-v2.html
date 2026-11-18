@@ -2627,7 +2627,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
         <i class="ti ti-news"></i> <strong>고객 소식</strong>(신문·소식지) ·
         <i class="ti ti-building-bank"></i> <strong>나라장터 발주·낙찰</strong> ·
         <i class="ti ti-user-plus"></i> <strong>담당자 인사발령</strong>(시정일보) ·
-        🧰 <strong>자체 솔루션</strong>(도로조명·수목·빗물받이) 매칭</span><br>
+        <i class="ti ti-tools"></i> <strong>자체 솔루션</strong>(도로조명·수목·빗물받이) 매칭</span><br>
       · <strong>한빌 고객 지역</strong> — 신규 전략 제안 없이 <strong>현황</strong>만 표시. 단, <strong>발주가 뜨면 구좌 확장 기회</strong>로 안내합니다.<br>
       · <strong>타사 고객 지역</strong> — 발주·인사·이력을 근거로 <strong>선제 제안 메일 초안</strong>과 영업비서 <strong>진입 전략</strong>을 만들 수 있습니다.
       <span id="rd-status" style="display:block;margin-top:6px;font-weight:700;color:#0284C7"></span>
@@ -7424,7 +7424,7 @@ function hbHanbilStatusCard(sel) {
   if (rg && rg.bids && rg.bids.length) {
     const b = (rg.bidsOpen && rg.bidsOpen[0]) || rg.bids[0];
     html += '<div style="margin-top:9px;font-size:11.5px;background:#ECFDF5;border:1px solid #A7F3D0;border-radius:8px;padding:8px 11px">' +
-      '<strong style="color:#047857">📈 확장 영업 기회 — 신규 발주</strong>' +
+      '<strong style="color:#047857"><i class="ti ti-trending-up"></i> 확장 영업 기회 — 신규 발주</strong>' +
       (rg.bidsOpen && rg.bidsOpen.length ? ' <span style="background:#059669;color:#fff;border-radius:5px;padding:1px 6px;font-size:10px;font-weight:800">' + dday(b.closeDate) + '</span>' : '') +
       '<div style="margin-top:4px;line-height:1.6">「' + b.title + '」' + (b.amount ? ' · ' + fmtWon(b.amount) : '') +
       (b.closeDate ? ' · 마감 ' + b.closeDate : '') + '<br>' +
@@ -7516,7 +7516,7 @@ window.runMapStrategy = async function(type, sel) {
   // 키 없음 안내
   hbTyping(function() {
     hbAddMsg('bot',
-      '🔑 <strong>' + region + ' ' + stratType + ' 전략</strong>을 AI로 생성하려면 API 키가 필요합니다.<br><br>' +
+      '<i class="ti ti-key"></i> <strong>' + region + ' ' + stratType + ' 전략</strong>을 AI로 생성하려면 API 키가 필요합니다.<br><br>' +
       '헤더 <i class="ti ti-settings"></i> 버튼 → <strong>Claude API 키</strong>를 입력하면<br>' +
       '이 지역 데이터(빌링 ' + billing.toLocaleString() + '건 · 선점 ' + qty + '개소)를 바탕으로<br>' +
       '이 지역 발주·뉴스·이력 기반의 짧은 공략안을 실시간으로 작성해 드립니다.<br><br>' +
@@ -11386,7 +11386,7 @@ window.rdMail = function(key){
 
   document.getElementById('rd-modal-body').innerHTML =
     '<div style="font-size:11px;color:#92400E;background:#FEF3C7;border:1px solid #FDE68A;border-radius:9px;padding:8px 11px;line-height:1.6">' +
-      '📤 <strong>대외 영업메일</strong> — 지자체 담당 주무관에게 보내는 <strong>첫 접촉 초안</strong>입니다. ' +
+      '<i class="ti ti-send"></i> <strong>대외 영업메일</strong> — 지자체 담당 주무관에게 보내는 <strong>첫 접촉 초안</strong>입니다. ' +
       '내부 경영진 보고용 <strong>뉴스레터 발송과 완전히 분리</strong>되어 있습니다 ' +
       '(뉴스레터 수신자 목록·EmailJS 자동발송을 쓰지 않고, 검토 후 담당자가 직접 발송하는 방식).</div>' +
 
@@ -11438,10 +11438,10 @@ window.rdMail = function(key){
       }).join('') : '<div style="font-size:12px;color:#DC2626">시트에 등록된 담당자 이메일이 없습니다. 수신자를 직접 입력해 발송해 주세요.</div>') +
     '</div>' +
 
-    '<div><div class="rd-sec-t">✏ 메일 제목</div>' +
+    '<div><div class="rd-sec-t"><i class="ti ti-pencil"></i> 메일 제목</div>' +
       '<input id="rd-mail-subj" style="width:100%;border:1px solid var(--g200);border-radius:8px;padding:8px 10px;font-size:12.5px;font-family:inherit"></div>' +
 
-    '<div><div class="rd-sec-t">📝 본문 (수정 가능)</div>' +
+    '<div><div class="rd-sec-t"><i class="ti ti-notes"></i> 본문 (수정 가능)</div>' +
       '<textarea id="rd-mail-body" rows="18" style="width:100%;border:1px solid var(--g200);border-radius:9px;padding:11px 12px;font-size:12.5px;line-height:1.75;font-family:inherit;resize:vertical"></textarea></div>' +
 
     '<div style="display:flex;gap:6px;flex-wrap:wrap">' +
@@ -11537,7 +11537,7 @@ window.rdMailOpen = function(key){
   const url = 'mailto:' + encodeURIComponent(to) + '?subject=' + encodeURIComponent(subj) + '&body=' + encodeURIComponent(body);
   // mailto는 브라우저·메일앱마다 길이 제한이 있어(대략 2,000자) 초과 시 복사를 권한다
   if (url.length > 1900) {
-    if (msg) { msg.innerHTML = '⚠ 본문이 길어 메일앱에 다 넘어가지 않을 수 있습니다. <b>[본문 복사]</b> 후 붙여넣기를 권합니다. (수신자·제목만 채워 메일앱을 엽니다)'; msg.style.color = '#B45309'; }
+    if (msg) { msg.innerHTML = '<i class="ti ti-alert-triangle"></i> 본문이 길어 메일앱에 다 넘어가지 않을 수 있습니다. <b>[본문 복사]</b> 후 붙여넣기를 권합니다. (수신자·제목만 채워 메일앱을 엽니다)'; msg.style.color = '#B45309'; }
     window.location.href = 'mailto:' + encodeURIComponent(to) + '?subject=' + encodeURIComponent(subj);
     return;
   }
@@ -11552,7 +11552,7 @@ window.rdShowKeyInput = function(key){
   if (!msg) return;
   msg.innerHTML =
     '<div style="background:#FFFBEB;border:1.5px solid #FCD34D;border-radius:11px;padding:13px 15px;margin-top:4px">' +
-      '<div style="font-size:12.5px;font-weight:800;color:#92400E;margin-bottom:3px">🔑 Claude API 키 입력</div>' +
+      '<div style="font-size:12.5px;font-weight:800;color:#92400E;margin-bottom:3px"><i class="ti ti-key"></i> Claude API 키 입력</div>' +
       '<div style="font-size:11px;color:#B45309;margin-bottom:9px;line-height:1.55">복사버튼 클릭 후 입력란에 붙여넣기하세요.</div>' +
       '<div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">' +
         '<input id="rd-key-input" type="password" placeholder="sk-ant-..." ' +
@@ -11631,7 +11631,7 @@ window.rdScript = function(key){
   };
 
   document.getElementById('rd-modal-title').innerHTML =
-    '📞 ' + esc(g.sido + ' ' + g.sgg) + ' — 회신 후 응대 스크립트';
+    '<i class="ti ti-phone"></i> ' + esc(g.sido + ' ' + g.sgg) + ' — 회신 후 응대 스크립트';
 
   document.getElementById('rd-modal-body').innerHTML =
     '<div class="rd-note">메일 회신이 왔을 때 <strong>첫 통화 30초 ~ 첫 미팅</strong>까지의 흐름입니다. ' +
@@ -11652,7 +11652,7 @@ window.rdScript = function(key){
             return '<a href="' + esc(a.url) + '" target="_blank" rel="noopener" style="color:#0284C7;display:block"><i class="ti ti-news"></i> ' +
                    esc(cut(a.title,50)) + ' (' + esc(a.source) + ' ' + esc(a.date) + ') ↗</a>';
           }).join('') +
-          '<a href="' + RD_SHEET_URL + '" target="_blank" rel="noopener" style="color:#0284C7">🔗 고객관리리스트 원문 확인 ↗</a>' +
+          '<a href="' + RD_SHEET_URL + '" target="_blank" rel="noopener" style="color:#0284C7"><i class="ti ti-link"></i> 고객관리리스트 원문 확인 ↗</a>' +
         '</div></div>';
     })() +
 
@@ -12195,12 +12195,12 @@ window.rdDetail = function(key){
           }).join('')
         : '') +
       (g.wins && g.wins.length
-        ? '<div style="font-size:11.5px;font-weight:800;color:#075985;margin:8px 0 5px">🤝 수주 업체 (시스템 연계 제안 대상)</div>' +
+        ? '<div style="font-size:11.5px;font-weight:800;color:#075985;margin:8px 0 5px"><i class="ti ti-award"></i> 수주 업체 (시스템 연계 제안 대상)</div>' +
           g.wins.slice(0,4).map(function(w){
             return '<div style="border:1px solid #BAE6FD;background:#F0F9FF;border-radius:9px;padding:9px 11px;margin-bottom:6px;font-size:12px;line-height:1.65">' +
               '<b>' + esc(w.winner || '업체명 미상') + '</b> ' + (w.amount ? '<span style="color:#64748B">· ' + esc(fmtWon(w.amount)) + '</span>' : '') + '<br>' +
               '<span style="color:#64748B">' + esc(cut(w.title, 46)) + '</span>' +
-              (w.winnerTel ? '<br><span style="color:#64748B">☎ ' + esc(w.winnerTel) + '</span>' : '') +
+              (w.winnerTel ? '<br><span style="color:#64748B"><i class="ti ti-phone"></i> ' + esc(w.winnerTel) + '</span>' : '') +
               '</div>';
           }).join('')
         : '') +
@@ -12230,7 +12230,7 @@ window.rdDetail = function(key){
     '</div>' +
 
     // ── 지금 움직일 근거 (열림) ──
-    (g.alerts.length ? '<div><div class="rd-sec-t">🔔 알림</div><div class="rd-alerts">' +
+    (g.alerts.length ? '<div><div class="rd-sec-t"><i class="ti ti-bell"></i> 알림</div><div class="rd-alerts">' +
       g.alerts.map(function(a){ return '<span class="rd-al ' + a.lv + '">' + esc(a.t) + ' — ' + esc(a.why) + '</span>'; }).join('') +
       '</div></div>' : '') +
 
@@ -12258,7 +12258,7 @@ window.rdDetail = function(key){
           }).join('') + '</div>'
         : ((g.hrDeptMatched || []).length
           ? '<div style="border:2px solid #F59E0B;background:#FFFBEB;border-radius:10px;padding:11px 13px;margin-bottom:9px">' +
-            '<div style="font-size:12.5px;font-weight:800;color:#B45309;margin-bottom:5px">📌 우리 접촉 부서에 인사 있음 (성명은 미일치)</div>' +
+            '<div style="font-size:12.5px;font-weight:800;color:#B45309;margin-bottom:5px"><i class="ti ti-pin"></i> 우리 접촉 부서에 인사 있음 (성명은 미일치)</div>' +
             '<div style="font-size:11px;color:#92400E;margin-bottom:6px;line-height:1.6">' +
               '시트 담당자 성명이 발령 명단에 없습니다. 시정일보는 주로 4·5급(국장·과장) 인사를 싣고 ' +
               '시트 담당자는 6급 주무관이 많아 자주 어긋납니다. 다만 <b>부서에 인사가 있었다</b>는 건 확인됐으니 재확인 대상입니다.</div>' +
@@ -12293,7 +12293,7 @@ window.rdDetail = function(key){
                   '<i class="ti ti-check"></i> 확인 완료 — 시트 기록용 복사 + 기준선 갱신</button>' +
               '</div>';
             }).join('')
-          : '<div style="font-size:12px;color:#059669;font-weight:600">✅ 확인 이후 새로 감지된 발령이 없습니다.</div>') +
+          : '<div style="font-size:12px;color:#059669;font-weight:600"><i class="ti ti-circle-check"></i> 확인 이후 새로 감지된 발령이 없습니다.</div>') +
 
         (g.hr.length > g.hrNew.length
           ? '<details style="margin-top:6px"><summary style="font-size:11.5px;color:#64748B;cursor:pointer">확인 완료된 과거 발령 ' + (g.hr.length - g.hrNew.length) + '건</summary>' +
@@ -12315,7 +12315,7 @@ window.rdDetail = function(key){
 
     // 제안 가능한 자체 솔루션 (열림)
     ((g.sols && g.sols.length)
-      ? '<div><div class="rd-sec-t">🧰 제안 가능한 자체 솔루션 (기사 근거)</div>' +
+      ? '<div><div class="rd-sec-t"><i class="ti ti-tools"></i> 제안 가능한 자체 솔루션 (기사 근거)</div>' +
         g.sols.map(function(s){
           return '<div style="font-size:12px;border:1px solid var(--g200);border-radius:9px;padding:9px 11px;margin-bottom:6px;line-height:1.6">' +
             '<b>' + esc(s.sol.name) + '</b><br>' +
@@ -12325,14 +12325,14 @@ window.rdDetail = function(key){
       : '') +
 
     // ── 참고 자료 (접힘) — 구좌·담당자·이력·이슈 ──
-    '<details class="rd-acc"><summary>📋 상세 자료 <span class="cnt">구좌 · 담당자 연락처 · 영업 이력 · 이슈</span></summary><div class="rd-acc-body">' +
+    '<details class="rd-acc"><summary><i class="ti ti-clipboard-list"></i> 상세 자료 <span class="cnt">구좌 · 담당자 연락처 · 영업 이력 · 이슈</span></summary><div class="rd-acc-body">' +
 
       // 담당자 변경 근거 — 오탐이 잦은 항목이라 원문 발췌와 출처를 함께
       (function(){
         const ex = excerpt(g, /담당자\s*변경|담당 변경|담당변경|발령|초임|으로 변경|에서 .*으로/, 6);
         const arts = g.news.filter(function(a){ return newsKind(a).k === '발령'; });
         if (!ex.length && !arts.length) return '';
-        return '<div><div class="rd-sec-t">👤 담당자 변경 근거 (더블체크용)</div>' +
+        return '<div><div class="rd-sec-t"><i class="ti ti-user"></i> 담당자 변경 근거 (더블체크용)</div>' +
           '<div style="font-size:11px;color:#B45309;margin-bottom:6px;line-height:1.6">' +
             '과거 이력이 섞여 있을 수 있습니다. <b>접촉 전 아래 원문을 확인</b>해 현재 담당자가 맞는지 대조해 주세요.</div>' +
           (arts.length ? '<div class="rd-news" style="border-top:none;padding-top:0;margin-bottom:8px">' +
@@ -12344,13 +12344,13 @@ window.rdDetail = function(key){
               return '<tr><th>' + esc(x.where || '기록') + '</th><td>' + esc(x.text) + '</td></tr>';
             }).join('') + '</table>' +
             '<div style="margin-top:6px"><a href="' + RD_SHEET_URL + '" target="_blank" rel="noopener" ' +
-            'style="font-size:11.5px;color:#0284C7;text-decoration:underline">🔗 고객관리리스트 원문에서 확인 ↗</a></div>' : '') +
+            'style="font-size:11.5px;color:#0284C7;text-decoration:underline"><i class="ti ti-link"></i> 고객관리리스트 원문에서 확인 ↗</a></div>' : '') +
         '</div>';
       })() +
 
-      '<div><div class="rd-sec-t">🏢 구좌·사업 현황</div><table class="rd-tbl">' + (rowsTbl || '<tr><td>-</td></tr>') + '</table></div>' +
-      (mgrRows ? '<div><div class="rd-sec-t">👤 고객 담당자</div><table class="rd-tbl">' + mgrRows + '</table></div>' : '') +
-      (histTxt ? '<div><div class="rd-sec-t">🗂 영업 History</div><div class="rd-pre">' + esc(histTxt) + '</div></div>' : '') +
+      '<div><div class="rd-sec-t"><i class="ti ti-building"></i> 구좌·사업 현황</div><table class="rd-tbl">' + (rowsTbl || '<tr><td>-</td></tr>') + '</table></div>' +
+      (mgrRows ? '<div><div class="rd-sec-t"><i class="ti ti-user"></i> 고객 담당자</div><table class="rd-tbl">' + mgrRows + '</table></div>' : '') +
+      (histTxt ? '<div><div class="rd-sec-t"><i class="ti ti-folders"></i> 영업 History</div><div class="rd-pre">' + esc(histTxt) + '</div></div>' : '') +
       (issueTxt ? '<div><div class="rd-sec-t"><i class="ti ti-alert-triangle"></i> 이슈</div><div class="rd-pre">' + esc(issueTxt) + '</div></div>' : '') +
 
     '</div></details>' +
