@@ -588,9 +588,9 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
   color:var(--c-cbd5e1);font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center}
 .rd-act .ic{flex:0 0 auto;font-size:15px}
 .rd-act .body{flex:1;min-width:0;line-height:1.4}
-.rd-act .rg{font-size:12.5px;font-weight:800;color:var(--c-fff)}
-.rd-act .rg .co{font-size:10px;font-weight:700;color:var(--c-94a3b8);margin-left:5px}
-.rd-act .ac{font-size:11.5px;color:var(--c-cbd5e1);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rd-act .rg{display:block;font-size:12.5px;font-weight:800;color:var(--c-fff)}
+.rd-act .rg .co{font-size:10px;font-weight:700;color:var(--c-94a3b8);margin-left:6px;padding:1px 6px;border-radius:5px;background:var(--c-a33)}
+.rd-act .ac{display:block;font-size:11.5px;color:var(--c-cbd5e1);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .rd-act .go{flex:0 0 auto;border:none;border-radius:8px;padding:7px 12px;font-size:11.5px;font-weight:800;
   cursor:pointer;font-family:inherit;background:var(--c-0ea5e9);color:var(--c-fff);white-space:nowrap}
 .rd-act .go:hover{background:var(--c-0284c7)}
@@ -2778,7 +2778,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
   <!-- 헤더 -->
   <div class="hb-head">
     <div style="display:flex;align-items:center;gap:10px">
-      <div class="hb-avatar">🤖</div>
+      <div class="hb-avatar"><i class="ti ti-robot"></i></div>
       <div>
         <div class="hb-name">세이버 (SABER)</div>
         <div class="hb-status"><span style="width:6px;height:6px;border-radius:50%;background:#4ADE80;display:inline-block"></span>온라인</div>
@@ -6646,7 +6646,7 @@ function hbAddMsg(role, text, html=false) {
   row.className = `hb-msg ${role}`;
   if (role === 'bot') {
     row.innerHTML = `
-      <div class="hb-bot-icon">🤖</div>
+      <div class="hb-bot-icon"><i class="ti ti-robot"></i></div>
       <div>
         <div class="hb-bubble">${html ? text : text.replace(/\n/g,'<br>').replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')}</div>
         <div class="hb-time" style="margin-top:2px;font-size:10px;color:var(--g400)">${now}</div>
@@ -6666,7 +6666,7 @@ function hbTyping(cb, delay=700) {
   const msgs = document.getElementById('hb-msgs');
   const row = document.createElement('div');
   row.className = 'hb-msg bot';
-  row.innerHTML = `<div class="hb-bot-icon">🤖</div>
+  row.innerHTML = `<div class="hb-bot-icon"><i class="ti ti-robot"></i></div>
     <div class="hb-bubble"><div class="hb-typing">
       <div class="hb-dot"></div><div class="hb-dot"></div><div class="hb-dot"></div>
     </div></div>`;
@@ -10284,10 +10284,10 @@ function getPageAlert(name) {
           badge: '데이터 준비 중',
           title: 'AI 레인저(영업사원) — 지역별 영업 알림',
           lines: [
-            '📡 고객관리리스트(경쟁사 v2.0)와 지역 신문·소식지를 시·군·구로 묶어 분석해요.',
-            '🛡 한빌이 선점한 지역은 신규 전략 없이 <b>현황만</b> 보여드려요.',
-            '🎯 타사 고객 지역만 영업비서가 진입 전략 초안을 만들어요.',
-            '⏳ 메뉴를 열면 시트·기사를 불러와 이 요약이 실제 수치로 채워져요.'
+            '<i class="ti ti-radar-2"></i> 고객관리리스트(경쟁사 v2.0)와 지역 신문·소식지를 시·군·구로 묶어 분석해요.',
+            '<i class="ti ti-shield-check"></i> 한빌이 선점한 지역은 신규 전략 없이 <b>현황만</b> 보여드려요.',
+            '<i class="ti ti-target-arrow"></i> 타사 고객 지역만 영업비서가 진입 전략 초안을 만들어요.',
+            '<i class="ti ti-hourglass"></i> 메뉴를 열면 시트·기사를 불러와 이 요약이 실제 수치로 채워져요.'
           ]
         };
       }
@@ -10320,18 +10320,18 @@ function getPageAlert(name) {
              : (bidOpen.length ? '발주 ' + bidOpen.length + '곳' : 'AI 분석 요약'),
         title: '지역 영업 알림 요약 (고객리스트 × 지역소식·나라장터·인사)',
         lines: [
-          '📍 관리 지역 ' + rs.length + '곳 · 구좌 ' + (R.recs||[]).length.toLocaleString() + '건을 시·군·구로 묶어 분석했어요.',
-          '🛡 [현황만] 한빌 고객 ' + own.length + '곳 — 신규 전략 없이 현황만. 단 발주가 뜨면 확장 기회로 안내해요.',
-          '🎯 [진입대상] 타사 고객 ' + rival.length + '곳' +
+          '<i class="ti ti-map-pin"></i> 관리 지역 ' + rs.length + '곳 · 구좌 ' + (R.recs||[]).length.toLocaleString() + '건을 시·군·구로 묶어 분석했어요.',
+          '<i class="ti ti-shield-check"></i> [현황만] 한빌 고객 ' + own.length + '곳 — 신규 전략 없이 현황만. 단 발주가 뜨면 확장 기회로 안내해요.',
+          '<i class="ti ti-target-arrow"></i> [진입대상] 타사 고객 ' + rival.length + '곳' +
             (hot.length ? ' · 이 중 제안·검토 진행 중 ' + hot.length + '곳 (' + list(hot) + ')' : ''),
           (urgentBid.length
-            ? '🏛 [최우선] 발주 마감 임박 ' + urgentBid.length + '곳 — ' + list(urgentBid) + '. 마감 전 오늘 중 접촉하세요.'
-            : (bidOpen.length ? '🏛 나라장터 입찰 대상 ' + bidOpen.length + '곳 — 마감 전 접촉 기회예요.' : '🏛 진행중 발주 없음.')),
-          (mgr.length ? '🆕 담당자 인사발령 감지 ' + mgr.length + '곳 — 신규 담당자 인수인계 안내 대상이에요.' : '🆕 감지된 인사발령 없음.'),
+            ? '<i class="ti ti-building-bank"></i> [최우선] 발주 마감 임박 ' + urgentBid.length + '곳 — ' + list(urgentBid) + '. 마감 전 오늘 중 접촉하세요.'
+            : (bidOpen.length ? '<i class="ti ti-building-bank"></i> 나라장터 입찰 대상 ' + bidOpen.length + '곳 — 마감 전 접촉 기회예요.' : '<i class="ti ti-building-bank"></i> 진행중 발주 없음.')),
+          (mgr.length ? '<i class="ti ti-user-plus"></i> 담당자 인사발령 감지 ' + mgr.length + '곳 — 신규 담당자 인수인계 안내 대상이에요.' : '<i class="ti ti-user-plus"></i> 감지된 인사발령 없음.'),
           (news.length
-            ? '📰 최근 ' + (R.newsDays||30) + '일 고객 소식 ' + news.length + '곳 — ' + list(news) + '. 방문·제안 명분으로 좋아요.'
-            : '📰 최근 ' + (R.newsDays||30) + '일 내 매칭 기사 없음.'),
-          '⚡ [액션] ' +
+            ? '<i class="ti ti-news"></i> 최근 ' + (R.newsDays||30) + '일 고객 소식 ' + news.length + '곳 — ' + list(news) + '. 방문·제안 명분으로 좋아요.'
+            : '<i class="ti ti-news"></i> 최근 ' + (R.newsDays||30) + '일 내 매칭 기사 없음.'),
+          '<i class="ti ti-bolt"></i> [액션] ' +
             (urgentBid.length ? '마감 임박 발주부터 통화 → ' : '') +
             (mgr.length ? '인사발령 지역 인수인계 → ' : '') +
             '고객 소식이 있는 곳은 기사를 명분으로 접촉하세요.'
@@ -10346,9 +10346,9 @@ function getPageAlert(name) {
           badge: '데이터 준비 중',
           title: '스마트 영업 — 선제 제안 메일 현황',
           lines: [
-            '📨 인사기사 기반 선제 제안 메일(발신 cs@scglab.com)의 발송·회신을 추적해요.',
-            '📧 발송된 지자체는 AI 레인저 수주확도에 +40 가산돼요.',
-            '⏳ 메뉴를 열면 발송·회신 데이터를 불러와 이 요약이 실제 수치로 채워져요.'
+            '<i class="ti ti-send"></i> 인사기사 기반 선제 제안 메일(발신 cs@scglab.com)의 발송·회신을 추적해요.',
+            '<i class="ti ti-mail"></i> 발송된 지자체는 AI 레인저 수주확도에 +40 가산돼요.',
+            '<i class="ti ti-hourglass"></i> 메뉴를 열면 발송·회신 데이터를 불러와 이 요약이 실제 수치로 채워져요.'
           ]
         };
       }
@@ -10369,11 +10369,11 @@ function getPageAlert(name) {
         badge: pending ? '발송 대기 ' + pending + '곳' : (repN ? '회신 ' + repN + '곳' : 'AI 분석 요약'),
         title: '스마트 영업 — 발송·회신 현황 요약 (' + R.label + ')',
         lines: [
-          '📨 [발송] ' + R.label + ' 선제 제안 메일 ' + sends.length + '건 · 발송 지자체 ' + sentN + '곳.',
-          '↩ [회신] ' + repN + '곳 회신(회신율 ' + rate + '%) · 관심·문의 ' + interest + ' · 거절·보류 ' + reject + '.',
-          (hot ? '🔥 [관심] ' + hot.region + ' — "' + String(hot.summary||'').slice(0,40) + '" 빠른 후속 필요.' : '🔥 아직 관심·문의 회신이 없어요.'),
-          '📧 [연동] 발송 지자체는 AI 레인저 수주확도 +40 가산으로 반영돼요.',
-          (pending ? '⏳ [대기] 발송 대기 ' + pending + '곳 — jem 계정에서 검수 후 발송하세요.' : '✅ 발송 대기 없음.')
+          '<i class="ti ti-send"></i> [발송] ' + R.label + ' 선제 제안 메일 ' + sends.length + '건 · 발송 지자체 ' + sentN + '곳.',
+          '<i class="ti ti-arrow-back-up"></i> [회신] ' + repN + '곳 회신(회신율 ' + rate + '%) · 관심·문의 ' + interest + ' · 거절·보류 ' + reject + '.',
+          (hot ? '<i class="ti ti-flame"></i> [관심] ' + hot.region + ' — "' + String(hot.summary||'').slice(0,40) + '" 빠른 후속 필요.' : '<i class="ti ti-flame"></i> 아직 관심·문의 회신이 없어요.'),
+          '<i class="ti ti-mail"></i> [연동] 발송 지자체는 AI 레인저 수주확도 +40 가산으로 반영돼요.',
+          (pending ? '<i class="ti ti-hourglass"></i> [대기] 발송 대기 ' + pending + '곳 — jem 계정에서 검수 후 발송하세요.' : '<i class="ti ti-circle-check"></i> 발송 대기 없음.')
         ]
       };
     })()
