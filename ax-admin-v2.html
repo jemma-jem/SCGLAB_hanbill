@@ -5757,6 +5757,7 @@ function sbDraw(){
   var _clicksN=(d.allClicks||[]).filter(inR).length;   // 제안서 웹 링크 열람(클릭)
   // 지자체별 열람(클릭) 횟수 — 이메일 목록 '열람' 컬럼용
   var clicksByRegion={}; (d.allClicks||[]).filter(inR).forEach(function(c){ var k=norm(c.region); if(k) clicksByRegion[k]=(clicksByRegion[k]||0)+1; });
+  var viewedRegionN=Object.keys(clicksByRegion).length;   // 제안서 링크를 연 지자체 수(발송·열람 확인용)
   var _isOptOut=function(rep){ if(!rep) return false; return rep.cat==='수신거부' || /수신\s*거부|수신거부/.test(rep.summary||''); };
   // 기간 버튼
   var ps=[['week','이번주'],['month','이번달'],['lastmonth','지난달'],['all','전체']];
@@ -5818,8 +5819,26 @@ function sbDraw(){
       '<div style="font-size:13px;color:#1E40AF;font-weight:700">📧 스마트 영업 — 인사기사 기반 선제 제안 메일 <b>발송·회신 콘솔</b> <span style="font-size:11px;color:#94A3B8;font-weight:500">· 발송 지자체 레인저 수주확도 +8</span></div>'+
       '<div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">'+btns+'</div>'+
     '</div>'+
-    // ① 핵심 지표 (KPI)
-    '<div style="font-size:12px;font-weight:800;color:#64748B;margin:0 2px 8px">① 핵심 지표 (KPI)</div>'+
+    // ① 진행 현황 — 한눈 파이프라인 (감지 → 이메일 교차확인 → 생성 → 발송 → 발송·열람 확인 → 회신)
+    '<div style="background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:16px 18px;margin-bottom:14px">'+
+      '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px">'+
+        '<span style="font-size:14px;font-weight:800;color:#004098">① 진행 현황 — 한눈에 보기</span>'+
+        '<span style="display:inline-flex;gap:8px;align-items:center">'+
+          '<span style="font-size:11px;font-weight:700;background:#FEF3C7;color:#92400E;border-radius:999px;padding:3px 10px">🖐 현재: 수동 검수 발송</span>'+
+          '<span style="font-size:10.5px;color:#94A3B8">트리거 발송대기 15:00 · 회신 16:00</span></span>'+
+      '</div>'+
+      '<div style="display:flex;flex-wrap:wrap;gap:4px;background:#F8FAFC;border:1px solid #EEF0F3;border-radius:10px;padding:14px">'+
+        _pstep('📰','인사기사 감지',detected,'#334155')+_arw+
+        _pstep('🔗','담당자 이메일 교차확인',matched,'#0EA5E9')+_arw+
+        _pstep('✍','메일 생성·대기',pendingN,'#F59E0B')+_arw+
+        _pstep('📨','발송('+R.label+')',sentRegionN,'#004098')+_arw+
+        _pstep('👁','발송·열람 확인',viewedRegionN,'#7C3AED')+_arw+
+        _pstep('↩','회신',replyRegionN,'#059669')+
+      '</div>'+
+      '<div style="font-size:11px;color:#94A3B8;margin-top:8px">인사기사 '+detected+'곳 가운데 담당자 이메일이 확인된 '+matched+'곳이 발송 대상입니다. 이메일이 없는 '+unmatched+'곳은 구글시트에 주소를 채우면 자동으로 대상에 들어옵니다. 지금 발송 대기 '+pendingN+'곳 · 열람 '+viewedRegionN+'곳 · 회신 '+replyRegionN+'곳. (발송·열람·회신은 '+R.label+' 기준)</div>'+
+    '</div>'+
+    // ② 핵심 지표 (KPI)
+    '<div style="font-size:12px;font-weight:800;color:#64748B;margin:0 2px 8px">② 핵심 지표 (KPI)</div>'+
     '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px">'+
       _sbCard('발송', sends.length+'건', R.label+' · 지자체 '+sentRegionN+'곳', '#004098')+
       _sbCard('회신율', rate+'%', '회신 '+replyRegionN+' / 발송 '+sentRegionN+'곳', '#0EA5E9')+
@@ -5828,22 +5847,6 @@ function sbDraw(){
       _sbCard('발송 대기', pendingN+'곳', '메일 보유·미발송', '#F59E0B')+
     '</div>'+
     '<div style="font-size:11px;color:#94A3B8;margin:-8px 2px 16px">ⓘ <b>제안서 열람</b>은 메일의 ‘제안서 바로 보기’ 웹 링크 클릭 기준(Gmail 프록시 영향 없어 신뢰도 높음) · <b>오픈율</b>은 미지원 · <b>회신율·분류</b>로 반응 측정</div>'+
-    // ② 자동화 워크플로우 상태
-    '<div style="background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:16px 18px;margin-bottom:14px">'+
-      '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px">'+
-        '<span style="font-size:14px;font-weight:800;color:#004098">② 자동화 워크플로우 상태</span>'+
-        '<span style="display:inline-flex;gap:8px;align-items:center">'+
-          '<span style="font-size:11px;font-weight:700;background:#FEF3C7;color:#92400E;border-radius:999px;padding:3px 10px">🖐 현재: 수동 검수 발송</span>'+
-          '<span style="font-size:10.5px;color:#94A3B8">트리거 발송대기 15:00 · 회신 16:00</span></span>'+
-      '</div>'+
-      '<div style="display:flex;gap:4px;background:#F8FAFC;border:1px solid #EEF0F3;border-radius:10px;padding:14px">'+
-        _pstep('📰','인사기사 감지',detected,'#334155')+_arw+
-        _pstep('🔗','담당자 매칭',matched,'#0EA5E9')+_arw+
-        _pstep('📨','발송('+R.label+')',sentRegionN,'#004098')+_arw+
-        _pstep('↩','회신',replyRegionN,'#059669')+
-      '</div>'+
-      '<div style="font-size:11px;color:#94A3B8;margin-top:8px">· 감지 '+detected+'곳(현재 큐) 중 담당자 메일 보유 '+matched+'곳 · 미매칭(메일 없음) '+unmatched+'곳 · 발송 대기 '+pendingN+'곳 — 미매칭은 구글시트 이메일을 채우면 발송 대상에 자동 포함 · 발송/회신은 '+R.label+' 기준</div>'+
-    '</div>'+
     // ③ 주소록 · 세그먼트 현황
     '<div style="background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:16px 18px;margin-bottom:14px">'+
       '<div style="font-size:14px;font-weight:800;color:#004098;margin-bottom:12px">③ 주소록 · 세그먼트 현황</div>'+
