@@ -1,13 +1,45 @@
 {
-  "updated_at": "2026-11-17T07:46:53.971Z",
+  "updated_at": "2026-11-18T07:13:33.365Z",
   "sources": [
     "시정일보 RSS(피플/전체)",
     "지역지 직접 RSS(동부뉴스·투데이군산·당진신문·영남투데이·수원일보·금강일보·디트뉴스·전북중앙·남도일보·광주드림·경북일보·울산제일일보·제주의소리·세종의소리)",
     "구글 뉴스 RSS",
     "기사 본문 보강"
   ],
-  "count": 313,
+  "count": 320,
   "records": [
+    {
+      "date": "2026-11-18",
+      "url": "http://www.dtnews24.com/news/articleView.html?idxno=817316",
+      "source": "디트뉴스",
+      "title": "국가상징구역에 부임한 사또의 하루, 유쾌한 판소리풍 뮤비",
+      "region": "",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-18",
+      "url": "https://www.jejusori.net/news/articleView.html?idxno=508438",
+      "source": "제주의소리",
+      "title": "[단독] ‘학원비 100만원’ 제주 공무원 승진 가산점 결국 취소",
+      "region": "제주특별자치도",
+      "kinds": [
+        "승진"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-18",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFA1aGVqYy11X2pJU0w3RGI4aUxzeVdUYkwtdmxCOVVtOFBwRE9KR3daSGpWU05Zc3VwZTU2aFBxZUM2U1ZoOW9OU2FlSjFCTVBteEEwNF9tazhaRGE4YUJzTNIBYEFVX3lxTFA1aGVqYy11X2pJU0w3RGI4aUxzeVdUYkwtdmxCOVVtOFBwRE9KR3daSGpWU05Zc3VwZTU2aFBxZUM2U1ZoOW9OU2FlSjFCTVBteEEwNF9tazhaRGE4YUJzTA?oc=5",
+      "source": "연합뉴스",
+      "title": "[인사] 지식재산처",
+      "region": "",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
     {
       "date": "2026-11-17",
       "url": "https://www.ggilbo.com/news/articleView.html?idxno=1193758",
@@ -55,6 +87,50 @@
       ],
       "people": [],
       "hit": false
+    },
+    {
+      "date": "2026-11-17",
+      "url": "http://www.jjn.co.kr/news/articleView.html?idxno=1057532",
+      "source": "전북중앙",
+      "title": "국민연금 신임 상임감사 이종렬 임명",
+      "region": "",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-17",
+      "url": "http://www.ujeil.com/news/articleView.html?idxno=395404",
+      "source": "울산제일일보",
+      "title": "시민 생명·안전 지킨 ‘119 영웅들’ 특별승진",
+      "region": "",
+      "kinds": [
+        "승진",
+        "임용"
+      ],
+      "people": [
+        {
+          "name": "김현욱",
+          "dept": "소방장 (소방본부 119특수대응단)",
+          "rank": ""
+        },
+        {
+          "name": "이대규",
+          "dept": "소방장 (중부소방서 병영119안전센터)",
+          "rank": ""
+        },
+        {
+          "name": "김동민",
+          "dept": "소방교 (북부소방서 예방안전과)",
+          "rank": ""
+        },
+        {
+          "name": "김우진",
+          "dept": "소방교 등 4명이다.김현욱·이대규 소방장은 소방위로,  (중부소방서 태화119안전센터)",
+          "rank": ""
+        }
+      ],
+      "hit": true
     },
     {
       "date": "2026-11-16",
@@ -181,6 +257,18 @@
       "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5jZ2lqMVBKemhXNWFkU1R0ZVc4c2pNdjllYXVOUmZOaGlqUmcxUGsxc0VNVzNna0VqYV81ZF9DVjVES1pWeGRXZVUzZ1JjNXFaeDFMeW1iMUJmM0p3NUZZd2lPazc1YmMzN0plcUNLM1HSAXRBVV95cUxQNkdVeXlNMjFna251N2RMTmZwN3p0UHdYMHlUYS01LTE2WXdWQ0lDR1J1TnJjOUNTNFk3bjBZRF9GUFc0SDJxUUc3ZXdMR08yRDBnX3N2NXpSdE5DXzRnbTRaUGZjdjNscjA4cVdLNlptU1NHMw?oc=5",
       "source": "뉴스클레임",
       "title": "[KG스틸 인사 단행] 김성묵·김형도 상무 승진… 신규 임원 3명 선임",
+      "region": "",
+      "kinds": [
+        "승진"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-16",
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9Xb3B3d2UzSnVoaHZCOHZlaVdrR2QyV1NmYnNDaGk1QzUwNnFNam1ZUXVGM045YmJ5TURKdXUtRmtNNUFkMXNFQXNmeHRqekpLdFJZdWJXREIxTG_SAWBBVV95cUxQYmNfSUJRU25YZEkwN3Ayazc0ZjlyVVNnMlBhRzFhOVY2TlN6MlUxVi1jNEFpN1lIU3U3cVVoOHNYSnh5VzhqbjZnMk42cHd5QUVzcGZEU2dqTmlTdFBmc2k?oc=5",
+      "source": "연합뉴스",
+      "title": "롯데그룹 정기 인사…신유열, 사장 승진해 경영전략실 총괄",
       "region": "",
       "kinds": [
         "승진"
@@ -1052,6 +1140,18 @@
       "title": "SK그룹, 27년 사장단 인사 단행…주요 CEO 대거 유임",
       "region": "",
       "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-10-30",
+      "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE54Wnhpd3VkaUx6ck5VUVA2NmFPX0dBNmZvNUhZMXJleWpWQ0gwRkRKN2d0T1Jzd3dkZ1p4OWRlXzNzMVFTbzhST29acFNSRDV6b0JNUEhIZFJrb01PNzdJ?oc=5",
+      "source": "조세일보",
+      "title": "국세청, 내달 6급 이하 1347명 정기승진 인사 단행",
+      "region": "",
+      "kinds": [
+        "승진"
+      ],
       "people": [],
       "hit": false
     },
