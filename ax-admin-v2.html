@@ -5922,12 +5922,21 @@ function sbDownloadList(){
 }
 
 // ─── 발송대기 로드/발송 (jem 전용) ───
+function _sbqReadCache(){ try{ var s=localStorage.getItem('sbq_cache_v1'); return s?JSON.parse(s):null; }catch(e){ return null; } }
+function _sbqWriteCache(d){ try{ localStorage.setItem('sbq_cache_v1', JSON.stringify(d)); }catch(e){} }
 function sbLoadQueue(){
   var box = document.getElementById('sb-queue');
   if (!box) return;
+  // 캐시/기존 데이터 먼저 렌더(즉시) → 뒤에서 최신 교체
+  var cached = window._sbQ || _sbqReadCache();
+  if (cached){ try{ _sbRenderQueue(cached); }catch(e){} }
   fetch(SALES_BOARD_URL + '?action=queue', { cache:'no-store' })
     .then(function(r){ return r.json(); })
-    .then(function(d){
+    .then(function(d){ window._sbQ=d; _sbqWriteCache(d); _sbRenderQueue(d); })
+    .catch(function(e){ if(!cached) box.innerHTML = '<div style="padding:14px;color:#DC2626;font-size:12px">발송대기 로드 실패 ('+_esc(String(e))+')</div>'; });
+}
+function _sbRenderQueue(d){
+      var box = document.getElementById('sb-queue'); if(!box) return;
       var rows = (d && d.rows) || [];
       if (!rows.length) { box.innerHTML = '<div style="padding:16px;text-align:center;color:#94A3B8">발송대기 없음 — Apps Script 메뉴 ①(인사기사 감지)로 생성</div>'; return; }
       var main = rows.filter(function(r){ return r.hasEmail; });   // 이메일 보유 = 발송 대상
@@ -5969,8 +5978,6 @@ function sbLoadQueue(){
           '<div style="font-size:11px;color:#94A3B8;margin-top:4px">※ AX활용 데이터 P열(이메일) 미기재분 · 이메일 입력 시 발송 대상에 포함됩니다.</div></div></details>';
       }
       box.innerHTML = html;
-    })
-    .catch(function(e){ box.innerHTML = '<div style="padding:14px;color:#DC2626;font-size:12px">발송대기 로드 실패 ('+_esc(String(e))+')</div>'; });
 }
 function sbToggleAll(el){ var cs=document.querySelectorAll('.sb-chk'); for (var i=0;i<cs.length;i++) cs[i].checked = el.checked; }
 function _sbSelectedKeys(){ var out=[]; var cs=document.querySelectorAll('.sb-chk:checked'); for (var i=0;i<cs.length;i++) out.push(cs[i].value); return out; }
@@ -8508,6 +8515,7 @@ function _loadSmartSent(cb){
   }).catch(function(){ window._smartSent=new Set(); if(cb) cb(); });
   // 스마트영업 발송대기 큐를 로드 — 레인저 '발송 대상'을 큐와 동일하게 맞추기 위함
   fetch(SALES_BOARD_URL + '?action=queue', { cache:'no-store' }).then(function(r){ return r.json(); }).then(function(q){
+    window._sbQ = q; if(typeof _sbqWriteCache==='function') _sbqWriteCache(q);   // 발송대기 캐시 선적재(첫 진입 가속)
     var qs=new Set(); var st={total:0,hasEmail:0,noEmail:0,sent:0,pending:0};
     (q && q.rows || []).forEach(function(row){
       st.total++;
