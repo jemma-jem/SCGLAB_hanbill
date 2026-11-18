@@ -5647,6 +5647,10 @@ function _esc(s){ return String(s==null?'':s).replace(/[&<>]/g,function(c){retur
 window._sbD = null;
 window._sbPeriod = 'month';   // 기본: 이번달
 
+// 스마트영업 현황 캐시(로컬) — Apps Script 호출이 느려 캐시를 먼저 그리고 뒤에서 갱신한다.
+function _sbReadCache(){ try{ var s=localStorage.getItem('sb_cache_v1'); return s?JSON.parse(s):null; }catch(e){ return null; } }
+function _sbWriteCache(d){ try{ localStorage.setItem('sb_cache_v1', JSON.stringify(d)); }catch(e){} }
+
 window.renderSalesBoard = function(){
   var body = document.getElementById('sb-body');
   if (!body) return;
@@ -5655,12 +5659,16 @@ window.renderSalesBoard = function(){
       '<b style="color:#004098">데이터 연결 설정 필요</b><br>Apps Script 웹앱 URL을 SALES_BOARD_URL 에 입력하세요.</div>';
     return;
   }
-  body.innerHTML = '<div style="padding:40px;text-align:center;color:#94A3B8">불러오는 중…</div>';
+  // 1) 캐시/기존 데이터가 있으면 즉시 렌더(체감 지연 제거) → 뒤에서 최신으로 교체
+  var cached = window._sbD || _sbReadCache();
+  if (cached){ window._sbD = cached; var u0=document.getElementById('sb-updated'); if(u0) u0.textContent=(cached.updated||'—')+' · 갱신 중…'; try{ sbDraw(); }catch(e){} }
+  else { body.innerHTML = '<div style="padding:40px;text-align:center;color:#94A3B8">불러오는 중…</div>'; }
+  // 2) 백그라운드 갱신
   fetch(SALES_BOARD_URL, { cache:'no-store' })
     .then(function(r){ return r.json(); })
-    .then(function(d){ window._sbD = d; var upd=document.getElementById('sb-updated'); if(upd) upd.textContent=d.updated||'—'; sbDraw(); })
+    .then(function(d){ window._sbD = d; _sbWriteCache(d); var upd=document.getElementById('sb-updated'); if(upd) upd.textContent=d.updated||'—'; sbDraw(); })
     .catch(function(e){
-      body.innerHTML = '<div style="padding:24px;color:#DC2626">현황 데이터를 불러오지 못했습니다. ('+_esc(String(e))+')</div>';
+      if(!cached) body.innerHTML = '<div style="padding:24px;color:#DC2626">현황 데이터를 불러오지 못했습니다. ('+_esc(String(e))+')</div>';
     });
 };
 window.sbSetPeriod = function(p){ window._sbPeriod=p; sbDraw(); };
@@ -8484,6 +8492,7 @@ function _smartReplyOf(g){
 function _loadSmartSent(cb){
   if (typeof SALES_BOARD_URL==='undefined' || !SALES_BOARD_URL){ window._smartSent=new Set(); if(cb)cb(); return; }
   fetch(SALES_BOARD_URL, { cache:'no-store' }).then(function(r){ return r.json(); }).then(function(d){
+    window._sbD = d; if(typeof _sbWriteCache==='function') _sbWriteCache(d);   // 현황 보드용 데이터·캐시 선적재(첫 진입 가속)
     var set=new Set(), info={}, rep={};
     (d.allSends||[]).forEach(function(s){ var reg=String(s.region||'').trim(); if(!reg) return;
       var full=_normReg(reg), toks=reg.split(/\s+/), last=_normReg(toks[toks.length-1]);
@@ -11736,19 +11745,19 @@ function rdRegionAction(g){
   // ※ p = 유형 우선도. 2026-11 검토 반영 — '수주확도 점수 동점 시' 노출 순서를 가르는 타이브레이크 값(의견).
   //    (의견값: 발주마감임박 30 · 인사발령 50 · 낙찰 10 · 진행중발주 20 · 솔루션 40)
   if (soonD3.length)
-    return { p:30, urgent:true, cat:'bid', ic:'🏛', act:'발주 마감 임박(' + dday(soonD3[0].closeDate) + ') — 마감 전 담당자 통화 · ' + cut(soonD3[0].title, 22), cta:'메일 초안', fn:'rdMail' };
+    return { p:30, urgent:true, cat:'bid', ic:'<i class="ti ti-gavel"></i>', act:'발주 마감 임박(' + dday(soonD3[0].closeDate) + ') — 마감 전 담당자 통화 · ' + cut(soonD3[0].title, 22), cta:'메일 초안', fn:'rdMail' };
   // 2. 우리 담당자/부서 인사발령
   if ((g.hrMatched && g.hrMatched.length) || (g.hrDeptMatched && g.hrDeptMatched.length))
-    return { p:50, cat:'hr', ic:'🆕', act:'담당자 인사발령 감지 — 신규 담당자에게 인수인계 안내', cta:'메일 초안', fn:'rdMail' };
+    return { p:50, cat:'hr', ic:'<i class="ti ti-user-plus"></i>', act:'담당자 인사발령 감지 — 신규 담당자에게 인수인계 안내', cta:'메일 초안', fn:'rdMail' };
   // 3. 수주업체 낙찰 → 업체 연계
   if (g.wins && g.wins.length)
-    return { p:10, cat:'win', ic:'🤝', act:'수주업체 ' + cut(g.wins[0].winner || '업체', 14) + ' — 시스템 연계 제안', cta:'메일 초안', fn:'rdMail' };
+    return { p:10, cat:'win', ic:'<i class="ti ti-award"></i>', act:'수주업체 ' + cut(g.wins[0].winner || '업체', 14) + ' — 시스템 연계 제안', cta:'메일 초안', fn:'rdMail' };
   // 4. 진행중 발주 (여유)
   if (g.bidsOpen && g.bidsOpen.length)
-    return { p:20, cat:'bid', ic:'🏛', act:(g.co === '한빌' ? '발주 연계 구좌 확장 — ' : '입찰 대상 — ') + '사업 착수 전 제안 · ' + cut(g.bidsOpen[0].title, 22), cta:'메일 초안', fn:'rdMail' };
+    return { p:20, cat:'bid', ic:'<i class="ti ti-gavel"></i>', act:(g.co === '한빌' ? '발주 연계 구좌 확장 — ' : '입찰 대상 — ') + '사업 착수 전 제안 · ' + cut(g.bidsOpen[0].title, 22), cta:'메일 초안', fn:'rdMail' };
   // 5. 솔루션 매칭 / 고객 소식
   if (g.sols && g.sols.length)
-    return { p:40, cat:'sol', ic:'🧰', act:g.sols[0].sol.name + ' 제안 — 지역 기사 명분으로 접촉', cta:'메일 초안', fn:'rdMail' };
+    return { p:40, cat:'sol', ic:'<i class="ti ti-tools"></i>', act:g.sols[0].sol.name + ' 제안 — 지역 기사 명분으로 접촉', cta:'메일 초안', fn:'rdMail' };
   return null;
 }
 
@@ -11801,7 +11810,7 @@ function renderBriefing(){
       '<div style="font-size:10.5px;color:#94A3B8;padding:0 2px 9px;line-height:1.6" ' +
         'title="수주확도(우선순위) 점수가 높은 지역부터 노출됩니다. 점수가 같을 때만 아래 유형 우선도로 순서를 가립니다.">' +
         '<span style="color:#CBD5E1;font-weight:700">우선순위 점수 높은 순</span> · 동점 시 유형: ' +
-        '🆕 인사발령 › 🧰 솔루션 › 🏛 발주 마감임박 › 🏛 진행 발주 › 🤝 낙찰' +
+        '인사발령 › 솔루션 › 발주 마감임박 › 진행 발주 › 낙찰' +
       '</div>' +
       top.map(function(it, i){
         const g = it.g, a = it.a;
