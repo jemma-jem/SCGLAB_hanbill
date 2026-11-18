@@ -4010,11 +4010,21 @@ function renderTop5(top5) {
 
 // ─── AI 리포트 ───
 function renderReport(report) {
+  // 종합 분석 요약: 한 덩어리 문단을 문장 단위로 끊어 읽기 쉽게 렌더(내용·수치·강조는 그대로).
+  //   '다.' 뒤 공백에서만 분리 → 소수점(64.6%)·건수는 안 끊김. 첫 문장은 결론이라 조금 진하게.
+  const _sents = String(report.summary || '').replace(/(다\.)\s+/g, '$1\u0001').split('\u0001').filter(Boolean);
+  const _summaryHtml = _sents.length > 1
+    ? _sents.map(function(s, i){
+        const first = i === 0;
+        return '<p style="margin:0 0 ' + (i === _sents.length - 1 ? '0' : '9px') + ';line-height:1.7;' +
+               (first ? 'color:var(--g800,#1E293B);font-weight:600' : 'color:var(--g700)') + '">' + s + '</p>';
+      }).join('')
+    : '<div style="line-height:1.8;color:var(--g700)">' + report.summary + '</div>';
   document.getElementById('report-summary').innerHTML = `
     <div style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--sky-dark);margin-bottom:8px">
       <i class="ti ti-brain" style="font-size:15px"></i>AI 종합 분석
     </div>
-    <div style="font-size:12.5px;color:var(--g700);line-height:1.8">${report.summary}</div>`;
+    <div style="font-size:12.5px">${_summaryHtml}</div>`;
   document.getElementById('insight-grid').innerHTML = report.insights.map(ins => `
     <div class="insight-item">
       <div class="ii-icon">${ins.icon}</div>
