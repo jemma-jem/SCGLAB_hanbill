@@ -26,7 +26,9 @@ const UI_COOKIE = 'hb_user';   // 표시용(비보안) — 포털 헤더에 사�
 // (한전ON 가이드(hanjeon-on-guide)는 사용 중단되어 제거됨)
 // hr_archive.json: 지자체 인사발령(공개 RSS 기반) 데이터. Apps Script 자동발송기가 로그인 없이 읽어야 해 공개.
 //   (민감정보 아님 — 공개 뉴스 수집분. 다른 데이터/페이지는 여전히 로그인 필요)
-const PUBLIC_PATHS = new Set(['/hr_archive.json']);
+// /p: 제안서 '바로 보기' 추적 리다이렉트(functions/p.js). 외부 수신자가 로그인 없이 눌러야 하므로 공개.
+//   (클릭 로깅 후 즉시 드라이브 PDF로 302. 민감정보 없음 — 지자체명만 전달)
+const PUBLIC_PATHS = new Set(['/hr_archive.json', '/p']);
 
 // 요청 경로가 공개 대상인지 판정(.html 유무·후행 슬래시 차이를 흡수).
 function isPublicPath(pathname) {
