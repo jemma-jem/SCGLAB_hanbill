@@ -2804,8 +2804,8 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
     <!-- Claude (Anthropic) 키 — 영업 비서 AI 분석 엔진 (Groq에서 전환) -->
     <div style="font-size:11px;color:rgba(255,255,255,.7);margin-bottom:6px;font-weight:700">Claude API 키</div>
     <div style="display:flex;gap:6px">
-      <input id="hb-claude-key-input" type="password" placeholder="sk-ant-xxxxxxxxxxxx"
-        style="flex:1;background:rgba(255,255,255,.1);border:1px solid rgba(139,92,246,.4);border-radius:6px;padding:6px 10px;color:#fff;font-size:12px;outline:none"
+      <input id="hb-claude-key-input" type="text" autocomplete="off" data-lpignore="true" data-1p-ignore placeholder="sk-ant-xxxxxxxxxxxx"
+        style="flex:1;background:rgba(255,255,255,.1);border:1px solid rgba(139,92,246,.4);border-radius:6px;padding:6px 10px;color:#fff;font-size:12px;outline:none;-webkit-text-security:disc"
         value="">
       <button onclick="copyClaudeKey()" title="API 키 복사" style="background:rgba(139,92,246,.18);border:1px solid rgba(139,92,246,.5);border-radius:6px;color:#C4B5FD;padding:6px 12px;font-size:12px;cursor:pointer;white-space:nowrap">복사</button>
       <button onclick="saveClaudeKey()" style="background:#8B5CF6;border:none;border-radius:6px;color:#fff;padding:6px 12px;font-size:12px;cursor:pointer;white-space:nowrap">저장</button>
@@ -11574,8 +11574,8 @@ window.rdShowKeyInput = function(key){
       '<div style="font-size:12.5px;font-weight:800;color:#92400E;margin-bottom:3px"><i class="ti ti-key"></i> Claude API 키 입력</div>' +
       '<div style="font-size:11px;color:#B45309;margin-bottom:9px;line-height:1.55">복사버튼 클릭 후 입력란에 붙여넣기하세요.</div>' +
       '<div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">' +
-        '<input id="rd-key-input" type="password" placeholder="sk-ant-..." ' +
-          'style="flex:1;min-width:180px;border:1px solid #FCD34D;border-radius:8px;padding:9px 11px;font-size:12.5px;font-family:monospace">' +
+        '<input id="rd-key-input" type="text" autocomplete="off" data-lpignore="true" data-1p-ignore placeholder="sk-ant-..." ' +
+          'style="flex:1;min-width:180px;border:1px solid #FCD34D;border-radius:8px;padding:9px 11px;font-size:12.5px;font-family:monospace;-webkit-text-security:disc">' +
         '<button class="rd-btn st" style="flex:0 0 auto;padding:9px 14px" onclick="rdCopyKey(this)">' +
           '<i class="ti ti-copy"></i> 복사</button>' +
         '<button class="rd-btn go" style="flex:0 0 auto;padding:9px 14px" onclick="rdSaveKey(\'' + esc(key) + '\')">' +
