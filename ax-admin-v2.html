@@ -11426,10 +11426,6 @@ window.rdMail = function(key){
       }).join('') : '<div style="font-size:12px;color:#94A3B8">근거가 될 이력·기사가 없어 포인트를 만들지 못했습니다.</div>') +
     '</div>' +
 
-    '<div><label style="display:flex;gap:7px;align-items:center;font-size:12px;font-weight:600;color:#475569">' +
-      '<input type="checkbox" id="rd-mail-cite" onchange="rdMailBuild(\'' + esc(key) + '\')">' +
-      '메일 본문에 공개 출처(기사 링크) 함께 표기</label></div>' +
-
     '<div><div class="rd-sec-t"><i class="ti ti-mail"></i> 수신자</div>' +
       (mails.length ? mails.map(function(m,i){
         return '<label style="display:inline-flex;gap:6px;align-items:center;font-size:12px;margin:0 10px 6px 0">' +
@@ -11464,8 +11460,6 @@ window.rdMailBuild = function(key){
   if (!g || !c) return;
   const picked = [...document.querySelectorAll('.rd-pt:checked')].map(function(el){ return c.pts[+el.dataset.i]; }).filter(Boolean);
   const own = c.own;
-  const citeEl = document.getElementById('rd-mail-cite');
-  const cite = citeEl ? citeEl.checked : true;
 
   // 제목은 "그 지역에서 실제로 일어난 일"을 앞세운다 — 일반 홍보메일과 구분되도록.
   const lead = picked[0];
@@ -11483,13 +11477,9 @@ window.rdMailBuild = function(key){
 (picked.length
   ? '최근 ' + g.sgg + ' 소식을 접하고, 저희가 거들 수 있는 부분이 있을 것 같아 연락드립니다.\n\n' +
     picked.map(function(p, i){
-      // ※ p.inner(고객관리리스트 내부 기록)는 대외 메일에 절대 넣지 않는다. 공개 기사 출처만 인용.
-      const cites = cite && (p.src||[]).length
-        ? (p.src||[]).map(function(s){ return '   · 출처: ' + s.label + '\n     ' + s.url + '\n'; }).join('')
-        : '';
+      // ※ 보도 출처(기사 링크)·내부 기록은 대외 선제 메일 본문에 넣지 않는다.
       return (i+1) + '. ' + p.tag + '\n' +
              '   ' + (p.whyMail || p.why) + '\n' +
-             cites +
              '   ' + p.ask + '\n';
     }).join('\n')
   : '전기요금 청구 업무에서 저희가 거들 수 있는 부분을 소개드리려 연락드립니다.\n') +
