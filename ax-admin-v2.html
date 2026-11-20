@@ -934,7 +934,7 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
     <div class="ni" id="ni-salesboard" onclick="goSec('salesboard',this)" style="display:none"><i class="ti ti-refresh"></i>AI 영업사원</div>
     <div class="ni" onclick="goSec('newsletter',this)"><i class="ti ti-news"></i>뉴스레터</div>
     <!-- AI 민원분석 — 최하단 배치 -->
-    <div class="ni" onclick="goSec('stt',this)"><i class="ti ti-microphone-2"></i>AI 민원분석</div>
+    <div class="ni" onclick="goSec('stt',this)"><i class="ti ti-microphone-2"></i>AI 민원분석 <span style="font-size:10px;color:#94A3B8;font-weight:600">· 파일럿 종료</span><i class="ti ti-info-circle" title="파일럿 분석입니다. 2025.12~2026.10 통화 데이터까지 분석했고, 당분간 데이터 업데이트는 없습니다." style="margin-left:5px;color:#CBD5E1;font-size:13px"></i></div>
   </nav>
   <div class="sb-foot">
     <strong>SCGLAB 영업기획팀 관리</strong>
@@ -5605,7 +5605,7 @@ window.copyNewsletterHtml = function() {
 // ─── NAV ───
 const SEC_META = {
   dashboard:['데이터 포털','한전 빌링 영업 현황'],
-  stt:['STT 활용 주요 지표','실제 통화 분석 기반 인사이트'],
+  stt:['AI 민원분석 · 파일럿 종료','실제 통화 분석 · 2025.12~2026.10 데이터 · 당분간 업데이트 없음'],
   predict:['예상 민원','AI 기반 민원 예측 및 개선책'],
   newsletter:['뉴스레터','한전 청구서사업 경영진 일일 스크랩'],
   radar:['AI 레인저','고객리스트 × 지역소식·나라장터·인사발령 결합 영업 알림'],
@@ -6421,7 +6421,7 @@ function applyDefaultPeriod() {
 // ─── 하단 네비 (모바일) ───
 const BN_SECTIONS = {
   dashboard:  { label:'데이터 포털',   sub:'한전 빌링 영업 현황' },
-  stt:        { label:'AI 민원분석', sub:'실제 통화 분석 기반 인사이트' },
+  stt:        { label:'AI 민원분석 · 파일럿 종료', sub:'실제 통화 분석 · 2025.12~2026.10 데이터 · 당분간 업데이트 없음' },
   predict:    { label:'예상 민원', sub:'AI 기반 민원 예측 및 개선책' },
   newsletter: { label:'뉴스레터', sub:'한전 청구서사업 경영진 스크랩' },
   radar:      { label:'AI 레인저', sub:'고객리스트 × 지역소식·나라장터·인사발령 결합 영업 알림' },
