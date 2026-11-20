@@ -1,13 +1,61 @@
 {
-  "updated_at": "2026-11-19T07:14:28.061Z",
+  "updated_at": "2026-11-20T07:01:51.069Z",
   "sources": [
     "시정일보 RSS(피플/전체)",
     "지역지 직접 RSS(동부뉴스·투데이군산·당진신문·영남투데이·수원일보·금강일보·디트뉴스·전북중앙·남도일보·광주드림·경북일보·울산제일일보·제주의소리·세종의소리)",
     "구글 뉴스 RSS",
     "기사 본문 보강"
   ],
-  "count": 328,
+  "count": 347,
   "records": [
+    {
+      "date": "2026-11-20",
+      "url": "http://www.dtnews24.com/news/articleView.html?idxno=817426",
+      "source": "디트뉴스",
+      "title": "우송정보대·대전보건대와 교직원 생성형 AI 실무 연수 운영",
+      "region": "",
+      "kinds": [
+        "전보"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-20",
+      "url": "https://www.namdonews.com/news/articleView.html?idxno=929938",
+      "source": "남도일보",
+      "title": "'AI 커닝' 공포, 교사 임용시험까지....전남광주교육청, 전파탐지기 동원 부정행위 막는다",
+      "region": "임용시",
+      "kinds": [
+        "임용"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-20",
+      "url": "https://www.sjsori.com/news/articleView.html?idxno=89828",
+      "source": "세종의소리",
+      "title": "세종시교육청, 내년도 공립 중등교사 임용시험 공고",
+      "region": "세종시",
+      "kinds": [
+        "임용"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-20",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9GR2xGeVlSaHJETEFSeVFSSkZHSGpib0Z4NFlQQjNLX2hiUGx3WG9vVE91dVJaWTVwVjJKRWw3VHhtODVLOERLemx3SzhTZDIwRkhGal9sa3JJSDRRc055TjgtdXA?oc=5",
+      "source": "서울경제TV",
+      "title": "하이트진로, 2027년 정기 임원인사 단행…상무 3명·상무보 4명 승진",
+      "region": "",
+      "kinds": [
+        "승진"
+      ],
+      "people": [],
+      "hit": false
+    },
     {
       "date": "2026-11-19",
       "url": "https://www.sijung.co.kr/news/articleView.html?idxno=441703",
@@ -39,6 +87,183 @@
       "title": "HLB그룹, 조직개편·임원 인사 단행…차세대 리더 전진 배치 - 머니투데이",
       "region": "",
       "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-19",
+      "url": "http://www.dtnews24.com/news/articleView.html?idxno=817408",
+      "source": "디트뉴스",
+      "title": "충남소방, 자체 특별승진제도 첫 도입",
+      "region": "",
+      "kinds": [
+        "승진",
+        "임용"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-19",
+      "url": "http://www.dtnews24.com/news/articleView.html?idxno=817404",
+      "source": "디트뉴스",
+      "title": "유대혁 \"대전시, 시민안전보험 보장항목 확대\" 촉구",
+      "region": "대전시",
+      "kinds": [
+        "전보"
+      ],
+      "people": [],
+      "hit": true
+    },
+    {
+      "date": "2026-11-19",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFAxdDR2bGhOLWhFd1NpUDN5YUVpOHRfeVlMeDI5NXBvY2VMLW1RTmFoUEtkZGFHOVJmd3FfVGI3Z1AwVzNreF9qQ05GZHQ1ajN5eU94MjBfNmZWeDhFNUVwWEV2TU1JQlQ0RmhV?oc=5",
+      "source": "CNB뉴스",
+      "title": "LG화학, 14명 규모 2027년 정기 임원 인사 단행",
+      "region": "",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-19",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBKUFpwal9BUWdLa1E4bktKUHB1QVduVVZmRi00Nnh4RjRWZm9STXhsbkUwMzZKdFZMUkNUZFZ1QjFYQ1FrOHBXeE9KMTFjb0tYM2lMTU9CTVk0OVd4ODN5SVlhUmY?oc=5",
+      "source": "디지털데일리",
+      "title": "LG화학, 2027년 임원인사 단행… 김무용·김상민 부사장 승진",
+      "region": "",
+      "kinds": [
+        "승진"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-19",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5XX3VZNnZfNmtaZ1d2QjgwUkpVUzJrWVZWUkROUXpUN05SSjU3Q2IteE1qZjNUQTdSRVV6RFBwWWN3dmFmMHBCY1EwRkpVZjRyTGx0Q1FWZ0NXUl9lT3FrTWExYkJVTEpwYUZXM9IBckFVX3lxTE9idGl5VnhpOE90ZVdmdUkwQTh6UjVOdGNoTTdZSGk5UTNITXNaSXU5OUVYbzRCTUlyVWxXclJtRmJob3liQ2NXQ09ZcHMxY18tQ2xrRnNVOFdGaUNWQ0g3ODY4YUtUVG9ZOTQyeVdqLUJTdw?oc=5",
+      "source": "머니투데이",
+      "title": "LG화학, 2027년 임원인사 단행…김무용·김상민 부사장 승진 - 머니투데이",
+      "region": "",
+      "kinds": [
+        "승진"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-19",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE4yMlVXZFJCVC03SXdWbHB6S1FjYTBSR3hGMkpCNFRYSlYtUkdMNlVZNFhLSThUamwxNmI0djNtTGllbTRXSlFFOUlKU281dTJrcjllRFM1MGlBVjdvQTBaQ28tS3VCNGdVOVd3?oc=5",
+      "source": "라이센스뉴스",
+      "title": "[인사] LG생건, 임원인사 단행…전무 2명 승진·상무 1명 선임",
+      "region": "",
+      "kinds": [
+        "승진"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-19",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1wYUhmNmxkbW9Wa2tJQ1ctdDN4Vi1xeFE1WWxYNVlzQmtVck9pNEZKcVdFYlVnWlZYZnNRUmZqSEktZnI0UmlobXdLb2ZMU3VWaVB4Vjdmb2FJMENwWEVURlhvOGhudGcyUVlqUNIBckFVX3lxTFBZYnVwYkF1TTR0SEt2T0tLaHVPbUlzWDU2UWNZSVg0S2xNUWJBUEQ1T3pGS0JfOUMtQTYxRzJZcDh2dUdyR1Q3MktvME91VExDeFVqMHR0QS10dlo2LURUQ2VXV3BHTm5RM0YyNWZSa0U3UQ?oc=5",
+      "source": "머니투데이",
+      "title": "LG엔솔, 2027년 임원인사 단행…조준형 부사장 승진 등 11명 - 머니투데이",
+      "region": "",
+      "kinds": [
+        "승진"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-19",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9EZFpEN0FoWVhlNGpzeUh2Y255YlU2WHFXbmlGa085YWFBZlRLaDZ6dk9ZX0xoYTJWWUR3cjBiRG8xVVlOS090NGtzb0c0clRLUzV2TGJxWU4xYzZuVVhrTzhyNnY?oc=5",
+      "source": "디지털데일리",
+      "title": "LG이노텍, 2027년 임원인사 단행…조지태 부사장 승진",
+      "region": "",
+      "kinds": [
+        "승진"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-19",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1wQ2d6bzN0ZFFrNHZnOU5pd182UTFOemZWQ0Zwa1NOeHRGNk9iaWRycV9qTk1md2xjdEZjZXBJQ3lGVU5PQ01kamhGc1hIRXpTdlNZMXM0MUlpM1NxalR3bkotVFE?oc=5",
+      "source": "서울경제TV",
+      "title": "LG엔솔, 임원인사 단행…조준형 부사장 등 11명 승진",
+      "region": "",
+      "kinds": [
+        "승진"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-19",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9HdlB3cHFvT1lwb1AxLTNfZ2k1TU5EdkhYejBQcWxuYnpGNlRFSUNLUm13SWIxYmhnRk9hMUg0YXJ5MzVfRmFWQW9OdTRINTY5OGsxX2JDRDRZaU1Bb1V2ZUY0dnI?oc=5",
+      "source": "디지털데일리",
+      "title": "LG생활건강, 2027년 임원인사 단행…서주완·이준호 전무 승진",
+      "region": "",
+      "kinds": [
+        "승진"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-19",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBHQUl2c1dKNFJNejJiXzlPaUNrVnNjNDhPVjdNcl8yYllELW5BZ19QeVZxajNQYW4yTkRRUGJpQU9JUnZqQU1wMF82UW5GcXQ4cndlUXRtUUdwQUdXSkRUUElIWUNLaDN6ZzZ3?oc=5",
+      "source": "라이센스뉴스",
+      "title": "[인사] LG화학, 2027년 정기 승진 인사 단행",
+      "region": "",
+      "kinds": [
+        "승진"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-19",
+      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5kemZCcUxCTU5ad2dtZFdyWTgzX0s3V0JPTTNZLWJfOG13NWRTb2xOYUc3cWtJNklKd29ST3hoM3Y5d1lGbTE5ek5QeTJfYS1iRW91ckoyRUVWQQ?oc=5",
+      "source": "파이낸셜뉴스",
+      "title": "[속보] LG전자 정기 임원 인사 단행…백승태·이상우 사장 승진",
+      "region": "",
+      "kinds": [
+        "승진"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-19",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1IU2dNblJLUml5YjlUd3ZPTlBVYVZ6eEJ5SG1IZG42eHlSSGtmWUVfRFQtZVFaSXdtaTM3WGgySjJibEp1TGQtdm1RSzdVZjA5RjFjQzZfZVRQYnh0WGVOZ9IBeEFVX3lxTE92dnhFUmZReVdFaXJhMVJwcWVIN3Vzb2Q0T01BNks2OU1TVlEzQTg4QWlNWW4xY0N2QnZhZU9ibzBzbkRPLU1lY0htWi1SODI5a0o1YWp5cTFOc0hFWFJrS1NMcTFQa20yLXRJRXJyb1pFSjVabGZlMg?oc=5",
+      "source": "뉴시스",
+      "title": "삼성전자, 오늘 사장단 인사 단행할 듯…메모리·스마트폰에 새 수장 발탁하나",
+      "region": "",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-19",
+      "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBrZnJYaUdDRlpUaWdEbzgwaWFUc095U2lfd1I5V3Nub3Z3MXdzYk1mRkxNVDRmUUU4NzRBdnptOUFESllCWnMwbWpYdzZ2TjRMTlZibEEweFIzdmRiNXZ1VVJCTkVhU0ZIek1sYXhHMFFDekZJZldR0gF8QVVfeXFMUFBoUV9HenEtWUR6ejJhNlFhWG1SRy1IZ2xfOFppc2N1Rm9hWC0ydXJHclVXZnZPQ18tZ0l1UWgtTmVNaEM0cWhXMi1YdG56SksyUEdRV09OaHFIRlJTdUxiV1d2d19TMEZWREUwZjM3NEZCYXpOaTVXUGh6bA?oc=5",
+      "source": "머니투데이",
+      "title": "글로벌 경쟁력 강화…LG생활건강, 2027 정기인사 단행 - 머니투데이",
+      "region": "",
+      "kinds": [
+        "정기인사"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-19",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFBNbzdJMXRzbkdTbk1QR3RNXzl6V1dQWTBHNWNQUVlvQnBnajJZbEtTeDJJMEY2TXc4WFBHZktDQ0hiYkxJcXhRbDdkWGlkWEtfazVOZVVEZ01zY3BQYTRXYWhNZUZEYUl0RWxXM3lCNzgzZw?oc=5",
+      "source": "중앙이코노미뉴스",
+      "title": "LG전자, 2027년 임원인사 단행…백승태·이상우 사장 승진에 AIDC 조직 신설",
+      "region": "",
+      "kinds": [
+        "승진"
+      ],
       "people": [],
       "hit": false
     },
