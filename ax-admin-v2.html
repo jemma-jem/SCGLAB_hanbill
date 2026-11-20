@@ -12291,13 +12291,13 @@ window.rdDetail = function(key){
                     }).join('') + '</table>'
                   : '<div style="font-size:11.5px;color:#64748B">영업 관련 부서 인사는 확인되지 않았습니다. 원문에서 직접 확인해 주세요.</div>') +
                 '<button class="rd-btn go" style="margin-top:7px" onclick="rdHrConfirm(\'' + esc(g.key) + '\',' + i + ')">' +
-                  '<i class="ti ti-check"></i> 확인 완료 — 시트 기록용 복사 + 기준선 갱신</button>' +
+                  '<i class="ti ti-check"></i> 이 발령 확인함 — 알림 끄고 시트용으로 복사</button>' +
               '</div>';
             }).join('')
           : '<div style="font-size:12px;color:#059669;font-weight:600"><i class="ti ti-circle-check"></i> 확인 이후 새로 감지된 발령이 없습니다.</div>') +
 
         (g.hr.length > g.hrNew.length
-          ? '<details style="margin-top:6px"><summary style="font-size:11.5px;color:#64748B;cursor:pointer">확인 완료된 과거 발령 ' + (g.hr.length - g.hrNew.length) + '건</summary>' +
+          ? '<details style="margin-top:6px"><summary style="font-size:11.5px;color:#64748B;cursor:pointer">이미 확인한 과거 발령 ' + (g.hr.length - g.hrNew.length) + '건</summary>' +
             g.hr.slice(g.hrNew.length).map(function(r){
               return '<div style="font-size:11.5px;color:#64748B;padding:4px 0">· ' + esc(r.date) + ' ' +
                      '<a href="' + esc(r.url) + '" target="_blank" rel="noopener" style="color:#0284C7">' + esc(cut(r.title,44)) + ' ↗</a></div>';
@@ -12387,11 +12387,11 @@ window.rdHrConfirm = function(key, idx){
   ST._lastHrRow = row;
 
   navigator.clipboard.writeText(row).then(function(){
-    alert('✅ 확인 처리했습니다.\n\n· 기준선이 ' + r.date + ' 로 갱신되어, 이후 새 발령만 알림에 뜹니다.\n' +
-          '· 시트 기록용 한 줄을 클립보드에 복사했습니다 (탭 구분 → 셀에 바로 붙여넣기).\n\n' +
+    alert('✅ 확인했습니다.\n\n· 이 발령(' + r.date + ')은 이제 알림에 다시 뜨지 않습니다. 이보다 나중 발령만 새로 뜹니다.\n' +
+          '· 시트에 붙여넣을 한 줄을 복사해 뒀습니다. 구글시트 셀에 바로 붙여넣으면 열별로 들어갑니다.\n\n' +
           row.replace(/\t/g, ' | '));
   }).catch(function(){
-    alert('확인 처리했습니다. 기준선 갱신 완료.\n\n시트 기록용 (복사 실패 — 수동 복사):\n' + row.replace(/\t/g, ' | '));
+    alert('✅ 확인했습니다. 이 발령은 이제 알림에 다시 뜨지 않습니다.\n\n시트에 붙여넣을 한 줄 (복사 실패 — 아래 내용을 직접 복사하세요):\n' + row.replace(/\t/g, ' | '));
   });
 
   // 알림·목록 즉시 갱신
