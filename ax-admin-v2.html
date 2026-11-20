@@ -11243,6 +11243,7 @@ function salesPoints(g){
   if (bizN) pts.push({
     tag:'신규 구좌 등록 누락 방지',
     why:'"' + cut(bizN.a.title, 42) + '" (' + bizN.a.source + ' ' + bizN.a.date + ') — 신규 가로등·시설물이 늘면 한전 전기사용 구좌도 함께 생깁니다.',
+    whyMail:'"' + cut(bizN.a.title, 42) + '" (' + bizN.a.date + ') 관련 보도를 확인했습니다. 신규 가로등·시설물이 늘면 한전 전기사용 구좌도 함께 생깁니다.',
     ask:'준공시점에 맞춰 전기요금 청구서를 일괄 등록하여 청구서 누락으로 인한 연체를 예방하며, 종이로 발송되는 청구서를 이메일로 받아 홈페이지를 통해 통합관리를 할 수 있는 서비스를 제공해 드리겠습니다.',
     src: artSrc(bizN.a)
   });
@@ -11250,6 +11251,7 @@ function salesPoints(g){
   if (noticeN) pts.push({
     tag:'사업 착수 전 빌링 체계 선협의',
     why:'"' + cut(noticeN.a.title, 42) + '" (' + noticeN.a.source + ' ' + noticeN.a.date + ') — 공고 단계에서 전기요금 청구 방식을 정해 두면 준공 후 재작업이 없습니다.',
+    whyMail:'"' + cut(noticeN.a.title, 42) + '" (' + noticeN.a.date + ') 관련 공고를 확인했습니다. 공고 단계에서 전기요금 청구 방식을 정해 두면 준공 후 재작업이 없습니다.',
     ask:'전기요금 청구서를 이메일로 수령하는 것을 사전에 신청하고, 청구서 발행 시 담당자가 원하는 이메일로 청구서를 발송해 드리는 서비스를 제공해 드리겠습니다.',
     src: artSrc(noticeN.a)
   });
@@ -11277,7 +11279,7 @@ function salesPoints(g){
     why: hrN ? '"' + cut(hrN.a.title, 42) + '" (' + hrN.a.source + ' ' + hrN.a.date + ') — 담당 변경 시 청구서 수신·계정 인계가 누락되기 쉽습니다.'
              : '고객관리리스트 영업History에 담당자 변경 이력이 기록돼 있습니다 — 청구서 수신 계정 인계 누락 위험이 있습니다.',
     // 대외 메일용 문구 — 내부 문서명(고객관리리스트·영업History)을 노출하지 않는다
-    whyMail: hrN ? '"' + cut(hrN.a.title, 42) + '" (' + hrN.a.source + ' ' + hrN.a.date + ') 관련 보도를 확인했습니다. 담당 변경 시 청구서 수신 계정·이메일 인계가 누락되는 경우가 많습니다.'
+    whyMail: hrN ? '"' + cut(hrN.a.title, 42) + '" (' + hrN.a.date + ') 관련 보도를 확인했습니다. 담당 변경 시 청구서 수신 계정·이메일 인계가 누락되는 경우가 많습니다.'
                  : '담당자가 바뀌실 때 청구서 수신 계정·이메일 인계가 누락되는 경우가 많습니다.',
     ask:'전기요금 관리 담당자의 이메일과 계정을 신규 담당자로 이관하고, 신규 담당자에게 업무 안내와 가이드북을 함께 보내드리겠습니다.',
     src: hrN ? artSrc(hrN.a) : [],
@@ -11321,6 +11323,7 @@ function salesPoints(g){
     pts.push({
       tag: s.sol.name + ' 안내',
       why: '"' + cut(s.art.title, 42) + '" (' + s.art.source + ' ' + s.art.date + ') — 해당 업무를 맡고 계신 부서에 도움이 될 수 있는 시스템을 저희가 운영 중입니다.',
+      whyMail: '"' + cut(s.art.title, 42) + '" (' + s.art.date + ') 관련 보도를 확인했습니다. 해당 업무를 맡고 계신 부서에 도움이 될 수 있는 시스템을 저희가 운영 중입니다.',
       ask:'당사의 "지도기반 시설물 정보관리"와 "비대면 모바일 민원신고"를 위한 통합관리 솔루션을 제공해 드리며, 필요시 시범 서비스를 제공해 드리겠습니다.',
       src: artSrc(s.art)
     });
