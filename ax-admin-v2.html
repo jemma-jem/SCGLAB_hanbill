@@ -5835,7 +5835,7 @@ function sbDraw(){
   body.innerHTML =
     // 헤더 + 기간
     '<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px">'+
-      '<div style="font-size:13px;color:#1E40AF;font-weight:700">📧 AI 영업사원 — 선제 제안 메일 <b>발송·회신 콘솔</b> <span style="font-size:11px;color:#94A3B8;font-weight:500">· 인사기사 트랙 + 나라장터·솔루션 트랙 · 발송 지자체 레인저 수주확도 +40</span></div>'+
+      '<div style="font-size:13px;color:#1E40AF;font-weight:700">📧 AI 영업사원 — 인사기사 기반 선제 제안 메일 <b>발송·회신 콘솔</b> <span style="font-size:11px;color:#94A3B8;font-weight:500">· 발송 지자체 레인저 수주확도 +40</span></div>'+
       '<div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">'+btns+'</div>'+
     '</div>'+
     // ① 진행 현황 — 한눈 파이프라인 (감지 → 이메일 교차확인 → 생성 → 발송 → 발송·열람 확인 → 회신)
@@ -5866,18 +5866,6 @@ function sbDraw(){
       _sbCard('발송 대기', pendingN+'곳', '메일 보유·미발송', '#F59E0B')+
     '</div>'+
     '<div style="font-size:11px;color:#94A3B8;margin:-8px 2px 16px">ⓘ <b>제안서 열람</b>은 메일의 ‘제안서 바로 보기’ 웹 링크 클릭 기준(Gmail 프록시 영향 없어 신뢰도 높음) · <b>오픈율</b>은 미지원 · <b>회신율·분류</b>로 반응 측정</div>'+
-    // ②-2 나라장터·솔루션 트랙 (인사기사 트랙과 구분)
-    '<div style="background:#fff;border:1px solid #DBEAFE;border-radius:12px;padding:14px 18px;margin-bottom:16px">'+
-      '<div style="font-size:13px;font-weight:800;color:#1E40AF;margin-bottom:10px">🏛 나라장터·솔루션 트랙 '+
-        '<span style="font-size:11px;color:#94A3B8;font-weight:500">· 공고 감지 → 이메일 보유 건에 빌링 솔루션 제안 발송(인사기사 트랙과 분리 집계)</span></div>'+
-      '<div style="display:flex;gap:10px;flex-wrap:wrap">'+
-        _sbCard('솔루션 발송', ((d.solSent!=null?d.solSent:0))+'건', '나라장터·솔루션 감지분', '#1E40AF')+
-        _sbCard('솔루션 발송대기', ((d.solPending!=null?d.solPending:0))+'곳', '이메일 보유·미발송', '#F59E0B')+
-      '</div>'+
-      ((d.recentSolSends&&d.recentSolSends.length)?
-        '<div style="font-size:11px;color:#64748B;margin-top:9px">최근 발송: '+d.recentSolSends.slice(0,6).map(function(s){return _esc(s.region||'');}).join(', ')+'</div>':
-        '<div style="font-size:11px;color:#94A3B8;margin-top:9px">아직 솔루션 트랙 발송 내역이 없습니다. (Apps Script 메뉴 <b>Ⓢ①</b> 감지 → <b>Ⓢ②</b> 발송)</div>')+
-    '</div>'+
     // ③ 주소록 · 세그먼트 현황
     '<div style="background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:16px 18px;margin-bottom:14px">'+
       '<div style="font-size:14px;font-weight:800;color:#004098;margin-bottom:12px">③ 주소록 · 세그먼트 현황</div>'+
