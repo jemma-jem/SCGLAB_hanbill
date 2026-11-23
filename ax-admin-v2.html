@@ -5149,10 +5149,12 @@ async function fetchLiveNews() {
         const _el = document.getElementById('nl-collect-asof');
         if (_el) {
           if (_upd) {
+            // 저장값은 UTC(ISO Z) → 브라우저 시간대와 무관하게 항상 한국시간(KST)으로 표기.
             const _d = new Date(_upd);
-            const _mm = String(_d.getMonth()+1).padStart(2,'0'), _dd = String(_d.getDate()).padStart(2,'0');
-            const _hh = String(_d.getHours()).padStart(2,'0'), _mi = String(_d.getMinutes()).padStart(2,'0');
-            _el.textContent = ' · 최근 갱신 ' + _mm + '/' + _dd + ' ' + _hh + ':' + _mi;
+            const _p = {};
+            new Intl.DateTimeFormat('en-GB', { timeZone:'Asia/Seoul', month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit', hour12:false })
+              .formatToParts(_d).forEach(function(x){ _p[x.type]=x.value; });
+            _el.textContent = ' · 최근 갱신 ' + _p.month + '/' + _p.day + ' ' + _p.hour + ':' + _p.minute + ' (KST)';
           } else {
             _el.textContent = '';
           }
