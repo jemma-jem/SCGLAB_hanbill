@@ -80,6 +80,12 @@ const CONTEXT_KW = ['지자체','지방자치','지방정부','시청','도청',
 // 지자체 인사발령 — 담당자 교체는 영업 재접촉의 핵심 트리거라 별도 수집한다.
 const HR_KW = ['인사발령','정기인사','전보 발령','과장 전보','국장 전보','조직개편'];
 
+// 한전 ISP(정보화전략계획)·보안사고 — 차세대 빌링/시스템 사업 신호 + 보안 이슈.
+//   ※ 'ISP'·'보안사고' 등은 단독으론 노이즈가 커 아래 QUERY_KEPCO에서 '한전/한국전력'과 AND로 묶는다.
+const KEPCO_KW = ['ISP','정보화전략계획','정보화전략','차세대 시스템','차세대 빌링',
+  '보안사고','해킹','정보유출','개인정보 유출','개인정보 유출사고','사이버 공격','사이버공격',
+  '랜섬웨어','침해사고','보안 취약','디도스','DDoS'];
+
 // 구체 키워드(단독으로도 안전) = 기본 + 지자체 확장 + LPG − 일반어. 그대로 OR 검색.
 const SPECIFIC_KW = Array.from(new Set(BASE_KW.concat(JICHE_KW).concat(LPG_KW)))
   .filter(function(k){ return GENERIC_JICHE_KW.indexOf(k) < 0; });
@@ -99,9 +105,12 @@ const QUERY_LPG = '"LPG" ('
   + ['요금','고지','정산','청구','판매사업자','공급사업자','충전소','배관망','소형저장탱크','안전점검','협회']
       .map(function(k){ return '"' + k + '"'; }).join(' OR ')
   + ') when:3d';
+// 쿼리 6: 한전 ISP·보안사고 — 키워드 OR 를 '한전/한국전력' 맥락과 AND로 묶어 노이즈 차단
+const QUERY_KEPCO = '(' + KEPCO_KW.map(function(k){ return '"' + k + '"'; }).join(' OR ') + ')'
+  + ' ("한전" OR "한국전력" OR "한전KDN") when:3d';
 
-const QUERY = [QUERY_MAIN, QUERY_JICHE, QUERY_SOL, QUERY_HR, QUERY_LPG].join(' || ');   // 로그·메타 표기용
-const RSS_URLS = [QUERY_MAIN, QUERY_JICHE, QUERY_SOL, QUERY_HR, QUERY_LPG].map(function(q){
+const QUERY = [QUERY_MAIN, QUERY_JICHE, QUERY_SOL, QUERY_HR, QUERY_LPG, QUERY_KEPCO].join(' || ');   // 로그·메타 표기용
+const RSS_URLS = [QUERY_MAIN, QUERY_JICHE, QUERY_SOL, QUERY_HR, QUERY_LPG, QUERY_KEPCO].map(function(q){
   return 'https://news.google.com/rss/search?q=' + encodeURIComponent(q) + '&hl=ko&gl=KR&ceid=KR:ko';
 });
 
@@ -114,6 +123,8 @@ const CORE_KW = Array.from(new Set([
   '가로등','보안등','구좌분리','시설물관리','도로조명','도로과','전수표찰',
   '에너지 마일리지','에너지 절감','건물에너지관리','종이고지서','우리집 에너지','탄소중립포인트',
   '빗물받이','수목관리','전자문서중계','모바일 고지서',
+  'ISP','정보화전략계획','정보화전략','차세대 시스템','차세대 빌링',
+  '보안사고','해킹','정보유출','개인정보 유출','사이버 공격','사이버공격','랜섬웨어','침해사고','디도스','DDoS',
   // 솔루션 영업 진입로 키워드 (가로수·전정·침수 등 단독어도 관련 기사로 인정)
   '가로수','전정','가지치기','병해충','조경','녹지','우수받이','침수','그린리모델링','녹색건축',
   // 인사발령 (담당자 교체 트리거)
