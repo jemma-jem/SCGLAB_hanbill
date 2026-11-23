@@ -2102,11 +2102,28 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
         </div>
       </div>
       <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">
+        <button class="btn bo sm" id="nl-collect-now" style="white-space:nowrap;border-color:#0EA5E9;color:#075985" onclick="triggerNewsCollect()" title="오후 4시 예약을 기다리지 않고 지금 수집을 실행합니다. 2~4분 뒤 새로고침하면 반영됩니다."><i class="ti ti-player-play"></i> 지금 수집</button>
         <button class="btn bo sm" style="white-space:nowrap" onclick="refreshNews()"><i class="ti ti-refresh"></i> 새로고침</button>
         <button class="btn bp sm" id="send-btn" style="white-space:nowrap" onclick="sendNewsletter()"><i class="ti ti-send"></i> 선택 기사 발송</button>
         <button class="btn bo sm" id="copy-html-btn" onclick="copyNewsletterHtml()" style="border-color:#0EA5E9;color:#0EA5E9;white-space:nowrap"><i class="ti ti-clipboard-copy"></i> HTML 복사</button>
       </div>
     </div>
+    <script>
+      // "지금 수집" — Cloudflare Worker가 뉴스 수집 워크플로를 실행(토큰은 Worker에 숨김).
+      var NL_COLLECT_WORKER = 'https://news-trigger.eunmi-ji82.workers.dev';
+      async function triggerNewsCollect(){
+        var btn = document.getElementById('nl-collect-now');
+        if(!NL_COLLECT_WORKER){ return; }
+        if(btn){ btn.disabled = true; var _o = btn.innerHTML; btn.innerHTML = '<i class="ti ti-loader-2"></i> 요청 중…'; btn.dataset.o = _o; }
+        try{
+          var r = await fetch(NL_COLLECT_WORKER, { method:'POST' });
+          var j = await r.json();
+          alert(j && j.msg ? j.msg : (j && j.ok ? '수집 요청 완료' : ('요청 실패: ' + ((j&&j.error)||r.status))));
+        }catch(e){ alert('요청 실패: ' + e); }
+        // 중복 실행 방지용 UI 쿨다운(60초)
+        setTimeout(function(){ if(btn){ btn.disabled=false; btn.innerHTML = btn.dataset.o || '<i class="ti ti-player-play"></i> 지금 수집'; } }, 60000);
+      }
+    </script>
 
     <!-- 탭: 오늘 기사 / 지난 기사 / 발송 이력 -->
     <div style="display:flex;gap:0;border-bottom:2px solid var(--g100);margin-bottom:14px;flex-wrap:wrap">
