@@ -6,7 +6,7 @@ name: 뉴스 자동 수집 (news_archive.json)
 
 on:
   schedule:
-    - cron: '0 0 * * *'     # 00:00 UTC = 09:00 KST — 매일 오전 9시
+    - cron: '0 7 * * *'     # 07:00 UTC = 16:00 KST — 매일 오후 4시
   workflow_dispatch: {}       # 수동 실행(테스트) 허용
 
 permissions:
