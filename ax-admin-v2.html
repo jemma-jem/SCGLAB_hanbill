@@ -5939,6 +5939,8 @@ function sbDraw(){
       _segBar('발송 대상 매칭 (현재 큐)', [['메일 보유(발송 대상)',matched,'#0EA5E9'],['미매칭(메일 없음)',unmatched,'#CBD5E1']], (typeof detected==='number'?detected:null))+
       _segBar('회신 분류 ('+R.label+')', [['관심·문의',catN['관심·문의']||0,'#059669'],['담당 안내',catN['담당 안내']||0,'#7C3AED'],['거절·보류',catN['거절·보류']||0,'#DC2626'],['기타',catN['기타']||0,'#94A3B8']], reps.length)+
     '</div>'+
+    // ③-S 솔루션 주소록·세그먼트 — solRenderSeg()가 window._solSummary로 채움
+    (SB_TOKEN ? '<div id="sb-sol-seg" style="background:#fff;border:1px solid #BAE6FD;border-radius:12px;padding:16px 18px;margin-bottom:14px"><div style="font-size:12px;color:#94A3B8;padding:4px 2px">솔루션 세그먼트 불러오는 중…</div></div>' : '')+
     // ④ 실시간 로그 · 리포트
     '<div style="font-size:12px;font-weight:800;color:#64748B;margin:0 2px 8px">④ 실시간 로그 · 리포트</div>'+
     // 보고용 요약
@@ -6162,6 +6164,26 @@ function solRenderPipe(){
       '📌 이메일 없는 <b style="color:#64748B">'+v('noEmail')+'곳</b>은 구글시트에 주소만 채우면 다음 수집부터 자동으로 발송 대상에 들어옵니다.'+
       '<span style="color:#CBD5E1"> · 발송 조건은 상단 ⚙ 운영 조건 참고</span>'+
     '</div>';
+  solRenderSeg();
+}
+// 솔루션 주소록·세그먼트(③-S) — 인사 ③과 동일 포맷. window._solSummary로 #sb-sol-seg 채움
+function _solSeg(label, segs, total){
+  var tot = total; if(tot==null){ tot=0; segs.forEach(function(s){ tot+=(typeof s[1]==='number'?s[1]:0); }); }
+  var bar = (typeof tot==='number'&&tot>0) ? segs.map(function(s){ var vv=(typeof s[1]==='number'?s[1]:0); if(!vv) return ''; return '<div title="'+s[0]+' '+vv+'" style="width:'+(vv/tot*100)+'%;background:'+s[2]+';height:100%"></div>'; }).join('') : '';
+  var leg = segs.map(function(s){ return '<span style="display:inline-flex;align-items:center;gap:4px;margin-right:12px;font-size:11px;color:#334155"><i style="width:10px;height:10px;border-radius:2px;background:'+s[2]+';display:inline-block"></i>'+s[0]+' '+(typeof s[1]==='number'?s[1]:'…')+'</span>'; }).join('');
+  return '<div style="margin-bottom:12px"><div style="font-size:11.5px;font-weight:700;color:#475569;margin-bottom:5px">'+label+(typeof tot==='number'?(' <span style="color:#94A3B8;font-weight:500">(합계 '+tot+')</span>'):'')+'</div>'+
+    '<div style="display:flex;height:16px;border-radius:8px;overflow:hidden;background:#F1F5F9;margin-bottom:6px">'+bar+'</div><div>'+leg+'</div></div>';
+}
+function solRenderSeg(){
+  var box = document.getElementById('sb-sol-seg'); if(!box) return;
+  var s = window._solSummary;
+  if(!s){ box.innerHTML = '<div style="font-size:12px;color:#94A3B8;padding:4px 2px">솔루션 세그먼트 불러오는 중…</div>'; return; }
+  var haveEmail = (s.detected||0) - (s.noEmail||0);   // 이메일 보유 = 감지 − 이메일없음
+  box.innerHTML =
+    '<div style="font-size:14px;font-weight:800;color:#075985;margin-bottom:12px">③-S 솔루션 주소록 · 세그먼트 현황 <span style="font-size:11px;color:#94A3B8;font-weight:600">· 나라장터 공고 기반</span></div>'+
+    _solSeg('발송 대상 매칭 (현재 큐)', [['이메일 보유(발송 대상)',haveEmail,'#0EA5E9'],['이메일 없음',s.noEmail||0,'#CBD5E1']], s.detected||0)+
+    _solSeg('진행 상태 분포', [['발송 대기',s.pending||0,'#0EA5E9'],['발송 완료',s.sent||0,'#075985'],['보류(인사우선·6개월)',s.held||0,'#9333EA'],['이메일 없음',s.noEmail||0,'#CBD5E1']], s.detected||0)+
+    '<div style="font-size:11px;color:#94A3B8">회신 '+(s.reply||0)+'곳 (발송 완료 중 회신 온 지자체 · "회신_솔루션" 시트 기준)</div>';
 }
 function _solRenderQueue(d){
   var box = document.getElementById('sol-queue'); if(!box) return;
