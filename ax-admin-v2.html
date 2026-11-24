@@ -5852,7 +5852,7 @@ function sbDraw(){
     repTxt += '\n\n[솔루션 트랙 — 나라장터 공고 기반]\n'+
       '· 감지: '+_ss.detected+'곳\n'+
       '· 발송 대기(이메일 보유): '+_ss.pending+'곳 · 이메일 없음 '+_ss.noEmail+'곳\n'+
-      '· 발송 완료: '+_ss.sent+'곳 · 보류(인사 우선·6개월) '+_ss.held+'곳\n'+
+      '· 발송 완료: '+_ss.sent+'곳 · 회신 '+(_ss.reply||0)+'곳 · 보류(인사 우선·6개월) '+_ss.held+'곳\n'+
       '· 조율 규칙: 같은 지역은 인사 메일 우선 · 두 트랙 모두 동일 지역 6개월 간격';
   }
 
@@ -6131,10 +6131,11 @@ function solRenderPipe(){
       _solStep('🧩','공고 감지',v('detected'),'#334155')+arw+
       _solStep('✍','발송 대기(이메일)',v('pending'),'#0EA5E9')+arw+
       _solStep('📨','발송 완료',v('sent'),'#075985')+arw+
+      _solStep('↩','회신',v('reply'),'#059669')+arw+
       _solStep('⏸','보류(인사우선·6개월)',v('held'),'#9333EA')+
     '</div>'+
     '<div style="font-size:11px;color:#94A3B8;margin-top:8px">솔루션은 인사와 겹치는 지역을 양보하고(인사 우선), 두 트랙 모두 같은 지역은 6개월 간격을 둡니다. '+
-      '이메일 없음 '+v('noEmail')+'곳은 구글시트에 주소를 채우면 자동으로 발송 대상에 들어옵니다. (회신 집계는 현재 인사 트랙만 수집)</div>';
+      '이메일 없음 '+v('noEmail')+'곳은 구글시트에 주소를 채우면 자동으로 발송 대상에 들어옵니다. (회신은 "회신_솔루션" 시트 기준)</div>';
 }
 function _solRenderQueue(d){
   var box = document.getElementById('sol-queue'); if(!box) return;
