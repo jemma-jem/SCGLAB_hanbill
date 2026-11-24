@@ -5725,6 +5725,8 @@ function loginLogRender(){
 function _llRender(d){
   var box=document.getElementById('ll-body'); if(!box) return;
   if(!d || d.ok===false){ box.innerHTML='<div style="padding:18px;color:#DC2626;font-size:12px">'+_esc((d&&d.error)||'데이터 없음')+'</div>'; return; }
+  window._llData = d;   // AI분석요약(로그인 로그 탭) 연동
+  try { if (typeof updatePageAlert === 'function') updatePageAlert('loginlog'); } catch(_){}
   var up=document.getElementById('ll-updated'); if(up) up.textContent=d.updated||'—';
   var accs=d.accounts||[], recent=d.recent||[];
   var cards = accs.length ? accs.map(function(a){
@@ -10708,6 +10710,35 @@ function getPageAlert(name) {
           (hot ? '<i class="ti ti-flame"></i> [관심] ' + hot.region + ' — "' + String(hot.summary||'').slice(0,40) + '" 빠른 후속 필요.' : '<i class="ti ti-flame"></i> 아직 관심·문의 회신이 없어요.'),
           '<i class="ti ti-mail"></i> [연동] 발송 지자체는 AI 레인저 수주확도 +40 가산으로 반영돼요.',
           (pending ? '<i class="ti ti-hourglass"></i> [대기] 발송 대기 ' + pending + '곳 — jem 계정에서 검수 후 발송하세요.' : '<i class="ti ti-circle-check"></i> 발송 대기 없음.')
+        ]
+      };
+    })(),
+    loginlog: (function(){
+      var d = window._llData;
+      if (!d || !d.accounts) {
+        return {
+          badge: '로그인 이력',
+          title: '로그인 로그 — 계정 접속 이력',
+          lines: [
+            '<i class="ti ti-history"></i> admin·partner01 등 계정이 언제·몇 번 로그인했는지 기록해요.',
+            '<i class="ti ti-shield-lock"></i> jem 계정에서만 볼 수 있는 탭이에요.',
+            '<i class="ti ti-refresh"></i> 로그인 성공 시마다 자동 집계 — 새로고침하면 최신 수치로 채워져요.'
+          ]
+        };
+      }
+      var accs = d.accounts || [], recent = d.recent || [];
+      var totAll = accs.reduce(function(s,a){ return s + (a.count||0); }, 0);
+      var totToday = accs.reduce(function(s,a){ return s + (a.today||0); }, 0);
+      var top = accs.slice().sort(function(a,b){ return (b.today||0) - (a.today||0); })[0];
+      var last = recent[0];
+      return {
+        badge: totToday ? ('오늘 로그인 ' + totToday + '회') : (totAll ? ('누적 ' + totAll + '회') : '로그인 이력'),
+        title: '로그인 로그 — 계정 접속 요약',
+        lines: [
+          '<i class="ti ti-users"></i> [계정] ' + accs.length + '개 계정 · 누적 로그인 ' + totAll + '회 · 오늘 ' + totToday + '회.',
+          (last ? '<i class="ti ti-login"></i> [최근] ' + last.user + ' · ' + last.t + '.' : '<i class="ti ti-login"></i> 아직 로그인 기록이 없어요.'),
+          (top && top.today ? '<i class="ti ti-flame"></i> [오늘 최다] ' + top.user + ' ' + top.today + '회 로그인.' : '<i class="ti ti-moon"></i> 오늘 로그인한 계정이 아직 없어요.'),
+          '<i class="ti ti-shield-lock"></i> [권한] jem 전용 — 다른 계정엔 이 탭이 보이지 않아요.'
         ]
       };
     })()
