@@ -932,6 +932,8 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;background:var(--g50)
     <div class="ni" onclick="goSec('radar',this)" style="display:none"><i class="ti ti-radar-2"></i>AI 레인저<span class="ni-badge" id="radar-nav-badge" style="display:none"></span></div>
     <!-- AI 영업사원 — AI 레인저 바로 밑. jem 로그인 시에만 표시(아래 게이팅 스크립트에서 노출) -->
     <div class="ni" id="ni-salesboard" onclick="goSec('salesboard',this)" style="display:none"><i class="ti ti-refresh"></i>AI 영업사원</div>
+    <!-- 로그인 로그 — jem 로그인 시에만 표시(게이팅 스크립트에서 노출) -->
+    <div class="ni" id="ni-loginlog" onclick="goSec('loginlog',this)" style="display:none"><i class="ti ti-history"></i>로그인 로그</div>
     <div class="ni" onclick="goSec('newsletter',this)"><i class="ti ti-news"></i>뉴스레터</div>
     <!-- AI 민원분석 — 최하단 배치 -->
     <div class="ni" onclick="goSec('stt',this)" style="white-space:nowrap"><i class="ti ti-microphone-2"></i><span style="word-break:keep-all">AI 민원분석</span><span style="font-size:10px;color:#94A3B8;font-weight:600;margin-left:4px;word-break:keep-all">· 파일럿 종료</span><i class="ti ti-info-circle" title="파일럿 분석입니다. 2025.12~2026.10 통화 데이터까지 분석했고, 당분간 데이터 업데이트는 없습니다." style="margin-left:4px;color:#CBD5E1;font-size:13px"></i></div>
@@ -2642,6 +2644,15 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
       <button onclick="renderSalesBoard()" style="font-size:12px;padding:5px 12px;border:1px solid #CBD5E1;border-radius:6px;background:#fff;cursor:pointer;color:#334155">새로고침</button>
     </div>
     <div id="sb-body"><div style="padding:40px;text-align:center;color:#94A3B8">불러오는 중…</div></div>
+  </div>
+
+  <!-- 로그인 로그 (jem 전용) — 관리자·파트너 계정 로그인 이력 -->
+  <div class="sec" id="sec-loginlog">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px">
+      <div style="font-size:12.5px;color:#64748B">관리자·파트너 계정 로그인 이력 — 누가 · 언제 · 몇 번 · 갱신 <span id="ll-updated">—</span></div>
+      <button onclick="loginLogRender()" style="font-size:12px;padding:5px 12px;border:1px solid #CBD5E1;border-radius:6px;background:#fff;cursor:pointer;color:#334155">새로고침</button>
+    </div>
+    <div id="ll-body"><div style="padding:40px;text-align:center;color:#94A3B8">불러오는 중…</div></div>
   </div>
 
   <div class="sec" id="sec-radar">
@@ -5643,6 +5654,7 @@ const SEC_META = {
   newsletter:['뉴스레터','한전 청구서사업 경영진 일일 스크랩'],
   radar:['AI 레인저','고객리스트 × 지역소식·나라장터·인사발령 결합 영업 알림'],
   salesboard:['AI 영업사원','인사·솔루션 2트랙 선제 제안 메일 발송·회신 현황'],
+  loginlog:['로그인 로그','관리자·파트너 계정 로그인 이력 — 누가 · 언제 · 몇 번'],
 };
 window.goSec = function(name, el) {
   // 탭 전환 시 항상 페이지 최상단으로 (이전 탭 스크롤 위치 잔존 방지)
@@ -5666,6 +5678,7 @@ window.goSec = function(name, el) {
   if (name === 'predict') renderPredictSection();
   if (name === 'newsletter') renderNews();
   if (name === 'salesboard' && typeof renderSalesBoard === 'function') renderSalesBoard();
+  if (name === 'loginlog' && typeof loginLogRender === 'function') loginLogRender();
   if (name === 'radar' && typeof rdInit === 'function') rdInit();   // 지연 로드: 첫 진입 시에만 시트·뉴스 fetch
   if (name === 'stt') {
     setTimeout(function() {
@@ -5693,9 +5706,50 @@ var SB_TOKEN = '__SB_TOKEN__';
 if (SB_TOKEN.indexOf('__SB') === 0) SB_TOKEN = '';
 
 // 메뉴는 전체 admin에 노출(열람 전용) · 발송 제어는 jem(토큰)만
+// 로그인 로그 탭은 jem(SB_TOKEN 보유)에게만 노출.
 (function sbGate(){
   try { var ni = document.getElementById('ni-salesboard'); if (ni) ni.style.display = ''; } catch(_){}
+  try { var nl = document.getElementById('ni-loginlog'); if (nl) nl.style.display = SB_TOKEN ? '' : 'none'; } catch(_){}
 })();
+
+// ─── 로그인 로그 (jem 전용) — 계정별 로그인 이력 ───
+function loginLogRender(){
+  var box = document.getElementById('ll-body'); if(!box) return;
+  if(!SB_TOKEN){ box.innerHTML = '<div style="padding:24px;color:#94A3B8">권한이 없습니다. (jem 계정 전용)</div>'; return; }
+  box.innerHTML = '<div style="padding:30px;text-align:center;color:#94A3B8">불러오는 중…</div>';
+  fetch(SALES_BOARD_URL, { method:'POST', body: JSON.stringify({ token:SB_TOKEN, action:'loginlog' }) })
+    .then(function(r){ return r.json(); })
+    .then(function(d){ _llRender(d); })
+    .catch(function(e){ box.innerHTML = '<div style="padding:18px;color:#DC2626;font-size:12px">로그인 로그 로드 실패 ('+_esc(String(e))+')<br><span style="color:#94A3B8">※ Apps Script 재배포(loginlog 핸들러)와 미들웨어 로그인 기록이 필요합니다.</span></div>'; });
+}
+function _llRender(d){
+  var box=document.getElementById('ll-body'); if(!box) return;
+  if(!d || d.ok===false){ box.innerHTML='<div style="padding:18px;color:#DC2626;font-size:12px">'+_esc((d&&d.error)||'데이터 없음')+'</div>'; return; }
+  var up=document.getElementById('ll-updated'); if(up) up.textContent=d.updated||'—';
+  var accs=d.accounts||[], recent=d.recent||[];
+  var cards = accs.length ? accs.map(function(a){
+    return '<div style="flex:1;min-width:150px;background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:14px 16px">'+
+      '<div style="font-size:13px;font-weight:800;color:#0f172a">'+_esc(a.user)+'</div>'+
+      '<div style="font-size:26px;font-weight:800;color:#075985;line-height:1.2;margin:2px 0">'+(a.count||0)+'<span style="font-size:13px;color:#94A3B8;font-weight:600">회</span></div>'+
+      '<div style="font-size:11px;color:#64748B">오늘 '+(a.today||0)+'회</div>'+
+      '<div style="font-size:11px;color:#94A3B8;margin-top:2px">최근 '+_esc(a.last||'—')+'</div>'+
+    '</div>';
+  }).join('') : '<div style="color:#94A3B8;font-size:13px;padding:10px">아직 로그인 기록이 없습니다. (재배포·로그인 후 집계됩니다)</div>';
+  var tr = recent.map(function(r){
+    return '<tr style="border-bottom:1px solid #F1F5F9"><td style="padding:7px 8px;font-weight:600">'+_esc(r.user)+'</td>'+
+      '<td style="padding:7px 8px;color:#475569">'+_esc(r.t)+'</td>'+
+      '<td style="padding:7px 8px;color:#94A3B8;font-size:11.5px">'+_esc(r.ip||'')+'</td></tr>';
+  }).join('') || '<tr><td colspan="3" style="padding:14px;text-align:center;color:#94A3B8">기록 없음</td></tr>';
+  box.innerHTML =
+    '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px">'+cards+'</div>'+
+    '<div style="background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:14px 16px">'+
+      '<div style="font-size:13px;font-weight:700;color:#075985;margin-bottom:8px">최근 로그인 '+recent.length+'건 <span style="font-size:11px;color:#94A3B8;font-weight:500">(최신순)</span></div>'+
+      '<div style="overflow:auto;max-height:460px"><table style="width:100%;border-collapse:collapse;font-size:12.5px">'+
+        '<thead><tr style="color:#64748B;font-size:11px;text-align:left;border-bottom:1px solid #E2E8F0;position:sticky;top:0;background:#fff">'+
+          '<th style="padding:6px 8px">계정</th><th style="padding:6px 8px">로그인 시각</th><th style="padding:6px 8px">IP</th></tr></thead>'+
+        '<tbody>'+tr+'</tbody></table></div>'+
+    '</div>';
+}
 
 function _sbCard(label, val, sub, color){
   return '<div style="flex:1;min-width:120px;background:#fff;border:1px solid #E2E8F0;border-radius:10px;padding:14px 16px">'+
@@ -10659,7 +10713,7 @@ function getPageAlert(name) {
 }
 
 // 탭별 표시 이름 (모바일 칩 + 패널 타이틀 동적 연동용)
-var PAGE_TAB_NAMES = { dashboard:'데이터포털', radar:'AI 레인저', stt:'민원분석', predict:'예상민원', newsletter:'뉴스레터', chatbot:'세이버', salesboard:'AI 영업사원' };
+var PAGE_TAB_NAMES = { dashboard:'데이터포털', radar:'AI 레인저', stt:'민원분석', predict:'예상민원', newsletter:'뉴스레터', chatbot:'세이버', salesboard:'AI 영업사원', loginlog:'로그인 로그' };
 function pageAlertTitle(name){ return 'AI분석요약 - ' + (PAGE_TAB_NAMES[name] || '요약'); }
 
 function updatePageAlert(name) {
@@ -12817,7 +12871,7 @@ window.rdMarkSeen = async function(){
 //   (로그인 사용자 = hb_user 쿠키. 특정 관리자 아이디에만 노출하려면 아래를 화이트리스트 방식으로 되돌리면 됨)
 //   RADAR_HIDE_USERS 에 넣은 아이디(외부 파트너)에게만 숨김.
 (function(){
-  var RADAR_HIDE_USERS = ['partner01'];   // 외부 파트너 계정 — 여기 없는 모든 계정(관리자 포함)에는 노출
+  var RADAR_HIDE_USERS = [];   // (2026-11-24) partner01도 admin과 동일하게 전체 탭 노출 — 숨길 계정 없음
   var u = (typeof hbCurrentUser === 'function') ? hbCurrentUser() : '';
   if (RADAR_HIDE_USERS.indexOf(u) >= 0) {
     window._rdHideStrategic = true;                        // 외부 파트너: 오늘의 우선 액션 핀/범례 표시 안 함

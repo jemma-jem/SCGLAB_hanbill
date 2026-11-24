@@ -19,6 +19,10 @@
 const COOKIE = 'hb_session';
 const UI_COOKIE = 'hb_user';   // 표시용(비보안) — 포털 헤더에 사용자명 노출용
 
+// 로그인 성공 기록용 Apps Script 웹앱 /exec (action=login 이 '로그인로그' 시트에 1건 기록). p.js와 동일 URL.
+const LOGIN_LOG_EXEC =
+  'https://script.google.com/macros/s/AKfycbzL-VwRDcNCxBZ2ftrrGZQVQA91poYEVd-l56w20OQZ9habN4Fsh2LFogVcN3nLHWlW/exec';
+
 // 로그인 없이 누구나 볼 수 있는 공개 경로(화이트리스트).
 // 여기에 넣은 페이지는 세션이 없어도 그대로 서빙된다.
 // ※ Cloudflare Pages 는 `/foo.html` 을 확장자 없는 `/foo` 로 리다이렉트(clean URL)하므로
@@ -200,6 +204,13 @@ export async function onRequest(context) {
       const stored = Object.prototype.hasOwnProperty.call(users, id) ? String(users[id]) : null;
       const ok = !!secret && stored !== null && pw.length > 0 && timingSafeEqual(pw, stored);
       if (ok) {
+        // 로그인 성공 기록(서버사이드·백그라운드) — 리다이렉트를 지연시키지 않음.
+        try {
+          const ip = request.headers.get('CF-Connecting-IP') || '';
+          const logUrl = LOGIN_LOG_EXEC + '?action=login&u=' + encodeURIComponent(id)
+            + '&ip=' + encodeURIComponent(ip);
+          context.waitUntil(fetch(logUrl, { method: 'GET' }).catch(() => {}));
+        } catch (_) { /* 기록 실패해도 로그인은 진행 */ }
         const token = await makeToken(id, secret, maxAgeSec);
         const h = new Headers({ Location: nextPath });
         const base = `Path=/; Secure; SameSite=Lax; Max-Age=${maxAgeSec}`;
