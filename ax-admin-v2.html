@@ -5933,6 +5933,8 @@ function sbDraw(){
       _sbCard('인사 발송 대기', pendingN+'곳', '메일 보유·미발송', '#F59E0B')+
     '</div>'+
     '<div style="font-size:11px;color:#94A3B8;margin:-8px 2px 16px">ⓘ <b>제안서 열람</b>은 메일의 ‘제안서 바로 보기’ 웹 링크 클릭 기준(Gmail 프록시 영향 없어 신뢰도 높음) · <b>오픈율</b>은 미지원 · <b>회신율·분류</b>로 반응 측정</div>'+
+    // ②-S 솔루션 핵심 지표 — solRenderKpi()가 window._solSummary로 채움
+    (SB_TOKEN ? '<div id="sb-sol-kpi" style="margin-bottom:16px"><div style="font-size:12px;color:#94A3B8;padding:4px 2px">솔루션 지표 불러오는 중…</div></div>' : '')+
     // ③ 주소록 · 세그먼트 현황
     '<div style="background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:16px 18px;margin-bottom:14px">'+
       '<div style="font-size:14px;font-weight:800;color:#004098;margin-bottom:12px">③ 인사 주소록 · 세그먼트 현황</div>'+
@@ -6164,7 +6166,30 @@ function solRenderPipe(){
       '📌 이메일 없는 <b style="color:#64748B">'+v('noEmail')+'곳</b>은 구글시트에 주소만 채우면 다음 수집부터 자동으로 발송 대상에 들어옵니다.'+
       '<span style="color:#CBD5E1"> · 발송 조건은 상단 ⚙ 운영 조건 참고</span>'+
     '</div>';
+  solRenderKpi();
   solRenderSeg();
+}
+// 솔루션 핵심 지표(②-S) — 인사 ②와 같은 카드 포맷(스카이 톤). window._solSummary로 #sb-sol-kpi 채움
+function _solCard(label, val, sub, color){
+  return '<div style="flex:1;min-width:120px;background:#fff;border:1px solid #BAE6FD;border-radius:12px;padding:12px 14px">'+
+    '<div style="font-size:12px;color:#64748B;font-weight:600">'+label+'</div>'+
+    '<div style="font-size:22px;font-weight:800;color:'+(color||'#075985')+';margin:2px 0 1px">'+val+'</div>'+
+    '<div style="font-size:11px;color:#94A3B8">'+sub+'</div></div>';
+}
+function solRenderKpi(){
+  var box = document.getElementById('sb-sol-kpi'); if(!box) return;
+  var s = window._solSummary;
+  if(!s){ box.innerHTML = '<div style="font-size:12px;color:#94A3B8;padding:4px 2px">솔루션 지표 불러오는 중…</div>'; return; }
+  var repRate = (s.sent ? Math.round((s.reply||0)/s.sent*1000)/10 : 0);
+  box.innerHTML =
+    '<div style="font-size:12px;font-weight:800;color:#64748B;margin:0 2px 8px">②-S 솔루션 핵심 지표 (KPI) <span style="font-size:11px;color:#94A3B8;font-weight:600">· 나라장터 공고 기반</span></div>'+
+    '<div style="display:flex;gap:10px;flex-wrap:wrap">'+
+      _solCard('공고 감지', (s.detected||0)+'곳', '솔루션 성격 공고', '#334155')+
+      _solCard('발송 대기', (s.pending||0)+'곳', '메일 보유·미발송', '#0EA5E9')+
+      _solCard('발송 완료', (s.sent||0)+'곳', '누적 발송 지자체', '#075985')+
+      _solCard('회신율', repRate+'%', '회신 '+(s.reply||0)+' / 발송 '+(s.sent||0)+'곳', '#059669')+
+      _solCard('보류', (s.held||0)+'곳', '인사우선·6개월', '#9333EA')+
+    '</div>';
 }
 // 솔루션 주소록·세그먼트(③-S) — 인사 ③과 동일 포맷. window._solSummary로 #sb-sol-seg 채움
 function _solSeg(label, segs, total){
