@@ -5722,10 +5722,22 @@ function loginLogRender(){
     .then(function(d){ _llRender(d); })
     .catch(function(e){ box.innerHTML = '<div style="padding:18px;color:#DC2626;font-size:12px">로그인 로그 로드 실패 ('+_esc(String(e))+')<br><span style="color:#94A3B8">※ Apps Script 재배포(loginlog 핸들러)와 미들웨어 로그인 기록이 필요합니다.</span></div>'; });
 }
-// 로그인 일시 표기 — 'yyyy-MM-dd HH:mm:ss' → 'MM/DD HH:mm (KST)'
+// 로그인 일시 표기 → 'MM/DD HH:mm (KST)'. 'yyyy-MM-dd HH:mm:ss' 와
+// 'Tue Nov 24 2026 17:31:04 GMT+0900 (한국 표준시)' 같은 Date 문자열을 모두 처리.
 function _llFmt(t){
-  var m = String(t||'').match(/^(\d{4})-(\d{2})-(\d{2})[ T](\d{2}):(\d{2})/);
-  return m ? (m[2] + '/' + m[3] + ' ' + m[4] + ':' + m[5] + ' (KST)') : String(t||'');
+  t = String(t||''); if(!t) return '';
+  var m = t.match(/^(\d{4})-(\d{2})-(\d{2})[ T](\d{2}):(\d{2})/);
+  if (m) return m[2] + '/' + m[3] + ' ' + m[4] + ':' + m[5] + ' (KST)';
+  var d = new Date(t.replace(/\s*\([^)]*\)\s*$/, ''));   // 끝의 '(한국 표준시)' 제거 후 파싱
+  if (!isNaN(d)) {
+    var p = {};
+    try {
+      new Intl.DateTimeFormat('en-GB', { timeZone:'Asia/Seoul', month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit', hour12:false })
+        .formatToParts(d).forEach(function(x){ p[x.type] = x.value; });
+      return p.month + '/' + p.day + ' ' + p.hour + ':' + p.minute + ' (KST)';
+    } catch(_){}
+  }
+  return t;
 }
 function _llRender(d){
   var box=document.getElementById('ll-body'); if(!box) return;
