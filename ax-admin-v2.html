@@ -5880,6 +5880,26 @@ function sbDraw(){
       '<div style="font-size:13px;color:#1E40AF;font-weight:700">📧 AI 영업사원 — 인사·솔루션 선제 제안 메일 <b>발송·회신 콘솔</b> <span style="font-size:11px;color:#94A3B8;font-weight:500">· 발송 지자체 레인저 수주확도 +40</span></div>'+
       '<div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">'+btns+'</div>'+
     '</div>'+
+    // ⚙ 발송 운영 조건 — 두 트랙 공통. 조건값이므로 상단에서 먼저 인지하게 노출.
+    '<div style="background:#FFFBEB;border:1px solid #FDE68A;border-radius:12px;padding:12px 14px;margin-bottom:14px">'+
+      '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">'+
+        '<span style="font-size:12px;font-weight:800;color:#92400E;white-space:nowrap">⚙ 발송 운영 조건 <span style="font-weight:600;color:#B45309;font-size:11px">· 두 트랙 공통</span></span>'+
+        '<span style="display:flex;gap:8px;flex-wrap:wrap;flex:1">'+
+          '<span style="display:inline-flex;flex-direction:column;background:#fff;border:1px solid #FDE68A;border-radius:8px;padding:5px 11px;min-width:160px;flex:1">'+
+            '<span style="font-size:12px;font-weight:800;color:#92400E;word-break:keep-all">🗓 같은 지역 6개월 간격</span>'+
+            '<span style="font-size:11px;color:#64748B;word-break:keep-all">최근 6개월 내 발송 지역엔 재발송하지 않음</span>'+
+          '</span>'+
+          '<span style="display:inline-flex;flex-direction:column;background:#fff;border:1px solid #FDE68A;border-radius:8px;padding:5px 11px;min-width:160px;flex:1">'+
+            '<span style="font-size:12px;font-weight:800;color:#92400E;word-break:keep-all">👤 인사 우선</span>'+
+            '<span style="font-size:11px;color:#64748B;word-break:keep-all">같은 지역이 겹치면 인사 발송·솔루션은 양보</span>'+
+          '</span>'+
+          '<span style="display:inline-flex;flex-direction:column;background:#fff;border:1px solid #FDE68A;border-radius:8px;padding:5px 11px;min-width:160px;flex:1">'+
+            '<span style="font-size:12px;font-weight:800;color:#92400E;word-break:keep-all">↩ 회신 분리 집계</span>'+
+            '<span style="font-size:11px;color:#64748B;word-break:keep-all">솔루션 회신은 "회신_솔루션" 시트 기준</span>'+
+          '</span>'+
+        '</span>'+
+      '</div>'+
+    '</div>'+
     // ① 진행 현황 — 한눈 파이프라인 (감지 → 이메일 교차확인 → 생성 → 발송 → 발송·열람 확인 → 회신)
     '<div style="background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:16px 18px;margin-bottom:14px">'+
       '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px">'+
@@ -6140,7 +6160,7 @@ function solRenderPipe(){
     '</div>'+
     '<div style="font-size:11.5px;color:#94A3B8;margin-top:8px;line-height:1.65">'+
       '📌 이메일 없는 <b style="color:#64748B">'+v('noEmail')+'곳</b>은 구글시트에 주소만 채우면 다음 수집부터 자동으로 발송 대상에 들어옵니다.'+
-      '<span style="color:#CBD5E1"> · 인사와 겹치는 지역은 양보(인사 우선), 같은 지역 6개월 간격 · 회신은 "회신_솔루션" 시트 기준</span>'+
+      '<span style="color:#CBD5E1"> · 발송 조건은 상단 ⚙ 운영 조건 참고</span>'+
     '</div>';
 }
 function _solRenderQueue(d){
