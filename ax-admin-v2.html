@@ -2638,7 +2638,7 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
   <!-- ══════════ AI 영업사원 (jem 전용) ══════════ -->
   <div class="sec" id="sec-salesboard">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px">
-      <div style="font-size:12.5px;color:#64748B">인사 기사 → 표준 제안서 자동발송 현황 · 갱신 <span id="sb-updated">—</span></div>
+      <div style="font-size:12.5px;color:#64748B">인사·솔루션 선제 제안 메일 발송·회신 현황 · 갱신 <span id="sb-updated">—</span></div>
       <button onclick="renderSalesBoard()" style="font-size:12px;padding:5px 12px;border:1px solid #CBD5E1;border-radius:6px;background:#fff;cursor:pointer;color:#334155">새로고침</button>
     </div>
     <div id="sb-body"><div style="padding:40px;text-align:center;color:#94A3B8">불러오는 중…</div></div>
@@ -5642,7 +5642,7 @@ const SEC_META = {
   predict:['예상 민원','AI 기반 민원 예측 및 개선책'],
   newsletter:['뉴스레터','한전 청구서사업 경영진 일일 스크랩'],
   radar:['AI 레인저','고객리스트 × 지역소식·나라장터·인사발령 결합 영업 알림'],
-  salesboard:['AI 영업사원','인사 기사 → 표준 제안서 자동발송 현황 (발송·회신·회신율)'],
+  salesboard:['AI 영업사원','인사·솔루션 2트랙 선제 제안 메일 발송·회신 현황'],
 };
 window.goSec = function(name, el) {
   // 탭 전환 시 항상 페이지 최상단으로 (이전 탭 스크롤 위치 잔존 방지)
@@ -5840,12 +5840,13 @@ function sbDraw(){
   var _intRegions=[], _seenI={};
   reps.forEach(function(r){ if(r.cat==='관심·문의'){ var k=norm(r.region); if(!_seenI[k]){ _seenI[k]=1; _intRegions.push(r.region); } } });
   var repTxt =
-    '[AI 영업사원 현황 — '+R.label+' ('+_rangeTxt+')]\n'+
+    '[AI 영업사원 현황 — '+R.label+' ('+_rangeTxt+')]\n\n'+
+    '[인사 트랙 — 인사기사 기반]\n'+
     '· 발송: '+sends.length+'건 / 발송 지자체 '+sentRegionN+'곳\n'+
     '· 회신: '+replyRegionN+'곳 (회신율 '+rate+'%)\n'+
     '· 분류: 관심·문의 '+_cn('관심·문의')+' · 담당 안내 '+_cn('담당 안내')+' · 거절·보류 '+_cn('거절·보류')+' · 기타 '+_cn('기타')+'\n'+
     '· 관심·문의 지자체: '+(_intRegions.length ? _intRegions.join(', ') : '없음')+'\n'+
-    '· 발송 대기: '+(d.pending||0)+'곳\n'+
+    '· 인사 발송 대기: '+(d.pending||0)+'곳\n'+
     '· 비고: 발송 지자체는 AI 레인저 수주확도 +40 가산 반영';
   // 솔루션 트랙(나라장터 공고 기반) — 큐 요약이 로드됐으면 보고 초안에 함께 적는다.
   if (window._solSummary){ var _ss=window._solSummary;
@@ -5876,7 +5877,7 @@ function sbDraw(){
   body.innerHTML =
     // 헤더 + 기간
     '<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px">'+
-      '<div style="font-size:13px;color:#1E40AF;font-weight:700">📧 AI 영업사원 — 인사기사 기반 선제 제안 메일 <b>발송·회신 콘솔</b> <span style="font-size:11px;color:#94A3B8;font-weight:500">· 발송 지자체 레인저 수주확도 +40</span></div>'+
+      '<div style="font-size:13px;color:#1E40AF;font-weight:700">📧 AI 영업사원 — 인사·솔루션 선제 제안 메일 <b>발송·회신 콘솔</b> <span style="font-size:11px;color:#94A3B8;font-weight:500">· 발송 지자체 레인저 수주확도 +40</span></div>'+
       '<div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">'+btns+'</div>'+
     '</div>'+
     // ① 진행 현황 — 한눈 파이프라인 (감지 → 이메일 교차확인 → 생성 → 발송 → 발송·열람 확인 → 회신)
@@ -5885,7 +5886,7 @@ function sbDraw(){
         '<span style="font-size:14px;font-weight:800;color:#004098">① 인사 트랙 진행 현황 <span style="font-size:11px;color:#94A3B8;font-weight:600">· 인사기사 기반</span></span>'+
         '<span style="display:inline-flex;gap:8px;align-items:center">'+
           '<span style="font-size:11px;font-weight:700;background:#FEF3C7;color:#92400E;border-radius:999px;padding:3px 10px">🖐 현재: 수동 검수 발송</span>'+
-          '<span style="font-size:10.5px;color:#94A3B8">트리거 발송대기 15:00 · 회신 16:00</span></span>'+
+          '<span style="font-size:10.5px;color:#94A3B8">인사 발송대기 15:00 · 솔루션 16:00 · 회신 17:00</span></span>'+
       '</div>'+
       '<div style="display:flex;flex-wrap:wrap;gap:4px;background:#F8FAFC;border:1px solid #EEF0F3;border-radius:10px;padding:14px">'+
         _pstep('📰','인사기사 감지',detected,'#334155')+_arw+
@@ -5903,18 +5904,18 @@ function sbDraw(){
     // ①-S 솔루션 트랙 진행 현황 — 인사와 동일 파이프라인(MECE 형제). solRenderPipe()가 window._solSummary로 채움
     (SB_TOKEN ? '<div id="sb-sol-pipe" style="background:#fff;border:1px solid #BAE6FD;border-radius:12px;padding:16px 18px;margin-bottom:14px"><div style="font-size:12px;color:#94A3B8;padding:4px 2px">솔루션 트랙 현황 불러오는 중…</div></div>' : '')+
     // ② 핵심 지표 (KPI)
-    '<div style="font-size:12px;font-weight:800;color:#64748B;margin:0 2px 8px">② 핵심 지표 (KPI)</div>'+
+    '<div style="font-size:12px;font-weight:800;color:#64748B;margin:0 2px 8px">② 인사 핵심 지표 (KPI)</div>'+
     '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px">'+
       _sbCard('발송', sends.length+'건', R.label+' · 지자체 '+sentRegionN+'곳', '#004098')+
       _sbCard('회신율', rate+'%', '회신 '+replyRegionN+' / 발송 '+sentRegionN+'곳', '#0EA5E9')+
       _sbCard('제안서 열람', (sentRegionN?Math.round(_clicksN/sentRegionN*1000)/10:0)+'%', '웹 링크 클릭 '+_clicksN+'회', '#7C3AED')+
       _sbCard('관심·문의율', (sentRegionN?Math.round((catN['관심·문의']||0)/sentRegionN*1000)/10:0)+'%', '관심·문의 '+(catN['관심·문의']||0)+'건', '#059669')+
-      _sbCard('발송 대기', pendingN+'곳', '메일 보유·미발송', '#F59E0B')+
+      _sbCard('인사 발송 대기', pendingN+'곳', '메일 보유·미발송', '#F59E0B')+
     '</div>'+
     '<div style="font-size:11px;color:#94A3B8;margin:-8px 2px 16px">ⓘ <b>제안서 열람</b>은 메일의 ‘제안서 바로 보기’ 웹 링크 클릭 기준(Gmail 프록시 영향 없어 신뢰도 높음) · <b>오픈율</b>은 미지원 · <b>회신율·분류</b>로 반응 측정</div>'+
     // ③ 주소록 · 세그먼트 현황
     '<div style="background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:16px 18px;margin-bottom:14px">'+
-      '<div style="font-size:14px;font-weight:800;color:#004098;margin-bottom:12px">③ 주소록 · 세그먼트 현황</div>'+
+      '<div style="font-size:14px;font-weight:800;color:#004098;margin-bottom:12px">③ 인사 주소록 · 세그먼트 현황</div>'+
       _segBar('발송 대상 매칭 (현재 큐)', [['메일 보유(발송 대상)',matched,'#0EA5E9'],['미매칭(메일 없음)',unmatched,'#CBD5E1']], (typeof detected==='number'?detected:null))+
       _segBar('회신 분류 ('+R.label+')', [['관심·문의',catN['관심·문의']||0,'#059669'],['담당 안내',catN['담당 안내']||0,'#7C3AED'],['거절·보류',catN['거절·보류']||0,'#DC2626'],['기타',catN['기타']||0,'#94A3B8']], reps.length)+
     '</div>'+
@@ -5931,7 +5932,7 @@ function sbDraw(){
     // 📧 이메일 목록 (발송된 제안 메일 현황)
     '<div style="background:#fff;border:1px solid #E2E8F0;border-radius:10px;padding:14px 16px">'+
       '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px">'+
-        '<div style="font-size:13px;font-weight:700;color:#004098">📧 이메일 목록 <span style="font-size:11px;color:#94A3B8;font-weight:500">('+sends.length+'건 · '+R.label+' · 최신순)</span></div>'+
+        '<div style="font-size:13px;font-weight:700;color:#004098">📧 인사 이메일 목록 <span style="font-size:11px;color:#94A3B8;font-weight:500">('+sends.length+'건 · '+R.label+' · 최신순)</span></div>'+
         '<button onclick="sbDownloadList()" style="font-size:12px;padding:5px 12px;border:1px solid #CBD5E1;border-radius:6px;background:#fff;cursor:pointer;color:#334155">목록 내려받기(CSV)</button>'+
       '</div>'+
       '<div style="overflow:auto;max-height:420px"><table style="width:100%;border-collapse:collapse;font-size:12.5px">'+
@@ -5949,18 +5950,18 @@ function sbDraw(){
     (SB_TOKEN ?
       '<div style="background:#fff;border:1px solid #FDE68A;border-radius:10px;padding:14px 16px;margin-top:14px">'+
         '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:8px">'+
-          '<div style="font-size:13px;font-weight:700;color:#B45309">📮 발송대기 · 발신 cs@scglab.com <span style="font-size:11px;color:#94A3B8;font-weight:500">(jem 전용)</span></div>'+
+          '<div style="font-size:13px;font-weight:700;color:#B45309">📮 인사 발송대기 · 발신 cs@scglab.com <span style="font-size:11px;color:#94A3B8;font-weight:500">(jem 전용)</span></div>'+
           '<div style="display:flex;gap:6px">'+
             '<button onclick="sbTestSend()" style="font-size:12px;padding:6px 12px;border:1px solid #FDBA74;border-radius:6px;background:#FFF7ED;cursor:pointer;color:#B45309;font-weight:700" title="실제 지자체 대신 테스트 수신자(jem@scglab.com 받는사람 · 팀 3명 참조)에게 1회 시연 발송">🧪 시연 발송(테스트)</button>'+
             '<button onclick="sbPreviewSelected()" style="font-size:12px;padding:6px 12px;border:1px solid #CBD5E1;border-radius:6px;background:#fff;cursor:pointer;color:#334155">선택 미리보기(초안)</button>'+
             '<button onclick="sbSendSelected()" style="font-size:12px;padding:6px 14px;border:none;border-radius:6px;background:#004098;color:#fff;cursor:pointer;font-weight:700">선택 발송</button>'+
           '</div>'+
         '</div>'+
-        '<div id="sb-queue"><div style="padding:16px;text-align:center;color:#94A3B8">발송대기 불러오는 중…</div></div>'+
+        '<div id="sb-queue"><div style="padding:16px;text-align:center;color:#94A3B8">인사 발송대기 불러오는 중…</div></div>'+
       '</div>' :
       // admin 열람(비jem): 발송은 담당자 안내
       '<div style="background:#F8FAFC;border:1px dashed #CBD5E1;border-radius:10px;padding:14px 16px;margin-top:14px;font-size:12px;color:#64748B;line-height:1.6">'+
-        '📮 <b>발송 대기 '+pendingN+'곳</b> — 발송은 담당자(jem) 계정에서 검수 후 진행합니다. (열람 전용 화면)'+
+        '📮 <b>인사 발송 대기 '+pendingN+'곳</b> — 발송은 담당자(jem) 계정에서 검수 후 진행합니다. (열람 전용 화면)'+
       '</div>')+
     // 🧩 솔루션 발송대기(나라장터 공고 기반) — jem(토큰)일 때만
     (SB_TOKEN ?
@@ -6023,12 +6024,12 @@ function sbLoadQueue(){
   fetch(SALES_BOARD_URL + '?action=queue', { cache:'no-store' })
     .then(function(r){ return r.json(); })
     .then(function(d){ window._sbQ=d; _sbqWriteCache(d); _sbRenderQueue(d); })
-    .catch(function(e){ if(!cached) box.innerHTML = '<div style="padding:14px;color:#DC2626;font-size:12px">발송대기 로드 실패 ('+_esc(String(e))+')</div>'; });
+    .catch(function(e){ if(!cached) box.innerHTML = '<div style="padding:14px;color:#DC2626;font-size:12px">인사 발송대기 로드 실패 ('+_esc(String(e))+')</div>'; });
 }
 function _sbRenderQueue(d){
       var box = document.getElementById('sb-queue'); if(!box) return;
       var rows = (d && d.rows) || [];
-      if (!rows.length) { box.innerHTML = '<div style="padding:16px;text-align:center;color:#94A3B8">발송대기 없음 — Apps Script 메뉴 ①(인사기사 감지)로 생성</div>'; return; }
+      if (!rows.length) { box.innerHTML = '<div style="padding:16px;text-align:center;color:#94A3B8">인사 발송대기 없음 — Apps Script 메뉴 ①(인사기사 감지)로 생성</div>'; return; }
       var main = rows.filter(function(r){ return r.hasEmail; });   // 이메일 보유 = 발송 대상
       var none = rows.filter(function(r){ return !r.hasEmail; });  // 이메일 없음 = 하단 접힘
       var mtr = main.map(function(r){
