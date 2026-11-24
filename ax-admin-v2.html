@@ -5950,7 +5950,7 @@ function sbDraw(){
   body.innerHTML =
     // 헤더 + 기간
     '<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px">'+
-      '<div style="font-size:13px;color:#1E40AF;font-weight:700">📧 AI 영업사원 — 인사·솔루션 선제 제안 메일 <b>발송·회신 콘솔</b> <span style="font-size:11px;color:#94A3B8;font-weight:500">· 발송 지자체 레인저 수주확도 +40</span></div>'+
+      '<div style="font-size:13px;color:#1E40AF;font-weight:700">📧 AI 영업사원 — 인사·솔루션 선제 제안 메일 <b>발송·회신 콘솔</b> <span style="font-size:11px;color:#94A3B8;font-weight:500">· 발송 지자체 레인저 수주확도(인사 +40 · 솔루션 +20)</span></div>'+
       '<div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">'+btns+'</div>'+
     '</div>'+
     // ⚙ 발송 운영 조건 — 두 트랙 공통. 조건값이므로 상단에서 먼저 인지하게 노출.
@@ -8849,6 +8849,12 @@ window.hbSidoAgg = function(cd){
 window._smartSent = null; window._smartSentInfo = {}; window._smartReply = {}; window._sbQueueSet = null;
 function _normReg(s){ return String(s||'').replace(/\s/g,''); }
 function _yymmdd(iso){ var m=String(iso||'').match(/^(\d{4})-(\d{2})-(\d{2})/); return m ? (m[1].slice(2)+'/'+m[2]+'/'+m[3]) : String(iso||''); }
+// 솔루션 트랙 발송 지역 여부 (레인저 +20)
+function _smartSentSolHas(g){
+  if (!window._smartSentSol || !g) return false;
+  var sgg=_normReg(g.sgg), full=_normReg((g.sido||'')+(g.sgg||''));
+  return (sgg && window._smartSentSol.has(sgg)) || (full && window._smartSentSol.has(full));
+}
 function _smartSentHas(g){
   if (!window._smartSent || !g) return false;
   var sgg=_normReg(g.sgg), full=_normReg((g.sido||'')+(g.sgg||''));
@@ -8872,6 +8878,13 @@ function _loadSmartSent(cb){
       var full=_normReg(reg), toks=reg.split(/\s+/), last=_normReg(toks[toks.length-1]);
       [full,last].forEach(function(k){ if(k){ if(!rep[k]||r.d>rep[k].d) rep[k]={d:r.d, cat:r.cat, color:r.color}; } });
     });
+    // 솔루션 트랙 발송 지역(레인저 +20 가산용) — 인사와 별도 집합.
+    var solset=new Set(), solinfo={};
+    (d.solSends||[]).forEach(function(s){ var reg=String(s.region||'').trim(); if(!reg) return;
+      var full=_normReg(reg), toks=reg.split(/\s+/), last=_normReg(toks[toks.length-1]);
+      [full,last].forEach(function(k){ if(k){ solset.add(k); if(!solinfo[k]||s.d>solinfo[k].d) solinfo[k]={d:s.d, region:reg}; } });
+    });
+    window._smartSentSol=solset; window._smartSentSolInfo=solinfo;
     window._smartSent=set; window._smartSentInfo=info; window._smartReply=rep;
     try{ var g=document.getElementById('rd-grid'); if(typeof rdRender==='function' && g && g.children.length) rdRender(); }catch(e){}
     if(cb) cb();
@@ -8946,7 +8959,8 @@ window.hbWinProb = function(g){
   addF((g.sols && g.sols.length), +60, '자체 솔루션 진입 명분 ' + ((g.sols&&g.sols.length)||0) + '건');
   addF(g.sysNone, +100, '도로조명시스템 미사용 — 무상 진입로');
   addF(g.sysRival && !g.sysNone, +10, '타사 시스템 사용 — 교체 제안 대상');
-  addF(_smartSentHas(g), +40, 'AI 영업사원 제안 메일 발송 — 선제 영업 수행');
+  addF(_smartSentHas(g), +40, 'AI 영업사원 제안 메일 발송(인사) — 선제 영업 수행');
+  addF(!_smartSentHas(g) && _smartSentSolHas(g), +20, '솔루션 제안 메일 발송 — 선제 영업 수행');   // 인사 발송 지역엔 중복 가산 안 함
   if (!own){ addF(g.rivalN >= 3, -60, '경쟁사 다수 선점(' + g.rivalN + '구좌)'); }
   // 3) 표시값 — 합산 점수가 높을수록 상위. 상한(100) 제거 → 신호가 겹칠수록 점수가 더 커져 변별력 유지.
   //    (하한 0만 유지: 음수 방지. '수주확도 %'가 아니라 '공략 우선순위 점수' 성격)
