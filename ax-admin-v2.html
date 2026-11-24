@@ -5986,7 +5986,7 @@ function sbDraw(){
       '</div>'+
     '</div>'+
     // ①-S 솔루션 트랙 진행 현황 — 인사와 동일 파이프라인(MECE 형제). solRenderPipe()가 window._solSummary로 채움
-    (SB_TOKEN ? '<div id="sb-sol-pipe" class="sb-sol" style="background:#fff;border:1px solid #BAE6FD;border-radius:12px;padding:16px 18px;margin-bottom:14px"><div style="font-size:12px;color:#94A3B8;padding:4px 2px">솔루션 트랙 현황 불러오는 중…</div></div>' : '')+
+    '<div id="sb-sol-pipe" class="sb-sol" style="background:#fff;border:1px solid #BAE6FD;border-radius:12px;padding:16px 18px;margin-bottom:14px"><div style="font-size:12px;color:#94A3B8;padding:4px 2px">솔루션 트랙 현황 불러오는 중…</div></div>'+
     // ② 핵심 지표 (KPI) — 인사. sb-hr 로 묶어 토글 연동
     '<div class="sb-hr">'+
     '<div style="font-size:12px;font-weight:800;color:#64748B;margin:0 2px 8px">② 인사 핵심 지표 (KPI)</div>'+
@@ -6000,7 +6000,7 @@ function sbDraw(){
     '<div style="font-size:11px;color:#94A3B8;margin:-8px 2px 16px">ⓘ <b>제안서 열람</b>은 메일의 ‘제안서 바로 보기’ 웹 링크 클릭 기준(Gmail 프록시 영향 없어 신뢰도 높음) · <b>오픈율</b>은 미지원 · <b>회신율·분류</b>로 반응 측정</div>'+
     '</div>'+   // ② sb-hr 래퍼 닫기
     // ②-S 솔루션 핵심 지표 — solRenderKpi()가 window._solSummary로 채움
-    (SB_TOKEN ? '<div id="sb-sol-kpi" class="sb-sol" style="margin-bottom:16px"><div style="font-size:12px;color:#94A3B8;padding:4px 2px">솔루션 지표 불러오는 중…</div></div>' : '')+
+    '<div id="sb-sol-kpi" class="sb-sol" style="margin-bottom:16px"><div style="font-size:12px;color:#94A3B8;padding:4px 2px">솔루션 지표 불러오는 중…</div></div>'+
     // ③ 주소록 · 세그먼트 현황 — 인사
     '<div class="sb-hr" style="background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:16px 18px;margin-bottom:14px">'+
       '<div style="font-size:14px;font-weight:800;color:#004098;margin-bottom:12px">③ 인사 주소록 · 세그먼트 현황</div>'+
@@ -6008,7 +6008,7 @@ function sbDraw(){
       _segBar('회신 분류 ('+R.label+')', [['관심·문의',catN['관심·문의']||0,'#059669'],['담당 안내',catN['담당 안내']||0,'#7C3AED'],['거절·보류',catN['거절·보류']||0,'#DC2626'],['기타',catN['기타']||0,'#94A3B8']], reps.length)+
     '</div>'+
     // ③-S 솔루션 주소록·세그먼트 — solRenderSeg()가 window._solSummary로 채움
-    (SB_TOKEN ? '<div id="sb-sol-seg" class="sb-sol" style="background:#fff;border:1px solid #BAE6FD;border-radius:12px;padding:16px 18px;margin-bottom:14px"><div style="font-size:12px;color:#94A3B8;padding:4px 2px">솔루션 세그먼트 불러오는 중…</div></div>' : '')+
+    '<div id="sb-sol-seg" class="sb-sol" style="background:#fff;border:1px solid #BAE6FD;border-radius:12px;padding:16px 18px;margin-bottom:14px"><div style="font-size:12px;color:#94A3B8;padding:4px 2px">솔루션 세그먼트 불러오는 중…</div></div>'+
     // ④ 실시간 로그 · 리포트
     '<div style="font-size:12px;font-weight:800;color:#64748B;margin:0 2px 8px">④ 실시간 로그 · 리포트</div>'+
     // 보고용 요약
@@ -6075,7 +6075,10 @@ function sbDraw(){
       '</div>'+
     '</div>';
 
-  if (SB_TOKEN) { solRenderPipe(); sbLoadQueue(); solLoadQueue(); }
+  // 솔루션 트랙 뷰(진행현황·지표·세그먼트)는 전체 열람 — jem 여부와 무관.
+  solRenderPipe(); solLoadQueue();
+  // 발송대기 패널(선택 발송)은 jem(토큰)만.
+  if (SB_TOKEN) { sbLoadQueue(); }
   sbSetTrack(window._sbTrack || 'all');   // 토글 상태 재적용(기간 전환 등으로 재렌더돼도 유지)
 }
 // 🎚 트랙 보기 토글 — .sb-hr / .sb-sol 블록을 한꺼번에 표시/숨김
