@@ -13,8 +13,9 @@
  *   _middleware.js 의 공개 경로(PUBLIC_PATHS)에 '/p' 를 등록해 두었다.
  */
 
-// 표준 제안서 PDF (Apps Script CONFIG.PROPOSAL_PDF_ID 와 동일)
-const PDF_URL = 'https://drive.google.com/file/d/1XGJYhdaKbckUEl0aQT5-GO8x4KsM0UIh/view';
+// 표준 제안서 PDF (Apps Script CONFIG.PROPOSAL_PDF_ID 와 동일 · 인사·솔루션 공용)
+// 지자체 한빌 전기요금 관리서비스_20261124_1.pdf
+const PDF_URL = 'https://drive.google.com/file/d/1m9L0BrYczShPer4Tusu9bLK2xOvjsJ7L/view';
 
 // Apps Script 웹앱 /exec (action=click 이 클릭 1건을 로깅). 공개 배포 URL.
 const APPS_SCRIPT_EXEC =
