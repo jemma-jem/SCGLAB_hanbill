@@ -5098,9 +5098,8 @@ function parseNewsRss(xmlText) {
 function normalizeLiveNews(raw) {
   return raw.slice(0, 20).map(function (a, i) {   // 뉴스 스크랩 최대 20건
     const d = a.pubDate ? new Date(a.pubDate) : new Date();
-    const iso = isNaN(d.getTime())
-      ? new Date().toISOString().slice(0, 10)
-      : d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+    // 기사 날짜를 한국시간(KST) 기준으로 — '오늘 기사'가 한국 날짜로 묶이게.
+    const iso = (isNaN(d.getTime()) ? new Date() : d).toLocaleDateString('en-CA', { timeZone: 'Asia/Seoul' });
     // 요약: news_archive.json의 summary 배열(2줄)을 우선 사용, 없으면 desc에서 '출처:…' 메타 꼬리 제거
     var sumArr = Array.isArray(a.summary) ? a.summary.slice() : null;
     var l1, l2;

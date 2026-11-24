@@ -164,8 +164,9 @@ function tag(block, name) {
 
 function toISO(pubDate) {
   const d = pubDate ? new Date(pubDate) : new Date();
-  if (isNaN(d.getTime())) return new Date().toISOString().slice(0, 10);
-  return d.toISOString().slice(0, 10);
+  const base = isNaN(d.getTime()) ? new Date() : d;
+  // 한국시간(KST, UTC+9) 기준 날짜로 기록 — 새벽에 수집된 한국 기사가 하루 전(UTC)으로 밀리지 않게.
+  return base.toLocaleDateString('en-CA', { timeZone: 'Asia/Seoul' });   // 'YYYY-MM-DD'
 }
 
 function categorize(title) {
