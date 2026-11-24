@@ -5847,6 +5847,14 @@ function sbDraw(){
     '· 관심·문의 지자체: '+(_intRegions.length ? _intRegions.join(', ') : '없음')+'\n'+
     '· 발송 대기: '+(d.pending||0)+'곳\n'+
     '· 비고: 발송 지자체는 AI 레인저 수주확도 +40 가산 반영';
+  // 솔루션 트랙(나라장터 공고 기반) — 큐 요약이 로드됐으면 보고 초안에 함께 적는다.
+  if (window._solSummary){ var _ss=window._solSummary;
+    repTxt += '\n\n[솔루션 트랙 — 나라장터 공고 기반]\n'+
+      '· 감지: '+_ss.detected+'곳\n'+
+      '· 발송 대기(이메일 보유): '+_ss.pending+'곳 · 이메일 없음 '+_ss.noEmail+'곳\n'+
+      '· 발송 완료: '+_ss.sent+'곳 · 보류(인사 우선·6개월) '+_ss.held+'곳\n'+
+      '· 조율 규칙: 같은 지역은 인사 메일 우선 · 두 트랙 모두 동일 지역 6개월 간격';
+  }
 
   // ── 자동화/세그먼트용 큐 통계 ──
   var qst=window._sbQueueStats||null;
@@ -5874,7 +5882,7 @@ function sbDraw(){
     // ① 진행 현황 — 한눈 파이프라인 (감지 → 이메일 교차확인 → 생성 → 발송 → 발송·열람 확인 → 회신)
     '<div style="background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:16px 18px;margin-bottom:14px">'+
       '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px">'+
-        '<span style="font-size:14px;font-weight:800;color:#004098">① 진행 현황 — 한눈에 보기</span>'+
+        '<span style="font-size:14px;font-weight:800;color:#004098">① 인사 트랙 진행 현황 <span style="font-size:11px;color:#94A3B8;font-weight:600">· 인사기사 기반</span></span>'+
         '<span style="display:inline-flex;gap:8px;align-items:center">'+
           '<span style="font-size:11px;font-weight:700;background:#FEF3C7;color:#92400E;border-radius:999px;padding:3px 10px">🖐 현재: 수동 검수 발송</span>'+
           '<span style="font-size:10.5px;color:#94A3B8">트리거 발송대기 15:00 · 회신 16:00</span></span>'+
@@ -5889,6 +5897,8 @@ function sbDraw(){
       '</div>'+
       '<div style="font-size:11px;color:#94A3B8;margin-top:8px">인사기사 '+detected+'곳 가운데 담당자 이메일이 확인된 '+matched+'곳이 발송 대상입니다. 이메일이 없는 '+unmatched+'곳은 구글시트에 주소를 채우면 자동으로 대상에 들어옵니다. 지금 발송 대기 '+pendingN+'곳 · 열람 '+viewedRegionN+'곳 · 회신 '+replyRegionN+'곳. (발송·열람·회신은 '+R.label+' 기준)</div>'+
     '</div>'+
+    // ①-S 솔루션 트랙 진행 현황 — 인사와 동일 파이프라인(MECE 형제). solRenderPipe()가 window._solSummary로 채움
+    (SB_TOKEN ? '<div id="sb-sol-pipe" style="background:#fff;border:1px solid #BAE6FD;border-radius:12px;padding:16px 18px;margin-bottom:14px"><div style="font-size:12px;color:#94A3B8;padding:4px 2px">솔루션 트랙 현황 불러오는 중…</div></div>' : '')+
     // ② 핵심 지표 (KPI)
     '<div style="font-size:12px;font-weight:800;color:#64748B;margin:0 2px 8px">② 핵심 지표 (KPI)</div>'+
     '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px">'+
@@ -5971,7 +5981,7 @@ function sbDraw(){
       '</div>'+
     '</div>';
 
-  if (SB_TOKEN) { sbLoadQueue(); solLoadQueue(); }
+  if (SB_TOKEN) { solRenderPipe(); sbLoadQueue(); solLoadQueue(); }
 }
 
 // 📧 이메일 목록 CSV 내려받기(현재 기간)
@@ -6091,11 +6101,40 @@ function sbPreviewSelected(){
 
 // ─── 🧩 솔루션 발송대기 로드/발송 (jem 전용 · solqueue/solsend/solpreview) ───
 function solLoadQueue(){
-  var box = document.getElementById('sol-queue'); if (!box) return;
+  var box = document.getElementById('sol-queue');
   fetch(SALES_BOARD_URL + '?action=solqueue', { cache:'no-store' })
     .then(function(r){ return r.json(); })
-    .then(function(d){ window._solQ=d; _solRenderQueue(d); })
-    .catch(function(e){ box.innerHTML = '<div style="padding:14px;color:#DC2626;font-size:12px">솔루션 발송대기 로드 실패 ('+_esc(String(e))+')</div>'; });
+    .then(function(d){
+      window._solQ=d; window._solSummary = d.summary || window._solSummary;
+      _solRenderQueue(d); solRenderPipe();
+      // 첫 로드 때 1회만 전체 재그려 보고 초안·트랙표에 솔루션 수치 반영(루프 방지 플래그)
+      if (!window._solRedrawn){ window._solRedrawn = true; if (window._sbD) { try{ sbDraw(); }catch(e){} } }
+    })
+    .catch(function(e){ if(box) box.innerHTML = '<div style="padding:14px;color:#DC2626;font-size:12px">솔루션 발송대기 로드 실패 ('+_esc(String(e))+')</div>'; });
+}
+// 솔루션 트랙 진행현황(인사와 동일 파이프라인) — window._solSummary로 #sb-sol-pipe 채움
+function _solStep(ic,label,val,color){ return '<div style="flex:1;min-width:92px;text-align:center">'+
+  '<div style="font-size:20px">'+ic+'</div>'+
+  '<div style="font-size:11.5px;font-weight:700;color:#334155;margin-top:2px">'+label+'</div>'+
+  '<div style="font-size:18px;font-weight:800;color:'+(color||'#075985')+';margin-top:1px">'+val+'</div></div>'; }
+function solRenderPipe(){
+  var box = document.getElementById('sb-sol-pipe'); if(!box) return;
+  var s = window._solSummary;
+  var arw = '<div style="color:#BAE6FD;font-size:16px;align-self:center">›</div>';
+  var v = function(x){ return (s && typeof s[x]==='number') ? s[x] : '…'; };
+  box.innerHTML =
+    '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px">'+
+      '<span style="font-size:14px;font-weight:800;color:#075985">①-S 솔루션 트랙 진행 현황 <span style="font-size:11px;color:#94A3B8;font-weight:600">· 나라장터 공고 기반</span></span>'+
+      '<span style="font-size:10.5px;color:#94A3B8">트리거 발송대기 16:00 · 발송은 수동</span>'+
+    '</div>'+
+    '<div style="display:flex;flex-wrap:wrap;gap:4px;background:#F0F9FF;border:1px solid #E0F2FE;border-radius:10px;padding:14px">'+
+      _solStep('🧩','공고 감지',v('detected'),'#334155')+arw+
+      _solStep('✍','발송 대기(이메일)',v('pending'),'#0EA5E9')+arw+
+      _solStep('📨','발송 완료',v('sent'),'#075985')+arw+
+      _solStep('⏸','보류(인사우선·6개월)',v('held'),'#9333EA')+
+    '</div>'+
+    '<div style="font-size:11px;color:#94A3B8;margin-top:8px">솔루션은 인사와 겹치는 지역을 양보하고(인사 우선), 두 트랙 모두 같은 지역은 6개월 간격을 둡니다. '+
+      '이메일 없음 '+v('noEmail')+'곳은 구글시트에 주소를 채우면 자동으로 발송 대상에 들어옵니다. (회신 집계는 현재 인사 트랙만 수집)</div>';
 }
 function _solRenderQueue(d){
   var box = document.getElementById('sol-queue'); if(!box) return;
