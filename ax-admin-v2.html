@@ -5722,6 +5722,11 @@ function loginLogRender(){
     .then(function(d){ _llRender(d); })
     .catch(function(e){ box.innerHTML = '<div style="padding:18px;color:#DC2626;font-size:12px">로그인 로그 로드 실패 ('+_esc(String(e))+')<br><span style="color:#94A3B8">※ Apps Script 재배포(loginlog 핸들러)와 미들웨어 로그인 기록이 필요합니다.</span></div>'; });
 }
+// 로그인 일시 표기 — 'yyyy-MM-dd HH:mm:ss' → 'MM/DD HH:mm (KST)'
+function _llFmt(t){
+  var m = String(t||'').match(/^(\d{4})-(\d{2})-(\d{2})[ T](\d{2}):(\d{2})/);
+  return m ? (m[2] + '/' + m[3] + ' ' + m[4] + ':' + m[5] + ' (KST)') : String(t||'');
+}
 function _llRender(d){
   var box=document.getElementById('ll-body'); if(!box) return;
   if(!d || d.ok===false){ box.innerHTML='<div style="padding:18px;color:#DC2626;font-size:12px">'+_esc((d&&d.error)||'데이터 없음')+'</div>'; return; }
@@ -5734,12 +5739,12 @@ function _llRender(d){
       '<div style="font-size:13px;font-weight:800;color:#0f172a">'+_esc(a.user)+'</div>'+
       '<div style="font-size:26px;font-weight:800;color:#075985;line-height:1.2;margin:2px 0">'+(a.count||0)+'<span style="font-size:13px;color:#94A3B8;font-weight:600">회</span></div>'+
       '<div style="font-size:11px;color:#64748B">오늘 '+(a.today||0)+'회</div>'+
-      '<div style="font-size:11px;color:#94A3B8;margin-top:2px">최근 '+_esc(a.last||'—')+'</div>'+
+      '<div style="font-size:11px;color:#94A3B8;margin-top:2px">최근 '+_esc(a.last?_llFmt(a.last):'—')+'</div>'+
     '</div>';
   }).join('') : '<div style="color:#94A3B8;font-size:13px;padding:10px">아직 로그인 기록이 없습니다. (재배포·로그인 후 집계됩니다)</div>';
   var tr = recent.map(function(r){
     return '<tr style="border-bottom:1px solid #F1F5F9"><td style="padding:7px 8px;font-weight:600">'+_esc(r.user)+'</td>'+
-      '<td style="padding:7px 8px;color:#475569">'+_esc(r.t)+'</td>'+
+      '<td style="padding:7px 8px;color:#475569">'+_esc(_llFmt(r.t))+'</td>'+
       '<td style="padding:7px 8px;color:#94A3B8;font-size:11.5px">'+_esc(r.ip||'')+'</td></tr>';
   }).join('') || '<tr><td colspan="3" style="padding:14px;text-align:center;color:#94A3B8">기록 없음</td></tr>';
   box.innerHTML =
@@ -10736,7 +10741,7 @@ function getPageAlert(name) {
         title: '로그인 로그 — 계정 접속 요약',
         lines: [
           '<i class="ti ti-users"></i> [계정] ' + accs.length + '개 계정 · 누적 로그인 ' + totAll + '회 · 오늘 ' + totToday + '회.',
-          (last ? '<i class="ti ti-login"></i> [최근] ' + last.user + ' · ' + last.t + '.' : '<i class="ti ti-login"></i> 아직 로그인 기록이 없어요.'),
+          (last ? '<i class="ti ti-login"></i> [최근] ' + last.user + ' · ' + (typeof _llFmt==='function'?_llFmt(last.t):last.t) + '.' : '<i class="ti ti-login"></i> 아직 로그인 기록이 없어요.'),
           (top && top.today ? '<i class="ti ti-flame"></i> [오늘 최다] ' + top.user + ' ' + top.today + '회 로그인.' : '<i class="ti ti-moon"></i> 오늘 로그인한 계정이 아직 없어요.'),
           '<i class="ti ti-shield-lock"></i> [권한] jem 전용 — 다른 계정엔 이 탭이 보이지 않아요.'
         ]
