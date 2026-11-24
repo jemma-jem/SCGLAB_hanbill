@@ -5900,8 +5900,18 @@ function sbDraw(){
         '</span>'+
       '</div>'+
     '</div>'+
+    // 🎚 트랙 보기 토글 — 콘솔 전체(진행현황·지표·세그먼트·발송대기)를 한꺼번에 전환
+    '<div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap">'+
+      '<span style="font-size:12px;font-weight:700;color:#475569">트랙 보기</span>'+
+      '<div style="display:inline-flex;border:1px solid #CBD5E1;border-radius:8px;overflow:hidden">'+
+        '<button id="sb-trk-all" onclick="sbSetTrack(\'all\')" style="font-size:12px;padding:6px 15px;border:none;border-right:1px solid #E2E8F0;background:#334155;color:#fff;font-weight:700;cursor:pointer">전체</button>'+
+        '<button id="sb-trk-hr" onclick="sbSetTrack(\'hr\')" style="font-size:12px;padding:6px 15px;border:none;border-right:1px solid #E2E8F0;background:#fff;color:#475569;cursor:pointer">인사</button>'+
+        '<button id="sb-trk-sol" onclick="sbSetTrack(\'sol\')" style="font-size:12px;padding:6px 15px;border:none;background:#fff;color:#475569;cursor:pointer">솔루션</button>'+
+      '</div>'+
+      '<span style="font-size:11px;color:#94A3B8;word-break:keep-all">트랙별로 진행현황·지표·세그먼트·발송대기가 한꺼번에 전환됩니다</span>'+
+    '</div>'+
     // ① 진행 현황 — 한눈 파이프라인 (감지 → 이메일 교차확인 → 생성 → 발송 → 발송·열람 확인 → 회신)
-    '<div style="background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:16px 18px;margin-bottom:14px">'+
+    '<div class="sb-hr" style="background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:16px 18px;margin-bottom:14px">'+
       '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px">'+
         '<span style="font-size:14px;font-weight:800;color:#004098">① 인사 트랙 진행 현황 <span style="font-size:11px;color:#94A3B8;font-weight:600">· 인사기사 기반</span></span>'+
         '<span style="display:inline-flex;gap:8px;align-items:center">'+
@@ -5922,8 +5932,9 @@ function sbDraw(){
       '</div>'+
     '</div>'+
     // ①-S 솔루션 트랙 진행 현황 — 인사와 동일 파이프라인(MECE 형제). solRenderPipe()가 window._solSummary로 채움
-    (SB_TOKEN ? '<div id="sb-sol-pipe" style="background:#fff;border:1px solid #BAE6FD;border-radius:12px;padding:16px 18px;margin-bottom:14px"><div style="font-size:12px;color:#94A3B8;padding:4px 2px">솔루션 트랙 현황 불러오는 중…</div></div>' : '')+
-    // ② 핵심 지표 (KPI)
+    (SB_TOKEN ? '<div id="sb-sol-pipe" class="sb-sol" style="background:#fff;border:1px solid #BAE6FD;border-radius:12px;padding:16px 18px;margin-bottom:14px"><div style="font-size:12px;color:#94A3B8;padding:4px 2px">솔루션 트랙 현황 불러오는 중…</div></div>' : '')+
+    // ② 핵심 지표 (KPI) — 인사. sb-hr 로 묶어 토글 연동
+    '<div class="sb-hr">'+
     '<div style="font-size:12px;font-weight:800;color:#64748B;margin:0 2px 8px">② 인사 핵심 지표 (KPI)</div>'+
     '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px">'+
       _sbCard('발송', sends.length+'건', R.label+' · 지자체 '+sentRegionN+'곳', '#004098')+
@@ -5933,16 +5944,17 @@ function sbDraw(){
       _sbCard('인사 발송 대기', pendingN+'곳', '메일 보유·미발송', '#F59E0B')+
     '</div>'+
     '<div style="font-size:11px;color:#94A3B8;margin:-8px 2px 16px">ⓘ <b>제안서 열람</b>은 메일의 ‘제안서 바로 보기’ 웹 링크 클릭 기준(Gmail 프록시 영향 없어 신뢰도 높음) · <b>오픈율</b>은 미지원 · <b>회신율·분류</b>로 반응 측정</div>'+
+    '</div>'+   // ② sb-hr 래퍼 닫기
     // ②-S 솔루션 핵심 지표 — solRenderKpi()가 window._solSummary로 채움
-    (SB_TOKEN ? '<div id="sb-sol-kpi" style="margin-bottom:16px"><div style="font-size:12px;color:#94A3B8;padding:4px 2px">솔루션 지표 불러오는 중…</div></div>' : '')+
-    // ③ 주소록 · 세그먼트 현황
-    '<div style="background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:16px 18px;margin-bottom:14px">'+
+    (SB_TOKEN ? '<div id="sb-sol-kpi" class="sb-sol" style="margin-bottom:16px"><div style="font-size:12px;color:#94A3B8;padding:4px 2px">솔루션 지표 불러오는 중…</div></div>' : '')+
+    // ③ 주소록 · 세그먼트 현황 — 인사
+    '<div class="sb-hr" style="background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:16px 18px;margin-bottom:14px">'+
       '<div style="font-size:14px;font-weight:800;color:#004098;margin-bottom:12px">③ 인사 주소록 · 세그먼트 현황</div>'+
       _segBar('발송 대상 매칭 (현재 큐)', [['메일 보유(발송 대상)',matched,'#0EA5E9'],['미매칭(메일 없음)',unmatched,'#CBD5E1']], (typeof detected==='number'?detected:null))+
       _segBar('회신 분류 ('+R.label+')', [['관심·문의',catN['관심·문의']||0,'#059669'],['담당 안내',catN['담당 안내']||0,'#7C3AED'],['거절·보류',catN['거절·보류']||0,'#DC2626'],['기타',catN['기타']||0,'#94A3B8']], reps.length)+
     '</div>'+
     // ③-S 솔루션 주소록·세그먼트 — solRenderSeg()가 window._solSummary로 채움
-    (SB_TOKEN ? '<div id="sb-sol-seg" style="background:#fff;border:1px solid #BAE6FD;border-radius:12px;padding:16px 18px;margin-bottom:14px"><div style="font-size:12px;color:#94A3B8;padding:4px 2px">솔루션 세그먼트 불러오는 중…</div></div>' : '')+
+    (SB_TOKEN ? '<div id="sb-sol-seg" class="sb-sol" style="background:#fff;border:1px solid #BAE6FD;border-radius:12px;padding:16px 18px;margin-bottom:14px"><div style="font-size:12px;color:#94A3B8;padding:4px 2px">솔루션 세그먼트 불러오는 중…</div></div>' : '')+
     // ④ 실시간 로그 · 리포트
     '<div style="font-size:12px;font-weight:800;color:#64748B;margin:0 2px 8px">④ 실시간 로그 · 리포트</div>'+
     // 보고용 요약
@@ -5953,10 +5965,10 @@ function sbDraw(){
       '</div>'+
       '<pre id="sb-report" style="margin:0;white-space:pre-wrap;font-family:inherit;font-size:12.5px;color:#334155;line-height:1.75">'+_esc(repTxt)+'</pre>'+
     '</div>'+
-    // 📧 이메일 목록 (발송된 제안 메일 현황)
-    '<div style="background:#fff;border:1px solid #E2E8F0;border-radius:10px;padding:14px 16px">'+
+    // 📧 이메일 목록 (발송된 제안 메일 현황) — 인사
+    '<div class="sb-hr" style="background:#fff;border:1px solid #E2E8F0;border-radius:10px;padding:14px 16px">'+
       '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px">'+
-        '<div style="font-size:13px;font-weight:700;color:#004098">📧 인사 이메일 목록 <span style="font-size:11px;color:#94A3B8;font-weight:500">('+sends.length+'건 · '+R.label+' · 최신순)</span></div>'+
+        '<div style="font-size:13px;font-weight:700;color:#004098">📧 인사 이메일 목록<span style="font-size:11px;color:#94A3B8;font-weight:500">('+sends.length+'건 · '+R.label+' · 최신순)</span></div>'+
         '<button onclick="sbDownloadList()" style="font-size:12px;padding:5px 12px;border:1px solid #CBD5E1;border-radius:6px;background:#fff;cursor:pointer;color:#334155">목록 내려받기(CSV)</button>'+
       '</div>'+
       '<div style="overflow:auto;max-height:420px"><table style="width:100%;border-collapse:collapse;font-size:12.5px">'+
@@ -5972,9 +5984,9 @@ function sbDraw(){
       '</div>'+
     // 발송대기 — jem(토큰)일 때만
     (SB_TOKEN ?
-      '<div style="background:#fff;border:1px solid #FDE68A;border-radius:10px;padding:14px 16px;margin-top:14px">'+
+      '<div class="sb-hr" style="background:#fff;border:1px solid #FDE68A;border-radius:10px;padding:14px 16px;margin-top:14px">'+
         '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:8px">'+
-          '<div style="font-size:13px;font-weight:700;color:#B45309">📮 인사 발송대기 · 발신 cs@scglab.com <span style="font-size:11px;color:#94A3B8;font-weight:500">(jem 전용)</span></div>'+
+          '<div style="font-size:13px;font-weight:700;color:#B45309">📮 인사 발송대기 · 발신 cs@scglab.com<span style="font-size:11px;color:#94A3B8;font-weight:500">(jem 전용)</span></div>'+
           '<div style="display:flex;gap:6px">'+
             '<button onclick="sbTestSend()" style="font-size:12px;padding:6px 12px;border:1px solid #FDBA74;border-radius:6px;background:#FFF7ED;cursor:pointer;color:#B45309;font-weight:700" title="실제 지자체 대신 테스트 수신자(jem@scglab.com 받는사람 · 팀 3명 참조)에게 1회 시연 발송">🧪 시연 발송(테스트)</button>'+
             '<button onclick="sbPreviewSelected()" style="font-size:12px;padding:6px 12px;border:1px solid #CBD5E1;border-radius:6px;background:#fff;cursor:pointer;color:#334155">선택 미리보기(초안)</button>'+
@@ -5984,14 +5996,14 @@ function sbDraw(){
         '<div id="sb-queue"><div style="padding:16px;text-align:center;color:#94A3B8">인사 발송대기 불러오는 중…</div></div>'+
       '</div>' :
       // admin 열람(비jem): 발송은 담당자 안내
-      '<div style="background:#F8FAFC;border:1px dashed #CBD5E1;border-radius:10px;padding:14px 16px;margin-top:14px;font-size:12px;color:#64748B;line-height:1.6">'+
+      '<div class="sb-hr" style="background:#F8FAFC;border:1px dashed #CBD5E1;border-radius:10px;padding:14px 16px;margin-top:14px;font-size:12px;color:#64748B;line-height:1.6">'+
         '📮 <b>인사 발송 대기 '+pendingN+'곳</b> — 발송은 담당자(jem) 계정에서 검수 후 진행합니다. (열람 전용 화면)'+
       '</div>')+
     // 🧩 솔루션 발송대기(나라장터 공고 기반) — jem(토큰)일 때만
     (SB_TOKEN ?
-      '<div style="background:#fff;border:1px solid #BAE6FD;border-radius:10px;padding:14px 16px;margin-top:14px">'+
+      '<div class="sb-sol" style="background:#fff;border:1px solid #BAE6FD;border-radius:10px;padding:14px 16px;margin-top:14px">'+
         '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;flex-wrap:wrap;gap:8px">'+
-          '<div style="font-size:13px;font-weight:700;color:#075985">🧩 솔루션 발송대기 · 나라장터 공고 기반 <span style="font-size:11px;color:#94A3B8;font-weight:500">(jem 전용)</span></div>'+
+          '<div style="font-size:13px;font-weight:700;color:#075985">🧩 솔루션 발송대기 · 나라장터 공고 기반<span style="font-size:11px;color:#94A3B8;font-weight:500">(jem 전용)</span></div>'+
           '<div style="display:flex;gap:6px">'+
             '<button onclick="solPreviewSelected()" style="font-size:12px;padding:6px 12px;border:1px solid #CBD5E1;border-radius:6px;background:#fff;cursor:pointer;color:#334155">선택 미리보기(초안)</button>'+
             '<button onclick="solSendSelected()" style="font-size:12px;padding:6px 14px;border:none;border-radius:6px;background:#075985;color:#fff;cursor:pointer;font-weight:700">선택 발송</button>'+
@@ -6000,9 +6012,9 @@ function sbDraw(){
         '<div style="font-size:10.5px;color:#94A3B8;margin-bottom:8px">※ 같은 지역에 인사 발송대기가 있으면 솔루션은 자동 양보(인사 우선) · 6개월 내 발송 지역은 자동 보류 — 두 트랙 모두 적용</div>'+
         '<div id="sol-queue"><div style="padding:16px;text-align:center;color:#94A3B8">솔루션 발송대기 불러오는 중…</div></div>'+
       '</div>' : '')+
-    // ⑤ 추이·분류 — 상시 표시(스티비식 통계 차트)
-    '<div style="margin-top:14px;background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:16px 18px">'+
-      '<div style="font-size:14px;font-weight:800;color:#004098;margin-bottom:12px">⑤ 발송 · 회신 추이 · 분류 분포</div>'+
+    // ⑤ 추이·분류 — 인사(상시 표시, 스티비식 통계 차트)
+    '<div class="sb-hr" style="margin-top:14px;background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:16px 18px">'+
+      '<div style="font-size:14px;font-weight:800;color:#004098;margin-bottom:12px">⑤ 인사 발송 · 회신 추이 · 분류 분포</div>'+
       '<div style="display:grid;grid-template-columns:1.3fr 1fr;gap:14px" class="sb-grid">'+
         '<div><div style="font-size:12px;font-weight:700;color:#475569;margin-bottom:8px">발송 · 회신 추이</div>'+_sbChart(sends,reps,R)+'</div>'+
         '<div><div style="font-size:12px;font-weight:700;color:#475569;margin-bottom:8px">회신 분류 분포</div>'+_sbCatBar(catN)+'</div>'+
@@ -6010,6 +6022,22 @@ function sbDraw(){
     '</div>';
 
   if (SB_TOKEN) { solRenderPipe(); sbLoadQueue(); solLoadQueue(); }
+  sbSetTrack(window._sbTrack || 'all');   // 토글 상태 재적용(기간 전환 등으로 재렌더돼도 유지)
+}
+// 🎚 트랙 보기 토글 — .sb-hr / .sb-sol 블록을 한꺼번에 표시/숨김
+function sbSetTrack(t){
+  window._sbTrack = t;
+  var showHr = (t !== 'sol'), showSol = (t !== 'hr');
+  var hr = document.querySelectorAll('.sb-hr'); for (var i=0;i<hr.length;i++) hr[i].style.display = showHr ? '' : 'none';
+  var sol = document.querySelectorAll('.sb-sol'); for (var j=0;j<sol.length;j++) sol[j].style.display = showSol ? '' : 'none';
+  var tint = { all:'#334155', hr:'#004098', sol:'#075985' };
+  ['all','hr','sol'].forEach(function(k){
+    var b = document.getElementById('sb-trk-'+k); if(!b) return;
+    var on = (k===t);
+    b.style.background = on ? tint[k] : '#fff';
+    b.style.color = on ? '#fff' : '#475569';
+    b.style.fontWeight = on ? '700' : '500';
+  });
 }
 
 // 📧 이메일 목록 CSV 내려받기(현재 기간)
