@@ -6187,6 +6187,7 @@ function solRenderPipe(){
       _solStep('🧩','공고 감지',v('detected'),'#334155')+arw+
       _solStep('✍','발송 대기(이메일)',v('pending'),'#0EA5E9')+arw+
       _solStep('📨','발송 완료',v('sent'),'#075985')+arw+
+      _solStep('👁','열람',v('viewed'),'#7C3AED')+arw+
       _solStep('↩','회신',v('reply'),'#059669')+arw+
       _solStep('⏸','보류(인사우선·6개월)',v('held'),'#9333EA')+
     '</div>'+
@@ -6215,6 +6216,7 @@ function solRenderKpi(){
       _solCard('공고 감지', (s.detected||0)+'곳', '솔루션 성격 공고', '#334155')+
       _solCard('발송 대기', (s.pending||0)+'곳', '메일 보유·미발송', '#0EA5E9')+
       _solCard('발송 완료', (s.sent||0)+'곳', '누적 발송 지자체', '#075985')+
+      _solCard('제안서 열람', (s.sent?Math.round((s.viewed||0)/s.sent*1000)/10:0)+'%', '웹 링크 클릭 '+(s.clicks||0)+'회', '#7C3AED')+
       _solCard('회신율', repRate+'%', '회신 '+(s.reply||0)+' / 발송 '+(s.sent||0)+'곳', '#059669')+
       _solCard('보류', (s.held||0)+'곳', '인사우선·6개월', '#9333EA')+
     '</div>';

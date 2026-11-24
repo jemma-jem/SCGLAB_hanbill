@@ -25,10 +25,12 @@ export async function onRequest(context) {
   const { request } = context;
   const url = new URL(request.url);
   const region = url.searchParams.get('r') || '';
+  const track = url.searchParams.get('t') || '';   // 'sol' 이면 솔루션 트랙 클릭
 
-  // 클릭 로깅 — 응답을 기다리지 않고 백그라운드로(리다이렉트 지연 0).
+  // 클릭 로깅 — 응답을 기다리지 않고 백그라운드로(리다이렉트 지연 0). 트랙(t)도 함께 전달해 분리 집계.
   try {
-    const logUrl = APPS_SCRIPT_EXEC + '?action=click&r=' + encodeURIComponent(region);
+    const logUrl = APPS_SCRIPT_EXEC + '?action=click&r=' + encodeURIComponent(region)
+      + (track ? '&t=' + encodeURIComponent(track) : '');
     context.waitUntil(fetch(logUrl, { method: 'GET' }).catch(() => {}));
   } catch (_) { /* 로깅 실패해도 PDF는 열리게 둔다 */ }
 
