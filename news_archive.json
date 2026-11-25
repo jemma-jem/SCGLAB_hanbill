@@ -1,8 +1,8 @@
 {
-  "updated_at": "2026-11-24T18:29:15.809Z",
+  "updated_at": "2026-11-25T08:57:16.574Z",
   "source": "Google News RSS",
   "query": "\"전기요금\" OR \"한전\" OR \"전자청구서\" OR \"에너지바우처\" OR \"에너지정책\" OR \"도시가스\" OR \"가로등\" OR \"보안등\" OR \"시설물관리\" OR \"도로조명\" OR \"탄소중립포인트\" OR \"에너지 마일리지\" OR \"종이고지서\" OR \"모바일 고지서\" OR \"건물에너지관리솔루션\" OR \"전자문서중계사업자\" OR \"구좌분리\" OR \"도로과\" OR \"전수표찰\" OR \"에너지 절감 정책\" OR \"우리집 에너지 컨설팅\" OR \"빗물받이 관리 솔루션\" OR \"수목관리솔루션\" OR \"LPG 배관망\" OR \"마을 LPG 배관망\" OR \"LPG 소형저장탱크\" OR \"소형저장탱크\" OR \"LPG 판매사업자\" OR \"LPG 공급사업자\" OR \"액화석유가스 판매\" OR \"LPG 충전소\" OR \"LPG 안전점검\" OR \"LPG 고지서\" OR \"LPG 정산\" OR \"조아테크\" OR \"엔콤\" when:3d || (\"포인트\" OR \"마일리지\" OR \"전수조사\" OR \"탄소중립\" OR \"탄소절감활동\") (\"지자체\" OR \"지방자치\" OR \"지방정부\" OR \"시청\" OR \"도청\" OR \"군청\" OR \"구청\" OR \"한전\" OR \"한국전력\" OR \"전기요금\" OR \"에너지\") when:3d || \"가로등 교체\" OR \"보안등 설치\" OR \"LED 가로등\" OR \"스마트 가로등\" OR \"안심가로등\" OR \"등기구 교체\" OR \"도로조명 정비\" OR \"가로수 정비\" OR \"가로수 전정\" OR \"가지치기\" OR \"수목 병해충\" OR \"조경수 관리\" OR \"가로수 식재\" OR \"수목관리\" OR \"빗물받이 청소\" OR \"우수받이 정비\" OR \"침수 취약지역\" OR \"공공건물 에너지\" OR \"그린리모델링\" OR \"녹색건축물\" OR \"에너지 진단 사업\" when:3d || (\"인사발령\" OR \"정기인사\" OR \"전보 발령\" OR \"과장 전보\" OR \"국장 전보\" OR \"조직개편\") (\"시청\" OR \"군청\" OR \"구청\" OR \"도청\" OR \"지자체\" OR \"시장\" OR \"군수\" OR \"구청장\") when:3d || \"LPG\" (\"요금\" OR \"고지\" OR \"정산\" OR \"청구\" OR \"판매사업자\" OR \"공급사업자\" OR \"충전소\" OR \"배관망\" OR \"소형저장탱크\" OR \"안전점검\" OR \"협회\") when:3d || (\"ISP\" OR \"정보화전략계획\" OR \"정보화전략\" OR \"차세대 시스템\" OR \"차세대 빌링\" OR \"보안사고\" OR \"해킹\" OR \"정보유출\" OR \"개인정보 유출\" OR \"개인정보 유출사고\" OR \"사이버 공격\" OR \"사이버공격\" OR \"랜섬웨어\" OR \"침해사고\" OR \"보안 취약\" OR \"디도스\" OR \"DDoS\") (\"한전\" OR \"한국전력\" OR \"한전KDN\") when:3d",
-  "count": 320,
+  "count": 299,
   "articles": [
     {
       "title": "한전, 자체 개발 AI ‘파워북’ 전력 분야 공공기관 확산",
@@ -89,98 +89,902 @@
       "ai": true
     },
     {
-      "title": "일본 게이오그룹, 랜섬웨어에 당했다…개인정보 1100만명분 유출 우려",
-      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBiZ0ZkNng0OXlxcGdtNW5fRDBUVWlMSFNZOWpuYnNIZHhiemJTcHB0SHhXQ1RiV29mMmlySWJ4TUxwSVQzZm5scmxnTVFsTXhVeGZET3Fn?oc=5",
+      "title": "한전, 고객정보 유출 2차 피해 막는다…‘3단계 선제적 보호대책’ 가동",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE55YzFYWWJsdWpMZXhoR3JaZUt6SEM2NXZDQzBLN0FTYXFBTXpEZUVkd1JCMDZvN0lIZVZCZnh1R1RqX3FnR1EzdzEwczZsbF9qVUE2dWVuUXRIRldYMUtndjZlcnE0QzA3dW9yRGZR?oc=5",
       "date": "2026-11-25",
-      "source": "지디넷코리아",
+      "source": "이코노미톡뉴스",
       "category": "energy",
       "summary": [
-        "일본 게이오그룹 랜섬웨어 피해, 개인정보 1100만명분 유출 우려됨",
-        "대규모 개인정보 유출 사례로 빌링 보안 경각심 환기 필요함"
+        "한전, 고객정보 유출 2차 피해 방지 위해 3단계 선제적 보호대책 가동함",
+        "전자청구 고객정보 보안 신뢰 확보 필요성 대두, 빌링 보안 강화 참고 필요함"
       ],
       "ai": true
     },
     {
-      "title": "국립순천대학교 해킹…구 향림통시스템 개인정보 유출 정황 확인",
-      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9RcmcyU2RTMUp2ci1lWmJnMExkdnVYV3YtY3dKNU13a2dTTWJEcDFPNjJVbjUwRENad2RQUkNTTlNOc1dKblJnNkRlU21rOEtlYmh5eU9XSk4xUTMyMjBfSlI3UGJGMWRMcEMwMA?oc=5",
+      "title": "한전KDN, 대한민국 커뮤니케이션대상 수상…보안 인식 제고에도 앞장",
+      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE91Qy1kZ0JqYnBqOEJfZm95N1NZbFBkQlZhc1JvN1M2ejBFaFZRQW0zMlpYNnNSRXM2MVBIZHVaU1RwY3ZZd0Q2Rlc4aVY5X05jQXJQWlZYNVh1eUtRZ0E?oc=5",
       "date": "2026-11-25",
-      "source": "데일리시큐",
+      "source": "기후에너지데이터뱅크",
       "category": "energy",
       "summary": [
-        "국립순천대 해킹, 구 향림통 시스템 개인정보 유출 정황 확인됨",
-        "구형 시스템 보안 취약성 사례로 레거시 점검 필요성 시사함"
+        "한전KDN, 대한민국 커뮤니케이션대상 수상 및 보안 인식 제고 활동 전개함",
+        "그룹사 보안 인식 강화 흐름, 전자청구 보안 신뢰 메시지에 활용 가능함"
       ],
       "ai": true
     },
     {
-      "title": "정상 AI인 척 백신 무력화⋯ ‘가짜 정보유출’ 낚시까지 기승",
-      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE56cEpsOXZhQXZZNk9VMkJLWUxXano5ck1lSlhEWTl4RlczekhIWGRUc3AxRGgxVlU5bk5meDNXQmdtdFVyR25fc01GY1d6ZlI2TlNyNzBqeUM?oc=5",
+      "title": "한전 해킹 후폭풍…연말 대형 공사 발주시장까지 불똥 튀나",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5teVVRTXBidHFSZExxTXVWcEpwN19nc0FhclJVMXJ2enlpZWhjTFF4RFlxLTdQUjZUdzROUVZiOW9ZZ3VpeEVDTnNmUFVuaThNcWdyM0syb1lRaG00NXV2WkpxQXhQTW01OVV0edIBcEFVX3lxTE9nZC1tMDFCMFRBZU1BMHllcWVXS1ZmSng2bVU3ZmZCOTlGYl91UjB6VmViMmk2eE5NQkoxN3YxQ1loQktyOVREZnBPY0FQUThkUF8zb0tJa1pEMTN6Z3U2QlktdngyeDUyNnphTVRoRkw?oc=5",
       "date": "2026-11-25",
-      "source": "국민일보",
+      "source": "전기신문",
       "category": "energy",
       "summary": [
-        "정상 AI 위장해 백신 무력화, 가짜 정보유출 낚시 수법 기승함",
-        "신종 보안위협 대비로 전자청구 채널 방어체계 강화 필요함"
+        "한전 해킹 후폭풍이 연말 대형 공사 발주시장까지 영향 우려됨",
+        "한전 사업·발주 환경 변동성 확대, 지자체 연계사업 일정 영향 주시 필요함"
       ],
       "ai": true
     },
     {
-      "title": "국정원, 국가배후 해킹조직 정보 수집 확대 추진",
-      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE13aTRQRFFuUkZKdVZRTHBSWUYzVHV6UmpNeFZBYmtBTEkxTnpSYWZxZXc1enhpVTdYUUU3bGFud3Jha0cwb0RxRWpTQTVST3BrT1RGV21B?oc=5",
+      "title": "한전, 개인정보 유출 고객에 최대 1000만원 보상보험 무료 제공",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNdzI1TkJLSzI5bVllWkJucjh5eGRKN3Y0RmdYNlIwZUYtMzZEbDFtWmRROGtNY1NpbXViUHNIamVvdURtMmUxeTVwTXNieGdrVU02QzYyTG80cTdZUDJFbzRaRWZzSjlJU2hUVk9lcVVTMXV3S2doWnVZYmw5bjMtYnJtZW5sV3RkYnlWX0J3?oc=5",
       "date": "2026-11-25",
-      "source": "지디넷코리아",
+      "source": "조선일보",
       "category": "energy",
       "summary": [
-        "국정원이 국가배후 해킹조직 정보 수집 확대 추진함",
-        "보안 위협 대응 정책 강화 일반 동향으로 참고함"
+        "한전, 개인정보 유출 고객에 최대 1000만원 보상보험 무료 제공함",
+        "고객 보상·보호 조치 강화 흐름, 전자청구 개인정보 관리 기준 재점검 필요함"
       ],
       "ai": true
     },
     {
-      "title": "'해킹 위협 고도화' 반도체 첨단기술 기업 보안전담 인력 0명... 공급망 뚫리면 다 털린다",
-      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9PR0hBeEVVNEgzTWxqSTB3NTYxUGRub2RpYXpBU0ZpM0VTLXBMbnZrTUQwc0lPNlNILTBHWWE5Ym9DcTZpZEtqZmlQYkdiTHYyaFNqcnNfTzJDU0dNckRMdkR2aVBjdEs2?oc=5",
+      "title": "네이버클라우드, 한수원·한전KDN과 원전 AX 체계 구축",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFA5cUxpdlJUd09RRUV2WlhBR0RneDB2RzBBSEhLdnFrdVVFcTVKUS0zZ0RHVmtEZm45Qmk4WDRUVTkxU0RtTXJQa0JNOGJIV3FnUzRjY00xc3RJMVYzNDMxb1VRWmZkU0c4MGc?oc=5",
       "date": "2026-11-25",
-      "source": "공정뉴스",
+      "source": "AI타임스",
       "category": "energy",
       "summary": [
-        "반도체 첨단기술 기업 보안전담 인력 0명, 공급망 보안 취약 지적됨",
-        "공급망 보안 중요성 부각으로 협력사 관리 점검 필요함"
+        "네이버클라우드, 한수원·한전KDN과 원전 AX 체계 구축 추진함",
+        "에너지 공기업 AI 전환 가속화, 빌링 자동화·디지털화 참고 동향임"
       ],
       "ai": true
     },
     {
-      "title": "하나저축은행 해킹…고객 552명 주민등록번호 등 개인신용정보 유출 확인",
-      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE12OVhXRzg1d1NPLUF6RTE3TXowQlFkNV94Rm40WGxmNHBaaXp1U19mS1FyaEpMdjZoRlluc285cTlSNXVULXRPczhhM3hJZWdyTWNwUVRKODI3QlEtZU4yRmw1SWRaa0lGSUg5Sg?oc=5",
+      "title": "한전KPS, 국제품질분임조대회 4년 연속 '금상' 수상",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE00OUROa3pweXhkcjJZOGFxUUppTVVXbTNYSktzbWYtQ19LblJuYURqdzVIN0l2N0VtQTZNWHBncUdoZl92ZEZwci00ZlZkcGRmY1k0LWM5alpJaEVtemk0LVpjNEhSOUQ1aUlBcHBMU2VuUQ?oc=5",
       "date": "2026-11-25",
-      "source": "데일리시큐",
+      "source": "에너지데일리",
       "category": "energy",
       "summary": [
-        "하나저축은행 해킹, 고객 552명 주민번호 등 신용정보 유출 확인됨",
-        "금융권 개인정보 유출 사례로 빌링 데이터 보호 경각심 환기함"
+        "한전KPS, 국제품질분임조대회 4년 연속 금상 수상함",
+        "그룹사 품질경영 성과, 서비스 품질 벤치마킹 관점 참고 가능함"
       ],
       "ai": true
     },
     {
-      "title": "'해킹에 깜짝' 기업들 정보보호 강화… 보안업체, 남몰래 웃었다 - 머니투데이",
-      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE4zcUM2SUxiVFIzYUFEUXVxRFlUblU2VHpmYW5McGRFRUNUQlM1eTdERzVEaEl0Wmh3TmdqTzhUdDZyUGlhMkpEblc0NlhVaWFDTVhBNTBoalR4S3NTSnB5X3lNVzRQbEnSAWxBVV95cUxPZVVaWlVYem9vbHRZN2NvcFRhZmpEdHJ4RXVZZ0RfRzc3dWFSUUlXeVhNY0VWVTY3c2JsRVRqdTNVcjR1X04ycWZFLV9iU1AtdkF4LUctVzNXaGxXTHAtazM2aTZRUHAxLVI1S1U?oc=5",
+      "title": "한전, ‘2026년 소상공인대회’ 행정안전부 장관상 수상",
+      "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBPdVZpMHppRV95SzBRaDhVbXh2X01jQnhLZG5YbHdZQlF0dnE0WFhXemY4eHdRSy1vYVNBUE1ZenB3TkRSdXJYeDZPMjNnU0Exd01KUWRNWjY3TUZYTy1zQXdB?oc=5",
+      "date": "2026-11-25",
+      "source": "전기저널",
+      "category": "energy",
+      "summary": [
+        "한전, 2026년 소상공인대회에서 행정안전부 장관상 수상함",
+        "소상공인 대상 사업 연계 가능성, 지자체·소상공인 전자청구 접점 확대 참고함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전KDN, “사이버보안은 기술 아닌 경영의 핵심”",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5lV0F3V3NYcEk5bWotMG5YaG1yY2xCNWlRd1hMWlhmZHRxMjRKMDEybmllX1l0QUNodkhueGRMdlNPX2dMOUJFUWJPWVYtTnl6LUQzaVl1VWhWaGdBT2xLQktrdjE?oc=5",
+      "date": "2026-11-25",
+      "source": "에너지안전신문",
+      "category": "energy",
+      "summary": [
+        "한전KDN, 사이버보안은 기술 아닌 경영의 핵심이라고 강조함",
+        "보안의 경영 의제화 흐름, 전자청구 보안 거버넌스 강화 필요성 시사함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전원자력연료, ‘2026 국가품질대상’ 수상… 원자력 품질경영 경쟁력 입증",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE5NbEo2aGFQNDBaVHg3bkE0enYxckt6VzBQYVo3Z1p3c3FmNE9sVGQyamNoZjlNWEtMb1lQd0tXZHNzYS1oYXV1WVZ4NVN4M3J3S09nbllyT3ZNWDZHVmRBWERCVmt6MVFPV2pkVnV3VVBiQQ?oc=5",
+      "date": "2026-11-25",
+      "source": "에너지데일리",
+      "category": "energy",
+      "summary": [
+        "한전원자력연료, 2026 국가품질대상 수상으로 품질경영 경쟁력 입증함",
+        "그룹사 품질경영 성과, 서비스 품질 신뢰 메시지 참고 가능함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "\"3%룰 적용 땐 3조 육박\"...한전 개인정보 유출 과징금 기준 '이목 집중'",
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5TaERuN2VIT1NZUmxZcU5JZ3lHeWpuNnBacHlOemFJNGJqY1g2WHZod1dYdE9kNktHZzF3VlE3VjdwZjBEbjluTUNtM0J6RDI1b0ZpRFJTNEpEaFE3YVpQeDdIRjhkUQ?oc=5",
+      "date": "2026-11-25",
+      "source": "디일렉",
+      "category": "energy",
+      "summary": [
+        "한전 개인정보 유출 과징금, 3%룰 적용 시 3조 육박 가능성 주목됨",
+        "개인정보 유출 제재 리스크 부각, 전자청구 개인정보 보호 준수 중요성 강조됨"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전KDN, 보안 분야 북콘서트 개최... 전문 저자와의 대담",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1YNDM0QzI1RkcyMlR5QWkzNERlS1ZFS1ZYMVpuaHZIUmdyam5IUzJBdTNkQXBiVkZjb1ctN2ZlN00wMTd5ZnY3ei0zRC1tTG80c2JpYmtzMnpTSjFIbFJzNDI2S1NrT2R3NEEtd0RfaGJMQQ?oc=5",
+      "date": "2026-11-25",
+      "source": "에너지데일리",
+      "category": "energy",
+      "summary": [
+        "한전KDN, 보안 분야 북콘서트 개최 및 전문 저자 대담 진행함",
+        "보안 인식 확산 활동, 조직 내 보안 문화 조성 참고 동향임"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전KDN, ‘적극행정 면책지원관’ 위촉… 소신 있는 업무 추진 뒷받침",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE5aNGFidmg1d1N2aDJGcXVOYzdKd1F2WFFldWswU2htbTQ1QzdZOUVZcElzUmhwOEtEdU5DTXZGSlZaeTQxcDJvS05sdEVCQmtiZUNBekt4X3EtVWdJYnNOLVVaNmJ0UndrdGNDcXRraVlxUQ?oc=5",
+      "date": "2026-11-25",
+      "source": "에너지데일리",
+      "category": "energy",
+      "summary": [
+        "한전KDN, 적극행정 면책지원관 위촉으로 소신 업무 추진 지원함",
+        "공기업 적극행정 기조, 지자체 사업 협업 환경 참고 동향임"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전, 고객정보 유출 2차피해 끝까지 막는다",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1tdFp5WVg1VlJrY1dvYTQ3MzRKYTM0bVVubjBBaVVncVoySS1UVUxsZUcyaEU2QkdtSVJOSXdsVW1oZ2Uwckw3YjNWUl9MU0dNSFVZSER1RWZZTkJvZ29WYUFQN21kaGZKcDhDMW5SZExSUQ?oc=5",
+      "date": "2026-11-25",
+      "source": "에너지데일리",
+      "category": "energy",
+      "summary": [
+        "한전, 고객정보 유출 2차 피해를 끝까지 차단하겠다고 밝힘",
+        "고객 보호 의지 강조 흐름, 전자청구 고객정보 보안 신뢰 유지 필요함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전KPS 노조 \"사장 선임 서둘러라\"… 기후부 항소에 반발",
+      "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPVW12ZlUtM21vdHRLTkRVRHduZmVvY2FPY0d6M21OR3VGQVl0MjZYUV9KVC1CWEJhZFdQNHQ5RlloMkNMMjRCZk10OVFEdUNMb29UcURYVlljVE9BWThYdEM4a0lrRnRoT0pqandRTjlmaWZ6S2xQMFd4aWFaN0JPc3prSE5hSVBqenR4SGEtWQ?oc=5",
+      "date": "2026-11-25",
+      "source": "조선일보",
+      "category": "energy",
+      "summary": [
+        "한전KPS 노조, 사장 선임 촉구하며 기후부 항소에 반발함",
+        "그룹사 지배구조·인사 지연 이슈, 사업 의사결정 지연 가능성 주시 필요함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전, 정보 유출 고객에 보안서비스 무상 제공",
+      "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE5KOG1CZlFObmVQMWdFUThheGlFWTZFZ2MwckF4MnI3X2FJN2ltQ2d2aDNqQVVTcGtub2NJdDFTT2Q5Q1NTVGJVM29BZVh4RU5pTmF2S0FRalF3M3ZEMUpUOU9lTFh0U1RJNEhpSFNSZXZzNzlJSC1nT9IBeEFVX3lxTE1RNDMtXzRPZXV5Skc2Z3RiNWctUWZGTHkwVkJoaE1HZ3d3ZVJhUUVwRGxoajIwbUJpRHRkZ2ZuTFpGYmxQY2F5c3ZtamVFSFRYU01FQmNPc0pucDBuSnZPSGpGTy1jXzJBT1BqY2lKZnR6Wi16SlJnVA?oc=5",
+      "date": "2026-11-25",
+      "source": "MBC 뉴스",
+      "category": "energy",
+      "summary": [
+        "한전, 정보 유출 고객에게 보안서비스 무상 제공함",
+        "고객 보호 조치 확대, 전자청구 개인정보 관리 신뢰 확보 참고 필요함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전, 개인정보 유출 2차 피해 막는다",
+      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9kWWRjY1J2YXlsQjMwdGl1UHZ2VkhMLUQzeGYtQ1hqZnVJcWV6R2xzYlJ2MERoVzNidTJWclZVY0hoUEprUUVCWXNyN08yVkNZX1FoU1l1NzhJVDJUcmJoTVlWbGdLeU4yNkhFV3J3WdIBc0FVX3lxTFBIcm4ybEFzbXFtRWlmdmQ0UDJaRUxXMlhEM3BwUU9OdERmX2U4RUNKbExycDJlZ0ZjTS02MFBBeXlyRUVfb0dRbWpzQnZXZUZOekNKT3lCT254OEcxZkxSUURXUFhaTTItVEpwRTl0dWFHQms?oc=5",
+      "date": "2026-11-25",
+      "source": "세이프타임즈",
+      "category": "energy",
+      "summary": [
+        "한전, 개인정보 유출 2차 피해 방지 대책 추진함",
+        "고객정보 보안 강화 흐름, 빌링 개인정보 보호 체계 점검 필요함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "[초점] 동서울변환소 갈등 해법 찾나…주민·정부·한전, 3개월 협의 끝 합의안 마련",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE5wellldHg3c3FtaWJULU53eGhCYTR2VHlrc3JYcXdXUEJSb3NubjJfREpSVHk3VWNmSjVkbGRNdDV3ZG5TbnQ5YmJla1RVWnBWZVBQNklvckFLYkZ5R2VjLU50bFhZSEdveW1BNDh3d1A5UQ?oc=5",
+      "date": "2026-11-25",
+      "source": "에너지데일리",
+      "category": "energy",
+      "summary": [
+        "동서울변환소 갈등, 주민·정부·한전 3개월 협의 끝 합의안 마련함",
+        "한전 지역 갈등 해소 사례, 지자체 협의 사업 추진 참고 동향임"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전, 정보유출 고객에 신용보호 서비스 1년 무상 제공…최대 1000만원 보상보험 포함",
+      "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE5rV2F1RE0yUVpscUdoblAzRjEwdk5NdXFBc0JrTm93QXFLaTB6UU44TW9GT1dJYVJDMUUxLVNnYTJFaVg5MHFXY2szNTA1QQ?oc=5",
+      "date": "2026-11-25",
+      "source": "전자신문",
+      "category": "energy",
+      "summary": [
+        "한전, 정보유출 고객에 신용보호 1년 무상 및 최대 1000만원 보상보험 제공함",
+        "고객 신용보호 조치 강화, 전자청구 개인정보 보호 기준 재점검 필요함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "자작나무 가로등 태백 밤거리 밝힌다",
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1OZ0NVWWUtcUtwVkZWTGhzSEhaTklCQ0lhU1JwNDliUUVkUkZTZ1NlR1k1RHZHMUdkR2pYamtlZGdfdEh5YnpCcWMyQVNnUmpXMjBpaEQ2WjBQOEE?oc=5",
+      "date": "2026-11-25",
+      "source": "강원일보",
+      "category": "local",
+      "summary": [
+        "태백 밤거리에 자작나무 가로등 설치로 야간경관 조성함",
+        "지자체 경관·에너지 사업 동향, 지역 연계사업 참고 가능함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전산업개발, 기계산업 발전유공 대통령표창… 국산 발전설비 경쟁력 강화 기여",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFBWMVNtcmdMZzF2VjA1MnlOYUVJcTVlb1ZiRS1keDRlbDRXNFpSUzF2VC1nMVUydnFNakFRVFRDeGYxYmE1RWRVNkl6cU16MDFMVjlXOVgxVngwWEtvc3gtMFpmeWcwbHpUallOTjd5UzFpdw?oc=5",
+      "date": "2026-11-25",
+      "source": "에너지데일리",
+      "category": "energy",
+      "summary": [
+        "한전산업개발, 기계산업 발전유공 대통령표창 수상함",
+        "그룹사 발전설비 경쟁력 강화 성과, 에너지 산업 일반 동향임"
+      ],
+      "ai": true
+    },
+    {
+      "title": "`고객정보 유출` 한전 \"최대 1000만원 안심 보상보험 제공\"",
+      "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNOFpwWWYyOU8yWWFLckJEQ1lWTC13aUNFVUh6Uk5HVExDWUxDcG9EUkVBVzZvU1RLR1ZUVmV3cEdsNjlEMkVQTUtVV1hXUkVWTFFEZkcxUmZGdWJsU0NoUkdmaWt6bDRTRjZfaC1ZYUlULVVhemxKMVVESDNMbXZ3QUVOR09RUGFXd2htbWhQckdQN0U?oc=5",
+      "date": "2026-11-25",
+      "source": "국제신문",
+      "category": "energy",
+      "summary": [
+        "한전, 고객정보 유출 대응으로 최대 1000만원 안심 보상보험 제공함",
+        "고객 보상 조치 확대, 전자청구 개인정보 보호 신뢰 확보 필요함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전, 정보유출 고객에 최대 1천만 원 금융 사기 보상 보험 제공",
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE4tMkFxcWRGME5lUURfb3A4bjZ3dXdhQ2h2N3lBTm10Y1RZdTVYdVd3NXBPTXhfZUJEaXNkdVA1eXdodllQbWh6S3E5bDVZemh4SENDeFJyZXd4NjQ?oc=5",
+      "date": "2026-11-25",
+      "source": "KBS 뉴스",
+      "category": "energy",
+      "summary": [
+        "한전, 정보유출 고객에 최대 1천만원 금융 사기 보상보험 제공함",
+        "금융 사기 피해 대비 조치, 전자청구 개인정보 보안 강화 참고 필요함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전KDN, 2026 대한민국 커뮤니케이션대상 ‘기후에너지환경노동위원장상’ 수상",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFB6cVZ3dVlOenlFdUFYT19YcTZaVUVvRjdvOEo1VV9nb2FCcV9jT1lMQjJJeWFOSHhfN3hELTgwMHdxOFhuc3l0TXRZVklnUjN5elFLbVNRTmNzaVpyR3FTZklqMXd4ZF9h?oc=5",
+      "date": "2026-11-25",
+      "source": "녹색경제신문",
+      "category": "energy",
+      "summary": [
+        "한전KDN, 2026 대한민국 커뮤니케이션대상 기후에너지환경노동위원장상 수상함",
+        "그룹사 대외 커뮤니케이션 성과, 홍보·메시지 전략 참고 동향임"
+      ],
+      "ai": true
+    },
+    {
+      "title": "류재철 LG전자 대표이사 사장, 대한전자공학대상 수상",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBSZUx2bk5rRGxWeVlscVo4R1hER0JaVzBqbFlmLWFoYnVfYm1IdWlPd3RfTG5GN1M5Rjk3SUhpV0hfeFpmUmVubzMzR3JNdUx3b2hlVk00TER0Mm16cVVyWUlRNlBzQ2s?oc=5",
+      "date": "2026-11-25",
+      "source": "교수신문",
+      "category": "energy",
+      "summary": [
+        "류재철 LG전자 대표이사 사장, 대한전자공학대상 수상함",
+        "전자·산업계 일반 동향, 빌링 사업 직접 연관성 낮음"
+      ],
+      "ai": true
+    },
+    {
+      "title": "태백시, 자작나무 가로등 야간경관 자리매김",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFBOQ3hVd21CV3cxNzIwY3FLS2lFQmd0OEl2UnJpMzRyUFFCMjlpZDAxLW9RMkl0RzJwWE9qQnBlTGRFQktrVzhGbE9VbWJxdjJ4N3gtWG1RMllkdkFaWTB2eFRtTXdNa3hsYnhvRlBDVXh4QdIBdkFVX3lxTE5jcktlWHhDU3B3bThTd2pNdlZyM0E5QjlUSy1yOVNHWmxjWmJQMl81anRTbTk4ZWRnbXNCRkhUbDFIUmdCN1BpS1FMeVZNUWl2aW5qQUNVakloNThVQnU1RmtmaFhzOExoLThOV29YSEZyRE54d1E?oc=5",
+      "date": "2026-11-25",
+      "source": "LG헬로비전",
+      "category": "local",
+      "summary": [
+        "태백시, 자작나무 가로등으로 야간경관 자리매김 추진함",
+        "지자체 경관 사업 동향, 지역 연계 협력 참고 가능함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전KDN, 보안 분야 북콘서트 개최",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9XaVZoMjFuUl9meXNXUWx1czNRMkR6akp2ekN5V0NtOXA4ckNPVkU2Q1RweUt2RnhkNGFSa2szSFhlTWxWRmtCbU9jcDVMWmU1U2xtcUxxSURRZm9UZURFYWtfY3JlZ0ZFclV2aFBB?oc=5",
+      "date": "2026-11-25",
+      "source": "투데이에너지",
+      "category": "energy",
+      "summary": [
+        "한전KDN이 보안 분야 북콘서트를 개최함",
+        "에너지 공기업의 정보보안 역량 강화 기조 지속 전망"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전KDN, 사보 통한 소통 성과 인정",
+      "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5DU191RThXY1F3anBwX1Y5VDZzREJYNk9Oc2s2b0g2Sm1tRjBTUHI4SU9DYmI3MWcxaVR2N2d1V25OU19paTFqTmhkdnBvd3RnMW5JNEJjeUw2M2wtVGk3MjJ0MA?oc=5",
+      "date": "2026-11-25",
+      "source": "국토일보",
+      "category": "energy",
+      "summary": [
+        "한전KDN이 사보를 통한 내부 소통 성과를 인정받음",
+        "고객 커뮤니케이션 채널 강화의 벤치마킹 사례로 참고 가능"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전, 정보유출 피해 고객에 최대 1천만원 보상 보험 제공",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE02S1dOTzRCUFZkVmJXTHRnQW1OYXVKUzZpMXZ0Y1JJTGRXOUNzUUpFeEpPRHBtekVpRnlZTTZDSXdyQ2xwSlFUcXE3RDVXUUpZMzJTY2FxUHBZU05nZWQ0MXZPbTRCYkU?oc=5",
+      "date": "2026-11-25",
+      "source": "연합뉴스TV",
+      "category": "energy",
+      "summary": [
+        "한전이 정보유출 피해 고객에 최대 1천만원 보상보험 제공함",
+        "전자청구 고객정보 보호·보상 체계 점검 필요성 부각"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전 MCS, 사)좋은이웃과 나주시 소외계층 가정에 연탄나눔 봉사",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9KTDJQaVFJWXF3Q3NMdV8wLXpjZEsyUVpqRlNsbWJTeTNYM3BVdnN1SEFqLU41ZGpPTE1qMGxkeDc0NE1LakV0aTY4RGIxZlZQVTBoa1MzeFlwTzNRclVmM2ZMQ2hGY3lJVUE?oc=5",
+      "date": "2026-11-25",
+      "source": "한국생활체육뉴스",
+      "category": "energy",
+      "summary": [
+        "한전MCS가 나주시 소외계층에 연탄나눔 봉사를 진행함",
+        "지자체 연계 복지사업 협력 네트워크 참고 가능"
+      ],
+      "ai": true
+    },
+    {
+      "title": "[포토뉴스]참빛영동도시가스(주) 대한노인회 동해시지회 3600만원 상당 연료비 지원",
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5BY0NyOGJMWXQzRXFVRXFJakl5a2tGWjBVNTF5UVJGNEFhcW0xOC1TSmF2d21JSUtqbmIzdUlBNTRaeVc0anJLZnFPcEV0N1RrRW9mb3lxc1M0YlU?oc=5",
+      "date": "2026-11-25",
+      "source": "강원일보",
+      "category": "energy",
+      "summary": [
+        "참빛영동도시가스가 동해 대한노인회에 3600만원 연료비 지원함",
+        "지역 에너지복지·요금지원 사업 연계 모델로 참고 가능"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전산업, 기계·로봇산업 발전유공 대통령표창 수상",
+      "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBXSmZrZHZNTUZEYXZ4MWRMZ19RQU4tdFVOWlpVazdHbmJwQzNJM0lLRE91dTZIc2hOUjJWSFlCSG9jcG44YVA0bmVhbDV0cTJtM000M3dIUy1FLVVTaE9tcVppRQ?oc=5",
+      "date": "2026-11-25",
+      "source": "우리일보",
+      "category": "energy",
+      "summary": [
+        "한전산업이 기계·로봇산업 발전유공으로 대통령표창 수상함",
+        "에너지 계열사 기술역량 강화 동향 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전KPS, CEO 주관 고강도 재무성과 개선 총력",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE95SENkeGMtMzVuRjVEdzVwbmNNQlgySW5OampEMXNtbTNETlhCM0pKcHk0WUF5MUhKQnFqXzNvVEppTW9pUGUtYzFSNHhOemlmdW9tdkRBMW9na1UtbHlyYkFRMWNvTXZVd3RQR2F3?oc=5",
+      "date": "2026-11-25",
+      "source": "투데이에너지",
+      "category": "energy",
+      "summary": [
+        "한전KPS가 CEO 주관 고강도 재무성과 개선에 총력함",
+        "공기업 비용절감 기조에 따른 대행·외주사업 영향 주시 필요"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전 고객정보 유출 후속 대책 마련, \"2차 피해 예방에 최선\"",
+      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9TV3Q0NWtrLTVWUGJydDA3bURHcFlKRlBTNEQtVUpKeEd0OUlWZjlRUHlQSmdLa0VjMElrejJ5OFgwYmFHc0hvXzN2WFJtaWZLanlwR3hybm10Q1hrYUExdVZHZm1qSFk1NXdPVVF5ZUhMVHM?oc=5",
+      "date": "2026-11-25",
+      "source": "비즈니스포스트",
+      "category": "energy",
+      "summary": [
+        "한전이 고객정보 유출 후속 대책으로 2차 피해 예방에 집중함",
+        "전자청구 개인정보 처리 보안 강화 요구 확대 전망"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전KDN, 사보 ‘KDN LIFE’로 커뮤니케이션대상 위원장상",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9YU0VIXzN4Ujk5QUhpZnpCWmFlZ3JCeXEwcXkyaHg5WE5OV1lBbHd5dVBRdnJaUWwtUjU4VzVsUzMzZE91SmRwLU9URWt5Z3R6clpPUEJDLVRpYVVCLXRXdDM5aGJjdUViLXljbmNob3k?oc=5",
+      "date": "2026-11-25",
+      "source": "에너지코리아뉴스",
+      "category": "energy",
+      "summary": [
+        "한전KDN 사보 'KDN LIFE'가 커뮤니케이션대상 위원장상 수상함",
+        "빌링 안내물·고객소통 콘텐츠 품질 제고에 참고 가능"
+      ],
+      "ai": true
+    },
+    {
+      "title": "152만명 정보 유출된 한전… ‘한전ON’ 서비스 믿어도 되나",
+      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE4xeVFBbzJYTEpHME0wUGlESzUwQk9EZEZXWmM0ZEZ0NXVRRDlad1kwOGpieGcxVkZKMW1hM0RRZVJUd0xPUGJVTmRfb093ZzhqSy15UFpBMmFnWnR1Y1dRVVN1NXBXZmNMSmM2WGgyYw?oc=5",
+      "date": "2026-11-25",
+      "source": "비즈체크",
+      "category": "energy",
+      "summary": [
+        "한전 152만명 정보 유출로 '한전ON' 서비스 신뢰 우려 제기됨",
+        "전자청구 플랫폼 보안 신뢰도 관리 중요성 부각"
+      ],
+      "ai": true
+    },
+    {
+      "title": "[2026 행감 포커스 | 기후에너지과]김포시, 도시가스 공급 취약지역 지원사업 공고 절차 미이행…시의회 시정 요구",
+      "url": "https://news.google.com/rss/articles/CBMiQkFVX3lxTE92SW5qRklpUnpjMms2dGJvQVFlTTUydEdfM1BURUdlQTdjS3NkSVhuN0w1cDdpMElXdmRzMHljWm9NUQ?oc=5",
+      "date": "2026-11-25",
+      "source": "김포시민신문",
+      "category": "energy",
+      "summary": [
+        "김포시 도시가스 취약지역 지원사업 절차 미이행에 시의회 시정 요구함",
+        "지자체 에너지복지 사업 절차·공고 관리 리스크 참고 필요"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전, 정보 유출 2차 피해 방지‥최대 1천만 원 보상보험 제공",
+      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE55OHRqa0llalBIaGVwdm9MeGFnUXFHdHl1TTFZcVhwS0EtVTE0MWNFcG5WUG9DbU9yVVl1ZmNlb2I5T0Y5SXpfOTRkTW9oNXQ1UUJKNVp1b3o3Q2VTMWtYU2YyOUVYcmFDOWNsYXozRE0xbjAz0gF0QVVfeXFMUG52VzRUQTFaeE4tMzdabzlPLWdORWN6cGpnSzBuTDJxZWdsd1FzSjRlcnVGNHM1ejJ6NFZQQUxUUVpObW1xTHM1dXNONlFMT2FBbkxBZ3BzUUJhN1hXWThXd3Fjd3pKZWJnVTRuR3hqMTNrYWY?oc=5",
+      "date": "2026-11-25",
+      "source": "MBC 뉴스",
+      "category": "energy",
+      "summary": [
+        "한전이 정보유출 2차 피해 방지 위해 최대 1천만원 보상보험 제공함",
+        "고객정보 유출 대응책 사례로 빌링 보안정책 점검 필요"
+      ],
+      "ai": true
+    },
+    {
+      "title": "[단독] 보호조치 '적정'이라더니...무너진 한전ON 개인정보 보호망",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1Pa3hsWjBBX2ZaTkY2UGVzUFBDV2hKYmRjSlJhdFRnczBVY1BrX1ozYUJ0RTB2cXNJbzZvM3NBUVJXRFp3clV5TXB3NmtuUXQ1WWJmMS1ac0NjN1FtOUEzX1dCUlZxQzRDSXc?oc=5",
+      "date": "2026-11-25",
+      "source": "월요신문",
+      "category": "energy",
+      "summary": [
+        "'적정' 판정에도 한전ON 개인정보 보호망 무너진 것으로 보도됨",
+        "전자청구 시스템 보안인증 신뢰성 재점검 필요성 부각"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전산업개발, 기계산업 발전유공 대통령 표창 수상",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1paDFRRFJsT3Q1MUp3WENVTGM1eDRLSGkxeHl1VG9LTnpBbVBIdWliWWpzTGpWZWNsNVJmNk9mSmNDc1A3TTlianprVmZQOUJtQ3lWbTJNMDFjdURIc0hCLXQybjZKTW9IOHRaMWpR?oc=5",
+      "date": "2026-11-25",
+      "source": "투데이에너지",
+      "category": "energy",
+      "summary": [
+        "한전산업개발이 기계산업 발전유공으로 대통령표창 수상함",
+        "에너지 계열사 산업기술 성과 동향 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전, 정보 유출 고객에 신용조회 차단·피해보상 이용권 제공",
+      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE95TC1CQjFhOWRfWEd3S1NWbU1CWEtSS2RuaDZDWWo5eGZVTEh4eV95NFJfRVlVMjM0TF9TOFUtVDhtYm54M2JzYXpncUs4VUUyQy1aN2lyQ2g3dw?oc=5",
+      "date": "2026-11-25",
+      "source": "브릿지경제",
+      "category": "energy",
+      "summary": [
+        "한전이 유출 고객에 신용조회 차단·피해보상 이용권 제공함",
+        "고객정보 유출 대응 서비스 구성 참고 가능"
+      ],
+      "ai": true
+    },
+    {
+      "title": "해커가 탈취한 한전 개인정보...\"이메일로 알려와\"",
+      "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQTVlYSzl0ZkZoeEF4c0JycUlzYXNPQWl4VGlKZ1lURE0yMzhQSWVzQmplNzFRakZUT0pwY2JrVHM4Mlpvbzd0cHA1dkVScHQ5T1ZkV0F1U0FyY0Vzc3FkQmJTMk1RaVljTGh4UFJtd3l3UDBKZk1kWGFXWXpIQkdvT0lXU05Kektyd2xqZQ?oc=5",
+      "date": "2026-11-25",
+      "source": "YTN 사이언스",
+      "category": "energy",
+      "summary": [
+        "해커가 탈취한 한전 개인정보를 이메일로 피해자에 통보함",
+        "전자청구 안내 채널 사칭·피싱 대비 강화 필요"
+      ],
+      "ai": true
+    },
+    {
+      "title": "제주에너지공사, 지방자치 혁신대상 환경·탄소중립 분야 최우수상 수상",
+      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5TNlpqMGZxNXRaa0gzbWliU3UySkVvWExjN0lQVExRR0ZUTUdWQUpTWXhNMHNpNkpRemtISkN3dXh0R0hNZnRZb0pxZ1RqYlVCeUZCblRJeHVTRHNTY2FTaThoQWtZVXR6dmpzdG8xMTFHS3M?oc=5",
+      "date": "2026-11-25",
+      "source": "헤드라인제주",
+      "category": "local",
+      "summary": [
+        "제주에너지공사가 지방자치 혁신대상 환경·탄소중립 최우수상 수상함",
+        "지자체 탄소중립·에너지 사업 협력 기회 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "제주에너지공사, 탄소중립 혁신 ‘최우수상’…RE100 캠핑 넘어 ‘제주형 RE100’ 확산",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE4tSGhFQkNPaWNDMWRtS1NrY2ZOVWJGUlNpbHhyeHp2UmtOc2NWZDNTM2lZeWxaNlMxSHdJVGk5UDNVTGpYVWo5M19keVFobnJob2lVRU1QSHBCWmF5SUt2R0RMYlhBa2dnVzNrQkZKRGZtdw?oc=5",
+      "date": "2026-11-25",
+      "source": "에너지데일리",
+      "category": "local",
+      "summary": [
+        "제주에너지공사가 '제주형 RE100' 확산으로 탄소중립 혁신 최우수상 수상함",
+        "지자체 재생에너지 정책 확산 동향 주시 필요"
+      ],
+      "ai": true
+    },
+    {
+      "title": "제주에너지공사, 지방자치 혁신대상 환경·탄소중립 최우수상",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFAtU2FOQzRGT01PRlc2SzBZeUhhZ0o2Yk1ySUxIYTE5akhnOGI3SmtieXg5OFE3M0JFQWRickVWR0Zsa0JuNzh5WXBMWmRZOUVqeEhxZEpOWEF5THZKbGlFNW9vNmoxZzhZQmc0eXVB?oc=5",
+      "date": "2026-11-25",
+      "source": "투데이에너지",
+      "category": "local",
+      "summary": [
+        "제주에너지공사가 지방자치 혁신대상 환경·탄소중립 최우수상 수상함",
+        "지자체 에너지전환 사업 협력 모델 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "[기고]탄소중립, 에너지 그리고 LPG - 머니투데이",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFAtbVJTN0ZZY2plZlFlRVNpVFpGSHNvUDZ3Ulh1TDA1OS1sZFJxUUVVTkZDS0pPVHJtREtnTUFOZnItT0dhLUV3WDNncnZxREtLVkJqTnhRamQ5MzRwSURWYjNOQ0RXYW93SnJQM2lpV3jSAXBBVV95cUxQLW1SUzdGWWNqZWZRZUVTaVRaRkhzb1A2d1JYdUwwNTktbGRScVFFVU5GQ0tKT1RybURLZ01BTmZyLU9HYS1Fd1gzZ3J2cURLS1ZCak54UWpkOTM0cElEVmIzTkNEV2Fvd0pyUDNpaVd4?oc=5",
       "date": "2026-11-25",
       "source": "머니투데이",
-      "category": "energy",
+      "category": "local",
       "summary": [
-        "잇단 해킹에 기업 정보보호 강화, 보안업체 수혜 전망됨",
-        "정보보호 투자 확대 흐름으로 전자청구 보안 수요 증가 전망함"
+        "탄소중립과 에너지, LPG 역할을 다룬 기고가 게재됨",
+        "에너지 전환·연료 정책 일반 동향 참고"
       ],
       "ai": true
     },
     {
-      "title": "자율형 AI 해킹, 가짜 공격 경로로 무력화...공격 우회율 87%",
-      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBDbWNPNnpBQTZjeXRhY1E2aGJJQjRrdkJvQU5LYkNFR0ZUVFFIVFl3NHVFeUtmSV9IeUVoUVJjRmNJNDZSc0dfdWFNc1hfWmQ5ZXlZM3ZXZ3JQMzJQbU9MOWl6SnR2TnIwRmc?oc=5",
+      "title": "[2026 대한민국 지방자치 혁신대상] 제주에너지공사, ‘환경·탄소중립 분야’ 최우수상",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5aTjVuNDdQWEZoZVZjenJPTGU1bWl0T0FIa0oyMkFTS1Vjbi1jWnB3OFhqSGIxTmN0OUZZNUlBVFY0ZnNFdkJoOTlUT0RaMl9XVlJHdWlBV2JmN3BmaHVvalRwMFFiMDJRQjdF?oc=5",
       "date": "2026-11-25",
-      "source": "지티티코리아",
+      "source": "뉴스제주",
+      "category": "local",
+      "summary": [
+        "제주에너지공사가 2026 지방자치 혁신대상 환경·탄소중립 최우수상 수상함",
+        "지자체 환경·에너지 사업 협력 기회 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "제주에너지공사, 2026 대한민국 지방자치 혁신대상 ‘환경·탄소중립 분야 최우수상’ 수상",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9oU1pWaUxlbFd5dzljZzAxZkttbWZ4T3Q5V1N2Y1ZpN3V4dllmUU1rZ1YtbVVwd3lkc1ZOMUtPZ0FxUjZfWTVSMVRINngtSFhEUjNteHI5UkpXX0xLMjRwMG9KdVRtUlRMSTVRb0JR?oc=5",
+      "date": "2026-11-25",
+      "source": "지금제주",
+      "category": "local",
+      "summary": [
+        "제주에너지공사가 2026 지방자치 혁신대상 환경·탄소중립 최우수상 수상함",
+        "지자체 탄소중립 정책 협력 동향 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "도심형 탄소중립, 건물에너지 탈탄소화로 해법 모색...노원구, 녹색전환연구소와 함께 \"도시 냉난방 탈탄소화 전략\" 국회 토론회 개최",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9ZSmJjNHNaNWM2a3NRQWZpWDk1YkJydFc3aFBQSU93T2NWZzM4OFJDMkxITVVRSFBSU3BnTlo0OE5jak5jUW5QZHZMOEpINzg0bGsxQ1BEX0dNeUk0WERDeEx6UEFEMndFcnpYTw?oc=5",
+      "date": "2026-11-25",
+      "source": "대한뉴스방송",
+      "category": "local",
+      "summary": [
+        "노원구가 건물에너지 탈탄소화 국회 토론회를 개최함",
+        "도심형 탄소중립·건물에너지 지자체 사업 동향 참고"
+      ],
+      "ai": true
+    },
+    {
+      "title": "경남도청 롤러팀 강민서, 타이완 오픈서 금·동메달",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBUWXpmcUZjOWJVS3VaVHFqdzg4Z0pTUlVRckFiS3htc3R4T1paSzIzX1ZoUnVWSTMxNk56RmxCcU5VZmEtbXBIYkplaDBvYUlGVlpydkgwYmx0Zm9iZElmb3piRV9ySTFHc3lF?oc=5",
+      "date": "2026-11-25",
+      "source": "경남미디어",
+      "category": "local",
+      "summary": [
+        "경남도청 롤러팀 강민서가 타이완 오픈서 금·동메달 획득함",
+        "에너지·빌링 관련성 낮은 일반 소식"
+      ],
+      "ai": true
+    },
+    {
+      "title": "겨울맞이 가로수 가지치기",
+      "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE45V2VENEdYMlBGdnNOMXpZWEVBMkU1M3hmNHhMdnVkdlB3WWhuMjQxWnhDeVc3ZExYbTdXNU1GSFNHRFJIWXZBLWczRnVIakVSTXpGZnphV1hyU2lBSVpVTVpB?oc=5",
+      "date": "2026-11-25",
+      "source": "충북일보",
+      "category": "local",
+      "summary": [
+        "겨울맞이 가로수 가지치기 작업이 진행됨",
+        "에너지·빌링 관련성 낮은 일반 소식"
+      ],
+      "ai": true
+    },
+    {
+      "title": "‘행정교체’ 외친 장기수 취임 5개월…조직개편 이어 연말 인사 시험대 > 뉴스",
+      "url": "https://news.google.com/rss/articles/CBMiQ0FVX3lxTE1oTk9OLTBHU2xQSlFIUVhPSmpkOTZCenIwS0ZpSTFyZGVoTFFPRWJWTGVCcWtOQnIzWElFSGJDUlJmYTQ?oc=5",
+      "date": "2026-11-25",
+      "source": "천안신문",
+      "category": "local",
+      "summary": [
+        "장기수 취임 5개월, 조직개편 후 연말 인사 시험대 직면함",
+        "지자체 조직·인사 개편기, 전자청구 사업 창구 변동 모니터링 필요함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "곡성군 조직개편 추진…\"정원박람회·정부정책 등 대응\"",
+      "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE5UaHZLM0c0Q1V5UHZvLVFkWExFWWozV2dId3RNcUZ2ZFhsYzc1MUpOQUVweWhfNE1ZUVFWQUp4QmVJUnpUN0FSR0VoeHh6YjQwMlVLWUJvbVNKZWp1akJWcjhXLXlrekd4UGpKM3daV1BlX1UxalNfUdIBeEFVX3lxTE5UaHZLM0c0Q1V5UHZvLVFkWExFWWozV2dId3RNcUZ2ZFhsYzc1MUpOQUVweWhfNE1ZUVFWQUp4QmVJUnpUN0FSR0VoeHh6YjQwMlVLWUJvbVNKZWp1akJWcjhXLXlrekd4UGpKM3daV1BlX1UxalNfUQ?oc=5",
+      "date": "2026-11-25",
+      "source": "뉴시스",
+      "category": "local",
+      "summary": [
+        "곡성군, 정원박람회·정부정책 대응 위한 조직개편 추진함",
+        "지자체 조직 변화 시 공공 빌링 담당 부서 재확인 필요함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "[진도] LPG 배관망 구축사업 10년 연속 선정",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5pd3NvT0Q5RklFSThfc1RPRnZDQ0x5bTk2SW1UaEJQQWc1M0hrNW5za0hBZG9zRDg1dnJNai0wVUVJQ1N5cF95dzBFR0xrb0ZoNkc2WUFaT2lLcUswanFkUTlJdm1xUnZZdmc?oc=5",
+      "date": "2026-11-25",
+      "source": "www.newsinjn.com",
       "category": "energy",
       "summary": [
-        "자율형 AI 해킹이 가짜 공격경로로 방어 무력화, 우회율 87% 기록함",
-        "AI 기반 공격 고도화로 빌링 시스템 방어 재점검 필요함"
+        "진도군, LPG 배관망 구축사업 10년 연속 선정함",
+        "도서지역 에너지 공급 확대, 전기요금 외 에너지 정책 동향 참고함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "계양구, LPG충전·판매 대표자 자격기준 완화",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5MZENhM1Q3NUs4SUFOOWFtVE5BdEVSSFF3YXYwSi0xSGdLdm55dFVELTVnbTM4eV9UeGR6bUJXaG9IZ1RnaUthZmVKZW5HbjBVWTB5WkJyNXZheU13VnAtT3h5YlhScVU5bmthM0l30gFuQVVfeXFMTkxkQ2EzVDc1SzhJQU45YW1UTkF0RVJIUXdhdjBKLTFIZ0t2bnl0VUQtNWdtMzh5X1R4ZHptQldob0hnVGdpS2FmZUplbkduMFVZMHlaQnI1dmF5TXdWcC1PeHliWFJxVTlua2EzSXc?oc=5",
+      "date": "2026-11-25",
+      "source": "가스신문",
+      "category": "energy",
+      "summary": [
+        "계양구, LPG충전·판매 대표자 자격기준 완화함",
+        "지자체 에너지 규제 완화, 에너지 정책 일반 동향 참고함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "진도군, ‘엘피지(LPG) 배관망 구축사업 공모’ 10년 연속 선정",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE4wZUc2YkZCZ2dKcUg5SXRJRkNYUTJlWG5sYmg0LXVxUUhrd2UwZXg3LUNrbk1BTF9sY0VSYUlXNDctaXk2aFFGZ2xXMjZCNWE4SEtlOGNNbUk2SFR6aE1QNUtLa0RiVmttRnc?oc=5",
+      "date": "2026-11-25",
+      "source": "전남인뉴스",
+      "category": "energy",
+      "summary": [
+        "진도군, LPG 배관망 구축사업 공모 10년 연속 선정함",
+        "도서·농어촌 에너지 인프라 확충 동향 참고함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "진도군, LPG 배관망 구축 공모 10년 연속 선정…2031년까지 면·섬마을 확대",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5qZ0ZLTE1nY21TcGlrZldsaVp5NUMtNExicjl0STV1emd2WUpJRFFrY3lUeDZ3THQ2b1ZQaWMwNi1fNjRtei1Ib0pCZS01MVhMZkFiUVBYSVdnNU5BdHNEV0RkbWE1NHRkamh3?oc=5",
+      "date": "2026-11-25",
+      "source": "서울뉴스통신",
+      "category": "energy",
+      "summary": [
+        "진도군, 2031년까지 면·섬마을로 LPG 배관망 확대 예정함",
+        "지역 에너지 공급망 확대, 공공사업 발주 환경 변화 참고함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "NH농협카드, E1 제휴카드 출시…LPG·수소·전기차 충전 할인",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1mLUxuYWFFd1J2d0tpVUhqVTFPNkR3Y1I4a3ZOalJ1c1hMSEl0dm92Y082TXJEWHpyVFd0dGN3eElaSGFudF9YM0RWaWhEa2pOUk00VGozMUdwUWY4UmNEbG1GQ1hmbzlBeEZ6a241Q2g?oc=5",
+      "date": "2026-11-25",
+      "source": "신아일보",
+      "category": "energy",
+      "summary": [
+        "NH농협카드, LPG·수소·전기차 충전 할인 E1 제휴카드 출시함",
+        "에너지 결제·할인 상품 확대, 요금 결제수단 다변화 동향 참고함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "김미경 도의원, “LPG 소형탱크 안전관리 강화·대기오염 경보 실효성 높여야”",
+      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTFA0djBMWVM1RnRpRlRBcmNIY0prV1N0dnJoS1dud2tPWW5DSFJmaDd6dFpwdzF1TUJFSkhjYzBzOWJxNVdtUVlUNEF2NmZzUTdRTzhQcFItTjVSeF9sWWtYeE02Njk2bzRWQTYteXY2dw?oc=5",
+      "date": "2026-11-25",
+      "source": "뉴스파이어",
+      "category": "energy",
+      "summary": [
+        "김미경 도의원, LPG 소형탱크 안전관리·대기오염 경보 강화 촉구함",
+        "에너지 안전·환경 규제 강화 동향 참고함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "진도군, LPG 배관망 구축 공모 10년 연속 선정…에너지 공급 기반 확대",
+      "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFAybmxTV091ZFp0NVdLQ2U4WFoxOGhvTmhfbzZFZ2xCVUJ3VEM1VlZROHpNRWpVZFlVTUI0c1ZsYV9nSGhsUG1IQVJGMlNPQUNheG9CVndwVHU1UzRP?oc=5",
+      "date": "2026-11-25",
+      "source": "전남인터넷신문",
+      "category": "energy",
+      "summary": [
+        "진도군, LPG 배관망 공모 10년 연속 선정으로 에너지 공급 기반 확대함",
+        "농어촌 에너지 인프라 확대 정책 동향 참고함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "LPG부터 수소·전기 충전까지 '한 장에'…NH농협카드 'E1 NH농협카드' 출시",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBoN3o5SlZYSnFwVjdWU2M4RnZMakNyakYzWHlSVWM0cS1rMVZnZm1qSHVlQ1hvb0xzSlZVam5WMDlYNlNia0E0ejJZcjVYdnhvcFcwZjZZXy1EYWJOZ3BOWkxtcjU?oc=5",
+      "date": "2026-11-25",
+      "source": "매일일보",
+      "category": "energy",
+      "summary": [
+        "NH농협카드, LPG·수소·전기 충전 통합 E1 카드 출시함",
+        "에너지 결제 통합 서비스 확산, 빌링·결제 연계 트렌드 참고함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "'제21회 LPG의 날' 기념행사 개최... 정부 정책 지원 등 촉구",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1EYkdDYXJuaTRyTlFjenhSZ2pOUk9NY08wVGw3YWdCWHU3dWFBQXRud1Y5bWZNcUl3SlN3UzhWR0ZXM25TMEg1YUlGODFRWnowa0tIVUxfU0x6eFdmaUhoZDR5bDEtbXo3Vjh3V0xR?oc=5",
+      "date": "2026-11-25",
+      "source": "투데이에너지",
+      "category": "energy",
+      "summary": [
+        "제21회 LPG의 날 기념행사 개최, 정부 정책 지원 촉구함",
+        "LPG 업계 정책 요구 동향, 에너지 산업 일반 동향 참고함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "NH농협카드·E1, LPG·수소·전기차 충전 할인 카드 출시",
+      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBwSVljdlNnRVZISlpKNDRUX2QtZnpoMURvRFZrOGRnVUh6TS05dmNZWWdWeVNJcFZ3VjhTRWJGbzdCSHlDS0tFekFQVzdnSHJtSTdlY1ozejdFVFFJSnBKaFBxSkpLSWhhSU5xbmtTaw?oc=5",
+      "date": "2026-11-25",
+      "source": "뉴스퀘스트",
+      "category": "energy",
+      "summary": [
+        "NH농협카드·E1, LPG·수소·전기차 충전 할인 카드 출시함",
+        "에너지 충전 할인 상품 경쟁 심화 동향 참고함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "NH농협카드, E1 제휴카드 출시…LPG·수소·전기차 충전 할인 통합",
+      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9sVGtsa21XbklSYUpkY1RsUGNDTkxUV0RoN2ZsNXJ4bXhQOVJXY2Z2YTJpMjZwMlVTVlppbE1yUWVkM2lHVVJmVmR1V2Zmc1pIaUVrVENORF9rVmp5dzlJUUoxR19zMkdwMzVPdEwyUQ?oc=5",
+      "date": "2026-11-25",
+      "source": "이코노미사이언스",
+      "category": "energy",
+      "summary": [
+        "NH농협카드, E1 제휴로 LPG·수소·전기차 충전 할인 통합함",
+        "에너지 결제 혜택 통합화, 결제 서비스 연계 동향 참고함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "진도군, LPG 배관망 구축 공모 10년 연속 선정···국비 178억원 확보",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1CbmFLT2FmZmFwV0xEYXd5bVhBeVlUeklfOURKRm52RnVacVZFZGZFZFN1S0pCaUhRcHZUQ1FyY2NiZmMtV0Q5X3MtaC1VTDgyNFFmZnAyMHVWMnpacUZ3R2dCblNCUjBPNl9F0gFvQVVfeXFMTnA5SHVwblJJeWVWYmdVM044MHdBMTkxai00eHNyRmNFWTRVS1pBaEwtbUVnUlBQU0s0WHpBUUl4bDduS2xjMGxwNmVkTTlhb3VnQ3gwVTUyaUNKNkQ3UW9OQ2xBZWNXa0dOWG9SaGVz?oc=5",
+      "date": "2026-11-25",
+      "source": "빛가람뉴스",
+      "category": "energy",
+      "summary": [
+        "진도군, LPG 배관망 공모 10년 연속 선정으로 국비 178억원 확보함",
+        "대규모 지자체 에너지 국비사업 추진 동향 참고함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "LPG부터 수소·전기차까지…NH농협카드, 충전비·생활비 절감 카드 선봬",
+      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9IbndWQWlJdGhfOXlwR3Bjd2p4bnp3bGhJdG41eTYtWk1ndmVHdkQzTW54ci1UN0R5Z21VOGpDUWU0Znh1NUNfd1I5NGU1MWxSa3d5WFM0WnYzYmJfaXBTTHh1b2N0bUh1ZnVtLXBNc9IBc0FVX3lxTFBqLU81SmM4Z25nUGJZVG81VEVIOXBzN3ZmRG1fVXFvdW1sbkdULXE2bUNMWTBOQWJ1RHhla1JVTmgtRVpwXy1UVXJlVmhGMjVkVW43WnVxSjM2UnRrSzBzS2IzbHE5ZWEtalJDYzN0SXNreTQ?oc=5",
+      "date": "2026-11-25",
+      "source": "데일리한국",
+      "category": "energy",
+      "summary": [
+        "NH농협카드, 충전비·생활비 절감형 E1 카드 선봄",
+        "에너지·생활요금 절감 결제상품 확대 동향 참고함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "NH농협카드, E1 충전소 최대 20% 할인 제휴카드 출시",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFBCRThMU0lTenB1SFZWNmI3QmY4V291OURPOTdMTTRYNE5feE1GOFpIcGJ0aUpNZUpYWlNRMVlPdFFSaGRMUVNXRENXRGctc0s2MHZnb1BJRmo5SzRpUWhXRVdyUG5oRl94Q2s1S1h4VkVHUQ?oc=5",
+      "date": "2026-11-25",
+      "source": "중앙이코노미뉴스",
+      "category": "energy",
+      "summary": [
+        "NH농협카드, E1 충전소 최대 20% 할인 제휴카드 출시함",
+        "에너지 결제 할인율 확대, 결제수단 혜택 경쟁 동향 참고함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전, 정보유출 고객에 무료 보험 제공…최대 1천만원 보상",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBqM0ZzQUdGY2d2NXpHeFU1UmNGV0RXTzV2bGJYR2JQU193WE44ZUYtXzlSTEFkSjEtcjJjOXI2RXdXTmRnOHc5eTdnbXVibWczTTdkTlp1VFgtWTVUeWFlR1I3b182VTg?oc=5",
+      "date": "2026-11-25",
+      "source": "연합뉴스TV",
+      "category": "energy",
+      "summary": [
+        "한전, 정보유출 고객에 최대 1천만원 무료 보상보험 제공함",
+        "한전 고객정보 유출 대응, 전자청구 개인정보 보안 점검 필요함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전, 정보유출 2차 피해 방지…최대 1천만원 보상보험 제공",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1qaUw4aXZKVTlfcmRfQllIdWtsUlZBZ2pxd1FxN3pxZ2dUQk0ybzRpZG13bHp2Q2JmaUFsOTF6Qm55NWx1aldySzU0RFlsUkR1SGJacElQbEtrYXRoZ3BuY1BOVkpDMzBqa1RsN0ZUNEs?oc=5",
+      "date": "2026-11-25",
+      "source": "연합인포맥스",
+      "category": "energy",
+      "summary": [
+        "한전, 2차 피해 방지 위해 최대 1천만원 보상보험 제공함",
+        "고객정보 유출 2차 피해 확산, 빌링 데이터 보안 강화 필요함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전, 고객정보 유출 2차 피해 차단…최대 1천만원 보상",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5HdlNGTVRJOWx2NVNDdzdlSTZzdnJEb0ZOZGVxcVpjUHItMkJOektVX3NFeGp5VHZPMmxYLURmbkFTemFVd1FUbU1TVWRtWkhYYTVsbTBKcXVLTGhlbkN6WnMtcEk?oc=5",
+      "date": "2026-11-25",
+      "source": "에너지안전신문",
+      "category": "energy",
+      "summary": [
+        "한전, 고객정보 유출 2차 피해 차단 위해 최대 1천만원 보상함",
+        "전자청구 연계 고객정보 보호 체계 재점검 필요함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전, 개인정보 유출 추가 피해 예방 총력…금융권과 공동 대응",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE8tMnZ3TVQwYkFuUjN2bG5JQjZwcXBnT1phZ2h3eTBSZlcxOWoybjFLTUNoaGJQeV8wekV1NmZlX0JSMGtSdmdrSXhkYlJCODlkSjhvRXFlNk83bFFtS3pnMFBFWEs?oc=5",
+      "date": "2026-11-25",
+      "source": "매일일보",
+      "category": "energy",
+      "summary": [
+        "한전, 금융권과 공동으로 개인정보 유출 추가 피해 예방함",
+        "금융권 공동 대응 확산, 결제·빌링 보안 협력 동향 참고함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전, 고객정보 유출 방지 위해 ‘선제적 보호대책’ 본격 가동",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBjYTRiTUJXZFlSUDBJSGJmR0o0R3F3MjVlM3lvSUR4QzhERmp1Mzlual8xdUVWTFFROUtybEYwMjk5WGt1UU5nRjc1M0V5T2N3SmF2ay1GNl83NVkyMEdaSHQ5dnBfWWxKZFVqMdIBcEFVX3lxTE9tem41a1NiMFMtRHF4UmN4c0ZmT2l2OWpjUUVjVU9CYmVrZjBfdFdvdi1xVkRJWVRCNkNUd0lIbTNRR0RWT0hPZmlFZUR2aUxJQjVWNTZzcGhHaXY4OXFfYTBLdFJVWk8zN19OOU5YSnU?oc=5",
+      "date": "2026-11-25",
+      "source": "에너지플랫폼뉴스",
+      "category": "energy",
+      "summary": [
+        "한전, 고객정보 유출 방지 위한 선제적 보호대책 본격 가동함",
+        "개인정보 보호대책 강화, 전자청구 보안 프로세스 점검 필요함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전, 고객정보 유출 통지 고객에 명의도용 방지 이용권 무상 제공",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBOaEpBM3lGazU5NlFjQmJ0VFp5ODFWVm9pWWZ3SGtncGpoNHhwY2JEZHlDVzJVT0FTam9uc3J5dU1OaFUyeDJxdER2N2E3UTNVQnJ0OHg1amFINVdpUFZiWmNSMjAzU1BQaHJsSdIBcEFVX3lxTFA4cFFhSlBKZlNuNGR0eXpaMUJkNkFMUEhteFhkYWpMZFdTbmh4amdHSWh0bHJTcGhOaXJaSk5NU05XRnlqdVhMbG9QZV81ZGpCTUlzbnBvX0hueXRETU1hSjZHUUlMUG4xNWk4alQzVWE?oc=5",
+      "date": "2026-11-25",
+      "source": "전기신문",
+      "category": "energy",
+      "summary": [
+        "한전, 유출 통지 고객에 명의도용 방지 이용권 무상 제공함",
+        "명의도용 방지 서비스 확대, 고객 데이터 관리 강화 필요함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전, 개인정보 유출 고객에 최대 1000만원 피해보상 보험 제공",
+      "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5wcldhdzE4S0xLVEJjbHI0S2FNNEZYc0xHSVJyTWhKVVBRUmZrQTNiTnNpVXpfdU1uR1JLazVaSWp1M2kyZXhtcXZEUWJtMS13MEE?oc=5",
+      "date": "2026-11-25",
+      "source": "매일경제 마켓",
+      "category": "energy",
+      "summary": [
+        "한전, 개인정보 유출 고객에 최대 1000만원 피해보상 보험 제공함",
+        "대규모 유출 사고 보상 대응, 빌링 개인정보 보안 중요성 부각함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전, 고객정보 유출 2차피해 막는다..'3단계 선제적 보호대책' 가동",
+      "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5LbU5LVzJqelpsWDBKbHVVNzN3WVdjUEh5YVp4MXdpX2Vqel9zcVFucFlIam1WX3hncHV1eGNUcTlYY3g1WUswMHIzS3pNb3JLam5DbWZXWUhCYlNV?oc=5",
+      "date": "2026-11-25",
+      "source": "뉴스핌",
+      "category": "energy",
+      "summary": [
+        "한전, 정보유출 2차피해 막는 3단계 선제적 보호대책 가동함",
+        "단계별 개인정보 보호체계 구축, 전자청구 보안 참고 필요함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전, 정보유출 고객에 최대 1천만원 금융사기 보상보험 제공",
+      "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5wZzdERm9nZ0NFYUNpNzZtcW9JZ09YVTRnTFE1MDhTY0oybEpiX1k5MFQtYTVvTUwyS0tkQXB0S1hpYmY3X1VTWmJrZF80ZWQ5cVE?oc=5",
+      "date": "2026-11-25",
+      "source": "매일경제 마켓",
+      "category": "energy",
+      "summary": [
+        "한전, 정보유출 고객에 최대 1천만원 금융사기 보상보험 제공함",
+        "금융사기 피해 보상 확대, 고객정보 보안 대응 강화 필요함"
       ],
       "ai": true
     },
@@ -701,18 +1505,6 @@
       "ai": true
     },
     {
-      "title": "[단독] 삼성증권 고객 해킹 이어 전자투표 시스템 장애 … HMM·엔비티 등 주주 의결권 행사 '날벼락'",
-      "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1KREFlME9Tekg1aUpDaGYtYy1BbS1Qanc0MVcwVGVKTXROalQ4akRBS1A4WWN0a1ZESWctdTBjTmxwbVdCZnh1eUFhcGNVSXZTWHA2S0llMlZSVDFrR3B1ZEg4bzBrS2hFRFVoSXV5NHNVVng3WHlEYUUwc9IBgAFBVV95cUxOWWZ3Tzh3aTEyamRHYjhhTWRfaWJiSkVMejlEdHM3YlljaHFpVngtaERtTGxsOHNnZ1pOTHFhQU5SYTR2c2VlLU1CdW9vTEFrMmdYc2xJWE9qMk40OGd6MkZ0YnliTGVGREtycWRUUW1xWkZxenpRUTBZaHpXdDY1dQ?oc=5",
-      "date": "2026-11-24",
-      "source": "뉴데일리 경제",
-      "category": "energy",
-      "summary": [
-        "삼성증권 고객 해킹 이어 전자투표 시스템 장애로 의결권 행사 차질 발생함",
-        "전자시스템 보안·안정성 중요성 부각, 전자청구 안정운영 참고사항임"
-      ],
-      "ai": true
-    },
-    {
       "title": "류재철 LG전자 사장, 올해 대한전자공학대상 수상",
       "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE15ajd5SGEwVlVkdV9PaXRTdGVkZlJybHMwR2MtdGhBZVNQcS10OXRFc3Y2RUFLS1lmTGEwejdYMFF6ZjRlM2Z4X0I5NkFZQUpxVVowTElNc21uOHdHOEZQQWNR?oc=5",
       "date": "2026-11-24",
@@ -893,246 +1685,6 @@
       "ai": true
     },
     {
-      "title": "AI發 사이버 공격 진화… 개인정보 유출 사태 ‘이제 시작’",
-      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1fanFtbDk5U1pmVmI0dS14OEwzb2MxWFRvaTlCOWM5bDc5ZnpVOVdFanNURHU5TDVPanZmdVVYZUU3a21ZaFpMT1VHdXZ4QzJMa2ltQ2RtY0Vic0ZnNm9FZGQtNEY?oc=5",
-      "date": "2026-11-24",
-      "source": "매일일보",
-      "category": "energy",
-      "summary": [
-        "AI 기반 사이버 공격 진화로 개인정보 유출 사태 본격화 우려 제기됨",
-        "청구서 내 고객정보 보호 강화 및 보안 대응체계 점검 필요"
-      ],
-      "ai": true
-    },
-    {
-      "title": "AI 에이전트의 '기억'까지 노린다…진화하는 사이버 공격",
-      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5VVkhHMng1UFZZN1AzZVdxZWJzQTlwUEItQjNFS0hiaHBOejNCOVBhQklUOEE4Q0ttOWF1Y0x6QVJ3am5LQUwxcmxtVXpiM1Uyc1F2ZGhSd2tvalXSAWBBVV95cUxOTjVibXd4U3hWWVptZ2JJU1VJMkNwZWduSzR1NDNOMW13VXo1NExJd1JVVW1UWmpSRkNaLVZoRVB0ZlJldTdQeVpCU1JDMmNvTk1PS2NUQm5yeW1hV3ZFM2k?oc=5",
-      "date": "2026-11-24",
-      "source": "연합뉴스",
-      "category": "energy",
-      "summary": [
-        "AI 에이전트의 '기억'까지 노리는 진화한 사이버 공격 등장함",
-        "AI 연계 서비스 보안 리스크 증가, 전자청구 시스템 방어 강화 필요"
-      ],
-      "ai": true
-    },
-    {
-      "title": "웰컴페이먼츠·KIS정보통신서도 개인정보 유출",
-      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE03eDRVT2VBSVpWZ3UzTmotY2tyWHFfLXdwM2JfSmQzZ2xoR2p1QXdnMEhkSnZpOHdXSUFXWmhFby1GZ21fVkNENGZndXVxZXRla05scVRubUJmc0FBZDduYW5TMGNmTlNqMW5j?oc=5",
-      "date": "2026-11-24",
-      "source": "보안뉴스",
-      "category": "energy",
-      "summary": [
-        "웰컴페이먼츠·KIS정보통신에서도 개인정보 유출 발생함",
-        "결제·정보통신 협력사 보안 점검 및 연계 데이터 관리 강화 필요"
-      ],
-      "ai": true
-    },
-    {
-      "title": "\"공격코드 무제한 생성\"…신종 AI 해킹 장터 `고질라AI` 주의보",
-      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9OaFZNX1RLX2hiY2Q1TERWRVlzWUdfTkNTZmtpeU5OdjdHc19BYXF2Z1MxZ1VBUjVJTWlMbzNrY01QMWw3OFlRYS1fbGVQYWFVU3hmTXlvYkZDV2o3NHJoY014UVI?oc=5",
-      "date": "2026-11-24",
-      "source": "디지털데일리",
-      "category": "energy",
-      "summary": [
-        "공격코드 무제한 생성 신종 AI 해킹 장터 '고질라AI' 주의보 발령됨",
-        "자동화 공격 확산 대비, 전자청구 인프라 보안 선제 강화 필요"
-      ],
-      "ai": true
-    },
-    {
-      "title": "AI 프로그램 위장 해킹 기승… 한국어 가짜 사이트로 국내 이용자 노려",
-      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBkNXFtS1JCU3VZYVg2Q1dHQW9LLUZzQjVVT2E1bUY1a2l3NkdPVlBVX29FV2Z3Umc2WDBldlFxMTBaVTlFVlZXNWtZNEo0amg1NjFudEQtcw?oc=5",
-      "date": "2026-11-24",
-      "source": "부산경남대표방송 KNN 뉴스",
-      "category": "energy",
-      "summary": [
-        "AI 프로그램 위장 해킹, 한국어 가짜 사이트로 국내 이용자 공략함",
-        "고객 대상 피싱·사칭 청구 사이트 주의 안내 및 모니터링 강화 필요"
-      ],
-      "ai": true
-    },
-    {
-      "title": "해킹 발생한 디지털자산업자에 무과실 손해배상책임·징벌적 과징금 물린다",
-      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTFAxTUtlZG0wU3ZPaGNOLXVnc0kyTzN0TjNYLTVnLVdUdzNtdzNzS0pxZ2YzdElWb3BXcTZZZjV5TUFlZEFiZHZaNUUxNklJSmFVbFY3VWtaTHpzSlBHV0VkY0pualp1bDF4b0tlUmI5R0lKVEIw0gF0QVVfeXFMUDUxMEloQWNjaU55ZFBUcmVtRE9lSHpNWTJfUWxwLXRKTVJfelEtZUpOLTN1ODRRczBVcmZzang2aFdzODBTek9wZXhhTncxZFdRcGgxWWJQUWk3WVptYnlOR2pkaU1fTjJnY2lYZEJQaXEtdFU?oc=5",
-      "date": "2026-11-24",
-      "source": "MBC 뉴스",
-      "category": "energy",
-      "summary": [
-        "해킹 발생 디지털자산업자에 무과실 손배책임·징벌적 과징금 부과 추진됨",
-        "보안사고 책임 강화 추세, 개인정보 취급 사업자 리스크 관리 중요성 확대"
-      ],
-      "ai": true
-    },
-    {
-      "title": "가상자산거래소 해킹땐 최대 1000억대 과징금…무과실 배상도",
-      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1nMEVDeDh5TTY2WFRSaHM0T0VMNE9Ed0pueU02ZUVYMnp1aE00cldMUFZ3enNvc3NXWjhMQnN4LUlmRFJFRHFBaU5lcDJSMVJaa2pyWEFSd1dJQmRIQ1NWcDc4dlNyNGNvRTM4?oc=5",
-      "date": "2026-11-24",
-      "source": "비즈워치",
-      "category": "energy",
-      "summary": [
-        "가상자산거래소 해킹 시 최대 1000억대 과징금·무과실 배상 도입 추진됨",
-        "데이터 보유 사업자 책임 강화 흐름, 빌링 보안 투자 당위성 확대 전망"
-      ],
-      "ai": true
-    },
-    {
-      "title": "가상자산 해킹 피해, 사업자 과실 없어도 배상…금융사 수준 규제 도입",
-      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1ndGpLeHl0bk1fZXdiYmQ4b1ZqamE0OGdSOEpnVWtwYTNIWDE3Vi1WSFRZQmhGUFRTRTdPdTg3NUpDZl9kVkp3QXJ1RmVjVmxFUDh4dGlR?oc=5",
-      "date": "2026-11-24",
-      "source": "중앙일보",
-      "category": "energy",
-      "summary": [
-        "가상자산 해킹 피해, 사업자 무과실도 배상하는 금융사 수준 규제 도입됨",
-        "개인정보·결제 취급 사업자 보안규제 강화 추세 참고 필요"
-      ],
-      "ai": true
-    },
-    {
-      "title": "국회 정무위, 해킹 금융사 '매출 3% 과징금' 법안 결론 못 내…내달 재논의",
-      "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9FYzNSWHE0bXpjREJIR1hQcnU5bEloTWE0ZFFGOW56am8xUzdsblF5SkZjaUFfM3JBZFMtVGoxRFZ2Z0lXMnd6RzR6WEdKR1pIajVDSHk3a25vUVpk?oc=5",
-      "date": "2026-11-24",
-      "source": "뉴스핌",
-      "category": "energy",
-      "summary": [
-        "국회 정무위, 해킹 금융사 '매출 3% 과징금' 법안 결론 못 내 내달 재논의함",
-        "보안 과징금 입법 동향, 청구 사업자 규제 환경 변화 요인으로 주시"
-      ],
-      "ai": true
-    },
-    {
-      "title": "금융권 보안 여전히 '빨간불'...예별손보도 주민등록번호 포함 개인정보 유출",
-      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9OS29DbGowU3lpZ2NOYVdnQ1FFQWhKZ2F5bWdybXd6dkc1Vkl3RTVuSG9JQzBvZFpFQmhLT1BtSUxKN0FBZlVqTEpYQWhJV1IzX2tqeDRWS1RRLV9pTHAzOU0wNlpJa2Fh?oc=5",
-      "date": "2026-11-24",
-      "source": "녹색경제신문",
-      "category": "energy",
-      "summary": [
-        "금융권 보안 미흡 지속, 예별손보도 주민번호 포함 개인정보 유출됨",
-        "민감정보 유출 빈발, 전자청구 내 식별정보 암호화·최소수집 점검 필요"
-      ],
-      "ai": true
-    },
-    {
-      "title": "미 법무부, 북 바이낸스 해킹 자금 1조 5천억 원 몰수 소송",
-      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1Ca2ZmenpCWV9MbGVIVm55dVFLN0NhV2p0M0t3c2NWMXdJMVJRZ0xYOVdrUHZSS1lyZExUckFpQndMQnRwQUI5ZmZhdnpPcjc1SWdZbFpKZ19uNkp3UVROdEF6ZUdZWGs?oc=5",
-      "date": "2026-11-24",
-      "source": "연합뉴스TV",
-      "category": "energy",
-      "summary": [
-        "미 법무부, 북한 바이낸스 해킹 자금 1조5천억원 몰수 소송 제기함",
-        "국가배후 해킹 위협 지속, 금융·결제 인프라 보안 경각심 유지 필요"
-      ],
-      "ai": true
-    },
-    {
-      "title": "3개 PG업체 해킹에 '결제 취소사유'까지 털렸다",
-      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1sNXhOZjljcDNFRjh3aC1mZGotQ1E0VzJyRkFmaGo4V2JaOVBVbV90MkMtVUFWLVBFcjE5cXIwTlB5YVdveFlpZWJMSUF3bDZlQlB0Rlh3?oc=5",
-      "date": "2026-11-24",
-      "source": "지디넷코리아",
-      "category": "energy",
-      "summary": [
-        "3개 PG업체 해킹으로 결제 취소사유 정보까지 유출됨",
-        "결제대행 연계 데이터 보안 점검, 요금 수납 협력사 리스크 관리 필요"
-      ],
-      "ai": true
-    },
-    {
-      "title": "韓 노린 랜섬웨어 조직 1년새 2배 이상↑…\"매력적인 표적\"",
-      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9oOFVTTWFyblhoMDZmOTlqMEhRYW4zQUUzV0pNejd5NDB4REwwOTFBTFlFbEFWYVhjU2RGRUF1cDd4Uy1sWDNIM1NBVjNyMHpsNkFOLTNGX0FQQmPSAWBBVV95cUxQQVJTZlpJUWg4aUpoVTZqLWZMbzc2UEFYSWdFVklNUkhKeW1SR0l3QlJrYUE4WklORDJJSkptTmV2NFRVUTZxX2F0S2QxUjdfbkhJVlNIYm1PRVllUXB4eWQ?oc=5",
-      "date": "2026-11-24",
-      "source": "연합뉴스",
-      "category": "energy",
-      "summary": [
-        "한국 노린 랜섬웨어 조직 1년새 2배 이상 증가, 매력적 표적으로 지목됨",
-        "국내 기업 랜섬웨어 위협 확대, 청구 시스템 백업·대응체계 강화 필요"
-      ],
-      "ai": true
-    },
-    {
-      "title": "‘rERP’ 해킹, 파장은?... 약한 고리 대학 노린 ‘산학연’ 전체 위기",
-      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9qV2hOZGVCaEZZRGlaRU03SGtYOVhCN2VFYVdyMFBTTVg1ZWFpTG10T2I5bFRQalFYRnY0bGR4YkZkclBWd1VQVGJyQ3N0RkVaTEhka1hIWDFhRXBicVpneFk2ZFpadHRVUXZv?oc=5",
-      "date": "2026-11-24",
-      "source": "보안뉴스",
-      "category": "energy",
-      "summary": [
-        "'rERP' 해킹, 약한 고리 대학 노려 산학연 전체 위기로 확산 우려됨",
-        "협력 생태계 약한 고리 공격 주의, 외부 연계 시스템 보안 점검 필요"
-      ],
-      "ai": true
-    },
-    {
-      "title": "시세 조종에 해킹 물량 유입… 빗썸, 코인 관리 부실 논란",
-      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQTmtFX1diZHRVamEweTVXazRFdzFubmtHeEcxNmNMZWNqMWw5aC1lWGpRT3VJMkxHdm5mR0pqY0tXakJfQTFlYjYtYnYxaTQtdnNubzAwUnFRcWhVWGcwYS1FbjZlX1E4eEVnUHJkaDZZMTdCMmRfbkczenY2NjZPRdIBlAFBVV95cUxNZ3VyTWhhd2d2UU84MF9zQTJGa1dkcVJnZmV2cHMzRTR3VUN3d3RydlcySm1CNThJSnNwcC1vZkdZMWRfUWFCRnNhRDhDNElYYl9WMTlWdXk1WHJZZUtIVnc2RnBJbHhBUVFQYlpuY3ZPUTRRSmZWUXRzMUVIN241RGJ0WE8zRTFSc1ViYmNqVERBQWls?oc=5",
-      "date": "2026-11-24",
-      "source": "Chosunbiz",
-      "category": "energy",
-      "summary": [
-        "빗썸, 시세 조종·해킹 물량 유입으로 코인 관리 부실 논란 발생함",
-        "가상자산 관리 이슈, 보안·내부통제 일반 동향으로 참고함"
-      ],
-      "ai": true
-    },
-    {
-      "title": "디지털자산업자, 해킹 피해 과실 없어도 배상…금융사 수준 규제",
-      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBxMk5rQVZqY1lKbVcwVVItak5MWGxKRWRONlR4Wm9uRkdnbTZ3eFlyZ3RzTjRXemhpR2NvYXpoeWRRYmJPV2U4amFaOUhrTjUzc0JvQnZDVGdGLWPSAWBBVV95cUxNX3dvaUJ2eDk2clNONkw4TzgzY0RPUXNkcmxTQmRVblpkS2pJQTI5eG1NcUJydTZ3OEZReWRDY0F5VDRfSmYtUjNkYXdEcWhfblZBd0RUeWQ4X1BSLTRSdlE?oc=5",
-      "date": "2026-11-24",
-      "source": "연합뉴스",
-      "category": "energy",
-      "summary": [
-        "디지털자산업자, 해킹 무과실도 배상하는 금융사 수준 규제 도입됨",
-        "개인정보 취급 사업자 책임 강화 흐름, 빌링 보안 리스크 관리 중요성 확대"
-      ],
-      "ai": true
-    },
-    {
-      "title": "AI 해킹 공포 확산에 사이버 보안업계 대형 M&A",
-      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1QS24xX2dfRkdjVjQxS051N2Q5Ym1WMm5pYlFBODZDUnlsSk9FWEtTWU1uTTlULUlnUUpUMnJsaDFQZ01vZTdKdEFNQ2U0MDM0c2xwMHJLdnhqU0nSAWBBVV95cUxNU2ljZEJxRUc4WWVBYU5NN0ZWZXJMM19FSldaN3h5bEJSU1BlWERyenNBVC03WlpiLWtmVk1HWmFaVHlNUlctNmV0NUF5TEgtaDFWQTh4c1R6SXBCczc2X3M?oc=5",
-      "date": "2026-11-24",
-      "source": "연합뉴스",
-      "category": "energy",
-      "summary": [
-        "AI 해킹 공포 확산으로 사이버 보안업계 대형 M&A 활발화함",
-        "보안시장 성장세, 전자청구 보안 솔루션 투자 참고사항으로 파악함"
-      ],
-      "ai": true
-    },
-    {
-      "title": "간편결제 개인정보 유출 2배 쑥…디지털금융 이용률 하락",
-      "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE8tNE1PdHpRYkxkR2ZVdjRNSWp1dGQ0elBqcGFvRGhMektXMDJrNzBKaGEtMlRoZ2ZXNFRPTjl0Wmdlb28xdmw5MnloLXRGTW1VSkE?oc=5",
-      "date": "2026-11-24",
-      "source": "매일경제 마켓",
-      "category": "energy",
-      "summary": [
-        "간편결제 개인정보 유출 2배 급증, 디지털금융 이용률 하락함",
-        "결제 신뢰 하락 추세, 전자청구 이용자 신뢰 유지 위한 보안 강조 필요"
-      ],
-      "ai": true
-    },
-    {
-      "title": "코인원 피해 집계도, 고팍스 거래 재개도 '아직'…해킹 수습 길어지는 거래소",
-      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE43STlXbzVqTDB6S3JZOXZtWFdkZzRQNXF3czJhbS1JRm42MjllZGMyT0FSQnZpVzVhZFdoelJES0J0bHRLSXVDQTJiMlFub050QzFLWExyRF93RkNkQ0h6aUhTTUZpNEtWa3RGOG1RNi11X0hs?oc=5",
-      "date": "2026-11-24",
-      "source": "대한경제",
-      "category": "energy",
-      "summary": [
-        "코인원 피해 집계·고팍스 거래 재개 지연 등 거래소 해킹 수습 장기화됨",
-        "보안사고 수습 장기화 리스크, 비상대응 절차 점검 필요"
-      ],
-      "ai": true
-    },
-    {
-      "title": "“AI 프로그램 깔았다가 백신 무력화”…韓 겨냥한 신종 해킹 포착",
-      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQWWgtcHVpSVU1M0ZaM0toMUktY2kxWllRVDBiTnkwaVpJN2szS3ZCQ2JkTGVXY216NzVJblllRE1VVjhyRkhIa1FLQWJoaWlWS1hkSEZzRU9yM2kzN3R3Y19lSXYyOUZkZEhmLVdwTUtRandOaHRReVkwRmhtWmhCenJ30gGWAUFVX3lxTE1uYW4yb2xTbFVrdGZJcThnY2t6eUxnVW1JY1dhOGRRcGpxX0NDR0FUUGxQbjg3TkZMUXIwM0pPdlZyY2ExTWxHdm9QTTFaVEJhQUQ4eHlwUXppS1dSUkxLNElVb3FEVnNmeC1hVk1hNmZXRmd1V3NXdGF1T1dBem1xU1Y0YVo4Z2tIYmQ4QlVYLWUtZWx5QQ?oc=5",
-      "date": "2026-11-24",
-      "source": "Chosunbiz",
-      "category": "energy",
-      "summary": [
-        "AI 프로그램 설치 유도로 백신 무력화하는 한국 겨냥 신종 해킹 포착됨",
-        "악성 소프트웨어 위협 확산, 사내 단말·전자청구 시스템 방어 강화 필요"
-      ],
-      "ai": true
-    },
-    {
       "title": "한전 개인정보 유출 파문⋯최대 152만건 노출 우려",
       "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1UbUt5cXdkZFlJRGZPdElnT1hHZi03UkVPYmZ3RzJnMThmM3F4OVZhZkZPRVFWQU1yVm1tWE5Zbzg0ek02dnNRSnBWc3lOdXljT1VsSkw0YzNNQjBPMml3?oc=5",
       "date": "2026-11-24",
@@ -1141,18 +1693,6 @@
       "summary": [
         "한전 개인정보 유출 파문, 최대 152만건 노출 우려 제기됨",
         "모기업 연계 사업자로서 개인정보 보호체계 긴급 점검·대응 필요"
-      ],
-      "ai": true
-    },
-    {
-      "title": "[베일 벗은 디지털자산기본법] 안전성 의무 위반 해킹 징벌적 과징금 도입…최대 매출액 10% 부과",
-      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5tUDJBUlVXSGwtRzVpanpUR3Bnai13d2l0T01HRkxvRDRIZmkwMmdDZzNyX1hla3NYd1RwNFVtbjNZdTdnYkhsSm5wdlJIVzVCSUJ4eUU4WE90XzA3V1plNkhKNldhdmwtRHlfSnJnRm8xRmZt?oc=5",
-      "date": "2026-11-24",
-      "source": "대한경제",
-      "category": "energy",
-      "summary": [
-        "디지털자산기본법, 안전성 의무 위반 해킹에 징벌적 과징금 도입함",
-        "매출액 10% 과징금 신설로 빌링·개인정보 보안의무 강화 전망"
       ],
       "ai": true
     },
@@ -1169,66 +1709,6 @@
       "ai": true
     },
     {
-      "title": "[해커 단독 인터뷰-2] “학생정보 팔았다”…KrrK 팀원, 추가 해킹 주장 대학 사이트 공개",
-      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9IcFV6RXlYb1JiMHNBNHQyeVJURkpBTzNjU1kxSVlNa3FRUGY4YWNwSjg2NGFWcjVfU3dDQTc2VFFrZEpDSjA0dkc4X0lvYWNuVU15dlM0SVZaQm02R1ZocjlGN213Y1kxZ0FpXw?oc=5",
-      "date": "2026-11-24",
-      "source": "데일리시큐",
-      "category": "energy",
-      "summary": [
-        "KrrK 팀원, 학생정보 판매 주장하며 추가 해킹 대학 사이트 공개함",
-        "공공·기관 개인정보 유출 위험 고조, 데이터 관리 강화 필요함"
-      ],
-      "ai": true
-    },
-    {
-      "title": "국내 PG사 잇단 해킹 사고…웰컴페이먼츠와 NHN KCP·KIS정보통신 등 개인정보 유출",
-      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBIQW53NnE5QngtQkdTdlhfZ29tSThiMnFLN3NUVUVLMjc5Z1ZwV3NyNzBsZDM0ZlVyLWJLa2NYWHFGQmNEdkJsNFc2Vk9oLTJnR2UwVlZaRWpwUDMxTTVNUjJ0ZVJ5UkxucG5sNQ?oc=5",
-      "date": "2026-11-24",
-      "source": "데일리시큐",
-      "category": "energy",
-      "summary": [
-        "웰컴페이먼츠·NHN KCP·KIS정보통신 등 국내 PG사 잇단 해킹 발생함",
-        "결제·빌링 연계사 보안사고 확산, 전자청구 보안점검 중요성 부각"
-      ],
-      "ai": true
-    },
-    {
-      "title": "유조선·LNG선 최대 50척 사이버공격 의혹…미국, 이란 배후 조사",
-      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBkc1dvd3JZNDc1ZHRtcjdibWdwb2F5eW1UZ0UyVXZrcXZGNnVOUDdRdU1uUjJmcVdlaTh6V25rb0ItcVp1djdOcmtycmpkMXBvNDRUVlpRTkNrd3BsSmpHNi11Z3JlQm12YWRJ?oc=5",
-      "date": "2026-11-24",
-      "source": "해사신문",
-      "category": "energy",
-      "summary": [
-        "유조선·LNG선 최대 50척 사이버공격 의혹에 미국이 이란 배후 조사함",
-        "에너지 운송 분야 사이버 리스크 증대, 업계 대응 주목됨"
-      ],
-      "ai": true
-    },
-    {
-      "title": "금융당국, 해킹 의심 가상자산 12시간 입출금 차단 허용",
-      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1vWFNDTEdXYnl5amhuVi1IQVVWWWVZVUpVRGVBbXZyTzZPcUNNUGhUNmpGT21TcDRDWnhia2REMldSN2NkMWVVUjVxTDkyNG5DSTBwVGNGRGE0MGgxMGVBZHpBclFkaGt4Y2tka2VIZ3VQUQ?oc=5",
-      "date": "2026-11-24",
-      "source": "KB Think",
-      "category": "energy",
-      "summary": [
-        "금융당국, 해킹 의심 가상자산 12시간 입출금 차단 허용함",
-        "신속 대응 규제 도입, 금융·결제 보안 정책 강화 흐름 확인함"
-      ],
-      "ai": true
-    },
-    {
-      "title": "킹카운티법원 온라인 시스템 먹통 장기화…사이버 공격 우려 > 시애틀 뉴스/핫이슈",
-      "url": "https://news.google.com/rss/articles/CBMiSkFVX3lxTE1teVdhUGlCNmJ4QkxPQmZ3SHpJOTA5MGlTZmMwdmViZnZ0S1RDVFZlSkJ2T3paRnRyVGJZdmplRmVJZjg4cGZucVNR?oc=5",
-      "date": "2026-11-24",
-      "source": "SeattleN",
-      "category": "energy",
-      "summary": [
-        "킹카운티법원 온라인 시스템 장기 먹통에 사이버 공격 우려 제기됨",
-        "공공 온라인 시스템 안정성 중요, 지자체 사업 인프라 교훈됨"
-      ],
-      "ai": true
-    },
-    {
       "title": "한전·삼성증권 개인정보 유출에 스미싱 비상! 피싱 걱정 없는 공식 채널 '고향사랑기부제 위기브' 연말정산 가이드",
       "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1QRnp6dEhYVEZCRk9jaXNfbEc2MXBBWHJFNFN5OTNScVZUM3hVWDNrSWZzNlB1MV84OEU3REdjcDM3N1pCYTAxTGljOXZfVUxvbDNaM2hB?oc=5",
       "date": "2026-11-24",
@@ -1237,18 +1717,6 @@
       "summary": [
         "한전·삼성증권 개인정보 유출에 스미싱·피싱 주의 당부됨",
         "공식 채널 신뢰 확보 중요, 전자청구 공식성 강조 필요함"
-      ],
-      "ai": true
-    },
-    {
-      "title": "해킹·개인정보 유출 걱정 줄인다…혁신기술로 공공 보안 강화",
-      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1XdnFrZ0drcndWeDZGVVVLa0VOX053OW93d2d5clBFcmdudlNCa0RSeVBMRDVuaFQtZm91MlZqTnFsVnE4OG9qaUN4TExSR1lXRHlvcHZ3TWZWYlg0UE1fbQ?oc=5",
-      "date": "2026-11-24",
-      "source": "한국방송뉴스",
-      "category": "energy",
-      "summary": [
-        "혁신기술 활용해 공공 보안 강화하며 해킹·정보유출 우려 완화 추진함",
-        "공공 보안 투자 확대, 지자체 사업 보안 신뢰 제고 기회됨"
       ],
       "ai": true
     },
@@ -1265,42 +1733,6 @@
       "ai": true
     },
     {
-      "title": "롯데카드, 해킹 관련 공시의무 위반…금융위 과징금 10억2000만원",
-      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1oenh4a003cVNzUjJ1Q3V6ZU5WWnVJMFpWbjBhQTV0cVZ4OXpZWkZLQ2NId2d3NjZieVlLc05pUjBmUGdkbU05Q01UdFlMMXZrTjZqeDl0OUlkd2drQW9yNnRPOGpOYU13VU5QazhMX0FOQQ?oc=5",
-      "date": "2026-11-24",
-      "source": "오피니언뉴스",
-      "category": "energy",
-      "summary": [
-        "롯데카드, 해킹 공시의무 위반으로 금융위 과징금 10억2000만원 부과됨",
-        "보안사고 공시·대응 책임 강화, 빌링사 컴플라이언스 유의함"
-      ],
-      "ai": true
-    },
-    {
-      "title": "韓 노린 랜섬웨어 조직 1년새 2배 이상↑…매력적인 표적",
-      "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE9DLXFZQjlxdDdsZnBwS1dTb2RBby1zSUx4ZzBZVHREbFZxT05vQmJkNzktdG1BNVdPNk9DTzE0bmVZSVBmcjRRM3U4OTJXMVFjcDVJ0gFYQVVfeXFMT01UQ3lDelRUQS1Qc0NLMDJPaGJhMkl6Q19SRDB4V0tacGNCRmpGeTZ5ekVoOWZCaTJaSlhVYW8zUTFXaUhYNm9IeGNRV21JSnJJaE1Hc3BQRQ?oc=5",
-      "date": "2026-11-24",
-      "source": "SBS Biz",
-      "category": "energy",
-      "summary": [
-        "한국 노린 랜섬웨어 조직 1년새 2배 이상 증가, 매력적 표적 지목됨",
-        "국내 기업 랜섬웨어 위협 급증, 전자청구 보안 대비 강화 필요함"
-      ],
-      "ai": true
-    },
-    {
-      "title": "증권가 덮친 해킹 공포… 보안 예산 늘렸는데 왜?",
-      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE56OWZja3IzTkZMeF9mcF9TWXFBYmNSUU1YVWVaX3ljbjNSeXhxektXLTRWM1liYUF2UlphS0FZa3l5SEdDLU9xX0hsYmRZU0ZlU2F4RmUwa3V4U29EdFd5eVJZMFlaVmV2RFdIclhlTQ?oc=5",
-      "date": "2026-11-24",
-      "source": "이코리아",
-      "category": "energy",
-      "summary": [
-        "증권가 해킹 공포 확산, 보안 예산 늘렸으나 사고 지속됨",
-        "보안투자 대비 효과 재점검 필요, 실질적 방어체계 중요성 부각"
-      ],
-      "ai": true
-    },
-    {
       "title": "미국, 에너지 운반선 50척 사이버공격 조사…이란 연루 의심",
       "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE42dUZLNkRoWF9ET21aSWpCUnBCWWN2dm5yOE11cUwzRWlXTXR5NjR2VmN4RGNhMkVibGZ5YVc3VXRXOFR3bEQ2Rmgyc2UxcC1wX2wzeVFOSXBNNlE?oc=5",
       "date": "2026-11-24",
@@ -1309,234 +1741,6 @@
       "summary": [
         "미국, 에너지 운반선 50척 사이버공격 조사하며 이란 연루 의심함",
         "에너지 인프라 보안 리스크 확대, 정책 동향 주시 필요함"
-      ],
-      "ai": true
-    },
-    {
-      "title": "바이낸스 해킹으로 드러난 스테이블코인과 비트코인의 ‘진면목’",
-      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1HTXB0VFJoV3JWcW9iY3ZPc3JzaS1nR1d4WEkzbFB0OXk3VDJrZG1aQlNFMlJ3UjJKMVU3MlM2UzZZQnFLNWllNjFDRjloRUU2cFJyU2lma1FFUmQ4Qmg2UDdjWXZlR2xUWWdWLW94RHhEdw?oc=5",
-      "date": "2026-11-24",
-      "source": "한겨레",
-      "category": "energy",
-      "summary": [
-        "바이낸스 해킹으로 스테이블코인과 비트코인의 실체 드러남",
-        "가상자산 보안 이슈 확산, 금융·결제 신뢰 논의 참고됨"
-      ],
-      "ai": true
-    },
-    {
-      "title": "롯데카드 정보유출 후폭풍 여전...10억원 과징금 제재",
-      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBYNFpLdWd5OHN2VXhxeDdaN2Y2TWxac29aYmZPZEt2aEF3cWthcG9IVlVpMkU0SjhzQk4wZ0dqYm8yU0xGckQ3Tk1QMFdGdDZ3UGNWSzA5NEJpLWdSbzNEQ2lxbGhDdXVqNlpSRG93?oc=5",
-      "date": "2026-11-24",
-      "source": "데일리브리프",
-      "category": "energy",
-      "summary": [
-        "롯데카드 정보유출 후폭풍에 10억원 과징금 제재 이어짐",
-        "개인정보 유출 제재 강화, 빌링 데이터 보호 책임 유의함"
-      ],
-      "ai": true
-    },
-    {
-      "title": "바이낸스, 63억달러 해킹 한 달 만에 구글 보안업체 투입",
-      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9WMGxZR3BVNzVQQlQyUGRPbEpCWWZ6TjJmS0dmZ1ZhS0ZrbDhKTF8ya0lFRF9YQzBrOVhqWU9icjZhMXpOSXNKZW1SeDFyS2E4aUxfUVFqbUxLdTBjUGc1SVNQTGJPOWpIUlE3R21qejNhUQ?oc=5",
-      "date": "2026-11-24",
-      "source": "디지털애셋",
-      "category": "energy",
-      "summary": [
-        "바이낸스, 63억달러 해킹 한 달 만에 구글 보안업체 투입함",
-        "대형 보안사고 후속 대응 가속, 외부 전문업체 협력 추세 확인함"
-      ],
-      "ai": true
-    },
-    {
-      "title": "美 법무부, 北 바이낸스 해킹 자금 중 1.5조원 규모 USDC 몰수 청구",
-      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1VdGhCcXpMc1dQd1VEY1FZREExXzd3elFiLWNkdjZteGt6MHoxLVN4RWZta1lZejFJcmpzSkhibmliM3J4WWdsdFJSaDh2Ujd1ZmpHMVliRUdYUE9PRHpGVVBMekFMSGU1UTdua29ENW1kUQ?oc=5",
-      "date": "2026-11-24",
-      "source": "인더스트리뉴스",
-      "category": "energy",
-      "summary": [
-        "미 법무부, 북한 바이낸스 해킹 자금 중 1.5조원 USDC 몰수 청구함",
-        "국가배후 해킹 자금 추적 강화, 가상자산 규제 흐름 주목됨"
-      ],
-      "ai": true
-    },
-    {
-      "title": "은행권, 해킹 검사 막판에 방어권 커진다…쇄신안 이번 주 발표",
-      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE02TldEcjh2cXIyRHRMOEl1aVRuYThNVUxLcWFhcjgzbmdHNlNKOWt3V2k2VHZPVUZicFZ3Q3hmOEFFTHNIc1pGQWszalFRcnZmVndYNnM1Wkh5UVFINm5WXy01NTJyQzBI?oc=5",
-      "date": "2026-11-24",
-      "source": "녹색경제신문",
-      "category": "energy",
-      "summary": [
-        "은행권 해킹 검사에서 방어권 확대, 쇄신안 이번 주 발표 예정함",
-        "금융권 보안 검사 제도 변화, 규제 동향 참고 필요함"
-      ],
-      "ai": true
-    },
-    {
-      "title": "AI해킹시대 “뚫리기전에 먼저 뚫어 막는다”…엔키화이트햇,내달 코스닥 상장",
-      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5GYUw2Y19zWkp3eEpnSUJNUEJoQmtKOXB0UXM2MnJfaEZ5T3hjV3BfNHlhY2NYaHZ5ZVNnOS0xay1xQVdmeHUzSHlwSlNrU1BkbDVadU1yNEZxUUVpLVE?oc=5",
-      "date": "2026-11-24",
-      "source": "뉴스톱",
-      "category": "energy",
-      "summary": [
-        "엔키화이트햇, 선제적 모의해킹 내세워 내달 코스닥 상장 예정함",
-        "공격형 보안 서비스 부상, 전자청구 보안강화 솔루션 참고됨"
-      ],
-      "ai": true
-    },
-    {
-      "title": "엔키화이트햇, 모의해킹을 구독으로 판다…IPO 승부수",
-      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE42bmI3VGFLRTh2UzRDZ2k1b3hjOW5uUTFxRmliOGRRWWZBZXZoQ2Y3ME1LdGQ3TG5MZy1vQkhzNXdCMl83VmJIZzhndlN2emNZMVF1ZGRGWUwtRG1Nd3NhTTZvdlVrdnBCZFNERg?oc=5",
-      "date": "2026-11-24",
-      "source": "굿모닝경제",
-      "category": "energy",
-      "summary": [
-        "엔키화이트햇, 모의해킹 구독 모델로 IPO 승부수 띄움",
-        "보안 구독 서비스화 확산, 상시 보안점검 필요성 부각됨"
-      ],
-      "ai": true
-    },
-    {
-      "title": "잇단 해킹에 與 보안분과 출범…사이버보안 정책 손본다",
-      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBCSlFjY25nZGUzMlo5VmE5LWZEMWNjZmxHblNWLVhRd3RjbTBpMG8xamxtWVg5T2NQYm1RSDZjZDM4enNKaHhjaVBYR2YtNktJMkpuR3dpNzBxaFl4bXpsRFdYSUFVcWM?oc=5",
-      "date": "2026-11-24",
-      "source": "뉴스1",
-      "category": "energy",
-      "summary": [
-        "잇단 해킹에 여당 보안분과 출범, 사이버보안 정책 손질 추진함",
-        "정부·여당 보안정책 강화, 빌링·공공 사업 규제 변화 전망"
-      ],
-      "ai": true
-    },
-    {
-      "title": "바이낸스 해킹에 64억 달러 유출…시장 버텼지만, 신뢰 회복 미지수",
-      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE4yVUI0RHh6RDNfZ2tlR1hVSUM3SUFJN1VDRTJiSjVZZnc2cTg2YndURksteTJ3clZneVNaUmxQa3ZWTEg0cEE4c0VTUHk0Y0VIX05MRzNMeGw4eU1zbl9DUw?oc=5",
-      "date": "2026-11-24",
-      "source": "한겨레",
-      "category": "energy",
-      "summary": [
-        "바이낸스 해킹에 64억달러 유출, 시장 버텼으나 신뢰 회복 미지수함",
-        "대형 보안사고의 신뢰 영향 확인, 공식 채널 신뢰 중요성 부각"
-      ],
-      "ai": true
-    },
-    {
-      "title": "코인거래소, 고의·과실 없이 해킹당해도 피해 배상한다",
-      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBvejRHUFljYUFMR2g1SnlLaVVXaHFXNHNfRC0ybERxOWZjd3duY1hFdUYtdVZTM2F2Y002X3VtN1IxTUlWSnNaN0d6b3M3MGZyUnBfOFJWLUlwUG4xd0s5Q2NiZ0fSAWhBVV95cUxPT1lJeE40Wm9fcVMyc1JBN3dTc2hOSjVTSGRDXzMyMV8xdWpNZ19LdFRsUlZZc0d1VGhsdllVOVFlQ1RQeDZ5VHRRZHhMNmZZTlprU3ZhY1N4TGQ5SENBb3E2TmxmU3l0MA?oc=5",
-      "date": "2026-11-24",
-      "source": "법치뉴스",
-      "category": "energy",
-      "summary": [
-        "코인거래소, 고의·과실 없어도 해킹 피해 배상하도록 규정됨",
-        "무과실 배상 책임 도입, 결제·빌링 사업자 책임 강화 전망"
-      ],
-      "ai": true
-    },
-    {
-      "title": "가상자산 해킹 피해, 사업자 과실 없어도 배상…금융사 수준 규제 도입",
-      "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE8zZnR4a2NZZUhNekZyWFlmaWJxS3cyV1M5Qm5CbEFpSzE5bk54SndGWi12RTlSTWdsTVdNWkl5RVRLdkk2eFVIZmxQVjZoeDZteFJrVkpyTl9RMTFzYWdSODFB?oc=5",
-      "date": "2026-11-24",
-      "source": "미주중앙일보",
-      "category": "energy",
-      "summary": [
-        "가상자산 해킹 피해, 사업자 과실 없어도 금융사 수준 배상 규제 도입됨",
-        "보안사고 배상책임 강화 흐름, 전자청구 리스크 관리 중요성 부각"
-      ],
-      "ai": true
-    },
-    {
-      "title": "가상자산거래소 해킹땐 과실 없어도 이용자에 배상해야",
-      "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1OVkMxZDh3M1hybVQzTm1IU1piSnBMWFJoeC0yZG5ZNXEwUWctME1jbFd3ek9YbnhCeENUcGpzT1NCY3ZzcDNKc1EyQ2tiWkZuSGNsSUJDOFk0cGFMN1B1QjdiSU04RkpxUTV3cmgxcFI3RXAzdFHSAWZBVV95cUxNa3pnRGk2QWZRd3BRdlF4N0pkak02eDYya1FWWUZ6bDBCdjhHT2c0U3ZwZ2RJaHEzNTQ5OFdqWWs5WWNGNWM3VklKaTNrRE9ldXVNUTVhZy03MVRGOFp5UFBOR2t6Mnc?oc=5",
-      "date": "2026-11-24",
-      "source": "동아일보",
-      "category": "energy",
-      "summary": [
-        "가상자산거래소 해킹 시 과실 없어도 이용자 배상 의무화 전망",
-        "무과실 배상 기조 확산, 전자청구 플랫폼 보안·책임체계 강화 필요"
-      ],
-      "ai": true
-    },
-    {
-      "title": "디지털자산업자, 해킹·전산장애시 피해 과실 없어도 배상해야",
-      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBhbDV3Z25yX1dYaXgzWTRlTGFXT293YlN5NXRhWHdGZnU3cHFwT2VzeE0yYTRkLW1rSUJXbmdGT0p1RDg4RklxQ1A4V3c5VTJ3VTBreEdNNnprVWJpdThMTnJfOE91UW04Vnc?oc=5",
-      "date": "2026-11-24",
-      "source": "금융소비자뉴스",
-      "category": "energy",
-      "summary": [
-        "디지털자산업자, 해킹·전산장애 시 무과실 배상 책임 부과 전망",
-        "전산장애 대비 빌링 시스템 안정성·백업 체계 점검 필요"
-      ],
-      "ai": true
-    },
-    {
-      "title": "'양자 해킹' 현실화 전 암호부터 교체…코스닥 보안株 수주 성적표",
-      "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9yUmFxX0t2bUhwNEZPS1B2ZFhRbmNJdC1MRFpWZUZzeUdxX0VSV2hkaE9CNTVyQlRyUWxkdzRTOUVZSmtyRXluTlZCZGR3dVVVN090YTE0RWdPdHZ2?oc=5",
-      "date": "2026-11-24",
-      "source": "뉴스핌",
-      "category": "energy",
-      "summary": [
-        "양자 해킹 대비 암호 교체 수요로 코스닥 보안주 수주 확대",
-        "차세대 암호화 흐름에 전자청구 데이터 보안 대응 검토 필요"
-      ],
-      "ai": true
-    },
-    {
-      "title": "\"훔쳐간 돈 내놔\" 美, 북한 바이낸스 해킹금액중 1.5조 몰수 소송 - 머니투데이",
-      "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9kcEpWTXh0dUlVc3I0ZkllRWQ1OXhLam9NeHpmeFp5TnFMZy00Z25DdndHYTFzY0NiRVYzTVFJb3U2WlBGd2RDcEhudVA4ZnNDczlOMnpEdFYtRjE1NzFobm9IWHpKcXVQRmNhSnNRMnNPQmpaeWfSAXtBVV95cUxOVVNiYzVCSDZzenBLaUxkUDNxbWQ0NzlfdGpHZk1GbF9YdVF1T2tpNjVaWmFiOENUazdjU0FfeEN6eVlkbDBHRXltVlludnJCRWM5MUFLV016VVBTOEJaMjFNclhQZ0hSQndRNm1ybE5EU2t2OUp0R2k0c3c?oc=5",
-      "date": "2026-11-24",
-      "source": "머니투데이",
-      "category": "energy",
-      "summary": [
-        "美, 북한 바이낸스 해킹금 1.5조원 몰수 소송 제기함",
-        "금융권 사이버 범죄 경각심 고조, 결제·빌링 보안 중요성 부각"
-      ],
-      "ai": true
-    },
-    {
-      "title": "[채널Who] AI 무장한 '해커'들, 화물선 겨냥한 사이버 공격과 유조선 폭파 협박 급증",
-      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9rcHBSNURBdmpJcUh5LVZ2Y092MGRtNHVLSW4zTUZ6REJIUWpzUGxxLTY3c3hIa1FwY2hqMVdvbWFJcV9SZ1BqNXh1MWZDcGR1TjJtbzNYdVl3cVBsZWFqeTM0MjE5X0V3QkJhNWhrZ21kMnM?oc=5",
-      "date": "2026-11-24",
-      "source": "비즈니스포스트",
-      "category": "energy",
-      "summary": [
-        "AI 무장 해커의 화물선 사이버 공격·유조선 협박 급증함",
-        "에너지·물류 인프라 사이버 위협 확대, 산업 전반 보안 경계 전망"
-      ],
-      "ai": true
-    },
-    {
-      "title": "[기본법] ⑥ 디지털자산 해킹사고 무과실 손배책임...매출 10% 과징금",
-      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1ZM2d5UzY4SGVxR3NKS3FteWhqSWJwcTJoVWpxRkFnNS1aVi01WHRGdXFDQUNsOF85dS0zS1lpWV9sUElFQTNoQW5lNGs5b2l4bWpSMDgtNXlCc3hiVlN6c1N3c0FOaWl0WVVOaEI3VnBrZw?oc=5",
-      "date": "2026-11-24",
-      "source": "디지털애셋",
-      "category": "energy",
-      "summary": [
-        "디지털자산 기본법, 해킹사고 무과실 손배·매출 10% 과징금 명시",
-        "무과실 책임·과징금 강화 흐름, 고객정보 처리 업체 리스크 증대"
-      ],
-      "ai": true
-    },
-    {
-      "title": "코인거래소 의무 강화 …해킹과 장애 '무과실 책임'",
-      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5mak9SR09ZeEkzYk1wM285eTBmVzFjQWFNQkM2U0hpeEhxWGd1MExwTEk1dUdzWThaT1hSSkJYNVdmOURCN1hMTUx4bTdXTDE5TzFQX1ZVUGRwMFlIdDR0cmhuam1pSk1EUlhCTGxuZVM?oc=5",
-      "date": "2026-11-24",
-      "source": "코리아리포트",
-      "category": "energy",
-      "summary": [
-        "코인거래소 해킹·장애 무과실 책임 등 의무 강화 전망",
-        "전자청구 사업자도 장애 대응 의무 강화 흐름 주시 필요"
-      ],
-      "ai": true
-    },
-    {
-      "title": "광양시, 개인정보 유출·사이버 침해 예방 강화",
-      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE44VkZTa2hQYnB3bjhBOXlrMEMxeUhGTEJDZnZGd0hKanBWbFBpMm8xVVBVR1A0dHhITUc3MmRYbkR4a2VqekZBT2lFTFFlSWs3dDhLVTROSjdaTnFDQnpWSlJRY1gwZldkQVdwWGtISy0?oc=5",
-      "date": "2026-11-24",
-      "source": "신아일보",
-      "category": "energy",
-      "summary": [
-        "광양시, 개인정보 유출·사이버 침해 예방 강화 추진",
-        "지자체 개인정보 보호 강화, 지자체 빌링 사업 보안 요구 상승 전망"
       ],
       "ai": true
     },
@@ -1553,126 +1757,6 @@
       "ai": true
     },
     {
-      "title": "금융위, 롯데카드에 과징금 10억…정보유출 위험 공시 미흡",
-      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1EdDhUbGJEU3lydXdvT1dKZVk0bkhBZzFJRkt3ZHU0cThlUzh1RFp2bHhIMjJyTHhDd3JQbm1rNnh1WkFOc21HWVRHUDVIOHMxN0llMjczNjZSTkRwdEhGU1hQSUU2dHdYQkZFQw?oc=5",
-      "date": "2026-11-24",
-      "source": "뉴시안",
-      "category": "energy",
-      "summary": [
-        "금융위, 롯데카드에 정보유출 위험 공시 미흡으로 과징금 10억",
-        "공시·보안 관리 미흡 제재 강화, 빌링 업체 정보관리 체계 점검 필요"
-      ],
-      "ai": true
-    },
-    {
-      "title": "美 법무부, 北 바이낸스 해킹 자금 1조5000억원 몰수 소송 제기",
-      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxPRVJQVW5Vd2w4ZHc2QWo4YUNjMml0djZ5WGJ3czhoZlhwQVJWalgzTmNiUHJ2QTQyWUJRSTFaXzVJREJuMzlEM2w0dFd2TmlkN0FZQk4xRzFPMG1IWldyM1g4T1ZtNGNUcjZpQkpyZlZ1RlIyRFRhalpnSDRqVVFVNlVIdjItM1pBVnYwSm85SlJ2UnVjbEN1OUZpMTg5UdIBsgFBVV95cUxPZmJkVXI5VHZ0VWpqbmZMV092ejR6S2VKR0pkU1ZzS09ITVEzN2NqRHE4VXdkNGZ2YzhkOXA5RDNXUjc0LWNiOWZJay16WU5BNmxBS215ME9KQ2g0MWQ1YVY0Z1R4a0VKWlI0eVk2STFXWDlqUUVjVjRGWm5sYTZSazJYdWRJMEdXM0kzcXlPMVMwRlVUZTQ5cGdHTV9kOUJSRk1FNUZyVkNQUUFlTkl3OU5n?oc=5",
-      "date": "2026-11-24",
-      "source": "Chosunbiz",
-      "category": "energy",
-      "summary": [
-        "美 법무부, 북 바이낸스 해킹 자금 1조5000억원 몰수 소송 제기",
-        "국제 사이버 금융범죄 대응 강화, 결제·청구 보안 중요성 부각"
-      ],
-      "ai": true
-    },
-    {
-      "title": "이강인 뛰는 스페인 라리가, 디지털 플랫폼 해킹…여러 구단 팬 개인정보 유출",
-      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE83TzJ4dFNuXzlLanRGbF9PTl9Hb0lweU5DQW9CUHFZZHp1WlQ0UWxoNExyMDhVM05oVTFud28yOUhOM3Qwc0VObTZmaDl2aWlNbjR3NFFpUHBmSlFvMkpUMGVjSUFmc1R4OTBacw?oc=5",
-      "date": "2026-11-24",
-      "source": "데일리시큐",
-      "category": "energy",
-      "summary": [
-        "스페인 라리가 디지털 플랫폼 해킹, 다수 구단 팬 개인정보 유출",
-        "플랫폼 개인정보 유출 사례, 전자청구 가입자 정보보호 경각심 필요"
-      ],
-      "ai": true
-    },
-    {
-      "title": "AI 해킹에 맞서는 엔키화이트햇...국내 첫 오펜시브 보안기업 코스닥 입성",
-      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE15SUc5SlRobUlJTHowZWd6cjM0QlpKZGlfaDlORWJVUm9WLTdNOTNfTFQ3MnQ0bWFwMmM4THluczRRcVdQZnBNWHFFRGhla3Eya1ZEeUxLZmZOZnc2SmxrdXJDNHpKQ2FocWc?oc=5",
-      "date": "2026-11-24",
-      "source": "월요신문",
-      "category": "energy",
-      "summary": [
-        "오펜시브 보안기업 엔키화이트햇, AI 해킹 대응으로 코스닥 입성",
-        "AI 기반 보안 수요 확대, 전자청구 플랫폼 공격 선제대응 참고 가능"
-      ],
-      "ai": true
-    },
-    {
-      "title": "사이버 공격 대비, 은퇴 직원이 지킨다",
-      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1EMkxrb2N6SUd6Ulh3QThzenNLMW9nbUo3bVN1dXF5UnVoNnQwWVBKWVhPV0c1eUhkMFNRUEIxUmQ1Nkwtc21TY0t5eWVYVUs3bEFUQXI3OVlQR3N4Ul9nSWhkcjM5WmFjMXNMZVlB?oc=5",
-      "date": "2026-11-24",
-      "source": "캐어유 뉴스",
-      "category": "energy",
-      "summary": [
-        "은퇴 직원 활용한 사이버 공격 대비 인력 운영 사례 소개",
-        "보안 인력 확보 흐름, 빌링 운영 보안 체계 인적 대응 참고 가능"
-      ],
-      "ai": true
-    },
-    {
-      "title": "금감원 \"해킹 의심 땐 가상자산 입출금 12시간 차단 가능\"",
-      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1Ra2dlLWJQakFSSUtQa1lEbHVOSnl4R2VabXJzQTdoM3BFTnNncldqb1RadXVQbzRCRk9OSUx3UHhDZTdpQWtWYjFMNndyTDhtY1ZQQXJrS2xaZFVaVllmam9vdEVsSl82YnBjTWgwWlFkQQ?oc=5",
-      "date": "2026-11-24",
-      "source": "디지털애셋",
-      "category": "energy",
-      "summary": [
-        "금감원, 해킹 의심 시 가상자산 입출금 12시간 차단 가능 조치",
-        "이상거래 차단 기조 확대, 결제·청구 이상징후 대응 절차 참고 필요"
-      ],
-      "ai": true
-    },
-    {
-      "title": "'해킹에 화들짝' 기업들 보안투자 늘렸다…'표정관리' 보안업체 - 머니투데이",
-      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1BMEtEcGt6eDJQS0hGU252ZXAxeDdGc3F3UF9wS0ZFSFJYYjVzUUpRdkk2bVRsUTJmUy1SMVdPdWNQWW9Gd3RTdDUwQ2xPR0h2SWlzbUtkcmZ3aXBVelVka25GQkgwQ0h0UzRVWXRsR2VpTFN10gF6QVVfeXFMT0kwRk9JeUlNNl9vZERRZl9lOU9WdjR2M1Y0NFVqdjU4Mi1tWTA2cllEazd1ZjJzRlE3UkxqNzAwS01KVEZRdDBiajlsNkFrQVR1WXZOMmhUUnFmeFFkN3ZjTGhHMEg4cFdkckJTNklwdi1WMUpua2pLblE?oc=5",
-      "date": "2026-11-24",
-      "source": "머니투데이",
-      "category": "energy",
-      "summary": [
-        "해킹 우려로 기업 보안투자 확대, 보안업체 수혜 전망",
-        "보안 투자 증가 흐름, 전자청구 플랫폼 보안 투자 당위성 강화"
-      ],
-      "ai": true
-    },
-    {
-      "title": "[단독] 하나저축은행, 주민번호 포함 고객 552명 개인정보 유출",
-      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1HamxzVkU2cFd4N0xTY25Delczd2gzazB5dWVqSHNHQ0gwS0VZSmt5QjIwalYwTW9KSml6R3dBbWNuZVZPSU5tRzYxdFppb1pNVHJic09peHItZw?oc=5",
-      "date": "2026-11-24",
-      "source": "한국경제",
-      "category": "energy",
-      "summary": [
-        "하나저축은행, 주민번호 포함 고객 552명 개인정보 유출 발생",
-        "민감정보 유출 사례, 빌링 데이터 주민번호 등 관리 강화 필요"
-      ],
-      "ai": true
-    },
-    {
-      "title": "北해킹으로 빼돌린 1.5조…美, 가상자산 몰수 나섰다",
-      "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE8tMU8wM1ZhWlY5d3d0NmQ5YmNCXzdoQmg1S1lGZVluVFotMDlMekRiZDBoMjRCOFplNi1JRUZLay1QeG5UYnRLWGx0bUhtZGNTUUE?oc=5",
-      "date": "2026-11-24",
-      "source": "매일경제",
-      "category": "energy",
-      "summary": [
-        "北 해킹 탈취 1.5조원에 美 가상자산 몰수 착수함",
-        "국가배후 해킹 위협 지속, 금융·결제 인프라 보안 경계 전망"
-      ],
-      "ai": true
-    },
-    {
-      "title": "배터리 불타고 댐 수문 활짝⋯‘가상 해킹 시나리오’는 끝났다",
-      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5qbjEwb3hYNVdoX2hUZEZGR3RqQXN6TVFtR2tGeTRkckJrUzV5VHludEJiSDE3aHZBZkMxbUw3aFhJV0VxdTVSaHlXSDJIOVNQRmFGaDhrVFQ?oc=5",
-      "date": "2026-11-24",
-      "source": "국민일보",
-      "category": "energy",
-      "summary": [
-        "배터리 폭발·댐 수문 개방 등 가상 해킹 시나리오 현실화 우려",
-        "에너지 인프라 사이버 위협 고조, 전력 연계 사업 보안 관심 필요"
-      ],
-      "ai": true
-    },
-    {
       "title": "김동철 한국전력 사장, 해킹 유출에 개인정보위 조사 착수…해커 협박 메일도",
       "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBWdVNudk5fTkItWjhsRW5ya09zTmIyN0hfcG1WejJ2YUNrOHhIeHdieFRfR0VIUVgzMWFaSXVESVNPVk9sdEV4dWVtclN5LWw2a2Q0cGNQZDNlZ3dlMHI0RVAzYmhMMzTSAWtBVV95cUxPZGdFS0VHbGQzZUZZMTJGQUlCNUMxUFNNamJ2VWJzODU1emEyWUxKZUdlQmd1c1hnbk5rdzdhV1J6amRfTmtBdEZLLUpQU05WQ2dPWlcwbE5vWVU2YTZ1N0VOMFM4UVRnSTVJdw?oc=5",
       "date": "2026-11-24",
@@ -1681,90 +1765,6 @@
       "summary": [
         "김동철 한전 사장, 개인정보 유출로 개인정보위 조사·해커 협박 메일",
         "한전 개인정보 이슈 확산, 전기요금 청구 연계 고객정보 신뢰 관리 필요"
-      ],
-      "ai": true
-    },
-    {
-      "title": "웰컴페이먼츠서 고객 1326명 개인정보 유출 … 11일 지나서야 인지",
-      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE8tZG4wM3g4MTF0dEpQTFQxbFVyY2hrMTAxWS1Bb0xVeGkyejJ0aVRaRHVsNHp4V2kwWE81WGd3MTl3N1UzeXhLQ2FqdFJKcS1oOGRJdFlfczNaakFyOW00VWZmZXE?oc=5",
-      "date": "2026-11-24",
-      "source": "매일일보",
-      "category": "energy",
-      "summary": [
-        "웰컴페이먼츠, 고객 1326명 개인정보 유출 11일 뒤 인지함",
-        "결제사 유출·인지 지연 사례, 빌링 유출 탐지·대응 속도 점검 필요"
-      ],
-      "ai": true
-    },
-    {
-      "title": "미국 \"북 해킹 11억달러 몰수…해외 노동자 제보 접수\"",
-      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBPZVgtU3g4cC1jTkw0NTRhdXVfRmxBWHVjTFp6dUh0WEVDbGVKczZ5QjlBajZRNG82X1JTcTVpN3c5VXFqYTBjeGpiNjJIRnBWcXV1cXRKTS01Nnp6cmJHWTJpRVNRSkg3T3RrTFd5R2c?oc=5",
-      "date": "2026-11-24",
-      "source": "코리아리포트",
-      "category": "energy",
-      "summary": [
-        "美, 북 해킹 11억달러 몰수·해외 노동자 제보 접수 추진",
-        "국제 사이버 범죄 대응 강화, 금융결제 보안 환경 주시 필요"
-      ],
-      "ai": true
-    },
-    {
-      "title": "한화에어로, 창원에 해킹 원천 차단 '군 전용 AI 센터'···2028년 가동 목표",
-      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE03SzktZ0s2LW5YQ1M5YXRoRXFnR3V3cUFMMlNzaXFnZGFEd3p3bXVYMk42MGU0S0xvcXppd0JKX1NuV3ZPMG5kMFZNNk9naldyNjJCRGV0ZUxTQjJncVEtRDIwMHY2NDQ?oc=5",
-      "date": "2026-11-24",
-      "source": "팍스경제TV",
-      "category": "energy",
-      "summary": [
-        "한화에어로, 창원에 군 전용 AI 보안센터 2028년 가동 목표",
-        "AI 기반 해킹 차단 투자 확대, 보안 기술 동향 참고 가능"
-      ],
-      "ai": true
-    },
-    {
-      "title": "[속보] '고객해킹' 삼성증권 이번엔 '전자투표' 장애 … HMM·엔비티 등 주주 의결권 행사 '날벼락'",
-      "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFBubTZ6TkUtQVV4VGFoN2tKUFZDZ3FmOHRyYXd2bGhBUEZtcllxYXRIYVFpeFk2bVRaNEpSZmR0aHRJTl9xNFpIVG9nVzhyUWRnZkRWYVZTbjFTZHdoUWw5aGtwTkIzbV9YZk5Wb09vUTljYVgwU0VLRkM3VdIBgAFBVV95cUxPZ050Nk5nSmt4TTZENFNHQm9XV1pFNFNXWWkwLUFocWhEaUtpQ3ZRTHo1dl9XaTZfcjRacjU5d2x4d2FUNmhRNEpjeEhlaGRHNlZCbWl0aXRTNzVzV3BHQ01oMGducnhjcVFRcWFveHZyMWg0MmtXSUhacFllWEs5ag?oc=5",
-      "date": "2026-11-24",
-      "source": "뉴데일리 경제",
-      "category": "energy",
-      "summary": [
-        "삼성증권, 고객 해킹에 이어 전자투표 장애로 주주 의결권 행사 차질",
-        "전자 플랫폼 장애 리스크 부각, 전자청구 시스템 안정성 확보 필요"
-      ],
-      "ai": true
-    },
-    {
-      "title": "금감원 해킹 신고서 살펴보니…대신·미래에셋증권 기본 보안 '허술'",
-      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9LSHpJUlBOMnhpS3Y3Q1hTR0hFWEVIbV9jTHJFd250ZUZocXlhRUoxMDMwV2FhTEN5ZnBURVJqWmdsMlpVSnRUMmlSZ2kyQmZDNF9hRnZoRFdkcUZfMjdfdzlWNVljSThPSTVJ?oc=5",
-      "date": "2026-11-24",
-      "source": "뉴스저널리즘",
-      "category": "energy",
-      "summary": [
-        "금감원 해킹 신고서상 대신·미래에셋증권 기본 보안 허술 지적",
-        "금융사 기본 보안 미흡 이슈, 전자청구 기본 보안 점검 당위성 강화"
-      ],
-      "ai": true
-    },
-    {
-      "title": "금융위, 코인거래소 지분 20% 제한…해킹 시 매출 10% 과징금",
-      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBoemNLTEtDRmY4WTBoLW52QWVZQVNTZzJDbXRIdFZqbVFBUlVGaXgwRmRkTkd0UXc1bkNReExmT3ZwQ01fQmtXcXU4SDZFX0ZDanNtWjM1X01qUU8yZ01UUk5xdk5sRlpBU1FFcDZn?oc=5",
-      "date": "2026-11-24",
-      "source": "알파경제",
-      "category": "energy",
-      "summary": [
-        "금융위, 코인거래소 지분 20% 제한 및 해킹 시 매출 10% 과징금 부과 방침 발표함",
-        "보안 사고 과징금 강화 흐름, 전자청구 보안·개인정보 관리 책임 확대 전망"
-      ],
-      "ai": true
-    },
-    {
-      "title": "\"개인정보 유출됐으니 확인하세요\"…개인정보위 사칭 악성메일 주의보",
-      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBKSXJ5YTF1QWlXc1htUm04Z2tmNzFadGhvQlh3RzkxSnljbFQxeHBVcDdoYmpkTTBXUkRCaUg5cEw3SjdXVTgyV3VON2lFdGY4QmNwajVLekFQNGZjakltY9IBeEFVX3lxTE90eWl2WFpFUm9WMldkUEhRc3RnenduNk9KaUdUcEtyRFdOdFhuZU9yOGx3ZXp6RjQzMUhDejhKcXJMVmZyMXZXdEwxNHdxVUFzRENnQ2llX1gya2hsanJ5eXF1eEJ5bWFZa3VaT1BuTlp0Y09sODhlQQ?oc=5",
-      "date": "2026-11-24",
-      "source": "뉴시스",
-      "category": "energy",
-      "summary": [
-        "개인정보위 사칭 유출 확인 유도 악성메일 유포 주의보 발령함",
-        "청구서 사칭 피싱 대비 고객 안내·발송 채널 신뢰성 강화 필요함"
       ],
       "ai": true
     },
@@ -2201,530 +2201,86 @@
       "ai": true
     },
     {
-      "title": "하나저축은행도 해킹 피해…고객 552명 개인정보 유출",
-      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5QQlktTGp6RTY2bGNJSHQxcHZMRnd3UnFsbTlkRGRsQXkyRVhCTHBTZnkyb1B4V2hDSi0yTnNDTjhGWXRTUEFjdDl1cGNfbVFxeDJxbkhMaDYwWm5wQ0l5aG9hZG9rb2s?oc=5",
+      "title": "한일 에너지 파트너십의 미래 - 탄소중립과 에너지 공급망 회복력 강화를 위한 한일 민관 협력 강화 방안 논의",
+      "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE10R2tkdzRSVkVzYnlVNjJNVmxYSXdDcERaNzdSdG9sSk83OTB6NFVfNWl2ZGVQblV2ck52azBFZ2xaS0dqUUItSmYtb25OTUFBUlVlNlR3amdpdUhCY0F2WXVR?oc=5",
       "date": "2026-11-24",
-      "source": "연합뉴스TV",
-      "category": "energy",
+      "source": "서울Pn",
+      "category": "local",
       "summary": [
-        "하나저축은행 해킹으로 고객 552명 개인정보 유출됨",
-        "전자청구 고객정보 보안·개인정보보호 체계 점검 필요성 환기됨"
+        "탄소중립·에너지 공급망 회복력 위한 한일 민관 협력 강화 방안 논의함",
+        "국제 에너지 협력 확대 흐름으로 에너지 정책 환경 변화 전망"
       ],
       "ai": true
     },
     {
-      "title": "하나저축은행도 ‘해킹’…고객 552명 개인정보 유출",
-      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBsVDdNZEktRy1wdFdQd0VqV0tFU1Z6S0hxbGo5SlB6TWVXN0ptT1pGWmtmSHp5NGZ1ektyWUdsek9GN09uYWI3WG1qbHhPNGRKQzN6NEJXZUJOTkU?oc=5",
+      "title": "울산항만공사, ‘청정에너지 항만’ 향해 ESG 판 새로 짠다",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1SN0tEenJSNkhfVmRBeE80QUladW5hSWdVa3ZYMUhqaXRPVDEtbmNqdEpSVzk4R3RuRUppTjF3eEdtMDh4NG1VbHdma1BIZHF5Q0hQZ09yUWlydjhwTTB5Nk5BSWt4Mng3Ync?oc=5",
       "date": "2026-11-24",
-      "source": "KBS 뉴스",
+      "source": "포인트경제",
       "category": "energy",
       "summary": [
-        "하나저축은행 해킹 사고로 고객 552명 정보 유출됨",
-        "빌링 서비스 개인정보 관리 리스크 재점검 요구됨"
+        "울산항만공사, 청정에너지 항만 지향 ESG 전략 새로 수립함",
+        "공공기관 ESG·친환경 전환 확대로 전자청구 등 디지털화 수요 전망"
       ],
       "ai": true
     },
     {
-      "title": "[2026 보안 이슈 결산-2] 망분리 깬 AI 해킹 공격... 금융권, ‘자율·복원력’ 시동",
-      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1VbXVfVGpfckJtQ01hYWRvandtSXNqYmtHY19fTU1oWUtmalpMM2tnOGFxZ2pvU21Qc3IwVWpnZzFOVHdRaGo4TDJDSEZibFd4NERuMVlNZFktdzBYMGZvaEtHMEtIZGc3RjBF?oc=5",
+      "title": "성남시의회 조우현 의원 발의, '성남시 재생에너지 이용 가로등 설치 및 보급 지원 조례안' 가결",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9PR2VNU2VYRk1oYWNrWHJqV2hOSVY1SHlMWlFWN3ZubTZlamNYaTRWaURZQWdqNDhfUUJBUDkyODVuTWFWclk4SFF4R0JZaVBLTDBGbTVqVXEtdlhJR3JTbF9ZcEk?oc=5",
       "date": "2026-11-24",
-      "source": "보안뉴스",
-      "category": "energy",
+      "source": "중앙뉴스타임스",
+      "category": "local",
       "summary": [
-        "2026 보안 이슈로 망분리 뚫은 AI 해킹 부각됨",
-        "전자청구 시스템 보안 대응 고도화 필요 전망"
+        "성남시의회, 재생에너지 가로등 설치·보급 지원 조례안 가결함",
+        "지자체 재생에너지 시설 사업 확대로 관련 빌링·행정 수요 전망"
       ],
       "ai": true
     },
     {
-      "title": "하나저축은행 해킹에 고객 552명 개인정보 유출",
-      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFAyb0lFemZDbWVBWjBiVjFKZkw4MGw4Vlhac0JyMURVcmgxRkNsTVRBNGFHNlNHYzVXbXduQ3MwOXk2LXBaM3NXUDFmcjV6QjgxTm0tX3Q2WXZaODV1UXE2Yw?oc=5",
+      "title": "성남시의회 조우현 의원 발의, '성남시 재생에너지 이용 가로등 설치 및 보급 지원 조례안' 가결",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBBZkNYY2g1NEVaUFRNZnBOeGtObUlNZ05pVzFFLUJqVEEzWVFiX29lWWwxQ2N1eWVyZWxCWXRoYXBoX1FfUFJ4WGZwd3VOS1luYVN3RDVqZFhiZ3UzdEdJanZYZHRtMU5xQkhraNIBcEFVX3lxTE1RZGZqN0FXb1hXOC1OTjB4ekhjdXVmVE5CbkVLc1ZWdVl0REdBY3NnZDBYN1hwVEtlVUlhVk5XYWVHYkhWOTdTMkhOYmowYXoxLXhJTFNFZ0JFb2NvdzkwU1RoamhnZmhOTmJTc3c2Qm8?oc=5",
       "date": "2026-11-24",
-      "source": "KBC광주방송",
-      "category": "energy",
+      "source": "내외뉴스통신",
+      "category": "local",
       "summary": [
-        "하나저축은행 해킹으로 고객 552명 정보 유출됨",
-        "금융·빌링 연계 서비스 보안 강화 필요성 부각됨"
+        "성남시의회, 재생에너지 가로등 설치·보급 지원 조례안 가결함",
+        "지자체 에너지 조례 제정 확산으로 지역 사업 기회 모색 필요함"
       ],
       "ai": true
     },
     {
-      "title": "하나저축은행도 고객 552명 개인정보 유출…“피해 구제 지원 절차 마련”",
-      "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1pSEFrMVFaVXUxOGtkNVJRU3FKRGVyampWQ1pyOXN4NFZIcWxCM01XLWZySEVmcU9Sc2d4bThPck4wNGpVLUt2VXlQQmF3RzBSWVNWSA?oc=5",
+      "title": "경주시 조직개편 추진 ‘기획조정국 신설’",
+      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBrREVwcHhKVEc1Y1BmbEpac2NBVTIwOU9OLWJzdWVOUU9nUkIyM3cyaE9iWVBSLUtaa0d1SzNYWmcyZzlueEw3S0FIUHE3TklkQUIxV2pacGJFUQ?oc=5",
       "date": "2026-11-24",
-      "source": "매일경제",
-      "category": "energy",
+      "source": "경주신문",
+      "category": "local",
       "summary": [
-        "하나저축은행 정보 유출에 피해구제 지원 절차 마련함",
-        "전자청구 사고 대비 피해구제 프로세스 참고 가능함"
+        "경주시, 기획조정국 신설 포함 조직개편 추진함",
+        "지자체 조직개편 시 담당부서 변경 가능성으로 영업 창구 점검 필요함"
       ],
       "ai": true
     },
     {
-      "title": "하나저축은행도 해킹…고객 552명 정보 유출",
-      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5zTU1BTWx1N18yaU11cFh2b2xHcmN3clE3UTZuY2tEQW5leGJhZTM4ZU5XZVNJalZ1SXZnZ0Q1c3BwVDdNN0FEWmRnRWNPeEs5UW51NC1OdHBuTzJYdGhUN0RJeWNYWUU?oc=5",
+      "title": "LPG人 한마당 ‘제21회 LPG의 날’ 성료…유공자 22명 수상",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1oSUgxTHdnM3Q1YkhfVFF2bXk5cXRlQlNYcjduZzBrY05qZ1dWczFEYVR5LXlWVjNqQTgtTTY1UU9OTU1qbmtZeEdhRFUwT1dGNXVadURfNGNxSVRURUtzNTY0RzZRb03SAWtBVV95cUxPUUVBRGJuM3ZtaWNIWk5panM1NXFIczhySDh3QVBBWFFmNXRLQnEtTklBcnI0ZF8wcEJ2dmRrdnY0bzdNWG5jT19rdXNIVWZkNGN2Ni1jSjNvSWx2OG5jQ0RRb2ZWSC1CQUNxMA?oc=5",
       "date": "2026-11-24",
-      "source": "연합뉴스TV",
+      "source": "이투뉴스",
       "category": "energy",
       "summary": [
-        "하나저축은행 해킹으로 고객 552명 정보 유출됨",
-        "고객정보 보유 서비스 보안 경각심 확산됨"
+        "제21회 LPG의 날 행사 개최, 유공자 22명 수상함",
+        "LPG 등 타 에너지 업계 동향으로 에너지 시장 전반 참고 필요함"
       ],
       "ai": true
     },
     {
-      "title": "“개인정보 유출됐습니다” 가짜 통지 메일 주의…악성코드 감염 유도",
-      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1IN25HaHczR0Nkd0NKQlhGVl9zQUhGVVk3YU5xZzBoYlc3c2ZleHU0ckRzelBSQWVRbWNxUzVMMnlpajgxR0pWU0p4V0o1eEpTSmptVU5CUTRWemM?oc=5",
+      "title": "경기도의회 안계명 의원, “에너지 취약계층 지원 대폭 축소… 지역 간 에너지 격차 우려”",
+      "url": "https://news.google.com/rss/articles/CBMiSkFVX3lxTE1nQXFzUFI5a3BkZ0ZVRks2ZnRwTWJQSkZ5UFVCQVFQY1phby1rbFhwSXZPZ0dwZGdoQ1BrZndvZUJyMHNfQlhUMjl3?oc=5",
       "date": "2026-11-24",
-      "source": "KBS 뉴스",
+      "source": "미디어투데이",
       "category": "energy",
       "summary": [
-        "개인정보 유출 가짜 통지 메일로 악성코드 감염 유도됨",
-        "전자청구 메일 사칭 피싱 대비 고객 안내 강화 필요함"
-      ],
-      "ai": true
-    },
-    {
-      "title": "민주당, 연이은 해킹 사고에 '과기혁신특위 보안분과' 첫발",
-      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBkeFJPLU5Rb2doTzJaVk0ySWtPMG02SGx6Z0FKcG43YTJwRzZTUTNOWTZUUnhIbzlyV2Npc0JpYV93TjZDN04yZUlXUnF2UXByYTI0LVVR?oc=5",
-      "date": "2026-11-24",
-      "source": "지디넷코리아",
-      "category": "energy",
-      "summary": [
-        "민주당, 해킹 대응 과기혁신특위 보안분과 출범함",
-        "보안 규제 강화 흐름이 빌링 업계 컴플라이언스에 영향 전망"
-      ],
-      "ai": true
-    },
-    {
-      "title": "하나저축은행 해킹 피해…고객 552명 정보 유출",
-      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFA3MUVZTDdMYlpjdTNMNUhIYmd1Ym85ZEozNkItVWhyUmFaeUxpRVRraHJEdXNoSnZya1pvdVd6R0Q1UUduVTI2R1pyQkhPM1JrbE9heXRsek5hZGxIRFA3LUEwWUt0ODJSRU1JQQ?oc=5",
-      "date": "2026-11-24",
-      "source": "뉴시안",
-      "category": "energy",
-      "summary": [
-        "하나저축은행 해킹으로 고객 552명 정보 유출됨",
-        "개인정보 처리 서비스 보안 리스크 관리 중요성 부각됨"
-      ],
-      "ai": true
-    },
-    {
-      "title": "하나저축은행 해킹에 고객 552명 개인정보 유출…추가 피해 조사 중",
-      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1BeS15dmZtb0cyTnNnbjlnN3Q3LU85d0NVSzAtZnBfSlN1T0Vub3hZOTQtdmJTSnFyekJPbXFZUmhhdk9KazFYZHpjZk9mNGRmTHJWRElnTTlRNnlKVUdrSUNJWUNyN0Q3VTB3Tkotc9IBc0FVX3lxTE9zbDVNLTZJRGNBRzlUclpWQlBNR3N0ekJSOFd6bjlHazdUM3hYYnBBcG53VFpBMmNoaXp2RjFPQm1qNFhMa3EtblFiR3JmLVRWT25LeUhCaFphZ25ESXVlaHdGWlo0YU1KRHl4ZjRYMHlvODQ?oc=5",
-      "date": "2026-11-24",
-      "source": "뉴스웍스",
-      "category": "energy",
-      "summary": [
-        "하나저축은행 해킹 유출 추가 피해 조사 진행 중임",
-        "유사 사고 대비 전자청구 침해사고 대응체계 점검 필요함"
-      ],
-      "ai": true
-    },
-    {
-      "title": "하나저축은행 보안 시스템 뚫려…주민번호·주소 등 개인정보 유출",
-      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5jVU1iMGx0bXhCYnFIZzJXMmNMMmJqeHFhS182NEo4eW5YSUJSMFBQWDUxWDZRLWJ3ME5fal9VaUE3a2hBX1pmbEhrLTZXYWhpM2NEZDlQQ0RXWFMzZTluQnJnTG8?oc=5",
-      "date": "2026-11-24",
-      "source": "매일일보",
-      "category": "energy",
-      "summary": [
-        "하나저축은행 보안 뚫려 주민번호·주소 등 유출됨",
-        "민감정보 보유 빌링 서비스 암호화·접근통제 강화 필요함"
-      ],
-      "ai": true
-    },
-    {
-      "title": "\"개인정보 유출 통지\" 사칭 메일 주의보…피해예방 기본은 `의심`",
-      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5kUnV5dHlEcld3a3kwbU92T195Rkg3YzV4OVFfVVh6cUJZVE5tb0g2b3dqVWxjbWhTMXZVT2tCcHlpc2I2emJHT084cVdtd2RNTThBcjl1Tm1xQy1LMUh6MzA2ZXE?oc=5",
-      "date": "2026-11-24",
-      "source": "디지털데일리",
-      "category": "energy",
-      "summary": [
-        "개인정보 유출 통지 사칭 메일 주의보, 의심이 기본임",
-        "전자청구 고객 대상 피싱 경계 안내 강화 필요함"
-      ],
-      "ai": true
-    },
-    {
-      "title": "“한국, 돈 되는 표적”…韓 노리는 랜섬웨어 그룹 1년새 2배↑",
-      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE04b3ZnenVPWEJiSFo2aDQ0Qjc5TC1CVWl1QWNvM0VEMFBYNGJ3MTNCN2NCNkw4WWRqVUNuVTBsOXdjYUJuelJTVXgxTmQxOU0wZGk5Ym4zYXV1V2ZuQ1Vvd2Zkd2RsSXVhdjNpaVBzWdIBZkFVX3lxTFBUS1hHTGtZVldJUHBHNWZBZnoxcGc3eUMxdS1vLVBjNWZKM192Ym90RzZQcUFsekpBU1VTcUFLSlVOYUFRRHlEbWRfWV9XRW1pWDBDeXJiZ2NsRlUzU2MzRjk5b2REQQ?oc=5",
-      "date": "2026-11-24",
-      "source": "동아일보",
-      "category": "energy",
-      "summary": [
-        "한국 노린 랜섬웨어 그룹 1년새 2배 증가함",
-        "국내 서비스 보안 위협 고조로 전자청구 방어 투자 필요 전망"
-      ],
-      "ai": true
-    },
-    {
-      "title": "킹카운티법원 온라인 시스템 먹통 장기화…사이버 공격 우려 > 시애틀 뉴스/핫이슈",
-      "url": "https://news.google.com/rss/articles/CBMiSkFVX3lxTFAteTZsYVdpaGJFOHM2M0xnbFEzTER6cmhIU3FfSzBHOWlsaDAyVmZyUVltUGpHb2tWNTB2ME1xNlRsNzRJMEVrRGZR?oc=5",
-      "date": "2026-11-24",
-      "source": "SeattleN",
-      "category": "energy",
-      "summary": [
-        "킹카운티법원 온라인 시스템 먹통 장기화, 사이버공격 우려됨",
-        "공공 전산 장애 리스크로 지자체 사업 연속성 대비 필요함"
-      ],
-      "ai": true
-    },
-    {
-      "title": "가상자산 ‘금융회사급’ 규제 받는다…해킹 피해엔 무과실 배상",
-      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBhNWhpU3NJWjJWOUEyUjlHN3RBQTBjRS1sTW5ZVFhKa3FXeXdyeXJrcVZ3TWQ0eE5aOE1SQ0dXWDNaSkRPamJpTDVKRTZxdV94dFAwa3FmM185Y3ZXbEh4Y1lPbldYb2FHeVE?oc=5",
-      "date": "2026-11-24",
-      "source": "https://www.sisaworld.kr/",
-      "category": "energy",
-      "summary": [
-        "가상자산 금융회사급 규제로 해킹 피해 무과실 배상 도입됨",
-        "금융 보안·배상책임 강화 흐름이 빌링 규제 참고점 됨"
-      ],
-      "ai": true
-    },
-    {
-      "title": "하나저축은행, 해킹으로 고객 552명 개인정보 유출",
-      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE0wejA1LVNfSUZYbHlpYVJsdVd4eVo4azNLbDNydFBROG9TYXhpMWh3U044NWpXemVUUUFlQzdDeUprVV9uWS1VZDBTdXBDTGR1VERnM0dLcExYWGlidVhrNExVUmtzQ2poMUE?oc=5",
-      "date": "2026-11-24",
-      "source": "천지일보",
-      "category": "energy",
-      "summary": [
-        "하나저축은행 해킹으로 고객 552명 정보 유출됨",
-        "고객정보 유출 대응 사례로 보안관리 재점검 필요함"
-      ],
-      "ai": true
-    },
-    {
-      "title": "하나저축은행도 해킹…고객 552명 개인정보 유출",
-      "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE51dmJqUFZMSGNLNU1LVElCY2hiamctQ29XVFZVc2E4T05RYjY2dXRXWlU0NHN0UzV4TXk2Y2VqRFBZT1JsZ0lPX1ZKVnA5MzFNbUd6Z3NsRndibERyMHZ5aURn?oc=5",
-      "date": "2026-11-24",
-      "source": "뉴스1",
-      "category": "energy",
-      "summary": [
-        "하나저축은행 해킹으로 고객 552명 정보 유출됨",
-        "개인정보 보안 강화 업계 공통 과제로 부상함"
-      ],
-      "ai": true
-    },
-    {
-      "title": "GTA 6, 해킹으로 비공식 PC판 뚫려…AI로 파일 변조해 이식",
-      "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9uak9UbUo5LXdvSmFuU2NmOXVDZ2tva2R4N0p4ZHNNS0QtSGRjYjJ6Q2FRZWN5S2ZKeTZJX1luM0JrcEVKSDlYVURKbmxLa1ZzMnc?oc=5",
-      "date": "2026-11-24",
-      "source": "매일경제 마켓",
-      "category": "energy",
-      "summary": [
-        "GTA 6 해킹으로 비공식 PC판 뚫리고 AI로 파일 변조됨",
-        "AI 악용 해킹 확산 추세로 보안 일반 동향 주시 필요함"
-      ],
-      "ai": true
-    },
-    {
-      "title": "‘개인정보 유출 통지’ 사칭 악성메일 주의… 피해예방 수칙 안내",
-      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9sNFBzeWRLN295eFFVc0Q4NGFEeWNDemtfRU9obzBzMGZGR3NTc2pkNTNLd1RVZU1kcDVWNlNVWlBkU1dvSFNSNFhTbTRqdGpxMGZodDVEeEpVZ3VZVHJsVGVGdDRqN0l1UXc?oc=5",
-      "date": "2026-11-24",
-      "source": "천지일보",
-      "category": "energy",
-      "summary": [
-        "개인정보 유출 통지 사칭 악성메일 주의 및 수칙 안내됨",
-        "전자청구 메일 사칭 대비 고객 보안 수칙 공유 필요함"
-      ],
-      "ai": true
-    },
-    {
-      "title": "해킹 무서워 종이에…日 ‘비밀번호 수첩’ 불티",
-      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1SM1VuRWlQb09IeDVDalhNaXB3OVNDTkFFcWNXNnJjd3Z6SXR0UFh1OU1Nejc3Y3ljbDNIYUpvb29vNVZZSTdZUGpYNlc5dS11Zmkzdjh3RmJfcnFFOEHSAWNBVV95cUxNbjdhWHZxOGFndVRkMTI4SWltckxSNFlrT3czaGJEQ1RQRzlaQ0IyVjVDNHBSZmpFSTdyX1RpNnVnREhROFNpWEkzRDBLb2dnWkRIX2ZWMlBtbS1iQzRqLWpQSVk?oc=5",
-      "date": "2026-11-24",
-      "source": "채널A",
-      "category": "energy",
-      "summary": [
-        "일본, 해킹 공포로 종이 비밀번호 수첩 인기 급증함",
-        "디지털 보안 불안 확산이 전자청구 신뢰 확보 과제 시사함"
-      ],
-      "ai": true
-    },
-    {
-      "title": "日 ‘비밀번호 수첩’ 뭐길래… ‘해킹 공포’에 품귀 현상",
-      "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9GeHRSRTVRNkIxaGZuR2Y2NXAyLUVsV3FyS3hiY2NhaUdwUXEwZ2ZveC1UVkxTbVpyT3ZUX1llY3Z1OUM1RzZGbEZwWnM5TnY5U19FT0EydG54NDBHSGVtdHZn?oc=5",
-      "date": "2026-11-24",
-      "source": "미주중앙일보",
-      "category": "energy",
-      "summary": [
-        "일본 비밀번호 수첩 해킹 공포에 품귀 현상 발생함",
-        "보안 신뢰가 전자화 서비스 수용에 미치는 영향 시사됨"
-      ],
-      "ai": true
-    },
-    {
-      "title": "벨레다 일본 쇼핑몰 해킹…고객정보 19만8792건 유출 우려",
-      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5DMGJRUm82TkFXWGhJdF9xSWdGWTRrSVdLTzhJR1FCcWllSXRWZlFZSHlYQnF2dnNWcGtWVUJMZElFVFFXM2l6a0dvaXBhMFFmRXkydV9R?oc=5",
-      "date": "2026-11-24",
-      "source": "지디넷코리아",
-      "category": "energy",
-      "summary": [
-        "벨레다 일본 쇼핑몰 해킹으로 고객정보 19.8만건 유출 우려됨",
-        "온라인 서비스 고객정보 보안 관리 중요성 재확인됨"
-      ],
-      "ai": true
-    },
-    {
-      "title": "민주당, 과기혁신특위 보안분과 출범… 잇단 해킹사고 대응 나서",
-      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE02MU9QcGhPZHMyR2pOS1lTMnJkMUJ6dmVFZnp0TVFDSy1Xckh5OXA0SjhPVnhUTS1IYmwwTGt4RGR0UTIxVk1FbUt2QzZKTC1LYl9yN2xDZXF5N3JFS2Z4ejB4OE5pNVpsblE?oc=5",
-      "date": "2026-11-24",
-      "source": "천지일보",
-      "category": "energy",
-      "summary": [
-        "민주당, 잇단 해킹 대응 위해 과기혁신특위 보안분과 출범함",
-        "보안 정책 강화 기조가 빌링 업계 규제 대응에 영향 전망"
-      ],
-      "ai": true
-    },
-    {
-      "title": "가상자산 트레이더 안셈 \"지갑 해킹당해\"…밈코인 200만달러어치 매도",
-      "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE8yOWRtSEpDTWZRcmVNUlBUNm5mdldydVotSHNHSkRQQ0dtcU9hRHNxUGtxVmgwbVhlbXRnbjVHRUc4R1ZzMVEtV0NwMUMzSUdK?oc=5",
-      "date": "2026-11-24",
-      "source": "블루밍비트",
-      "category": "energy",
-      "summary": [
-        "가상자산 트레이더 안셈, 지갑 해킹으로 밈코인 200만달러 매도됨",
-        "디지털 자산 보안 위협 사례로 보안 일반 동향 참고됨"
-      ],
-      "ai": true
-    },
-    {
-      "title": "“해킹에 털리느니 손으로 적는다”…日서 ‘비밀번호 수첩’ 품절 대란",
-      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBsbnNvaEVlWi1BdVhDWEFoM2d2ZHhyelpxS3dYOF9FdkZOQ0xKVlJrM3JlX3U3azhzcE1HTHF5X3dfWVN5b0tCbkZ2eFhGZ0hPaktjNTRxSGZVRDFIYlBQcEJiejZ6LUFBVjFWQdIBYkFVX3lxTE85OEN0dU1BU1dGNnI2TGlNdHZrSlphYjNQZ1hlMGhRaXk5NDhJUzhlaUxBT2k1YVB6dkVoWEVwelM3QV84cjVKV183R05QczdDNk9haV9VSVF4NHpBODFVV2lB?oc=5",
-      "date": "2026-11-24",
-      "source": "동아일보",
-      "category": "energy",
-      "summary": [
-        "일본서 해킹 우려로 비밀번호 수첩 품절 대란 발생함",
-        "디지털 보안 불안 확산, 전자청구 신뢰 확보 과제 부각됨"
-      ],
-      "ai": true
-    },
-    {
-      "title": "하나저축銀 해킹…고객 552명 개인정보 유출",
-      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNeFhFQmROMjVSaDlzNkx5RkJwTy1qY285VklPSzVnTmNfeVJCa1RhaHRHRV9Cc1hyZ2F4dl9xUGZWaU1RbmR2amg3V29ES0g2QXBldWdIT0J1V09NNFhKeHlZOUV2b0llR3ZzRDBaVU9obnVRek5UdWxadm9vNHNpSU53?oc=5",
-      "date": "2026-11-24",
-      "source": "글로벌이코노믹",
-      "category": "energy",
-      "summary": [
-        "하나저축은행 해킹으로 고객 552명 개인정보 유출됨",
-        "금융권 유출 사고 지속, 전자청구 개인정보 보안 강화 필요함"
-      ],
-      "ai": true
-    },
-    {
-      "title": "하나저축은행도 해킹…고객 552명 개인정보 유출",
-      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1TX2I2eEt3LTV1VHpIc2RtbnJCRHEycVVyVEJVa0ZjVm5zTUhkQ2VGaTZ3RDY4dmE3TGtxWnhSbFI2WWc3YldMSnVHak1JOVhSX3lvb012TTQxT1VhQzdnZ1g2bzhjcXhMTlc4dHpkQmo?oc=5",
-      "date": "2026-11-24",
-      "source": "코리아리포트",
-      "category": "energy",
-      "summary": [
-        "하나저축은행 해킹, 고객 552명 개인정보 유출 발생함",
-        "빌링 고객정보 관리 보안체계 점검 필요성 커짐"
-      ],
-      "ai": true
-    },
-    {
-      "title": "하나저축은행 해킹 사고…고객 552명 개인정보 유출",
-      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9LMkhzTmRfV0VqNTlvVmc4YkVMVVVaZ3ZieGV6TTh0WnVvTDFvaHJrUHVsT2NOQ2hhMzRNLU81cTlaRnZnWVpPMjRFZm42TFNGNmtPT0FSYlp2bmpyOUxSQzdYSUtrdXcxSFpUOUw1Z9IBc0FVX3lxTE5Rbmd6VE9iVUZpNEJvMU8yU01rb09tem9ZY0hnMkJQWmRWMG9oaGY4bFY1SDVNMDIxVVN2WXRVa09mNW42SUpSQkVpbkRjRTlDajNMX0RCbjdBREd6dDZ1NnBGRVhlR0RDYkdNX2RkU2lrUWs?oc=5",
-      "date": "2026-11-24",
-      "source": "대전일보",
-      "category": "energy",
-      "summary": [
-        "하나저축은행 해킹 사고로 552명 개인정보 유출됨",
-        "전자청구 서비스 정보보호 신뢰 확보 중요성 부각됨"
-      ],
-      "ai": true
-    },
-    {
-      "title": "해킹·개인정보 유출 걱정 줄인다…혁신기술로 공공 보안 강화",
-      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFA1OG9pcGd6YWRxaUkxdFpkamZSRHdReVRUYmN0Rm83a3dEUU9DMGtkdFA4UEppTDVOdkZRQ0xtRElHQ1NqY2VBTG1ZMmRBUDZCOHhNUjBqajVPdjMzSFE?oc=5",
-      "date": "2026-11-24",
-      "source": "한국방송뉴스",
-      "category": "energy",
-      "summary": [
-        "혁신기술 활용해 공공 분야 보안 강화 추진함",
-        "지자체 사업·공공 전자청구 보안 솔루션 수요 확대 전망"
-      ],
-      "ai": true
-    },
-    {
-      "title": "하나저축銀서도 552명 개인정보 유출…두 달 간 저축은행 5곳서 털려",
-      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE85TDlGWmhXNmhPYmczLWlHTzNWSDBtdEhpc1lGckdVWE16UGY3blNjTk5aU0lWbFdPSU1DX1dNOWpXTEZqck5Pay1FT0VDNVF1U0pGbG1FTXF1QkNDRkFNMUxDcHZ2cmRGMmV4OWpPT1DSAXRBVV95cUxPWXBBMDc5Q0RqOE9mczU0anluYU9rOWE1TndwMXhEN3BGaXp6M3dzWTZfZ3NSOWozZmtpU2tScG5qa0pvZ1VkZVZuYzQyeGV6eHUzNklKc0plZmJTWHBwRVJKWVFKTUtKREluUXVWZ1RJQ3NjaQ?oc=5",
-      "date": "2026-11-24",
-      "source": "주간한국",
-      "category": "energy",
-      "summary": [
-        "두 달간 저축은행 5곳 해킹, 하나서 552명 유출됨",
-        "금융권 연쇄 유출로 빌링 보안 강화 압박 가중될 전망"
-      ],
-      "ai": true
-    },
-    {
-      "title": "하나저축은행 해킹에 552명 정보유출 … 추가 피해 조사 중",
-      "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE5XSG5uWEZyTUVVTmdGdmsxZVF1TlRxdS1DQmcxakhkUmpKYjA0Z0dMTy1vVXhzNG5aTnJDM3JzUkJaWWN5aVBfWDdfaEVlTk1URE45SkxzUFhCS0tUSC1fSm1zUWtvT3pIVlZHZWx6LWpmN2JmcllfV1h1RdIBgAFBVV95cUxNLVVWUTl3X3R1ZzlWMHB5cURDcUpybWpJaG5JbXg1akJMVDlQdE1mcXBucVlpTVliR1pHbkdsLXNSbzBPR2ZNVGlZYnQzTU9ZTkJoQVhvbEg0MG5DYVNQdzVQVjFkMTFrVEpEUWlpMFZmdEVqRkNKNGpkUzdWTE1PeA?oc=5",
-      "date": "2026-11-24",
-      "source": "뉴데일리 경제",
-      "category": "energy",
-      "summary": [
-        "하나저축은행 해킹 552명 유출, 추가 피해 조사 중임",
-        "개인정보 처리 대행 서비스 보안 리스크 관리 중요함"
-      ],
-      "ai": true
-    },
-    {
-      "title": "잇달은 해킹이 영향?...정보보호 상장사 32곳 3분기 매출합 20%↑",
-      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5ZNDVDcERDMnhEWmZUN2Q3Q1B0UGVPOUJaSXFNT2VpYm1SYjhDY0piNDBIczV1UW1OUDJ5Wk9wcDE2ajc1ZEcxNDNTVDc2dFlMbDk2d3Fn?oc=5",
-      "date": "2026-11-24",
-      "source": "지디넷코리아",
-      "category": "energy",
-      "summary": [
-        "정보보호 상장사 32곳 3분기 매출 합계 20% 증가함",
-        "잇단 해킹에 보안 투자 확대, 전자청구 보안비용 증가 전망"
-      ],
-      "ai": true
-    },
-    {
-      "title": "하나저축은행도 해킹 피해…고객 552명 개인정보 유출",
-      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE0xMlhIUXpyV1J4dmE5MVNKdWduMGREelAxSnEzUUgtYkIwV0J5aG9ibXd1dW5CTWJyRjFiRGFUYzZhTlZJMzB2VDZoZ3JQRG9XaFdzRzJwMlFPYWNxWnNMdtIBeEFVX3lxTFBiNHFLbm5YUFRzenRLbEx5WFpiSy1yR3dZZWdhOHAwMEM3STNjRk1hdGl0NjZxX25rSG53YmwybUJlZElkOU41ZGVMZERIMFJ6TXIzNzIzUmlpNTFWNTdOX2tOcGRBTjFWcmE1X21wcXZpdGJudUhBWQ?oc=5",
-      "date": "2026-11-24",
-      "source": "뉴시스",
-      "category": "energy",
-      "summary": [
-        "하나저축은행 해킹 피해로 552명 개인정보 유출됨",
-        "금융 전자문서 보안 신뢰 확보 과제 지속됨"
-      ],
-      "ai": true
-    },
-    {
-      "title": "하나저축은행 해킹 '고객 552명' 정보 유출",
-      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9QTVRqbzBJTU9fNXpjWS1QZ1oxRmFBQzQta0RQZlVQOTdlSXppdDF3OHhyVFdSRHVXb083ZFdTTkt3MjdiYzFrN3hqTkVSS0I3UGZHQXNfa2ptT1ludWhoYjloOGdzc0ZRUTJOQTl3?oc=5",
-      "date": "2026-11-24",
-      "source": "세이프머니",
-      "category": "energy",
-      "summary": [
-        "하나저축은행 해킹으로 고객 552명 정보 유출됨",
-        "전자청구 고객정보 유출 방지 대책 점검 필요함"
-      ],
-      "ai": true
-    },
-    {
-      "title": "美법무부, 북한 바이낸스 해킹 자금 1조5천억원 몰수 소송",
-      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFB6cXBhZUxIdzFEaTBDRW1hZ2Zwd1hSM1dHVmRuZ2ZvX01hb0dueFdYLWJKdzBjQ3lTZWJFNE5xbjJ1QkJodXpmcWkwQmdHNGJTb0Utc3M5UUM2Y3fSAWBBVV95cUxQd3NiY185SjMzWjhmVzNTeTBvOXBLbGZJNWpKSzR2OTdPQnYyb3lZR21WZDJtLXVVTktrNTdEWFNCRWVJeHZmZThyMHMyQVJPcUZaOGlldTZvRC1LTTVwMmU?oc=5",
-      "date": "2026-11-24",
-      "source": "연합뉴스",
-      "category": "energy",
-      "summary": [
-        "美법무부, 북한 바이낸스 해킹 자금 1.5조원 몰수 소송함",
-        "국제 사이버 위협 심화, 결제·금융 보안 경각심 확대됨"
-      ],
-      "ai": true
-    },
-    {
-      "title": "하나저축은행·PG사도 개인정보 유출",
-      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFAtSDFVM3BfZHdhOWNka0RSN1lQRS1rWHVmT2xodnFIWXdSU2pEaVlPQXdaWmFUWkFIRThTQ3Z5bHl5S29MT2Jvd3FEZXBOOGRNbU9xTGRrcDFJRmQzbk5pZA?oc=5",
-      "date": "2026-11-24",
-      "source": "뉴스토마토",
-      "category": "energy",
-      "summary": [
-        "하나저축은행·PG사 동반 개인정보 유출 발생함",
-        "결제대행(PG) 유출로 빌링·결제 연계 보안 강화 필요함"
-      ],
-      "ai": true
-    },
-    {
-      "title": "하나저축은행도 해킹…고객 552명 개인정보 유출",
-      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1YQ3pGQ3dhVFJZLW4xanFTSzVyRDlwM0FUUVF3bnFKcFlLUVpQbDF1VkpaTVd1dndQSllTcnZIN05pZU1BNFdvd2w1VTZnRGtoME1KUXhKWExNMS04S2J6THllbldCSlF6?oc=5",
-      "date": "2026-11-24",
-      "source": "www.ebn.co.kr",
-      "category": "energy",
-      "summary": [
-        "하나저축은행 해킹, 고객 552명 개인정보 유출됨",
-        "전자청구 개인정보 보호 체계 재점검 필요성 커짐"
-      ],
-      "ai": true
-    },
-    {
-      "title": "하나저축은행서 552명 개인정보 유출…저축은행 해킹 벌써 5곳 - 머니투데이",
-      "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE1DSmtOa1ZEamQzY2J4Zlp0WXlqUmZIMmN2T0R0TXpmOEVaRU1vRlVvQVU1ZC1tTWVGWkd2b0t2Sms0enRxa280Wk5mUFNzcVdpRnRmcWdxVUROcDJjLVNLM2lGOGJXU3gzZXFjS2xrMVp2RXI5aUpnNNIBfkFVX3lxTFBrODdwQTF3aHZzZGdrWUtmX1o0ZDVtOFBLaEwybV93RC1ReFdYRW40X3d5NjVnMVNtSGFRb0hZa3ZwT3cwdWpNYV84YWVCNUZkd2JqX294M0o4NjBYMk9sNS1KSHBuZk5RUC1Pb0JudlA3TThKc2trTFRVclo4dw?oc=5",
-      "date": "2026-11-24",
-      "source": "머니투데이",
-      "category": "energy",
-      "summary": [
-        "저축은행 해킹 5곳째, 하나서 552명 개인정보 유출됨",
-        "금융권 연쇄 사고로 빌링 보안 투자 확대 전망"
-      ],
-      "ai": true
-    },
-    {
-      "title": "가상자산거래소 대주주 지분 20% 제한·해킹 땐 무과실 배상…디지털자산법 윤곽",
-      "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFA1c1owZkhFNjRnTXpmOW9yeFVoa1Y3aFNHaEdsQXpZcE1Ld3JLM2ctc3c2YUpvdU1FSTVnaDduWnRIR1hLRWJVNmRLNlpVS0xJZkZRWQ?oc=5",
-      "date": "2026-11-24",
-      "source": "JTBC",
-      "category": "energy",
-      "summary": [
-        "디지털자산법 윤곽, 해킹 시 무과실 배상 포함됨",
-        "무과실 배상 기조 확산 시 전자청구 보안책임 강화 전망"
-      ],
-      "ai": true
-    },
-    {
-      "title": "금융당국, 디지털자산기본법 발표… ‘무과실 해킹 피해’에도 배상 책임",
-      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1FOWczcVZ2Njh1dmZ0SDg2OG5BcGJTU2JqeElXRlZxRUFIZHV6R1RjcEN1eXRuVnFWZS1uVWg4eWl2VmpxME1TT29fYUcyemVTZzA1LXBNRTFUWE0xaTUxWkpQZ215VkNfSGc?oc=5",
-      "date": "2026-11-24",
-      "source": "천지일보",
-      "category": "energy",
-      "summary": [
-        "금융당국 디지털자산기본법 발표, 무과실 해킹 배상 명시함",
-        "배상책임 강화 흐름, 전자청구 사업자 책임 확대 가능성"
-      ],
-      "ai": true
-    },
-    {
-      "title": "하나저축은행 해킹…고객 552명 주민등록번호 등 개인정보 유출",
-      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1rcFBBbHpRTzdqVGlHQ3lXNzUtSFgxekU0dEZCQWpSOUR6NXNKc1hJd3QxSGRwdWlhaFdxTWl6NndEQUpNV2lCSHBrREZOdmQxZ0lIZy1tcmR0UnNib3NQSnNBVE9wOTY4dUFN?oc=5",
-      "date": "2026-11-24",
-      "source": "현대경제",
-      "category": "energy",
-      "summary": [
-        "하나저축은행 해킹으로 주민번호 등 552명 정보 유출됨",
-        "민감정보 유출 리스크, 빌링 데이터 암호화 강화 필요함"
-      ],
-      "ai": true
-    },
-    {
-      "title": "또 뚫린 금융권…하나저축은행서 552명 개인정보 유출",
-      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQQjk4MkNEUUFFV3dSc0x6ZEZPWXU3TDFqSlhFdHRyTVRKNzVSNGlhcl9Rc0FZMDFxRmJkNmZjeVJKRVdWRGVyWVpkN2JrQnBFUlNCVDlicW9ESWxXTmczX0NReUoxY0xJcVMyWENqTTFNUlplbklzbFRPZ0hOc2RFdg?oc=5",
-      "date": "2026-11-24",
-      "source": "이데일리",
-      "category": "energy",
-      "summary": [
-        "금융권 또 뚫려 하나저축은행서 552명 정보 유출됨",
-        "반복 유출에 전자청구 정보보안 신뢰 확보 시급함"
-      ],
-      "ai": true
-    },
-    {
-      "title": "HD현대로보틱스 해킹으로 개인정보 유출, 기업명·부서·직책 등 10개 항목",
-      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE42WXd3eFRWRnd3VTZndnYtZUFZaGtTM1JnY2tQU2N2dkg4amlvLTZYWDhkNlVROU5NWER4ZmJlM3JILThPTURKRlBrcHpWLUMydmlRcWpzdmllMWJFbWxhNWFxZHp6ZFZxaXlPdg?oc=5",
-      "date": "2026-11-24",
-      "source": "데일리시큐",
-      "category": "energy",
-      "summary": [
-        "HD현대로보틱스 해킹으로 임직원 10개 항목 정보 유출됨",
-        "기업 고객정보 유출 확산, B2B 빌링 보안 점검 필요함"
-      ],
-      "ai": true
-    },
-    {
-      "title": "(라이프) “내 정보 아는 전화도 의심해야”…개인정보 유출이 부른 금융사기 주의보",
-      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5YWlFCS1VPVktObVFVelNpeUxWOW04bzlwQXU5Z01yM1BYdVhWOEg1aHFfZlIzaW5mb3VHMmxVek1vZHVtNzl0ZWpYRFpROWJGRllZdENrNExFMlpkWWVJN2NBMVdGNl9MVjR1adIBcEFVX3lxTE41Q2YwdkhOWnpTWlA0UFpDODgwQ0lrS0pLTm5RMmxvSUU1QTVvckpfME9iSkoxeEU2dXNTczhuazlscF9uR04tUjZhc3prNjVKWEpSVkYxVHNsV1hnLVhmdEk2ZGs5b1FlRnVTU0RlT3M?oc=5",
-      "date": "2026-11-24",
-      "source": "전기신문",
-      "category": "energy",
-      "summary": [
-        "개인정보 유출발 금융사기 주의보, 내 정보 아는 전화 의심 당부함",
-        "사칭·피싱 위험, 전자청구 안내 채널 신뢰성 강화 필요함"
+        "경기도의원, 에너지 취약계층 지원 축소·지역 격차 우려 제기함",
+        "취약계층 에너지 지원 정책 변화로 요금·복지 연계 사업 영향 전망"
       ],
       "ai": true
     },
@@ -3713,134 +3269,326 @@
       "ai": true
     },
     {
-      "title": "삼성증권도 해킹 피해... 8241명 개인 정보 유출",
-      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPazlTNXdUSDlGdDM5S3FMdW5XNlFSN09Ydk1RZGJSaVJ6UklJLWYyZkVtUVM4OWN1el9ieFlzRzJqb2NNQ0Nsb09IQzhURGhZV3JxM2VSejBLeFBzUmlsMUFRcnY3OGRVUFdsQ3Q2Y292WUtHRUh2U29VdHJiYkFtbw?oc=5",
-      "date": "2026-11-23",
-      "source": "조선일보",
-      "category": "energy",
-      "summary": [
-        "삼성증권 해킹으로 고객 8241명 개인정보 유출됨",
-        "고객정보 취급 서비스의 보안 리스크 부각, 전자청구 보안 점검 필요함"
-      ],
-      "ai": true
-    },
-    {
-      "title": "삼성증권 해킹 피해…고객 8천여 명 개인정보 유출",
-      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBrbUNBYlpIY242Mm42V3lnRmwwMU1sbEtJeGIyeXA4UDlMN1FqVEFSOHRPdmV1RTRUeHp5aXdWWE5DQmNCU2JrMDhNWmZnbEk1XzlnbTFMaVhWV1E?oc=5",
+      "title": "[단독] 다크웹에 올라온 한전 유출 정보…해커 “입찰 정보도 있어”",
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBISkF6a2lkNkpJOVc1NTg2djhDYnNDTXJncE1FUUJBcnlMY292clMwaEptMk1LdWkxLVRsbkZWSzVtbTQxSXZaWkpyUy1BTHdnbUl4dUtnbm8tRnc?oc=5",
       "date": "2026-11-23",
       "source": "KBS 뉴스",
       "category": "energy",
       "summary": [
-        "삼성증권 해킹으로 고객 8천여 명 개인정보 유출됨",
-        "전자청구 개인정보 관리 체계 강화 필요성 재확인됨"
+        "다크웹에 한전 유출 정보 게시, 해커가 입찰 정보 포함 주장함",
+        "한전 정보보안 이슈 확대로 전자청구 데이터 보안 강화 대응 필요함"
       ],
       "ai": true
     },
     {
-      "title": "삼성증권 고객 개인정보 8241건 유출... ‘고객의소리’ 서비스 노린 해킹",
-      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBZZDRKSWZlRGJaanJxejB3Q0xpUUJRb1I2QXpJWEgwNFcxMU5KUVNYX2pNSkZGSkF0U09fcHQ5aTlpeUE4b3ZXNE1RNXdublVONWxsZXJHRzZ5NEZyXzJ1QmgwdHdleGwtZkpj?oc=5",
+      "title": "한전, 150만명 개인정보 털렸다…계좌·카드번호 등 유출",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBKNC1SOXBhZkhySll1TEp6UW82WVV2TFhXNWFoWEk5WDNlMElZSkcxRUNYVXVfcncyVHVIRXFTRjl6TXFDaE5MOUVsMUVWWnlMMXpld0xZQm9jcXdwUGdKUEUzcG54czRzbENJdg?oc=5",
       "date": "2026-11-23",
-      "source": "보안뉴스",
+      "source": "한겨레",
       "category": "energy",
       "summary": [
-        "삼성증권 '고객의소리' 노린 해킹으로 8241건 정보 유출됨",
-        "고객 접점 채널도 해킹 표적, 빌링 접수 채널 보안 점검 필요함"
+        "한전 150만명 개인정보 유출, 계좌·카드번호 등 포함됨",
+        "고객정보 유출 사태로 전자청구 개인정보 보호 신뢰 관리 중요성 부각"
       ],
       "ai": true
     },
     {
-      "title": "삼성증권서도 해킹 터졌다…고객정보 8천241건 유출(종합)",
-      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1Xa0JPeFczTUxLcXMzUGxyM1ZzM0w3c1Bqc3pTRVNxTVEzLWZIUUM5U0hmck9Fc2dmVDYteHJTYXY3X2FsTWhYLTJZQ1k2MEdGUjkwTEZwQV9XQXcwQkdTN0RISUs3TE00SUdheDVWRTY?oc=5",
+      "title": "동남기후에너지포럼 '부산 탄소중립과 미래에너지산업' 정기세미나",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1wWFpKQmdRbE9sS0lGZk5fZF9iRnZFQzltekVTVHg2a0d2NC1XemRjV2lKTHdtZWdaQWN6ZjVKVzhfaUlKdXhacTAxSlBHZk9tWHk3ckVidkNGMzZoNkNtRHFMdzktN3lW?oc=5",
       "date": "2026-11-23",
-      "source": "연합인포맥스",
-      "category": "energy",
+      "source": "가야일보",
+      "category": "local",
       "summary": [
-        "삼성증권 해킹으로 고객정보 8241건 유출(종합)됨",
-        "금융권 연쇄 해킹 흐름, 청구 플랫폼 보안 투자 확대 전망"
+        "동남기후에너지포럼, 부산 탄소중립·미래에너지산업 세미나 개최함",
+        "지역 탄소중립 논의 확대로 에너지 정책 동향 모니터링 필요함"
       ],
       "ai": true
     },
     {
-      "title": "개인정보 유출 잇따르자…日서 아날로그 '패스워드 수첩' 불티",
-      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1tMHVYems4eVBiYkVWY0s4NU5hZng1YnZzS2NDc0tlb0xVLW1GWVFVaEdfLXFSUVIwZ2tBTEU1Z3Q0b293UXNlajA0X0cxMG16Rkdud20wUVlOcjBrWVBsVjBSdTNzcWJtRFhIbmoyVEF2YU9J?oc=5",
+      "title": "선문대, 앵커사업단 탄소중립 에너지전환 실천 정비업소 인증패 수여",
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9KOXRNbkZmeDdLaU5kOW0zSmNaYzNxRXFkdkh2dTV4RWFRT05qbWpueVNqUGJSSVZPZXlJR1p4OF9xdmdIVkdRa3Y5MlV3blgtaW9RQkN3SGVGbEsxRzNvRm1JdUg5d9IBaEFVX3lxTE42aENkcklBaXp5Z0ZpUnJtUFc0Q0JKX0dQSURvdjN6Z25Fb0dibWFrTUwxVnFvQUxvc3VtWWVocEdZcTdrYU9tNGlDQWl3RV9PbVpKMnY2OTJMMG10VldjSlIyTXZJX093?oc=5",
       "date": "2026-11-23",
-      "source": "연합뉴스 한민족센터",
-      "category": "energy",
+      "source": "Usline(유스라인)",
+      "category": "local",
       "summary": [
-        "일본, 개인정보 유출 잇따르자 아날로그 '패스워드 수첩' 인기함",
-        "정보 유출 불안 확산 동향으로 보안 신뢰가 서비스 경쟁력 전망"
+        "선문대 앵커사업단, 탄소중립 에너지전환 실천 정비업소 인증패 수여함",
+        "민간 탄소중립 실천 확산으로 에너지전환 일반 동향 참고 필요함"
       ],
       "ai": true
     },
     {
-      "title": "삼성증권도 해킹 피해…8천여명 개인정보 유출",
-      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBreGtvT2Z3Z0hrd1RxWGlVYWRLUEh0eU5QUDduTlFQUTgtTnFqVXg5d0ZTVzlENkNzdzVoUS1HOHpaYjRBZmhjejB5QkdrT0FrbHVUMkRBd1l6V2_SAWBBVV95cUxQQkV2am9RVGlYcWZuMUQ4U2U1emFHek1GdDVyOG54cVZZQ1doNFJIOVJnMF9HSjJrS2ROWlZTU1dSVW4xVHUtVmRMcmtHbFJoMGhFa1BoOWtodUtfNWRZZTY?oc=5",
+      "title": "탄소중립 무관심한 기업 에너지 특혜법 [왜냐면]",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBpWUtSeG5zNHIzVkJDN0tQbGdGSWZSbFFnTld1dWxTeG5UVzM5REdCTU03NzdXcHlEZG1jbkJUa29Na3RSUS16SXJFWEZxT0x4Y0FVMzBON1JJQkduWDZBN2x1NzFEM1k?oc=5",
+      "date": "2026-11-23",
+      "source": "한겨레",
+      "category": "local",
+      "summary": [
+        "탄소중립 무관심 기업 대상 에너지 특혜법 비판 기고함",
+        "에너지 특혜·탄소중립 정책 논쟁으로 제도 변화 흐름 주시 필요함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "시흥시, 시민참여형 탄소중립 정책 성과 인정… 기후에너지환경부 장관상 받아",
+      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1rR3F4ZzJuYWwzTlI5RWRnWVQtNmswcGswTHN2ZTdsOVJyU0dsNXJJMDJST1dRdjByLUFxN2N1ZE9oWm9tNndqWV90SUZqQTl1VDhweDJvSGxLM21WSEdoZ0RUN190M0NodUlacWRsM1ZtbjJF?oc=5",
+      "date": "2026-11-23",
+      "source": "경기종합뉴스",
+      "category": "local",
+      "summary": [
+        "시흥시, 시민참여형 탄소중립 성과로 기후에너지환경부 장관상 수상함",
+        "시민참여형 탄소중립 사업 확대로 지자체 연계 서비스 기회 전망"
+      ],
+      "ai": true
+    },
+    {
+      "title": "탄소중립이 수출 경쟁력으로...부산 에너지산업 전환 과제",
+      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFB1UWJjbk5PLTVXdHNzZTF6Sjhkb3htcTEtS01aWUJReHczX012Q3NGSWlQQVRFenpJaGlyRHBGYWlJQTBQb01wV2dvdUxGV010VUVDVVFyRms5d9IBWEFVX3lxTE5Ha3MyWHBFeTZYYlZSQjBGdnRNTkhNcFpPLUpOdEVkRHI1WnRZSG1GODM2bWVhWkJQOEFYaFRuWVVheEU1LUI0bUo0dzdzZXphVVk3ZGdxcGs?oc=5",
+      "date": "2026-11-23",
+      "source": "아주경제",
+      "category": "local",
+      "summary": [
+        "부산, 탄소중립을 수출 경쟁력으로 연결하는 에너지산업 전환 과제 제기함",
+        "지역 에너지산업 전환 가속화로 관련 정책 동향 참고 필요함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "거제시, 탄소중립포인트제 활성화 최우수상 수상,",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5yTzlWeGlRUEFTRVZSejhpNFo1Y2cxbWFfTktrNEJzajFpNV9iVnR4aEJjNTVKTVhkQXZVYUxhMjFybHBydE90SlRJYVRRQ2JsT1VQdzZZazJJY2tleHdaOER0dlBhbEdvRUc0?oc=5",
+      "date": "2026-11-23",
+      "source": "거제통영오늘신문",
+      "category": "local",
+      "summary": [
+        "거제시, 탄소중립포인트제 활성화 부문 최우수상 수상함",
+        "탄소중립포인트제 활성화로 지자체 에너지 정책 연계 사업 기회 전망"
+      ],
+      "ai": true
+    },
+    {
+      "title": "서구, 탄소중립 경연대회 지자체 부문 장관상 수상",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE55UUJZTEtvRDZSUDFWVjhsUjdodWV1NHNWek1fb21QM0RDVmE0akQ4dE40T0cyUks4c2c3UzJ4UHJEbWh1emZNbFpkdHhwUXBKaDlLRURIOWgzUWNIMmdDQlFVVmNTTHBt?oc=5",
+      "date": "2026-11-23",
+      "source": "충청헤럴드",
+      "category": "local",
+      "summary": [
+        "서구, 탄소중립 경연대회 지자체 부문 장관상 수상함",
+        "지자체 탄소중립 경쟁 심화로 지역 협력 사업 기회 모색 필요함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "[출근길 포인트] 한전 고객 152만명 정보유출, '수능 AI 혼선' 교육부장관 사퇴",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE8xWm03Y2VBNlA5WmRSbDA1cE5xc0lfY0piZkdFcFhnTHRtVzRJX0IxdEZUSUFOMHJRY29zaS1IQUhZUUF5RXZBOUxjWFVzUGRjNDdXT05YSFJESDNHZEdfc1VFTGlUaDF6eVpPbUUzdkM?oc=5",
+      "date": "2026-11-23",
+      "source": "포인트데일리",
+      "category": "local",
+      "summary": [
+        "한전 고객 152만명 정보유출, 수능 AI 혼선 교육부장관 사퇴 등 보도함",
+        "한전 정보유출 파장 지속으로 전자청구 보안·신뢰 관리 중요성 부각"
+      ],
+      "ai": true
+    },
+    {
+      "title": "시흥도시공사, ‘2026년 대한민국 지방자치 혁신대상’ 최우수상 수상",
+      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE8xWHZ0MDJSX2U3TTJNRXRiNG5PWENFUTY3dWxZd0toWUhOZDdadVZ4X05LV1Z1MlpkMDBTb1RPWjVoS3I2QnRVY25XbS1XUjZqUlZENDNHWlUyY1NFRjduM1dELTUyZzVBVWRWRGhQUdIBb0FVX3lxTE8xWHZ0MDJSX2U3TTJNRXRiNG5PWENFUTY3dWxZd0toWUhOZDdadVZ4X05LV1Z1MlpkMDBTb1RPWjVoS3I2QnRVY25XbS1XUjZqUlZENDNHWlUyY1NFRjduM1dELTUyZzVBVWRWRGhQUQ?oc=5",
+      "date": "2026-11-23",
+      "source": "시민일보",
+      "category": "local",
+      "summary": [
+        "시흥도시공사, 2026 대한민국 지방자치 혁신대상 최우수상 수상함",
+        "공기업 혁신 성과 확산으로 지자체 사업 협력 기회 참고 필요함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한화, 화성 포도농가서 임직원 가지치기 봉사 실시",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFB4OER6bWk4OHBuamYzLVpWdlhXdUNTQTVxbU9oaTc3MmhIRnRuRnJPQXo5TUlIU3VIeDlpWG9sdmdTSGRJSlFMTzIwU0xiSDg2RllZYWdQT0pqVkxMT0ExWTlGMmJtRnhETWhmd2dn?oc=5",
+      "date": "2026-11-23",
+      "source": "뉴스후플러스",
+      "category": "local",
+      "summary": [
+        "한화, 화성 포도농가서 임직원 가지치기 봉사 실시함",
+        "기업 사회공헌 활동으로 직접 관련성 낮음, ESG 일반 동향 참고함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "㈜한화, 농촌 일손돕기 봉사…화성 포도농가서 가지치기",
+      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1nOUtpWGFMdDhtME1YYW9EV1ZCeWNiQnpDREk2blhuSWJ1Zm91c2NLVkRaa1d0MHFQekgtbzVGV2NYV2stUHVKSHFVQndfR0c3Y0pjT0VR?oc=5",
+      "date": "2026-11-23",
+      "source": "헤럴드경제",
+      "category": "local",
+      "summary": [
+        "㈜한화, 화성 포도농가 가지치기 등 농촌 일손돕기 봉사함",
+        "기업 ESG·사회공헌 흐름으로 직접 관련성 낮은 일반 동향 참고함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "안민석 경기교육감 \"남·북부 격차 해소 조직개편부터 시작\"",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE54R0NOVGZwTGNLUzBIUlVnN0s0ZFFMSGpJcmlBVnJlUUpuMDlNTVI0dEM0UmhwVlZjUTlJMGlCS0VNSXdWeTFlMjZLZnpRUDY2QkpidkpZT1haRUZ4QUZFOdIBYEFVX3lxTE54R0NOVGZwTGNLUzBIUlVnN0s0ZFFMSGpJcmlBVnJlUUpuMDlNTVI0dEM0UmhwVlZjUTlJMGlCS0VNSXdWeTFlMjZLZnpRUDY2QkpidkpZT1haRUZ4QUZFOQ?oc=5",
       "date": "2026-11-23",
       "source": "연합뉴스",
-      "category": "energy",
+      "category": "local",
       "summary": [
-        "삼성증권 해킹으로 8천여 명 개인정보 유출됨",
-        "고객정보 유출 사고 반복, 전자청구 데이터 보호 강화 필요함"
+        "안민석 경기교육감, 남북부 격차 해소 위한 조직개편 추진 발언함",
+        "공공기관 조직개편 동향으로 담당부서 변화 가능성 참고 필요함"
       ],
       "ai": true
     },
     {
-      "title": "KISIA, 랜섬웨어 위협 공동 대응 위한 제8차 민관학 협의체 개최",
-      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9xeG5wLTgtZnFGeW1tYldMUmtURHZEaElZTEMxaVpxOFVNV2cwcjZPMmh2Y1RkX0N4bU9qX1FRVVI3cExIY1gxTFhfOFlXb2JpLXZmSmdjYl9iQzRuMndIeXpLSkJsU1JUNTlaZA?oc=5",
+      "title": "강원랜드, 조직개편 통해 준법·안전경영 강화 및 미래사업 육성",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1aYkhFSElfZ2pFMWZIaTFpcWNyMFhhNDF1dlZOc3dKUUJOMXBJY1lUTFJReFVOWXJMNk1aQUk1VC0tek5DX293MlMxSUk3MnRjcjhCOGN4NXB4ZlMybHAyVEpjR2ttYUNLeVd6by1WY2dHQQ?oc=5",
       "date": "2026-11-23",
-      "source": "데일리시큐",
-      "category": "energy",
+      "source": "디스커버리뉴스(DISCOVERYNEWS)",
+      "category": "local",
       "summary": [
-        "KISIA, 랜섬웨어 대응 제8차 민관학 협의체 개최함",
-        "랜섬웨어 공동 대응 강화 흐름으로 빌링 시스템 대비 참고 필요함"
+        "강원랜드, 조직개편으로 준법·안전경영 강화·미래사업 육성함",
+        "공기업 조직개편 확산으로 영업 대상 창구 변동 점검 필요함"
       ],
       "ai": true
     },
     {
-      "title": "KISIA, 1587개 중소기업에 랜섬웨어 대응 솔루션 무상 제공",
-      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9PVjJBZlpoVC1mMGtFU1gyaWhFQUNjWm9KancycWtOTkdmSkFCWjNFME1zQnB6Z21KUkxEX2ZlcHFaaEtMOVNyNU9KNkpLUGhwbEE2VzBpcWp4NHJ2MEo4dEx2emtlREkwbnhr?oc=5",
+      "title": "[2026 행감 포커스 | 청소년재단]김포시의회 행정복지위원회, 김포시청소년재단 2026년 행정사무감사 결과 발표",
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE51ckduWUt1UDJQTThQLVZnSEhNUEhBZkhBdGQyaHg4R2VCdXVINllWVngwdWp3M1o2UFFPUDFtcm1hNjY3aGpUS0szdFRIdTZHdWxCZEY5YUFkLUNIQTh3RXJoeThYdw?oc=5",
       "date": "2026-11-23",
+      "source": "새한일보",
+      "category": "local",
+      "summary": [
+        "김포시의회, 김포시청소년재단 2026년 행정사무감사 결과 발표함",
+        "지자체 산하기관 감사 동향으로 직접 관련성 낮은 일반 참고 사항함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "가스공사, ‘비전 2035’ 실현 위한 조직개편 단행",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1MVmxiSGxvQ1hScGd0N3l1T3QycHNsckRSVS1kdUxJeHpURXpCRW1WclN2elZ3ZnQ0dlVLMndqOGVIVHFRWmNGa3JQS2g1eVIxQW13azlVUFB2dUE3NEx1d2VkWUZGQ2tHeDUyWkln?oc=5",
+      "date": "2026-11-23",
+      "source": "투데이에너지",
+      "category": "local",
+      "summary": [
+        "가스공사, 비전 2035 실현 위한 조직개편 단행함",
+        "에너지 공기업 조직개편으로 유사 사업 환경 변화 전망 참고함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "가스공사 조직개편…LNG 트레이딩 전담조직 신설",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE10eTBIRlJWLVVNYlZvSEk2THc4UGtWdUV5MlVMazVFOVkxUWlfWHJYdkMtMTVZZk56cTlNb3JEUmtsY1pKcEZPZ3h1MEViV05NdHBDZHhuNnBTZTVzc2V4bGp1WmVSM1VnQnJUWEh3?oc=5",
+      "date": "2026-11-23",
+      "source": "중소기업신문",
+      "category": "local",
+      "summary": [
+        "가스공사 조직개편, LNG 트레이딩 전담조직 신설함",
+        "에너지 공기업 사업구조 개편으로 시장 동향 모니터링 필요함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "LPG중앙회, 공제사업 내실화 기반 활성화... 10월 기준 가입액 112억여원 · 13.2% 증가",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5kdzYxZHdwSUc5Mm1ld0dNVnQzZWlqd1RubTNaYlhZY0doNjN2QWlsdG5GOG00ZjMwYWx6eTJXUXZERTFkSzM3djJsRkEycmhvVzNaTS1oOG9odmxWdjU4ZHhYVTBFajJwUHVLcQ?oc=5",
+      "date": "2026-11-23",
+      "source": "투데이에너지",
+      "category": "energy",
+      "summary": [
+        "LPG중앙회 공제사업 10월 가입액 112억원, 13.2% 증가함",
+        "공제·회비 수납 분야 전자청구 수요 확대 가능성 주목함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전, ‘한전ON’·조달망 뚫려 개인정보 152만여건 유출... 주민번호·카드번호까지 털려",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9uUWtPT0Q3RjIzcUpvYzJpVlNkWHZGZzVqMUxfMksxdWxaU2kzVzVIcWhQV0pxZ1NBZG1nTEhCa0ttVEhUZF9wMWFEZzhTRUJFbUNLejkySE5vV2JJUW45a2ZvaE40c1NKdnVJ?oc=5",
+      "date": "2026-11-22",
       "source": "보안뉴스",
       "category": "energy",
       "summary": [
-        "KISIA, 1587개 중소기업에 랜섬웨어 대응 솔루션 무상 제공함",
-        "중소기업 보안 지원 확대 동향, 파트너사 보안 수준 점검 필요함"
+        "한전 '한전ON'·조달망 해킹으로 개인정보 152만건 유출함",
+        "전자청구 고객정보 보안 신뢰 강화 필요성 부각될 전망"
       ],
       "ai": true
     },
     {
-      "title": "이재근 KB금융 회장, 취임 직후 해킹 대응 회의…보안부터 챙긴다(종합)",
-      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBYRldick04SDNiRjhiRHd5QmxmdDFsQjlFSThubDk4b0FPX3RRY3laeW9fLWY0MS1SNWM2TnpHMU00VGVOMHhJejkyMjBoU0JuWFMyc2hpNDJxd1dBZVVHbDBqbW5jUXFjNWxpSmE3am0?oc=5",
-      "date": "2026-11-23",
-      "source": "연합인포맥스",
-      "category": "energy",
-      "summary": [
-        "KB금융 이재근 회장, 취임 직후 해킹 대응 회의 개최함",
-        "금융권 경영진 보안 우선 기조로 보안 역량이 신뢰 요소로 부상함"
-      ],
-      "ai": true
-    },
-    {
-      "title": "[속보] 삼성증권도 해킹 피해…8241명 개인정보 유출",
-      "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNa1I5bTNSaUlKdmNTWmRCeEZJVE9Na1Y3dGxmMENRWnpqdUVxOW9zN0tBNkZfb1ZiMHVGaU5OWE05b0tYeTVNbmFIdWljRHA5eVVxVTRBcHhFenZZUU5uWmNKSGR0Vmlrb0Nfb0xKbmRONkZTOVBkNHhlLUpMbl9henQza2REZ3FF0gGcAUFVX3lxTE4yaGoyb3BXQnJ3MjdHSFEtdXJrNkE4ODVyNEVIMldTRWhMLWNFRlV1dVNZTUx4c0xIZjd2UGpHZjdFV2h5ZHUxYUlUMjd2SzdqYXVJRk92eDF3YWV5LUxQSFNQbmJEOE5fUXpvQkc4bUd1bTE1aFJobG5hMkVzcVJUUmhFeVBhVGkzNWJGdDI5MV9sUmJOTE5WT19nSA?oc=5",
-      "date": "2026-11-23",
-      "source": "Chosunbiz",
-      "category": "energy",
-      "summary": [
-        "[속보] 삼성증권 해킹으로 8241명 개인정보 유출됨",
-        "잇단 정보 유출 사고로 전자청구 보안 신뢰 관리 중요성 부각됨"
-      ],
-      "ai": true
-    },
-    {
-      "title": "[속보]삼성증권 ‘고객의 소리’ 해킹…고객 8241명 계좌번호·운전면허번호 유출",
-      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE54MjFWQjk2UzRUZ0Y5TnctU0hGN1ZjWWY2dU9vY2YzX2lRUmg2ZVQ1X2d6bWFfeTI1TlVxYkxXeVRySnFwY201REozeEd6YmJMNmhXMVI4Zmhsd9IBX0FVX3lxTE5uTlo5YnMyVWZxeFFOOU13UmJoYXo2dnpFWWdfRE15UFZ5NEloX2NpTFRLclRjZ05iclAyWWFUTFlSYVlheDBSbEtOdk5fNEtoTjJ0YmoyMy1fZW0yQTVn?oc=5",
-      "date": "2026-11-23",
+      "title": "한전도 해킹당했다…65만명 주민번호·계좌·카드번호 유출",
+      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE93TVRITGJMN0plWV9NSFJWNlR1eDd1WGVWb3B2SVRnbUJYMXA2US1wcDdMb1ZlQVJwWXZ3alBtenBTNTlYU0lfR3IxaW1WdFdta196aVJPSGtmQdIBX0FVX3lxTE13NWVmMVRzM3pzZE9YUTJ3eEFxU0F4RllMVWgwMlJFeml6dmxmX2FlNGlDZjJCS1hXOUdYSlBYVElLTXFab1RPbHM4SDZnQTVvMzhyTDRPSW9WNXNFb0Rj?oc=5",
+      "date": "2026-11-22",
       "source": "경향신문",
       "category": "energy",
       "summary": [
-        "삼성증권 '고객의 소리' 해킹으로 계좌·면허번호 등 유출됨",
-        "민감정보 유출 위험 확인, 청구 민감정보 암호화·관리 점검 필요함"
+        "한전 해킹으로 65만명 주민번호·계좌·카드번호 유출됨",
+        "빌링 데이터 암호화·접근통제 등 보안 점검 필요함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "‘한전ON’ 고객 및 전자조달시스템 기업 개인정보 150여만건 유출",
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9CM3hfMVpRLTNJZ3hQWHc2anpTQ0hScG5iSFlKUGRkRE1mZTBzX0tkWFJqTkFRUFJ0d3AxR2VxV0JDTFNSVEtsLUZUeE1rMG0wYUVJSWVQdXJuZ0U?oc=5",
+      "date": "2026-11-22",
+      "source": "KBS 뉴스",
+      "category": "energy",
+      "summary": [
+        "한전ON 고객·전자조달 기업 개인정보 150여만건 유출됨",
+        "전자청구 제휴 시 개인정보 관리 책임 강조될 전망"
+      ],
+      "ai": true
+    },
+    {
+      "title": "강동구 자원순환센터 지방자치 혁신대상 환경·탄소중립 최우수상",
+      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE90WVpxbENNQWszbjBBcXFyMWpfTUMzeTJFQlI4Rks4MXlWdWNNV2pXV2x0ZWJfY3RsOHlrSHhCaTAtUk1JSFRIX0ZnX1JuN21pOFBYU0d3?oc=5",
+      "date": "2026-11-22",
+      "source": "헤럴드경제",
+      "category": "local",
+      "summary": [
+        "강동구 자원순환센터, 지방자치 혁신대상 환경·탄소중립 최우수상 수상함",
+        "지자체 탄소중립 사업 연계 전자청구 영업 기회 모색 가능함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "가지치기부터 병해충 관리까지…백두대간수목원 노하우 책으로",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5qcWFJbmJ5bXQwY0xRN1MtM2t1RklVQThLMTNIYXcxY08wMGl0VHVRVm8wVzlXbWJVUDk0QXBJRk03T29mR3J4NzIxYkh5Zm45cWJuMFkyS0FOR2k2WHVFVtIBYEFVX3lxTE5qcWFJbmJ5bXQwY0xRN1MtM2t1RklVQThLMTNIYXcxY08wMGl0VHVRVm8wVzlXbWJVUDk0QXBJRk03T29mR3J4NzIxYkh5Zm45cWJuMFkyS0FOR2k2WHVFVg?oc=5",
+      "date": "2026-11-22",
+      "source": "연합뉴스",
+      "category": "local",
+      "summary": [
+        "백두대간수목원, 가지치기·병해충 관리 노하우 책자 발간함",
+        "에너지·빌링 관련성 낮은 환경·산림 일반 동향에 해당함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "“LPG 셀프충전 괜찮을까요?”…시행 100일, 기자가 직접 해봤다 [현장+]",
+      "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9BUnV2QkZQSzBzOXVFZzRIWkhlVmJaUmRWS2JYUThtaTg1b1VIWGdlbzFfWUxZc3hvcF9YN1pmYWlza1JURl9yODJ1UGNYc0dFay1QUVUzVTVFQXhGREppTC1hbw?oc=5",
+      "date": "2026-11-22",
+      "source": "쿠키뉴스",
+      "category": "energy",
+      "summary": [
+        "LPG 셀프충전 시행 100일 현장 체험 취재 보도함",
+        "LPG 셀프 서비스 확산 등 에너지 소비 편의화 동향 주목함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "LPG 보조금 끊기자…중고 경유 1t 트럭 몸값 '고공행진'",
+      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5GYVdJRXAydGpzSjlsYkl6MzY4V1o2S1l3UXh1Qm9BRURPM240dnFFQThwTU0xRnIwR3VmNVVsSTlEQ1MzS1VtY1JiNEx2RW1RbXhSMDZJdzRrQQ?oc=5",
+      "date": "2026-11-22",
+      "source": "한국경제",
+      "category": "energy",
+      "summary": [
+        "LPG 보조금 중단으로 중고 경유 1t 트럭 가격 급등함",
+        "연료 보조금 정책 변화가 에너지 수요 전환에 영향 전망"
+      ],
+      "ai": true
+    },
+    {
+      "title": "빗물받이 살핀 세종 방재단 전국 1위",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFB5a3NySU1Yc28yNUV3ekdLUHBNZTIwbVRWY19LbG1vaVFtQUkxRDc1b2lXakx6eUVNaEloMjZOWU9WcTJYaFplS25yM1BGOGtRVjNrVlVyV2ZZQUVsVVp3d1lxQUFEcXR4RDNHMS1VWks?oc=5",
+      "date": "2026-11-20",
+      "source": "충청일보",
+      "category": "energy",
+      "summary": [
+        "세종 방재단, 빗물받이 점검으로 전국 1위 달성함",
+        "빌링·에너지 관련성 낮은 지자체 방재 일반 동향에 해당함"
       ],
       "ai": true
     }
