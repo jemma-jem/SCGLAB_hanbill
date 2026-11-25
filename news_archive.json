@@ -1,8 +1,8 @@
 {
-  "updated_at": "2026-11-25T08:57:16.574Z",
+  "updated_at": "2026-11-25T13:49:49.791Z",
   "source": "Google News RSS",
   "query": "\"전기요금\" OR \"한전\" OR \"전자청구서\" OR \"에너지바우처\" OR \"에너지정책\" OR \"도시가스\" OR \"가로등\" OR \"보안등\" OR \"시설물관리\" OR \"도로조명\" OR \"탄소중립포인트\" OR \"에너지 마일리지\" OR \"종이고지서\" OR \"모바일 고지서\" OR \"건물에너지관리솔루션\" OR \"전자문서중계사업자\" OR \"구좌분리\" OR \"도로과\" OR \"전수표찰\" OR \"에너지 절감 정책\" OR \"우리집 에너지 컨설팅\" OR \"빗물받이 관리 솔루션\" OR \"수목관리솔루션\" OR \"LPG 배관망\" OR \"마을 LPG 배관망\" OR \"LPG 소형저장탱크\" OR \"소형저장탱크\" OR \"LPG 판매사업자\" OR \"LPG 공급사업자\" OR \"액화석유가스 판매\" OR \"LPG 충전소\" OR \"LPG 안전점검\" OR \"LPG 고지서\" OR \"LPG 정산\" OR \"조아테크\" OR \"엔콤\" when:3d || (\"포인트\" OR \"마일리지\" OR \"전수조사\" OR \"탄소중립\" OR \"탄소절감활동\") (\"지자체\" OR \"지방자치\" OR \"지방정부\" OR \"시청\" OR \"도청\" OR \"군청\" OR \"구청\" OR \"한전\" OR \"한국전력\" OR \"전기요금\" OR \"에너지\") when:3d || \"가로등 교체\" OR \"보안등 설치\" OR \"LED 가로등\" OR \"스마트 가로등\" OR \"안심가로등\" OR \"등기구 교체\" OR \"도로조명 정비\" OR \"가로수 정비\" OR \"가로수 전정\" OR \"가지치기\" OR \"수목 병해충\" OR \"조경수 관리\" OR \"가로수 식재\" OR \"수목관리\" OR \"빗물받이 청소\" OR \"우수받이 정비\" OR \"침수 취약지역\" OR \"공공건물 에너지\" OR \"그린리모델링\" OR \"녹색건축물\" OR \"에너지 진단 사업\" when:3d || (\"인사발령\" OR \"정기인사\" OR \"전보 발령\" OR \"과장 전보\" OR \"국장 전보\" OR \"조직개편\") (\"시청\" OR \"군청\" OR \"구청\" OR \"도청\" OR \"지자체\" OR \"시장\" OR \"군수\" OR \"구청장\") when:3d || \"LPG\" (\"요금\" OR \"고지\" OR \"정산\" OR \"청구\" OR \"판매사업자\" OR \"공급사업자\" OR \"충전소\" OR \"배관망\" OR \"소형저장탱크\" OR \"안전점검\" OR \"협회\") when:3d || (\"ISP\" OR \"정보화전략계획\" OR \"정보화전략\" OR \"차세대 시스템\" OR \"차세대 빌링\" OR \"보안사고\" OR \"해킹\" OR \"정보유출\" OR \"개인정보 유출\" OR \"개인정보 유출사고\" OR \"사이버 공격\" OR \"사이버공격\" OR \"랜섬웨어\" OR \"침해사고\" OR \"보안 취약\" OR \"디도스\" OR \"DDoS\") (\"한전\" OR \"한국전력\" OR \"한전KDN\") when:3d",
-  "count": 299,
+  "count": 320,
   "articles": [
     {
       "title": "한전, 자체 개발 AI ‘파워북’ 전력 분야 공공기관 확산",
@@ -985,6 +985,318 @@
       "summary": [
         "한전, 정보유출 고객에 최대 1천만원 금융사기 보상보험 제공함",
         "금융사기 피해 보상 확대, 고객정보 보안 대응 강화 필요함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전, 고객정보 유출 2차피해··· \"끝까지 막는다”",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5keFpOY2VtWE9YSUl3QTEwV29DYzRxQXpjWHhJc3RRekZGTlJKLV9NbHpMb2NXNElvQ09XZDhlUndKenRpTEU2cmxGSUZSV184OWFyakFEcjAwaTVxdDZ6V1FCSGM?oc=5",
+      "date": "2026-11-25",
+      "source": "일렉트릭파워",
+      "category": "energy",
+      "summary": [
+        "한전, 고객정보 유출 2차피해 끝까지 차단 방침 표명함",
+        "개인정보 보안 이슈 부각, 전자청구 서비스도 정보보호 강화 필요함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "[단독]한전 개인정보 유출, 소송전 번지나…로펌, 원고 모집",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1aUjF1UjNmcW9jRWFmVWpZN1J5NG1MUHNIUHZaaDJPZ2VQMTdOSnVhNzR0RnR5aEs0aDl5UVVIeEh3R2lHcEt3N1RGMnBxbm5TUlpKdC14UHZFTVNzMi1FZdIBeEFVX3lxTFBEdFktbzJhdXhva2R2b1NrNG1weTJaeEp2bnlNcFNqdjhKc1IzOVh1TnFaSlg0VFgxb2J5ZlJfcl8xTFdXekw3R25iR1BCd202SVpzbzFHb2FvVEx3QjJBRWFYdFBNVy15NUdoWkE1VFM1VzNSOXFydw?oc=5",
+      "date": "2026-11-25",
+      "source": "뉴시스",
+      "category": "energy",
+      "summary": [
+        "한전 개인정보 유출 관련 로펌이 원고 모집하며 소송전 조짐 보임",
+        "고객정보 취급 기관 책임 확대 전망, 빌링 대행사 보안관리 중요성 커짐"
+      ],
+      "ai": true
+    },
+    {
+      "title": "류재철 LG전자 대표, 대한전자공학대상 수상자 선정…고재간 램쉽 대표·조성재 이화여대 교수 기술혁신·IEIE 수상",
+      "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE9hYjIxcVIxamRpM0M4RUswOEU3Y0VheXFoMGdoOW1NOXpfR1dILVAxYUJiVDRfMGtCRTN2SjFjNVNYS2daU0dMelptaGMzZw?oc=5",
+      "date": "2026-11-25",
+      "source": "전자신문",
+      "category": "energy",
+      "summary": [
+        "류재철 LG전자 대표 등 대한전자공학대상 수상자 선정됨",
+        "전자·기술업계 일반 동향으로 직접 관련성 낮음"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전KPS, 원전 정비공정 안전 개선 성과 인정",
+      "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9QY2NkU010Q1h0YzFuN3JxNHUzM01HbGNUQi1LTnBDOVVtbm9HU3lKakFSeWhQdVBDWDgxWHRMdlk4TEo3Z3RjcjJscGxlM0xPcjFUNXJuTUNhVUVtemZqczEzSQ?oc=5",
+      "date": "2026-11-25",
+      "source": "국토일보",
+      "category": "energy",
+      "summary": [
+        "한전KPS, 원전 정비공정 안전 개선 성과 인정받음",
+        "전력 그룹사 안전관리 강화 흐름, 에너지 일반 동향에 해당함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전원자력연료, 제52회 국가품질경영대회 ‘국가품질대상’ 수상",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1MRndCaXphbkJyT1NWTmZSTVF0SE8zMkNHc0F0RUJzd0Z2LUhkZlByQy11ZHBRQjRvU0VYdUtiYjU0TnJ4cy13bHB2QnFkWE4ycjY2RURQRzdnZjJUeHcyT2VPN25UdVM2UndxdFdKVlM?oc=5",
+      "date": "2026-11-25",
+      "source": "에너지코리아뉴스",
+      "category": "energy",
+      "summary": [
+        "한전원자력연료, 국가품질경영대회 국가품질대상 수상함",
+        "전력 계열사 품질경영 성과 홍보 사례로 참고 가능함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "'한수원 고권후'·'한전KPS 박병걸'·'효성重 구자영' 수력의 날 기후부 장관 표창",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE85TlAwTnRKbXZnT0lfcVNBM1VYV0dqUHNueFlRS1NadkR3UTZUdzFVR2I4ek9FeDJRd0VrWmZ5MWEzTHNaaWJRdGhuN1Z4MUFLQkFJLVJPYU5qdDY5Z0VEQlZwWHBNdm5WcVltWnFrOVM?oc=5",
+      "date": "2026-11-25",
+      "source": "신아일보",
+      "category": "energy",
+      "summary": [
+        "한수원·한전KPS·효성중공업 임직원 수력의 날 장관 표창 수상함",
+        "수력·기후 분야 일반 동향으로 직접 관련성 낮음"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전KPS, 국제품질분임조대회 4년 연속 금상…서부발전은 국가품질대상 대통령상",
+      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9hcU95WU51Um1iaWlWZ0Q2TTdkWXdmbVk5Z0c4RHVmTndMMm5wOXBTcDFOTmlrN2s5bFVKdWt5SHNyLXQ2N0pNWlpuUExYOXBPeUV2RlZqd2c0M3FTY1RWNE1pVzlVSkxUQnRLa3NLaTZBQzRI?oc=5",
+      "date": "2026-11-25",
+      "source": "부산일보",
+      "category": "energy",
+      "summary": [
+        "한전KPS 국제품질분임조대회 4년 연속 금상, 서부발전 대통령상 수상함",
+        "전력 계열사 품질경영 성과, 에너지 업계 일반 동향에 해당함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전 152만명 정보 유출‥ 일선 현장 '혼란'",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9SN1A3XzBqSG5zOEhWN2s4RkJ4aDdVeUI2M1p6ODdsYmM1UkRXSU45VUxhVFhSNEY0aUxyTDJPUlhuVHRMU21qc2ZHR2M2TDNyR2pVV3g2cEZzR2FmbERyTGFyQU00amU2?oc=5",
+      "date": "2026-11-25",
+      "source": "일간경기",
+      "category": "energy",
+      "summary": [
+        "한전 152만명 정보 유출로 일선 현장 혼란 발생함",
+        "대규모 유출로 고객 문의 급증 전망, 전자청구 창구 대응 대비 필요함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전, 고객정보 유출 2차 피해 방지 대책 가동 … 최대 1000만원 보상보험 지원",
+      "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9pcEtaS3lIVURNRHI0cmliN2NjRTdWUTcxLWZyVjYyVU0tSUl3LU03Nk9pbWVlSTJfMGtrdld6N3FMQkpJaGFlQkt3UHBRdmZjRUVreGlxNl9GZTAwYXJoMGhHQnlVZ3BiWGVqaGp5YTFGSEJKeEF0WmhoZ9IBgAFBVV95cUxOWkVRX1F1OE9PaUs0cHBZRTBjc1RieGJYS3ZEZXhiTjloTkF2cVRSV2s1cXZ4cWZHemlxcERJV25CLTJrQlBIb2VzUE8tQm5sWWpxTnFzUnJTVm5mOGZlNUhOYWlyLVBIR2lGWDkzMk1ZbXRURjZrRVlOZmVmMzJnMA?oc=5",
+      "date": "2026-11-25",
+      "source": "뉴데일리 경제",
+      "category": "energy",
+      "summary": [
+        "한전, 2차 피해 방지 대책 가동하며 최대 1000만원 보상보험 지원함",
+        "유출 고객 보상체계 가동, 빌링 서비스도 안내·보상 연계 대비 필요함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전, “고객정보 유출 2차피해, 끝까지 막는다”안내부터 보상까지...“3단계 선제적 보호대책”즉시 가동",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE0xU0MtRFVRX21xekd5aVZrc19lTVc1SW5OX1R5VVNITTlCQ0FmMXNzbExKNTE0Z3VhcVQ2S0FPV1VZZnhiQzJtM2NPZW55YkRYWHNITHQ5azg0SGxJVHdyNTE5OUZRWUFRb2c?oc=5",
+      "date": "2026-11-25",
+      "source": "한국전력신문",
+      "category": "energy",
+      "summary": [
+        "한전, 안내부터 보상까지 3단계 선제적 보호대책 즉시 가동함",
+        "고객 안내 강화 기조, 전자청구 안내 채널 연계 활용 가능함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "류재철 LG전자 사장, 대한전자공학대상 수상",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9pUUF1dW5TbW56UVYwNENHbU9pb3dhTjA3dlpDZ0Jja3lCSkpud1pQRktKMGpfUXdhRUQxTFVjMXd0RzlWQ3FaeUVOMFIwSUR1Q1VUNjZ0cVQzcG9fNThMd2ZCa0h6UlphTklCNg?oc=5",
+      "date": "2026-11-25",
+      "source": "ER 이코노믹리뷰",
+      "category": "energy",
+      "summary": [
+        "류재철 LG전자 사장, 대한전자공학대상 수상함",
+        "전자업계 일반 동향으로 직접 관련성 낮음"
+      ],
+      "ai": true
+    },
+    {
+      "title": "한전KDN 감사실, ‘적극행정 면책지원관’ 위촉... 소신 있게 일하는 조직문화 조성",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9HT0ZVOEJDY2pEeWRWR2pDaWlMc3A5VDZ4Y2R3NDJfanZWWndpR2Y5Y3hoYk5OS1lBWHZFdVdUaERhV3hFbEhtTWpzRGVSVzhaaHV2SzlMbnRBSzBNYzBLSDl6b29yLWM?oc=5",
+      "date": "2026-11-25",
+      "source": "일간대한뉴스",
+      "category": "energy",
+      "summary": [
+        "한전KDN 감사실, 적극행정 면책지원관 위촉으로 조직문화 조성함",
+        "전력 IT 계열사 조직혁신 동향, 디지털 빌링 협력 참고 가능함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "“공사장 소음부터 밭 옆 가로등까지” 생활 속 환경분쟁, 이야기로 쉽게 푼다",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5aV3ZNYy1NcnhPcUMyZy0zMVdxYmo1ZkhqMWZvNXpJT25IOWNjZVBBQnpCZ0MtZ2V2eENqVEl2SkRfNmw4REtNbldubGhwSURCRWtSVkZGbngycnJzRW9HdDUwSS1jSlMxaEE?oc=5",
+      "date": "2026-11-25",
+      "source": "공유경제신문",
+      "category": "local",
+      "summary": [
+        "공사장 소음·가로등 등 생활 속 환경분쟁을 이야기로 풀어 소개함",
+        "생활환경 민원 일반 동향으로 직접 관련성 낮음"
+      ],
+      "ai": true
+    },
+    {
+      "title": "도심형 탄소중립, 건물에너지 탈탄소화로 해법 모색...노원구, 녹색전환연구소와 함께 \"도시 냉난방 탈탄소화 전략\" 국회 토론회 개최",
+      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBGV2w0U2ZFZU9CQ3A1TzdZNDNHMEpTRGdONzZiWmdfcm5Na3RKNS1yaHNwVGlSc05NOUFxRWRoVHVCOXFwSGNkWlA2U0FiTU5MTldSckdjM0VTX3puTzU1MGV2bWJiMnV5SUYyS0Jsdw?oc=5",
+      "date": "2026-11-25",
+      "source": "서울시티",
+      "category": "local",
+      "summary": [
+        "노원구, 건물에너지 탈탄소화 도시 냉난방 전략 국회 토론회 개최함",
+        "지자체 탄소중립 사업 확대, 지자체 연계 에너지 사업 기회 참고함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "제주에너지공사, 탄소중립 혁신 ‘최우수상’… RE100 확산 선도",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1XZlVJcTdDN05xTmJNRUVnTWRVdXl5Yklkb25UVHlMMHByZnZaZ3dleFVtTlBFZWJ6R1lyc1pyX3k5YzFrZEFPbnV4YlBoS2l2Q251Z2xQZERTcGYtVUhfZHF4VTdPU0M3TDVSeXlMT3XSAXRBVV95cUxQRVhGczNlWXdxQkhnYTgzV0pHbmQwQWswMU9NWDNoczMwa1BhRUtPV0xWaHFrdUR5aU9CWlM0Y3JXUFp4QnotOENTSXJZanNrNkJYTFlmc01vMXBRbG9BSFplUGdUdEQzWGY0WGh5VXAybWRsMA?oc=5",
+      "date": "2026-11-25",
+      "source": "디지털비즈온",
+      "category": "local",
+      "summary": [
+        "제주에너지공사, 탄소중립 혁신 최우수상 수상하며 RE100 확산 선도함",
+        "지역 에너지공사 탄소중립 추진 동향으로 참고 가능함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "고양시 자원봉사자, 빗물받이 266곳에서 쓰레기 3,820L 수거",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1IVGdZbkp2QTlrSmozMGF3TWVaU3AzVkJiSTN3cWgyLTZkV2F3ei1PTmlxNXRvb0UzSk05dHluNm1ZQlNSNzNiSHRGZVpweGN4S29uTUhmdEN5NVJxdlNzM0U3V2JkQVc5?oc=5",
+      "date": "2026-11-25",
+      "source": "팩트공감",
+      "category": "energy",
+      "summary": [
+        "고양시 자원봉사자, 빗물받이 266곳에서 쓰레기 3820L 수거함",
+        "지자체 생활환경 활동으로 직접 관련성 낮음"
+      ],
+      "ai": true
+    },
+    {
+      "title": "곡성군, 민선9기 군정 핵심과제 추진 위한 조직개편 단행",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFB5bFJJM1JOU08tQUV5dGdrRW92Y3B1aHlSODhsS0ZUa3lqYlc1a2tmbjFsbGJMMEpnLU9NMkJMM2xTcGlLaW9HQk9GcVhFcEU1VEJSNW16VTFCM2I0clVGel9XaFYwaWpyN09R?oc=5",
+      "date": "2026-11-25",
+      "source": "광주전남일보",
+      "category": "local",
+      "summary": [
+        "곡성군, 민선9기 군정 핵심과제 추진 위해 조직개편 단행함",
+        "지자체 조직개편 동향, 지자체 사업 담당부서 변동 확인 필요함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "LG유플러스, AI 사업 성과 창출 가속화 위한 2027년 조직개편 단행",
+      "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE5YOEhkRU9sU0ZGRlM4WkwyN2U5aFhXemVKQmU0STlMRXVzMmJwbmdhLWxoWVg1REFYZEVlQ1ZHTHRRSHZBU1pIY1pIRXFxaXhQ?oc=5",
+      "date": "2026-11-25",
+      "source": "뉴스미터",
+      "category": "local",
+      "summary": [
+        "LG유플러스, AI 사업 성과 위해 2027년 조직개편 단행함",
+        "통신·AI업계 조직 동향으로 직접 관련성 낮음"
+      ],
+      "ai": true
+    },
+    {
+      "title": "곡성군, 민선 9기 조직개편 추진 및 공무원 정원 31명 증원",
+      "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFB6a1c1M2VvLWVsTmJLd3lOSUp6MzJUNVdYMm5mWHZRQUl2QzFrZ2VDTnl1RmlXcTc3UEZ2TVphVWpoUml3OXJjRGJQQ1NaVndNU2phRTVoMEdUeGdh?oc=5",
+      "date": "2026-11-25",
+      "source": "선데이뉴스신문",
+      "category": "local",
+      "summary": [
+        "곡성군, 민선9기 조직개편 추진하며 공무원 정원 31명 증원함",
+        "지자체 조직·인력 확대 동향, 지자체 사업 접점 변동 참고함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "곡성군, 민선 9기 맞춰 조직개편…1과·4팀 ‘신설’",
+      "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBzeTI3OW1xTVExU0g1RFRSWXlLaS1Ta3c3SjRqOUtCYXZyS09DZWo1SURQWVlMTmh4aVJUTHVNQkFWSE9xZDFKNjRFTzcyb2NUbUhxU1hscGFQOThoWEhB?oc=5",
+      "date": "2026-11-25",
+      "source": "MTN 머니투데이방송",
+      "category": "local",
+      "summary": [
+        "곡성군, 민선9기 맞춰 1과·4팀 신설 조직개편 추진함",
+        "지자체 신설 부서 확인, 지자체 영업 접점 파악 필요함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "진도군, LPG 배관망 공모 10년 연속 선정",
+      "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE9qeFp3MVZzNnByWHVzN0hzZmNSSVdpWElGR0Njd0kzUUQ4c2xpVUc1dmtCQ0pTY2xvR2d6OHBUR25ZNnZEU2h0VURaZjRBOUk5UVFHeDhkUk5Pbkw5WDVseWl3bDgzLVdObUVBYlJ3YTZCWDVCSjV30gF3QVVfeXFMT2p4WncxVnM2cHJYdXM3SHNmY1JJV2lYSUZHQ2N3STNRRDhzbGlVRzV2a0JDSlNjbG9HZ3o4cFRHblk2dkRTaHRVRFpmNEE5STlRUUd4OGRSTk9uTDlYNWx5aXdsODMtV05tRUFiUndhNkJYNUJKNXc?oc=5",
+      "date": "2026-11-25",
+      "source": "핀포인트뉴스",
+      "category": "energy",
+      "summary": [
+        "진도군, LPG 배관망 구축사업 공모 10년 연속 선정됨",
+        "지자체 에너지 인프라 사업 지속 동향으로 참고 가능함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "경기도의회 김미경 의원, “LPG 소형탱크 안전관리 강화·대기오염 경보 실효성 높여야”",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE15bXY5NDdkWVA5d0tXUmpxX3puVGc0OVpMWnBqOGpfbDBqQTRTYjRab04xLVNfak5PeVpwSFZvSUNxcVFzdjc5dGVnZGpPcFdXOGdZMjdLeWtqM2JuTm01dnR2MUE0VUxKbzVR?oc=5",
+      "date": "2026-11-25",
+      "source": "투데이경제",
+      "category": "energy",
+      "summary": [
+        "경기도의회 김미경 의원, LPG 소형탱크 안전관리·대기오염 경보 실효성 강조함",
+        "에너지 안전·환경 정책 일반 동향에 해당함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "진도군, ‘엘피지(LPG) 배관망 구축사업 공모’ 10년 연속 선정",
+      "url": "https://news.google.com/rss/articles/CBMiQEFVX3lxTFBudXJzdjhtOXRfYi13ZG5Ucmh3UXhPcEpCN05qWm9sU2wzNTk2dkJUaUxmWkswRkhlcWRKUGN2QjY?oc=5",
+      "date": "2026-11-25",
+      "source": "온투데이",
+      "category": "energy",
+      "summary": [
+        "진도군, LPG 배관망 구축사업 공모 10년 연속 선정됨",
+        "지자체 에너지 인프라 사업 동향으로 참고 가능함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "진도군, 2027년까지 10년 연속 'LPG 배관망 구축사업 공모' 선정",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBJMlNlTWJHaHptQnN6MmRvOWYxZ1FHbWhpTDFjaFZ3c3piLTRaSjA2UGlKZTIwd251ejZycFRnR2tXZ2xteXAxMXFsNlJnRENRRVA5ZW5ReThIQ0xuRUV3NTBsME5lS3hPUThR?oc=5",
+      "date": "2026-11-25",
+      "source": "프레시안",
+      "category": "energy",
+      "summary": [
+        "진도군, 2027년까지 LPG 배관망 구축사업 공모 10년 연속 선정됨",
+        "지자체 에너지 인프라 장기 추진 동향으로 참고 가능함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "경기도의회 김미경 의원, LPG 소형탱크 안전관리·대기오염 경보 실효성 강조",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9INllwNXM1UWVwcjV1YkdFMWRYQTJBRFFuYlA3RkhLbzUwU3lxMWhLUXQ0ZUw5SHFmNkxyM1NYUm96eXJTOFUxeFA1alZTd3BqdjVqZlFPd0lBWGlXVkdBZV9sV3hEVjdGOV9idzIyelVZUQ?oc=5",
+      "date": "2026-11-25",
+      "source": "웹이코노미",
+      "category": "energy",
+      "summary": [
+        "경기도의회 김미경 의원, LPG 소형탱크 안전·대기오염 경보 실효성 강조함",
+        "에너지 안전·환경 정책 일반 동향에 해당함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "진도군, LPG 배관망 공모 10년 연속 선정…국비 178억원 확보",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9VR3JqajI2S2ZYbzkwS0x2ZmFzNEhHelhmbGJ5cGpBekR6QzlSYnl4UUk3clNmV25ra29xQVFseExQbVpqMnVTVTNmUHdpZjFpZlFsRXV6aHgzT09XVFktZGFHQm9yRmFHeDNEQ2Qyajc4Zw?oc=5",
+      "date": "2026-11-25",
+      "source": "중앙이코노미뉴스",
+      "category": "energy",
+      "summary": [
+        "진도군, LPG 배관망 공모 10년 연속 선정해 국비 178억원 확보함",
+        "지자체 에너지 인프라 사업 지속 확대, 요금·배관 관리 수요 증가 전망"
       ],
       "ai": true
     },
@@ -2285,6 +2597,30 @@
       "ai": true
     },
     {
+      "title": "가스공사, LNG 트레이딩·냉열사업 전담조직 신설…미래 에너지사업 확대",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBQMWRlOHEtWDNGTXR4RFl3bjRLRnM2RjdlWjktSFpmc2szUmFoeDJtcVNlandDTFFCeV9PYmZwWjBpeWNzay1BNkZRY2doQ2xwR1lLSXNHeENHbTBHbmRRdlFydWgyNllySTBz?oc=5",
+      "date": "2026-11-24",
+      "source": "해사신문",
+      "category": "energy",
+      "summary": [
+        "가스공사, LNG 트레이딩·냉열사업 전담조직 신설해 미래 사업 확대함",
+        "에너지 공기업 신사업 조직 강화 흐름, 빌링 연계 기회 모니터링 필요함"
+      ],
+      "ai": true
+    },
+    {
+      "title": "DB손보, 글로벌·디지털 조직개편…미래 성장동력 육성",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE45MkJqOGhGWmgzWGd4Z3BjbkVpelNjUWRKcVRIdmx4bm9qclIzTFlVSlNWWXdJVm9YQ2ZTcWhqd0dNZ2FfdUdOUmxxTXJiQlUxZUpIMk9wS25HVjNVbTZ3M1J0NzF2YUp0?oc=5",
+      "date": "2026-11-24",
+      "source": "FETV",
+      "category": "local",
+      "summary": [
+        "DB손보, 글로벌·디지털 조직개편으로 미래 성장동력 육성 추진함",
+        "기업 디지털 전환 가속화, 전자청구·디지털 빌링 수요 확대 시사함"
+      ],
+      "ai": true
+    },
+    {
       "title": "개보위, 한전 개인정보 유출 조사 착수",
       "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5wd1psZTdVUWlxakROY2tfVEpNSjRuLTlESG8xQXlPaF9SWjVZYWxXZmh5QUZadXNlQTR4WUdqbUlzMVRnRXR5b1lHaWFFbEFWZ3RRcFdwUG1MMS1hMVhMWA?oc=5",
       "date": "2026-11-23",
@@ -3497,98 +3833,14 @@
       "ai": true
     },
     {
-      "title": "한전, ‘한전ON’·조달망 뚫려 개인정보 152만여건 유출... 주민번호·카드번호까지 털려",
-      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9uUWtPT0Q3RjIzcUpvYzJpVlNkWHZGZzVqMUxfMksxdWxaU2kzVzVIcWhQV0pxZ1NBZG1nTEhCa0ttVEhUZF9wMWFEZzhTRUJFbUNLejkySE5vV2JJUW45a2ZvaE40c1NKdnVJ?oc=5",
-      "date": "2026-11-22",
-      "source": "보안뉴스",
-      "category": "energy",
-      "summary": [
-        "한전 '한전ON'·조달망 해킹으로 개인정보 152만건 유출함",
-        "전자청구 고객정보 보안 신뢰 강화 필요성 부각될 전망"
-      ],
-      "ai": true
-    },
-    {
-      "title": "한전도 해킹당했다…65만명 주민번호·계좌·카드번호 유출",
-      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE93TVRITGJMN0plWV9NSFJWNlR1eDd1WGVWb3B2SVRnbUJYMXA2US1wcDdMb1ZlQVJwWXZ3alBtenBTNTlYU0lfR3IxaW1WdFdta196aVJPSGtmQdIBX0FVX3lxTE13NWVmMVRzM3pzZE9YUTJ3eEFxU0F4RllMVWgwMlJFeml6dmxmX2FlNGlDZjJCS1hXOUdYSlBYVElLTXFab1RPbHM4SDZnQTVvMzhyTDRPSW9WNXNFb0Rj?oc=5",
-      "date": "2026-11-22",
-      "source": "경향신문",
-      "category": "energy",
-      "summary": [
-        "한전 해킹으로 65만명 주민번호·계좌·카드번호 유출됨",
-        "빌링 데이터 암호화·접근통제 등 보안 점검 필요함"
-      ],
-      "ai": true
-    },
-    {
-      "title": "‘한전ON’ 고객 및 전자조달시스템 기업 개인정보 150여만건 유출",
-      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9CM3hfMVpRLTNJZ3hQWHc2anpTQ0hScG5iSFlKUGRkRE1mZTBzX0tkWFJqTkFRUFJ0d3AxR2VxV0JDTFNSVEtsLUZUeE1rMG0wYUVJSWVQdXJuZ0U?oc=5",
-      "date": "2026-11-22",
-      "source": "KBS 뉴스",
-      "category": "energy",
-      "summary": [
-        "한전ON 고객·전자조달 기업 개인정보 150여만건 유출됨",
-        "전자청구 제휴 시 개인정보 관리 책임 강조될 전망"
-      ],
-      "ai": true
-    },
-    {
-      "title": "강동구 자원순환센터 지방자치 혁신대상 환경·탄소중립 최우수상",
-      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE90WVpxbENNQWszbjBBcXFyMWpfTUMzeTJFQlI4Rks4MXlWdWNNV2pXV2x0ZWJfY3RsOHlrSHhCaTAtUk1JSFRIX0ZnX1JuN21pOFBYU0d3?oc=5",
-      "date": "2026-11-22",
-      "source": "헤럴드경제",
+      "title": "대전 서구, 탄소중립 경연대회 지자체 부문 장관상",
+      "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBvbHFOblJINEJGakhPdm5PUUl5SDg3ZWFDUEFzUkdibzJldDJRWmpLQ1dnZ2xkSmJpVnlYcFJQLWdNZ3UtbEFwMXJLMGRzb2wtRGRlMg?oc=5",
+      "date": "2026-11-23",
+      "source": "타임뉴스",
       "category": "local",
       "summary": [
-        "강동구 자원순환센터, 지방자치 혁신대상 환경·탄소중립 최우수상 수상함",
-        "지자체 탄소중립 사업 연계 전자청구 영업 기회 모색 가능함"
-      ],
-      "ai": true
-    },
-    {
-      "title": "가지치기부터 병해충 관리까지…백두대간수목원 노하우 책으로",
-      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5qcWFJbmJ5bXQwY0xRN1MtM2t1RklVQThLMTNIYXcxY08wMGl0VHVRVm8wVzlXbWJVUDk0QXBJRk03T29mR3J4NzIxYkh5Zm45cWJuMFkyS0FOR2k2WHVFVtIBYEFVX3lxTE5qcWFJbmJ5bXQwY0xRN1MtM2t1RklVQThLMTNIYXcxY08wMGl0VHVRVm8wVzlXbWJVUDk0QXBJRk03T29mR3J4NzIxYkh5Zm45cWJuMFkyS0FOR2k2WHVFVg?oc=5",
-      "date": "2026-11-22",
-      "source": "연합뉴스",
-      "category": "local",
-      "summary": [
-        "백두대간수목원, 가지치기·병해충 관리 노하우 책자 발간함",
-        "에너지·빌링 관련성 낮은 환경·산림 일반 동향에 해당함"
-      ],
-      "ai": true
-    },
-    {
-      "title": "“LPG 셀프충전 괜찮을까요?”…시행 100일, 기자가 직접 해봤다 [현장+]",
-      "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9BUnV2QkZQSzBzOXVFZzRIWkhlVmJaUmRWS2JYUThtaTg1b1VIWGdlbzFfWUxZc3hvcF9YN1pmYWlza1JURl9yODJ1UGNYc0dFay1QUVUzVTVFQXhGREppTC1hbw?oc=5",
-      "date": "2026-11-22",
-      "source": "쿠키뉴스",
-      "category": "energy",
-      "summary": [
-        "LPG 셀프충전 시행 100일 현장 체험 취재 보도함",
-        "LPG 셀프 서비스 확산 등 에너지 소비 편의화 동향 주목함"
-      ],
-      "ai": true
-    },
-    {
-      "title": "LPG 보조금 끊기자…중고 경유 1t 트럭 몸값 '고공행진'",
-      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5GYVdJRXAydGpzSjlsYkl6MzY4V1o2S1l3UXh1Qm9BRURPM240dnFFQThwTU0xRnIwR3VmNVVsSTlEQ1MzS1VtY1JiNEx2RW1RbXhSMDZJdzRrQQ?oc=5",
-      "date": "2026-11-22",
-      "source": "한국경제",
-      "category": "energy",
-      "summary": [
-        "LPG 보조금 중단으로 중고 경유 1t 트럭 가격 급등함",
-        "연료 보조금 정책 변화가 에너지 수요 전환에 영향 전망"
-      ],
-      "ai": true
-    },
-    {
-      "title": "빗물받이 살핀 세종 방재단 전국 1위",
-      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFB5a3NySU1Yc28yNUV3ekdLUHBNZTIwbVRWY19LbG1vaVFtQUkxRDc1b2lXakx6eUVNaEloMjZOWU9WcTJYaFplS25yM1BGOGtRVjNrVlVyV2ZZQUVsVVp3d1lxQUFEcXR4RDNHMS1VWks?oc=5",
-      "date": "2026-11-20",
-      "source": "충청일보",
-      "category": "energy",
-      "summary": [
-        "세종 방재단, 빗물받이 점검으로 전국 1위 달성함",
-        "빌링·에너지 관련성 낮은 지자체 방재 일반 동향에 해당함"
+        "대전 서구, 탄소중립 경연대회 지자체 부문 장관상 수상함",
+        "지자체 탄소중립 정책 경쟁 심화, 에너지 데이터·요금 관리 연계 전망"
       ],
       "ai": true
     }
