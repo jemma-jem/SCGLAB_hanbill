@@ -132,8 +132,22 @@ const CORE_KW = Array.from(new Set([
   // LPG 고지·정산 영업 (판매/공급 사업자 타겟 + 경쟁사)
   'LPG','액화석유가스','소형저장탱크','배관망','충전소','조아테크','엔콤',
 ].concat(CONTEXT_KW).concat(SOLUTION_KW).concat(HR_KW).concat(LPG_KW)));
+// 보안 키워드는 '한전/전력 맥락'이 함께 있을 때만 관련 기사로 인정한다.
+//   (하나저축은행·일반 기업/금융 해킹 등 '한전과 무관한 보안 뉴스'가 관련성 필터를 통과하던 문제 차단)
+const SECURITY_KW = ['보안사고','해킹','정보유출','개인정보 유출','개인정보유출','신용정보 유출',
+  '사이버 공격','사이버공격','랜섬웨어','침해사고','보안 취약','디도스','DDoS'];
+const SECURITY_SET = new Set(SECURITY_KW);
+const KEPCO_CTX = ['한전','한국전력','한전KDN','한전MCS','KEPCO','전력','전기요금','전력요금',
+  '전자청구','전자고지','빌링','청구서','에너지'];
 function isRelevant(title) {
   const t = title || '';
+  const hasSec = SECURITY_KW.some(function(k){ return t.indexOf(k) >= 0; });
+  if (hasSec) {
+    const hasKepcoCtx = KEPCO_CTX.some(function(k){ return t.indexOf(k) >= 0; });
+    // 보안 키워드 외에 다른 핵심어(지자체 사업·LPG 등)가 있으면 관련으로 인정.
+    const hasOtherCore = CORE_KW.some(function(k){ return !SECURITY_SET.has(k) && t.indexOf(k) >= 0; });
+    if (!hasKepcoCtx && !hasOtherCore) return false;   // 한전 맥락도 없고 다른 접점도 없는 '순수 보안 뉴스' → 제외
+  }
   for (const k of CORE_KW) if (t.indexOf(k) >= 0) return true;
   return false;
 }
