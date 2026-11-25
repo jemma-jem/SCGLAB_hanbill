@@ -2098,13 +2098,13 @@ var MAP_PRERENDER={"W":700,"H_main":875,"H_total":981,"jejuRect":{"x":3,"y":880,
         </div>
         <div style="font-size:11.5px;color:var(--g400);margin-top:2px;display:flex;align-items:center;gap:7px;flex-wrap:wrap">
           <span>경영진 보고용 · 최근 주요 기사(원문 발행일 최신순) · 원하는 기사 선택 후 발송</span>
-          <span style="display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;color:#075985;background:#e0f2fe;border:1px solid #bae6fd;padding:2px 9px;border-radius:999px;white-space:nowrap" title="예약은 매일 오후 4시(KST)입니다. 다만 구글뉴스 수집량·GitHub 처리 상황에 따라 실제 반영은 다소 지연될 수 있어요.">
-            <i class="ti ti-clock-hour-4"></i> 뉴스 자동 수집 매일 오후 4시 예정<span id="nl-collect-asof" style="font-weight:600"></span>
+          <span style="display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;color:#075985;background:#e0f2fe;border:1px solid #bae6fd;padding:2px 9px;border-radius:999px;white-space:nowrap" title="예약은 매일 오후 1시(KST)입니다. 다만 구글뉴스 수집량·GitHub 처리 상황에 따라 실제 반영은 다소 지연될 수 있어요.">
+            <i class="ti ti-clock-hour-1"></i> 뉴스 자동 수집 매일 오후 1시 예정<span id="nl-collect-asof" style="font-weight:600"></span>
           </span>
         </div>
       </div>
       <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">
-        <button class="btn bo sm" id="nl-collect-now" style="white-space:nowrap;border-color:#0EA5E9;color:#075985" onclick="triggerNewsCollect()" title="오후 4시 예약을 기다리지 않고 지금 수집을 실행합니다. 2~4분 뒤 새로고침하면 반영됩니다."><i class="ti ti-player-play"></i> 지금 수집</button>
+        <button class="btn bo sm" id="nl-collect-now" style="white-space:nowrap;border-color:#0EA5E9;color:#075985" onclick="triggerNewsCollect()" title="오후 1시 예약을 기다리지 않고 지금 수집을 실행합니다. 2~4분 뒤 새로고침하면 반영됩니다."><i class="ti ti-player-play"></i> 지금 수집</button>
         <button class="btn bo sm" style="white-space:nowrap" onclick="refreshNews()"><i class="ti ti-refresh"></i> 새로고침</button>
         <button class="btn bp sm" id="send-btn" style="white-space:nowrap" onclick="sendNewsletter()"><i class="ti ti-send"></i> 선택 기사 발송</button>
         <button class="btn bo sm" id="copy-html-btn" onclick="copyNewsletterHtml()" style="border-color:#0EA5E9;color:#0EA5E9;white-space:nowrap"><i class="ti ti-clipboard-copy"></i> HTML 복사</button>
@@ -5153,7 +5153,7 @@ async function fetchLiveNews() {
       if (!r.ok) throw new Error('endpoint ' + r.status);
       const j = await r.json();
       const arr = Array.isArray(j) ? j : (j.articles || []);
-      // 실제 수집 갱신시각 표기(예약 16:00이지만 수집 지연 가능 — 항상 안내)
+      // 실제 수집 갱신시각 표기(예약 13:00이지만 수집 지연 가능 — 항상 안내)
       try {
         const _upd = (!Array.isArray(j) && (j.updated || j.updated_at)) || '';
         const _el = document.getElementById('nl-collect-asof');
@@ -5219,7 +5219,7 @@ async function fetchLiveNews() {
 //   ② [지식베이스 내보내기] 버튼 → news_archive.json 전체 다운로드
 //      → 클로드 프로젝트 Knowledge에 업로드(즉시 학습 활용)
 //   ③ '진짜 파일 끝에 append'가 필요하면 동봉한 news_collector.js(Node)를
-//      오후 4시 스케줄로 실행 → 서버에서 news_archive.json에 직접 누적.
+//      오후 1시 스케줄로 실행 → 서버에서 news_archive.json에 직접 누적.
 // ════════════════════════════════════════════════════════════════════
 const NEWS_KB_KEY = 'hanbil_news_kb';
 
@@ -8599,7 +8599,7 @@ async function hbClaudeQuery(userText, fallbackFn) {
 - Z1: 분류 불가·기타
 
 ## 최우선 지시
-- 오늘 오후 4시에 갱신된 최신 데이터와 뉴스 통계를 우선 분석하여 답변한다.
+- 오늘 오후 1시에 갱신된 최신 데이터와 뉴스 통계를 우선 분석하여 답변한다.
 - 동일 지표에 과거 수치와 최신 갱신본이 함께 있으면 항상 최신 갱신본을 기준으로 판단한다.
 
 ## 출력 형식 (반드시 엄격히 준수)
