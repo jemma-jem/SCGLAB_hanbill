@@ -1,20 +1,22 @@
 {
-  "updated_at": "2026-11-27T08:12:22.490Z",
+  "updated_at": "2026-11-28T07:36:23.491Z",
   "sources": [
     "시정일보 RSS(피플/전체)",
     "지역지 직접 RSS(동부뉴스·투데이군산·당진신문·영남투데이·수원일보·금강일보·디트뉴스·전북중앙·남도일보·광주드림·경북일보·울산제일일보·제주의소리·세종의소리)",
     "구글 뉴스 RSS",
     "기사 본문 보강"
   ],
-  "count": 401,
+  "count": 405,
   "records": [
     {
       "date": "2026-11-27",
-      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBOYWZ3M2dJTmhUbE9DTHUxQ3NMaTI3cWdlaV8wdEtsM1JqdF9xNGVxQXFFZDdkaFlkem9OZHpMUkJFUHNvZ2lIVkcwX2FLc2lId2NyUVNvX1lZS0hiU19ESm92Nml1cEVvY2gw?oc=5",
-      "source": "충청메시지",
-      "title": "공주시, 2026년 하반기 수시인사 단행",
+      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTFB2ck1scVkzdHpPaDVIQm1xVlpPbW5WMjVPWmp5T0ViOFJLMmxyR1Q4Q2hfQWY0Tnczak5ReVZqbDdBcHlVNWhBN0hzVVB0aDJnVkxiV0FXbkJBWUVLOTRVUTNwQjJXMmNDSktDd1VLemFUN28?oc=5",
+      "source": "세종시민일보",
+      "title": "공주시, 밤산업박람회 대비 4급 승진·파견",
       "region": "공주시",
-      "kinds": [],
+      "kinds": [
+        "승진"
+      ],
       "people": [],
       "hit": false
     },
@@ -45,6 +47,18 @@
       "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9UV1pUZlJWSTZJUjB4WG1mOURZRkdBLTI5VU5VQ3ROeWx6QTVPM2RkeU5kcDBKREhjVXhSX0o2TVl4VVBYWGNjWVJ2LVZSdnhGU3V0OGh0NmYzZ9IBWEFVX3lxTFBtWnVCOEhoY3FUeDZaOWZFRDVMc2RMVngySV9DX1l6a3RpNHlDek1NVm1nVDU5TGlxQWN5THNjaVBScTV1NG1PWmlMemRGdkNsMHZMQ2lCN0U?oc=5",
       "source": "아주경제",
       "title": "HDC그룹, 2027년 정기인사 단행…IPARK현대산업개발 새 대표에 강민석",
+      "region": "",
+      "kinds": [
+        "정기인사"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-27",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5HMnNPdk4zblYwNVJLcEZ1VDRMYUhyLUJZNy02ZGstaFZzejJsZUYzODNESVdlUFFpckhBaTN5ZlpDRThidlh1TDNXbjhzS2ttNmJEYXFPVWliaTN2TEVHSzFvVFktVTJ1ekFN?oc=5",
+      "source": "CNB뉴스",
+      "title": "HDC그룹, 정기인사···IPARK현산 대표에 강민석 부사장",
       "region": "",
       "kinds": [
         "정기인사"
@@ -346,6 +360,16 @@
       "hit": false
     },
     {
+      "date": "2026-11-24",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5xb1ZFTXVJLVB2dmtKSGcybUNVSFN5eTBvT2RNMmdmZmtrUTcyRjdjTXFmS3kxdmhnV1I4eFhDZHV1bjYwY1pQOE1CM25qcjRjWFpETGFzSkVyZUhXVl9Ldg?oc=5",
+      "source": "아시아경제",
+      "title": "경찰 고위직 인사 단행…김병기·송영호 치안정감 내정",
+      "region": "",
+      "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
       "date": "2026-11-23",
       "url": "https://www.jejusori.net/news/articleView.html?idxno=508576",
       "source": "제주의소리",
@@ -590,6 +614,18 @@
       "title": "삼성전자, 정기 사장단 인사 단행…반도체 기술 인재 전진 배치",
       "region": "",
       "kinds": [],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-20",
+      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBpU3ptUk1rRXhiRFdpZS1na0l0anZRU3k0V1Y3NXhkNElFN1hncFRmaGs2R01CTVlIT3owZXkwYnlhR29nZWV2cnB3b0tyRWhMRExSZnlBOG05Y0hpal9LV0RlbldicVdGdmo5UTVFMA?oc=5",
+      "source": "엠투데이",
+      "title": "LG화학, 김무용·김상민 부사장 승진⋯2027년 임원인사 단행",
+      "region": "",
+      "kinds": [
+        "승진"
+      ],
       "people": [],
       "hit": false
     },
@@ -1254,6 +1290,18 @@
       "kinds": [
         "승진",
         "정기인사"
+      ],
+      "people": [],
+      "hit": false
+    },
+    {
+      "date": "2026-11-13",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1wYnBTaXpBR2prNVFKSS1LSWJLeHE3OFhQNlFGbHVkTm1rTnNFSVh5LUpLV1pVYk1QaVI0ZTUzNk1STmNabGJsUHlEblNCcEEzYjY5bGE0cnlqZlMwcl9qOQ?oc=5",
+      "source": "아시아경제",
+      "title": "민승배 BGF리테일 대표, 사장 승진…BGF그룹 정기 인사",
+      "region": "",
+      "kinds": [
+        "승진"
       ],
       "people": [],
       "hit": false
